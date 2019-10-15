@@ -1,3 +1,3 @@
-# nightthemeswitcher-gnome-shell-extension
+# Night Theme Switcher
 
 Change theme to dark variant when Night Light activates
