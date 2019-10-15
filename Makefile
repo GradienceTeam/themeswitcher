@@ -9,7 +9,7 @@ build: clean
 
 .PHONY: install
 install: build
-	cp -r ./build/* $(GSEXT_DIR_LOCAL)
+	cp -r ./build/* $(GSEXT_DIR_LOCAL)/$(UUID)
 
 .PHONY: zip
 zip: build
