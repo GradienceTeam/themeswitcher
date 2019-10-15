@@ -70,7 +70,7 @@ function enable() {
 		}
 	}
 	catch(e) {
-		logError(e)
+		logError(e);
 	}
 	proxy_connect_id = proxy.connect('g-properties-changed', _apply_theme_variant);
 	_apply_theme_variant();
