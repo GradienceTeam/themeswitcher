@@ -68,7 +68,9 @@ function enable() {
 }
 
 function disable() {
-	proxy.disconnect(proxy_connect_id);
+	if ( proxy && proxy_connect_id ) {
+		proxy.disconnect(proxy_connect_id);
+	}
 
 	_set_theme(original_user_theme);
 
