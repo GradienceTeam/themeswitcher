@@ -1,10 +1,12 @@
 # Night Theme Switcher
 
-Automatically change the GTK theme to dark variant when Night Light activates.
-
 ![](./screenshot.gif)
 
-## Installation
+Automatically change the GTK theme to dark variant when Night Light activates.
+
+Your theme must have a `-dark` variant, e.g. `Adwaita` and `Adwaita-dark`.
+
+## Command line installation
 
 Clone the repository and enter the directory:
 
