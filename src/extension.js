@@ -72,8 +72,6 @@ function enable() {
 
 function disable() {
 	proxy.disconnect(proxy_connect_id);
-	proxy.destroy();
-	conn.destroy();
 
 	_set_theme(original_user_theme);
 
