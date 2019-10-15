@@ -50,19 +50,28 @@ function enable() {
 	user_theme_day = original_user_theme.replace('-dark', '');
 	user_theme_night = user_theme_day + '-dark';
 
-	// Get session DBus, listen to Color changes and change theme variant
-	conn = Gio.bus_get_sync(Gio.BusType.SESSION, null);
-	if ( conn === null ) return;
-	proxy = Gio.DBusProxy.new_sync(
-		conn,
-		Gio.DBusProxyFlags.GET_INVALIDATED_PROPERTIES,
-		null,
-		'org.gnome.SettingsDaemon.Color',
-		'/org/gnome/SettingsDaemon/Color',
-		'org.gnome.SettingsDaemon.Color',
-		null
-	);
-	if ( proxy === null ) return;
+	// Connect to session bus, listen to Color changes and change theme variant
+	try {
+		conn = Gio.bus_get_sync(Gio.BusType.SESSION, null);
+		if ( conn === null ) {
+			throw new Error('Unable to connect to the session bus');
+		}
+		proxy = Gio.DBusProxy.new_sync(
+			conn,
+			Gio.DBusProxyFlags.GET_INVALIDATED_PROPERTIES,
+			null,
+			'org.gnome.SettingsDaemon.Color',
+			'/org/gnome/SettingsDaemon/Color',
+			'org.gnome.SettingsDaemon.Color',
+			null
+		);
+		if ( proxy === null ) {
+			throw new Error('Unable to create proxy to the session bus');
+		}
+	}
+	catch(e) {
+		logError(e)
+	}
 	proxy_connect_id = proxy.connect('g-properties-changed', _apply_theme_variant);
 	_apply_theme_variant();
 }
