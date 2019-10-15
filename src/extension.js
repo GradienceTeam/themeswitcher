@@ -18,9 +18,6 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 
 'use strict';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-
 const Gio = imports.gi.Gio;
 
 let interface_settings;
