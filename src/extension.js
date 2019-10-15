@@ -1,0 +1,70 @@
+'use strict';
+
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
+
+const Gio = imports.gi.Gio;
+
+let interface_settings;
+let nightlight_active;
+let original_user_theme, user_theme_day, user_theme_night;
+let conn, proxy, proxy_connect_id;
+
+
+function _get_theme() {
+	return interface_settings.get_string('gtk-theme');
+}
+
+function _set_theme(theme) {
+	interface_settings.set_string('gtk-theme', theme)
+}
+
+function _apply_theme_variant() {
+	const variant = proxy.get_cached_property('NightLightActive');
+	if ( variant.get_boolean() === nightlight_active ) return;
+	nightlight_active = variant.get_boolean();
+	_set_theme(nightlight_active ? user_theme_night : user_theme_day)
+}
+
+function init() {}
+
+function enable() {
+	// Store the current user theme and build day and night variants
+	interface_settings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
+	original_user_theme = _get_theme();
+	user_theme_day = original_user_theme.replace('-dark', '');
+	user_theme_night = user_theme_day + '-dark';
+
+	// Get session DBus, listen to Color changes and change theme variant
+	conn = Gio.bus_get_sync(Gio.BusType.SESSION, null);
+	if ( conn === null ) return;
+	proxy = Gio.DBusProxy.new_sync(
+		conn,
+		Gio.DBusProxyFlags.GET_INVALIDATED_PROPERTIES,
+		null,
+		'org.gnome.SettingsDaemon.Color',
+		'/org/gnome/SettingsDaemon/Color',
+		'org.gnome.SettingsDaemon.Color',
+		null
+	);
+	if ( proxy === null ) return;
+	proxy_connect_id = proxy.connect('g-properties-changed', _apply_theme_variant);
+	_apply_theme_variant();
+}
+
+function disable() {
+	proxy.disconnect(proxy_connect_id);
+	proxy.destroy();
+	conn.destroy();
+
+	_set_theme(original_user_theme);
+
+	interface_settings = null;
+	nightlight_active = null;
+	original_user_theme = null;
+	user_theme_day = null;
+	user_theme_night = null;
+	conn = null;
+	proxy = null;
+	proxy_connect_id = null;
+}

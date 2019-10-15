@@ -1,0 +1,8 @@
+{
+	"name": "Night Theme Switcher",
+	"description": "Change theme to dark variant when Night Light activates",
+	"uuid": "nightthemeswitcher@romainvigier.fr",
+	"url": "https://git.romainvigier.fr/",
+	"version": 1.0,
+	"shell-version": ["3.30","3.32"]
+}
