@@ -1,18 +1,18 @@
 <svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 	<defs>
-		<clipPath id="clipPath993">
-			<path d="m0 100 100-100v100h-100" fill="#fff"/>
+		<clipPath id="clipPath1103">
+			<path d="m0 0v100h25l50-100z" fill="#fff"/>
 		</clipPath>
-		<clipPath id="clipPath997">
-			<path d="m0 100 100-100h-100v100" fill="#fff"/>
+		<clipPath id="clipPath1110">
+			<path d="m100 0h-25l-50 100h75z" fill="#fff"/>
 		</clipPath>
 	</defs>
 	<g stroke-linejoin="round" stroke-width="4">
-		<g clip-path="url(#clipPath993)" stroke="#070707">
+		<g clip-path="url(#clipPath1110)" stroke="#070707">
 			<rect x="5" y="5" width="90" height="90" rx="4" ry="4" fill="#2d2d2d" style="paint-order:markers stroke fill"/>
 			<path d="m9 5c-2.216 0-4 1.784-4 4v11h90v-11c0-2.216-1.784-4-4-4h-82" fill="#282828" style="paint-order:markers stroke fill"/>
 		</g>
-		<g clip-path="url(#clipPath997)" stroke="#bfb8b1">
+		<g clip-path="url(#clipPath1103)" stroke="#bfb8b1">
 			<rect x="5" y="5" width="90" height="90" rx="4" ry="4" fill="#fff" style="paint-order:markers stroke fill"/>
 			<path d="m9 5c-2.216 0-4 1.784-4 4v11h90v-11c0-2.216-1.784-4-4-4h-82" fill="#ddd9d6" style="paint-order:markers stroke fill"/>
 		</g>
