@@ -1,6 +1,8 @@
 UUID = nightthemeswitcher@romainvigier.fr
 GSEXT_DIR_LOCAL = $(HOME)/.local/share/gnome-shell/extensions
 
+VERSION = $(shell grep '"version"' ./src/metadata.json | sed 's/.*\s\([0-9.]*\),/\1/')
+
 
 .PHONY: build
 build: clean
@@ -13,7 +15,7 @@ install: build
 
 .PHONY: zip
 zip: build
-	zip -jr ./build/$(UUID).zip ./build
+	zip -jr ./build/$(UUID).$(VERSION).zip ./build
 	rm -r ./build/$(UUID)
 
 .PHONY: clean
