@@ -31,14 +31,14 @@ function _get_theme() {
 }
 
 function _set_theme(theme) {
-	interface_settings.set_string('gtk-theme', theme)
+	interface_settings.set_string('gtk-theme', theme);
 }
 
 function _apply_theme_variant() {
 	const variant = proxy.get_cached_property('NightLightActive');
 	if ( variant.get_boolean() === nightlight_active ) return;
 	nightlight_active = variant.get_boolean();
-	_set_theme(nightlight_active ? user_theme_night : user_theme_day)
+	_set_theme(nightlight_active ? user_theme_night : user_theme_day);
 }
 
 function init() {}
