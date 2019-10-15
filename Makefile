@@ -13,7 +13,7 @@ install: build
 
 .PHONY: zip
 zip: build
-	zip -r ./build/$(UUID).zip ./build
+	zip -jr ./build/$(UUID).zip ./build
 	rm -r ./build/$(UUID)
 
 .PHONY: clean
