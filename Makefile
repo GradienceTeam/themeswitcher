@@ -8,6 +8,7 @@ VERSION = $(shell grep '"version"' ./src/metadata.json | sed 's/.*\s\([0-9.]*\),
 build: clean
 	mkdir -p ./build/$(UUID)
 	cp -r ./src/* ./build/$(UUID)
+	cp ./LICENSE ./build/$(UUID)
 
 .PHONY: install
 install: build
