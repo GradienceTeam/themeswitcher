@@ -59,15 +59,15 @@ function _build_theme_variants() {
 		user_theme_night = 'HighContrastInverse';
 	}
 	else if ( original_user_theme.match(/Materia.*-compact/g) ) {
-		user_theme_day = original_user_theme.replace('-dark', '');
+		user_theme_day = original_user_theme.replace(/-dark(?!er)/g, '');
 		user_theme_night = user_theme_day.replace(/(-light)?-compact/g, '-dark-compact');
 	}
 	else if ( original_user_theme.includes('Arc') ) {
-		user_theme_day = original_user_theme.replace('-Dark', '');
+		user_theme_day = original_user_theme.replace(/-Dark(?!er)/g, '');
 		user_theme_night = user_theme_day.replace('-Darker', '') + '-Dark';
 	}
 	else {
-		user_theme_day = original_user_theme.replace('-dark', '');
+		user_theme_day = original_user_theme.replace(/-dark(?!er)/g, '');
 		user_theme_night = user_theme_day.replace(/(-light)?(-darker)?/g, '') + '-dark';
 	}
 }
