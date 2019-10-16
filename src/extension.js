@@ -52,8 +52,8 @@ function enable() {
 		user_theme_night = 'HighContrastInverse';
 	}
 	else {
-		user_theme_day = original_user_theme.replace('-dark', '');
-		user_theme_night = user_theme_day + '-dark';
+		user_theme_day = original_user_theme.replace(/(-dark)?/gi, '');
+		user_theme_night = user_theme_day.replace(/(-light)?(-darker)?/gi, '') + '-dark';
 	}
 
 	// Connect to session bus, listen to Color changes and change theme variant
