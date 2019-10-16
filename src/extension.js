@@ -50,6 +50,7 @@ function _get_theme() {
 }
 
 function _set_theme(theme) {
+	if ( theme === _get_theme() ) return;
 	interface_settings.set_string('gtk-theme', theme);
 }
 
@@ -73,9 +74,7 @@ function _build_theme_variants() {
 }
 
 function _apply_theme_variant() {
-	const variant = proxy.get_cached_property('NightLightActive');
-	if ( variant.get_boolean() === nightlight_active ) return;
-	nightlight_active = variant.get_boolean();
+	nightlight_active = proxy.get_cached_property('NightLightActive').get_boolean();
 	_set_theme(nightlight_active ? user_theme_night : user_theme_day);
 }
 
