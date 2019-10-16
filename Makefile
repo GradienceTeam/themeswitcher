@@ -11,8 +11,9 @@ build: clean
 	cp ./LICENSE ./build/$(UUID)
 
 .PHONY: install
-install: build
-	cp -r ./build/* $(GSEXT_DIR_LOCAL)/$(UUID)
+install: uninstall build
+	mkdir -p $(GSEXT_DIR_LOCAL)
+	cp -r ./build/* $(GSEXT_DIR_LOCAL)
 
 .PHONY: zip
 zip: build
@@ -22,3 +23,7 @@ zip: build
 .PHONY: clean
 clean:
 	-rm -rf ./build
+
+.PHONY: uninstall
+uninstall:
+	-rm -rf $(GSEXT_DIR_LOCAL)/$(UUID)
