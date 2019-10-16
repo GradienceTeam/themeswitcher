@@ -17,7 +17,7 @@ install: uninstall build
 
 .PHONY: zip
 zip: build
-	zip -jr ./build/$(UUID).$(VERSION).zip ./build
+	cd ./build/$(UUID) && zip -r ../$(UUID).$(VERSION).zip .
 	rm -r ./build/$(UUID)
 
 .PHONY: clean
