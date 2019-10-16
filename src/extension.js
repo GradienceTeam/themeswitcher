@@ -47,8 +47,14 @@ function enable() {
 	// Store the current user theme and build day and night variants
 	interface_settings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
 	original_user_theme = _get_theme();
-	user_theme_day = original_user_theme.replace('-dark', '');
-	user_theme_night = user_theme_day + '-dark';
+	if ( original_user_theme.includes('HighContrast') ) {
+		user_theme_day = 'HighContrast';
+		user_theme_night = 'HighContrastInverse';
+	}
+	else {
+		user_theme_day = original_user_theme.replace('-dark', '');
+		user_theme_night = user_theme_day + '-dark';
+	}
 
 	// Connect to session bus, listen to Color changes and change theme variant
 	try {
