@@ -97,9 +97,11 @@ function enable() {
 	proxy_connect_id = proxy.connect('g-properties-changed', _apply_theme_variant);
 	_apply_theme_variant();
 
-	// Listen to theme change
+	// Listen to theme change, don't change if this is the same theme
 	interface_settings_connect_id = interface_settings.connect('changed::gtk-theme', () => {
-		original_user_theme = _get_theme();
+		const new_theme = _get_theme();
+		if ( new_theme === user_theme_day || new_theme === user_theme_night ) return;
+		original_user_theme = new_theme;
 		_build_theme_variants();
 		_apply_theme_variant();
 	});
