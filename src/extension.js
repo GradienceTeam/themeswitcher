@@ -74,7 +74,12 @@ function _build_theme_variants() {
 }
 
 function _apply_theme_variant() {
-	nightlight_active = proxy.get_cached_property('NightLightActive').get_boolean() || false;
+	try {
+		nightlight_active = proxy.get_cached_property('NightLightActive').get_boolean();
+	}
+	catch(e) {
+		nightlight_active = false;
+	}
 	_set_theme(nightlight_active ? user_theme_night : user_theme_day);
 }
 
