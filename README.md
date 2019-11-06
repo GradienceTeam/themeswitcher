@@ -16,6 +16,10 @@ These themes have been tested and work:
 - Materia
 - Yaru
 
+## Graphical installation
+
+Visit [the extension page on extensions.gnome.org](https://extensions.gnome.org/extension/2236/night-theme-switcher/) and enable the extension.
+
 ## Command line installation
 
 Clone the repository and enter the directory:
