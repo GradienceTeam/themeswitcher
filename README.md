@@ -21,7 +21,7 @@ These themes have been tested and work:
 Clone the repository and enter the directory:
 
 ```bash
-git clone https://git.romainvigier.fr/Romain/nightthemeswitcher-gnome-shell-extension.git && cd nightthemeswitcher-gnome-shell-extension
+git clone https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/ && cd nightthemeswitcher-gnome-shell-extension
 ```
 
 Install using `make`:

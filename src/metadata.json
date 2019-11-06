@@ -2,7 +2,7 @@
 	"name": "Night Theme Switcher",
 	"description": "Change theme to dark variant when Night Light activates",
 	"uuid": "nightthemeswitcher@romainvigier.fr",
-	"url": "https://git.romainvigier.fr/Romain/nightthemeswitcher-gnome-shell-extension",
+	"url": "https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/",
 	"version": 4,
 	"shell-version": ["3.28", "3.30","3.32", "3.34"]
 }
