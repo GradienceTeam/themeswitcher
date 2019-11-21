@@ -96,13 +96,7 @@ class Extension {
 class Themer {
 
 	constructor() {
-		try {
-			this.gsettings = new Gio.Settings({ schema: GSETTINGS_SCHEMA });
-		}
-		catch(e)
-		{
-			logError('"User Themes" GNOME Shell extension must be installed')
-		}
+		this.gsettings = new Gio.Settings({ schema: GSETTINGS_SCHEMA });
 	}
 
 	get current() {
