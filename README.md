@@ -18,6 +18,8 @@ These themes have been tested and work:
 - Materia
 - Yaru
 
+Let me know if the theme you use works as well, or if it doesn't, I can try to make it work.
+
 ## Graphical installation
 
 Visit [the extension page on extensions.gnome.org](https://extensions.gnome.org/extension/2236/night-theme-switcher/) and enable the extension.
