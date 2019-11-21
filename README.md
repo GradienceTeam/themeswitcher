@@ -4,6 +4,8 @@
 
 Automatically change the GTK theme to dark variant when Night Light activates.
 
+_Do you need to change your GNOME shell theme as well? Try [Night Shell Switcher](https://gitlab.com/rmnvgr/nightshellswitcher-gnome-shell-extension/)!_
+
 ## Theme compatibility
 
 Your theme must have a `-dark` variant, e.g. `Adwaita` and `Adwaita-dark`.
