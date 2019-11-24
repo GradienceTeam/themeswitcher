@@ -18,13 +18,6 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 
 'use strict';
 
-const { Gio } = imports.gi;
-const { extensionUtils } = imports.misc;
-const { main } = imports.ui;
-
-const Gettext = imports.gettext;
-const _ = Gettext.gettext;
-
 const EXT_NAME = 'Night Theme Switcher';
 const EXT_UUID = 'nightthemeswitcher@romainvigier.fr';
 
@@ -32,10 +25,17 @@ const GSETTINGS_SCHEMA = 'org.gnome.desktop.interface';
 const GSETTINGS_PROPERTY = 'gtk-theme';
 
 
+const { Gio } = imports.gi;
+const { extensionUtils } = imports.misc;
+const { main } = imports.ui;
+
+const Gettext = imports.gettext.domain(EXT_UUID);
+const _ = Gettext.gettext;
+
+
 class Switcher {
 
 	constructor() {
-		Gettext.textdomain(EXT_UUID);
 		extensionUtils.initTranslations(EXT_UUID);
 	}
 
