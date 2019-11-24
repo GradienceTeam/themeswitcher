@@ -19,15 +19,25 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 'use strict';
 
 const { Gio } = imports.gi;
+const { extensionUtils } = imports.misc;
 const { main } = imports.ui;
 
+const Gettext = imports.gettext;
+const _ = Gettext.gettext;
+
 const EXT_NAME = 'Night Theme Switcher';
+const EXT_UUID = 'nightthemeswitcher@romainvigier.fr';
 
 const GSETTINGS_SCHEMA = 'org.gnome.desktop.interface';
 const GSETTINGS_PROPERTY = 'gtk-theme';
 
 
 class Switcher {
+
+	constructor() {
+		Gettext.textdomain(EXT_UUID);
+		extensionUtils.initTranslations(EXT_UUID);
+	}
 
 	enable() {
 		this.theme = new Themer();
@@ -47,7 +57,7 @@ class Switcher {
 			this.nightlight.stop_listening();
 		}
 		catch(e) {
-			const message = 'Errors occured while disabling the extension, try removing it.';
+			const message = _('Errors occured while disabling the extension, try removing it.');
 			main.notifyError(EXT_NAME, message);
 		}
 		finally
@@ -89,7 +99,7 @@ class Themer {
 	}
 
 	listen(callback) {
-		this.connect = this.gsettings.connect(`changed::${GSETTINGS_PROPERTY}`, callback);
+		this.connect = this.gsettings.connect('changed::' + GSETTINGS_PROPERTY, callback);
 	}
 
 	stop_listening() {
@@ -134,7 +144,8 @@ class Nightlighter {
 	_connect_to_dbus() {
 		const connection = Gio.bus_get_sync(Gio.BusType.SESSION, null);
 		if ( connection === null ) {
-			throw new Error('Unable to connect to the session bus');
+			const message = _('Unable to connect to the session bus.');
+			throw new Error(message);
 		}
 		this.proxy = Gio.DBusProxy.new_sync(
 			connection,
@@ -146,7 +157,8 @@ class Nightlighter {
 			null
 		);
 		if ( this.proxy === null ) {
-			throw new Error('Unable to create proxy to the session bus');
+			const message = _('Unable to create proxy to the session bus.');
+			throw new Error(message);
 		}
 	}
 

@@ -1,0 +1,30 @@
+# Night Theme Switcher
+# Copyright (C) 2019 Romain Vigier
+# This file is distributed under the same license as the Night Theme Switcher package.
+# Romain Vigier <>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Night Theme Switcher 7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-25 00:27+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/extension.js:60
+msgid "Errors occured while disabling the extension, try removing it."
+msgstr ""
+
+#: src/extension.js:147
+msgid "Unable to connect to the session bus."
+msgstr ""
+
+#: src/extension.js:160
+msgid "Unable to create proxy to the session bus."
+msgstr ""
