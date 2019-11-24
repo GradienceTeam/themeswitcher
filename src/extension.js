@@ -28,7 +28,6 @@ class Extension {
 
 	enable() {
 		this.theme = new Themer();
-		this.variants = {};
 		this.variants = this._guess_theme_variants_from(this.theme.current);
 		this.theme.listen(this._on_theme_change.bind(this));
 
