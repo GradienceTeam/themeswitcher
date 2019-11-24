@@ -28,7 +28,7 @@ class Switcher {
 
 	enable() {
 		this.theme = new Themer();
-		this.variants = this._guess_theme_variants_from(this.theme.current);
+		this.variants = Variants.guess_from(this.theme.current);
 		this.theme.listen(this._on_theme_change.bind(this));
 
 		this.nightlight = new Nightlighter();
@@ -63,30 +63,6 @@ class Switcher {
 
 		this.variants = this._guess_theme_variants_from();
 		this._apply_theme_variant();
-	}
-
-	_guess_theme_variants_from(name) {
-		const variants = {};
-		variants.original = name;
-
-		if ( name.includes('HighContrast') ) {
-			variants.day = 'HighContrast';
-			variants.night = 'HighContrastInverse';
-		}
-		else if ( name.match(/Materia.*-compact/g) ) {
-			variants.day = name.replace(/-dark(?!er)/g, '');
-			variants.night = variants.day.replace(/(-light)?-compact/g, '-dark-compact');
-		}
-		else if ( name.includes('Arc') ) {
-			variants.day = name.replace(/-Dark(?!er)/g, '');
-			variants.night = variants.day.replace('-Darker', '') + '-Dark';
-		}
-		else {
-			variants.day = name.replace(/-dark(?!er)/g, '');
-			variants.night = variants.day.replace(/(-light)?(-darker)?/g, '') + '-dark';
-		}
-
-		return variants;
 	}
 
 }
@@ -167,6 +143,34 @@ class Nightlighter {
 		if ( this.proxy === null ) {
 			throw new Error('Unable to create proxy to the session bus');
 		}
+	}
+
+}
+
+class Variants {
+
+	static guess_from(name) {
+		const variants = {};
+		variants.original = name;
+
+		if ( name.includes('HighContrast') ) {
+			variants.day = 'HighContrast';
+			variants.night = 'HighContrastInverse';
+		}
+		else if ( name.match(/Materia.*-compact/g) ) {
+			variants.day = name.replace(/-dark(?!er)/g, '');
+			variants.night = variants.day.replace(/(-light)?-compact/g, '-dark-compact');
+		}
+		else if ( name.includes('Arc') ) {
+			variants.day = name.replace(/-Dark(?!er)/g, '');
+			variants.night = variants.day.replace('-Darker', '') + '-Dark';
+		}
+		else {
+			variants.day = name.replace(/-dark(?!er)/g, '');
+			variants.night = variants.day.replace(/(-light)?(-darker)?/g, '') + '-dark';
+		}
+
+		return variants;
 	}
 
 }
