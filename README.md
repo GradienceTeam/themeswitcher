@@ -41,5 +41,5 @@ make install
 Restart your GNOME session and enable the extension:
 
 ```bash
-gnome-shell-extension-tool -e nightthemeswitcher@romainvigier.fr
+gnome-extensions enable nightthemeswitcher@romainvigier.fr
 ```
