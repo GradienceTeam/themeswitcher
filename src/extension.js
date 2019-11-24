@@ -18,8 +18,9 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 
 'use strict';
 
-const Gio = imports.gi.Gio;
+const { Gio, Notify } = imports.gi;
 
+const EXT_NAME = 'Night Theme Switcher';
 const GSETTINGS_SCHEMA = 'org.gnome.desktop.interface';
 const GSETTINGS_PROPERTY = 'gtk-theme';
 
@@ -38,19 +39,22 @@ class Switcher {
 	}
 
 	disable() {
-		if ( this.theme && this.variants ) {
+		try {
 			this.theme.current = this.variants.original;
-		}
-		if ( this.theme ) {
 			this.theme.stop_listening();
-		}
-		this.theme = null;
-		this.variants = null;
-
-		if ( this.nightlight ){
 			this.nightlight.stop_listening();
 		}
-		this.nightlight = null;
+		catch(e) {
+			const message = 'Errors occured while disabling the extension, try removing it';
+			logError(`${EXT_NAME}: ${message}`);
+			new Notify.notification(EXT_NAME, message);
+		}
+		finally
+		{
+			this.theme = null;
+			this.variants = null;
+			this.nightlight = null;
+		}
 	}
 
 	_apply_theme_variant() {
@@ -103,7 +107,8 @@ class Nightlighter {
 			this._connect_to_dbus();
 		}
 		catch(e) {
-			logError(e);
+			logError(`${EXT_NAME}: ${e}`);
+			new Notify.notification(EXT_NAME, e);
 		}
 	}
 
