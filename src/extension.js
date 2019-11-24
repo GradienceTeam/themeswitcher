@@ -24,7 +24,7 @@ const GSETTINGS_SCHEMA = 'org.gnome.desktop.interface';
 const GSETTINGS_PROPERTY = 'gtk-theme';
 
 
-class Extension {
+class Switcher {
 
 	enable() {
 		this.theme = new Themer();
@@ -173,5 +173,5 @@ class Nightlighter {
 
 
 function init() {
-	return new Extension();
+	return new Switcher();
 }
