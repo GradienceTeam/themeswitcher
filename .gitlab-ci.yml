@@ -22,6 +22,7 @@ stages:
 
 before_script:
   - dnf update -y
+  - dnf install -y make
 
 build:
   stage: build
