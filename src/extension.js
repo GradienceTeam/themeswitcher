@@ -2,6 +2,7 @@
 Night Theme Switcher Gnome Shell extension
 
 Copyright (C) 2019 Romain Vigier
+Copyright (C) 2020 Matti Hyttinen
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -181,6 +182,10 @@ class Variants {
 		else if ( name.includes('Arc') ) {
 			variants.day = name.replace(/-Dark(?!er)/g, '');
 			variants.night = variants.day.replace('-Darker', '') + '-Dark';
+		}
+		else if ( name.includes('Matcha') ) {
+			variants.day = name.replace(/-dark-/g, '-');
+			variants.night = variants.day.replace('Matcha-', 'Matcha-dark-');
 		}
 		else {
 			variants.day = name.replace(/-dark(?!er)/g, '');
