@@ -31,4 +31,4 @@ build:
     name: "$CI_COMMIT_REF_NAME"
     expose_as: "extension"
     paths:
-      - build/*.zip
+      - build/nightthemeswitcher@romainvigier.fr.shell-extension.zip
