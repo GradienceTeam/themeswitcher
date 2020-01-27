@@ -22,7 +22,7 @@ stages:
 
 before_script:
   - dnf update -y
-  - dnf install -y make
+  - dnf install -y make gnome-shell
 
 build:
   stage: build
