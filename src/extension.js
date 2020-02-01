@@ -77,7 +77,7 @@ class Switcher {
 		const new_theme = this.theme.current;
 		if ( new_theme === this.variants.day || new_theme === this.variants.night ) return;
 
-		this.variants = this._guess_theme_variants_from(new_theme);
+		this.variants = Variants.guess_from(new_theme);
 		this._apply_theme_variant();
 	}
 
