@@ -17,6 +17,7 @@ These themes have been tested and work:
 - HighContrast
 - Matcha (thank you @Chrysostomus)
 - Materia
+- Mojave
 - Yaru
 
 Let me know if the theme you use works as well, or if it doesn't, I can try to make it work.
