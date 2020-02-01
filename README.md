@@ -15,7 +15,7 @@ These themes have been tested and work:
 - Adwaita
 - Arc
 - HighContrast
-- Matcha
+- Matcha (thank you @Chrysostomus)
 - Materia
 - Yaru
 
