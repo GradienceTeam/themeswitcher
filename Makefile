@@ -60,3 +60,9 @@ pot:
 	sed -i "1,4s/THE PACKAGE'S COPYRIGHT HOLDER/$(AUTHOR_NAME)/" ./src/po/$(UUID).pot
 	sed -i "1,4s/FIRST AUTHOR/$(AUTHOR_NAME)/" ./src/po/$(UUID).pot
 	sed -i "1,4s/EMAIL@ADDRESS/$(AUTHOR_EMAIL)/" ./src/po/$(UUID).pot
+
+.PHONY: update-po
+update-po:
+	for po_file in $(wildcard ./src/po/*.po); do \
+		msgmerge --update --no-fuzzy-matching --backup=none $$po_file src/po/$(UUID).pot; \
+	done
