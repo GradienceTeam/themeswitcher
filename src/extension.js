@@ -41,14 +41,19 @@ class Switcher {
 	}
 
 	enable() {
-		this.theme = new Themer();
-		this.variants = Variants.guess_from(this.theme.current);
-		this.theme.listen(this._on_theme_change.bind(this));
+		try {
+			this.theme = new Themer();
+			this.variants = Variants.guess_from(this.theme.current);
+			this.theme.listen(this._on_theme_change.bind(this));
 
-		this.nightlight = new Nightlighter();
-		this.nightlight.listen(this._apply_theme_variant.bind(this));
+			this.nightlight = new Nightlighter();
+			this.nightlight.listen(this._apply_theme_variant.bind(this));
 
-		this._apply_theme_variant();
+			this._apply_theme_variant();
+		}
+		catch(e) {
+			main.notifyError(EXT_NAME, e.message);
+		}
 	}
 
 	disable() {
@@ -57,10 +62,7 @@ class Switcher {
 			this.theme.stop_listening();
 			this.nightlight.stop_listening();
 		}
-		catch(e) {
-			const message = _('Errors occured while disabling the extension, try removing it.');
-			main.notifyError(EXT_NAME, message);
-		}
+		catch(e) {}
 		finally
 		{
 			this.theme = null;
@@ -119,7 +121,7 @@ class Nightlighter {
 			this._connect_to_dbus();
 		}
 		catch(e) {
-			main.notifyError(EXT_NAME, e);
+			throw e;
 		}
 	}
 
