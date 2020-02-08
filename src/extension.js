@@ -63,8 +63,7 @@ class Switcher {
 			this.nightlight.stop_listening();
 		}
 		catch(e) {}
-		finally
-		{
+		finally {
 			this.theme = null;
 			this.variants = null;
 			this.nightlight = null;
