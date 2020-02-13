@@ -195,6 +195,10 @@ class Variants {
 			variants.day = basename + (name.includes('-Darker') ? '-Darker' : '') + (isSolid ? '-Solid' : '');
 			variants.night = basename + (name.includes('-Darkest') ? '-Darkest' : '-Dark') + (isSolid ? '-Solid' : '') + (withoutBorder ? '-NoBorder' : '');
 		}
+		else if ( name.includes('Layan') ) {
+			variants.day = name.replace('-dark', '');
+			variants.night = variants.day.replace(/Layan(-light)?/g, 'Layan-dark');
+		}
 		else if ( name.includes('Matcha') ) {
 			variants.day = name.replace(/-dark-/g, '-');
 			variants.night = variants.day.replace('Matcha-', 'Matcha-dark-');

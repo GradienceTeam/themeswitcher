@@ -1,6 +1,6 @@
 {
 	"name": "Night Theme Switcher",
-	"description": "Automatically change the GTK theme to dark variant when Night Light activates.\n\nTHEME COMPATIBILITY:\nYour theme must have a `-dark` variant, e.g. `Adwaita` and `Adwaita-dark`.\nThese themes have been tested and work:\n- Adapta\n- Adwaita\n- Arc\n- Canta\nFlat-Remix-GTK\n- HighContrast\n- Matcha\n- Materia\n- Mojave\n- Vimix\n- Yaru\n\nLet me know if the theme you use works as well, or if it doesn't, I can try to make it work.\n\nDo you need to change your GNOME shell theme as well? Try Night Shell Switcher! https://extensions.gnome.org/extension/2356/night-shell-switcher/",
+	"description": "Automatically change the GTK theme to dark variant when Night Light activates.\n\nTHEME COMPATIBILITY:\nYour theme must have a `-dark` variant, e.g. `Adwaita` and `Adwaita-dark`.\nThese themes have been tested and work:\n- Adapta\n- Adwaita\n- Arc\n- Canta\nFlat-Remix-GTK\n- HighContrast\n-Layan\n- Matcha\n- Materia\n- Mojave\n- Vimix\n- Yaru\n\nLet me know if the theme you use works as well, or if it doesn't, I can try to make it work.\n\nDo you need to change your GNOME shell theme as well? Try Night Shell Switcher! https://extensions.gnome.org/extension/2356/night-shell-switcher/",
 	"uuid": "nightthemeswitcher@romainvigier.fr",
 	"url": "https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/",
 	"version": 14,

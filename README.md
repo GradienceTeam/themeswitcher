@@ -21,6 +21,7 @@ These themes have been tested and work:
 - Flat-Remix-GTK
 >>>>>>> theme-flat-remix-gtk
 - HighContrast
+- Layan
 - Matcha (thank you @Chrysostomus)
 - Materia
 - Mojave
