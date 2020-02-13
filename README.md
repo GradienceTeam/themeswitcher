@@ -15,7 +15,11 @@ These themes have been tested and work:
 - Adapta
 - Adwaita
 - Arc
+<<<<<<< HEAD
 - Canta
+=======
+- Flat-Remix-GTK
+>>>>>>> theme-flat-remix-gtk
 - HighContrast
 - Matcha (thank you @Chrysostomus)
 - Materia
