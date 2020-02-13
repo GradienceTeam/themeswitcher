@@ -14,6 +14,7 @@ These themes have been tested and work:
 
 - Adwaita
 - Arc
+- Flat-Remix-GTK
 - HighContrast
 - Matcha (thank you @Chrysostomus)
 - Materia

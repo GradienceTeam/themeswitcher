@@ -184,6 +184,13 @@ class Variants {
 			variants.day = name.replace(/-Dark(?!er)/g, '');
 			variants.night = variants.day.replace('-Darker', '') + '-Dark';
 		}
+		else if ( name.includes('Flat-Remix-GTK') ) {
+			const isSolid = name.includes('-Solid');
+			const withoutBorder = name.includes('-NoBorder');
+			const basename = name.split('-').slice(0, 4).join('-');
+			variants.day = basename + (name.includes('-Darker') ? '-Darker' : '') + (isSolid ? '-Solid' : '');
+			variants.night = basename + (name.includes('-Darkest') ? '-Darkest' : '-Dark') + (isSolid ? '-Solid' : '') + (withoutBorder ? '-NoBorder' : '');
+		}
 		else if ( name.includes('Matcha') ) {
 			variants.day = name.replace(/-dark-/g, '-');
 			variants.night = variants.day.replace('Matcha-', 'Matcha-dark-');
