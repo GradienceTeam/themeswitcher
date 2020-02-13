@@ -192,6 +192,10 @@ class Variants {
 			variants.day = name.replace('-dark', '-light');
 			variants.night = variants.day.replace('-light', '-dark');
 		}
+		else if ( name.includes('vimix') ) {
+			variants.day = name.replace('-dark', '');
+			variants.night = variants.day.replace(/vimix(-light)?/g, 'vimix-dark');
+		}
 		else {
 			variants.day = name.replace(/-dark(?!er)/g, '');
 			variants.night = variants.day.replace(/(-light)?(-darker)?/g, '') + '-dark';
