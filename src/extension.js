@@ -176,7 +176,7 @@ class Variants {
 			variants.day = 'HighContrast';
 			variants.night = 'HighContrastInverse';
 		}
-		else if ( name.match(/Materia.*-compact/g) ) {
+		else if ( name.match(/(Canta|Materia).*-compact/g) ) {
 			variants.day = name.replace(/-dark(?!er)/g, '');
 			variants.night = variants.day.replace(/(-light)?-compact/g, '-dark-compact');
 		}
