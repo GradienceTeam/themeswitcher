@@ -180,6 +180,10 @@ class Variants {
 			variants.day = name.replace(/-dark(?!er)/g, '');
 			variants.night = variants.day.replace(/(-light)?-compact/g, '-dark-compact');
 		}
+		else if ( name.includes('Adapta') ) {
+			variants.day = name.replace('-Nokto', '');
+			variants.night = variants.day.replace('Adapta', 'Adapta-Nokto');
+		}
 		else if ( name.includes('Arc') ) {
 			variants.day = name.replace(/-Dark(?!er)/g, '');
 			variants.night = variants.day.replace('-Darker', '') + '-Dark';

@@ -12,6 +12,7 @@ Your theme must have a `-dark` variant, e.g. `Adwaita` and `Adwaita-dark`.
 
 These themes have been tested and work:
 
+- Adapta
 - Adwaita
 - Arc
 - HighContrast
