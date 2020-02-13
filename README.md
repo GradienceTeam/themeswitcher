@@ -15,6 +15,7 @@ These themes have been tested and work:
 - Adwaita
 - Arc
 - HighContrast
+- Layan
 - Matcha (thank you @Chrysostomus)
 - Materia
 - Mojave

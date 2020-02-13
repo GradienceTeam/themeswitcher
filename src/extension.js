@@ -184,6 +184,10 @@ class Variants {
 			variants.day = name.replace(/-Dark(?!er)/g, '');
 			variants.night = variants.day.replace('-Darker', '') + '-Dark';
 		}
+		else if ( name.includes('Layan') ) {
+			variants.day = name.replace('-dark', '');
+			variants.night = variants.day.replace(/Layan(-light)?/g, 'Layan-dark');
+		}
 		else if ( name.includes('Matcha') ) {
 			variants.day = name.replace(/-dark-/g, '-');
 			variants.night = variants.day.replace('Matcha-', 'Matcha-dark-');
