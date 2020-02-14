@@ -28,7 +28,8 @@ build: build-clean
 	mkdir -p ./build
 	gnome-extensions pack \
 		--extra-source=../LICENSE \
-		--extra-source=./variants.js \
+		--extra-source=./config.js \
+		--extra-source=./modules/ \
 		--podir=./po/ \
 		--gettext-domain=$(UUID) \
 		--out-dir=./build \
@@ -51,7 +52,7 @@ clean: build-clean deps-clean
 
 .PHONY: test
 test:
-	cat ./src/variants.js ./tests/_variants.js.template > ./tests/_variants.js
+	cat ./src/modules/Variants.js ./tests/_variants.js.template > ./tests/_variants.js
 	npm run test
 
 .PHONY: deps-install
