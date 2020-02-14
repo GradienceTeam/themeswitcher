@@ -33,6 +33,12 @@ before_script:
 
 test:
   stage: test
+  only:
+    - branches
+    - merge_requests
+    - pushes
+    - tags
+    - master
   script:
     - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y node npm
     - make deps-install
