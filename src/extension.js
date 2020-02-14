@@ -2,7 +2,6 @@
 Night Theme Switcher Gnome Shell extension
 
 Copyright (C) 2019, 2020 Romain Vigier
-Copyright (C) 2020 Matti Hyttinen
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
