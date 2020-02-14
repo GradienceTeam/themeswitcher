@@ -24,26 +24,43 @@ VERSION = $(shell grep '"version"' ./src/metadata.json | sed 's/\s"version":\s\(
 
 
 .PHONY: build
-build: clean
+build: build-clean
 	mkdir -p ./build
 	gnome-extensions pack \
 		--extra-source=../LICENSE \
+		--extra-source=./variants.js \
 		--podir=./po/ \
 		--gettext-domain=$(UUID) \
 		--out-dir=./build \
 		./src
 
-.PHONY: install
-install: uninstall build
-	gnome-extensions install ./build/$(UUID).shell-extension.zip
-
-.PHONY: clean
-clean:
+.PHONY: build-clean
+build-clean:
 	-rm -rf ./build
+
+.PHONY: install
+install: uninstall
+	gnome-extensions install ./build/$(UUID).shell-extension.zip
 
 .PHONY: uninstall
 uninstall:
 	-gnome-extensions uninstall $(UUID)
+
+.PHONY: clean
+clean: build-clean deps-clean
+
+.PHONY: test
+test:
+	cat ./src/variants.js ./tests/_variants.js.template > ./tests/_variants.js
+	npm run test
+
+.PHONY: deps-install
+deps-install:
+	npm install
+
+.PHONY: deps-clean
+deps-clean:
+	-rm -rf ./node_modules
 
 .PHONY: pot
 pot:
