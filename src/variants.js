@@ -32,8 +32,8 @@ var Variants = class {
 			variants.night = variants.day.replace(/Layan(-light)?/g, 'Layan-dark');
 		}
 		else if ( name.includes('Matcha') ) {
-			variants.day = name.replace(/-dark-/g, '-');
-			variants.night = variants.day.replace('Matcha-', 'Matcha-dark-');
+			variants.day = name.replace('-dark-', '-');
+			variants.night = variants.day.replace(/Matcha(-light)?-/g, 'Matcha-dark-');
 		}
 		else if ( name.includes('Mojave') ) {
 			variants.day = name.replace('-dark', '-light');

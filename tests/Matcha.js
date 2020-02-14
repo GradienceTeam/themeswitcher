@@ -15,8 +15,7 @@ const { Variants } = require('./_variants');
 		t.is(variants.night, `Matcha-dark-${color}`);
 	});
 
-	// TODO: Implement light variant
-	test.skip(`Matcha-light-${color}`, t => {
+	test(`Matcha-light-${color}`, t => {
 		const variants = Variants.guess_from(`Matcha-light-${color}`);
 		t.is(variants.day, `Matcha-light-${color}`);
 		t.is(variants.night, `Matcha-dark-${color}`);
