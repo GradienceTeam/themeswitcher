@@ -1,9 +1,13 @@
 {
+	"repository": {
+		"type": "git",
+		"url": "https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
+	},
+	"license": "GPL-3.0-or-later",
 	"scripts": {
 		"test": "ava"
 	},
 	"devDependencies": {
-		"ava": "^3.3.0",
-		"esm": "^3.2.25"
+		"ava": "^3.3.0"
 	}
 }
