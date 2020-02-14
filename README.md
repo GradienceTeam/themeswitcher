@@ -34,6 +34,12 @@ Visit [the extension page on extensions.gnome.org](https://extensions.gnome.org/
 
 ## Command line installation
 
+You will need these tools:
+
+- `make`
+- `gettext`
+- `gnome-extensions` (comes with GNOME Shell >= 3.34)
+
 Clone the repository and enter the directory:
 
 ```bash
