@@ -1,6 +1,6 @@
 # Night Theme Switcher Gnome Shell extension
 #
-# Copyright (C) 2019 Romain Vigier
+# Copyright (C) 2019, 2020 Romain Vigier
 #
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http s ://www.gnu.org/licenses/>.
 
-COPYRIGHT_YEAR = 2019
+COPYRIGHT_YEAR = 2019, 2020
 AUTHOR_NAME = Romain Vigier
 AUTHOR_EMAIL =
 
