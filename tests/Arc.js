@@ -20,22 +20,19 @@ test('Arc-Darker', t => {
 	t.is(variants.night, 'Arc-Dark');
 });
 
-// TODO: Implement solid variant
-test.skip('Arc-Darker-solid', t => {
+test('Arc-Darker-solid', t => {
 	const variants = Variants.guess_from('Arc-Darker-solid');
 	t.is(variants.day, 'Arc-Darker-solid');
 	t.is(variants.night, 'Arc-Dark-solid');
 });
 
-// TODO: Implement solid variant
-test.skip('Arc-Dark-solid', t => {
+test('Arc-Dark-solid', t => {
 	const variants = Variants.guess_from('Arc-Dark-solid');
 	t.is(variants.day, 'Arc-solid');
 	t.is(variants.night, 'Arc-Dark-solid');
 });
 
-// TODO: Implement solid variant
-test.skip('Arc-solid', t => {
+test('Arc-solid', t => {
 	const variants = Variants.guess_from('Arc-solid');
 	t.is(variants.day, 'Arc-solid');
 	t.is(variants.night, 'Arc-Dark-solid');

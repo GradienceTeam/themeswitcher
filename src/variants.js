@@ -18,7 +18,7 @@ var Variants = class {
 		}
 		else if ( name.includes('Arc') ) {
 			variants.day = name.replace(/-Dark(?!er)/g, '');
-			variants.night = variants.day.replace('-Darker', '') + '-Dark';
+			variants.night = variants.day.replace(/Arc(-Darker)?/g, 'Arc-Dark');
 		}
 		else if ( name.includes('Flat-Remix-GTK') ) {
 			const isSolid = name.includes('-Solid');
