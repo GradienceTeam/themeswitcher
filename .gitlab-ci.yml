@@ -28,13 +28,13 @@ stages:
 
 before_script:
   - mkdir .dnf_cache
-  - dnf --setopt=cachedir=$(pwd)/.dnf_cache update -y
-  - dnf --setopt=cachedir=$(pwd)/.dnf_cache install -y make
+  - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True update -y
+  - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y make
 
 test:
   stage: test
   script:
-    - dnf --setopt=cachedir=$(pwd)/.dnf_cache install -y node npm
+    - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y node npm
     - make deps-install
     - make test
 
@@ -44,7 +44,7 @@ build:
     - tags
     - merge_requests
   script:
-    - dnf --setopt=cachedir=$(pwd)/.dnf_cache install -y gnome-shell gettext
+    - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y gnome-shell gettext
     - make build
   artifacts:
     name: "$CI_COMMIT_REF_NAME"
