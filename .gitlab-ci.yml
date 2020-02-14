@@ -27,7 +27,7 @@ stages:
   - build
 
 before_script:
-  - mkdir .dnf_cache
+  - mkdir -p .dnf_cache
   - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True update -y
   - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y make
 
