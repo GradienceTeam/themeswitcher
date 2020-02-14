@@ -46,6 +46,6 @@ build:
     - make build
   artifacts:
     name: "$CI_COMMIT_REF_NAME"
-    expose_as: "nightthemeswitcher@romainvigier.fr.shell-extension.zip"
+    expose_as: "extension"
     paths:
       - build/nightthemeswitcher@romainvigier.fr.shell-extension.zip
