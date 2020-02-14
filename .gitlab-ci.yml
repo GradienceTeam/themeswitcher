@@ -19,6 +19,7 @@ image: fedora:latest
 
 cache:
   paths:
+    - .dnf_cache
     - node_modules
 
 stages:
@@ -26,13 +27,14 @@ stages:
   - build
 
 before_script:
-  - dnf update -y
-  - dnf install -y make
+  - mkdir .dnf_cache
+  - dnf --setopt=cachedir=$(pwd)/.dnf_cache update -y
+  - dnf --setopt=cachedir=$(pwd)/.dnf_cache install -y make
 
 test:
   stage: test
   script:
-    - dnf install -y node npm
+    - dnf --setopt=cachedir=$(pwd)/.dnf_cache install -y node npm
     - make deps-install
     - make test
 
@@ -42,7 +44,7 @@ build:
     - tags
     - merge_requests
   script:
-    - dnf install -y gnome-shell gettext
+    - dnf --setopt=cachedir=$(pwd)/.dnf_cache install -y gnome-shell gettext
     - make build
   artifacts:
     name: "$CI_COMMIT_REF_NAME"
