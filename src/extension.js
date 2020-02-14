@@ -25,10 +25,12 @@ const EXT_UUID = 'nightthemeswitcher@romainvigier.fr';
 const GSETTINGS_SCHEMA = 'org.gnome.desktop.interface';
 const GSETTINGS_PROPERTY = 'gtk-theme';
 
-
 const { Gio } = imports.gi;
 const { extensionUtils } = imports.misc;
 const { main } = imports.ui;
+
+const Me = extensionUtils.getCurrentExtension();
+const { Variants } = Me.imports.variants;
 
 const Gettext = imports.gettext.domain(EXT_UUID);
 const _ = Gettext.gettext;
@@ -162,61 +164,6 @@ class Nightlighter {
 			const message = _('Unable to create proxy to the session bus.');
 			throw new Error(message);
 		}
-	}
-
-}
-
-class Variants {
-
-	static guess_from(name) {
-		const variants = {};
-		variants.original = name;
-
-		if ( name.includes('HighContrast') ) {
-			variants.day = 'HighContrast';
-			variants.night = 'HighContrastInverse';
-		}
-		else if ( name.match(/(Canta|Materia).*-compact/g) ) {
-			variants.day = name.replace(/-dark(?!er)/g, '');
-			variants.night = variants.day.replace(/(-light)?-compact/g, '-dark-compact');
-		}
-		else if ( name.includes('Adapta') ) {
-			variants.day = name.replace('-Nokto', '');
-			variants.night = variants.day.replace('Adapta', 'Adapta-Nokto');
-		}
-		else if ( name.includes('Arc') ) {
-			variants.day = name.replace(/-Dark(?!er)/g, '');
-			variants.night = variants.day.replace('-Darker', '') + '-Dark';
-		}
-		else if ( name.includes('Flat-Remix-GTK') ) {
-			const isSolid = name.includes('-Solid');
-			const withoutBorder = name.includes('-NoBorder');
-			const basename = name.split('-').slice(0, 4).join('-');
-			variants.day = basename + (name.includes('-Darker') ? '-Darker' : '') + (isSolid ? '-Solid' : '');
-			variants.night = basename + (name.includes('-Darkest') ? '-Darkest' : '-Dark') + (isSolid ? '-Solid' : '') + (withoutBorder ? '-NoBorder' : '');
-		}
-		else if ( name.includes('Layan') ) {
-			variants.day = name.replace('-dark', '');
-			variants.night = variants.day.replace(/Layan(-light)?/g, 'Layan-dark');
-		}
-		else if ( name.includes('Matcha') ) {
-			variants.day = name.replace(/-dark-/g, '-');
-			variants.night = variants.day.replace('Matcha-', 'Matcha-dark-');
-		}
-		else if ( name.includes('Mojave') ) {
-			variants.day = name.replace('-dark', '-light');
-			variants.night = variants.day.replace('-light', '-dark');
-		}
-		else if ( name.includes('vimix') ) {
-			variants.day = name.replace('-dark', '');
-			variants.night = variants.day.replace(/vimix(-light)?/g, 'vimix-dark');
-		}
-		else {
-			variants.day = name.replace(/-dark(?!er)/g, '');
-			variants.night = variants.day.replace(/(-light)?(-darker)?/g, '') + '-dark';
-		}
-
-		return variants;
 	}
 
 }
