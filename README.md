@@ -57,6 +57,7 @@ Restart your GNOME session and enable the extension:
 ```bash
 gnome-extensions enable nightthemeswitcher@romainvigier.fr
 ```
+
 ## Contributing
 
 You're welcome to contribute to the code!
