@@ -1,7 +1,7 @@
 /*
 Night Theme Switcher Gnome Shell extension
 
-Copyright (C) 2019, 2020 Romain Vigier
+Copyright (C) 2020 Romain Vigier
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -16,14 +16,8 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-'use strict';
+var EXT_NAME = 'Night Theme Switcher';
+var EXT_UUID = 'nightthemeswitcher@romainvigier.fr';
 
-const { extensionUtils } = imports.misc;
-
-const Me = extensionUtils.getCurrentExtension();
-const { Switcher } = Me.imports.modules.Switcher;
-
-
-function init() {
-	return new Switcher();
-}
+var GSETTINGS_SCHEMA = 'org.gnome.desktop.interface';
+var GSETTINGS_PROPERTY = 'gtk-theme';
