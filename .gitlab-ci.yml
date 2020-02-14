@@ -17,19 +17,35 @@
 
 image: fedora:latest
 
+cache:
+  paths:
+    - node_modules
+
 stages:
+  - test
   - build
 
 before_script:
   - dnf update -y
-  - dnf install -y make gnome-shell gettext
+  - dnf install -y make
+
+test:
+  stage: test
+  script:
+    - dnf install node npm
+    - make deps-install
+    - make test
 
 build:
   stage: build
+  only:
+    - tags
+    - merge_requests
   script:
+    - dnf install gnome-shell gettext
     - make build
   artifacts:
     name: "$CI_COMMIT_REF_NAME"
-    expose_as: "extension"
+    expose_as: "nightthemeswitcher@romainvigier.fr.shell-extension.zip"
     paths:
       - build/nightthemeswitcher@romainvigier.fr.shell-extension.zip
