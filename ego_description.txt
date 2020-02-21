@@ -1,0 +1,21 @@
+Automatically switch between your light and dark GTK theme variants when Night Light activates.
+
+These themes have been tested and work:
+- Adapta
+- Adwaita
+- Arc
+- Canta
+- Flat-Remix-GTK
+- HighContrast
+- Layan
+- Matcha
+- Materia
+- Mojave
+- Qogir
+- Vimix
+- Yaru
+
+Other themes with a dark variant might work as well, let me know if there is a specific theme you'd like supported!
+
+If you need to change your GNOME shell theme as well, try Night Shell Switcher:
+https://extensions.gnome.org/extension/2356/night-shell-switcher/
