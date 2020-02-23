@@ -68,10 +68,7 @@ var Switcher = class {
 	}
 
 	_on_theme_change() {
-		const new_theme = this.theme.current;
-		if ( new_theme === this.variants.day || new_theme === this.variants.night ) return;
-
-		this.variants = Variants.guess_from(new_theme);
+		this.variants = Variants.guess_from(this.theme.current);
 		this._apply_theme_variant();
 	}
 
