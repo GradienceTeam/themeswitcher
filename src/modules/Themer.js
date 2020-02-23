@@ -23,6 +23,11 @@ const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
 
 
+/*
+The Theme communicates with the system to get the current theme or set a new
+one. It can also be asked to listen to theme changes.
+*/
+
 var Themer = class {
 
 	constructor() {

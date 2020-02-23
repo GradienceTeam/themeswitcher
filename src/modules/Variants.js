@@ -17,6 +17,31 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
+
+/*
+The magic of guessing theme variants happens here.
+
+If the theme doesn't fit a particular case, we'll do the following:
+	- Remove any signs of a dark variant to the theme name to get the day
+	variant
+	- Remove any signs of a light variant to the day variant and add '-dark' to
+	get the night variant
+
+For themes that don't work with the general rule, a particular case must be
+written. Day and night variants should be guessed with the most generic light
+and dark variants the theme offer, except if the user explicitly chose a
+specific variant.
+
+Light variants, from the most to the least generic:
+	- ''
+	- '-light'
+	- '-darker'
+
+Dark variants, from the most the least generic:
+	- '-dark'
+	- '-darkest'
+*/
+
 var Variants = class {
 
 	static guess_from(name) {

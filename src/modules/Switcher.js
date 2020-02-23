@@ -27,6 +27,20 @@ const { Themer } = Me.imports.modules.Themer;
 const { Variants } = Me.imports.modules.Variants;
 
 
+/*
+The Switcher is the brain of the extension.
+
+When the extension is enabled, it listens to theme changes from the user and
+changes in the Night Light status:
+	- On theme changes, it asks for the new day and night variants for that
+	theme.
+	- On Night Light activation or deactivation, it asks for the relevant
+	variant to be applied.
+
+When the extension is disabled, it resets the theme to the last one the user
+explicitely selected, stops listening to changes and cleans itself.
+*/
+
 var Switcher = class {
 
 	constructor() {
@@ -55,7 +69,7 @@ var Switcher = class {
 			this.theme.stop_listening();
 			this.nightlight.stop_listening();
 		}
-		catch(e) {}
+		catch(e) {} // Since we're disabling, we'll just ignore errors.
 		finally {
 			this.theme = null;
 			this.variants = null;

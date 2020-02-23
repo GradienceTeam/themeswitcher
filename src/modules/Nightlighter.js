@@ -26,6 +26,11 @@ const Gettext = imports.gettext.domain(config.EXT_UUID);
 const _ = Gettext.gettext;
 
 
+/*
+The Nightlighter establishes a connection with the session bus to get the
+current Night Light status. It can also be asked to listen to status changes.
+*/
+
 var Nightlighter = class {
 
 	constructor() {
@@ -33,7 +38,7 @@ var Nightlighter = class {
 			this._connect_to_dbus();
 		}
 		catch(e) {
-			throw e;
+			throw e; // Let's pass the error up.
 		}
 	}
 
@@ -42,7 +47,7 @@ var Nightlighter = class {
 			return this.proxy.get_cached_property('NightLightActive').get_boolean();
 		}
 		catch(e) {
-			return false;
+			return false; // If Night Light is disabled, we consider it is inactive.
 		}
 	}
 
