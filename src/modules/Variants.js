@@ -88,7 +88,7 @@ var Variants = class {
 			variants.night = variants.day.replace(/vimix(-light)?/g, 'vimix-dark');
 		}
 		else {
-			variants.day = name.replace(/-dark(?!er)/g, '');
+			variants.day = name.replace(/-dark(?!est)/g, '');
 			variants.night = variants.day.replace(/(-light)?(-darker)?/g, '') + '-dark';
 		}
 
