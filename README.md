@@ -22,6 +22,7 @@ These themes have been tested and work:
 - Matcha (thank you @Chrysostomus)
 - Materia
 - Mojave
+- Pop
 - Qogir
 - Vimix
 - Yaru

@@ -11,6 +11,7 @@ These themes have been tested and work:
 - Matcha
 - Materia
 - Mojave
+- Pop
 - Qogir
 - Vimix
 - Yaru
