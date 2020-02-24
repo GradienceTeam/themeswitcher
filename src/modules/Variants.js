@@ -48,21 +48,17 @@ var Variants = class {
 		const variants = {};
 		variants.original = name;
 
-		if ( name.includes('HighContrast') ) {
-			variants.day = 'HighContrast';
-			variants.night = 'HighContrastInverse';
-		}
-		else if ( name.match(/(Canta|Materia).*-compact/g) ) {
-			variants.day = name.replace(/-dark(?!er)/g, '');
-			variants.night = variants.day.replace(/(-light)?-compact/g, '-dark-compact');
-		}
-		else if ( name.includes('Adapta') ) {
+		if ( name.includes('Adapta') ) {
 			variants.day = name.replace('-Nokto', '');
 			variants.night = variants.day.replace('Adapta', 'Adapta-Nokto');
 		}
 		else if ( name.includes('Arc') ) {
-			variants.day = name.replace(/-Dark(?!er)/g, '');
-			variants.night = variants.day.replace(/Arc(-Darker)?/g, 'Arc-Dark');
+			variants.day = name.replace(/-Dark(?!er)/, '');
+			variants.night = variants.day.replace(/Arc(-Darker)?/, 'Arc-Dark');
+		}
+		else if ( name.match(/^(Canta|Materia).*-compact/) ) {
+			variants.day = name.replace('-dark', '');
+			variants.night = variants.day.replace(/(-light)?-compact/, '-dark-compact');
 		}
 		else if ( name.includes('Flat-Remix-GTK') ) {
 			const isSolid = name.includes('-Solid');
@@ -71,13 +67,14 @@ var Variants = class {
 			variants.day = basename + (name.includes('-Darker') ? '-Darker' : '') + (isSolid ? '-Solid' : '');
 			variants.night = basename + (name.includes('-Darkest') ? '-Darkest' : '-Dark') + (isSolid ? '-Solid' : '') + (withoutBorder ? '-NoBorder' : '');
 		}
-		else if ( name.includes('Layan') ) {
-			variants.day = name.replace('-dark', '');
-			variants.night = variants.day.replace(/Layan(-light)?/g, 'Layan-dark');
+		else if ( name.includes('HighContrast') ) {
+			variants.day = 'HighContrast';
+			variants.night = 'HighContrastInverse';
 		}
-		else if ( name.includes('Matcha') ) {
-			variants.day = name.replace('-dark-', '-');
-			variants.night = variants.day.replace(/Matcha(-light)?-/g, 'Matcha-dark-');
+		else if ( name.match(/^(Layan|Matcha)/) ) {
+			const basename = name.split('-')[0];
+			variants.day = name.replace('-dark', '');
+			variants.night = variants.day.replace(new RegExp(`${basename}(-light)?`), `${basename}-dark`);
 		}
 		else if ( name.includes('Mojave') ) {
 			variants.day = name.replace('-dark', '-light');
@@ -85,11 +82,11 @@ var Variants = class {
 		}
 		else if ( name.includes('vimix') ) {
 			variants.day = name.replace('-dark', '');
-			variants.night = variants.day.replace(/vimix(-light)?/g, 'vimix-dark');
+			variants.night = variants.day.replace(/vimix(-light)?/, 'vimix-dark');
 		}
 		else {
-			variants.day = name.replace(/-dark(?!est)/g, '');
-			variants.night = variants.day.replace(/(-light)?(-darker)?/g, '') + '-dark';
+			variants.day = name.replace(/-dark(?!er)(est)?/, '');
+			variants.night = variants.day.replace(/(-light|-darker)/, '') + (name.includes('-darkest') ? '-darkest' : '-dark');
 		}
 
 		return variants;
