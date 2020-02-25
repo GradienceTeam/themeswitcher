@@ -56,7 +56,7 @@ var Switcher = class {
 
 			this.nightlight = new Nightlighter();
 			this.nightlight.enable();
-			this.nightlight.subscribe(this._apply_theme_variant.bind(this));
+			this.nightlight.subscribe(this._on_nightlight_change.bind(this));
 
 			this._apply_theme_variant();
 		}
@@ -93,6 +93,10 @@ var Switcher = class {
 		if ( new_theme !== this.variants.day && new_theme !== this.variants.night ) {
 			this.variants = Variants.guess_from(new_theme);
 		}
+		this._apply_theme_variant();
+	}
+
+	_on_nightlight_change() {
 		this._apply_theme_variant();
 	}
 
