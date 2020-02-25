@@ -54,7 +54,8 @@ var Switcher = class {
 			this.theme.listen(this._on_theme_change.bind(this));
 
 			this.nightlight = new Nightlighter();
-			this.nightlight.listen(this._apply_theme_variant.bind(this));
+			this.nightlight.enable();
+			this.nightlight.subscribe(this._apply_theme_variant.bind(this));
 
 			this._apply_theme_variant();
 		}
@@ -67,7 +68,7 @@ var Switcher = class {
 		try {
 			this.theme.current = this.variants.original;
 			this.theme.stop_listening();
-			this.nightlight.stop_listening();
+			this.nightlight.disable();
 		}
 		catch(e) {} // Since we're disabling, we'll just ignore errors.
 		finally {
@@ -78,7 +79,12 @@ var Switcher = class {
 	}
 
 	_apply_theme_variant() {
-		this.theme.current = this.nightlight.status ? this.variants.night : this.variants.day;
+		try {
+			this.theme.current = this.nightlight.status ? this.variants.night : this.variants.day;
+		}
+		catch(e) {
+			this.theme.current = this.variants.original;
+		}
 	}
 
 	_on_theme_change() {

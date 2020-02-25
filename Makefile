@@ -72,7 +72,7 @@ pot:
 		--package-name="$(NAME)" \
 		--package-version="$(VERSION)" \
 		--output=./src/po/$(UUID).pot \
-		./src/*.js
+		./src/**/*.js
 	sed -i '1,4s/SOME DESCRIPTIVE TITLE./$(NAME)/g' ./src/po/$(UUID).pot
 	sed -i '1,4s/YEAR/$(COPYRIGHT_YEAR)/' ./src/po/$(UUID).pot
 	sed -i "1,4s/THE PACKAGE'S COPYRIGHT HOLDER/$(AUTHOR_NAME)/" ./src/po/$(UUID).pot

@@ -18,6 +18,7 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 
 const { extensionUtils } = imports.misc;
 const { Gio } = imports.gi;
+const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
@@ -29,39 +30,86 @@ const _ = Gettext.gettext;
 /*
 The Nightlighter establishes a connection with the session bus to get the
 current Night Light status. It can also be asked to listen to status changes.
+
+As Night Light is essential for the extension to work, it continuously checks
+if it is enabled and warns the user if that's not the case.
 */
 
 var Nightlighter = class {
 
 	constructor() {
+		this.nightlight_gsettings = new Gio.Settings({ schema: config.NIGHTLIGHT_GSETTINGS_SCHEMA });
+	}
+
+	enable() {
+		// As Night Light must be enabled for the extension to work, we have to monitor any change of that setting.
+		this._listen_to_nightlight_status();
 		try {
+			this._check_nightlight_status();
 			this._connect_to_dbus();
+			this._listen_to_nightlight_changes();
 		}
 		catch(e) {
-			throw e; // Let's pass the error up.
+			main.notifyError(config.EXT_NAME, e.message);
 		}
 	}
 
+	disable() {
+		this._stop_listening_to_nightlight_status();
+		this._stop_listening_to_nightlight_changes();
+	}
+
 	get status() {
+		if ( !this.proxy ) {
+			throw new Error();
+		}
 		try {
 			return this.proxy.get_cached_property('NightLightActive').get_boolean();
 		}
 		catch(e) {
-			return false; // If Night Light is disabled, we consider it is inactive.
+			return false; // Sometimes when Night Light hasn't changed colors yet it returns an error, we consider it is inactive.
 		}
 	}
 
-	listen(callback) {
-		this.connect = this.proxy.connect('g-properties-changed', callback);
+	subscribe(callback) {
+		this.nightlight_change_callback = callback;
 	}
 
-	stop_listening() {
-		if ( this.proxy && this.connect ) {
-			this.proxy.disconnect(this.connect);
+	emit() {
+		if ( !this.nightlight_change_callback ) return;
+		this.nightlight_change_callback();
+	}
+
+	_is_nightlight_enabled() {
+		return this.nightlight_gsettings.get_boolean(config.NIGHTLIGHT_GSETTINGS_PROPERTY);
+	}
+
+	_check_nightlight_status() {
+		if ( !this._is_nightlight_enabled() ) {
+			const message = _('Night Light must be enabled to use this extension. Please enable it in your system settings.');
+			throw new Error(message);
 		}
+	}
+
+	_listen_to_nightlight_status() {
+		if ( this.nightlight_status_connect ) return;
+		this.nightlight_status_connect = this.nightlight_gsettings.connect('changed::' + config.NIGHTLIGHT_GSETTINGS_PROPERTY, this._on_nightlight_status_change.bind(this));
+	}
+
+	_stop_listening_to_nightlight_status() {
+		if ( this.nightlight_gsettings && this.nightlight_status_connect ) {
+			this.nightlight_gsettings.disconnect(this.nightlight_status_connect);
+			this.nightlight_status_connect = null;
+		}
+	}
+
+	_on_nightlight_status_change() {
+		this.enable();
+		this.emit();
 	}
 
 	_connect_to_dbus() {
+		if ( this.proxy ) return;
 		const connection = Gio.bus_get_sync(Gio.BusType.SESSION, null);
 		if ( connection === null ) {
 			const message = _('Unable to connect to the session bus.');
@@ -79,6 +127,18 @@ var Nightlighter = class {
 		if ( this.proxy === null ) {
 			const message = _('Unable to create proxy to the session bus.');
 			throw new Error(message);
+		}
+	}
+
+	_listen_to_nightlight_changes() {
+		if ( this.connect ) return;
+		this.connect = this.proxy.connect('g-properties-changed', this.emit.bind(this));
+	}
+
+	_stop_listening_to_nightlight_changes() {
+		if ( this.proxy && this.connect ) {
+			this.proxy.disconnect(this.connect);
+			this.connect == null;
 		}
 	}
 
