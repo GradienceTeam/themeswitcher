@@ -34,22 +34,44 @@ var Themer = class {
 		this.gsettings = new Gio.Settings({ schema: config.THEME_GSETTINGS_SCHEMA });
 	}
 
+	enable() {
+		return;
+	}
+
+	disable() {
+		this._stop_listening_to_theme_changes();
+	}
+
 	get current() {
 		return this.gsettings.get_string(config.THEME_GSETTINGS_PROPERTY);
 	}
 
 	set current(theme) {
-		if ( theme === this.current ) return;
-		this.gsettings.set_string(config.THEME_GSETTINGS_PROPERTY, theme);
+		if ( theme !== this.current ) {
+			this.gsettings.set_string(config.THEME_GSETTINGS_PROPERTY, theme);
+		}
 	}
 
-	listen(callback) {
-		this.connect = this.gsettings.connect('changed::' + config.THEME_GSETTINGS_PROPERTY, callback);
+	subscribe(callback) {
+		this.theme_change_callback = callback;
 	}
 
-	stop_listening() {
+	_listen_to_theme_changes() {
+		if ( !this.connect ) {
+			this.connect = this.gsettings.connect('changed::' + config.THEME_GSETTINGS_PROPERTY, this._on_theme_change);
+		}
+	}
+
+	_stop_listening_to_theme_changes() {
 		if ( this.gsettings && this.connect ){
 			this.gsettings.disconnect(this.connect);
+			this.connect = null;
+		}
+	}
+
+	_on_theme_change() {
+		if ( this.theme_change_callback ) {
+			this.theme_change_callback();
 		}
 	}
 
