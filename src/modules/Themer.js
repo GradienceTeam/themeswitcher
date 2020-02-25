@@ -35,7 +35,7 @@ var Themer = class {
 	}
 
 	enable() {
-		return;
+		this._listen_to_theme_changes();
 	}
 
 	disable() {
