@@ -67,9 +67,9 @@ var Switcher = class {
 
 	disable() {
 		try {
-			this.theme.current = this.variants.original;
 			this.theme.disable();
 			this.nightlight.disable();
+			this.theme.current = this.variants.original;
 		}
 		catch(e) {} // Since we're disabling, we'll just ignore errors.
 		finally {
