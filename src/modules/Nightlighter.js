@@ -145,7 +145,10 @@ var Nightlighter = class {
 
 	_listen_to_nightlight_changes() {
 		if ( !this.nightlight_changes_connect ) {
-			this.nightlight_changes_connect = this.dbus_proxy.connect('g-properties-changed', this.emit.bind(this));
+			this.nightlight_changes_connect = this.dbus_proxy.connect(
+				'g-properties-changed',
+				this._on_nightlight_change.bind(this)
+			);
 		}
 	}
 
@@ -154,6 +157,10 @@ var Nightlighter = class {
 			this.dbus_proxy.disconnect(this.nightlight_changes_connect);
 			this.nightlight_changes_connect == null;
 		}
+	}
+
+	_on_nightlight_change() {
+		this.emit();
 	}
 
 }

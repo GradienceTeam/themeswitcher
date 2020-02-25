@@ -56,9 +56,15 @@ var Themer = class {
 		this.theme_change_callback = callback;
 	}
 
+	emit() {
+		if ( this.theme_change_callback ) {
+			this.theme_change_callback();
+		}
+	}
+
 	_listen_to_theme_changes() {
 		if ( !this.connect ) {
-			this.connect = this.gsettings.connect('changed::' + config.THEME_GSETTINGS_PROPERTY, this._on_theme_change);
+			this.connect = this.gsettings.connect('changed::' + config.THEME_GSETTINGS_PROPERTY, this._on_theme_change.bind(this));
 		}
 	}
 
@@ -70,9 +76,7 @@ var Themer = class {
 	}
 
 	_on_theme_change() {
-		if ( this.theme_change_callback ) {
-			this.theme_change_callback();
-		}
+		this.emit();
 	}
 
 }
