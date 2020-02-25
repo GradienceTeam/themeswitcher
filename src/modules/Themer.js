@@ -31,20 +31,20 @@ one. It can also be asked to listen to theme changes.
 var Themer = class {
 
 	constructor() {
-		this.gsettings = new Gio.Settings({ schema: config.GSETTINGS_SCHEMA });
+		this.gsettings = new Gio.Settings({ schema: config.THEME_GSETTINGS_SCHEMA });
 	}
 
 	get current() {
-		return this.gsettings.get_string(config.GSETTINGS_PROPERTY);
+		return this.gsettings.get_string(config.THEME_GSETTINGS_PROPERTY);
 	}
 
 	set current(theme) {
 		if ( theme === this.current ) return;
-		this.gsettings.set_string(config.GSETTINGS_PROPERTY, theme);
+		this.gsettings.set_string(config.THEME_GSETTINGS_PROPERTY, theme);
 	}
 
 	listen(callback) {
-		this.connect = this.gsettings.connect('changed::' + config.GSETTINGS_PROPERTY, callback);
+		this.connect = this.gsettings.connect('changed::' + config.THEME_GSETTINGS_PROPERTY, callback);
 	}
 
 	stop_listening() {

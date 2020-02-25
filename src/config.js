@@ -19,5 +19,8 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 var EXT_NAME = 'Night Theme Switcher';
 var EXT_UUID = 'nightthemeswitcher@romainvigier.fr';
 
-var GSETTINGS_SCHEMA = 'org.gnome.desktop.interface';
-var GSETTINGS_PROPERTY = 'gtk-theme';
+var THEME_GSETTINGS_SCHEMA = 'org.gnome.desktop.interface';
+var THEME_GSETTINGS_PROPERTY = 'gtk-theme';
+
+var NIGHTLIGHT_GSETTINGS_SCHEMA = 'org.gnome.settings-daemon.plugins.color';
+var NIGHTLIGHT_GSETTINGS_PROPERTY = 'night-light-enabled';
