@@ -57,14 +57,15 @@ var Nightlighter = class {
 	disable() {
 		this._stop_listening_to_nightlight_status();
 		this._stop_listening_to_nightlight_changes();
+		this._disconnect_from_dbus();
 	}
 
 	get status() {
-		if ( !this.proxy ) {
+		if ( !this.dbus_proxy ) {
 			throw new Error();
 		}
 		try {
-			return this.proxy.get_cached_property('NightLightActive').get_boolean();
+			return this.dbus_proxy.get_cached_property('NightLightActive').get_boolean();
 		}
 		catch(e) {
 			return false; // Sometimes when Night Light hasn't changed colors yet it returns an error, we consider it is inactive.
@@ -76,8 +77,9 @@ var Nightlighter = class {
 	}
 
 	emit() {
-		if ( !this.nightlight_change_callback ) return;
-		this.nightlight_change_callback();
+		if ( this.nightlight_change_callback ) {
+			this.nightlight_change_callback();
+		}
 	}
 
 	_is_nightlight_enabled() {
@@ -92,8 +94,12 @@ var Nightlighter = class {
 	}
 
 	_listen_to_nightlight_status() {
-		if ( this.nightlight_status_connect ) return;
-		this.nightlight_status_connect = this.nightlight_gsettings.connect('changed::' + config.NIGHTLIGHT_GSETTINGS_PROPERTY, this._on_nightlight_status_change.bind(this));
+		if ( !this.nightlight_status_connect ) {
+			this.nightlight_status_connect = this.nightlight_gsettings.connect(
+				'changed::' + config.NIGHTLIGHT_GSETTINGS_PROPERTY,
+				this._on_nightlight_status_change.bind(this)
+			);
+		}
 	}
 
 	_stop_listening_to_nightlight_status() {
@@ -109,36 +115,44 @@ var Nightlighter = class {
 	}
 
 	_connect_to_dbus() {
-		if ( this.proxy ) return;
-		const connection = Gio.bus_get_sync(Gio.BusType.SESSION, null);
-		if ( connection === null ) {
-			const message = _('Unable to connect to the session bus.');
-			throw new Error(message);
+		if ( !this.dbus_proxy ) {
+			const connection = Gio.bus_get_sync(Gio.BusType.SESSION, null);
+			if ( connection === null ) {
+				const message = _('Unable to connect to the session bus.');
+				throw new Error(message);
+			}
+			this.dbus_proxy = Gio.DBusProxy.new_sync(
+				connection,
+				Gio.DBusProxyFlags.GET_INVALIDATED_PROPERTIES,
+				null,
+				'org.gnome.SettingsDaemon.Color',
+				'/org/gnome/SettingsDaemon/Color',
+				'org.gnome.SettingsDaemon.Color',
+				null
+			);
+			if ( this.dbus_proxy === null ) {
+				const message = _('Unable to create proxy to the session bus.');
+				throw new Error(message);
+			}
 		}
-		this.proxy = Gio.DBusProxy.new_sync(
-			connection,
-			Gio.DBusProxyFlags.GET_INVALIDATED_PROPERTIES,
-			null,
-			'org.gnome.SettingsDaemon.Color',
-			'/org/gnome/SettingsDaemon/Color',
-			'org.gnome.SettingsDaemon.Color',
-			null
-		);
-		if ( this.proxy === null ) {
-			const message = _('Unable to create proxy to the session bus.');
-			throw new Error(message);
+	}
+
+	_disconnect_from_dbus() {
+		if ( this.dbus_proxy ) {
+			this.dbus_proxy == null;
 		}
 	}
 
 	_listen_to_nightlight_changes() {
-		if ( this.connect ) return;
-		this.connect = this.proxy.connect('g-properties-changed', this.emit.bind(this));
+		if ( !this.nightlight_changes_connect ) {
+			this.nightlight_changes_connect = this.dbus_proxy.connect('g-properties-changed', this.emit.bind(this));
+		}
 	}
 
 	_stop_listening_to_nightlight_changes() {
-		if ( this.proxy && this.connect ) {
-			this.proxy.disconnect(this.connect);
-			this.connect == null;
+		if ( this.dbus_proxy && this.connect ) {
+			this.dbus_proxy.disconnect(this.nightlight_changes_connect);
+			this.nightlight_changes_connect == null;
 		}
 	}
 

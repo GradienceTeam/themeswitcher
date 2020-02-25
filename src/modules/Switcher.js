@@ -50,8 +50,9 @@ var Switcher = class {
 	enable() {
 		try {
 			this.theme = new Themer();
+			this.theme.enable();
 			this.variants = Variants.guess_from(this.theme.current);
-			this.theme.listen(this._on_theme_change.bind(this));
+			this.theme.subscribe(this._on_theme_change.bind(this));
 
 			this.nightlight = new Nightlighter();
 			this.nightlight.enable();
@@ -67,7 +68,7 @@ var Switcher = class {
 	disable() {
 		try {
 			this.theme.current = this.variants.original;
-			this.theme.stop_listening();
+			this.theme.disable();
 			this.nightlight.disable();
 		}
 		catch(e) {} // Since we're disabling, we'll just ignore errors.
