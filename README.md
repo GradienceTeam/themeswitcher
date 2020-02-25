@@ -2,13 +2,11 @@
 
 ![](./screenshot.gif)
 
-Automatically change the GTK theme to dark variant when Night Light activates.
+Automatically toggle between your light and dark GTK theme variants when Night Light activates.
 
 _Do you need to change your GNOME shell theme as well? Try [Night Shell Switcher](https://gitlab.com/rmnvgr/nightshellswitcher-gnome-shell-extension/)!_
 
 ## Theme compatibility
-
-Your theme must have a `-dark` variant, e.g. `Adwaita` and `Adwaita-dark`.
 
 These themes have been tested and work:
 
@@ -27,7 +25,7 @@ These themes have been tested and work:
 - Vimix
 - Yaru
 
-Let me know if the theme you use works as well, or if it doesn't, I can try to make it work.
+Other themes with a dark variant might work as well, let me know if there is a specific theme you'd like supported!
 
 ## Graphical installation
 

@@ -1,4 +1,4 @@
-Automatically switch between your light and dark GTK theme variants when Night Light activates.
+Automatically toggle between your light and dark GTK theme variants when Night Light activates.
 
 These themes have been tested and work:
 - Adapta
