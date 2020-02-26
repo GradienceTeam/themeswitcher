@@ -139,7 +139,7 @@ var Nightlighter = class {
 
 	_disconnect_from_dbus() {
 		if ( this.dbus_proxy ) {
-			this.dbus_proxy == null;
+			this.dbus_proxy = null;
 		}
 	}
 
@@ -155,7 +155,7 @@ var Nightlighter = class {
 	_stop_listening_to_nightlight_changes() {
 		if ( this.dbus_proxy && this.connect ) {
 			this.dbus_proxy.disconnect(this.nightlight_changes_connect);
-			this.nightlight_changes_connect == null;
+			this.nightlight_changes_connect = null;
 		}
 	}
 
