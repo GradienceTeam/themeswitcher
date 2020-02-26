@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-25 20:28+0100\n"
+"POT-Creation-Date: 2020-02-26 17:37+0100\n"
 "PO-Revision-Date: 2020-02-25 20:31+0100\n"
 "Last-Translator: Romain Vigier <>\n"
 "Language-Team: French <none>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Gtranslator 3.34.0\n"
 
-#: src/modules/Nightlighter.js:86
+#: src/modules/Nightlighter.js:99
 msgid ""
 "Night Light must be enabled to use this extension. Please enable it in your "
 "system settings."
@@ -26,11 +26,11 @@ msgstr ""
 "Le mode nuit doit être activé pour utiliser l’extension. Veuillez l’activer "
 "dans les réglages du système."
 
-#: src/modules/Nightlighter.js:112
+#: src/modules/Nightlighter.js:132
 msgid "Unable to connect to the session bus."
 msgstr "Impossible de se connecter au bus de la session."
 
-#: src/modules/Nightlighter.js:125
+#: src/modules/Nightlighter.js:145
 msgid "Unable to create proxy to the session bus."
 msgstr "Impossible de créer une passerelle vers le bus de la session."
 
