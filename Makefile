@@ -29,6 +29,7 @@ build: build-clean
 	gnome-extensions pack \
 		--extra-source=../LICENSE \
 		--extra-source=./config.js \
+		--extra-source=./utils.js \
 		--extra-source=./modules/ \
 		--podir=./po/ \
 		--gettext-domain=$(UUID) \

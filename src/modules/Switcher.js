@@ -1,5 +1,5 @@
 /*
-Night Theme Switcher Gnome Shell extension
+Night Shell Switcher Gnome Shell extension
 
 Copyright (C) 2020 Romain Vigier
 
@@ -22,9 +22,10 @@ const { main } = imports.ui;
 const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
 
+const { log_debug } = Me.imports.utils;
+
 const { Nightlighter } = Me.imports.modules.Nightlighter;
 const { Themer } = Me.imports.modules.Themer;
-const { Variants } = Me.imports.modules.Variants;
 
 
 /*
@@ -44,21 +45,24 @@ explicitely selected, stops listening to changes and cleans itself.
 var Switcher = class {
 
 	constructor() {
+		log_debug('Initializing extension...');
 		extensionUtils.initTranslations(config.EXT_UUID);
+		log_debug('Extension initialized.');
 	}
 
 	enable() {
+		log_debug('Enabling extension...');
 		try {
 			this.theme = new Themer();
 			this.theme.enable();
-			this.variants = Variants.guess_from(this.theme.current);
 			this.theme.subscribe(this._on_theme_change.bind(this));
 
 			this.nightlight = new Nightlighter();
 			this.nightlight.enable();
 			this.nightlight.subscribe(this._on_nightlight_change.bind(this));
 
-			this._apply_theme_variant();
+			this.theme.set_variant(this.nightlight.status);
+			log_debug('Extension enabled.');
 		}
 		catch(e) {
 			main.notifyError(config.EXT_NAME, e.message);
@@ -66,38 +70,34 @@ var Switcher = class {
 	}
 
 	disable() {
+		log_debug('Disabling extension...');
 		try {
 			this.theme.disable();
 			this.nightlight.disable();
-			this.theme.current = this.variants.original;
 		}
 		catch(e) {} // Since we're disabling, we'll just ignore errors.
 		finally {
 			this.theme = null;
-			this.variants = null;
 			this.nightlight = null;
 		}
+		log_debug('Extension disabled.');
 	}
 
-	_apply_theme_variant() {
-		try {
-			this.theme.current = this.nightlight.status ? this.variants.night : this.variants.day;
-		}
-		catch(e) {
-			this.theme.current = this.variants.original;
+	async _await_extensionManager_init() {
+		log_debug('Waiting for the Extension Manager to be initialized...');
+		while ( true ) {
+			if ( main.extensionManager._initialized ) return;
+			await null;
 		}
 	}
 
 	_on_theme_change() {
-		const new_theme = this.theme.current;
-		if ( new_theme !== this.variants.day && new_theme !== this.variants.night ) {
-			this.variants = Variants.guess_from(new_theme);
-		}
-		this._apply_theme_variant();
+		this.theme.update_variants();
+		this.theme.set_variant(this.nightlight.status);
 	}
 
 	_on_nightlight_change() {
-		this._apply_theme_variant();
+		this.theme.set_variant(this.nightlight.status);
 	}
 
 }

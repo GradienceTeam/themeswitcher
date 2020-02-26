@@ -22,6 +22,10 @@ const { Gio } = imports.gi;
 const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
 
+const { log_debug } = Me.imports.utils;
+
+const { Variants } = Me.imports.modules.Variants;
+
 
 /*
 The Themer communicates with the system to get the current theme or set a new
@@ -31,15 +35,24 @@ one. It can also be asked to listen to theme changes.
 var Themer = class {
 
 	constructor() {
+		log_debug('Initializing Themer...');
 		this.gsettings = new Gio.Settings({ schema: config.THEME_GSETTINGS_SCHEMA });
+		log_debug('Themer initialized.');
 	}
 
 	enable() {
+		log_debug('Enabling Themer...');
 		this._listen_to_theme_changes();
+		this._update_variants();
+		this.emit();
+		log_debug('Themer enabled.');
 	}
 
 	disable() {
+		log_debug('Disabling Themer...');
 		this._stop_listening_to_theme_changes();
+		this.reset_theme();
+		log_debug('Themer disabled.');
 	}
 
 	get current() {
@@ -49,6 +62,7 @@ var Themer = class {
 	set current(theme) {
 		if ( theme !== this.current ) {
 			this.gsettings.set_string(config.THEME_GSETTINGS_PROPERTY, theme);
+			log_debug(`Theme has been set to "${theme}"`);
 		}
 	}
 
@@ -62,20 +76,55 @@ var Themer = class {
 		}
 	}
 
+	set_variant(night) {
+		if ( night !== undefined && this.variants ) {
+			this.current = night ? this.variants.night : this.variants.day;
+		}
+	}
+
+	reset_theme() {
+		if ( this.variants ) {
+			this.current = this.variants.original;
+			log_debug('Theme has been reset to the user\'s original variant.')
+		}
+	}
+
+	update_variants() {
+		if ( this.variants ) {
+			const new_theme = this.current;
+			if ( new_theme && new_theme !== this.variants.day && new_theme !== this.variants.night ) {
+				this._update_variants();
+			}
+		}
+	}
+
+	_update_variants() {
+		if ( this.current ) {
+			this.variants = Variants.guess_from(this.current);
+			log_debug('Variants updated: ' + JSON.stringify(this.variants));
+		}
+	}
+
 	_listen_to_theme_changes() {
-		if ( !this.connect ) {
-			this.connect = this.gsettings.connect('changed::' + config.THEME_GSETTINGS_PROPERTY, this._on_theme_change.bind(this));
+		if ( !this.theme_change_connect ) {
+			this.theme_change_connect = this.gsettings.connect(
+				'changed::' + config.THEME_GSETTINGS_PROPERTY,
+				this._on_theme_change.bind(this)
+			);
+			log_debug('Listening for theme changes...');
 		}
 	}
 
 	_stop_listening_to_theme_changes() {
-		if ( this.gsettings && this.connect ){
-			this.gsettings.disconnect(this.connect);
-			this.connect = null;
+		if ( this.gsettings && this.theme_change_connect ){
+			this.gsettings.disconnect(this.theme_change_connect);
+			this.theme_change_connect = null;
+			log_debug('Stopped listening for theme changes.');
 		}
 	}
 
 	_on_theme_change() {
+		log_debug('Theme has changed.');
 		this.emit();
 	}
 
