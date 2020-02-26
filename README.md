@@ -1,6 +1,6 @@
 # Night Theme Switcher
 
-![](./screenshot.gif)
+![](./screenshot.png)
 
 Automatically toggle between your light and dark GTK theme variants when Night Light activates.
 
