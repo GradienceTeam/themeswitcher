@@ -16,13 +16,13 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-var EXT_NAME = 'Night Theme Switcher';
-var EXT_UUID = 'nightthemeswitcher@romainvigier.fr';
+const { extensionUtils } = imports.misc;
 
-var THEME_GSETTINGS_SCHEMA = 'org.gnome.desktop.interface';
-var THEME_GSETTINGS_PROPERTY = 'gtk-theme';
+const Me = extensionUtils.getCurrentExtension();
+const config = Me.imports.config;
 
-var NIGHTLIGHT_GSETTINGS_SCHEMA = 'org.gnome.settings-daemon.plugins.color';
-var NIGHTLIGHT_GSETTINGS_PROPERTY = 'night-light-enabled';
-
-var debug = false;
+var log_debug = function(message) {
+	if ( config.debug ) {
+		log(`[DEBUG] ${config.EXT_NAME}: ${message}`);
+	}
+}
