@@ -34,20 +34,22 @@ The Nightlighter establishes a connection with the session bus to get the
 current Night Light status. It listens to changes and reports them.
 
 As Night Light is essential for the extension to work, it continuously checks
-if it is enabled and warns the user if that's not the case.
+if it is enabled and warns the user if that's not the case. To not overwhelm
+the user with notifications, it only warns once and then only listens to Night
+Light changes to reactivate itself automatically.
 */
 
 var Nightlighter = class {
 
 	constructor() {
 		log_debug('Initializing Nightlighter...');
+		this.first_nightlight_not_enabled_warning = true;
 		this.nightlight_gsettings = new Gio.Settings({ schema: config.NIGHTLIGHT_GSETTINGS_SCHEMA });
 		log_debug('Nightlighter initialized.');
 	}
 
 	enable() {
 		log_debug('Enabling NightLighter...');
-		// As Night Light must be enabled for the extension to work, we have to monitor any change of that setting.
 		try {
 			this._listen_to_nightlight_status();
 			this._check_nightlight_status();
@@ -57,7 +59,9 @@ var Nightlighter = class {
 			log_debug('Nightlighter enabled.');
 		}
 		catch(e) {
-			main.notifyError(config.EXT_NAME, e.message);
+			if ( e.message ) {
+				main.notifyError(config.EXT_NAME, e.message);
+			}
 		}
 	}
 
@@ -96,8 +100,14 @@ var Nightlighter = class {
 
 	_check_nightlight_status() {
 		if ( !this._is_nightlight_enabled() ) {
-			const message = _('Night Light must be enabled to use this extension. Please enable it in your system settings.');
-			throw new Error(message);
+			if ( this.first_nightlight_not_enabled_warning ) {
+				this.first_nightlight_not_enabled_warning = false;
+				const message = _('Night Light must be enabled to use this extension. Please enable it in your system settings.');
+				throw new Error(message);
+			}
+			else {
+				throw new Error();
+			}
 		}
 	}
 
