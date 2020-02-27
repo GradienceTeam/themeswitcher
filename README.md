@@ -14,6 +14,7 @@ These themes have been tested and work:
 - Adwaita
 - Arc
 - Canta
+- ChromeOS
 - Flat-Remix-GTK
 - HighContrast
 - Layan
