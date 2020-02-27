@@ -80,6 +80,15 @@ pot:
 	sed -i "1,4s/FIRST AUTHOR/$(AUTHOR_NAME)/" ./src/po/$(UUID).pot
 	sed -i "1,4s/EMAIL@ADDRESS/$(AUTHOR_EMAIL)/" ./src/po/$(UUID).pot
 
+.PHONY: add-po
+add-po:
+ifdef LANGUAGE_CODE
+	msginit --no-translator --input=src/po/$(UUID).pot --output=src/po/$(LANGUAGE_CODE).po --locale=$(LANGUAGE_CODE)
+else
+	@echo "Please specify the code of the language you want to add, for example:"
+	@echo "	make add-po LANGUAGE_CODE=fr"
+endif
+
 .PHONY: update-po
 update-po:
 	for po_file in $(wildcard ./src/po/*.po); do \
