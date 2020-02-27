@@ -21,30 +21,30 @@ const { Variants } = require('./_variants');
 
 test('default', t => {
 	const variants = Variants.guess_from('default');
-	t.is(variants.day, 'default');
-	t.is(variants.night, 'default-dark');
+	t.is(variants.get('day'), 'default');
+	t.is(variants.get('night'), 'default-dark');
 });
 
 test('default-dark', t => {
 	const variants = Variants.guess_from('default-dark');
-	t.is(variants.day, 'default');
-	t.is(variants.night, 'default-dark');
+	t.is(variants.get('day'), 'default');
+	t.is(variants.get('night'), 'default-dark');
 });
 
 test('default-light', t => {
 	const variants = Variants.guess_from('default-light');
-	t.is(variants.day, 'default-light');
-	t.is(variants.night, 'default-dark');
+	t.is(variants.get('day'), 'default-light');
+	t.is(variants.get('night'), 'default-dark');
 });
 
 test('default-darker', t => {
 	const variants = Variants.guess_from('default-darker');
-	t.is(variants.day, 'default-darker');
-	t.is(variants.night, 'default-dark');
+	t.is(variants.get('day'), 'default-darker');
+	t.is(variants.get('night'), 'default-dark');
 });
 
 test('default-darkest', t => {
 	const variants = Variants.guess_from('default-darkest');
-	t.is(variants.day, 'default');
-	t.is(variants.night, 'default-darkest');
+	t.is(variants.get('day'), 'default');
+	t.is(variants.get('night'), 'default-darkest');
 });

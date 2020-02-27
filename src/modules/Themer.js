@@ -77,23 +77,21 @@ var Themer = class {
 		}
 	}
 
-	set_variant(night) {
-		if ( night !== undefined && this.variants ) {
-			this.current = night ? this.variants.night : this.variants.day;
+	set_variant(variant) {
+		if ( variant && this.variants ) {
+			this.current = this.variants.get(variant);
 		}
 	}
 
 	reset_theme() {
-		if ( this.variants ) {
-			this.current = this.variants.original;
-			log_debug('Theme has been reset to the user\'s original variant.')
-		}
+		this.set_variant('original');
+		log_debug('Theme has been reset to the user\'s original variant.')
 	}
 
 	update_variants() {
 		if ( this.variants ) {
 			const new_theme = this.current;
-			if ( new_theme && new_theme !== this.variants.day && new_theme !== this.variants.night ) {
+			if ( new_theme && new_theme !== this.variants.get('day') && new_theme !== this.variants.get('night') ) {
 				this._update_variants();
 			}
 		}
@@ -102,7 +100,7 @@ var Themer = class {
 	_update_variants() {
 		if ( this.current ) {
 			this.variants = Variants.guess_from(this.current);
-			log_debug('Variants updated: ' + JSON.stringify(this.variants));
+			log_debug('Variants updated: ' + this.variants);
 		}
 	}
 

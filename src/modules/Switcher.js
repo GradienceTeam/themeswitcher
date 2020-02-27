@@ -63,7 +63,7 @@ var Switcher = class {
 			this.nightlight.enable();
 			this.nightlight.subscribe(this._on_nightlight_change.bind(this));
 
-			this.theme.set_variant(this.nightlight.status);
+			this.theme.set_variant(this.nightlight.time);
 			log_debug('Extension enabled.');
 		}
 		catch(e) {
@@ -95,11 +95,11 @@ var Switcher = class {
 
 	_on_theme_change() {
 		this.theme.update_variants();
-		this.theme.set_variant(this.nightlight.status);
+		this.theme.set_variant(this.nightlight.time);
 	}
 
 	_on_nightlight_change() {
-		this.theme.set_variant(this.nightlight.status);
+		this.theme.set_variant(this.nightlight.time);
 	}
 
 }

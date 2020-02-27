@@ -69,13 +69,13 @@ var Nightlighter = class {
 		log_debug('Nightlighter disabled.');
 	}
 
-	get status() {
+	get time() {
 		if ( this.dbus_proxy ) {
 			try {
-				return this.dbus_proxy.get_cached_property('NightLightActive').get_boolean();
+				return this.dbus_proxy.get_cached_property('NightLightActive').get_boolean() ? 'night' : 'day';
 			}
 			catch(e) {
-				return false; // Sometimes when Night Light hasn't changed colors yet it returns an error, we consider it is inactive.
+				return 'day'; // Sometimes when Night Light hasn't changed colors yet it returns an error, we consider it is inactive.
 			}
 		}
 	}
