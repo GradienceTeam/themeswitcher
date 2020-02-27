@@ -3,7 +3,7 @@
 	"description": "Automatically toggle between your light and dark GTK theme variants when Night Light activates.",
 	"uuid": "nightthemeswitcher@romainvigier.fr",
 	"url": "https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/",
-	"version": 18,
+	"version": 19,
 	"shell-version": ["3.32", "3.34", "3.36"],
 	"gettext-domain": "nightthemeswitcher@romainvigier.fr"
 }
