@@ -1,5 +1,5 @@
 /*
-Night Shell Switcher Gnome Shell extension
+Night Theme Switcher Gnome Shell extension
 
 Copyright (C) 2020 Romain Vigier
 
