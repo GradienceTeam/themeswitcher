@@ -24,20 +24,20 @@ const { Variants } = require('./_variants');
 	['', '-win'].forEach(alt => {
 		test(`Qogir${color}${alt}`, t => {
 			const variants = Variants.guess_from(`Qogir${color}${alt}`);
-			t.is(variants.day, `Qogir${color}${alt}`);
-			t.is(variants.night, `Qogir${color}${alt}-dark`);
+			t.is(variants.get('day'), `Qogir${color}${alt}`);
+			t.is(variants.get('night'), `Qogir${color}${alt}-dark`);
 		});
 
 		test(`Qogir${color}${alt}-dark`, t => {
 			const variants = Variants.guess_from(`Qogir${color}${alt}-dark`);
-			t.is(variants.day, `Qogir${color}${alt}`);
-			t.is(variants.night, `Qogir${color}${alt}-dark`);
+			t.is(variants.get('day'), `Qogir${color}${alt}`);
+			t.is(variants.get('night'), `Qogir${color}${alt}-dark`);
 		});
 
 		test(`Qogir${color}${alt}light`, t => {
 			const variants = Variants.guess_from(`Qogir${color}${alt}-light`);
-			t.is(variants.day, `Qogir${color}${alt}-light`);
-			t.is(variants.night, `Qogir${color}${alt}-dark`);
+			t.is(variants.get('day'), `Qogir${color}${alt}-light`);
+			t.is(variants.get('night'), `Qogir${color}${alt}-dark`);
 		});
 	});
 });
