@@ -22,6 +22,7 @@ These themes have been tested and work:
 - Mojave
 - Pop
 - Qogir
+- Teja
 - Vimix
 - Yaru
 

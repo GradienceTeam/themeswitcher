@@ -80,6 +80,11 @@ var Variants = class {
 			variants.set('day', name.replace('-dark', '-light'));
 			variants.set('night', variants.get('day').replace('-light', '-dark'));
 		}
+		else if ( name.includes('Teja') ) {
+			const dark_variant = '_' + (name.replace('_Light').split('_')[1] || 'Dark');
+			variants.set('day', name.replace(/(_Dark(est)?|_Black)/, ''));
+			variants.set('night', variants.get('day').replace('_Light', '') + dark_variant);
+		}
 		else if ( name.includes('vimix') ) {
 			variants.set('day', name.replace('-dark', ''));
 			variants.set('night', variants.get('day').replace(/vimix(-light)?/, 'vimix-dark'));
