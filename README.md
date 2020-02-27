@@ -59,4 +59,4 @@ gnome-extensions enable nightthemeswitcher@romainvigier.fr
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
+You're welcome to contribute to the code or the translations! See [CONTRIBUTING.md](./CONTRIBUTING.md).
