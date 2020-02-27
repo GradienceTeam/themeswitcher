@@ -31,7 +31,7 @@ const _ = Gettext.gettext;
 
 /*
 The Nightlighter establishes a connection with the session bus to get the
-current Night Light status. It can also be asked to listen to status changes.
+current Night Light status. It listens to changes and reports them.
 
 As Night Light is essential for the extension to work, it continuously checks
 if it is enabled and warns the user if that's not the case.

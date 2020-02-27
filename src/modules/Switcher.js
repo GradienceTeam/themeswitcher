@@ -29,17 +29,19 @@ const { Themer } = Me.imports.modules.Themer;
 
 
 /*
-The Switcher is the brain of the extension.
+The Switcher is the orchestrator of the extension.
 
-When the extension is enabled, it listens to theme changes from the user and
-changes in the Night Light status:
-	- On theme changes, it asks for the new day and night variants for that
-	theme.
-	- On Night Light activation or deactivation, it asks for the relevant
-	variant to be applied.
+When the extension is enabled, it asks the Themer to listen to theme changes
+from the user and the Nightlighter to listen to changes in the Night Light
+status:
+	- On theme change, it asks the Themer to guess the new day and night
+	variants for that theme, and to apply the relevant variant depending on the
+	Night Light status.
+	- On Night Light activation or deactivation, it asks the Themer to apply
+	the relevant variant.
 
-When the extension is disabled, it resets the theme to the last one the user
-explicitely selected, stops listening to changes and cleans itself.
+When the extension is disabled, it asks the Themer and the Nightlighter to
+disable themselves.
 */
 
 var Switcher = class {

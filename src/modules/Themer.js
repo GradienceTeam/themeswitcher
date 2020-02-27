@@ -29,7 +29,8 @@ const { Variants } = Me.imports.modules.Variants;
 
 /*
 The Themer communicates with the system to get the current theme or set a new
-one. It can also be asked to listen to theme changes.
+one, and get the day and night variants of a theme. It listens to theme changes
+and reports them.
 */
 
 var Themer = class {
