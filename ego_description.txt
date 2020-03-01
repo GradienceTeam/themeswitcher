@@ -2,21 +2,21 @@ Automatically toggle between your light and dark GTK theme variants when Night L
 
 These themes have been tested and work:
 - Adapta
-- Adwaita
+- Adwaita (GNOME & Fedora default)
 - Arc
 - Canta
 - ChromeOS
 - Flat-Remix-GTK
 - HighContrast
 - Layan
-- Matcha
+- Matcha (Manjaro default)
 - Materia
 - Mojave
-- Pop
+- Pop (Pop!_OS default)
 - Qogir
 - Teja
 - Vimix
-- Yaru
+- Yaru (Ubuntu default)
 
 Other themes with a dark variant might work as well, let me know if there is a specific theme you'd like supported!
 

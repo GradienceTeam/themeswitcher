@@ -11,21 +11,21 @@ _Do you need to change your GNOME shell theme as well? Try [Night Shell Switcher
 These themes have been tested and work:
 
 - Adapta
-- Adwaita
+- Adwaita (GNOME & Fedora default)
 - Arc
 - Canta
 - ChromeOS
 - Flat-Remix-GTK
 - HighContrast
 - Layan
-- Matcha (thank you @Chrysostomus)
+- Matcha (Manjaro default)
 - Materia
 - Mojave
-- Pop
+- Pop (Pop!_OS default)
 - Qogir
 - Teja
 - Vimix
-- Yaru
+- Yaru (Ubuntu default)
 
 Other themes with a dark variant might work as well, let me know if there is a specific theme you'd like supported!
 
