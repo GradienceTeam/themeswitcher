@@ -17,6 +17,7 @@ These themes have been tested and work:
 - ChromeOS
 - Flat-Remix-GTK
 - HighContrast
+- Kimi
 - Layan
 - Matcha (Manjaro default)
 - Materia
