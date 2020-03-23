@@ -1,4 +1,4 @@
-Automatically toggle between your light and dark GTK theme variants when Night Light activates.
+Night mode for GNOME apps! Automatically toggle between your light and dark GTK theme variants when Night Light activates.
 
 These themes have been tested and work:
 - Adapta
