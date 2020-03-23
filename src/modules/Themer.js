@@ -18,6 +18,7 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 
 const { extensionUtils } = imports.misc;
 const { Gio } = imports.gi;
+const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
@@ -25,6 +26,8 @@ const config = Me.imports.config;
 const { log_debug } = Me.imports.utils;
 
 const { Variants } = Me.imports.modules.Variants;
+
+const State = new Map();
 
 
 /*
@@ -52,7 +55,11 @@ var Themer = class {
 	disable() {
 		log_debug('Disabling Themer...');
 		this._stop_listening_to_theme_changes();
-		this.reset_theme();
+		// GNOME Shell disables extensions when locking the screen. We'll only reset the theme if the user disables the extension.
+		State.set('last_disabled_on_screen_lock', main.screenShield.locked);
+		if ( !State.get('last_disabled_on_screen_lock') ) {
+			this.reset_theme();
+		}
 		log_debug('Themer disabled.');
 	}
 
@@ -84,7 +91,7 @@ var Themer = class {
 	}
 
 	reset_theme() {
-		this.set_variant('original');
+		this.current = State.get('original_theme');
 		log_debug('Theme has been reset to the user\'s original variant.')
 	}
 
@@ -100,6 +107,9 @@ var Themer = class {
 	_update_variants() {
 		if ( this.current ) {
 			this.variants = Variants.guess_from(this.current);
+			if ( !State.get('last_disabled_on_screen_lock') ) {
+				State.set('original_theme', this.variants.get('original'));
+			}
 			log_debug('Variants updated: ' + this.variants);
 		}
 	}
