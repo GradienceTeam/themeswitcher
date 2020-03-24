@@ -85,14 +85,6 @@ var Switcher = class {
 		log_debug('Extension disabled.');
 	}
 
-	async _await_extensionManager_init() {
-		log_debug('Waiting for the Extension Manager to be initialized...');
-		while ( true ) {
-			if ( main.extensionManager._initialized ) return;
-			await null;
-		}
-	}
-
 	_on_theme_change() {
 		this.theme.update_variants();
 		this.theme.set_variant(this.nightlight.time);
