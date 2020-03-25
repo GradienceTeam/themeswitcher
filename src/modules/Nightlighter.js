@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-const { extensionUtils } = imports.misc;
+const { extensionUtils, fileUtils } = imports.misc;
 const { Gio } = imports.gi;
 const { main } = imports.ui;
 
@@ -27,6 +27,8 @@ const { log_debug } = Me.imports.utils;
 
 const Gettext = imports.gettext.domain(config.EXT_UUID);
 const _ = Gettext.gettext;
+
+const State = new Map();
 
 
 /*
@@ -55,6 +57,7 @@ var Nightlighter = class {
 			this._check_nightlight_status();
 			this._connect_to_dbus();
 			this._listen_to_nightlight_changes();
+			State.set('nightlight_active', this._get_nightlight_active())
 			this.emit();
 			log_debug('Nightlighter enabled.');
 		}
@@ -74,14 +77,7 @@ var Nightlighter = class {
 	}
 
 	get time() {
-		if ( this.dbus_proxy ) {
-			try {
-				return this.dbus_proxy.get_cached_property('NightLightActive').get_boolean() ? 'night' : 'day';
-			}
-			catch(e) {
-				return 'day'; // Sometimes when Night Light hasn't changed colors yet it returns an error, we consider it is inactive.
-			}
-		}
+		return State.get('nightlight_active') ? 'night' : 'day';
 	}
 
 	subscribe(callback) {
@@ -137,21 +133,14 @@ var Nightlighter = class {
 	_connect_to_dbus() {
 		if ( !this.dbus_proxy ) {
 			log_debug('Connecting to DBus...');
-			const connection = Gio.bus_get_sync(Gio.BusType.SESSION, null);
-			if ( connection === null ) {
-				const message = _('Unable to connect to the session bus.');
-				throw new Error(message);
-			}
-			this.dbus_proxy = Gio.DBusProxy.new_sync(
-				connection,
-				Gio.DBusProxyFlags.GET_INVALIDATED_PROPERTIES,
-				null,
+			const color_interface = fileUtils.loadInterfaceXML('org.gnome.SettingsDaemon.Color');
+			const ColorProxy = Gio.DBusProxy.makeProxyWrapper(color_interface);
+			this.dbus_proxy = new ColorProxy(
+				Gio.DBus.session,
 				'org.gnome.SettingsDaemon.Color',
-				'/org/gnome/SettingsDaemon/Color',
-				'org.gnome.SettingsDaemon.Color',
-				null
+				'/org/gnome/SettingsDaemon/Color'
 			);
-			if ( this.dbus_proxy === null ) {
+			if ( !this.dbus_proxy ) {
 				const message = _('Unable to create proxy to the session bus.');
 				throw new Error(message);
 			}
@@ -184,8 +173,16 @@ var Nightlighter = class {
 	}
 
 	_on_nightlight_change() {
-		log_debug('Night Light has changed.');
-		this.emit();
+		const nightlight_active = this._get_nightlight_active();
+		if ( State.get('nightlight_active') !== nightlight_active ) {
+			log_debug('Night Light has become ' + (nightlight_active ? '' : 'in') + 'active.');
+			State.set('nightlight_active', nightlight_active);
+			this.emit();
+		}
+	}
+
+	_get_nightlight_active() {
+		return this.dbus_proxy.NightLightActive
 	}
 
 }
