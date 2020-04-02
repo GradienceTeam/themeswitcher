@@ -22,6 +22,7 @@ These themes have been tested and work:
 - Matcha (Manjaro default)
 - Materia
 - Mojave
+- Plata
 - Pop (Pop!_OS default)
 - Qogir
 - Teja
