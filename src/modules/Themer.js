@@ -70,7 +70,7 @@ var Themer = class {
 	set current(theme) {
 		if ( theme !== this.current ) {
 			this.gsettings.set_string(config.THEME_GSETTINGS_PROPERTY, theme);
-			log_debug(`Theme has been set to "${theme}"`);
+			log_debug(`Theme has been set to "${theme}".`);
 		}
 	}
 
@@ -110,7 +110,7 @@ var Themer = class {
 			if ( !State.get('last_disabled_on_screen_lock') ) {
 				State.set('original_theme', this.variants.get('original'));
 			}
-			log_debug('Variants updated: ' + this.variants);
+			log_debug(`Variants updated: {day: "${this.variants.get('day')}", night: "${this.variants.get('night')}"}`);
 		}
 	}
 
@@ -133,7 +133,7 @@ var Themer = class {
 	}
 
 	_on_theme_change() {
-		log_debug('Theme has changed.');
+		log_debug(`Theme has changed to "${this.current}".`);
 		this.emit();
 	}
 
