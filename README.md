@@ -22,7 +22,7 @@ These themes have been tested and work:
 - Matcha (Manjaro default)
 - Materia
 - Mojave
-- Plata (Solus GNOME default)
+- Plata (Solus default)
 - Pop (Pop!_OS default)
 - Qogir
 - Teja
