@@ -17,4 +17,4 @@
 1.
 
 
-/label ~bug
+/label ~"bug::not confirmed"
