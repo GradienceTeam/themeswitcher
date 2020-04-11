@@ -58,6 +58,7 @@ var Themer = class {
 		// GNOME Shell disables extensions when locking the screen. We'll only reset the theme if the user disables the extension.
 		State.set('last_disabled_on_screen_lock', main.screenShield.locked);
 		if ( !State.get('last_disabled_on_screen_lock') ) {
+			log_debug('Resetting the user\'s original theme...')
 			this.reset_theme();
 		}
 		log_debug('Themer disabled.');
