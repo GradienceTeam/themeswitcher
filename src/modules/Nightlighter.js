@@ -178,7 +178,9 @@ var Nightlighter = class {
 	}
 
 	_get_nightlight_active() {
-		return this.dbus_proxy.NightLightActive
+		if ( this.dbus_proxy ) {
+			return this.dbus_proxy.NightLightActive;
+		}
 	}
 
 }
