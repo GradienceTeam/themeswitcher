@@ -28,8 +28,6 @@ const { log_debug } = Me.imports.utils;
 const Gettext = imports.gettext.domain(config.EXT_UUID);
 const _ = Gettext.gettext;
 
-const State = new Map();
-
 
 /*
 The Nightlighter establishes a connection with the session bus to get the
@@ -57,7 +55,6 @@ var Nightlighter = class {
 			this._check_nightlight_status();
 			this._connect_to_dbus();
 			this._listen_to_nightlight_changes();
-			State.set('nightlight_active', this._get_nightlight_active())
 			this.emit();
 			log_debug('Nightlighter enabled.');
 		}
@@ -77,7 +74,7 @@ var Nightlighter = class {
 	}
 
 	get time() {
-		return State.get('nightlight_active') ? 'night' : 'day';
+		return this._get_nightlight_active() ? 'night' : 'day';
 	}
 
 	subscribe(callback) {
@@ -172,11 +169,10 @@ var Nightlighter = class {
 		}
 	}
 
-	_on_nightlight_change() {
-		const nightlight_active = this._get_nightlight_active();
-		if ( State.get('nightlight_active') !== nightlight_active ) {
-			log_debug('Night Light has become ' + (nightlight_active ? '' : 'in') + 'active.');
-			State.set('nightlight_active', nightlight_active);
+	_on_nightlight_change(dbus_properties, dbus_signals) {
+		const signals = dbus_signals.deep_unpack();
+		if ( signals.NightLightActive ) {
+			log_debug('Night Light has become ' + (signals.NightLightActive.unpack() ? '' : 'in') + 'active.');
 			this.emit();
 		}
 	}
