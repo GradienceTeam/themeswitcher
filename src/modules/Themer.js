@@ -27,8 +27,6 @@ const { log_debug } = Me.imports.utils;
 
 const { Variants } = Me.imports.modules.Variants;
 
-const State = new Map();
-
 
 /*
 The Themer communicates with the system to get the current theme or set a new
@@ -40,14 +38,17 @@ var Themer = class {
 
 	constructor() {
 		log_debug('Initializing Themer...');
-		this.gsettings = new Gio.Settings({ schema: config.THEME_GSETTINGS_SCHEMA });
+		this.settings = extensionUtils.getSettings();
+		this.theme_gsettings = new Gio.Settings({ schema: config.THEME_GSETTINGS_SCHEMA });
 		log_debug('Themer initialized.');
 	}
 
 	enable() {
 		log_debug('Enabling Themer...');
+		this.ready = false;
 		this._listen_to_theme_changes();
-		this._update_variants();
+		this.update_variants();
+		this.ready = true;
 		this.emit();
 		log_debug('Themer enabled.');
 	}
@@ -55,22 +56,22 @@ var Themer = class {
 	disable() {
 		log_debug('Disabling Themer...');
 		this._stop_listening_to_theme_changes();
-		// GNOME Shell disables extensions when locking the screen. We'll only reset the theme if the user disables the extension.
-		State.set('last_disabled_on_screen_lock', main.screenShield.locked);
-		if ( !State.get('last_disabled_on_screen_lock') ) {
-			log_debug('Resetting the user\'s original theme...')
+		// GNOME Shell disables extensions when locking the screen. We'll only
+		// reset the theme if the user disables the extension to prevent
+		// flickering when unlocking.
+		if ( !main.screenShield.locked ) {
 			this.reset_theme();
 		}
 		log_debug('Themer disabled.');
 	}
 
-	get current() {
-		return this.gsettings.get_string(config.THEME_GSETTINGS_PROPERTY);
+	get current_theme() {
+		return this.theme_gsettings.get_string(config.THEME_GSETTINGS_PROPERTY);
 	}
 
-	set current(theme) {
-		if ( theme !== this.current ) {
-			this.gsettings.set_string(config.THEME_GSETTINGS_PROPERTY, theme);
+	set current_theme(theme) {
+		if ( theme !== this.current_theme ) {
+			this.theme_gsettings.set_string(config.THEME_GSETTINGS_PROPERTY, theme);
 			log_debug(`Theme has been set to "${theme}".`);
 		}
 	}
@@ -86,38 +87,38 @@ var Themer = class {
 	}
 
 	set_variant(variant) {
-		if ( variant && this.variants ) {
-			this.current = this.variants.get(variant);
+		if ( this.ready ) {
+			log_debug(`Setting theme to the "${variant}" variant...`);
+			this.current_theme = this.settings.get_string(`theme-${variant}`);
 		}
 	}
 
 	reset_theme() {
-		this.current = State.get('original_theme');
+		this.set_variant('original');
 		log_debug('Theme has been reset to the user\'s original variant.')
 	}
 
 	update_variants() {
-		if ( this.variants ) {
-			const new_theme = this.current;
-			if ( new_theme && new_theme !== this.variants.get('day') && new_theme !== this.variants.get('night') ) {
-				this._update_variants();
-			}
+		if ( !this._are_variants_up_to_date() ) {
+			this._update_variants();
 		}
 	}
 
 	_update_variants() {
-		if ( this.current ) {
-			this.variants = Variants.guess_from(this.current);
-			if ( !State.get('last_disabled_on_screen_lock') ) {
-				State.set('original_theme', this.variants.get('original'));
-			}
-			log_debug(`Variants updated: {day: "${this.variants.get('day')}", night: "${this.variants.get('night')}"}`);
+		if ( this.current_theme ) {
+			const variants = Variants.guess_from(this.current_theme);
+			variants.forEach( (theme, variant) => this.settings.set_string(`theme-${variant}`, theme) );
+			log_debug(`Variants updated: {day: "${variants.get('day')}", night: "${variants.get('night')}"}`);
 		}
+	}
+
+	_are_variants_up_to_date() {
+		return ( this.current_theme === this.settings.get_string('theme-day') || this.current_theme === this.settings.get_string('theme-night') );
 	}
 
 	_listen_to_theme_changes() {
 		if ( !this.theme_change_connect ) {
-			this.theme_change_connect = this.gsettings.connect(
+			this.theme_change_connect = this.theme_gsettings.connect(
 				'changed::' + config.THEME_GSETTINGS_PROPERTY,
 				this._on_theme_change.bind(this)
 			);
@@ -126,15 +127,15 @@ var Themer = class {
 	}
 
 	_stop_listening_to_theme_changes() {
-		if ( this.gsettings && this.theme_change_connect ){
-			this.gsettings.disconnect(this.theme_change_connect);
+		if ( this.theme_gsettings && this.theme_change_connect ){
+			this.theme_gsettings.disconnect(this.theme_change_connect);
 			this.theme_change_connect = null;
 			log_debug('Stopped listening for theme changes.');
 		}
 	}
 
 	_on_theme_change() {
-		log_debug(`Theme has changed to "${this.current}".`);
+		log_debug(`Theme has changed to "${this.current_theme}".`);
 		this.emit();
 	}
 

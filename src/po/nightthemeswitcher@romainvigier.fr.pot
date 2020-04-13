@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Night Theme Switcher 18\n"
+"Project-Id-Version: Night Theme Switcher 22\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-26 17:37+0100\n"
+"POT-Creation-Date: 2020-04-12 14:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/Nightlighter.js:99
+#: src/modules/Nightlighter.js:101
 msgid ""
 "Night Light must be enabled to use this extension. Please enable it in your "
 "system settings."
 msgstr ""
 
-#: src/modules/Nightlighter.js:132
-msgid "Unable to connect to the session bus."
+#: src/modules/Nightlighter.js:144
+msgid "Unable to create proxy to the session bus."
 msgstr ""
 
-#: src/modules/Nightlighter.js:145
-msgid "Unable to create proxy to the session bus."
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:6
+msgid "Original theme"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:7
+msgid "The theme to restore if the extension is disabled"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
+msgid "Day theme"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:12
+msgid "The theme to use during daytime"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:16
+msgid "Night theme"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
+msgid "The theme to use during nighttime"
 msgstr ""
