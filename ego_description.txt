@@ -15,6 +15,7 @@ These themes have been tested and work:
 - Mojave
 - Plata (Solus default)
 - Pop (Pop!_OS default)
+- Prof-Gnome-3
 - Qogir
 - Teja
 - Vimix
