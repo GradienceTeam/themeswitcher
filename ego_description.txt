@@ -19,6 +19,7 @@ These themes have been tested and work:
 - Pop (Pop!_OS default)
 - Prof-Gnome-3
 - Qogir
+- Simply Circles
 - Teja
 - Vimix
 - Yaru (Ubuntu default)
