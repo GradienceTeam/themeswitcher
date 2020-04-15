@@ -4,6 +4,7 @@ These themes have been tested and work:
 - Adapta
 - Adwaita (GNOME & Fedora default)
 - Arc
+- Cabinet
 - Canta
 - ChromeOS
 - Flat-Remix-GTK

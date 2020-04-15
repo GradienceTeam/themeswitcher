@@ -14,6 +14,7 @@ These themes have been tested and work:
 - Adwaita (GNOME & Fedora default)
 - Arc
 - Canta
+- Cabinet
 - ChromeOS
 - Flat-Remix-GTK
 - HighContrast

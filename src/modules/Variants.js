@@ -52,9 +52,10 @@ var Variants = class {
 			variants.set('day', name.replace('-Nokto', ''));
 			variants.set('night', variants.get('day').replace('Adapta', 'Adapta-Nokto'));
 		}
-		else if ( name.includes('Arc') ) {
+		else if ( name.match(/^(Arc|Cabinet)/) ) {
+			const basename = name.split('-')[0];
 			variants.set('day', name.replace(/-Dark(?!er)/, ''));
-			variants.set('night', variants.get('day').replace(/Arc(-Darker)?/, 'Arc-Dark'));
+			variants.set('night', variants.get('day').replace(new RegExp(`${basename}(-Darker)?`), `${basename}-Dark`));
 		}
 		else if ( name.match(/^(Canta|ChromeOS|Materia|Orchis).*-compact/) ) {
 			variants.set('day', name.replace('-dark', ''));
