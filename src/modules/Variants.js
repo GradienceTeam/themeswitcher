@@ -56,7 +56,7 @@ var Variants = class {
 			variants.set('day', name.replace(/-Dark(?!er)/, ''));
 			variants.set('night', variants.get('day').replace(/Arc(-Darker)?/, 'Arc-Dark'));
 		}
-		else if ( name.match(/^(Canta|ChromeOS|Materia).*-compact/) ) {
+		else if ( name.match(/^(Canta|ChromeOS|Materia|Orchis).*-compact/) ) {
 			variants.set('day', name.replace('-dark', ''));
 			variants.set('night', variants.get('day').replace(/(-light)?-compact/, '-dark-compact'));
 		}
