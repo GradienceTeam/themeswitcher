@@ -84,6 +84,10 @@ var Variants = class {
 			variants.set('day', name.replace('-Noir', ''));
 			variants.set('night', variants.get('day').replace(/Plata(-Lumine)?/, 'Plata-Noir'));
 		}
+		else if ( name.match(/^Prof-Gnome-(.+)-3(.*)/) ) {
+			variants.set('day', name.replace(/-Dark(?!er)/, '-Light'));
+			variants.set('night', variants.get('day').replace(/(-Light(-DS)?|-Darker)/, '-Dark'))
+		}
 		else if ( name.includes('Teja') ) {
 			const dark_variant = '_' + (name.replace('_Light').split('_')[1] || 'Dark');
 			variants.set('day', name.replace(/(_Dark(est)?|_Black)/, ''));
