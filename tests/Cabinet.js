@@ -22,14 +22,14 @@ const { Variants } = require('./_variants');
 
 ['Blue', 'Green', 'Orange'].forEach(color => {
 	test(`Cabinet-${color}`, t => {
-		const variants = Variants.guess_from(`Cabinet-${color}`);
-		t.is(variants.get('day'), `Cabinet-${color}`);
+		const variants = Variants.guess_from(`Cabinet-Light-${color}`);
+		t.is(variants.get('day'), `Cabinet-Light-${color}`);
 		t.is(variants.get('night'), `Cabinet-Dark-${color}`);
 	});
 
 	test(`Cabinet-Dark-${color}`, t => {
 		const variants = Variants.guess_from(`Cabinet-Dark-${color}`);
-		t.is(variants.get('day'), `Cabinet-${color}`);
+		t.is(variants.get('day'), `Cabinet-Light-${color}`);
 		t.is(variants.get('night'), `Cabinet-Dark-${color}`);
 	});
 
