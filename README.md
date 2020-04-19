@@ -53,10 +53,10 @@ Clone the repository and enter the directory:
 git clone https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension.git && cd nightthemeswitcher-gnome-shell-extension
 ```
 
-Install using `make`:
+Build and install using `make`:
 
 ```bash
-make install
+make build && make install
 ```
 
 Restart your GNOME session and enable the extension:
