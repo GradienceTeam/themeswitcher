@@ -76,7 +76,7 @@ var Variants = class {
 			variants.set('day', 'HighContrast');
 			variants.set('night', 'HighContrastInverse');
 		}
-		else if ( name.match(/^(Layan|Matcha|Nextwaita)/) ) {
+		else if ( name.match(/^(Layan|Macwaita|Matcha|Nextwaita)/) ) {
 			const basename = name.split('-')[0];
 			variants.set('day', name.replace('-dark', ''));
 			variants.set('night', variants.get('day').replace(new RegExp(`${basename}(-light)?`), `${basename}-dark`));
