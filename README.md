@@ -20,6 +20,7 @@ These themes have been tested and work:
 - HighContrast
 - Kimi
 - Layan
+- Macwaita
 - Matcha (Manjaro default)
 - Materia
 - Mojave
