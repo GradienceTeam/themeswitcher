@@ -23,6 +23,7 @@ These themes have been tested and work:
 - Matcha (Manjaro default)
 - Materia
 - Mojave
+- Nextwaita
 - Orchis
 - Plata (Solus default)
 - Pop (Pop!_OS default)
