@@ -1,34 +1,70 @@
 # Night Theme Switcher
 # Copyright (C) 2019 Romain Vigier
 # This file is distributed under the same license as the Night Theme Switcher package.
-# Romain Vigier <>, 2019-2020.
+# Romain Vigier <romain@romainvigier.fr>, 2019-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-12 14:18+0200\n"
-"PO-Revision-Date: 2020-04-12 14:21+0200\n"
-"Last-Translator: Romain Vigier <>\n"
-"Language-Team: French <none>\n"
-"Language: fr\n"
+"POT-Creation-Date: 2020-05-06 16:40+0200\n"
+"PO-Revision-Date: 2020-05-06 16:40+0200\n"
+"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"Language-Team: French - France <romain@romainvigier.fr>\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 3.34.0\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
-#: src/modules/Nightlighter.js:101
+#: src/prefs.js:58
 msgid ""
-"Night Light must be enabled to use this extension. Please enable it in your "
-"system settings."
+"The extension will try to use Night Light or Location Services to "
+"automatically set your current sunrise and sunset times if they are "
+"enabled.\n"
+"If you prefer, you can set a manual schedule."
 msgstr ""
-"Le mode nuit doit être activé pour utiliser l’extension. Veuillez l’activer "
-"dans les réglages du système."
+"S’ils sont activés, l’extension essayera d’utiliser le mode nuit ou les "
+"services de localisation pour définir automatiquement les heures de lever et "
+"de coucher du soleil.\n"
+"Si vous préférez, vous pouvez définir manuellement un horaire."
 
-#: src/modules/Nightlighter.js:144
-msgid "Unable to create proxy to the session bus."
-msgstr "Impossible de créer une passerelle vers le bus de la session."
+#: src/prefs.js:93
+msgid "Manual schedule:"
+msgstr "Horaire manuel :"
+
+#: src/prefs.js:138
+msgid "Sunrise: "
+msgstr "Lever du soleil :"
+
+#: src/prefs.js:139
+msgid "Sunset: "
+msgstr "Coucher du soleil :"
+
+#: src/modules/Timer.js:268
+msgid "Unable to connect to Color DBus proxy."
+msgstr "Impossible de se connecter à la passerelle DBus Color."
+
+#: src/modules/Timer.js:330
+msgid "Unable to connect to GeoClue Manager DBus proxy."
+msgstr "Impossible de se connecter à la passerelle DBus GeoClue Manager."
+
+#: src/modules/Timer.js:340
+msgid "Unable to get a GeoClue Client."
+msgstr "Impossible d’obtenir un client GeoClue."
+
+#: src/modules/Timer.js:358
+msgid "Unable to connect to GeoClue Client DBus proxy."
+msgstr "Impossible de se connecter à la passerelle DBus GeoClue Client."
+
+#: src/modules/Timer.js:417
+msgid "Unable to connect to GeoClue Location DBus proxy."
+msgstr "Impossible de se connecter à la passerelle DBus GeoClue Location."
+
+#: src/modules/Timer.js:447
+msgid "Unable to get current location."
+msgstr "Impossible d’obtenir l’emplacement actuel."
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:6
 msgid "Original theme"
@@ -53,6 +89,56 @@ msgstr "Thème nocturne"
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 msgid "The theme to use during nighttime"
 msgstr "Thème à utiliser pendant la nuit"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:21
+msgid "Use manual schedule"
+msgstr "Utiliser un horaire manuel"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
+msgid "Disable automatic times detection"
+msgstr "Désactive la détection automatique des horaires"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:31
+msgid "Time source"
+msgstr "Source des horaires"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:32
+msgid "The source used to check current time"
+msgstr "Source utilisée pour vérifier les horaires"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:36
+msgid "Sunrise time"
+msgstr "Heure du lever"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:37
+msgid "When the day starts"
+msgstr "Quand le jour se lève"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:41
+msgid "Sunset time"
+msgstr "Heure du coucher"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:42
+msgid "When the day ends"
+msgstr "Quand le jour se couche"
+
+#~ msgid ""
+#~ "Night Light or Location Services must be enabled to use this extension. "
+#~ "Please enable it in your system settings."
+#~ msgstr ""
+#~ "Le mode nuit ou les services de localisation doivent être activés pour "
+#~ "utiliser cette extension. Veuillez les activer dans vos paramètres du "
+#~ "système."
+
+#~ msgid ""
+#~ "Night Light must be enabled to use this extension. Please enable it in "
+#~ "your system settings."
+#~ msgstr ""
+#~ "Le mode nuit doit être activé pour utiliser l’extension. Veuillez "
+#~ "l’activer dans les réglages du système."
+
+#~ msgid "Unable to create proxy to the session bus."
+#~ msgstr "Impossible de créer une passerelle vers le bus de la session."
 
 #~ msgid "Unable to connect to the session bus."
 #~ msgstr "Impossible de se connecter au bus de la session."

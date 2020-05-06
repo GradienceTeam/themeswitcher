@@ -16,5 +16,30 @@
 			<summary>Night theme</summary>
 			<description>The theme to use during nighttime</description>
 		</key>
+		<key name="time-force-manual" type="b">
+			<default>false</default>
+			<summary>Use manual schedule</summary>
+			<description>Disable automatic times detection</description>
+		</key>
+		<key name="time-source" type="s">
+			<choices>
+				<choice value="nightlight"/>
+				<choice value="location"/>
+				<choice value="manual"/>
+			</choices>
+			<default>"manual"</default>
+			<summary>Time source</summary>
+			<description>The source used to check current time</description>
+		</key>
+		<key name="time-sunrise" type="d">
+			<default>6</default>
+			<summary>Sunrise time</summary>
+			<description>When the day starts</description>
+		</key>
+		<key name="time-sunset" type="d">
+			<default>20</default>
+			<summary>Sunset time</summary>
+			<description>When the day ends</description>
+		</key>
 	</schema>
 </schemalist>

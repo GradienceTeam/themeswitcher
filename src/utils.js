@@ -23,6 +23,6 @@ const config = Me.imports.config;
 
 var log_debug = function(message) {
 	if ( config.debug ) {
-		log(`[DEBUG] ${config.EXT_NAME}: ${message}`);
+		log(`[DEBUG] ${Me.metadata.name}: ${message}`);
 	}
 }
