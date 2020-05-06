@@ -120,7 +120,7 @@ var Themer = class {
 		if ( !this.theme_change_connect ) {
 			this.theme_change_connect = this.theme_gsettings.connect(
 				'changed::' + config.THEME_GSETTINGS_PROPERTY,
-				this._on_theme_change.bind(this)
+				this._on_theme_changed.bind(this)
 			);
 			log_debug('Listening for theme changes...');
 		}
@@ -134,7 +134,7 @@ var Themer = class {
 		}
 	}
 
-	_on_theme_change() {
+	_on_theme_changed() {
 		log_debug(`Theme has changed to "${this.current_theme}".`);
 		this.emit();
 	}

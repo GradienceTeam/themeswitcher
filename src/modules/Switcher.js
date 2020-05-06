@@ -24,31 +24,30 @@ const config = Me.imports.config;
 
 const { log_debug } = Me.imports.utils;
 
-const { Nightlighter } = Me.imports.modules.Nightlighter;
 const { Themer } = Me.imports.modules.Themer;
+const { Timer } = Me.imports.modules.Timer;
 
 
 /*
 The Switcher is the orchestrator of the extension.
 
 When the extension is enabled, it asks the Themer to listen to theme changes
-from the user and the Nightlighter to listen to changes in the Night Light
-status:
+from the user and the Timer to listen to changes in the current time:
 	- On theme change, it asks the Themer to guess the new day and night
 	variants for that theme, and to apply the relevant variant depending on the
-	Night Light status.
-	- On Night Light activation or deactivation, it asks the Themer to apply
-	the relevant variant.
+	time of the day.
+	- On time of the day change, it asks the Themer to apply the relevant
+	variant.
 
-When the extension is disabled, it asks the Themer and the Nightlighter to
-disable themselves.
+When the extension is disabled, it asks the Themer and the Timer to disable
+themselves.
 */
 
 var Switcher = class {
 
 	constructor() {
 		log_debug('Initializing extension...');
-		extensionUtils.initTranslations(config.EXT_UUID);
+		extensionUtils.initTranslations(Me.metadata.uuid);
 		log_debug('Extension initialized.');
 	}
 
@@ -57,17 +56,16 @@ var Switcher = class {
 		try {
 			this.theme = new Themer();
 			this.theme.enable();
-			this.theme.subscribe(this._on_theme_change.bind(this));
+			this.theme.subscribe(this._on_theme_changed.bind(this));
 
-			this.nightlight = new Nightlighter();
-			this.nightlight.enable();
-			this.nightlight.subscribe(this._on_nightlight_change.bind(this));
+			this.time = new Timer();
+			this.time.enable();
+			this.time.subscribe(this._on_time_changed.bind(this));
 
-			this.theme.set_variant(this.nightlight.time);
 			log_debug('Extension enabled.');
 		}
 		catch(e) {
-			main.notifyError(config.EXT_NAME, e.message);
+			main.notifyError(Me.metadata.name, e.message);
 		}
 	}
 
@@ -75,23 +73,23 @@ var Switcher = class {
 		log_debug('Disabling extension...');
 		try {
 			this.theme.disable();
-			this.nightlight.disable();
+			this.time.disable();
 		}
 		catch(e) {} // Since we're disabling, we'll just ignore errors.
 		finally {
 			this.theme = null;
-			this.nightlight = null;
+			this.time = null;
 		}
 		log_debug('Extension disabled.');
 	}
 
-	_on_theme_change() {
+	_on_theme_changed() {
 		this.theme.update_variants();
-		this.theme.set_variant(this.nightlight.time);
+		this.theme.set_variant(this.time.current);
 	}
 
-	_on_nightlight_change() {
-		this.theme.set_variant(this.nightlight.time);
+	_on_time_changed() {
+		this.theme.set_variant(this.time.current);
 	}
 
 }

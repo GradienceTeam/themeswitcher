@@ -1,6 +1,6 @@
 {
 	"name": "Night Theme Switcher",
-	"description": "Automatically toggle between your light and dark GTK theme variants when Night Light activates.",
+	"description": "Automatically toggle between your light and dark GTK theme variants.",
 	"uuid": "nightthemeswitcher@romainvigier.fr",
 	"gettext-domain": "nightthemeswitcher@romainvigier.fr",
 	"settings-schema": "org.gnome.shell.extensions.nightthemeswitcher",
