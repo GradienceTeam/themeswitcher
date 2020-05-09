@@ -49,7 +49,7 @@ var Timer = class {
 		this.settings = extensionUtils.getSettings();
 		this.nightlight_gsettings = new Gio.Settings({ schema: config.NIGHTLIGHT_GSETTINGS_SCHEMA });
 		this.location_gsettings = new Gio.Settings({ schema: config.LOCATION_GSETTINGS_SCHEMA });
-		log_debug('Nightlighter initialized.');
+		log_debug('Timer initialized.');
 	}
 
 	enable() {

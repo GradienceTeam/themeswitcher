@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="nightthemeswitcher@romainvigier.fr">
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher" path="/org/gnome/shell/extensions/nightthemeswitcher/">
-		<key name="theme-original" type="s">
-			<default>""</default>
-			<summary>Original theme</summary>
-			<description>The theme to restore if the extension is disabled</description>
+		<key name="theme-force-manual" type="b">
+			<default>false</default>
+			<summary>Use manual variants</summary>
+			<description>Disable automatic variants detection</description>
 		</key>
 		<key name="theme-day" type="s">
-			<default>""</default>
+			<default>"Adwaita"</default>
 			<summary>Day theme</summary>
 			<description>The theme to use during daytime</description>
 		</key>
 		<key name="theme-night" type="s">
-			<default>""</default>
+			<default>"Adwaita-dark"</default>
 			<summary>Night theme</summary>
 			<description>The theme to use during nighttime</description>
+		</key>
+		<key name="theme-original" type="s">
+			<default>""</default>
+			<summary>Original theme</summary>
+			<description>The theme to restore if the extension is disabled</description>
 		</key>
 		<key name="time-force-manual" type="b">
 			<default>false</default>
