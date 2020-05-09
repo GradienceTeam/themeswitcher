@@ -22,10 +22,14 @@ const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
+const utils = Me.imports.utils;
 
 const { log_debug } = Me.imports.utils;
 
 const { Variants } = Me.imports.modules.Variants;
+
+const Gettext = imports.gettext.domain(Me.metadata.uuid);
+const _ = Gettext.gettext;
 
 
 /*
@@ -44,23 +48,44 @@ var Themer = class {
 	}
 
 	enable() {
-		log_debug('Enabling Themer...');
-		this.ready = false;
-		this._listen_to_theme_changes();
-		this.update_variants();
-		this.ready = true;
-		this.emit();
-		log_debug('Themer enabled.');
+		try {
+			log_debug('Enabling Themer...');
+			this.ready = false;
+			this._listen_to_force_manual_status();
+			if ( this._is_force_manual_enabled() ) {
+				log_debug('Using manually set variants.');
+				this._listen_to_prefs_theme_change();
+			}
+			else {
+				log_debug('Automatically detecting variants.');
+				this._listen_to_theme_changes();
+				this.update_variants();
+			}
+			this.ready = true;
+			this.emit();
+			log_debug('Themer enabled.');
+		}
+		catch(e) {
+			if ( e.message ) {
+				main.notifyError(Me.metadata.name, e.message);
+			}
+		}
 	}
 
 	disable() {
 		log_debug('Disabling Themer...');
-		this._stop_listening_to_theme_changes();
-		// GNOME Shell disables extensions when locking the screen. We'll only
-		// reset the theme if the user disables the extension to prevent
-		// flickering when unlocking.
-		if ( !main.screenShield.locked ) {
-			this.reset_theme();
+		this._stop_listening_to_force_manual_status();
+		if ( this._is_force_manual_enabled() ) {
+			this._stop_listening_to_prefs_theme_change();
+		}
+		else {
+			this._stop_listening_to_theme_changes();
+			// GNOME Shell disables extensions when locking the screen. We'll
+			// only reset the theme if the user disables the extension to
+			// prevent flickering when unlocking.
+			if ( !main.screenShield.locked ) {
+				this.reset_theme();
+			}
 		}
 		log_debug('Themer disabled.');
 	}
@@ -99,7 +124,7 @@ var Themer = class {
 	}
 
 	update_variants() {
-		if ( !this._are_variants_up_to_date() ) {
+		if ( !this._are_variants_up_to_date() && !this._is_force_manual_enabled() ) {
 			this._update_variants();
 		}
 	}
@@ -107,13 +132,46 @@ var Themer = class {
 	_update_variants() {
 		if ( this.current_theme ) {
 			const variants = Variants.guess_from(this.current_theme);
-			variants.forEach( (theme, variant) => this.settings.set_string(`theme-${variant}`, theme) );
-			log_debug(`Variants updated: {day: "${variants.get('day')}", night: "${variants.get('night')}"}`);
+			if ( utils.is_theme_installed(variants.get('day')) && utils.is_theme_installed(variants.get('night')) ) {
+				variants.forEach( (theme, variant) => this.settings.set_string(`theme-${variant}`, theme) );
+				log_debug(`Variants updated: {day: "${variants.get('day')}", night: "${variants.get('night')}"}`);
+			}
+			else {
+				const message = _('The extension cannot detect the day and night variants for the "%s" theme. Please choose another theme or manually set variants in the extension preferences.').format(variants.get('original'));
+				throw new Error(message);
+			}
 		}
 	}
 
 	_are_variants_up_to_date() {
 		return ( this.current_theme === this.settings.get_string('theme-day') || this.current_theme === this.settings.get_string('theme-night') );
+	}
+
+	_is_force_manual_enabled() {
+		return this.settings.get_boolean('theme-force-manual');
+	}
+
+	_listen_to_force_manual_status() {
+		if ( !this.force_manual_status_connect ) {
+			this.force_manual_status_connect = this.settings.connect(
+				'changed::theme-force-manual',
+				this._on_force_manual_status_changed.bind(this)
+			);
+			log_debug('Listening to manual variants status changes...');
+		}
+	}
+
+	_stop_listening_to_force_manual_status() {
+		if ( this.settings && this.force_manual_status_connect ) {
+			this.settings.disconnect(this.force_manual_status_connect);
+			this.force_manual_status_connect = null;
+			log_debug('Stopped listening to manual variants status changes.');
+		}
+	}
+
+	_on_force_manual_status_changed() {
+		log_debug('Manual variants status has changed.');
+		this.enable();
 	}
 
 	_listen_to_theme_changes() {
@@ -136,7 +194,28 @@ var Themer = class {
 
 	_on_theme_changed() {
 		log_debug(`Theme has changed to "${this.current_theme}".`);
-		this.emit();
+		this.ready ? this.emit() : this.enable();
+	}
+
+	_listen_to_prefs_theme_change() {
+		if ( !this.prefs_theme_change_connect ) {
+			this.prefs_theme_change_connect = new Map();
+			['day', 'night'].forEach(time => {
+				this.prefs_theme_change_connect.set(time, this.settings.connect(
+					`changed::theme-${time}`,
+					this._on_theme_changed.bind(this)
+				));
+				log_debug(`Listening for ${time} theme preference changes...`);
+			});
+		}
+	}
+
+	_stop_listening_to_prefs_theme_change() {
+		if ( this.settings && this.prefs_theme_change_connect ) {
+			this.prefs_theme_change_connect.forEach(connect => this.settings.disconnect(connect));
+			this.prefs_theme_change_connect = null;
+			log_debug('Stopped listening to theme preferences changes.');
+		}
 	}
 
 }

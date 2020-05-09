@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Night Theme Switcher 25\n"
+"Project-Id-Version: Night Theme Switcher 26\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-06 16:40+0200\n"
+"POT-Creation-Date: 2020-05-09 10:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,37 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:58
+#: src/prefs.js:65
+msgid "Theme"
+msgstr ""
+
+#: src/prefs.js:71
+msgid ""
+"The extension will try to automatically detect the day and night variants of "
+"your theme.\n"
+"If the theme you use isn't supported, please <a href=\"https://gitlab.com/"
+"rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">submit a request</"
+"a>.\n"
+"If you prefer, you can manually set variants."
+msgstr ""
+
+#: src/prefs.js:107
+msgid "Manual variants"
+msgstr ""
+
+#: src/prefs.js:151
+msgid "Day variant"
+msgstr ""
+
+#: src/prefs.js:152
+msgid "Night variant"
+msgstr ""
+
+#: src/prefs.js:197
+msgid "Schedule"
+msgstr ""
+
+#: src/prefs.js:203
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are "
@@ -25,48 +55,56 @@ msgid ""
 "If you prefer, you can set a manual schedule."
 msgstr ""
 
-#: src/prefs.js:93
-msgid "Manual schedule:"
+#: src/prefs.js:238
+msgid "Manual schedule"
 msgstr ""
 
-#: src/prefs.js:138
-msgid "Sunrise: "
+#: src/prefs.js:283
+msgid "Sunrise"
 msgstr ""
 
-#: src/prefs.js:139
-msgid "Sunset: "
+#: src/prefs.js:284
+msgid "Sunset"
 msgstr ""
 
-#: src/modules/Timer.js:268
+#: src/modules/Themer.js:140
+#, javascript-format
+msgid ""
+"The extension cannot detect the day and night variants for the \"%s\" theme. "
+"Please choose another theme or manually set variants in the extension "
+"preferences."
+msgstr ""
+
+#: src/modules/Timer.js:269
 msgid "Unable to connect to Color DBus proxy."
 msgstr ""
 
-#: src/modules/Timer.js:330
+#: src/modules/Timer.js:331
 msgid "Unable to connect to GeoClue Manager DBus proxy."
 msgstr ""
 
-#: src/modules/Timer.js:340
+#: src/modules/Timer.js:341
 msgid "Unable to get a GeoClue Client."
 msgstr ""
 
-#: src/modules/Timer.js:358
+#: src/modules/Timer.js:359
 msgid "Unable to connect to GeoClue Client DBus proxy."
 msgstr ""
 
-#: src/modules/Timer.js:417
+#: src/modules/Timer.js:422
 msgid "Unable to connect to GeoClue Location DBus proxy."
 msgstr ""
 
-#: src/modules/Timer.js:447
+#: src/modules/Timer.js:450
 msgid "Unable to get current location."
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:6
-msgid "Original theme"
+msgid "Use manual variants"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:7
-msgid "The theme to restore if the extension is disabled"
+msgid "Disable automatic variants detection"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
@@ -86,33 +124,41 @@ msgid "The theme to use during nighttime"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:21
-msgid "Use manual schedule"
+msgid "Original theme"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
+msgid "The theme to restore if the extension is disabled"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:26
+msgid "Use manual schedule"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Disable automatic times detection"
 msgstr ""
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:31
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:36
 msgid "Time source"
 msgstr ""
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:32
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:37
 msgid "The source used to check current time"
 msgstr ""
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:36
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:41
 msgid "Sunrise time"
 msgstr ""
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:37
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:42
 msgid "When the day starts"
 msgstr ""
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:41
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:46
 msgid "Sunset time"
 msgstr ""
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:42
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:47
 msgid "When the day ends"
 msgstr ""

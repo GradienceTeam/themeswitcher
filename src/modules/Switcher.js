@@ -65,7 +65,9 @@ var Switcher = class {
 			log_debug('Extension enabled.');
 		}
 		catch(e) {
-			main.notifyError(Me.metadata.name, e.message);
+			if ( e.message ) {
+				main.notifyError(Me.metadata.name, e.message);
+			}
 		}
 	}
 
@@ -84,12 +86,26 @@ var Switcher = class {
 	}
 
 	_on_theme_changed() {
-		this.theme.update_variants();
-		this.theme.set_variant(this.time.current);
+		try {
+			this.theme.update_variants();
+			this.theme.set_variant(this.time.current);
+		}
+		catch(e) {
+			if ( e.message ) {
+				main.notifyError(Me.metadata.name, e.message);
+			}
+		}
 	}
 
 	_on_time_changed() {
-		this.theme.set_variant(this.time.current);
+		try {
+			this.theme.set_variant(this.time.current);
+		}
+		catch(e) {
+			if ( e.message ) {
+				main.notifyError(Me.metadata.name, e.message);
+			}
+		}
 	}
 
 }
