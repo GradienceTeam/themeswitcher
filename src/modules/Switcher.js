@@ -22,7 +22,7 @@ const { main } = imports.ui;
 const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
 
-const { log_debug } = Me.imports.utils;
+const { log_debug, log_error } = Me.imports.utils;
 
 const { Themer } = Me.imports.modules.Themer;
 const { Timer } = Me.imports.modules.Timer;
@@ -65,9 +65,7 @@ var Switcher = class {
 			log_debug('Extension enabled.');
 		}
 		catch(e) {
-			if ( e.message ) {
-				main.notifyError(Me.metadata.name, e.message);
-			}
+			log_error(e);
 		}
 	}
 
@@ -91,9 +89,7 @@ var Switcher = class {
 			this.theme.set_variant(this.time.current);
 		}
 		catch(e) {
-			if ( e.message ) {
-				main.notifyError(Me.metadata.name, e.message);
-			}
+			log_error(e);
 		}
 	}
 
@@ -102,9 +98,7 @@ var Switcher = class {
 			this.theme.set_variant(this.time.current);
 		}
 		catch(e) {
-			if ( e.message ) {
-				main.notifyError(Me.metadata.name, e.message);
-			}
+			log_error(e);
 		}
 	}
 

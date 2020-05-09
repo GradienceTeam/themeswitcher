@@ -18,6 +18,7 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 
 const { Gio, GLib, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
+const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
@@ -26,6 +27,13 @@ const config = Me.imports.config;
 var log_debug = function(message) {
 	if ( config.debug ) {
 		log(`[DEBUG] ${Me.metadata.name}: ${message}`);
+	}
+}
+
+var log_error = function(error) {
+	logError(error, Me.metadata.name);
+	if ( error.message ) {
+		main.notifyError(Me.metadata.name, error.message);
 	}
 }
 
