@@ -19,12 +19,11 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 const MainLoop = imports.mainloop;
 const { Gio, GLib } = imports.gi;
 const { extensionUtils, fileUtils } = imports.misc;
-const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
 
-const { log_debug } = Me.imports.utils;
+const { log_debug, log_error } = Me.imports.utils;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
@@ -85,9 +84,7 @@ var Timer = class {
 			log_debug('Timer enabled.');
 		}
 		catch(e) {
-			if ( e.message ) {
-				main.notifyError(Me.metadata.name, e.message);
-			}
+			log_error(e);
 		}
 	}
 

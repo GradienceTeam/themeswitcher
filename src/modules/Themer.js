@@ -24,7 +24,7 @@ const Me = extensionUtils.getCurrentExtension();
 const config = Me.imports.config;
 const utils = Me.imports.utils;
 
-const { log_debug } = Me.imports.utils;
+const { log_debug, log_error } = Me.imports.utils;
 
 const { Variants } = Me.imports.modules.Variants;
 
@@ -66,9 +66,7 @@ var Themer = class {
 			log_debug('Themer enabled.');
 		}
 		catch(e) {
-			if ( e.message ) {
-				main.notifyError(Me.metadata.name, e.message);
-			}
+			log_error(e);
 		}
 	}
 
