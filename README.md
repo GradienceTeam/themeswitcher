@@ -37,7 +37,7 @@ These themes have been tested and work:
 - Vimix
 - Yaru (Ubuntu default)
 
-Other themes with a dark variant might work as well, let me know if there is a specific theme you'd like supported!
+Other themes with a dark variant might work as well, let me know if there is a specific theme you'd like supported! And you can also manually set your day and night theme.
 
 ## Graphical installation
 
