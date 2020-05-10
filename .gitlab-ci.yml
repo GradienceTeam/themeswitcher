@@ -33,12 +33,9 @@ before_script:
 
 test:
   stage: test
-  only:
-    - branches
-    - merge_requests
-    - pushes
-    - tags
-    - master
+  rules:
+    changes:
+      - src/
   script:
     - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y node npm
     - make deps-install
@@ -46,9 +43,9 @@ test:
 
 build:
   stage: build
-  only:
-    - tags
-    - merge_requests
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
+    - if: '$CI_COMMIT_TAG'
   script:
     - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y gnome-shell gettext
     - make build
