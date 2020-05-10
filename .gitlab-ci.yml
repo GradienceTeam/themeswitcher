@@ -34,7 +34,7 @@ before_script:
 test:
   stage: test
   rules:
-    changes:
+    - changes:
       - src/
   script:
     - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y node npm
