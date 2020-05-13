@@ -62,6 +62,8 @@ var Switcher = class {
 			this.time.enable();
 			this.time.subscribe(this._on_time_changed.bind(this));
 
+			this.theme.set_variant(this.time.current);
+
 			log_debug('Extension enabled.');
 		}
 		catch(e) {
