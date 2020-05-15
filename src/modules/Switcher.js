@@ -86,6 +86,10 @@ var Switcher = class {
 	}
 
 	_on_theme_changed() {
+		if ( !this.theme || !this.time ) {
+			return;
+		}
+
 		try {
 			this.theme.update_variants();
 			this.theme.set_variant(this.time.current);
@@ -96,6 +100,10 @@ var Switcher = class {
 	}
 
 	_on_time_changed() {
+		if ( !this.theme || !this.time ) {
+			return;
+		}
+
 		try {
 			this.theme.set_variant(this.time.current);
 		}
