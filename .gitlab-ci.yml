@@ -34,11 +34,11 @@ before_script:
 test:
   stage: test
   rules:
+    - changes:
+      - src/
     - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
     - if: '$CI_COMMIT_TAG'
     - if: '$CI_COMMIT_BRANCH == "master"'
-    - changes:
-      - src/
   script:
     - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y node npm
     - make deps-install
