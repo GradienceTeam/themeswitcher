@@ -1,3 +1,5 @@
+<!-- Put a brief summary of the issue in the title. -->
+
 # My system
 
 - Distribution (name and version):
