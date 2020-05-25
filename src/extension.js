@@ -1,7 +1,7 @@
 /*
 Night Theme Switcher Gnome Shell extension
 
-Copyright (C) 2019, 2020 Romain Vigier
+Copyright (C) 2020 Romain Vigier
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -19,11 +19,94 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 'use strict';
 
 const { extensionUtils } = imports.misc;
+const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
-const { Switcher } = Me.imports.modules.Switcher;
+
+const { log_debug } = Me.imports.utils;
+const { SettingsManager } = Me.imports.modules.SettingsManager;
+const { Timer } = Me.imports.modules.Timer;
+const { GtkThemer } = Me.imports.modules.GtkThemer;
+const { ShellThemer } = Me.imports.modules.ShellThemer;
+const { Backgrounder } = Me.imports.modules.Backgrounder;
+const { Commander } = Me.imports.modules.Commander;
+
+
+const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
+if ( shell_minor_version <= 30 ) {
+	extensionUtils.initTranslations = Me.imports.convenience.initTranslations;
+}
+
+
+var enabled = false;
+var settingsManager = null;
+var timer = null;
+var gtkThemer = null;
+var shellThemer = null;
+var backgrounder = null;
+var commander = null;
 
 
 function init() {
-	return new Switcher();
+	log_debug('Initializing extension...');
+	extensionUtils.initTranslations(Me.metadata.uuid);
+	log_debug('Extension initialized.');
+}
+
+function enable() {
+	this._await_extensionManager_init().then(() => {
+		log_debug('Enabling extension...');
+		settingsManager = new SettingsManager();
+		timer = new Timer();
+		gtkThemer = new GtkThemer();
+		shellThemer = new ShellThemer();
+		backgrounder = new Backgrounder();
+		commander = new Commander();
+
+		settingsManager.enable();
+		timer.enable();
+		gtkThemer.enable();
+		shellThemer.enable();
+		backgrounder.enable();
+		commander.enable();
+
+		enabled = true;
+		log_debug('Extension enabled.');
+	});
+}
+
+function disable() {
+	log_debug('Disabling extension...');
+	enabled = false;
+
+	gtkThemer.disable();
+	shellThemer.disable();
+	backgrounder.disable();
+	commander.disable();
+	timer.disable();
+	settingsManager.disable();
+
+	settingsManager = null;
+	timer = null;
+	gtkThemer = null;
+	shellThemer = null;
+	backgrounder = null;
+	commander = null;
+	log_debug('Extension disabled.');
+}
+
+async function _await_extensionManager_init() {
+	log_debug('Waiting for the Extension Manager to be initialized...');
+	if ( shell_minor_version > 32 ) {
+		while ( true ) {
+			if ( main.extensionManager._initialized ) return;
+			await null;
+		}
+	}
+	else {
+		while ( true ) {
+			if ( imports.ui.extensionSystem.initted ) return;
+			await null;
+		}
+	}
 }

@@ -1,4 +1,4 @@
 build
 node_modules
 
-tests/_variants.js
+tests/**/_variants.js

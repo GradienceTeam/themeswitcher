@@ -2,15 +2,15 @@
 
 ![](./screenshot.png)
 
-Automatically toggle between your light and dark GTK theme variants.
+Automatically toggle your light and dark GTK and GNOME Shell theme variants, switch backgrounds and launch custom commands at sunset and sunrise.
 
 Supports Night Light, Location Services and manual schedule.
 
-_Do you need to change your GNOME shell theme as well? Try [Night Shell Switcher](https://gitlab.com/rmnvgr/nightshellswitcher-gnome-shell-extension/)!_
-
 ## Theme compatibility
 
-These themes have been tested and work:
+These themes have been tested and work out of the box without any configuration. Other themes might work as well, let me know if there is a specific theme you'd like supported! And you can also manually set your day and night variants.
+
+### GTK themes
 
 - Adapta
 - Adwaita (GNOME & Fedora default)
@@ -37,7 +37,25 @@ These themes have been tested and work:
 - Vimix
 - Yaru (Ubuntu default)
 
-Other themes with a dark variant might work as well, let me know if there is a specific theme you'd like supported! And you can also manually set your day and night theme.
+### Shell themes
+
+- Adapta
+- Arc
+- Canta
+- ChromeOS
+- Flat-Remix
+- Kimi
+- Layan
+- Matcha (Manjaro default)
+- Materia
+- Mojave
+- Orchis
+- Plata (Solus default)
+- Pop (Pop!_OS default)
+- Qogir
+- Simply Circles
+- Teja
+- Vimix
 
 ## Graphical installation
 

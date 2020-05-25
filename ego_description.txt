@@ -1,34 +1,5 @@
-Night mode for GNOME apps! Automatically toggle between your light and dark GTK theme variants.
+Night mode for GNOME! Automatically toggle your light and dark GTK and GNOME Shell theme variants, switch backgrounds and launch custom commands at sunset and sunrise.
 
 Supports Night Light, Location Services and manual schedule.
 
-These themes have been tested and work:
-- Adapta
-- Adwaita (GNOME & Fedora default)
-- Arc
-- Cabinet
-- Canta
-- ChromeOS
-- Flat-Remix-GTK
-- HighContrast
-- Kimi
-- Layan
-- Macwaita
-- Matcha (Manjaro default)
-- Materia
-- Mojave
-- Nextwaita
-- Orchis
-- Plata (Solus default)
-- Pop (Pop!_OS default)
-- Prof-Gnome-3
-- Qogir
-- Simply Circles
-- Teja
-- Vimix
-- Yaru (Ubuntu default)
-
-Other themes with a dark variant might work as well, let me know if there is a specific theme you'd like supported! And you can also manually set your day and night theme.
-
-If you need to change your GNOME shell theme as well, try Night Shell Switcher:
-https://extensions.gnome.org/extension/2356/night-shell-switcher/
+It works out of the box with numerous themes (see the list on the repository), and you can manually choose the variants you want.
