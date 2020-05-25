@@ -16,4 +16,20 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-var debug = false;
+const test = require('ava');
+const { Variants } = require('./_variants');
+
+
+['', '-compact'].forEach(size => {
+	test(`Orchis${size}`, t => {
+		const variants = Variants.guess_from(`Orchis${size}`);
+		t.is(variants.get('day'), `Orchis${size}`);
+		t.is(variants.get('night'), `Orchis-dark${size}`);
+	});
+
+	test(`Orchis-dark${size}`, t => {
+		const variants = Variants.guess_from(`Orchis-dark${size}`);
+		t.is(variants.get('day'), `Orchis${size}`);
+		t.is(variants.get('night'), `Orchis-dark${size}`);
+	});
+})

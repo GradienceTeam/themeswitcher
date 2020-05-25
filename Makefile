@@ -29,8 +29,10 @@ build: build-clean
 	gnome-extensions pack \
 		--extra-source=../LICENSE \
 		--extra-source=./config.js \
+		--extra-source=./convenience.js \
 		--extra-source=./utils.js \
 		--extra-source=./modules/ \
+		--extra-source=./preferences/ \
 		--extra-source=./schemas/ \
 		--podir=./po/ \
 		--gettext-domain=$(UUID) \
@@ -54,7 +56,8 @@ clean: build-clean deps-clean
 
 .PHONY: test
 test:
-	cat ./src/modules/Variants.js ./tests/_variants.js.template > ./tests/_variants.js
+	cat ./src/modules/GtkVariants.js ./tests/gtk_themes/_variants.js.template > ./tests/gtk_themes/_variants.js
+	cat ./src/modules/ShellVariants.js ./tests/shell_themes/_variants.js.template > ./tests/shell_themes/_variants.js
 	npm run test
 
 .PHONY: deps-install

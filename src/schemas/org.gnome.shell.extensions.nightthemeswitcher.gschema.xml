@@ -1,50 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="nightthemeswitcher@romainvigier.fr">
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher" path="/org/gnome/shell/extensions/nightthemeswitcher/">
-		<key name="theme-force-manual" type="b">
-			<default>false</default>
-			<summary>Use manual variants</summary>
-			<description>Disable automatic variants detection</description>
-		</key>
-		<key name="theme-day" type="s">
+		<key name="gtk-variant-day" type="s">
 			<default>"Adwaita"</default>
-			<summary>Day theme</summary>
-			<description>The theme to use during daytime</description>
+			<summary>Day GTK theme</summary>
+			<description>The GTK theme to use during daytime</description>
 		</key>
-		<key name="theme-night" type="s">
+		<key name="gtk-variant-night" type="s">
 			<default>"Adwaita-dark"</default>
-			<summary>Night theme</summary>
-			<description>The theme to use during nighttime</description>
+			<summary>Night GTK theme</summary>
+			<description>The GTK theme to use during nighttime</description>
 		</key>
-		<key name="theme-original" type="s">
-			<default>""</default>
-			<summary>Original theme</summary>
-			<description>The theme to restore if the extension is disabled</description>
+		<key name="gtk-variant-original" type="s">
+			<default>"Adwaita"</default>
+			<summary>Original GTK theme</summary>
+			<description>The GTK theme to restore when the extension is disabled</description>
 		</key>
-		<key name="time-force-manual" type="b">
+		<key name="manual-gtk-variants" type="b">
 			<default>false</default>
-			<summary>Use manual schedule</summary>
-			<description>Disable automatic times detection</description>
+			<summary>Use manual GTK variants</summary>
+			<description>Disable automatic GTK theme variants detection</description>
+		</key>
+		<key name="shell-variant-day" type="s">
+			<default>""</default>
+			<summary>Day shell theme</summary>
+			<description>The shell theme to use during daytime</description>
+		</key>
+		<key name="shell-variant-night" type="s">
+			<default>""</default>
+			<summary>Night shell theme</summary>
+			<description>The shell theme to use during nighttime</description>
+		</key>
+		<key name="shell-variant-original" type="s">
+			<default>""</default>
+			<summary>Original shell theme</summary>
+			<description>The shell theme to restore when the extension is disabled</description>
+		</key>
+		<key name="manual-shell-variants" type="b">
+			<default>false</default>
+			<summary>Use manual shell variants</summary>
+			<description>Disable automatic shell theme variants detection</description>
 		</key>
 		<key name="time-source" type="s">
 			<choices>
 				<choice value="nightlight"/>
 				<choice value="location"/>
-				<choice value="manual"/>
+				<choice value="schedule"/>
 			</choices>
-			<default>"manual"</default>
+			<default>"schedule"</default>
 			<summary>Time source</summary>
 			<description>The source used to check current time</description>
 		</key>
-		<key name="time-sunrise" type="d">
+		<key name="manual-time-source" type="b">
+			<default>false</default>
+			<summary>Use manual time source</summary>
+			<description>Disable automatic time source detection</description>
+		</key>
+		<key name="schedule-sunrise" type="d">
 			<default>6</default>
 			<summary>Sunrise time</summary>
 			<description>When the day starts</description>
 		</key>
-		<key name="time-sunset" type="d">
+		<key name="schedule-sunset" type="d">
 			<default>20</default>
 			<summary>Sunset time</summary>
 			<description>When the day ends</description>
+		</key>
+		<key name="commands-enabled" type="b">
+			<default>false</default>
+			<summary>Enable commands</summary>
+			<description>Commands will be spawned on time change</description>
+		</key>
+		<key name="command-sunrise" type="s">
+			<default>""</default>
+			<summary>Sunrise command</summary>
+			<description>The command to spawn at sunrise</description>
+		</key>
+		<key name="command-sunset" type="s">
+			<default>""</default>
+			<summary>Sunset command</summary>
+			<description>The command to spawn at sunset</description>
+		</key>
+		<key name="backgrounds-enabled" type="b">
+			<default>false</default>
+			<summary>Enable backgrounds</summary>
+			<description>Background will be changed on time change</description>
+		</key>
+		<key name="background-day" type="s">
+			<default>""</default>
+			<summary>Day background</summary>
+			<description>Path to the day background</description>
+		</key>
+		<key name="background-night" type="s">
+			<default>""</default>
+			<summary>Night background</summary>
+			<description>Path to the night background</description>
 		</key>
 	</schema>
 </schemalist>

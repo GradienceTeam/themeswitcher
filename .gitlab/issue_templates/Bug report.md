@@ -2,10 +2,7 @@
 
 - Distribution (name and version):
 - GNOME Shell version:
-- I installed the extension:
-	- [ ] Manually from the repository
-	- [x] From extensions.gnome.org
-	- [ ] From my distribution package manager (or it was preinstalled)
+- I installed the extension: <!-- Manually? From extensions.gnome.org? From my distribution? -->
 
 # My problem
 
@@ -17,4 +14,5 @@
 1.
 
 
+<!-- Don't remove this line -->
 /label ~"bug::not confirmed"
