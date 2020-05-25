@@ -4,7 +4,7 @@ You're welcome to contribute to the [code](#contributing-to-the-code) or to the 
 
 ## Contributing to the code
 
-Create a new branch describing what your're working on, for example `feature/{name-of-the-feature}` or `theme/{name-of-the-theme}`. When you're done, commit all your changes and create a new merge request.
+Create a new branch describing what your're working on, for example `feature/{name-of-the-feature}` or `theme/{name-of-the-theme}`. When you're done, commit all your changes and create a new merge request. Choose the appropriate merge request template.
 
 ### Coding style
 
@@ -68,4 +68,4 @@ make add-po LANGUAGE_CODE={language-code}
 
 You can then edit the new `{language-code}.po` file in `src/po/`, either by hand or with a tool like [GNOME Translation Editor](https://wiki.gnome.org/Apps/Gtranslator).
 
-When you're done, commit both the `.pot` file and the `.po` file you've worked on and create a new merge request.
+When you're done, commit both the `.pot` file and the `.po` file you've worked on and create a new merge request. Choose the appropriate merge request template.
