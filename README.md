@@ -1,6 +1,6 @@
 # Night Theme Switcher
 
-![](./screenshot.png)
+![](./res/screenshot.png)
 <!-- Background picture by Adrien Converse from https://unsplash.com/photos/kCrrUx7US04 -->
 
 Automatically toggle your light and dark GTK and GNOME Shell theme variants, switch backgrounds and launch custom commands at sunset and sunrise.
