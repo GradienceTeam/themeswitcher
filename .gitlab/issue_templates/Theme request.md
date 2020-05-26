@@ -3,5 +3,5 @@
 - Theme name:
 - Theme repository or download link:
 
-<!-- Don't remove this line -->
+<!-- Don't remove the following line -->
 /label ~"theme::request"

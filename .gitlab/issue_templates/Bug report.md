@@ -16,5 +16,5 @@
 1.
 
 
-<!-- Don't remove this line -->
+<!-- Don't remove the following line -->
 /label ~"bug::not confirmed"

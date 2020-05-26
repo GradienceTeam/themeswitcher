@@ -1,9 +1,7 @@
-<!--
-Indicate in your MR title:
-	- what it does
-	- which issue it fixes by adding "(Fix #[issue number])"
--->
+<!-- Indicate in your MR title what it does -->
+
+<!-- Indicate which issue your MR fixes by adding "Fix #[issue number]" -->
 
 
-<!-- Don't remove this line -->
+<!-- Don't remove the following line -->
 /label ~"bug::fixed"

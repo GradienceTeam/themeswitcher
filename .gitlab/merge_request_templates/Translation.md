@@ -1,9 +1,7 @@
-<!--
-Indicate in your MR title:
-	- the language
-	- to which issue it relates (if any) by adding "(Fix #[issue number])"
--->
+<!-- Indicate in your MR title the language of the translation -->
+
+<!-- Indicate to which issue it relates (if any) by adding "Closes #[issue number]" -->
 
 
-<!-- Don't remove this line -->
+<!-- Don't remove the following line -->
 /label ~"translation::updated"
