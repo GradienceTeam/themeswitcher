@@ -94,7 +94,7 @@ var Backgrounder = class {
 			e.timer.disconnect(this._time_changed_connect);
 			this._time_changed_connect = null;
 		}
-		log_debug('Disconnecting Backgrounder from Timer.');
+		log_debug('Disconnected Backgrounder from Timer.');
 	}
 
 
