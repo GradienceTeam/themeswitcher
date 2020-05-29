@@ -41,6 +41,26 @@
 			<summary>Use manual shell variants</summary>
 			<description>Disable automatic shell theme variants detection</description>
 		</key>
+		<key name="cursor-variants-enabled" type="b">
+			<default>false</default>
+			<summary>Switch cursor variants</summary>
+			<description>Enable cursor variants switching</description>
+		</key>
+		<key name="cursor-variant-day" type="s">
+			<default>""</default>
+			<summary>Day cursor theme</summary>
+			<description>The cursor theme to use during daytime</description>
+		</key>
+		<key name="cursor-variant-night" type="s">
+			<default>""</default>
+			<summary>Night cursor theme</summary>
+			<description>The cursor theme to use during nighttime</description>
+		</key>
+		<key name="cursor-variant-original" type="s">
+			<default>""</default>
+			<summary>Original cursor theme</summary>
+			<description>The cursor theme to restore when the extension is disabled</description>
+		</key>
 		<key name="time-source" type="s">
 			<choices>
 				<choice value="nightlight"/>

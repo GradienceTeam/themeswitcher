@@ -23,7 +23,7 @@ const { main } = imports.ui;
 const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
-const { log_debug, log_error, get_theme_dirs_paths, get_installed_shell_themes, get_shell_theme_stylesheet, apply_shell_stylesheet } = Me.imports.utils;
+const { log_debug, log_error, get_installed_shell_themes, get_shell_theme_stylesheet, apply_shell_stylesheet } = Me.imports.utils;
 const { ShellVariants } = Me.imports.modules.ShellVariants;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);

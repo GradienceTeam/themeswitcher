@@ -25,6 +25,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const { BackgroundsPreferences } = Me.imports.preferences.Backgrounds;
 const { CommandsPreferences } = Me.imports.preferences.Commands;
+const { CursorThemePreferences } = Me.imports.preferences.CursorTheme;
 const { GtkThemePreferences } = Me.imports.preferences.GtkTheme;
 const { SchedulePreferences } = Me.imports.preferences.Schedule;
 const { ShellThemePreferences } = Me.imports.preferences.ShellTheme;
@@ -53,6 +54,9 @@ function buildPrefsWidget() {
 
 	const shellThemePreferences = new ShellThemePreferences();
 	prefs_widget.append_page(shellThemePreferences.page, shellThemePreferences.label);
+
+	const cursorThemePreferences = new CursorThemePreferences();
+	prefs_widget.append_page(cursorThemePreferences.page, cursorThemePreferences.label);
 
 	const backgroundsPreferences = new BackgroundsPreferences();
 	prefs_widget.append_page(backgroundsPreferences.page, backgroundsPreferences.label);
