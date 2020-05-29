@@ -57,6 +57,10 @@ var SettingsManager = class {
 		this._shell_variant_day_changed_connect = this._extensionsSettings.connect('changed::shell-variant-day', this._on_shell_variant_day_changed.bind(this));
 		this._shell_variant_night_changed_connect = this._extensionsSettings.connect('changed::shell-variant-night', this._on_shell_variant_night_changed.bind(this));
 		this._shell_variant_original_changed_connect = this._extensionsSettings.connect('changed::shell-variant-original', this._on_shell_variant_original_changed.bind(this));
+		this._icon_variants_status_connect = this._extensionsSettings.connect('changed::icon-variants-enabled', this._on_icon_variants_status_changed.bind(this));
+		this._icon_variant_day_changed_connect = this._extensionsSettings.connect('changed::icon-variant-day', this._on_icon_variant_day_changed.bind(this));
+		this._icon_variant_night_changed_connect = this._extensionsSettings.connect('changed::icon-variant-night', this._on_icon_variant_night_changed.bind(this));
+		this._icon_variant_original_changed_connect = this._extensionsSettings.connect('changed::icon-variant-original', this._on_icon_variant_original_changed.bind(this));
 		this._cursor_variants_status_connect = this._extensionsSettings.connect('changed::cursor-variants-enabled', this._on_cursor_variants_status_changed.bind(this));
 		this._cursor_variant_day_changed_connect = this._extensionsSettings.connect('changed::cursor-variant-day', this._on_cursor_variant_day_changed.bind(this));
 		this._cursor_variant_night_changed_connect = this._extensionsSettings.connect('changed::cursor-variant-night', this._on_cursor_variant_night_changed.bind(this));
@@ -70,6 +74,7 @@ var SettingsManager = class {
 		this._nightlight_status_connect = this._colorSettings.connect('changed::night-light-enabled', this._on_nightlight_status_changed.bind(this));
 		this._location_status_connect = this._locationSettings.connect('changed::enabled', this._on_location_status_changed.bind(this));
 		this._gtk_theme_changed_connect = this._interfaceSettings.connect('changed::gtk-theme', this._on_gtk_theme_changed.bind(this));
+		this._icon_theme_changed_connect = this._interfaceSettings.connect('changed::icon-theme', this._on_icon_theme_changed.bind(this));
 		this._cursor_theme_changed_connect = this._interfaceSettings.connect('changed::cursor-theme', this._on_cursor_theme_changed.bind(this));
 		this._background_changed_connect = this._backgroundSettings.connect('changed::picture-uri', this._on_background_changed.bind(this));
 		if ( this._userthemesSettings ) {
@@ -86,6 +91,10 @@ var SettingsManager = class {
 		this._extensionsSettings.disconnect(this._shell_variant_day_changed_connect);
 		this._extensionsSettings.disconnect(this._shell_variant_night_changed_connect);
 		this._extensionsSettings.disconnect(this._shell_variant_original_changed_connect);
+		this._extensionsSettings.disconnect(this._icon_variants_status_connect);
+		this._extensionsSettings.disconnect(this._icon_variant_day_changed_connect);
+		this._extensionsSettings.disconnect(this._icon_variant_night_changed_connect);
+		this._extensionsSettings.disconnect(this._icon_variant_original_changed_connect);
 		this._extensionsSettings.disconnect(this._cursor_variants_status_connect);
 		this._extensionsSettings.disconnect(this._cursor_variant_day_changed_connect);
 		this._extensionsSettings.disconnect(this._cursor_variant_night_changed_connect);
@@ -99,6 +108,7 @@ var SettingsManager = class {
 		this._colorSettings.disconnect(this._nightlight_status_connect);
 		this._locationSettings.disconnect(this._location_status_connect);
 		this._interfaceSettings.disconnect(this._gtk_theme_changed_connect);
+		this._interfaceSettings.disconnect(this._icon_theme_changed_connect);
 		this._interfaceSettings.disconnect(this._cursor_theme_changed_connect);
 		this._backgroundSettings.disconnect(this._background_changed_connect);
 		if ( this._userthemesSettings ) {
@@ -229,6 +239,45 @@ var SettingsManager = class {
 		}
 	}
 
+	/* Icon variants settings */
+
+	get icon_variants_enabled() {
+		return this._extensionsSettings.get_boolean('icon-variants-enabled');
+	}
+
+	get icon_variant_day() {
+		return this._extensionsSettings.get_string('icon-variant-day') || this.icon_theme;
+	}
+
+	set icon_variant_day(value) {
+		if ( value !== this.icon_variant_day ) {
+			this._extensionsSettings.set_string('icon-variant-day', value);
+			log_debug(`The icon day variant has been set to '${value}'.`);
+		}
+	}
+
+	get icon_variant_night() {
+		return this._extensionsSettings.get_string('icon-variant-night') || this.icon_theme;
+	}
+
+	set icon_variant_night(value) {
+		if ( value !== this.icon_variant_night ) {
+			this._extensionsSettings.set_string('icon-variant-night', value);
+			log_debug(`The icon night variant has been set to '${value}'.`);
+		}
+	}
+
+	get icon_variant_original() {
+		return this._extensionsSettings.get_string('icon-variant-original');
+	}
+
+	set icon_variant_original(value) {
+		if ( value !== this.icon_variant_original ) {
+			this._extensionsSettings.set_string('icon-variant-original', value);
+			log_debug(`The icon original variant has been set to '${value}'.`);
+		}
+	}
+
 
 	/* Time source settings */
 
@@ -317,7 +366,7 @@ var SettingsManager = class {
 	set gtk_theme(value) {
 		if ( value !== this.gtk_theme ) {
 			this._interfaceSettings.set_string('gtk-theme', value);
-			log_debug(`GTK theme has been set to '${value}.'`);
+			log_debug(`GTK theme has been set to '${value}'.`);
 		}
 	}
 
@@ -341,6 +390,20 @@ var SettingsManager = class {
 	}
 
 
+	/* Icon theme settings */
+
+	get icon_theme() {
+		return this._interfaceSettings.get_string('icon-theme');
+	}
+
+	set icon_theme(value) {
+		if ( value !== this.icon_theme ) {
+			this._interfaceSettings.set_string('icon-theme', value);
+			log_debug(`Icon theme has been set to '${value}'.`);
+		}
+	}
+
+
 	/* Cursor theme settings */
 
 	get cursor_theme() {
@@ -350,7 +413,7 @@ var SettingsManager = class {
 	set cursor_theme(value) {
 		if ( value !== this.cursor_theme ) {
 			this._interfaceSettings.set_string('cursor-theme', value);
-			log_debug(`Cursor theme has been set to '${value}.'`);
+			log_debug(`Cursor theme has been set to '${value}'.`);
 		}
 	}
 
@@ -412,7 +475,7 @@ var SettingsManager = class {
 
 	_on_cursor_variants_status_changed(settings, changed_key) {
 		log_debug('Cursor variants have been ' + (this.cursor_variants_enabled ? 'ena' : 'disa') + 'bled.');
-		this.emit('cursor-variants-status-changed', this.curso_variants_enabled);
+		this.emit('cursor-variants-status-changed', this.cursor_variants_enabled);
 	}
 
 	_on_cursor_variant_day_changed(settings, changed_key) {
@@ -428,6 +491,29 @@ var SettingsManager = class {
 	_on_cursor_variant_original_changed(settings, changed_key) {
 		log_debug(`Cursor original variant has changed to '${this.cursor_variant_original}'.`);
 		this.emit('cursor-variant-changed', 'original');
+	}
+
+
+	/* Icon variants */
+
+	_on_icon_variants_status_changed(settings, changed_key) {
+		log_debug('Icon variants have been ' + (this.icon_variants_enabled ? 'ena' : 'disa') + 'bled.');
+		this.emit('icon-variants-status-changed', this.icon_variants_enabled);
+	}
+
+	_on_icon_variant_day_changed(settings, changed_key) {
+		log_debug(`Icon day variant has changed to '${this.icon_variant_day}'.`);
+		this.emit('icon-variant-changed', 'day');
+	}
+
+	_on_icon_variant_night_changed(settings, changed_key) {
+		log_debug(`Icon night variant has changed to '${this.icon_variant_night}'.`);
+		this.emit('icon-variant-changed', 'night');
+	}
+
+	_on_icon_variant_original_changed(settings, changed_key) {
+		log_debug(`Icon original variant has changed to '${this.icon_variant_original}'.`);
+		this.emit('icon-variant-changed', 'original');
 	}
 
 
@@ -491,6 +577,14 @@ var SettingsManager = class {
 	_on_gtk_theme_changed(settings, changed_key) {
 		log_debug(`GTK theme has changed to '${this.gtk_theme}'.`);
 		this.emit('gtk-theme-changed', this.gtk_theme);
+	}
+
+
+	/* Icon theme */
+
+	_on_icon_theme_changed(settings, changed_key) {
+		log_debug(`Cursor theme has changed to '${this.icon_theme}'.`);
+		this.emit('icon-theme-changed', this.icon_theme);
 	}
 
 

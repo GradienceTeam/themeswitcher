@@ -41,6 +41,26 @@
 			<summary>Use manual shell variants</summary>
 			<description>Disable automatic shell theme variants detection</description>
 		</key>
+		<key name="icon-variants-enabled" type="b">
+			<default>false</default>
+			<summary>Switch icon variants</summary>
+			<description>Enable icon variants switching</description>
+		</key>
+		<key name="icon-variant-day" type="s">
+			<default>""</default>
+			<summary>Day icon theme</summary>
+			<description>The icon theme to use during daytime</description>
+		</key>
+		<key name="icon-variant-night" type="s">
+			<default>""</default>
+			<summary>Night icon theme</summary>
+			<description>The icon theme to use during nighttime</description>
+		</key>
+		<key name="icon-variant-original" type="s">
+			<default>""</default>
+			<summary>Original icon theme</summary>
+			<description>The icon theme to restore when the extension is disabled</description>
+		</key>
 		<key name="cursor-variants-enabled" type="b">
 			<default>false</default>
 			<summary>Switch cursor variants</summary>

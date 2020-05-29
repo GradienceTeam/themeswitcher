@@ -109,7 +109,6 @@ var CursorThemer = class {
 	}
 
 	_on_cursor_theme_changed(settings, new_theme) {
-		this._save_original_theme();
 		switch (e.timer.time) {
 			case 'day':
 				e.settingsManager.cursor_variant_day = new_theme;
@@ -124,10 +123,6 @@ var CursorThemer = class {
 		this._set_variant(new_time);
 	}
 
-
-	_are_variants_up_to_date() {
-		return ( e.settingsManager.cursor_theme === e.settingsManager.cursor_variant_day || e.settingsManager.cursor_theme === e.settingsManager.cursor_variant_night );
-	}
 
 	_set_variant(time) {
 		log_debug(`Setting the cursor ${time} variant...`);
@@ -145,9 +140,6 @@ var CursorThemer = class {
 	}
 
 	_save_original_theme() {
-		if ( this._are_variants_up_to_date() ) {
-			return;
-		}
 		e.settingsManager.cursor_variant_original = e.settingsManager.cursor_theme;
 	}
 

@@ -28,6 +28,7 @@ const { SettingsManager } = Me.imports.modules.SettingsManager;
 const { Timer } = Me.imports.modules.Timer;
 const { GtkThemer } = Me.imports.modules.GtkThemer;
 const { ShellThemer } = Me.imports.modules.ShellThemer;
+const { IconThemer } = Me.imports.modules.IconThemer;
 const { CursorThemer } = Me.imports.modules.CursorThemer;
 const { Backgrounder } = Me.imports.modules.Backgrounder;
 const { Commander } = Me.imports.modules.Commander;
@@ -44,6 +45,7 @@ var settingsManager = null;
 var timer = null;
 var gtkThemer = null;
 var shellThemer = null;
+var iconThemer = null;
 var cursorThemer = null;
 var backgrounder = null;
 var commander = null;
@@ -62,6 +64,7 @@ function enable() {
 		timer = new Timer();
 		gtkThemer = new GtkThemer();
 		shellThemer = new ShellThemer();
+		iconThemer = new IconThemer();
 		cursorThemer = new CursorThemer();
 		backgrounder = new Backgrounder();
 		commander = new Commander();
@@ -70,6 +73,7 @@ function enable() {
 		timer.enable();
 		gtkThemer.enable();
 		shellThemer.enable();
+		iconThemer.enable();
 		cursorThemer.enable();
 		backgrounder.enable();
 		commander.enable();
@@ -85,6 +89,7 @@ function disable() {
 
 	gtkThemer.disable();
 	shellThemer.disable();
+	iconThemer.disable();
 	cursorThemer.disable();
 	backgrounder.disable();
 	commander.disable();
@@ -95,6 +100,7 @@ function disable() {
 	timer = null;
 	gtkThemer = null;
 	shellThemer = null;
+	iconThemer = null;
 	cursorThemer = null;
 	backgrounder = null;
 	commander = null;

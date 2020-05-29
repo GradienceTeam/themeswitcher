@@ -27,6 +27,7 @@ const { BackgroundsPreferences } = Me.imports.preferences.Backgrounds;
 const { CommandsPreferences } = Me.imports.preferences.Commands;
 const { CursorThemePreferences } = Me.imports.preferences.CursorTheme;
 const { GtkThemePreferences } = Me.imports.preferences.GtkTheme;
+const { IconThemePreferences } = Me.imports.preferences.IconTheme;
 const { SchedulePreferences } = Me.imports.preferences.Schedule;
 const { ShellThemePreferences } = Me.imports.preferences.ShellTheme;
 
@@ -54,6 +55,9 @@ function buildPrefsWidget() {
 
 	const shellThemePreferences = new ShellThemePreferences();
 	prefs_widget.append_page(shellThemePreferences.page, shellThemePreferences.label);
+
+	const iconThemePreferences = new IconThemePreferences();
+	prefs_widget.append_page(iconThemePreferences.page, iconThemePreferences.label);
 
 	const cursorThemePreferences = new CursorThemePreferences();
 	prefs_widget.append_page(cursorThemePreferences.page, cursorThemePreferences.label);

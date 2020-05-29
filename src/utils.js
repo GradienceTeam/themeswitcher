@@ -142,6 +142,43 @@ function get_installed_shell_themes() {
 }
 
 /**
+ * Get all the installed icon themes on the system.
+ * @returns {Set} A set containing all the installed icon themes names.
+ */
+function get_installed_icon_themes() {
+	const themes = new Set();
+
+	get_resources_dirs_paths('icons').forEach(themes_dir_path => {
+		const themes_dir = Gio.File.new_for_path(themes_dir_path);
+
+		if (themes_dir.query_file_type(Gio.FileQueryInfoFlags.NONE, null) !== Gio.FileType.DIRECTORY) {
+			return;
+		}
+
+		const theme_dirs_enumerator = themes_dir.enumerate_children('', Gio.FileQueryInfoFlags.NONE, null);
+
+		while (true) {
+			let theme_dir_info = theme_dirs_enumerator.next_file(null);
+
+			if (theme_dir_info === null) {
+				break;
+			}
+
+			const theme_dir = theme_dirs_enumerator.get_child(theme_dir_info);
+			const css_file = Gio.File.new_for_path(GLib.build_filenamev([theme_dir.get_path(), 'index.theme']));
+			if (css_file.query_exists(null)) {
+				themes.add(theme_dir.get_basename());
+			}
+		}
+		theme_dirs_enumerator.close(null);
+	});
+
+	themes.delete('default');
+
+	return themes;
+}
+
+/**
  * Get all the installed cursor themes on the system.
  * @returns {Set} A set containing all the installed cursor themes names.
  */
