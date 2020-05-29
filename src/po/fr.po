@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-25 10:09+0200\n"
-"PO-Revision-Date: 2020-05-24 14:51+0200\n"
+"PO-Revision-Date: 2020-05-29 11:24+0200\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: French - France <romain@romainvigier.fr>\n"
 "Language: fr_FR\n"
@@ -313,19 +313,19 @@ msgstr "La commande à lancer quand le soleil se couche"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:86
 msgid "Enable backgrounds"
-msgstr ""
+msgstr "Activer les arrière-plans"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:87
 msgid "Background will be changed on time change"
-msgstr ""
+msgstr "L’arrière-plan changera au changement d’horaire"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:92
 msgid "Path to the day background"
-msgstr ""
+msgstr "Chemin vers l’arrière-plan diurne"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:97
 msgid "Path to the night background"
-msgstr ""
+msgstr "Chemin vers l’arrière-plan nocturne"
 
 #~ msgid "Change backgrounds"
 #~ msgstr "Changer les arrière-plans"
