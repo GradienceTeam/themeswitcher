@@ -66,150 +66,106 @@ function get_resources_dirs_paths(resource) {
 }
 
 /**
- * Get all the installed GTK themes on the system.
- * @returns {Set} A set containing all the installed GTK themes names.
+ * Get all the resources installed on the system.
+ * @param {string} type The resources to get.
+ * @returns {Set} A set of installed resources.
  */
-function get_installed_gtk_themes() {
-	const themes = new Set(['Adwaita', 'HighContrast', 'HighContrastInverse']);
+function get_installed_resources(type) {
+	const installed_resources = new Set();
 
-	get_resources_dirs_paths('themes').forEach(themes_dir_path => {
-		const themes_dir = Gio.File.new_for_path(themes_dir_path);
+	get_resources_dirs_paths(type).forEach(resources_dir_path => {
+		const resources_dir = Gio.File.new_for_path(resources_dir_path);
 
-		if (themes_dir.query_file_type(Gio.FileQueryInfoFlags.NONE, null) !== Gio.FileType.DIRECTORY) {
+		if (resources_dir.query_file_type(Gio.FileQueryInfoFlags.NONE, null) !== Gio.FileType.DIRECTORY) {
 			return;
 		}
 
-		const theme_dirs_enumerator = themes_dir.enumerate_children('', Gio.FileQueryInfoFlags.NONE, null);
+		const resources_dirs_enumerator = resources_dir.enumerate_children('', Gio.FileQueryInfoFlags.NONE, null);
 
 		while (true) {
-			let theme_dir_info = theme_dirs_enumerator.next_file(null);
+			let resource_dir_info = resources_dirs_enumerator.next_file(null);
 
-			if (theme_dir_info === null) {
+			if (resource_dir_info === null) {
 				break;
 			}
 
-			const theme_dir = theme_dirs_enumerator.get_child(theme_dir_info);
-
-			[0, Gtk.MINOR_VERSION].forEach(gtk_version => {
-				if (gtk_version % 2) {
-					gtk_version += 1;
-				}
-				const css_file = Gio.File.new_for_path(GLib.build_filenamev([theme_dir.get_path(), `gtk-3.${gtk_version}`, 'gtk.css']));
-				if (css_file.query_exists(null)) {
-					themes.add(theme_dir.get_basename());
-				}
-			})
+			const resource_dir = resources_dirs_enumerator.get_child(resource_dir_info);
+			const resource = new Map([
+				['name', resource_dir.get_basename()],
+				['path', resource_dir.get_path()]
+			]);
+			installed_resources.add(resource);
 		}
-		theme_dirs_enumerator.close(null);
+		resources_dirs_enumerator.close(null);
 	});
 
+	return installed_resources;
+}
+
+/**
+ * Get all the installed GTK themes on the system.
+ * @returns {Set<string>} A set containing all the installed GTK themes names.
+ */
+function get_installed_gtk_themes() {
+	const themes = new Set(['Adwaita', 'HighContrast', 'HighContrastInverse']);
+	get_installed_resources('themes').forEach(theme => {
+		const version = [0, Gtk.MINOR_VERSION].find(gtk_version => {
+			if (gtk_version % 2) {
+				gtk_version += 1;
+			}
+			const css_file = Gio.File.new_for_path(GLib.build_filenamev([theme.get('path'), `gtk-3.${gtk_version}`, 'gtk.css']));
+			return css_file.query_exists(null);
+		});
+		if ( version !== undefined ) {
+			themes.add(theme.get('name'));
+		}
+	});
 	return themes;
 }
 
 /**
  * Get all the installed shell themes on the system.
- * @returns {Set} A set containing all the installed shell themes names.
+ * @returns {Set<string>} A set containing all the installed shell themes names.
  */
 function get_installed_shell_themes() {
 	const themes = new Set(['']);
-
-	get_resources_dirs_paths('themes').forEach(themes_dir_path => {
-		const themes_dir = Gio.File.new_for_path(themes_dir_path);
-
-		if (themes_dir.query_file_type(Gio.FileQueryInfoFlags.NONE, null) !== Gio.FileType.DIRECTORY) {
-			return;
+	get_installed_resources('themes').forEach(theme => {
+		const theme_file = Gio.File.new_for_path(GLib.build_filenamev([theme.get('path'), 'gnome-shell', 'gnome-shell.css']));
+		if ( theme_file.query_exists(null) ) {
+			themes.add(theme.get('name'));
 		}
-
-		const theme_dirs_enumerator = themes_dir.enumerate_children('', Gio.FileQueryInfoFlags.NONE, null);
-
-		while (true) {
-			let theme_dir_info = theme_dirs_enumerator.next_file(null);
-
-			if (theme_dir_info === null) {
-				break;
-			}
-
-			const theme_dir = theme_dirs_enumerator.get_child(theme_dir_info);
-			const css_file = Gio.File.new_for_path(GLib.build_filenamev([theme_dir.get_path(), 'gnome-shell', 'gnome-shell.css']));
-			if (css_file.query_exists(null)) {
-				themes.add(theme_dir.get_basename());
-			}
-		}
-		theme_dirs_enumerator.close(null);
 	});
-
 	return themes;
 }
 
 /**
  * Get all the installed icon themes on the system.
- * @returns {Set} A set containing all the installed icon themes names.
+ * @returns {Set<string>} A set containing all the installed icon themes names.
  */
 function get_installed_icon_themes() {
 	const themes = new Set();
-
-	get_resources_dirs_paths('icons').forEach(themes_dir_path => {
-		const themes_dir = Gio.File.new_for_path(themes_dir_path);
-
-		if (themes_dir.query_file_type(Gio.FileQueryInfoFlags.NONE, null) !== Gio.FileType.DIRECTORY) {
-			return;
+	get_installed_resources('icons').forEach(theme => {
+		const theme_file = Gio.File.new_for_path(GLib.build_filenamev([theme.get('path'), 'index.theme']));
+		if ( theme_file.query_exists(null) ) {
+			themes.add(theme.get('name'));
 		}
-
-		const theme_dirs_enumerator = themes_dir.enumerate_children('', Gio.FileQueryInfoFlags.NONE, null);
-
-		while (true) {
-			let theme_dir_info = theme_dirs_enumerator.next_file(null);
-
-			if (theme_dir_info === null) {
-				break;
-			}
-
-			const theme_dir = theme_dirs_enumerator.get_child(theme_dir_info);
-			const css_file = Gio.File.new_for_path(GLib.build_filenamev([theme_dir.get_path(), 'index.theme']));
-			if (css_file.query_exists(null)) {
-				themes.add(theme_dir.get_basename());
-			}
-		}
-		theme_dirs_enumerator.close(null);
 	});
-
 	themes.delete('default');
-
 	return themes;
 }
 
 /**
  * Get all the installed cursor themes on the system.
- * @returns {Set} A set containing all the installed cursor themes names.
+ * @returns {Set<string>} A set containing all the installed cursor themes names.
  */
 function get_installed_cursor_themes() {
 	const themes = new Set();
-
-	get_resources_dirs_paths('icons').forEach(themes_dir_path => {
-		const themes_dir = Gio.File.new_for_path(themes_dir_path);
-
-		if (themes_dir.query_file_type(Gio.FileQueryInfoFlags.NONE, null) !== Gio.FileType.DIRECTORY) {
-			return;
+	get_installed_resources('icons').forEach(theme => {
+		const theme_file = Gio.File.new_for_path(GLib.build_filenamev([theme.get('path'), 'cursors']));
+		if ( theme_file.query_exists(null) ) {
+			themes.add(theme.get('name'));
 		}
-
-		const theme_dirs_enumerator = themes_dir.enumerate_children('', Gio.FileQueryInfoFlags.NONE, null);
-
-		while (true) {
-			let theme_dir_info = theme_dirs_enumerator.next_file(null);
-
-			if (theme_dir_info === null) {
-				break;
-			}
-
-			const theme_dir = theme_dirs_enumerator.get_child(theme_dir_info);
-			const css_file = Gio.File.new_for_path(GLib.build_filenamev([theme_dir.get_path(), 'cursors']));
-			if (css_file.query_exists(null)) {
-				themes.add(theme_dir.get_basename());
-			}
-		}
-		theme_dirs_enumerator.close(null);
 	});
-
 	return themes;
 }
 
@@ -255,15 +211,15 @@ function get_userthemes_settings() {
 /**
  * Get the shell theme stylesheet.
  * @param {string} theme The shell theme name.
- * @returns {string} Path to the shell theme stylesheet.
+ * @returns {string|null} Path to the shell theme stylesheet.
  */
 function get_shell_theme_stylesheet(theme) {
 	log_debug('Getting the ' + (theme ? `'${theme}'` : 'default') + ' theme shell stylesheet...');
 	let stylesheet = null;
 	if ( theme ) {
-		const stylesheet_paths = get_resources_dirs_paths('themes').map(path => `${path}/${theme}/gnome-shell/gnome-shell.css`);
+		const stylesheet_paths = get_resources_dirs_paths('themes').map(path => GLib.build_filenamev([path, theme, 'gnome-shell', 'gnome-shell.css']));
 		stylesheet = stylesheet_paths.find(path => {
-			let file = Gio.file_new_for_path(path);
+			const file = Gio.file_new_for_path(path);
 			return file.query_exists(null);
 		});
 	}
