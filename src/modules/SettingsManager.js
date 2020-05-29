@@ -57,6 +57,10 @@ var SettingsManager = class {
 		this._shell_variant_day_changed_connect = this._extensionsSettings.connect('changed::shell-variant-day', this._on_shell_variant_day_changed.bind(this));
 		this._shell_variant_night_changed_connect = this._extensionsSettings.connect('changed::shell-variant-night', this._on_shell_variant_night_changed.bind(this));
 		this._shell_variant_original_changed_connect = this._extensionsSettings.connect('changed::shell-variant-original', this._on_shell_variant_original_changed.bind(this));
+		this._cursor_variants_status_connect = this._extensionsSettings.connect('changed::cursor-variants-enabled', this._on_cursor_variants_status_changed.bind(this));
+		this._cursor_variant_day_changed_connect = this._extensionsSettings.connect('changed::cursor-variant-day', this._on_cursor_variant_day_changed.bind(this));
+		this._cursor_variant_night_changed_connect = this._extensionsSettings.connect('changed::cursor-variant-night', this._on_cursor_variant_night_changed.bind(this));
+		this._cursor_variant_original_changed_connect = this._extensionsSettings.connect('changed::cursor-variant-original', this._on_cursor_variant_original_changed.bind(this));
 		this._time_source_changed_connect = this._extensionsSettings.connect('changed::time-source', this._on_time_source_changed.bind(this));
 		this._manual_time_source_changed_connect = this._extensionsSettings.connect('changed::manual-time-source', this._on_manual_time_source_changed.bind(this));
 		this._commands_status_connect = this._extensionsSettings.connect('changed::commands-enabled', this._on_commands_status_changed.bind(this));
@@ -66,6 +70,7 @@ var SettingsManager = class {
 		this._nightlight_status_connect = this._colorSettings.connect('changed::night-light-enabled', this._on_nightlight_status_changed.bind(this));
 		this._location_status_connect = this._locationSettings.connect('changed::enabled', this._on_location_status_changed.bind(this));
 		this._gtk_theme_changed_connect = this._interfaceSettings.connect('changed::gtk-theme', this._on_gtk_theme_changed.bind(this));
+		this._cursor_theme_changed_connect = this._interfaceSettings.connect('changed::cursor-theme', this._on_cursor_theme_changed.bind(this));
 		this._background_changed_connect = this._backgroundSettings.connect('changed::picture-uri', this._on_background_changed.bind(this));
 		if ( this._userthemesSettings ) {
 			this._shell_theme_changed_connect = this._userthemesSettings.connect('changed::name', this._on_shell_theme_changed.bind(this));
@@ -81,6 +86,10 @@ var SettingsManager = class {
 		this._extensionsSettings.disconnect(this._shell_variant_day_changed_connect);
 		this._extensionsSettings.disconnect(this._shell_variant_night_changed_connect);
 		this._extensionsSettings.disconnect(this._shell_variant_original_changed_connect);
+		this._extensionsSettings.disconnect(this._cursor_variants_status_connect);
+		this._extensionsSettings.disconnect(this._cursor_variant_day_changed_connect);
+		this._extensionsSettings.disconnect(this._cursor_variant_night_changed_connect);
+		this._extensionsSettings.disconnect(this._cursor_variant_original_changed_connect);
 		this._extensionsSettings.disconnect(this._time_source_changed_connect);
 		this._extensionsSettings.disconnect(this._manual_time_source_changed_connect);
 		this._extensionsSettings.disconnect(this._commands_status_connect);
@@ -178,6 +187,45 @@ var SettingsManager = class {
 
 	get manual_shell_variants() {
 		return this._extensionsSettings.get_boolean('manual-shell-variants');
+	}
+
+	/* Cursor variants settings */
+
+	get cursor_variants_enabled() {
+		return this._extensionsSettings.get_boolean('cursor-variants-enabled');
+	}
+
+	get cursor_variant_day() {
+		return this._extensionsSettings.get_string('cursor-variant-day') || this.cursor_theme;
+	}
+
+	set cursor_variant_day(value) {
+		if ( value !== this.cursor_variant_day ) {
+			this._extensionsSettings.set_string('cursor-variant-day', value);
+			log_debug(`The cursor day variant has been set to '${value}'.`);
+		}
+	}
+
+	get cursor_variant_night() {
+		return this._extensionsSettings.get_string('cursor-variant-night') || this.cursor_theme;
+	}
+
+	set cursor_variant_night(value) {
+		if ( value !== this.cursor_variant_night ) {
+			this._extensionsSettings.set_string('cursor-variant-night', value);
+			log_debug(`The cursor night variant has been set to '${value}'.`);
+		}
+	}
+
+	get cursor_variant_original() {
+		return this._extensionsSettings.get_string('cursor-variant-original');
+	}
+
+	set cursor_variant_original(value) {
+		if ( value !== this.cursor_variant_original ) {
+			this._extensionsSettings.set_string('cursor-variant-original', value);
+			log_debug(`The cursor original variant has been set to '${value}'.`);
+		}
 	}
 
 
@@ -292,6 +340,20 @@ var SettingsManager = class {
 	}
 
 
+	/* Cursor theme settings */
+
+	get cursor_theme() {
+		return this._interfaceSettings.get_string('cursor-theme');
+	}
+
+	set cursor_theme(value) {
+		if ( value !== this.cursor_theme ) {
+			this._interfaceSettings.set_string('cursor-theme', value);
+			log_debug(`Cursor theme has been set to '${value}.'`);
+		}
+	}
+
+
 	/* Background settings */
 
 	get background() {
@@ -342,6 +404,29 @@ var SettingsManager = class {
 	_on_shell_variant_original_changed(settings, changed_key) {
 		log_debug(`Shell original variant has changed to '${this.shell_variant_original}'.`);
 		this.emit('shell-variant-changed', 'original');
+	}
+
+
+	/* Cursor variants */
+
+	_on_cursor_variants_status_changed(settings, changed_key) {
+		log_debug('Cursor variants have been ' + (this.cursor_variants_enabled ? 'ena' : 'disa') + 'bled.');
+		this.emit('cursor-variants-status-changed', this.curso_variants_enabled);
+	}
+
+	_on_cursor_variant_day_changed(settings, changed_key) {
+		log_debug(`Cursor day variant has changed to '${this.cursor_variant_day}'.`);
+		this.emit('cursor-variant-changed', 'day');
+	}
+
+	_on_cursor_variant_night_changed(settings, changed_key) {
+		log_debug(`Cursor night variant has changed to '${this.cursor_variant_night}'.`);
+		this.emit('cursor-variant-changed', 'night');
+	}
+
+	_on_cursor_variant_original_changed(settings, changed_key) {
+		log_debug(`Cursor original variant has changed to '${this.cursor_variant_original}'.`);
+		this.emit('cursor-variant-changed', 'original');
 	}
 
 
@@ -405,6 +490,14 @@ var SettingsManager = class {
 	_on_gtk_theme_changed(settings, changed_key) {
 		log_debug(`GTK theme has changed to '${this.gtk_theme}'.`);
 		this.emit('gtk-theme-changed', this.gtk_theme);
+	}
+
+
+	/* Cursor theme */
+
+	_on_cursor_theme_changed(settings, changed_key) {
+		log_debug(`Cursor theme has changed to '${this.cursor_theme}'.`);
+		this.emit('cursor-theme-changed', this.cursor_theme);
 	}
 
 
