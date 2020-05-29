@@ -99,6 +99,7 @@ var SettingsManager = class {
 		this._colorSettings.disconnect(this._nightlight_status_connect);
 		this._locationSettings.disconnect(this._location_status_connect);
 		this._interfaceSettings.disconnect(this._gtk_theme_changed_connect);
+		this._interfaceSettings.disconnect(this._cursor_theme_changed_connect);
 		this._backgroundSettings.disconnect(this._background_changed_connect);
 		if ( this._userthemesSettings ) {
 			this._userthemesSettings.disconnect(this._shell_theme_changed_connect);
