@@ -40,7 +40,10 @@ var SettingsPage = class {
 		const description_widget = new Gtk.Label({
 			label: description,
 			use_markup: true,
+			width_request: 600,
+			max_width_chars: 60,
 			wrap: true,
+			justify: Gtk.Justification.LEFT,
 			halign: Gtk.Align.START
 		});
 		this.page.pack_start(description_widget, false, false, 0);
