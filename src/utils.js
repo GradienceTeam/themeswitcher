@@ -90,6 +90,9 @@ function get_installed_resources(type) {
 			}
 
 			const resource_dir = resources_dirs_enumerator.get_child(resource_dir_info);
+			if ( resource_dir === null ) {
+				break;
+			}
 			const resource = new Map([
 				['name', resource_dir.get_basename()],
 				['path', resource_dir.get_path()]
@@ -179,7 +182,7 @@ function get_userthemes_extension() {
 		return imports.ui.main.extensionManager.lookup('user-theme@gnome-shell-extensions.gcampax.github.com');
 	}
 	else {
-		return extensionUtils.extensions['user-theme@gnome-shell-extensions.gcampax.github.com'];
+		return extensionUtils.extensions['user-theme@gnome-shell-extensions.gcampax.github.com'] || null;
 	}
 }
 
