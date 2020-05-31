@@ -113,7 +113,6 @@ var Timer = class {
 				this._source = new TimerSchedule();
 				break;
 		}
-		this._source.enable();
 	}
 
 	_enable_source() {
