@@ -296,6 +296,17 @@ var SettingsManager = class {
 		}
 	}
 
+	get ondemand_time() {
+		return this._extensionsSettings.get_string('ondemand-time');
+	}
+
+	set ondemand_time(value) {
+		if ( value !== this.ondemand_time ) {
+			this._extensionsSettings.set_string('ondemand-time', value);
+			log_debug(`The on-demand time has been set to ${value}.`);
+		}
+	}
+
 	get schedule_sunrise() {
 		return this._extensionsSettings.get_double('schedule-sunrise');
 	}

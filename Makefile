@@ -28,6 +28,7 @@ build: build-clean
 	mkdir -p ./build
 	gnome-extensions pack \
 		--extra-source=../LICENSE \
+		--extra-source=./compat.js \
 		--extra-source=./config.js \
 		--extra-source=./convenience.js \
 		--extra-source=./utils.js \

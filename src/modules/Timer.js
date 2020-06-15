@@ -26,6 +26,7 @@ const { log_debug } = Me.imports.utils;
 const { TimerNightlight } = Me.imports.modules.TimerNightlight;
 const { TimerLocation } = Me.imports.modules.TimerLocation;
 const { TimerSchedule } = Me.imports.modules.TimerSchedule;
+const { TimerOndemand } = Me.imports.modules.TimerOndemand;
 
 
 /**
@@ -111,6 +112,9 @@ var Timer = class {
 				break;
 			case 'schedule':
 				this._source = new TimerSchedule();
+				break;
+			case 'ondemand':
+				this._source = new TimerOndemand();
 				break;
 		}
 	}
