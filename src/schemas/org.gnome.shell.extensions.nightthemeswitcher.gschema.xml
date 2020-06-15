@@ -102,9 +102,9 @@
 			<description>The current time used in on-demand mode</description>
 		</key>
 		<key name="nightthemeswitcher-ondemand-keybinding" type="as">
-		  <default><![CDATA[['<Shift><Super>t']]]></default>
-		  <summary>Key combination to toggle time</summary>
-		  <description>The key combination that will toggle time in on-demand mode</description>
+			<default><![CDATA[['<Shift><Super>t']]]></default>
+			<summary>Key combination to toggle time</summary>
+			<description>The key combination that will toggle time in on-demand mode</description>
 		</key>
 		<key name="manual-time-source" type="b">
 			<default>false</default>

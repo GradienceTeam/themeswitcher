@@ -29,7 +29,7 @@ const { log_debug } = Me.imports.utils;
 const { key_binding_auto_repeat, get_actor } = Me.imports.compat;
 
 /**
- * The On-demand Timer allows the user to manually switch between the day and 
+ * The On-demand Timer allows the user to manually switch between the day and
  * night variants with a button in the top bar and a keybinding.
  *
  * The user can change the key combination in the extension's preferences.
@@ -62,13 +62,13 @@ var TimerOndemand = class {
 
 	_add_keybinding() {
 		log_debug('Adding On-demand Timer keybinding...');
-		// add our own keybinging handler
+		// add our own keydinging handler
 		main.wm.addKeybinding(
-		  'nightthemeswitcher-ondemand-keybinding',
-		  e.settingsManager._extensionsSettings,
-		  key_binding_auto_repeat(),
-		  Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
-		  this._toggle_time.bind(this)
+			'nightthemeswitcher-ondemand-keybinding',
+			e.settingsManager._extensionsSettings,
+			key_binding_auto_repeat(),
+			Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
+			this._toggle_time.bind(this)
 		);
 		log_debug('Added On-demand Timer keybinding.');
 	}

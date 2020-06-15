@@ -70,23 +70,23 @@ class KeyBindingControl {
 		const iter = list_store.append();
 
 		const update_shortcut_row = (accel) => {
-		  const [key, mods] = accel ? Gtk.accelerator_parse(accel) : [0, 0];
-		  list_store.set(iter, [COLUMN_KEY, COLUMN_MODS], [key, mods]);
+			const [key, mods] = accel ? Gtk.accelerator_parse(accel) : [0, 0];
+			list_store.set(iter, [COLUMN_KEY, COLUMN_MODS], [key, mods]);
 		};
 
 		renderer.connect('accel-edited', (renderer, path, key, mods) => {
-		  const accel = Gtk.accelerator_name(key, mods);
-		  update_shortcut_row(accel);
-		  settings.set_strv(KEYBINDING_KEY, [accel]);
+			const accel = Gtk.accelerator_name(key, mods);
+			update_shortcut_row(accel);
+			settings.set_strv(KEYBINDING_KEY, [accel]);
 		});
 
 		renderer.connect('accel-cleared', () => {
-		  update_shortcut_row(null);
-		  settings.set_strv(KEYBINDING_KEY, []);
+			update_shortcut_row(null);
+			settings.set_strv(KEYBINDING_KEY, []);
 		});
 
 		settings.connect(`changed::${KEYBINDING_KEY}`, () => {
-		  update_shortcut_row(settings.get_strv(KEYBINDING_KEY)[0]);
+			update_shortcut_row(settings.get_strv(KEYBINDING_KEY)[0]);
 		});
 
 		column.pack_start(renderer, true);
