@@ -42,7 +42,7 @@ var SchedulePreferences = class {
 		const description = _('The extension will try to use Night Light or Location Services to automatically set your current sunrise and sunset times if they are enabled.\n\nIf you prefer, you can manually choose a time source.');
 		const content = new SettingsList();
 
-		content.add_row(new SettingsListRow(_('Manual time source'), new ManualTimeSourceControl()));
+		content.add_row(new SettingsListRow(_('Automatic time source'), new ManualTimeSourceControl()));
 
 		const time_source_row = new SettingsListRow(_('Time source'), new TimeSourceControl());
 		settings.bind(
@@ -90,7 +90,7 @@ class ManualTimeSourceControl {
 			'manual-time-source',
 			toggle,
 			'active',
-			Gio.SettingsBindFlags.DEFAULT
+			Gio.SettingsBindFlags.INVERT_BOOLEAN
 		);
 		return toggle;
 	}
