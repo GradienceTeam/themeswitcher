@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Night Theme Switcher 30\n"
+"Project-Id-Version: Night Theme Switcher 31\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-15 16:04+0200\n"
+"POT-Creation-Date: 2020-06-15 17:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,82 +32,82 @@ msgid ""
 "preferences."
 msgstr ""
 
-#: src/preferences/Backgrounds.js:39
+#: src/preferences/Backgrounds.js:41
 msgid "Backgrounds"
 msgstr ""
 
-#: src/preferences/Backgrounds.js:40
+#: src/preferences/Backgrounds.js:42
 msgid "You can set different backgrounds for day and night."
 msgstr ""
 
-#: src/preferences/Backgrounds.js:43
+#: src/preferences/Backgrounds.js:45
 msgid "Switch backgrounds"
 msgstr ""
 
-#: src/preferences/Backgrounds.js:44
+#: src/preferences/Backgrounds.js:47
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:156
 msgid "Day background"
 msgstr ""
 
-#: src/preferences/Backgrounds.js:45
+#: src/preferences/Backgrounds.js:56
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:161
 msgid "Night background"
 msgstr ""
 
-#: src/preferences/Backgrounds.js:87
+#: src/preferences/Backgrounds.js:105
 msgid "Select your background image"
 msgstr ""
 
-#: src/preferences/Commands.js:39
+#: src/preferences/Commands.js:41
 msgid "Commands"
 msgstr ""
 
-#: src/preferences/Commands.js:40
+#: src/preferences/Commands.js:42
 msgid ""
 "You can set custom commands that will be run when the time of the day "
 "changes."
 msgstr ""
 
-#: src/preferences/Commands.js:43
+#: src/preferences/Commands.js:45
 msgid "Use custom commands"
 msgstr ""
 
-#: src/preferences/Commands.js:44 src/preferences/Schedule.js:46
+#: src/preferences/Commands.js:47 src/preferences/Schedule.js:63
 msgid "Sunrise"
 msgstr ""
 
-#: src/preferences/Commands.js:45 src/preferences/Schedule.js:47
+#: src/preferences/Commands.js:56 src/preferences/Schedule.js:70
 msgid "Sunset"
 msgstr ""
 
-#: src/preferences/Commands.js:76
+#: src/preferences/Commands.js:94
 msgid "Hello sunshine!"
 msgstr ""
 
-#: src/preferences/Commands.js:77
+#: src/preferences/Commands.js:95
 msgid "Hello moonshine!"
 msgstr ""
 
-#: src/preferences/CursorTheme.js:40
+#: src/preferences/CursorTheme.js:42
 msgid "Cursor theme"
 msgstr ""
 
-#: src/preferences/CursorTheme.js:41
+#: src/preferences/CursorTheme.js:43
 msgid "You can set different cursor themes for day and night."
 msgstr ""
 
-#: src/preferences/CursorTheme.js:44
+#: src/preferences/CursorTheme.js:46
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:76
 msgid "Switch cursor variants"
 msgstr ""
 
-#: src/preferences/CursorTheme.js:45 src/preferences/GtkTheme.js:57
-#: src/preferences/IconTheme.js:45 src/preferences/ShellTheme.js:57
+#: src/preferences/CursorTheme.js:48 src/preferences/GtkTheme.js:57
+#: src/preferences/IconTheme.js:48 src/preferences/ShellTheme.js:57
 msgid "Day variant"
 msgstr ""
 
-#: src/preferences/CursorTheme.js:46 src/preferences/GtkTheme.js:64
-#: src/preferences/IconTheme.js:46 src/preferences/ShellTheme.js:64
+#: src/preferences/CursorTheme.js:57 src/preferences/GtkTheme.js:64
+#: src/preferences/IconTheme.js:57 src/preferences/ShellTheme.js:64
 msgid "Night variant"
 msgstr ""
 
@@ -134,24 +134,24 @@ msgstr ""
 msgid "Manual variants"
 msgstr ""
 
-#: src/preferences/IconTheme.js:40
+#: src/preferences/IconTheme.js:42
 msgid "Icon theme"
 msgstr ""
 
-#: src/preferences/IconTheme.js:41
+#: src/preferences/IconTheme.js:43
 msgid "You can set different icon themes for day and night."
 msgstr ""
 
-#: src/preferences/IconTheme.js:44
+#: src/preferences/IconTheme.js:46
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:56
 msgid "Switch icon variants"
 msgstr ""
 
-#: src/preferences/Schedule.js:39
+#: src/preferences/Schedule.js:41
 msgid "Schedule"
 msgstr ""
 
-#: src/preferences/Schedule.js:40
+#: src/preferences/Schedule.js:42
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are "
@@ -160,32 +160,32 @@ msgid ""
 "If you prefer, you can manually choose a time source."
 msgstr ""
 
-#: src/preferences/Schedule.js:43
-msgid "Manual time source"
+#: src/preferences/Schedule.js:45
+msgid "Automatic time source"
 msgstr ""
 
-#: src/preferences/Schedule.js:44
+#: src/preferences/Schedule.js:47
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
 msgid "Time source"
 msgstr ""
 
-#: src/preferences/Schedule.js:45
-msgid "Shortcut"
+#: src/preferences/Schedule.js:56
+msgid "On-demand shortcut"
 msgstr ""
 
-#: src/preferences/Schedule.js:143
+#: src/preferences/Schedule.js:115
 msgid "Night Light"
 msgstr ""
 
-#: src/preferences/Schedule.js:158
+#: src/preferences/Schedule.js:132
 msgid "Location Services"
 msgstr ""
 
-#: src/preferences/Schedule.js:174
+#: src/preferences/Schedule.js:150
 msgid "Manual schedule"
 msgstr ""
 
-#: src/preferences/Schedule.js:192
+#: src/preferences/Schedule.js:168
 msgid "On-demand"
 msgstr ""
 

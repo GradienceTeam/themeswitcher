@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-15 16:04+0200\n"
-"PO-Revision-Date: 2020-06-15 16:06+0200\n"
+"POT-Creation-Date: 2020-06-15 17:50+0200\n"
+"PO-Revision-Date: 2020-06-15 17:56+0200\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: French - France <romain@romainvigier.fr>\n"
 "Language: fr_FR\n"
@@ -39,37 +39,37 @@ msgstr ""
 "pour le thème GNOME Shell \"%s\". Veuillez les sélectionner manuellement "
 "dans les préférences de l’extension."
 
-#: src/preferences/Backgrounds.js:39
+#: src/preferences/Backgrounds.js:41
 msgid "Backgrounds"
 msgstr "Arrière-plans"
 
-#: src/preferences/Backgrounds.js:40
+#: src/preferences/Backgrounds.js:42
 msgid "You can set different backgrounds for day and night."
 msgstr "Vous pouvez définir des arrière-plans diurnes et nocturnes différents."
 
-#: src/preferences/Backgrounds.js:43
+#: src/preferences/Backgrounds.js:45
 msgid "Switch backgrounds"
 msgstr "Permuter les arrière-plans"
 
-#: src/preferences/Backgrounds.js:44
+#: src/preferences/Backgrounds.js:47
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:156
 msgid "Day background"
 msgstr "Arrière-plan diurne"
 
-#: src/preferences/Backgrounds.js:45
+#: src/preferences/Backgrounds.js:56
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:161
 msgid "Night background"
 msgstr "Arrière-plan nocturne"
 
-#: src/preferences/Backgrounds.js:87
+#: src/preferences/Backgrounds.js:105
 msgid "Select your background image"
 msgstr "Sélectionnez votre image d’arrière-plan"
 
-#: src/preferences/Commands.js:39
+#: src/preferences/Commands.js:41
 msgid "Commands"
 msgstr "Commandes"
 
-#: src/preferences/Commands.js:40
+#: src/preferences/Commands.js:42
 msgid ""
 "You can set custom commands that will be run when the time of the day "
 "changes."
@@ -77,47 +77,47 @@ msgstr ""
 "Vous pouvez définir des commandes personnalisées qui seront lancées au "
 "moment du changement."
 
-#: src/preferences/Commands.js:43
+#: src/preferences/Commands.js:45
 msgid "Use custom commands"
 msgstr "Utiliser des commandes personnalisées"
 
-#: src/preferences/Commands.js:44 src/preferences/Schedule.js:46
+#: src/preferences/Commands.js:47 src/preferences/Schedule.js:63
 msgid "Sunrise"
 msgstr "Lever du soleil"
 
-#: src/preferences/Commands.js:45 src/preferences/Schedule.js:47
+#: src/preferences/Commands.js:56 src/preferences/Schedule.js:70
 msgid "Sunset"
 msgstr "Coucher du soleil"
 
-#: src/preferences/Commands.js:76
+#: src/preferences/Commands.js:94
 msgid "Hello sunshine!"
 msgstr "Bonjour!"
 
-#: src/preferences/Commands.js:77
+#: src/preferences/Commands.js:95
 msgid "Hello moonshine!"
 msgstr "Bonsoir!"
 
-#: src/preferences/CursorTheme.js:40
+#: src/preferences/CursorTheme.js:42
 msgid "Cursor theme"
 msgstr "Thème de curseur"
 
-#: src/preferences/CursorTheme.js:41
+#: src/preferences/CursorTheme.js:43
 msgid "You can set different cursor themes for day and night."
 msgstr ""
 "Vous pouvez définir des thèmes de curseurs diurnes et nocturnes différents."
 
-#: src/preferences/CursorTheme.js:44
+#: src/preferences/CursorTheme.js:46
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:76
 msgid "Switch cursor variants"
 msgstr "Permuter les variantes de curseur"
 
-#: src/preferences/CursorTheme.js:45 src/preferences/GtkTheme.js:57
-#: src/preferences/IconTheme.js:45 src/preferences/ShellTheme.js:57
+#: src/preferences/CursorTheme.js:48 src/preferences/GtkTheme.js:57
+#: src/preferences/IconTheme.js:48 src/preferences/ShellTheme.js:57
 msgid "Day variant"
 msgstr "Variante diurne"
 
-#: src/preferences/CursorTheme.js:46 src/preferences/GtkTheme.js:64
-#: src/preferences/IconTheme.js:46 src/preferences/ShellTheme.js:64
+#: src/preferences/CursorTheme.js:57 src/preferences/GtkTheme.js:64
+#: src/preferences/IconTheme.js:57 src/preferences/ShellTheme.js:64
 msgid "Night variant"
 msgstr "Variante nocturne"
 
@@ -151,25 +151,25 @@ msgstr "Permuter les variantes GTK"
 msgid "Manual variants"
 msgstr "Variantes manuelles"
 
-#: src/preferences/IconTheme.js:40
+#: src/preferences/IconTheme.js:42
 msgid "Icon theme"
 msgstr "Thème d’icônes"
 
-#: src/preferences/IconTheme.js:41
+#: src/preferences/IconTheme.js:43
 msgid "You can set different icon themes for day and night."
 msgstr ""
 "Vous pouvez définir des thèmes d’icônes diurnes et nocturnes différents."
 
-#: src/preferences/IconTheme.js:44
+#: src/preferences/IconTheme.js:46
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:56
 msgid "Switch icon variants"
 msgstr "Permuter les variantes d’icônes"
 
-#: src/preferences/Schedule.js:39
+#: src/preferences/Schedule.js:41
 msgid "Schedule"
 msgstr "Horaires"
 
-#: src/preferences/Schedule.js:40
+#: src/preferences/Schedule.js:42
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are "
@@ -184,32 +184,32 @@ msgstr ""
 "Si vous préférez, vous pouvez sélectionner manuellement une source "
 "d’horaires."
 
-#: src/preferences/Schedule.js:43
-msgid "Manual time source"
-msgstr "Source d’horaires manuelle"
+#: src/preferences/Schedule.js:45
+msgid "Automatic time source"
+msgstr "Source d’horaires automatique"
 
-#: src/preferences/Schedule.js:44
+#: src/preferences/Schedule.js:47
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
 msgid "Time source"
 msgstr "Source d’horaires"
 
-#: src/preferences/Schedule.js:45
-msgid "Shortcut"
-msgstr "Raccourci"
+#: src/preferences/Schedule.js:56
+msgid "On-demand shortcut"
+msgstr "Raccourci à la demande"
 
-#: src/preferences/Schedule.js:143
+#: src/preferences/Schedule.js:115
 msgid "Night Light"
 msgstr "Mode nuit"
 
-#: src/preferences/Schedule.js:158
+#: src/preferences/Schedule.js:132
 msgid "Location Services"
 msgstr "Services de localisation"
 
-#: src/preferences/Schedule.js:174
+#: src/preferences/Schedule.js:150
 msgid "Manual schedule"
 msgstr "Horaire manuel"
 
-#: src/preferences/Schedule.js:192
+#: src/preferences/Schedule.js:168
 msgid "On-demand"
 msgstr "À la demande"
 
@@ -457,6 +457,12 @@ msgstr "Chemin vers l’arrière-plan diurne"
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:162
 msgid "Path to the night background"
 msgstr "Chemin vers l’arrière-plan nocturne"
+
+#~ msgid "Manual time source"
+#~ msgstr "Source d’horaires manuelle"
+
+#~ msgid "Shortcut"
+#~ msgstr "Raccourci"
 
 #~ msgid "Change backgrounds"
 #~ msgstr "Changer les arrière-plans"
