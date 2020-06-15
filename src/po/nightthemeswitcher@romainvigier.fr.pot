@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 30\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-29 16:45+0200\n"
+"POT-Creation-Date: 2020-06-15 10:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,12 +45,12 @@ msgid "Switch backgrounds"
 msgstr ""
 
 #: src/preferences/Backgrounds.js:44
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:146
 msgid "Day background"
 msgstr ""
 
 #: src/preferences/Backgrounds.js:45
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:136
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:151
 msgid "Night background"
 msgstr ""
 
@@ -72,11 +72,11 @@ msgstr ""
 msgid "Use custom commands"
 msgstr ""
 
-#: src/preferences/Commands.js:44 src/preferences/Schedule.js:45
+#: src/preferences/Commands.js:44 src/preferences/Schedule.js:46
 msgid "Sunrise"
 msgstr ""
 
-#: src/preferences/Commands.js:45 src/preferences/Schedule.js:46
+#: src/preferences/Commands.js:45 src/preferences/Schedule.js:47
 msgid "Sunset"
 msgstr ""
 
@@ -160,20 +160,28 @@ msgid "Manual time source"
 msgstr ""
 
 #: src/preferences/Schedule.js:44
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:91
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:92
 msgid "Time source"
 msgstr ""
 
-#: src/preferences/Schedule.js:87
+#: src/preferences/Schedule.js:45
+msgid "Shortcut"
+msgstr ""
+
+#: src/preferences/Schedule.js:143
 msgid "Night Light"
 msgstr ""
 
-#: src/preferences/Schedule.js:102
+#: src/preferences/Schedule.js:158
 msgid "Location Services"
 msgstr ""
 
-#: src/preferences/Schedule.js:118
+#: src/preferences/Schedule.js:174
 msgid "Manual schedule"
+msgstr ""
+
+#: src/preferences/Schedule.js:192
+msgid "On-demand"
 msgstr ""
 
 #: src/preferences/ShellTheme.js:40
@@ -314,70 +322,86 @@ msgstr ""
 msgid "The cursor theme to restore when the extension is disabled"
 msgstr ""
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:92
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:93
 msgid "The source used to check current time"
 msgstr ""
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:96
-msgid "Use manual time source"
-msgstr ""
-
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:97
-msgid "Disable automatic time source detection"
-msgstr ""
-
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:101
-msgid "Sunrise time"
+msgid "On-demand time"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
-msgid "When the day starts"
+msgid "The current time used in on-demand mode"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:106
-msgid "Sunset time"
+msgid "Key combination to toggle time"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:107
-msgid "When the day ends"
+msgid "The key combination that will toggle time in on-demand mode"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:111
-msgid "Enable commands"
+msgid "Use manual time source"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:112
-msgid "Commands will be spawned on time change"
+msgid "Disable automatic time source detection"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:116
-msgid "Sunrise command"
+msgid "Sunrise time"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:117
-msgid "The command to spawn at sunrise"
+msgid "When the day starts"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:121
-msgid "Sunset command"
+msgid "Sunset time"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:122
-msgid "The command to spawn at sunset"
+msgid "When the day ends"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
-msgid "Enable backgrounds"
+msgid "Enable commands"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:127
-msgid "Background will be changed on time change"
+msgid "Commands will be spawned on time change"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
+msgid "Sunrise command"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:132
-msgid "Path to the day background"
+msgid "The command to spawn at sunrise"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:136
+msgid "Sunset command"
 msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:137
+msgid "The command to spawn at sunset"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:141
+msgid "Enable backgrounds"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:142
+msgid "Background will be changed on time change"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:147
+msgid "Path to the day background"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:152
 msgid "Path to the night background"
 msgstr ""
