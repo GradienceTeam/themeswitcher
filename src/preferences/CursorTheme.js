@@ -37,13 +37,31 @@ if ( shell_minor_version <= 30 ) {
 var CursorThemePreferences = class {
 
 	constructor() {
+		const settings = extensionUtils.getSettings();
+
 		const label = _('Cursor theme');
 		const description = _('You can set different cursor themes for day and night.');
 		const content = new SettingsList();
 
 		content.add_row(new SettingsListRow(_('Switch cursor variants'), new CursorVariantsEnabledControl()));
-		content.add_row(new SettingsListRow(_('Day variant'), new TimeCursorVariantControl('day')));
-		content.add_row(new SettingsListRow(_('Night variant'), new TimeCursorVariantControl('night')));
+
+		const day_variant_row = new SettingsListRow(_('Day variant'), new TimeCursorVariantControl('day'));
+		settings.bind(
+			'cursor-variants-enabled',
+			day_variant_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(day_variant_row);
+
+		const night_variant_row = new SettingsListRow(_('Night variant'), new TimeCursorVariantControl('night'));
+		settings.bind(
+			'cursor-variants-enabled',
+			night_variant_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(night_variant_row);
 
 		return new SettingsPage(label, description, content);
 	}
@@ -81,12 +99,6 @@ class TimeCursorVariantControl {
 			`cursor-variant-${time}`,
 			combo,
 			'active-id',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		settings.bind(
-			'cursor-variants-enabled',
-			combo,
-			'sensitive',
 			Gio.SettingsBindFlags.DEFAULT
 		);
 		return combo;

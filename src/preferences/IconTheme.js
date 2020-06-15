@@ -37,13 +37,31 @@ if ( shell_minor_version <= 30 ) {
 var IconThemePreferences = class {
 
 	constructor() {
+		const settings = extensionUtils.getSettings();
+
 		const label = _('Icon theme');
 		const description = _('You can set different icon themes for day and night.');
 		const content = new SettingsList();
 
 		content.add_row(new SettingsListRow(_('Switch icon variants'), new IconVariantsEnabledControl()));
-		content.add_row(new SettingsListRow(_('Day variant'), new TimeIconVariantControl('day')));
-		content.add_row(new SettingsListRow(_('Night variant'), new TimeIconVariantControl('night')));
+
+		const day_variant_row = new SettingsListRow(_('Day variant'), new TimeIconVariantControl('day'));
+		settings.bind(
+			'icon-variants-enabled',
+			day_variant_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(day_variant_row);
+
+		const night_variant_row = new SettingsListRow(_('Night variant'), new TimeIconVariantControl('night'));
+		settings.bind(
+			'icon-variants-enabled',
+			night_variant_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(night_variant_row);
 
 		return new SettingsPage(label, description, content);
 	}
@@ -81,12 +99,6 @@ class TimeIconVariantControl {
 			`icon-variant-${time}`,
 			combo,
 			'active-id',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		settings.bind(
-			'icon-variants-enabled',
-			combo,
-			'sensitive',
 			Gio.SettingsBindFlags.DEFAULT
 		);
 		return combo;
