@@ -3,9 +3,9 @@
 ![](./res/screenshot.png)
 <!-- Background picture by Adrien Converse from https://unsplash.com/photos/kCrrUx7US04 -->
 
-Automatically toggle your light and dark GTK and GNOME Shell theme variants, switch backgrounds and launch custom commands at sunset and sunrise.
+Automatically toggle your light and dark GTK, GNOME Shell, icon and cursor themes variants, switch backgrounds and run custom commands at sunset and sunrise.
 
-Supports Night Light, Location Services and manual schedule.
+Supports Night Light, Location Services, manual schedule and on-demand switch.
 
 ## Theme compatibility
 

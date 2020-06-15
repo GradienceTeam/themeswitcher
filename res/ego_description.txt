@@ -1,5 +1,5 @@
-Night mode for GNOME! Automatically toggle your light and dark GTK and GNOME Shell theme variants, switch backgrounds and launch custom commands at sunset and sunrise.
+Night mode for GNOME! Automatically toggle your light and dark GTK, GNOME Shell, icon and cursor themes variants, switch backgrounds and run custom commands at sunset and sunrise.
 
-Supports Night Light, Location Services and manual schedule.
+Supports Night Light, Location Services, manual schedule and on-demand switch.
 
 It works out of the box with numerous themes (see the list on the repository), and you can manually choose the variants you want.

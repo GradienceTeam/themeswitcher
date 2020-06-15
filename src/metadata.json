@@ -1,6 +1,6 @@
 {
 	"name": "Night Theme Switcher",
-	"description": "Automatically toggle your light and dark GTK and GNOME Shell theme variants, switch backgrounds and launch custom commands at sunset and sunrise.",
+	"description": "Automatically toggle your light and dark GTK, GNOME Shell, icon and cursor themes variants, switch backgrounds and run custom commands at sunset and sunrise.",
 	"uuid": "nightthemeswitcher@romainvigier.fr",
 	"gettext-domain": "nightthemeswitcher@romainvigier.fr",
 	"settings-schema": "org.gnome.shell.extensions.nightthemeswitcher",
