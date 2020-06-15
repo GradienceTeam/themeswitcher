@@ -88,9 +88,9 @@ var TimerOndemand = class {
 		});
 
 		this._button = new panelMenu.Button(0.0);
-		let button_actor = get_actor(this._button);
+		const button_actor = get_actor(this._button);
 		button_actor.add_actor(this._icon);
-		this._button.connect(
+		button_actor.connect(
 			'button-press-event',
 			this._toggle_time.bind(this)
 		);
