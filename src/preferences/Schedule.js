@@ -36,17 +36,151 @@ if ( shell_minor_version <= 30 ) {
 var SchedulePreferences = class {
 
 	constructor() {
+		const settings = extensionUtils.getSettings();
+
 		const label = _('Schedule');
 		const description = _('The extension will try to use Night Light or Location Services to automatically set your current sunrise and sunset times if they are enabled.\n\nIf you prefer, you can manually choose a time source.');
 		const content = new SettingsList();
 
 		content.add_row(new SettingsListRow(_('Manual time source'), new ManualTimeSourceControl()));
-		content.add_row(new SettingsListRow(_('Time source'), new TimeSourceControl()));
-		content.add_row(new SettingsListRow(_('Shortcut'), new KeyBindingControl()));
-		content.add_row(new SettingsListRow(_('Sunrise'), new SuntimeControl('sunrise')));
-		content.add_row(new SettingsListRow(_('Sunset'), new SuntimeControl('sunset')));
+
+		const time_source_row = new SettingsListRow(_('Time source'), new TimeSourceControl());
+		settings.bind(
+			'manual-time-source',
+			time_source_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(time_source_row);
+
+		const ondemand_shortcut_row = new SettingsListRow(_('On-demand shortcut'), new KeyBindingControl());
+		const update_ondemand_shortcut_row_sensitivity = () => ondemand_shortcut_row.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'ondemand'));
+		settings.connect('changed::manual-time-source', () => update_ondemand_shortcut_row_sensitivity());
+		settings.connect('changed::time-source', () => update_ondemand_shortcut_row_sensitivity());
+		update_ondemand_shortcut_row_sensitivity();
+		content.add_row(ondemand_shortcut_row);
+
+		const sunrise_row = new SettingsListRow(_('Sunrise'), new SuntimeControl('sunrise'));
+		const update_sunrise_row_sensitivity = () => sunrise_row.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'schedule'));
+		settings.connect('changed::manual-time-source', () => update_sunrise_row_sensitivity());
+		settings.connect('changed::time-source', () => update_sunrise_row_sensitivity());
+		update_sunrise_row_sensitivity();
+		content.add_row(sunrise_row);
+
+		const sunset_row = new SettingsListRow(_('Sunset'), new SuntimeControl('sunset'));
+		const update_sunset_row_sensitivity = () => sunset_row.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'schedule'));
+		settings.connect('changed::manual-time-source', () => update_sunset_row_sensitivity());
+		settings.connect('changed::time-source', () => update_sunset_row_sensitivity());
+		update_sunset_row_sensitivity();
+		content.add_row(sunset_row);
 
 		return new SettingsPage(label, description, content);
+	}
+
+}
+
+class ManualTimeSourceControl {
+
+	constructor() {
+		const settings = extensionUtils.getSettings();
+		const toggle = new Gtk.Switch({
+			active: false
+		});
+		settings.bind(
+			'manual-time-source',
+			toggle,
+			'active',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		return toggle;
+	}
+
+}
+
+
+class TimeSourceControl {
+
+	constructor() {
+		const settings = extensionUtils.getSettings();
+		const colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
+		const locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
+
+		const box = new Gtk.Box({
+			spacing: 8,
+			orientation: Gtk.Orientation.HORIZONTAL,
+			can_focus: false
+		});
+
+		const nightlight_radio = new Gtk.RadioButton({
+			label: _('Night Light'),
+			active: (settings.get_string('time-source') === 'nightlight')
+		});
+		nightlight_radio.connect('toggled', () => {
+			if ( nightlight_radio.get_active() ) {
+				settings.set_string('time-source', 'nightlight')
+			}
+		});
+		colorSettings.bind(
+			'night-light-enabled',
+			nightlight_radio,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		box.pack_start(nightlight_radio, false, false, 0);
+
+		const location_radio = new Gtk.RadioButton({
+			label: _('Location Services'),
+			group: nightlight_radio,
+			active: (settings.get_string('time-source') === 'location')
+		});
+		location_radio.connect('toggled', () => {
+			if ( location_radio.get_active() ) {
+				settings.set_string('time-source', 'location')
+			}
+		});
+		locationSettings.bind(
+			'enabled',
+			location_radio,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		box.pack_start(location_radio, false, false, 0);
+
+		const schedule_radio = new Gtk.RadioButton({
+			label: _('Manual schedule'),
+			group: nightlight_radio,
+			active: (settings.get_string('time-source') === 'schedule')
+		});
+		schedule_radio.connect('toggled', () => {
+			if ( schedule_radio.get_active() ) {
+				settings.set_string('time-source', 'schedule')
+			}
+		});
+		settings.bind(
+			'manual-time-source',
+			schedule_radio,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		box.pack_start(schedule_radio, false, false, 0);
+
+		const ondemand_radio = new Gtk.RadioButton({
+			label: _('On-demand'),
+			group: nightlight_radio,
+			active: (settings.get_string('time-source') === 'ondemand')
+		});
+		ondemand_radio.connect('toggled', () => {
+			settings.set_string('time-source', 'ondemand')
+		});
+		settings.bind(
+			'manual-time-source',
+			ondemand_radio,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		box.pack_start(ondemand_radio, false, false, 0);
+
+		return box;
 	}
 
 }
@@ -96,116 +230,7 @@ class KeyBindingControl {
 		tree_view.append_column(column);
 		update_shortcut_row(settings.get_strv(KEYBINDING_KEY)[0]);
 
-		const update_treeview_sensitivity = (tree_view) => {
-			tree_view.set_sensitive(!!(settings.get_string('time-source') === 'ondemand'));
-		}
-		settings.connect('changed::time-source', () => update_treeview_sensitivity(tree_view));
-		update_treeview_sensitivity(tree_view)
-
 		return tree_view;
-	}
-
-}
-
-class ManualTimeSourceControl {
-
-	constructor() {
-		const settings = extensionUtils.getSettings();
-		const toggle = new Gtk.Switch({
-			active: false
-		});
-		settings.bind(
-			'manual-time-source',
-			toggle,
-			'active',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return toggle;
-	}
-
-}
-
-
-class TimeSourceControl {
-
-	constructor() {
-		const settings = extensionUtils.getSettings();
-		const colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
-		const locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
-
-		const box = new Gtk.Box({
-			spacing: 8,
-			orientation: Gtk.Orientation.HORIZONTAL,
-			can_focus: false
-		});
-
-		const nightlight_radio = new Gtk.RadioButton({
-			label: _('Night Light'),
-			active: (settings.get_string('time-source') === 'nightlight')
-		});
-		const update_nightlight_radio_sensitivity = () => nightlight_radio.set_sensitive(!!(settings.get_boolean('manual-time-source') && colorSettings.get_boolean('night-light-enabled')));
-		settings.connect('changed::manual-time-source', update_nightlight_radio_sensitivity);
-		colorSettings.connect('changed::night-light-enabled', update_nightlight_radio_sensitivity);
-		update_nightlight_radio_sensitivity();
-		nightlight_radio.connect('toggled', () => {
-			if ( nightlight_radio.get_active() ) {
-				settings.set_string('time-source', 'nightlight')
-			}
-		});
-		box.pack_start(nightlight_radio, false, false, 0);
-
-		const location_radio = new Gtk.RadioButton({
-			label: _('Location Services'),
-			group: nightlight_radio,
-			active: (settings.get_string('time-source') === 'location')
-		});
-		const update_location_radio_sensitivity = () => location_radio.set_sensitive(!!(settings.get_boolean('manual-time-source') && locationSettings.get_boolean('enabled')));
-		settings.connect('changed::manual-time-source', update_location_radio_sensitivity);
-		locationSettings.connect('changed::enabled', update_location_radio_sensitivity);
-		update_location_radio_sensitivity();
-		location_radio.connect('toggled', () => {
-			if ( location_radio.get_active() ) {
-				settings.set_string('time-source', 'location')
-			}
-		});
-		box.pack_start(location_radio, false, false, 0);
-
-		const schedule_radio = new Gtk.RadioButton({
-			label: _('Manual schedule'),
-			group: nightlight_radio,
-			active: (settings.get_string('time-source') === 'schedule')
-		});
-		settings.bind(
-			'manual-time-source',
-			schedule_radio,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		schedule_radio.connect('toggled', () => {
-			if ( schedule_radio.get_active() ) {
-				settings.set_string('time-source', 'schedule')
-			}
-		});
-		box.pack_start(schedule_radio, false, false, 0);
-
-		const ondemand_radio = new Gtk.RadioButton({
-			label: _('On-demand'),
-			group: nightlight_radio,
-			active: (settings.get_string('time-source') === 'ondemand')
-		});
-		settings.bind(
-			'manual-time-source',
-			ondemand_radio,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		ondemand_radio.connect('toggled', () => {
-			settings.set_string('time-source', 'ondemand')
-		});
-		box.pack_start(ondemand_radio, false, false, 0);
-
-
-		return box;
 	}
 
 }
@@ -220,8 +245,6 @@ class SuntimeControl {
 			orientation: Gtk.Orientation.HORIZONTAL,
 			can_focus: false
 		});
-
-		const update_spin_sensitivity = (spin) => spin.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'schedule'));
 
 		const time = settings.get_double(`schedule-${suntime}`);
 		const hours = Math.trunc(time);
@@ -253,9 +276,6 @@ class SuntimeControl {
 			const new_time = hours_spin.value + minutes;
 			settings.set_double(`schedule-${suntime}`, new_time);
 		});
-		settings.connect('changed::manual-time-source', () => update_spin_sensitivity(hours_spin));
-		settings.connect('changed::time-source', () => update_spin_sensitivity(hours_spin));
-		update_spin_sensitivity(hours_spin);
 
 		const separator = new Gtk.Label({ label: ':' });
 
@@ -284,9 +304,6 @@ class SuntimeControl {
 			const new_time = hour + minutes;
 			settings.set_double(`schedule-${suntime}`, new_time);
 		});
-		settings.connect('changed::manual-time-source', () => update_spin_sensitivity(minutes_spin));
-		settings.connect('changed::time-source', () => update_spin_sensitivity(minutes_spin));
-		update_spin_sensitivity(minutes_spin);
 
 		box.pack_start(hours_spin, false, false, 0);
 		box.pack_start(separator, false, false, 0);

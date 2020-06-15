@@ -36,13 +36,31 @@ if ( shell_minor_version <= 30 ) {
 var CommandsPreferences = class {
 
 	constructor() {
+		const settings = extensionUtils.getSettings();
+
 		const label = _('Commands');
 		const description = _('You can set custom commands that will be run when the time of the day changes.');
 		const content = new SettingsList();
 
 		content.add_row(new SettingsListRow(_('Use custom commands'), new CommandsEnabledControl()));
-		content.add_row(new SettingsListRow(_('Sunrise'), new SuntimeCommandControl('sunrise')));
-		content.add_row(new SettingsListRow(_('Sunset'), new SuntimeCommandControl('sunset')));
+
+		const day_command_row = new SettingsListRow(_('Sunrise'), new SuntimeCommandControl('sunrise'));
+		settings.bind(
+			'commands-enabled',
+			day_command_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(day_command_row);
+
+		const night_command_row = new SettingsListRow(_('Sunset'), new SuntimeCommandControl('sunset'));
+		settings.bind(
+			'commands-enabled',
+			night_command_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(night_command_row);
 
 		return new SettingsPage(label, description, content);
 	}
@@ -85,12 +103,6 @@ class SuntimeCommandControl {
 			`command-${suntime}`,
 			entry,
 			'text',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		settings.bind(
-			'commands-enabled',
-			entry,
-			'sensitive',
 			Gio.SettingsBindFlags.DEFAULT
 		);
 		return entry;

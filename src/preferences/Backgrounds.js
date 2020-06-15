@@ -36,13 +36,31 @@ if ( shell_minor_version <= 30 ) {
 var BackgroundsPreferences = class {
 
 	constructor() {
+		const settings = extensionUtils.getSettings();
+
 		const label = _('Backgrounds');
 		const description = _('You can set different backgrounds for day and night.');
 		const content = new SettingsList();
 
 		content.add_row(new SettingsListRow(_('Switch backgrounds'), new BackgroundsEnabledControl()));
-		content.add_row(new SettingsListRow(_('Day background'), new TimeBackgroundControl('day')));
-		content.add_row(new SettingsListRow(_('Night background'), new TimeBackgroundControl('night')));
+
+		const day_background_row = new SettingsListRow(_('Day background'), new TimeBackgroundControl('day'));
+		settings.bind(
+			'backgrounds-enabled',
+			day_background_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(day_background_row);
+
+		const night_background_row = new SettingsListRow(_('Night background'), new TimeBackgroundControl('night'));
+		settings.bind(
+			'backgrounds-enabled',
+			night_background_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(night_background_row);
 
 		return new SettingsPage(label, description, content);
 	}
@@ -97,12 +115,6 @@ class TimeBackgroundControl {
 			preview.set_from_pixbuf(pixbuf);
 		});
 		button.connect('file-set', () => settings.set_string(`background-${time}`, button.get_uri()));
-		settings.bind(
-			'backgrounds-enabled',
-			button,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
 		settings.connect(`changed::background-${time}`, () => button.set_uri(settings.get_string(`background-${time}`)));
 
 		return button;
