@@ -47,7 +47,11 @@ var ShellVariants = class {
 		const variants = new Map();
 		variants.set('original', name);
 
-		if ( name.includes('Adapta') ) {
+		if ( name === '' ) {
+			variants.set('day', '');
+			variants.set('night', '');
+		}
+		else if ( name.includes('Adapta') ) {
 			variants.set('day', name.replace('-Nokto', ''));
 			variants.set('night', variants.get('day').replace('Adapta', 'Adapta-Nokto'));
 		}
