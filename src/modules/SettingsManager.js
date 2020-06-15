@@ -51,9 +51,11 @@ var SettingsManager = class {
 
 	enable() {
 		log_debug('Connecting settings signals...');
+		this._gtk_variants_status_changed_connect = this._extensionsSettings.connect('changed::gtk-variants-enabled', this._on_gtk_variants_status_changed.bind(this));
 		this._gtk_variant_day_changed_connect = this._extensionsSettings.connect('changed::gtk-variant-day', this._on_gtk_variant_day_changed.bind(this));
 		this._gtk_variant_night_changed_connect = this._extensionsSettings.connect('changed::gtk-variant-night', this._on_gtk_variant_night_changed.bind(this));
 		this._gtk_variant_original_changed_connect = this._extensionsSettings.connect('changed::gtk-variant-original', this._on_gtk_variant_original_changed.bind(this));
+		this._shell_variants_status_changed_connect = this._extensionsSettings.connect('changed::shell-variants-enabled', this._on_shell_variants_status_changed.bind(this));
 		this._shell_variant_day_changed_connect = this._extensionsSettings.connect('changed::shell-variant-day', this._on_shell_variant_day_changed.bind(this));
 		this._shell_variant_night_changed_connect = this._extensionsSettings.connect('changed::shell-variant-night', this._on_shell_variant_night_changed.bind(this));
 		this._shell_variant_original_changed_connect = this._extensionsSettings.connect('changed::shell-variant-original', this._on_shell_variant_original_changed.bind(this));
@@ -85,9 +87,11 @@ var SettingsManager = class {
 
 	disable() {
 		log_debug('Disconnecting settings signals...');
+		this._extensionsSettings.disconnect(this._gtk_variants_status_changed_connect);
 		this._extensionsSettings.disconnect(this._gtk_variant_day_changed_connect);
 		this._extensionsSettings.disconnect(this._gtk_variant_night_changed_connect);
 		this._extensionsSettings.disconnect(this._gtk_variant_original_changed_connect);
+		this._extensionsSettings.disconnect(this._shell_variants_status_changed_connect);
 		this._extensionsSettings.disconnect(this._shell_variant_day_changed_connect);
 		this._extensionsSettings.disconnect(this._shell_variant_night_changed_connect);
 		this._extensionsSettings.disconnect(this._shell_variant_original_changed_connect);
@@ -122,6 +126,10 @@ var SettingsManager = class {
 	 */
 
 	/* GTK variants settings */
+
+	get gtk_variants_enabled() {
+		return this._extensionsSettings.get_boolean('gtk-variants-enabled');
+	}
 
 	get gtk_variant_day() {
 		return this._extensionsSettings.get_string('gtk-variant-day');
@@ -162,6 +170,10 @@ var SettingsManager = class {
 
 
 	/* Shell variants settings */
+
+	get shell_variants_enabled() {
+		return this._extensionsSettings.get_boolean('shell-variants-enabled');
+	}
 
 	get shell_variant_day() {
 		return this._extensionsSettings.get_string('shell-variant-day');
@@ -387,6 +399,9 @@ var SettingsManager = class {
 		if ( this._userthemesSettings ) {
 			return this._userthemesSettings.get_string('name');
 		}
+		else {
+			return '';
+		}
 	}
 
 	set shell_theme(value) {
@@ -448,6 +463,11 @@ var SettingsManager = class {
 
 	/* GTK variants */
 
+	_on_gtk_variants_status_changed(settings, changed_key) {
+		log_debug('GTK variants have been ' + (this.gtk_variants_enabled ? 'ena' : 'disa') + 'bled.');
+		this.emit('gtk-variants-status-changed', this.gtk_variants_enabled);
+	}
+
 	_on_gtk_variant_day_changed(settings, changed_key) {
 		log_debug(`GTK day variant has changed to '${this.gtk_variant_day}'.`);
 		this.emit('gtk-variant-changed', 'day');
@@ -465,6 +485,11 @@ var SettingsManager = class {
 
 
 	/* Shell variants */
+
+	_on_shell_variants_status_changed(settings, changed_key) {
+		log_debug('Shell variants have been ' + (this.shell_variants_enabled ? 'ena' : 'disa') + 'bled.');
+		this.emit('shell-variants-status-changed', this.shell_variants_enabled);
+	}
 
 	_on_shell_variant_day_changed(settings, changed_key) {
 		log_debug(`Shell day variant has changed to '${this.shell_variant_day}'.`);

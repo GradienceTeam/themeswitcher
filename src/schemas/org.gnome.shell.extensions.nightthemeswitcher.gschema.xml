@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="nightthemeswitcher@romainvigier.fr">
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher" path="/org/gnome/shell/extensions/nightthemeswitcher/">
+		<key name="gtk-variants-enabled" type="b">
+			<default>true</default>
+			<summary>Switch GTK variants</summary>
+			<description>Enable GTK variants switching</description>
+		</key>
 		<key name="gtk-variant-day" type="s">
 			<default>"Adwaita"</default>
 			<summary>Day GTK theme</summary>
@@ -20,6 +25,11 @@
 			<default>false</default>
 			<summary>Use manual GTK variants</summary>
 			<description>Disable automatic GTK theme variants detection</description>
+		</key>
+		<key name="shell-variants-enabled" type="b">
+			<default>true</default>
+			<summary>Switch shell variants</summary>
+			<description>Enable shell variants switching</description>
 		</key>
 		<key name="shell-variant-day" type="s">
 			<default>""</default>

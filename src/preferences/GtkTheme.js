@@ -37,15 +37,57 @@ if ( shell_minor_version <= 30 ) {
 var GtkThemePreferences = class {
 
 	constructor() {
+		const settings = extensionUtils.getSettings();
+
 		const label = _('GTK theme');
 		const description = _('The extension will try to automatically detect the day and night variants of your GTK theme.\n\nIf the theme you use isn\'t supported, please <a href="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues">submit a request</a>. You can also manually set variants.');
 		const content = new SettingsList();
 
-		content.add_row(new SettingsListRow(_('Manual variants'), new ManualGtkVariantsControl()));
-		content.add_row(new SettingsListRow(_('Day variant'), new TimeGtkVariantControl('day')));
-		content.add_row(new SettingsListRow(_('Night variant'), new TimeGtkVariantControl('night')));
+		content.add_row(new SettingsListRow(_('Switch GTK variants'), new GtkVariantsEnabledControl()));
+
+		const manual_variants_row = new SettingsListRow(_('Manual variants'), new ManualGtkVariantsControl());
+		settings.bind(
+			'gtk-variants-enabled',
+			manual_variants_row,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		content.add_row(manual_variants_row);
+
+		const day_variant_row = new SettingsListRow(_('Day variant'), new TimeGtkVariantControl('day'));
+		const update_day_variant_row_sensitivity = () => day_variant_row.set_sensitive(!!(settings.get_boolean('gtk-variants-enabled') && settings.get_boolean('manual-gtk-variants')));
+		settings.connect('changed::gtk-variants-enabled', update_day_variant_row_sensitivity);
+		settings.connect('changed::manual-gtk-variants', update_day_variant_row_sensitivity)
+		update_day_variant_row_sensitivity();
+		content.add_row(day_variant_row);
+
+		const night_variant_row = new SettingsListRow(_('Night variant'), new TimeGtkVariantControl('night'));
+		const update_night_variant_row_sensitivity = () => night_variant_row.set_sensitive(!!(settings.get_boolean('gtk-variants-enabled') && settings.get_boolean('manual-gtk-variants')));
+		settings.connect('changed::gtk-variants-enabled', update_night_variant_row_sensitivity);
+		settings.connect('changed::manual-gtk-variants', update_night_variant_row_sensitivity)
+		update_night_variant_row_sensitivity();
+		content.add_row(night_variant_row);
 
 		return new SettingsPage(label, description, content);
+	}
+
+}
+
+
+class GtkVariantsEnabledControl {
+
+	constructor() {
+		const settings = extensionUtils.getSettings();
+		const toggle = new Gtk.Switch({
+			active: settings.get_boolean('gtk-variants-enabled')
+		});
+		settings.bind(
+			'gtk-variants-enabled',
+			toggle,
+			'active',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		return toggle;
 	}
 
 }
@@ -81,12 +123,6 @@ class TimeGtkVariantControl {
 			`gtk-variant-${time}`,
 			combo,
 			'active-id',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		settings.bind(
-			'manual-gtk-variants',
-			combo,
-			'sensitive',
 			Gio.SettingsBindFlags.DEFAULT
 		);
 		return combo;
