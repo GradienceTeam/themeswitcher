@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-const { Gio, Gtk } = imports.gi;
+const { Gio, GObject, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
@@ -42,6 +42,7 @@ var SchedulePreferences = class {
 
 		content.add_row(new SettingsListRow(_('Manual time source'), new ManualTimeSourceControl()));
 		content.add_row(new SettingsListRow(_('Time source'), new TimeSourceControl()));
+		content.add_row(new SettingsListRow(_('Shortcut'), new KeyBindingControl()));
 		content.add_row(new SettingsListRow(_('Sunrise'), new SuntimeControl('sunrise')));
 		content.add_row(new SettingsListRow(_('Sunset'), new SuntimeControl('sunset')));
 
@@ -50,6 +51,61 @@ var SchedulePreferences = class {
 
 }
 
+
+class KeyBindingControl {
+
+	constructor() {
+		const settings = extensionUtils.getSettings();
+		const KEYBINDING_KEY = 'nightthemeswitcher-ondemand-keybinding';
+		const COLUMN_KEY = 0;
+		const COLUMN_MODS = 1;
+
+		const list_store = new Gtk.ListStore();
+		list_store.set_column_types([GObject.TYPE_INT, GObject.TYPE_INT]);
+		const tree_view = new Gtk.TreeView({model: list_store});
+		tree_view.set_headers_visible(false);
+
+		const renderer = new Gtk.CellRendererAccel({ editable: true});
+		const column = new Gtk.TreeViewColumn();
+		const iter = list_store.append();
+
+		const update_shortcut_row = (accel) => {
+		  const [key, mods] = accel ? Gtk.accelerator_parse(accel) : [0, 0];
+		  list_store.set(iter, [COLUMN_KEY, COLUMN_MODS], [key, mods]);
+		};
+
+		renderer.connect('accel-edited', (renderer, path, key, mods) => {
+		  const accel = Gtk.accelerator_name(key, mods);
+		  update_shortcut_row(accel);
+		  settings.set_strv(KEYBINDING_KEY, [accel]);
+		});
+
+		renderer.connect('accel-cleared', () => {
+		  update_shortcut_row(null);
+		  settings.set_strv(KEYBINDING_KEY, []);
+		});
+
+		settings.connect(`changed::${KEYBINDING_KEY}`, () => {
+		  update_shortcut_row(settings.get_strv(KEYBINDING_KEY)[0]);
+		});
+
+		column.pack_start(renderer, true);
+		column.add_attribute(renderer, 'accel-key', COLUMN_KEY);
+		column.add_attribute(renderer, 'accel-mods', COLUMN_MODS);
+
+		tree_view.append_column(column);
+		update_shortcut_row(settings.get_strv(KEYBINDING_KEY)[0]);
+
+		const update_treeview_sensitivity = (tree_view) => {
+			tree_view.set_sensitive(!!(settings.get_string('time-source') === 'ondemand'));
+		}
+		settings.connect('changed::time-source', () => update_treeview_sensitivity(tree_view));
+		update_treeview_sensitivity(tree_view)
+
+		return tree_view;
+	}
+
+}
 
 class ManualTimeSourceControl {
 
@@ -131,6 +187,23 @@ class TimeSourceControl {
 			}
 		});
 		box.pack_start(schedule_radio, false, false, 0);
+
+		const ondemand_radio = new Gtk.RadioButton({
+			label: _('On-demand'),
+			group: nightlight_radio,
+			active: (settings.get_string('time-source') === 'ondemand')
+		});
+		settings.bind(
+			'manual-time-source',
+			ondemand_radio,
+			'sensitive',
+			Gio.SettingsBindFlags.DEFAULT
+		);
+		ondemand_radio.connect('toggled', () => {
+			settings.set_string('time-source', 'ondemand')
+		});
+		box.pack_start(ondemand_radio, false, false, 0);
+
 
 		return box;
 	}
