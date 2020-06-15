@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-15 10:10+0200\n"
-"PO-Revision-Date: 2020-06-15 10:11+0200\n"
+"POT-Creation-Date: 2020-06-15 16:04+0200\n"
+"PO-Revision-Date: 2020-06-15 16:06+0200\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: French - France <romain@romainvigier.fr>\n"
 "Language: fr_FR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Gtranslator 3.36.0\n"
 
-#: src/modules/GtkThemer.js:152
+#: src/modules/GtkThemer.js:175
 #, javascript-format
 msgid ""
 "Unable to automatically detect the day and night variants for the \"%s\" GTK "
@@ -28,7 +28,7 @@ msgstr ""
 "pour le thème GTK \"%s\". Veuillez les sélectionner manuellement dans les "
 "préférences de l’extension."
 
-#: src/modules/ShellThemer.js:159
+#: src/modules/ShellThemer.js:182
 #, javascript-format
 msgid ""
 "Unable to automatically detect the day and night variants for the \"%s\" "
@@ -49,15 +49,15 @@ msgstr "Vous pouvez définir des arrière-plans diurnes et nocturnes différents
 
 #: src/preferences/Backgrounds.js:43
 msgid "Switch backgrounds"
-msgstr "Changer les arrière-plans"
+msgstr "Permuter les arrière-plans"
 
 #: src/preferences/Backgrounds.js:44
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:146
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:156
 msgid "Day background"
 msgstr "Arrière-plan diurne"
 
 #: src/preferences/Backgrounds.js:45
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:151
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:161
 msgid "Night background"
 msgstr "Arrière-plan nocturne"
 
@@ -107,25 +107,25 @@ msgstr ""
 "Vous pouvez définir des thèmes de curseurs diurnes et nocturnes différents."
 
 #: src/preferences/CursorTheme.js:44
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:66
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:76
 msgid "Switch cursor variants"
-msgstr "Changer les variantes de curseur"
+msgstr "Permuter les variantes de curseur"
 
-#: src/preferences/CursorTheme.js:45 src/preferences/GtkTheme.js:45
-#: src/preferences/IconTheme.js:45 src/preferences/ShellTheme.js:45
+#: src/preferences/CursorTheme.js:45 src/preferences/GtkTheme.js:57
+#: src/preferences/IconTheme.js:45 src/preferences/ShellTheme.js:57
 msgid "Day variant"
 msgstr "Variante diurne"
 
-#: src/preferences/CursorTheme.js:46 src/preferences/GtkTheme.js:46
-#: src/preferences/IconTheme.js:46 src/preferences/ShellTheme.js:46
+#: src/preferences/CursorTheme.js:46 src/preferences/GtkTheme.js:64
+#: src/preferences/IconTheme.js:46 src/preferences/ShellTheme.js:64
 msgid "Night variant"
 msgstr "Variante nocturne"
 
-#: src/preferences/GtkTheme.js:40
+#: src/preferences/GtkTheme.js:42
 msgid "GTK theme"
 msgstr "Thème GTK"
 
-#: src/preferences/GtkTheme.js:41
+#: src/preferences/GtkTheme.js:43
 msgid ""
 "The extension will try to automatically detect the day and night variants of "
 "your GTK theme.\n"
@@ -142,7 +142,12 @@ msgstr ""
 "\">ouvrir une demande</a>. Vous pouvez aussi sélectionner manuellement les "
 "variantes."
 
-#: src/preferences/GtkTheme.js:44 src/preferences/ShellTheme.js:44
+#: src/preferences/GtkTheme.js:46
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:6
+msgid "Switch GTK variants"
+msgstr "Permuter les variantes GTK"
+
+#: src/preferences/GtkTheme.js:48 src/preferences/ShellTheme.js:48
 msgid "Manual variants"
 msgstr "Variantes manuelles"
 
@@ -156,9 +161,9 @@ msgstr ""
 "Vous pouvez définir des thèmes d’icônes diurnes et nocturnes différents."
 
 #: src/preferences/IconTheme.js:44
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:46
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:56
 msgid "Switch icon variants"
-msgstr "Changer les variantes d’icônes"
+msgstr "Permuter les variantes d’icônes"
 
 #: src/preferences/Schedule.js:39
 msgid "Schedule"
@@ -184,7 +189,7 @@ msgid "Manual time source"
 msgstr "Source d’horaires manuelle"
 
 #: src/preferences/Schedule.js:44
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:92
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
 msgid "Time source"
 msgstr "Source d’horaires"
 
@@ -208,11 +213,11 @@ msgstr "Horaire manuel"
 msgid "On-demand"
 msgstr "À la demande"
 
-#: src/preferences/ShellTheme.js:40
+#: src/preferences/ShellTheme.js:42
 msgid "Shell theme"
 msgstr "Thème du shell"
 
-#: src/preferences/ShellTheme.js:41
+#: src/preferences/ShellTheme.js:43
 msgid ""
 "The extension will try to automatically detect the day and night variants of "
 "your GNOME Shell theme.\n"
@@ -229,211 +234,227 @@ msgstr ""
 "\">ouvrir une demande</a>. Vous pouvez aussi sélectionner manuellement les "
 "variantes."
 
-#: src/preferences/ShellTheme.js:78
+#: src/preferences/ShellTheme.js:46
+msgid "Switch Shell variants"
+msgstr "Permuter les variantes Shell"
+
+#: src/preferences/ShellTheme.js:121
 msgid "Default"
 msgstr "Par défaut"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:6
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:7
+msgid "Enable GTK variants switching"
+msgstr "Activer le changement de variantes GTK"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
 msgid "Day GTK theme"
 msgstr "Thème GTK diurne"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:7
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:12
 msgid "The GTK theme to use during daytime"
 msgstr "Le thème GTK à utiliser le jour"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:16
 msgid "Night GTK theme"
 msgstr "Thème GTK nocturne"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:12
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 msgid "The GTK theme to use during nighttime"
 msgstr "Le thème GTK à utiliser la nuit"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:16
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:21
 msgid "Original GTK theme"
 msgstr "Thème GTK original"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
 msgid "The GTK theme to restore when the extension is disabled"
 msgstr "Le thème GTK à restaurer quand l’extension est désactivée"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:21
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:26
 msgid "Use manual GTK variants"
 msgstr "Utiliser des variantes GTK manuelles"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Disable automatic GTK theme variants detection"
 msgstr "Désactiver la détection automatique des variantes du thème GTK"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:26
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:31
+msgid "Switch shell variants"
+msgstr "Permuter les variantes du shell"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:32
+msgid "Enable shell variants switching"
+msgstr "Activer le changement des variantes du shell"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:36
 msgid "Day shell theme"
 msgstr "Thème shell diurne"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:37
 msgid "The shell theme to use during daytime"
 msgstr "Le thème shell à utiliser le jour"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:31
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:41
 msgid "Night shell theme"
 msgstr "Thème shell nocturne"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:32
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:42
 msgid "The shell theme to use during nighttime"
 msgstr "Le thème shell à utiliser la nuit"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:36
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:46
 msgid "Original shell theme"
 msgstr "Thème shell original"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:37
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:47
 msgid "The shell theme to restore when the extension is disabled"
 msgstr "Le thème shell à restaurer quand l’extension est désactivée"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:41
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 msgid "Use manual shell variants"
 msgstr "Utiliser des variantes shell manuelles"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:42
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Disable automatic shell theme variants detection"
 msgstr "Désactiver la détection automatique des variantes du thème shell"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:47
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:57
 msgid "Enable icon variants switching"
 msgstr "Activer le changement de variantes d’icônes"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
 msgid "Day icon theme"
 msgstr "Thème d’icônes diurne"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:62
 msgid "The icon theme to use during daytime"
 msgstr "Le thème d’icônes à utiliser le jour"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:56
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:66
 msgid "Night icon theme"
 msgstr "Thème d’icônes nocturne"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:57
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:67
 msgid "The icon theme to use during nighttime"
 msgstr "Le thème d’icônes à utiliser la nuit"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:71
 msgid "Original icon theme"
 msgstr "Thème d’icônes original"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:62
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:72
 msgid "The icon theme to restore when the extension is disabled"
 msgstr "Le thème d’icônes à restaurer quand l’extension est désactivée"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:67
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:77
 msgid "Enable cursor variants switching"
 msgstr "Activer le changement de variantes de curseur"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:71
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:81
 msgid "Day cursor theme"
 msgstr "Thème de curseurs diurne"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:72
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:82
 msgid "The cursor theme to use during daytime"
 msgstr "Le thème de curseurs à utiliser le jour"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:76
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:86
 msgid "Night cursor theme"
 msgstr "Thème de curseurs nocturne"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:77
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:87
 msgid "The cursor theme to use during nighttime"
 msgstr "Le thème de curseurs à utiliser la nuit"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:81
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:91
 msgid "Original cursor theme"
 msgstr "Thème de curseurs original"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:82
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:92
 msgid "The cursor theme to restore when the extension is disabled"
 msgstr "Le thème de curseurs à restaurer quand l’extension est désactivée"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:93
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:103
 msgid "The source used to check current time"
 msgstr "Source utilisée pour vérifier les horaires"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:101
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:111
 msgid "On-demand time"
 msgstr "Temps à la demande"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:112
 msgid "The current time used in on-demand mode"
 msgstr "Le temps actuel utilisé dans le mode à la demande"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:106
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:116
 msgid "Key combination to toggle time"
 msgstr "Combinaison de touches pour permuter le temps"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:107
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:117
 msgid "The key combination that will toggle time in on-demand mode"
 msgstr "La combinaison de touches qui permutera le temps en mode à la demande"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:111
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:121
 msgid "Use manual time source"
 msgstr "Utiliser une source d’horaires manuelle"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:112
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:122
 msgid "Disable automatic time source detection"
 msgstr "Désactive la détection automatique de la source d’horaires"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:116
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
 msgid "Sunrise time"
 msgstr "Heure du lever"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:117
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:127
 msgid "When the day starts"
 msgstr "Quand le jour se lève"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:121
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
 msgid "Sunset time"
 msgstr "Heure du coucher"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:122
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:132
 msgid "When the day ends"
 msgstr "Quand le jour se couche"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:136
 msgid "Enable commands"
 msgstr "Activer les commandes"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:127
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:137
 msgid "Commands will be spawned on time change"
 msgstr "Les commandes seront lancées au changement d’horaire"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:141
 msgid "Sunrise command"
 msgstr "Commande du lever de soleil"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:132
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:142
 msgid "The command to spawn at sunrise"
 msgstr "La commande à lancer quand le soleil se lève"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:136
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:146
 msgid "Sunset command"
 msgstr "Commande du coucher de soleil"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:137
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:147
 msgid "The command to spawn at sunset"
 msgstr "La commande à lancer quand le soleil se couche"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:141
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:151
 msgid "Enable backgrounds"
 msgstr "Activer les arrière-plans"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:142
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:152
 msgid "Background will be changed on time change"
 msgstr "L’arrière-plan changera au changement d’horaire"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:147
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:157
 msgid "Path to the day background"
 msgstr "Chemin vers l’arrière-plan diurne"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:152
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:162
 msgid "Path to the night background"
 msgstr "Chemin vers l’arrière-plan nocturne"
 

@@ -46,10 +46,14 @@ var GtkThemer = class {
 	enable() {
 		log_debug('Enabling GTK Themer...');
 		try {
-			this._update_variants();
-			this._set_variant(e.timer.time);
-			this._connect_settings();
-			this._connect_timer();
+			this._watch_status();
+			this._save_original_theme();
+			if ( e.settingsManager.gtk_variants_enabled ) {
+				this._update_variants();
+				this._set_variant(e.timer.time);
+				this._connect_settings();
+				this._connect_timer();
+			}
 		}
 		catch(e) {
 			log_error(e);
@@ -61,10 +65,24 @@ var GtkThemer = class {
 		log_debug('Disabling GTK Themer...');
 		this._disconnect_timer();
 		this._disconnect_settings();
-		this._reset_theme();
+		this._reset_original_theme();
+		this._unwatch_status();
 		log_debug('GTK Themer disabled.');
 	}
 
+
+	_watch_status() {
+		log_debug('Watching GTK variants status...');
+		this._gtk_variants_status_changed_connect = e.settingsManager.connect('gtk-variants-status-changed', this._on_gtk_variants_status_changed.bind(this));
+	}
+
+	_unwatch_status() {
+		if ( this._gtk_variants_status_changed_connect ) {
+			e.settingsManager.disconnect(this._gtk_variants_status_changed_connect);
+			this._gtk_variants_status_changed_connect = null;
+		}
+		log_debug('Stopped watching GTK variants status.');
+	}
 
 	_connect_settings() {
 		log_debug('Connecting GTK Themer to settings...');
@@ -97,6 +115,11 @@ var GtkThemer = class {
 		log_debug('Disconnected GTK Themer from Timer.');
 	}
 
+
+	_on_gtk_variants_status_changed(settings, enabled) {
+		this.disable();
+		this.enable();
+	}
 
 	_on_gtk_variant_changed(settings, changed_variant_time) {
 		if ( changed_variant_time === e.timer.time ) {
@@ -159,7 +182,11 @@ var GtkThemer = class {
 		log_debug(`New GTK variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
 	}
 
-	_reset_theme() {
+	_save_original_theme() {
+		e.settingsManager.gtk_variant_original = e.settingsManager.gtk_theme;
+	}
+
+	_reset_original_theme() {
 		// We don't reset the theme when locking the session to prevent
 		// flicker on unlocking
 		if ( !main.screenShield.locked ) {
