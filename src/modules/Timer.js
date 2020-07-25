@@ -36,7 +36,7 @@ const { TimerOndemand } = Me.imports.modules.TimerOndemand;
  * for the current time.
  *
  * It will try to use one of this three different time sources, in this order of
- *  preference:
+ * preference:
  * 	- Night Light
  * 	- Location Services
  * 	- Manual schedule
