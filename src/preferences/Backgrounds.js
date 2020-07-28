@@ -21,22 +21,17 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const compat = Me.imports.compat;
 const { SettingsPage, SettingsList, SettingsListRow } = Me.imports.preferences.bases;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
 
 
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-if ( shell_minor_version <= 30 ) {
-	extensionUtils.getSettings = Me.imports.convenience.getSettings;
-}
-
-
 var BackgroundsPreferences = class {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 
 		const label = _('Backgrounds');
 		const description = _('You can set different backgrounds for day and night.');
@@ -71,7 +66,7 @@ var BackgroundsPreferences = class {
 class BackgroundsEnabledControl {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const toggle = new Gtk.Switch({
 			active: settings.get_boolean('backgrounds-enabled')
 		});
@@ -90,7 +85,7 @@ class BackgroundsEnabledControl {
 class TimeBackgroundControl {
 
 	constructor(time) {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 
 		const filter = new Gtk.FileFilter();
 		filter.add_mime_type('image/jpeg');

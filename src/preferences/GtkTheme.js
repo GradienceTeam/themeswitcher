@@ -21,6 +21,7 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const compat = Me.imports.compat;
 const { SettingsPage, SettingsList, SettingsListRow } = Me.imports.preferences.bases;
 const { get_installed_gtk_themes } = Me.imports.utils;
 
@@ -28,16 +29,10 @@ const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
 
 
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-if ( shell_minor_version <= 30 ) {
-	extensionUtils.getSettings = Me.imports.convenience.getSettings;
-}
-
-
 var GtkThemePreferences = class {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 
 		const label = _('GTK theme');
 		const description = _('The extension will try to automatically detect the day and night variants of your GTK theme.\n\nIf the theme you use isn\'t supported, please <a href="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues">submit a request</a>. You can also manually set variants.');
@@ -77,7 +72,7 @@ var GtkThemePreferences = class {
 class GtkVariantsEnabledControl {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const toggle = new Gtk.Switch({
 			active: settings.get_boolean('gtk-variants-enabled')
 		});
@@ -96,7 +91,7 @@ class GtkVariantsEnabledControl {
 class ManualGtkVariantsControl {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const toggle = new Gtk.Switch({
 			active: false
 		});
@@ -115,7 +110,7 @@ class ManualGtkVariantsControl {
 class TimeGtkVariantControl {
 
 	constructor(time) {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const combo = new Gtk.ComboBoxText();
 		const themes = Array.from(get_installed_gtk_themes()).sort();
 		themes.forEach(theme => combo.append(theme, theme));

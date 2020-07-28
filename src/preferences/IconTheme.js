@@ -21,6 +21,7 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const compat = Me.imports.compat;
 const { SettingsPage, SettingsList, SettingsListRow } = Me.imports.preferences.bases;
 const { get_installed_icon_themes } = Me.imports.utils;
 
@@ -28,16 +29,10 @@ const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
 
 
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-if ( shell_minor_version <= 30 ) {
-	extensionUtils.getSettings = Me.imports.convenience.getSettings;
-}
-
-
 var IconThemePreferences = class {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 
 		const label = _('Icon theme');
 		const description = _('You can set different icon themes for day and night.');
@@ -72,7 +67,7 @@ var IconThemePreferences = class {
 class IconVariantsEnabledControl {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const toggle = new Gtk.Switch({
 			active: settings.get_boolean('icon-variants-enabled')
 		});
@@ -91,7 +86,7 @@ class IconVariantsEnabledControl {
 class TimeIconVariantControl {
 
 	constructor(time) {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const combo = new Gtk.ComboBoxText();
 		const themes = Array.from(get_installed_icon_themes()).sort();
 		themes.forEach(theme => combo.append(theme, theme));

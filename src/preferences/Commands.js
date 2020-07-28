@@ -21,22 +21,17 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const compat = Me.imports.compat;
 const { SettingsPage, SettingsList, SettingsListRow } = Me.imports.preferences.bases;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
 
 
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-if ( shell_minor_version <= 30 ) {
-	extensionUtils.getSettings = Me.imports.convenience.getSettings;
-}
-
-
 var CommandsPreferences = class {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 
 		const label = _('Commands');
 		const description = _('You can set custom commands that will be run when the time of the day changes.');
@@ -71,7 +66,7 @@ var CommandsPreferences = class {
 class CommandsEnabledControl {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const toggle = new Gtk.Switch({
 			active: settings.get_boolean('commands-enabled')
 		});
@@ -94,7 +89,7 @@ class SuntimeCommandControl {
 			['sunrise', _('Hello sunshine!')],
 			['sunset', _('Hello moonshine!')]
 		]);
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const entry = new Gtk.Entry({
 			width_request: 300,
 			placeholder_text: _(`notify-send "${message.get(suntime)}"`)

@@ -17,18 +17,12 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
 const { Gio, GLib } = imports.gi;
-const { extensionUtils, fileUtils } = imports.misc;
+const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
 const { log_debug } = Me.imports.utils;
-
-
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-if ( shell_minor_version <= 30 ) {
-	fileUtils.loadInterfaceXML = Me.imports.convenience.loadInterfaceXML;
-}
 
 
 const COLOR_INTERFACE = `
