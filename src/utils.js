@@ -20,6 +20,7 @@ const { Gio, GLib, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
+const compat = Me.imports.compat;
 const config = Me.imports.config;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);
@@ -178,12 +179,7 @@ function get_installed_cursor_themes() {
  * it isn't installed.
  */
 function get_userthemes_extension() {
-	if ( shell_minor_version > 32 ) {
-		return imports.ui.main.extensionManager.lookup('user-theme@gnome-shell-extensions.gcampax.github.com');
-	}
-	else {
-		return extensionUtils.extensions['user-theme@gnome-shell-extensions.gcampax.github.com'] || null;
-	}
+	return compat.extension_manager_lookup('user-theme@gnome-shell-extensions.gcampax.github.com');
 }
 
 /**

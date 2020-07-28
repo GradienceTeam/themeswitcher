@@ -23,6 +23,7 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const compat = Me.imports.compat;
 const { BackgroundsPreferences } = Me.imports.preferences.Backgrounds;
 const { CommandsPreferences } = Me.imports.preferences.Commands;
 const { CursorThemePreferences } = Me.imports.preferences.CursorTheme;
@@ -32,14 +33,8 @@ const { SchedulePreferences } = Me.imports.preferences.Schedule;
 const { ShellThemePreferences } = Me.imports.preferences.ShellTheme;
 
 
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-if ( shell_minor_version <= 30 ) {
-	extensionUtils.initTranslations = Me.imports.convenience.initTranslations;
-}
-
-
 function init() {
-	extensionUtils.initTranslations(Me.metadata.uuid);
+	compat.init_translations(Me.metadata.uuid);
 }
 
 function buildPrefsWidget() {

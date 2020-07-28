@@ -21,22 +21,17 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const compat = Me.imports.compat;
 const { SettingsPage, SettingsList, SettingsListRow } = Me.imports.preferences.bases;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
 
 
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-if ( shell_minor_version <= 30 ) {
-	extensionUtils.getSettings = Me.imports.convenience.getSettings;
-}
-
-
 var SchedulePreferences = class {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 
 		const label = _('Schedule');
 		const description = _('The extension will try to use Night Light or Location Services to automatically set your current sunrise and sunset times if they are enabled.\n\nIf you prefer, you can manually choose a time source.');
@@ -82,7 +77,7 @@ var SchedulePreferences = class {
 class ManualTimeSourceControl {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const toggle = new Gtk.Switch({
 			active: false
 		});
@@ -101,7 +96,7 @@ class ManualTimeSourceControl {
 class TimeSourceControl {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
 		const locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
 
@@ -189,7 +184,7 @@ class TimeSourceControl {
 class KeyBindingControl {
 
 	constructor() {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const KEYBINDING_KEY = 'nightthemeswitcher-ondemand-keybinding';
 		const COLUMN_KEY = 0;
 		const COLUMN_MODS = 1;
@@ -239,7 +234,7 @@ class KeyBindingControl {
 class SuntimeControl {
 
 	constructor(suntime) {
-		const settings = extensionUtils.getSettings();
+		const settings = compat.get_extension_settings();
 		const box = new Gtk.Box({
 			spacing: 8,
 			orientation: Gtk.Orientation.HORIZONTAL,

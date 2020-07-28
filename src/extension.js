@@ -23,6 +23,7 @@ const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const compat = Me.imports.compat;
 const { log_debug } = Me.imports.utils;
 const { SettingsManager } = Me.imports.modules.SettingsManager;
 const { Timer } = Me.imports.modules.Timer;
@@ -32,12 +33,6 @@ const { IconThemer } = Me.imports.modules.IconThemer;
 const { CursorThemer } = Me.imports.modules.CursorThemer;
 const { Backgrounder } = Me.imports.modules.Backgrounder;
 const { Commander } = Me.imports.modules.Commander;
-
-
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-if ( shell_minor_version <= 30 ) {
-	extensionUtils.initTranslations = Me.imports.convenience.initTranslations;
-}
 
 
 var enabled = false;
@@ -53,7 +48,7 @@ var commander = null;
 
 function init() {
 	log_debug('Initializing extension...');
-	extensionUtils.initTranslations(Me.metadata.uuid);
+	compat.init_translations(Me.metadata.uuid);
 	log_debug('Extension initialized.');
 }
 
@@ -109,16 +104,8 @@ function disable() {
 
 async function _await_extensionManager_init() {
 	log_debug('Waiting for the Extension Manager to be initialized...');
-	if ( shell_minor_version > 32 ) {
-		while ( true ) {
-			if ( main.extensionManager._initialized ) return;
-			await null;
-		}
-	}
-	else {
-		while ( true ) {
-			if ( imports.ui.extensionSystem.initted ) return;
-			await null;
-		}
+	while ( true ) {
+		if ( compat.extension_manager_initialized() ) return;
+		await null;
 	}
 }
