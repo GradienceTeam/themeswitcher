@@ -70,13 +70,13 @@ function enable() {
 		commander = new Commander();
 
 		settingsManager.enable();
-		timer.enable();
 		gtkThemer.enable();
 		shellThemer.enable();
 		iconThemer.enable();
 		cursorThemer.enable();
 		backgrounder.enable();
 		commander.enable();
+		timer.enable();
 
 		enabled = true;
 		log_debug('Extension enabled.');

@@ -37,7 +37,6 @@ var Backgrounder = class {
 		log_debug('Enabling Backgrounder...');
 		this._watch_status();
 		if ( e.settingsManager.backgrounds_enabled ) {
-			this._change_background(e.timer.time);
 			this._connect_settings();
 			this._connect_timer();
 		}

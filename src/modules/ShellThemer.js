@@ -49,7 +49,6 @@ var ShellThemer = class {
 			this._save_original_theme();
 			if ( e.settingsManager.shell_variants_enabled ) {
 				this._update_variants();
-				this._set_variant(e.timer.time);
 				this._connect_settings();
 				this._connect_timer();
 			}
