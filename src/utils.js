@@ -27,9 +27,6 @@ const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
 
 
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-
-
 /**
  * Output a debug message to the console if the debug config is active.
  * @param {string} message The message to log.
