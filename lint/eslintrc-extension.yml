@@ -1,0 +1,6 @@
+rules:
+  no-unused-vars:
+    - error
+    - vars: 'local'
+      varsIgnorePattern: (^unused|_$)
+      argsIgnorePattern: ^(unused|_)

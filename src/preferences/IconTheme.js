@@ -23,7 +23,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const compat = Me.imports.compat;
 const { SettingsPage, SettingsList, SettingsListRow } = Me.imports.preferences.bases;
-const { get_installed_icon_themes } = Me.imports.utils;
+const { getInstalledIconThemes } = Me.imports.utils;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
@@ -31,72 +31,72 @@ const _ = Gettext.gettext;
 
 var IconThemePreferences = class {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
+    constructor() {
+        const settings = compat.getExtensionSettings();
 
-		const label = _('Icon theme');
-		const description = _('You can set different icon themes for day and night.');
-		const content = new SettingsList();
+        const label = _('Icon theme');
+        const description = _('You can set different icon themes for day and night.');
+        const content = new SettingsList();
 
-		content.add_row(new SettingsListRow(_('Switch icon variants'), new IconVariantsEnabledControl()));
+        content.add_row(new SettingsListRow(_('Switch icon variants'), new IconVariantsEnabledControl()));
 
-		const day_variant_row = new SettingsListRow(_('Day variant'), new TimeIconVariantControl('day'));
-		settings.bind(
-			'icon-variants-enabled',
-			day_variant_row,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		content.add_row(day_variant_row);
+        const dayVariantRow = new SettingsListRow(_('Day variant'), new TimeIconVariantControl('day'));
+        settings.bind(
+            'icon-variants-enabled',
+            dayVariantRow,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        content.add_row(dayVariantRow);
 
-		const night_variant_row = new SettingsListRow(_('Night variant'), new TimeIconVariantControl('night'));
-		settings.bind(
-			'icon-variants-enabled',
-			night_variant_row,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		content.add_row(night_variant_row);
+        const nightVariantRow = new SettingsListRow(_('Night variant'), new TimeIconVariantControl('night'));
+        settings.bind(
+            'icon-variants-enabled',
+            nightVariantRow,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        content.add_row(nightVariantRow);
 
-		return new SettingsPage(label, description, content);
-	}
+        return new SettingsPage(label, description, content);
+    }
 
-}
+};
 
 
 class IconVariantsEnabledControl {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
-		const toggle = new Gtk.Switch({
-			active: settings.get_boolean('icon-variants-enabled')
-		});
-		settings.bind(
-			'icon-variants-enabled',
-			toggle,
-			'active',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return toggle;
-	}
+    constructor() {
+        const settings = compat.getExtensionSettings();
+        const toggle = new Gtk.Switch({
+            active: settings.get_boolean('icon-variants-enabled'),
+        });
+        settings.bind(
+            'icon-variants-enabled',
+            toggle,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return toggle;
+    }
 
 }
 
 
 class TimeIconVariantControl {
 
-	constructor(time) {
-		const settings = compat.get_extension_settings();
-		const combo = new Gtk.ComboBoxText();
-		const themes = Array.from(get_installed_icon_themes()).sort();
-		themes.forEach(theme => combo.append(theme, theme));
-		settings.bind(
-			`icon-variant-${time}`,
-			combo,
-			'active-id',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return combo;
-	}
+    constructor(time) {
+        const settings = compat.getExtensionSettings();
+        const combo = new Gtk.ComboBoxText();
+        const themes = Array.from(getInstalledIconThemes()).sort();
+        themes.forEach(theme => combo.append(theme, theme));
+        settings.bind(
+            `icon-variant-${time}`,
+            combo,
+            'active-id',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return combo;
+    }
 
 }

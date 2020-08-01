@@ -34,36 +34,36 @@ const { ShellThemePreferences } = Me.imports.preferences.ShellTheme;
 
 
 function init() {
-	compat.init_translations(Me.metadata.uuid);
+    compat.initTranslations(Me.metadata.uuid);
 }
 
 function buildPrefsWidget() {
-	const prefs_widget = new Gtk.Notebook({
-		visible: true
-	});
+    const prefsWidget = new Gtk.Notebook({
+        visible: true,
+    });
 
-	const schedulePreferences = new SchedulePreferences();
-	prefs_widget.append_page(schedulePreferences.page, schedulePreferences.label);
+    const schedulePreferences = new SchedulePreferences();
+    prefsWidget.append_page(schedulePreferences.page, schedulePreferences.label);
 
-	const gtkThemePreferences = new GtkThemePreferences();
-	prefs_widget.append_page(gtkThemePreferences.page, gtkThemePreferences.label);
+    const gtkThemePreferences = new GtkThemePreferences();
+    prefsWidget.append_page(gtkThemePreferences.page, gtkThemePreferences.label);
 
-	const shellThemePreferences = new ShellThemePreferences();
-	prefs_widget.append_page(shellThemePreferences.page, shellThemePreferences.label);
+    const shellThemePreferences = new ShellThemePreferences();
+    prefsWidget.append_page(shellThemePreferences.page, shellThemePreferences.label);
 
-	const iconThemePreferences = new IconThemePreferences();
-	prefs_widget.append_page(iconThemePreferences.page, iconThemePreferences.label);
+    const iconThemePreferences = new IconThemePreferences();
+    prefsWidget.append_page(iconThemePreferences.page, iconThemePreferences.label);
 
-	const cursorThemePreferences = new CursorThemePreferences();
-	prefs_widget.append_page(cursorThemePreferences.page, cursorThemePreferences.label);
+    const cursorThemePreferences = new CursorThemePreferences();
+    prefsWidget.append_page(cursorThemePreferences.page, cursorThemePreferences.label);
 
-	const backgroundsPreferences = new BackgroundsPreferences();
-	prefs_widget.append_page(backgroundsPreferences.page, backgroundsPreferences.label);
+    const backgroundsPreferences = new BackgroundsPreferences();
+    prefsWidget.append_page(backgroundsPreferences.page, backgroundsPreferences.label);
 
-	const commandsPreferences = new CommandsPreferences();
-	prefs_widget.append_page(commandsPreferences.page, commandsPreferences.label);
+    const commandsPreferences = new CommandsPreferences();
+    prefsWidget.append_page(commandsPreferences.page, commandsPreferences.label);
 
-	prefs_widget.show_all();
+    prefsWidget.show_all();
 
-	return prefs_widget;
+    return prefsWidget;
 }

@@ -23,7 +23,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const compat = Me.imports.compat;
 const { SettingsPage, SettingsList, SettingsListRow } = Me.imports.preferences.bases;
-const { get_installed_shell_themes } = Me.imports.utils;
+const { getInstalledShellThemes } = Me.imports.utils;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
@@ -31,96 +31,96 @@ const _ = Gettext.gettext;
 
 var ShellThemePreferences = class {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
+    constructor() {
+        const settings = compat.getExtensionSettings();
 
-		const label = _('Shell theme');
-		const description = _('The extension will try to automatically detect the day and night variants of your GNOME Shell theme.\n\nIf the theme you use isn\'t supported, please <a href="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues">submit a request</a>. You can also manually set variants.');
-		const content = new SettingsList();
+        const label = _('Shell theme');
+        const description = _('The extension will try to automatically detect the day and night variants of your GNOME Shell theme.\n\nIf the theme you use isn\'t supported, please <a href="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues">submit a request</a>. You can also manually set variants.');
+        const content = new SettingsList();
 
-		content.add_row(new SettingsListRow(_('Switch Shell variants'), new ShellVariantsEnabledControl()));
+        content.add_row(new SettingsListRow(_('Switch Shell variants'), new ShellVariantsEnabledControl()));
 
-		const manual_variants_row = new SettingsListRow(_('Manual variants'), new ManualShellVariantsControl());
-		settings.bind(
-			'shell-variants-enabled',
-			manual_variants_row,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		content.add_row(manual_variants_row);
+        const manualVariantsRow = new SettingsListRow(_('Manual variants'), new ManualShellVariantsControl());
+        settings.bind(
+            'shell-variants-enabled',
+            manualVariantsRow,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        content.add_row(manualVariantsRow);
 
-		const day_variant_row = new SettingsListRow(_('Day variant'), new TimeShellVariantControl('day'));
-		const update_day_variant_row_sensitivity = () => day_variant_row.set_sensitive(!!(settings.get_boolean('shell-variants-enabled') && settings.get_boolean('manual-shell-variants')));
-		settings.connect('changed::shell-variants-enabled', update_day_variant_row_sensitivity);
-		settings.connect('changed::manual-shell-variants', update_day_variant_row_sensitivity)
-		update_day_variant_row_sensitivity();
-		content.add_row(day_variant_row);
+        const dayVariantRow = new SettingsListRow(_('Day variant'), new TimeShellVariantControl('day'));
+        const updateDayVariantRowSensitivity = () => dayVariantRow.set_sensitive(!!(settings.get_boolean('shell-variants-enabled') && settings.get_boolean('manual-shell-variants')));
+        settings.connect('changed::shell-variants-enabled', updateDayVariantRowSensitivity);
+        settings.connect('changed::manual-shell-variants', updateDayVariantRowSensitivity);
+        updateDayVariantRowSensitivity();
+        content.add_row(dayVariantRow);
 
-		const night_variant_row = new SettingsListRow(_('Night variant'), new TimeShellVariantControl('night'));
-		const update_night_variant_row_sensitivity = () => night_variant_row.set_sensitive(!!(settings.get_boolean('shell-variants-enabled') && settings.get_boolean('manual-shell-variants')));
-		settings.connect('changed::shell-variants-enabled', update_night_variant_row_sensitivity);
-		settings.connect('changed::manual-shell-variants', update_night_variant_row_sensitivity)
-		update_night_variant_row_sensitivity();
-		content.add_row(night_variant_row);
+        const nightVariantRow = new SettingsListRow(_('Night variant'), new TimeShellVariantControl('night'));
+        const updateNightVariantRowSensitivity = () => nightVariantRow.set_sensitive(!!(settings.get_boolean('shell-variants-enabled') && settings.get_boolean('manual-shell-variants')));
+        settings.connect('changed::shell-variants-enabled', updateNightVariantRowSensitivity);
+        settings.connect('changed::manual-shell-variants', updateNightVariantRowSensitivity);
+        updateNightVariantRowSensitivity();
+        content.add_row(nightVariantRow);
 
-		return new SettingsPage(label, description, content);
-	}
+        return new SettingsPage(label, description, content);
+    }
 
-}
+};
 
 
 class ShellVariantsEnabledControl {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
-		const toggle = new Gtk.Switch({
-			active: settings.get_boolean('shell-variants-enabled')
-		});
-		settings.bind(
-			'shell-variants-enabled',
-			toggle,
-			'active',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return toggle;
-	}
+    constructor() {
+        const settings = compat.getExtensionSettings();
+        const toggle = new Gtk.Switch({
+            active: settings.get_boolean('shell-variants-enabled'),
+        });
+        settings.bind(
+            'shell-variants-enabled',
+            toggle,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return toggle;
+    }
 
 }
 
 
 class ManualShellVariantsControl {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
-		const toggle = new Gtk.Switch({
-			active: false
-		});
-		settings.bind(
-			'manual-shell-variants',
-			toggle,
-			'active',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return toggle;
-	}
+    constructor() {
+        const settings = compat.getExtensionSettings();
+        const toggle = new Gtk.Switch({
+            active: false,
+        });
+        settings.bind(
+            'manual-shell-variants',
+            toggle,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return toggle;
+    }
 
 }
 
 
 class TimeShellVariantControl {
 
-	constructor(time) {
-		const settings = compat.get_extension_settings();
-		const combo = new Gtk.ComboBoxText();
-		const themes = Array.from(get_installed_shell_themes()).sort();
-		themes.forEach(theme => combo.append(theme, (theme === '' ? _('Default') : theme)));
-		settings.bind(
-			`shell-variant-${time}`,
-			combo,
-			'active-id',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return combo;
-	}
+    constructor(time) {
+        const settings = compat.getExtensionSettings();
+        const combo = new Gtk.ComboBoxText();
+        const themes = Array.from(getInstalledShellThemes()).sort();
+        themes.forEach(theme => combo.append(theme, theme === '' ? _('Default') : theme));
+        settings.bind(
+            `shell-variant-${time}`,
+            combo,
+            'active-id',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return combo;
+    }
 
 }

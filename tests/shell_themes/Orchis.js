@@ -21,15 +21,15 @@ const { Variants } = require('./_variants');
 
 
 ['', '-compact'].forEach(size => {
-	test(`Orchis${size}`, t => {
-		const variants = Variants.guess_from(`Orchis${size}`);
-		t.is(variants.get('day'), `Orchis${size}`);
-		t.is(variants.get('night'), `Orchis-dark${size}`);
-	});
+    test(`Orchis${size}`, t => {
+        const variants = Variants.guessFrom(`Orchis${size}`);
+        t.is(variants.get('day'), `Orchis${size}`);
+        t.is(variants.get('night'), `Orchis-dark${size}`);
+    });
 
-	test(`Orchis-dark${size}`, t => {
-		const variants = Variants.guess_from(`Orchis-dark${size}`);
-		t.is(variants.get('day'), `Orchis${size}`);
-		t.is(variants.get('night'), `Orchis-dark${size}`);
-	});
-})
+    test(`Orchis-dark${size}`, t => {
+        const variants = Variants.guessFrom(`Orchis-dark${size}`);
+        t.is(variants.get('day'), `Orchis${size}`);
+        t.is(variants.get('night'), `Orchis-dark${size}`);
+    });
+});

@@ -19,41 +19,53 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
+const shellMinorVersion = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
 
 
-function init_translations(domain) {
-	if ( shell_minor_version <= 30 ) return Me.imports.convenience.initTranslations(domain);
-	else return extensionUtils.initTranslations(domain);
+function initTranslations(domain) {
+    if (shellMinorVersion <= 30)
+        return Me.imports.convenience.initTranslations(domain);
+    else
+        return extensionUtils.initTranslations(domain);
 }
 
 
-function extension_manager_initialized() {
-	if ( shell_minor_version > 32 ) return imports.ui.main.extensionManager._initialized;
-	else return imports.ui.extensionSystem.initted;
+function extensionManagerInitialized() {
+    if (shellMinorVersion > 32)
+        return imports.ui.main.extensionManager._initialized;
+    else
+        return imports.ui.extensionSystem.initted;
 }
 
 
-function extension_manager_lookup(uuid) {
-	if ( shell_minor_version > 32 ) return imports.ui.main.extensionManager.lookup(uuid);
-	else return extensionUtils.extensions[uuid] || null;
+function extensionManagerLookup(uuid) {
+    if (shellMinorVersion > 32)
+        return imports.ui.main.extensionManager.lookup(uuid);
+    else
+        return extensionUtils.extensions[uuid] || null;
 }
 
 
-function get_extension_settings() {
-	if ( shell_minor_version <= 30 ) return Me.imports.convenience.getSettings();
-	else return extensionUtils.getSettings();
+function getExtensionSettings() {
+    if (shellMinorVersion <= 30)
+        return Me.imports.convenience.getSettings();
+    else
+        return extensionUtils.getSettings();
 }
 
 
-function key_binding_auto_repeat() {
-	// if version is less then 3.30 the keybinding flags are NONE
-	if (shell_minor_version < 30) return imports.gi.Meta.KeyBindingFlags.NONE;
-	else return imports.gi.Meta.KeyBindingFlags.IGNORE_AUTOREPEAT;
-};
+function keyBindingAutoRepeat() {
+    // if version is less then 3.30 the keybinding flags are NONE
+    if (shellMinorVersion < 30)
+        return imports.gi.Meta.KeyBindingFlags.NONE;
+    else
+        return imports.gi.Meta.KeyBindingFlags.IGNORE_AUTOREPEAT;
+}
 
 
-function get_actor(subject) {
-	if (shell_minor_version > 34) return subject;
-	else return subject.actor;
-};
+function getActor(subject) {
+    if (shellMinorVersion > 34)
+        return subject;
+    else
+        return subject.actor;
+}

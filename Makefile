@@ -56,7 +56,14 @@ uninstall:
 clean: build-clean deps-clean
 
 .PHONY: test
-test:
+test: test-lint test-variants
+
+.PHONY: test-lint
+test-lint:
+	npx eslint .
+
+.PHONY: test-variants
+test-variants:
 	cat ./src/modules/GtkVariants.js ./tests/gtk_themes/_variants.js.template > ./tests/gtk_themes/_variants.js
 	cat ./src/modules/ShellVariants.js ./tests/shell_themes/_variants.js.template > ./tests/shell_themes/_variants.js
 	npm run test

@@ -20,7 +20,7 @@ const test = require('ava');
 const { Variants } = require('./_variants');
 
 test('default', t => {
-	const variants = Variants.guess_from('');
-	t.is(variants.get('day'), '');
-	t.is(variants.get('night'), '');
+    const variants = Variants.guessFrom('');
+    t.is(variants.get('day'), '');
+    t.is(variants.get('night'), '');
 });

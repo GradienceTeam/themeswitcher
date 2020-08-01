@@ -19,12 +19,11 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 'use strict';
 
 const { extensionUtils } = imports.misc;
-const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 
 const compat = Me.imports.compat;
-const { log_debug } = Me.imports.utils;
+const { logDebug } = Me.imports.utils;
 const { SettingsManager } = Me.imports.modules.SettingsManager;
 const { Timer } = Me.imports.modules.Timer;
 const { GtkThemer } = Me.imports.modules.GtkThemer;
@@ -47,65 +46,63 @@ var commander = null;
 
 
 function init() {
-	log_debug('Initializing extension...');
-	compat.init_translations(Me.metadata.uuid);
-	log_debug('Extension initialized.');
+    logDebug('Initializing extension...');
+    compat.initTranslations(Me.metadata.uuid);
+    logDebug('Extension initialized.');
 }
 
 function enable() {
-	this._await_extensionManager_init().then(() => {
-		log_debug('Enabling extension...');
-		settingsManager = new SettingsManager();
-		timer = new Timer();
-		gtkThemer = new GtkThemer();
-		shellThemer = new ShellThemer();
-		iconThemer = new IconThemer();
-		cursorThemer = new CursorThemer();
-		backgrounder = new Backgrounder();
-		commander = new Commander();
+    _awaitExtensionManagerInit().then(() => {
+        logDebug('Enabling extension...');
+        settingsManager = new SettingsManager();
+        timer = new Timer();
+        gtkThemer = new GtkThemer();
+        shellThemer = new ShellThemer();
+        iconThemer = new IconThemer();
+        cursorThemer = new CursorThemer();
+        backgrounder = new Backgrounder();
+        commander = new Commander();
 
-		settingsManager.enable();
-		gtkThemer.enable();
-		shellThemer.enable();
-		iconThemer.enable();
-		cursorThemer.enable();
-		backgrounder.enable();
-		commander.enable();
-		timer.enable();
+        settingsManager.enable();
+        gtkThemer.enable();
+        shellThemer.enable();
+        iconThemer.enable();
+        cursorThemer.enable();
+        backgrounder.enable();
+        commander.enable();
+        timer.enable();
 
-		enabled = true;
-		log_debug('Extension enabled.');
-	});
+        enabled = true;
+        logDebug('Extension enabled.');
+    });
 }
 
 function disable() {
-	log_debug('Disabling extension...');
-	enabled = false;
+    logDebug('Disabling extension...');
+    enabled = false;
 
-	gtkThemer.disable();
-	shellThemer.disable();
-	iconThemer.disable();
-	cursorThemer.disable();
-	backgrounder.disable();
-	commander.disable();
-	timer.disable();
-	settingsManager.disable();
+    gtkThemer.disable();
+    shellThemer.disable();
+    iconThemer.disable();
+    cursorThemer.disable();
+    backgrounder.disable();
+    commander.disable();
+    timer.disable();
+    settingsManager.disable();
 
-	settingsManager = null;
-	timer = null;
-	gtkThemer = null;
-	shellThemer = null;
-	iconThemer = null;
-	cursorThemer = null;
-	backgrounder = null;
-	commander = null;
-	log_debug('Extension disabled.');
+    settingsManager = null;
+    timer = null;
+    gtkThemer = null;
+    shellThemer = null;
+    iconThemer = null;
+    cursorThemer = null;
+    backgrounder = null;
+    commander = null;
+    logDebug('Extension disabled.');
 }
 
-async function _await_extensionManager_init() {
-	log_debug('Waiting for the Extension Manager to be initialized...');
-	while ( true ) {
-		if ( compat.extension_manager_initialized() ) return;
-		await null;
-	}
+async function _awaitExtensionManagerInit() {
+    logDebug('Waiting for the Extension Manager to be initialized...');
+    while (!compat.extensionManagerInitialized())
+        await undefined; // eslint-disable-line no-await-in-loop
 }

@@ -21,17 +21,17 @@ const { Variants } = require('./_variants');
 
 
 ['', '-Slim'].forEach(size => {
-	['-blue', '-green', '-orange', '-purple', '-red', '-yellow'].forEach(color => {
-		test(`Macwaita${color}${size}`, t => {
-			const variants = Variants.guess_from(`Macwaita${color}${size}`);
-			t.is(variants.get('day'), `Macwaita${color}${size}`);
-			t.is(variants.get('night'), `Macwaita-dark${color}${size}`);
-		});
+    ['-blue', '-green', '-orange', '-purple', '-red', '-yellow'].forEach(color => {
+        test(`Macwaita${color}${size}`, t => {
+            const variants = Variants.guessFrom(`Macwaita${color}${size}`);
+            t.is(variants.get('day'), `Macwaita${color}${size}`);
+            t.is(variants.get('night'), `Macwaita-dark${color}${size}`);
+        });
 
-		test(`Macwaita-dark${color}${size}`, t => {
-			const variants = Variants.guess_from(`Macwaita-dark${color}${size}`);
-			t.is(variants.get('day'), `Macwaita${color}${size}`);
-			t.is(variants.get('night'), `Macwaita-dark${color}${size}`);
-		});
-	});
+        test(`Macwaita-dark${color}${size}`, t => {
+            const variants = Variants.guessFrom(`Macwaita-dark${color}${size}`);
+            t.is(variants.get('day'), `Macwaita${color}${size}`);
+            t.is(variants.get('night'), `Macwaita-dark${color}${size}`);
+        });
+    });
 });

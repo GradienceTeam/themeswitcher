@@ -22,13 +22,8 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const { log_debug, get_userthemes_extension, get_userthemes_settings } = Me.imports.utils;
-
-
-const shell_minor_version = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
-if ( shell_minor_version <= 30 ) {
-	extensionUtils.getSettings = Me.imports.convenience.getSettings;
-}
+const compat = Me.imports.compat;
+const { logDebug, getUserthemesExtension, getUserthemesSettings } = Me.imports.utils;
 
 
 /**
@@ -38,614 +33,608 @@ if ( shell_minor_version <= 30 ) {
  */
 var SettingsManager = class {
 
-	constructor() {
-		log_debug('Initializing settings...');
-		this._extensionsSettings = extensionUtils.getSettings();
-		this._colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
-		this._locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
-		this._interfaceSettings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
-		this._backgroundSettings = new Gio.Settings({ schema: 'org.gnome.desktop.background' });
-		this._userthemesSettings = get_userthemes_settings();
-		log_debug('Settings initialized.');
-	}
-
-	enable() {
-		log_debug('Connecting settings signals...');
-		this._gtk_variants_status_changed_connect = this._extensionsSettings.connect('changed::gtk-variants-enabled', this._on_gtk_variants_status_changed.bind(this));
-		this._gtk_variant_day_changed_connect = this._extensionsSettings.connect('changed::gtk-variant-day', this._on_gtk_variant_day_changed.bind(this));
-		this._gtk_variant_night_changed_connect = this._extensionsSettings.connect('changed::gtk-variant-night', this._on_gtk_variant_night_changed.bind(this));
-		this._gtk_variant_original_changed_connect = this._extensionsSettings.connect('changed::gtk-variant-original', this._on_gtk_variant_original_changed.bind(this));
-		this._shell_variants_status_changed_connect = this._extensionsSettings.connect('changed::shell-variants-enabled', this._on_shell_variants_status_changed.bind(this));
-		this._shell_variant_day_changed_connect = this._extensionsSettings.connect('changed::shell-variant-day', this._on_shell_variant_day_changed.bind(this));
-		this._shell_variant_night_changed_connect = this._extensionsSettings.connect('changed::shell-variant-night', this._on_shell_variant_night_changed.bind(this));
-		this._shell_variant_original_changed_connect = this._extensionsSettings.connect('changed::shell-variant-original', this._on_shell_variant_original_changed.bind(this));
-		this._icon_variants_status_connect = this._extensionsSettings.connect('changed::icon-variants-enabled', this._on_icon_variants_status_changed.bind(this));
-		this._icon_variant_day_changed_connect = this._extensionsSettings.connect('changed::icon-variant-day', this._on_icon_variant_day_changed.bind(this));
-		this._icon_variant_night_changed_connect = this._extensionsSettings.connect('changed::icon-variant-night', this._on_icon_variant_night_changed.bind(this));
-		this._icon_variant_original_changed_connect = this._extensionsSettings.connect('changed::icon-variant-original', this._on_icon_variant_original_changed.bind(this));
-		this._cursor_variants_status_connect = this._extensionsSettings.connect('changed::cursor-variants-enabled', this._on_cursor_variants_status_changed.bind(this));
-		this._cursor_variant_day_changed_connect = this._extensionsSettings.connect('changed::cursor-variant-day', this._on_cursor_variant_day_changed.bind(this));
-		this._cursor_variant_night_changed_connect = this._extensionsSettings.connect('changed::cursor-variant-night', this._on_cursor_variant_night_changed.bind(this));
-		this._cursor_variant_original_changed_connect = this._extensionsSettings.connect('changed::cursor-variant-original', this._on_cursor_variant_original_changed.bind(this));
-		this._time_source_changed_connect = this._extensionsSettings.connect('changed::time-source', this._on_time_source_changed.bind(this));
-		this._manual_time_source_changed_connect = this._extensionsSettings.connect('changed::manual-time-source', this._on_manual_time_source_changed.bind(this));
-		this._commands_status_connect = this._extensionsSettings.connect('changed::commands-enabled', this._on_commands_status_changed.bind(this));
-		this._backgrounds_status_connect = this._extensionsSettings.connect('changed::backgrounds-enabled', this._on_backgrounds_status_changed.bind(this));
-		this._background_day_changed_connect = this._extensionsSettings.connect('changed::background-day', this._on_background_day_changed.bind(this));
-		this._background_night_changed_connect = this._extensionsSettings.connect('changed::background-night', this._on_background_night_changed.bind(this));
-		this._nightlight_status_connect = this._colorSettings.connect('changed::night-light-enabled', this._on_nightlight_status_changed.bind(this));
-		this._location_status_connect = this._locationSettings.connect('changed::enabled', this._on_location_status_changed.bind(this));
-		this._gtk_theme_changed_connect = this._interfaceSettings.connect('changed::gtk-theme', this._on_gtk_theme_changed.bind(this));
-		this._icon_theme_changed_connect = this._interfaceSettings.connect('changed::icon-theme', this._on_icon_theme_changed.bind(this));
-		this._cursor_theme_changed_connect = this._interfaceSettings.connect('changed::cursor-theme', this._on_cursor_theme_changed.bind(this));
-		this._background_changed_connect = this._backgroundSettings.connect('changed::picture-uri', this._on_background_changed.bind(this));
-		if ( this._userthemesSettings ) {
-			this._shell_theme_changed_connect = this._userthemesSettings.connect('changed::name', this._on_shell_theme_changed.bind(this));
-		}
-		log_debug('Settings signals connected.');
-	}
-
-	disable() {
-		log_debug('Disconnecting settings signals...');
-		this._extensionsSettings.disconnect(this._gtk_variants_status_changed_connect);
-		this._extensionsSettings.disconnect(this._gtk_variant_day_changed_connect);
-		this._extensionsSettings.disconnect(this._gtk_variant_night_changed_connect);
-		this._extensionsSettings.disconnect(this._gtk_variant_original_changed_connect);
-		this._extensionsSettings.disconnect(this._shell_variants_status_changed_connect);
-		this._extensionsSettings.disconnect(this._shell_variant_day_changed_connect);
-		this._extensionsSettings.disconnect(this._shell_variant_night_changed_connect);
-		this._extensionsSettings.disconnect(this._shell_variant_original_changed_connect);
-		this._extensionsSettings.disconnect(this._icon_variants_status_connect);
-		this._extensionsSettings.disconnect(this._icon_variant_day_changed_connect);
-		this._extensionsSettings.disconnect(this._icon_variant_night_changed_connect);
-		this._extensionsSettings.disconnect(this._icon_variant_original_changed_connect);
-		this._extensionsSettings.disconnect(this._cursor_variants_status_connect);
-		this._extensionsSettings.disconnect(this._cursor_variant_day_changed_connect);
-		this._extensionsSettings.disconnect(this._cursor_variant_night_changed_connect);
-		this._extensionsSettings.disconnect(this._cursor_variant_original_changed_connect);
-		this._extensionsSettings.disconnect(this._time_source_changed_connect);
-		this._extensionsSettings.disconnect(this._manual_time_source_changed_connect);
-		this._extensionsSettings.disconnect(this._commands_status_connect);
-		this._extensionsSettings.disconnect(this._backgrounds_status_connect);
-		this._extensionsSettings.disconnect(this._background_day_changed_connect);
-		this._extensionsSettings.disconnect(this._background_night_changed_connect);
-		this._colorSettings.disconnect(this._nightlight_status_connect);
-		this._locationSettings.disconnect(this._location_status_connect);
-		this._interfaceSettings.disconnect(this._gtk_theme_changed_connect);
-		this._interfaceSettings.disconnect(this._icon_theme_changed_connect);
-		this._interfaceSettings.disconnect(this._cursor_theme_changed_connect);
-		this._backgroundSettings.disconnect(this._background_changed_connect);
-		if ( this._userthemesSettings ) {
-			this._userthemesSettings.disconnect(this._shell_theme_changed_connect);
-		}
-		log_debug('Settings signals disconnected.');
-	}
-
-	/**
-	 * SETTERS AND GETTERS
-	 */
-
-	/* GTK variants settings */
-
-	get gtk_variants_enabled() {
-		return this._extensionsSettings.get_boolean('gtk-variants-enabled');
-	}
-
-	get gtk_variant_day() {
-		return this._extensionsSettings.get_string('gtk-variant-day');
-	}
-
-	set gtk_variant_day(value) {
-		if ( value !== this.gtk_variant_day ) {
-			this._extensionsSettings.set_string('gtk-variant-day', value);
-			log_debug(`The GTK day variant has been set to '${value}'.`);
-		}
-	}
-
-	get gtk_variant_night() {
-		return this._extensionsSettings.get_string('gtk-variant-night');
-	}
-
-	set gtk_variant_night(value) {
-		if ( value !== this.gtk_variant_night ) {
-			this._extensionsSettings.set_string('gtk-variant-night', value);
-			log_debug(`The GTK night variant has been set to '${value}'.`);
-		}
-	}
-
-	get gtk_variant_original() {
-		return this._extensionsSettings.get_string('gtk-variant-original');
-	}
-
-	set gtk_variant_original(value) {
-		if ( value !== this.gtk_variant_original ) {
-			this._extensionsSettings.set_string('gtk-variant-original', value);
-			log_debug(`The GTK original variant has been set to '${value}'.`);
-		}
-	}
-
-	get manual_gtk_variants() {
-		return this._extensionsSettings.get_boolean('manual-gtk-variants');
-	}
-
-
-	/* Shell variants settings */
-
-	get shell_variants_enabled() {
-		return this._extensionsSettings.get_boolean('shell-variants-enabled');
-	}
-
-	get shell_variant_day() {
-		return this._extensionsSettings.get_string('shell-variant-day');
-	}
-
-	set shell_variant_day(value) {
-		if ( value !== this.shell_variant_day ) {
-			this._extensionsSettings.set_string('shell-variant-day', value);
-			log_debug(`The shell day variant has been set to '${value}'.`);
-		}
-	}
-
-	get shell_variant_night() {
-		return this._extensionsSettings.get_string('shell-variant-night');
-	}
-
-	set shell_variant_night(value) {
-		if ( value !== this.shell_variant_night ) {
-			this._extensionsSettings.set_string('shell-variant-night', value);
-			log_debug(`The shell night variant has been set to '${value}'.`);
-		}
-	}
-
-	get shell_variant_original() {
-		return this._extensionsSettings.get_string('shell-variant-original');
-	}
-
-	set shell_variant_original(value) {
-		if ( value !== this.shell_variant_original ) {
-			this._extensionsSettings.set_string('shell-variant-original', value);
-			log_debug(`The shell original variant has been set to '${value}'.`);
-		}
-	}
-
-	get manual_shell_variants() {
-		return this._extensionsSettings.get_boolean('manual-shell-variants');
-	}
-
-	/* Cursor variants settings */
-
-	get cursor_variants_enabled() {
-		return this._extensionsSettings.get_boolean('cursor-variants-enabled');
-	}
-
-	get cursor_variant_day() {
-		return this._extensionsSettings.get_string('cursor-variant-day') || this.cursor_theme;
-	}
-
-	set cursor_variant_day(value) {
-		if ( value !== this.cursor_variant_day ) {
-			this._extensionsSettings.set_string('cursor-variant-day', value);
-			log_debug(`The cursor day variant has been set to '${value}'.`);
-		}
-	}
-
-	get cursor_variant_night() {
-		return this._extensionsSettings.get_string('cursor-variant-night') || this.cursor_theme;
-	}
-
-	set cursor_variant_night(value) {
-		if ( value !== this.cursor_variant_night ) {
-			this._extensionsSettings.set_string('cursor-variant-night', value);
-			log_debug(`The cursor night variant has been set to '${value}'.`);
-		}
-	}
-
-	get cursor_variant_original() {
-		return this._extensionsSettings.get_string('cursor-variant-original');
-	}
-
-	set cursor_variant_original(value) {
-		if ( value !== this.cursor_variant_original ) {
-			this._extensionsSettings.set_string('cursor-variant-original', value);
-			log_debug(`The cursor original variant has been set to '${value}'.`);
-		}
-	}
-
-	/* Icon variants settings */
-
-	get icon_variants_enabled() {
-		return this._extensionsSettings.get_boolean('icon-variants-enabled');
-	}
-
-	get icon_variant_day() {
-		return this._extensionsSettings.get_string('icon-variant-day') || this.icon_theme;
-	}
-
-	set icon_variant_day(value) {
-		if ( value !== this.icon_variant_day ) {
-			this._extensionsSettings.set_string('icon-variant-day', value);
-			log_debug(`The icon day variant has been set to '${value}'.`);
-		}
-	}
-
-	get icon_variant_night() {
-		return this._extensionsSettings.get_string('icon-variant-night') || this.icon_theme;
-	}
-
-	set icon_variant_night(value) {
-		if ( value !== this.icon_variant_night ) {
-			this._extensionsSettings.set_string('icon-variant-night', value);
-			log_debug(`The icon night variant has been set to '${value}'.`);
-		}
-	}
-
-	get icon_variant_original() {
-		return this._extensionsSettings.get_string('icon-variant-original');
-	}
+    constructor() {
+        logDebug('Initializing settings...');
+        this._extensionsSettings = compat.getExtensionSettings();
+        this._colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
+        this._locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
+        this._interfaceSettings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
+        this._backgroundSettings = new Gio.Settings({ schema: 'org.gnome.desktop.background' });
+        this._userthemesSettings = getUserthemesSettings();
+        logDebug('Settings initialized.');
+    }
+
+    enable() {
+        logDebug('Connecting settings signals...');
+        this._gtkVariantsStatusChangedConnect = this._extensionsSettings.connect('changed::gtk-variants-enabled', this._onGtkVariantsStatusChanged.bind(this));
+        this._gtkVariantDayChangedConnect = this._extensionsSettings.connect('changed::gtk-variant-day', this._onGtkVariantDayChanged.bind(this));
+        this._gtkVariantNightChangedConnect = this._extensionsSettings.connect('changed::gtk-variant-night', this._onGtkVariantNightChanged.bind(this));
+        this._gtkVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::gtk-variant-original', this._onGtkVariantOriginalChanged.bind(this));
+        this._shellVariantsStatusChangedConnect = this._extensionsSettings.connect('changed::shell-variants-enabled', this._onShellVariantsStatusChanged.bind(this));
+        this._shellVariantDayChangedConnect = this._extensionsSettings.connect('changed::shell-variant-day', this._onShellVariantDayChanged.bind(this));
+        this._shellVariantNightChangedConnect = this._extensionsSettings.connect('changed::shell-variant-night', this._onShellVariantNightChanged.bind(this));
+        this._shellVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::shell-variant-original', this._onShellVariantOriginalChanged.bind(this));
+        this._iconVariantsStatusConnect = this._extensionsSettings.connect('changed::icon-variants-enabled', this._onIconVariantsStatusChanged.bind(this));
+        this._iconVariantDayChangedConnect = this._extensionsSettings.connect('changed::icon-variant-day', this._onIconVariantDayChanged.bind(this));
+        this._iconVariantNightChangedConnect = this._extensionsSettings.connect('changed::icon-variant-night', this._onIconVariantNightChanged.bind(this));
+        this._iconVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::icon-variant-original', this._onIconVariantOriginalChanged.bind(this));
+        this._cursorVariantsStatusConnect = this._extensionsSettings.connect('changed::cursor-variants-enabled', this._onCursorVariantsStatusChanged.bind(this));
+        this._cursorVariantDayChangedConnect = this._extensionsSettings.connect('changed::cursor-variant-day', this._onCursorVariantDayChanged.bind(this));
+        this._cursorVariantNightChangedConnect = this._extensionsSettings.connect('changed::cursor-variant-night', this._onCursorVariantNightChanged.bind(this));
+        this._cursorVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::cursor-variant-original', this._onCursorVariantOriginalChanged.bind(this));
+        this._timeSourceChangedConnect = this._extensionsSettings.connect('changed::time-source', this._onTimeSourceChanged.bind(this));
+        this._manualTimeSourceChangedConnect = this._extensionsSettings.connect('changed::manual-time-source', this._onManualTimeSourceChanged.bind(this));
+        this._commandsStatusConnect = this._extensionsSettings.connect('changed::commands-enabled', this._onCommandsStatusChanged.bind(this));
+        this._backgroundsStatusConnect = this._extensionsSettings.connect('changed::backgrounds-enabled', this._onBackgroundsStatusChanged.bind(this));
+        this._backgroundDayChangedConnect = this._extensionsSettings.connect('changed::background-day', this._onBackgroundDayChanged.bind(this));
+        this._backgroundNightChangedConnect = this._extensionsSettings.connect('changed::background-night', this._onBackgroundNightChanged.bind(this));
+        this._nightlightStatusConnect = this._colorSettings.connect('changed::night-light-enabled', this._onNightlightStatusChanged.bind(this));
+        this._locationStatusConnect = this._locationSettings.connect('changed::enabled', this._onLocationStatusChanged.bind(this));
+        this._gtkThemeChangedConnect = this._interfaceSettings.connect('changed::gtk-theme', this._onGtkThemeChanged.bind(this));
+        this._iconThemeChangedConnect = this._interfaceSettings.connect('changed::icon-theme', this._onIconThemeChanged.bind(this));
+        this._cursorThemeChangedConnect = this._interfaceSettings.connect('changed::cursor-theme', this._onCursorThemeChanged.bind(this));
+        this._backgroundChangedConnect = this._backgroundSettings.connect('changed::picture-uri', this._onBackgroundChanged.bind(this));
+        if (this._userthemesSettings)
+            this._shell_theme_changed_connect = this._userthemesSettings.connect('changed::name', this._onShellThemeChanged.bind(this));
+        logDebug('Settings signals connected.');
+    }
+
+    disable() {
+        logDebug('Disconnecting settings signals...');
+        this._extensionsSettings.disconnect(this._gtkVariantsStatusChangedConnect);
+        this._extensionsSettings.disconnect(this._gtkVariantDayChangedConnect);
+        this._extensionsSettings.disconnect(this._gtkVariantNightChangedConnect);
+        this._extensionsSettings.disconnect(this._gtkVariantOriginalChangedConnect);
+        this._extensionsSettings.disconnect(this._shellVariantsStatusChangedConnect);
+        this._extensionsSettings.disconnect(this._shellVariantDayChangedConnect);
+        this._extensionsSettings.disconnect(this._shellVariantNightChangedConnect);
+        this._extensionsSettings.disconnect(this._shellVariantOriginalChangedConnect);
+        this._extensionsSettings.disconnect(this._iconVariantsStatusConnect);
+        this._extensionsSettings.disconnect(this._iconVariantDayChangedConnect);
+        this._extensionsSettings.disconnect(this._iconVariantNightChangedConnect);
+        this._extensionsSettings.disconnect(this._iconVariantOriginalChangedConnect);
+        this._extensionsSettings.disconnect(this._cursorVariantsStatusConnect);
+        this._extensionsSettings.disconnect(this._cursorVariantDayChangedConnect);
+        this._extensionsSettings.disconnect(this._cursorVariantNightChangedConnect);
+        this._extensionsSettings.disconnect(this._cursorVariantOriginalChangedConnect);
+        this._extensionsSettings.disconnect(this._timeSourceChangedConnect);
+        this._extensionsSettings.disconnect(this._manualTimeSourceChangedConnect);
+        this._extensionsSettings.disconnect(this._commandsStatusConnect);
+        this._extensionsSettings.disconnect(this._backgroundsStatusConnect);
+        this._extensionsSettings.disconnect(this._backgroundDayChangedConnect);
+        this._extensionsSettings.disconnect(this._backgroundNightChangedConnect);
+        this._colorSettings.disconnect(this._nightlightStatusConnect);
+        this._locationSettings.disconnect(this._locationStatusConnect);
+        this._interfaceSettings.disconnect(this._gtkThemeChangedConnect);
+        this._interfaceSettings.disconnect(this._iconThemeChangedConnect);
+        this._interfaceSettings.disconnect(this._cursorThemeChangedConnect);
+        this._backgroundSettings.disconnect(this._backgroundChangedConnect);
+        if (this._userthemesSettings)
+            this._userthemesSettings.disconnect(this._shell_theme_changed_connect);
+        logDebug('Settings signals disconnected.');
+    }
+
+    /**
+     * SETTERS AND GETTERS
+     */
+
+    /* GTK variants settings */
+
+    get gtkVariantsEnabled() {
+        return this._extensionsSettings.get_boolean('gtk-variants-enabled');
+    }
+
+    get gtkVariantDay() {
+        return this._extensionsSettings.get_string('gtk-variant-day');
+    }
+
+    set gtkVariantDay(value) {
+        if (value !== this.gtkVariantDay) {
+            this._extensionsSettings.set_string('gtk-variant-day', value);
+            logDebug(`The GTK day variant has been set to '${value}'.`);
+        }
+    }
+
+    get gtkVariantNight() {
+        return this._extensionsSettings.get_string('gtk-variant-night');
+    }
+
+    set gtkVariantNight(value) {
+        if (value !== this.gtkVariantNight) {
+            this._extensionsSettings.set_string('gtk-variant-night', value);
+            logDebug(`The GTK night variant has been set to '${value}'.`);
+        }
+    }
+
+    get gtkVariantOriginal() {
+        return this._extensionsSettings.get_string('gtk-variant-original');
+    }
+
+    set gtkVariantOriginal(value) {
+        if (value !== this.gtkVariantOriginal) {
+            this._extensionsSettings.set_string('gtk-variant-original', value);
+            logDebug(`The GTK original variant has been set to '${value}'.`);
+        }
+    }
+
+    get manualGtkVariants() {
+        return this._extensionsSettings.get_boolean('manual-gtk-variants');
+    }
+
+
+    /* Shell variants settings */
+
+    get shellVariantsEnabled() {
+        return this._extensionsSettings.get_boolean('shell-variants-enabled');
+    }
+
+    get shellVariantDay() {
+        return this._extensionsSettings.get_string('shell-variant-day');
+    }
+
+    set shellVariantDay(value) {
+        if (value !== this.shellVariantDay) {
+            this._extensionsSettings.set_string('shell-variant-day', value);
+            logDebug(`The shell day variant has been set to '${value}'.`);
+        }
+    }
+
+    get shellVariantNight() {
+        return this._extensionsSettings.get_string('shell-variant-night');
+    }
+
+    set shellVariantNight(value) {
+        if (value !== this.shellVariantNight) {
+            this._extensionsSettings.set_string('shell-variant-night', value);
+            logDebug(`The shell night variant has been set to '${value}'.`);
+        }
+    }
+
+    get shellVariantOriginal() {
+        return this._extensionsSettings.get_string('shell-variant-original');
+    }
+
+    set shellVariantOriginal(value) {
+        if (value !== this.shellVariantOriginal) {
+            this._extensionsSettings.set_string('shell-variant-original', value);
+            logDebug(`The shell original variant has been set to '${value}'.`);
+        }
+    }
+
+    get manualShellVariants() {
+        return this._extensionsSettings.get_boolean('manual-shell-variants');
+    }
+
+    /* Cursor variants settings */
+
+    get cursorVariantsEnabled() {
+        return this._extensionsSettings.get_boolean('cursor-variants-enabled');
+    }
+
+    get cursorVariantDay() {
+        return this._extensionsSettings.get_string('cursor-variant-day') || this.cursorTheme;
+    }
+
+    set cursorVariantDay(value) {
+        if (value !== this.cursorVariantDay) {
+            this._extensionsSettings.set_string('cursor-variant-day', value);
+            logDebug(`The cursor day variant has been set to '${value}'.`);
+        }
+    }
+
+    get cursorVariantNight() {
+        return this._extensionsSettings.get_string('cursor-variant-night') || this.cursorTheme;
+    }
+
+    set cursorVariantNight(value) {
+        if (value !== this.cursorVariantNight) {
+            this._extensionsSettings.set_string('cursor-variant-night', value);
+            logDebug(`The cursor night variant has been set to '${value}'.`);
+        }
+    }
+
+    get cursorVariantOriginal() {
+        return this._extensionsSettings.get_string('cursor-variant-original');
+    }
+
+    set cursorVariantOriginal(value) {
+        if (value !== this.cursorVariantOriginal) {
+            this._extensionsSettings.set_string('cursor-variant-original', value);
+            logDebug(`The cursor original variant has been set to '${value}'.`);
+        }
+    }
+
+    /* Icon variants settings */
+
+    get iconVariantsEnabled() {
+        return this._extensionsSettings.get_boolean('icon-variants-enabled');
+    }
+
+    get iconVariantDay() {
+        return this._extensionsSettings.get_string('icon-variant-day') || this.iconTheme;
+    }
+
+    set iconVariantDay(value) {
+        if (value !== this.iconVariantDay) {
+            this._extensionsSettings.set_string('icon-variant-day', value);
+            logDebug(`The icon day variant has been set to '${value}'.`);
+        }
+    }
+
+    get iconVariantNight() {
+        return this._extensionsSettings.get_string('icon-variant-night') || this.iconTheme;
+    }
+
+    set iconVariantNight(value) {
+        if (value !== this.iconVariantNight) {
+            this._extensionsSettings.set_string('icon-variant-night', value);
+            logDebug(`The icon night variant has been set to '${value}'.`);
+        }
+    }
+
+    get iconVariantOriginal() {
+        return this._extensionsSettings.get_string('icon-variant-original');
+    }
 
-	set icon_variant_original(value) {
-		if ( value !== this.icon_variant_original ) {
-			this._extensionsSettings.set_string('icon-variant-original', value);
-			log_debug(`The icon original variant has been set to '${value}'.`);
-		}
-	}
-
-
-	/* Time source settings */
-
-	get time_source() {
-		return this._extensionsSettings.get_string('time-source');
-	}
-
-	get manual_time_source() {
-		return this._extensionsSettings.get_boolean('manual-time-source');
-	}
-
-	set time_source(value) {
-		if ( value !== this.time_source ) {
-			this._extensionsSettings.set_string('time-source', value);
-			log_debug(`The time source has been set to ${value}.`);
-		}
-	}
-
-	get ondemand_time() {
-		return this._extensionsSettings.get_string('ondemand-time');
-	}
-
-	set ondemand_time(value) {
-		if ( value !== this.ondemand_time ) {
-			this._extensionsSettings.set_string('ondemand-time', value);
-			log_debug(`The on-demand time has been set to ${value}.`);
-		}
-	}
-
-	get schedule_sunrise() {
-		return this._extensionsSettings.get_double('schedule-sunrise');
-	}
-
-	get schedule_sunset() {
-		return this._extensionsSettings.get_double('schedule-sunset');
-	}
-
-
-	/* Commands settings */
-
-	get commands_enabled() {
-		return this._extensionsSettings.get_boolean('commands-enabled');
-	}
-
-	get command_sunrise() {
-		return this._extensionsSettings.get_string('command-sunrise');
-	}
-
-	get command_sunset() {
-		return this._extensionsSettings.get_string('command-sunset');
-	}
-
-
-	/* Background settings */
-
-	get backgrounds_enabled() {
-		return this._extensionsSettings.get_boolean('backgrounds-enabled');
-	}
-
-	get background_day() {
-		return this._extensionsSettings.get_string('background-day') || this.background;
-	}
-
-	set background_day(value) {
-		this._extensionsSettings.set_string('background-day', value);
-	}
-
-	get background_night() {
-		return this._extensionsSettings.get_string('background-night') || this.background;
-	}
-
-	set background_night(value) {
-		this._extensionsSettings.set_string('background-night', value);
-	}
+    set iconVariantOriginal(value) {
+        if (value !== this.iconVariantOriginal) {
+            this._extensionsSettings.set_string('icon-variant-original', value);
+            logDebug(`The icon original variant has been set to '${value}'.`);
+        }
+    }
+
+
+    /* Time source settings */
+
+    get timeSource() {
+        return this._extensionsSettings.get_string('time-source');
+    }
 
+    set timeSource(value) {
+        if (value !== this.timeSource) {
+            this._extensionsSettings.set_string('time-source', value);
+            logDebug(`The time source has been set to ${value}.`);
+        }
+    }
+
+    get manualTimeSource() {
+        return this._extensionsSettings.get_boolean('manual-time-source');
+    }
+
+    get ondemandTime() {
+        return this._extensionsSettings.get_string('ondemand-time');
+    }
+
+    set ondemandTime(value) {
+        if (value !== this.ondemandTime) {
+            this._extensionsSettings.set_string('ondemand-time', value);
+            logDebug(`The on-demand time has been set to ${value}.`);
+        }
+    }
+
+    get scheduleSunrise() {
+        return this._extensionsSettings.get_double('schedule-sunrise');
+    }
+
+    get scheduleSunset() {
+        return this._extensionsSettings.get_double('schedule-sunset');
+    }
+
 
-	/* Night Light settings */
-
-	get nightlight_enabled() {
-		return this._colorSettings.get_boolean('night-light-enabled');
-	}
-
-
-	/* Location settings */
+    /* Commands settings */
 
-	get location_enabled() {
-		return this._locationSettings.get_boolean('enabled');
-	}
+    get commandsEnabled() {
+        return this._extensionsSettings.get_boolean('commands-enabled');
+    }
 
-
-	/* GTK theme settings */
-
-	get gtk_theme() {
-		return this._interfaceSettings.get_string('gtk-theme');
-	}
+    get commandSunrise() {
+        return this._extensionsSettings.get_string('command-sunrise');
+    }
+
+    get commandSunset() {
+        return this._extensionsSettings.get_string('command-sunset');
+    }
 
-	set gtk_theme(value) {
-		if ( value !== this.gtk_theme ) {
-			this._interfaceSettings.set_string('gtk-theme', value);
-			log_debug(`GTK theme has been set to '${value}'.`);
-		}
-	}
 
-	/* Shell theme settings */
+    /* Background settings */
 
-	get shell_theme() {
-		if ( this._userthemesSettings ) {
-			return this._userthemesSettings.get_string('name');
-		}
-		else {
-			return '';
-		}
-	}
-
-	set shell_theme(value) {
-		if ( this._userthemesSettings && value !== this.shell_theme ) {
-			this._userthemesSettings.set_string('name', value);
-		}
-	}
+    get backgroundsEnabled() {
+        return this._extensionsSettings.get_boolean('backgrounds-enabled');
+    }
 
-	get use_userthemes() {
-		const extension = get_userthemes_extension();
-		return (extension && extension.state === 1);
-	}
+    get backgroundDay() {
+        return this._extensionsSettings.get_string('background-day') || this.background;
+    }
 
+    set backgroundDay(value) {
+        this._extensionsSettings.set_string('background-day', value);
+    }
 
-	/* Icon theme settings */
+    get backgroundNight() {
+        return this._extensionsSettings.get_string('background-night') || this.background;
+    }
 
-	get icon_theme() {
-		return this._interfaceSettings.get_string('icon-theme');
-	}
+    set backgroundNight(value) {
+        this._extensionsSettings.set_string('background-night', value);
+    }
 
-	set icon_theme(value) {
-		if ( value !== this.icon_theme ) {
-			this._interfaceSettings.set_string('icon-theme', value);
-			log_debug(`Icon theme has been set to '${value}'.`);
-		}
-	}
-
 
-	/* Cursor theme settings */
+    /* Night Light settings */
 
-	get cursor_theme() {
-		return this._interfaceSettings.get_string('cursor-theme');
-	}
+    get nightlightEnabled() {
+        return this._colorSettings.get_boolean('night-light-enabled');
+    }
 
-	set cursor_theme(value) {
-		if ( value !== this.cursor_theme ) {
-			this._interfaceSettings.set_string('cursor-theme', value);
-			log_debug(`Cursor theme has been set to '${value}'.`);
-		}
-	}
 
+    /* Location settings */
 
-	/* Background settings */
+    get locationEnabled() {
+        return this._locationSettings.get_boolean('enabled');
+    }
 
-	get background() {
-		return this._backgroundSettings.get_string('picture-uri');
-	}
 
-	set background(value) {
-		if ( value !== this.background ) {
-			this._backgroundSettings.set_string('picture-uri', value);
-		}
-	}
+    /* GTK theme settings */
 
+    get gtkTheme() {
+        return this._interfaceSettings.get_string('gtk-theme');
+    }
 
-	/**
-	 * SIGNALS
-	 */
+    set gtkTheme(value) {
+        if (value !== this.gtkTheme) {
+            this._interfaceSettings.set_string('gtk-theme', value);
+            logDebug(`GTK theme has been set to '${value}'.`);
+        }
+    }
 
-	/* GTK variants */
+    /* Shell theme settings */
 
-	_on_gtk_variants_status_changed(settings, changed_key) {
-		log_debug('GTK variants have been ' + (this.gtk_variants_enabled ? 'ena' : 'disa') + 'bled.');
-		this.emit('gtk-variants-status-changed', this.gtk_variants_enabled);
-	}
+    get shellTheme() {
+        if (this._userthemesSettings)
+            return this._userthemesSettings.get_string('name');
+        else
+            return '';
+    }
 
-	_on_gtk_variant_day_changed(settings, changed_key) {
-		log_debug(`GTK day variant has changed to '${this.gtk_variant_day}'.`);
-		this.emit('gtk-variant-changed', 'day');
-	}
+    set shellTheme(value) {
+        if (this._userthemesSettings && value !== this.shellTheme)
+            this._userthemesSettings.set_string('name', value);
+    }
 
-	_on_gtk_variant_night_changed(settings, changed_key) {
-		log_debug(`GTK night variant has changed to '${this.gtk_variant_night}'.`);
-		this.emit('gtk-variant-changed', 'night');
-	}
+    get useUserthemes() {
+        const extension = getUserthemesExtension();
+        return extension && extension.state === 1;
+    }
 
-	_on_gtk_variant_original_changed(settings, changed_key) {
-		log_debug(`GTK original variant has changed to '${this.gtk_variant_original}'.`);
-		this.emit('gtk-variant-changed', 'original');
-	}
 
+    /* Icon theme settings */
 
-	/* Shell variants */
+    get iconTheme() {
+        return this._interfaceSettings.get_string('icon-theme');
+    }
 
-	_on_shell_variants_status_changed(settings, changed_key) {
-		log_debug('Shell variants have been ' + (this.shell_variants_enabled ? 'ena' : 'disa') + 'bled.');
-		this.emit('shell-variants-status-changed', this.shell_variants_enabled);
-	}
+    set iconTheme(value) {
+        if (value !== this.iconTheme) {
+            this._interfaceSettings.set_string('icon-theme', value);
+            logDebug(`Icon theme has been set to '${value}'.`);
+        }
+    }
 
-	_on_shell_variant_day_changed(settings, changed_key) {
-		log_debug(`Shell day variant has changed to '${this.shell_variant_day}'.`);
-		this.emit('shell-variant-changed', 'day');
-	}
 
-	_on_shell_variant_night_changed(settings, changed_key) {
-		log_debug(`Shell night variant has changed to '${this.shell_variant_night}'.`);
-		this.emit('shell-variant-changed', 'night');
-	}
+    /* Cursor theme settings */
 
-	_on_shell_variant_original_changed(settings, changed_key) {
-		log_debug(`Shell original variant has changed to '${this.shell_variant_original}'.`);
-		this.emit('shell-variant-changed', 'original');
-	}
+    get cursorTheme() {
+        return this._interfaceSettings.get_string('cursor-theme');
+    }
 
+    set cursorTheme(value) {
+        if (value !== this.cursorTheme) {
+            this._interfaceSettings.set_string('cursor-theme', value);
+            logDebug(`Cursor theme has been set to '${value}'.`);
+        }
+    }
 
-	/* Cursor variants */
 
-	_on_cursor_variants_status_changed(settings, changed_key) {
-		log_debug('Cursor variants have been ' + (this.cursor_variants_enabled ? 'ena' : 'disa') + 'bled.');
-		this.emit('cursor-variants-status-changed', this.cursor_variants_enabled);
-	}
+    /* Background settings */
 
-	_on_cursor_variant_day_changed(settings, changed_key) {
-		log_debug(`Cursor day variant has changed to '${this.cursor_variant_day}'.`);
-		this.emit('cursor-variant-changed', 'day');
-	}
+    get background() {
+        return this._backgroundSettings.get_string('picture-uri');
+    }
 
-	_on_cursor_variant_night_changed(settings, changed_key) {
-		log_debug(`Cursor night variant has changed to '${this.cursor_variant_night}'.`);
-		this.emit('cursor-variant-changed', 'night');
-	}
+    set background(value) {
+        if (value !== this.background)
+            this._backgroundSettings.set_string('picture-uri', value);
+    }
 
-	_on_cursor_variant_original_changed(settings, changed_key) {
-		log_debug(`Cursor original variant has changed to '${this.cursor_variant_original}'.`);
-		this.emit('cursor-variant-changed', 'original');
-	}
 
+    /**
+     * SIGNALS
+     */
 
-	/* Icon variants */
+    /* GTK variants */
 
-	_on_icon_variants_status_changed(settings, changed_key) {
-		log_debug('Icon variants have been ' + (this.icon_variants_enabled ? 'ena' : 'disa') + 'bled.');
-		this.emit('icon-variants-status-changed', this.icon_variants_enabled);
-	}
+    _onGtkVariantsStatusChanged(_settings, _changedKey) {
+        logDebug(`GTK variants have been ${this.gtkVariantsEnabled ? 'ena' : 'disa'}bled.`);
+        this.emit('gtk-variants-status-changed', this.gtkVariantsEnabled);
+    }
 
-	_on_icon_variant_day_changed(settings, changed_key) {
-		log_debug(`Icon day variant has changed to '${this.icon_variant_day}'.`);
-		this.emit('icon-variant-changed', 'day');
-	}
+    _onGtkVariantDayChanged(_settings, _changedKey) {
+        logDebug(`GTK day variant has changed to '${this.gtkVariantDay}'.`);
+        this.emit('gtk-variant-changed', 'day');
+    }
 
-	_on_icon_variant_night_changed(settings, changed_key) {
-		log_debug(`Icon night variant has changed to '${this.icon_variant_night}'.`);
-		this.emit('icon-variant-changed', 'night');
-	}
+    _onGtkVariantNightChanged(_settings, _changedKey) {
+        logDebug(`GTK night variant has changed to '${this.gtkVariantNight}'.`);
+        this.emit('gtk-variant-changed', 'night');
+    }
 
-	_on_icon_variant_original_changed(settings, changed_key) {
-		log_debug(`Icon original variant has changed to '${this.icon_variant_original}'.`);
-		this.emit('icon-variant-changed', 'original');
-	}
+    _onGtkVariantOriginalChanged(_settings, _changedKey) {
+        logDebug(`GTK original variant has changed to '${this.gtkVariantOriginal}'.`);
+        this.emit('gtk-variant-changed', 'original');
+    }
 
 
-	/* Time source */
+    /* Shell variants */
 
-	_on_time_source_changed(settings, changed_key) {
-		log_debug(`Time source has changed to ${this.time_source}.`);
-		this.emit('time-source-changed', this.time_source);
-	}
+    _onShellVariantsStatusChanged(_settings, _changedKey) {
+        logDebug(`Shell variants have been ${this.shellVariantsEnabled ? 'ena' : 'disa'}bled.`);
+        this.emit('shell-variants-status-changed', this.shellVariantsEnabled);
+    }
 
-	_on_manual_time_source_changed(settings, changed_key) {
-		log_debug('Manual time source has been ' + (this.manual_time_source ? 'ena' : 'disa') + 'bled.');
-		this.emit('manual-time-source-changed', this.manual_time_source);
-	}
+    _onShellVariantDayChanged(_settings, _changedKey) {
+        logDebug(`Shell day variant has changed to '${this.shellVariantDay}'.`);
+        this.emit('shell-variant-changed', 'day');
+    }
 
+    _onShellVariantNightChanged(_settings, _changedKey) {
+        logDebug(`Shell night variant has changed to '${this.shellVariantNight}'.`);
+        this.emit('shell-variant-changed', 'night');
+    }
 
-	/* Commands */
+    _onShellVariantOriginalChanged(_settings, _changedKey) {
+        logDebug(`Shell original variant has changed to '${this.shellVariantOriginal}'.`);
+        this.emit('shell-variant-changed', 'original');
+    }
 
-	_on_commands_status_changed(settings, changed_key) {
-		log_debug('Commands have been ' + (this.commands_enabled ? 'ena' : 'disa') + 'bled.');
-		this.emit('commands-status-changed', this.commands_enabled);
-	}
 
+    /* Cursor variants */
 
-	/* Backgrounds */
+    _onCursorVariantsStatusChanged(_settings, _changedKey) {
+        logDebug(`Cursor variants have been ${this.cursorVariantsEnabled ? 'ena' : 'disa'}bled.`);
+        this.emit('cursor-variants-status-changed', this.cursorVariantsEnabled);
+    }
 
-	_on_backgrounds_status_changed(settings, changed_key) {
-		log_debug('Backgrounds have been ' + (this.backgrounds_enabled ? 'ena' : 'disa') + 'bled.');
-		this.emit('backgrounds-status-changed', this.backgrounds_enabled);
-	}
+    _onCursorVariantDayChanged(_settings, _changedKey) {
+        logDebug(`Cursor day variant has changed to '${this.cursorVariantDay}'.`);
+        this.emit('cursor-variant-changed', 'day');
+    }
 
-	_on_background_day_changed(settings, changed_key) {
-		log_debug(`Day background has changed to '${this.background_day}'.`);
-		this.emit('background-time-changed', 'day');
-	}
+    _onCursorVariantNightChanged(_settings, _changedKey) {
+        logDebug(`Cursor night variant has changed to '${this.cursorVariantNight}'.`);
+        this.emit('cursor-variant-changed', 'night');
+    }
 
-	_on_background_night_changed(settings, changed_key) {
-		log_debug(`Night background has changed to '${this.background_night}'.`);
-		this.emit('background-time-changed', 'night');
-	}
+    _onCursorVariantOriginalChanged(_settings, _changedKey) {
+        logDebug(`Cursor original variant has changed to '${this.cursorVariantOriginal}'.`);
+        this.emit('cursor-variant-changed', 'original');
+    }
 
 
-	/* Night Light */
+    /* Icon variants */
 
-	_on_nightlight_status_changed(settings, changed_key) {
-		log_debug('Night Light has been ' + (this.nightlight_enabled ? 'ena' : 'disa') + 'bled.');
-		this.emit('nightlight-status-changed', this.nightlight_enabled);
-	}
+    _onIconVariantsStatusChanged(_settings, _changedKey) {
+        logDebug(`Icon variants have been ${this.iconVariantsEnabled ? 'ena' : 'disa'}bled.`);
+        this.emit('icon-variants-status-changed', this.iconVariantsEnabled);
+    }
 
+    _onIconVariantDayChanged(_settings, _changedKey) {
+        logDebug(`Icon day variant has changed to '${this.iconVariantDay}'.`);
+        this.emit('icon-variant-changed', 'day');
+    }
 
-	/* Location */
+    _onIconVariantNightChanged(_settings, _changedKey) {
+        logDebug(`Icon night variant has changed to '${this.iconVariantNight}'.`);
+        this.emit('icon-variant-changed', 'night');
+    }
 
-	_on_location_status_changed(settings, changed_key) {
-		log_debug('Location has been ' + (this.location_enabled ? 'ena' : 'disa') + 'bled.');
-		this.emit('location-status-changed', this.location_enabled);
-	}
+    _onIconVariantOriginalChanged(_settings, _changedKey) {
+        logDebug(`Icon original variant has changed to '${this.iconVariantOriginal}'.`);
+        this.emit('icon-variant-changed', 'original');
+    }
 
 
-	/* GTK theme */
+    /* Time source */
 
-	_on_gtk_theme_changed(settings, changed_key) {
-		log_debug(`GTK theme has changed to '${this.gtk_theme}'.`);
-		this.emit('gtk-theme-changed', this.gtk_theme);
-	}
+    _onTimeSourceChanged(_settings, _changedKey) {
+        logDebug(`Time source has changed to ${this.timeSource}.`);
+        this.emit('time-source-changed', this.timeSource);
+    }
 
+    _onManualTimeSourceChanged(_settings, _changedKey) {
+        logDebug(`Manual time source has been ${this.manualTimeSource ? 'ena' : 'disa'}bled.`);
+        this.emit('manual-time-source-changed', this.manualTimeSource);
+    }
 
-	/* Icon theme */
 
-	_on_icon_theme_changed(settings, changed_key) {
-		log_debug(`Cursor theme has changed to '${this.icon_theme}'.`);
-		this.emit('icon-theme-changed', this.icon_theme);
-	}
+    /* Commands */
 
+    _onCommandsStatusChanged(_settings, _changedKey) {
+        logDebug(`Commands have been ${this.commandsEnabled ? 'ena' : 'disa'}bled.`);
+        this.emit('commands-status-changed', this.commandsEnabled);
+    }
 
-	/* Cursor theme */
 
-	_on_cursor_theme_changed(settings, changed_key) {
-		log_debug(`Cursor theme has changed to '${this.cursor_theme}'.`);
-		this.emit('cursor-theme-changed', this.cursor_theme);
-	}
+    /* Backgrounds */
 
+    _onBackgroundsStatusChanged(_settings, _changedKey) {
+        logDebug(`Backgrounds have been ${this.backgroundsEnabled ? 'ena' : 'disa'}bled.`);
+        this.emit('backgrounds-status-changed', this.backgroundsEnabled);
+    }
 
-	/* Background */
+    _onBackgroundDayChanged(_settings, _changedKey) {
+        logDebug(`Day background has changed to '${this.backgroundDay}'.`);
+        this.emit('background-time-changed', 'day');
+    }
 
-	_on_background_changed(settings, changed_key) {
-		log_debug(`Background has changed to '${this.background}'.`);
-		this.emit('background-changed', this.background);
-	}
+    _onBackgroundNightChanged(_settings, _changedKey) {
+        logDebug(`Night background has changed to '${this.backgroundNight}'.`);
+        this.emit('background-time-changed', 'night');
+    }
 
 
-	/* Shell theme */
+    /* Night Light */
 
-	_on_shell_theme_changed(settings, changed_key) {
-		log_debug(`Shell theme has changed to '${this.shell_theme}'.`);
-		this.emit('shell-theme-changed', this.shell_theme);
-	}
+    _onNightlightStatusChanged(_settings, _changedKey) {
+        logDebug(`Night Light has been ${this.nightlightEnabled ? 'ena' : 'disa'}bled.`);
+        this.emit('nightlight-status-changed', this.nightlightEnabled);
+    }
 
-}
+
+    /* Location */
+
+    _onLocationStatusChanged(_settings, _changedKey) {
+        logDebug(`Location has been ${this.locationEnabled ? 'ena' : 'disa'}bled.`);
+        this.emit('location-status-changed', this.locationEnabled);
+    }
+
+
+    /* GTK theme */
+
+    _onGtkThemeChanged(_settings, _changedKey) {
+        logDebug(`GTK theme has changed to '${this.gtkTheme}'.`);
+        this.emit('gtk-theme-changed', this.gtkTheme);
+    }
+
+
+    /* Icon theme */
+
+    _onIconThemeChanged(_settings, _changedKey) {
+        logDebug(`Cursor theme has changed to '${this.iconTheme}'.`);
+        this.emit('icon-theme-changed', this.iconTheme);
+    }
+
+
+    /* Cursor theme */
+
+    _onCursorThemeChanged(_settings, _changedKey) {
+        logDebug(`Cursor theme has changed to '${this.cursorTheme}'.`);
+        this.emit('cursor-theme-changed', this.cursorTheme);
+    }
+
+
+    /* Background */
+
+    _onBackgroundChanged(_settings, _changedKey) {
+        logDebug(`Background has changed to '${this.background}'.`);
+        this.emit('background-changed', this.background);
+    }
+
+
+    /* Shell theme */
+
+    _onShellThemeChanged(_settings, _changedKey) {
+        logDebug(`Shell theme has changed to '${this.shellTheme}'.`);
+        this.emit('shell-theme-changed', this.shellTheme);
+    }
+
+};
 Signals.addSignalMethods(SettingsManager.prototype);

@@ -30,280 +30,277 @@ const _ = Gettext.gettext;
 
 var SchedulePreferences = class {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
+    constructor() {
+        const settings = compat.getExtensionSettings();
 
-		const label = _('Schedule');
-		const description = _('The extension will try to use Night Light or Location Services to automatically set your current sunrise and sunset times if they are enabled.\n\nIf you prefer, you can manually choose a time source.');
-		const content = new SettingsList();
+        const label = _('Schedule');
+        const description = _('The extension will try to use Night Light or Location Services to automatically set your current sunrise and sunset times if they are enabled.\n\nIf you prefer, you can manually choose a time source.');
+        const content = new SettingsList();
 
-		content.add_row(new SettingsListRow(_('Automatic time source'), new ManualTimeSourceControl()));
+        content.add_row(new SettingsListRow(_('Automatic time source'), new ManualTimeSourceControl()));
 
-		const time_source_row = new SettingsListRow(_('Time source'), new TimeSourceControl());
-		settings.bind(
-			'manual-time-source',
-			time_source_row,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		content.add_row(time_source_row);
+        const timeSourceRow = new SettingsListRow(_('Time source'), new TimeSourceControl());
+        settings.bind(
+            'manual-time-source',
+            timeSourceRow,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        content.add_row(timeSourceRow);
 
-		const ondemand_shortcut_row = new SettingsListRow(_('On-demand shortcut'), new KeyBindingControl());
-		const update_ondemand_shortcut_row_sensitivity = () => ondemand_shortcut_row.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'ondemand'));
-		settings.connect('changed::manual-time-source', () => update_ondemand_shortcut_row_sensitivity());
-		settings.connect('changed::time-source', () => update_ondemand_shortcut_row_sensitivity());
-		update_ondemand_shortcut_row_sensitivity();
-		content.add_row(ondemand_shortcut_row);
+        const ondemandShortcutRow = new SettingsListRow(_('On-demand shortcut'), new KeyBindingControl());
+        const updateOndemandShortcutRowSensitivity = () => ondemandShortcutRow.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'ondemand'));
+        settings.connect('changed::manual-time-source', () => updateOndemandShortcutRowSensitivity());
+        settings.connect('changed::time-source', () => updateOndemandShortcutRowSensitivity());
+        updateOndemandShortcutRowSensitivity();
+        content.add_row(ondemandShortcutRow);
 
-		const sunrise_row = new SettingsListRow(_('Sunrise'), new SuntimeControl('sunrise'));
-		const update_sunrise_row_sensitivity = () => sunrise_row.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'schedule'));
-		settings.connect('changed::manual-time-source', () => update_sunrise_row_sensitivity());
-		settings.connect('changed::time-source', () => update_sunrise_row_sensitivity());
-		update_sunrise_row_sensitivity();
-		content.add_row(sunrise_row);
+        const sunriseRow = new SettingsListRow(_('Sunrise'), new SuntimeControl('sunrise'));
+        const updateSunriseRowSensitivity = () => sunriseRow.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'schedule'));
+        settings.connect('changed::manual-time-source', () => updateSunriseRowSensitivity());
+        settings.connect('changed::time-source', () => updateSunriseRowSensitivity());
+        updateSunriseRowSensitivity();
+        content.add_row(sunriseRow);
 
-		const sunset_row = new SettingsListRow(_('Sunset'), new SuntimeControl('sunset'));
-		const update_sunset_row_sensitivity = () => sunset_row.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'schedule'));
-		settings.connect('changed::manual-time-source', () => update_sunset_row_sensitivity());
-		settings.connect('changed::time-source', () => update_sunset_row_sensitivity());
-		update_sunset_row_sensitivity();
-		content.add_row(sunset_row);
+        const sunsetRow = new SettingsListRow(_('Sunset'), new SuntimeControl('sunset'));
+        const updateSunsetRowSensitivity = () => sunsetRow.set_sensitive(!!(settings.get_boolean('manual-time-source') && settings.get_string('time-source') === 'schedule'));
+        settings.connect('changed::manual-time-source', () => updateSunsetRowSensitivity());
+        settings.connect('changed::time-source', () => updateSunsetRowSensitivity());
+        updateSunsetRowSensitivity();
+        content.add_row(sunsetRow);
 
-		return new SettingsPage(label, description, content);
-	}
+        return new SettingsPage(label, description, content);
+    }
 
-}
+};
 
 class ManualTimeSourceControl {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
-		const toggle = new Gtk.Switch({
-			active: false
-		});
-		settings.bind(
-			'manual-time-source',
-			toggle,
-			'active',
-			Gio.SettingsBindFlags.INVERT_BOOLEAN
-		);
-		return toggle;
-	}
+    constructor() {
+        const settings = compat.getExtensionSettings();
+        const toggle = new Gtk.Switch({
+            active: false,
+        });
+        settings.bind(
+            'manual-time-source',
+            toggle,
+            'active',
+            Gio.SettingsBindFlags.INVERT_BOOLEAN
+        );
+        return toggle;
+    }
 
 }
 
 
 class TimeSourceControl {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
-		const colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
-		const locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
+    constructor() {
+        const settings = compat.getExtensionSettings();
+        const colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
+        const locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
 
-		const box = new Gtk.Box({
-			spacing: 8,
-			orientation: Gtk.Orientation.HORIZONTAL,
-			can_focus: false
-		});
+        const box = new Gtk.Box({
+            spacing: 8,
+            orientation: Gtk.Orientation.HORIZONTAL,
+            can_focus: false,
+        });
 
-		const nightlight_radio = new Gtk.RadioButton({
-			label: _('Night Light'),
-			active: (settings.get_string('time-source') === 'nightlight')
-		});
-		nightlight_radio.connect('toggled', () => {
-			if ( nightlight_radio.get_active() ) {
-				settings.set_string('time-source', 'nightlight')
-			}
-		});
-		colorSettings.bind(
-			'night-light-enabled',
-			nightlight_radio,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		box.pack_start(nightlight_radio, false, false, 0);
+        const nightlightRadio = new Gtk.RadioButton({
+            label: _('Night Light'),
+            active: settings.get_string('time-source') === 'nightlight',
+        });
+        nightlightRadio.connect('toggled', () => {
+            if (nightlightRadio.get_active())
+                settings.set_string('time-source', 'nightlight');
+        });
+        colorSettings.bind(
+            'night-light-enabled',
+            nightlightRadio,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        box.pack_start(nightlightRadio, false, false, 0);
 
-		const location_radio = new Gtk.RadioButton({
-			label: _('Location Services'),
-			group: nightlight_radio,
-			active: (settings.get_string('time-source') === 'location')
-		});
-		location_radio.connect('toggled', () => {
-			if ( location_radio.get_active() ) {
-				settings.set_string('time-source', 'location')
-			}
-		});
-		locationSettings.bind(
-			'enabled',
-			location_radio,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		box.pack_start(location_radio, false, false, 0);
+        const locationRadio = new Gtk.RadioButton({
+            label: _('Location Services'),
+            group: nightlightRadio,
+            active: settings.get_string('time-source') === 'location',
+        });
+        locationRadio.connect('toggled', () => {
+            if (locationRadio.get_active())
+                settings.set_string('time-source', 'location');
+        });
+        locationSettings.bind(
+            'enabled',
+            locationRadio,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        box.pack_start(locationRadio, false, false, 0);
 
-		const schedule_radio = new Gtk.RadioButton({
-			label: _('Manual schedule'),
-			group: nightlight_radio,
-			active: (settings.get_string('time-source') === 'schedule')
-		});
-		schedule_radio.connect('toggled', () => {
-			if ( schedule_radio.get_active() ) {
-				settings.set_string('time-source', 'schedule')
-			}
-		});
-		settings.bind(
-			'manual-time-source',
-			schedule_radio,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		box.pack_start(schedule_radio, false, false, 0);
+        const scheduleRadio = new Gtk.RadioButton({
+            label: _('Manual schedule'),
+            group: nightlightRadio,
+            active: settings.get_string('time-source') === 'schedule',
+        });
+        scheduleRadio.connect('toggled', () => {
+            if (scheduleRadio.get_active())
+                settings.set_string('time-source', 'schedule');
+        });
+        settings.bind(
+            'manual-time-source',
+            scheduleRadio,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        box.pack_start(scheduleRadio, false, false, 0);
 
-		const ondemand_radio = new Gtk.RadioButton({
-			label: _('On-demand'),
-			group: nightlight_radio,
-			active: (settings.get_string('time-source') === 'ondemand')
-		});
-		ondemand_radio.connect('toggled', () => {
-			settings.set_string('time-source', 'ondemand')
-		});
-		settings.bind(
-			'manual-time-source',
-			ondemand_radio,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		box.pack_start(ondemand_radio, false, false, 0);
+        const ondemandRadio = new Gtk.RadioButton({
+            label: _('On-demand'),
+            group: nightlightRadio,
+            active: settings.get_string('time-source') === 'ondemand',
+        });
+        ondemandRadio.connect('toggled', () => {
+            settings.set_string('time-source', 'ondemand');
+        });
+        settings.bind(
+            'manual-time-source',
+            ondemandRadio,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        box.pack_start(ondemandRadio, false, false, 0);
 
-		return box;
-	}
+        return box;
+    }
 
 }
 
 
 class KeyBindingControl {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
-		const KEYBINDING_KEY = 'nightthemeswitcher-ondemand-keybinding';
-		const COLUMN_KEY = 0;
-		const COLUMN_MODS = 1;
+    constructor() {
+        const settings = compat.getExtensionSettings();
+        const KEYBINDING_KEY = 'nightthemeswitcher-ondemand-keybinding';
+        const COLUMN_KEY = 0;
+        const COLUMN_MODS = 1;
 
-		const list_store = new Gtk.ListStore();
-		list_store.set_column_types([GObject.TYPE_INT, GObject.TYPE_INT]);
-		const tree_view = new Gtk.TreeView({model: list_store});
-		tree_view.set_headers_visible(false);
+        const listStore = new Gtk.ListStore();
+        listStore.set_column_types([GObject.TYPE_INT, GObject.TYPE_INT]);
+        const treeView = new Gtk.TreeView({ model: listStore });
+        treeView.set_headers_visible(false);
 
-		const renderer = new Gtk.CellRendererAccel({ editable: true});
-		const column = new Gtk.TreeViewColumn();
-		const iter = list_store.append();
+        const renderer = new Gtk.CellRendererAccel({ editable: true });
+        const column = new Gtk.TreeViewColumn();
+        const iter = listStore.append();
 
-		const update_shortcut_row = (accel) => {
-			const [key, mods] = accel ? Gtk.accelerator_parse(accel) : [0, 0];
-			list_store.set(iter, [COLUMN_KEY, COLUMN_MODS], [key, mods]);
-		};
+        const updateShortcutRow = accel => {
+            const [key, mods] = accel ? Gtk.accelerator_parse(accel) : [0, 0];
+            listStore.set(iter, [COLUMN_KEY, COLUMN_MODS], [key, mods]);
+        };
 
-		renderer.connect('accel-edited', (renderer, path, key, mods) => {
-			const accel = Gtk.accelerator_name(key, mods);
-			update_shortcut_row(accel);
-			settings.set_strv(KEYBINDING_KEY, [accel]);
-		});
+        renderer.connect('accel-edited', (_renderer, _path, key, mods) => {
+            const accel = Gtk.accelerator_name(key, mods);
+            updateShortcutRow(accel);
+            settings.set_strv(KEYBINDING_KEY, [accel]);
+        });
 
-		renderer.connect('accel-cleared', () => {
-			update_shortcut_row(null);
-			settings.set_strv(KEYBINDING_KEY, []);
-		});
+        renderer.connect('accel-cleared', () => {
+            updateShortcutRow(null);
+            settings.set_strv(KEYBINDING_KEY, []);
+        });
 
-		settings.connect(`changed::${KEYBINDING_KEY}`, () => {
-			update_shortcut_row(settings.get_strv(KEYBINDING_KEY)[0]);
-		});
+        settings.connect(`changed::${KEYBINDING_KEY}`, () => {
+            updateShortcutRow(settings.get_strv(KEYBINDING_KEY)[0]);
+        });
 
-		column.pack_start(renderer, true);
-		column.add_attribute(renderer, 'accel-key', COLUMN_KEY);
-		column.add_attribute(renderer, 'accel-mods', COLUMN_MODS);
+        column.pack_start(renderer, true);
+        column.add_attribute(renderer, 'accel-key', COLUMN_KEY);
+        column.add_attribute(renderer, 'accel-mods', COLUMN_MODS);
 
-		tree_view.append_column(column);
-		update_shortcut_row(settings.get_strv(KEYBINDING_KEY)[0]);
+        treeView.append_column(column);
+        updateShortcutRow(settings.get_strv(KEYBINDING_KEY)[0]);
 
-		return tree_view;
-	}
+        return treeView;
+    }
 
 }
 
 
 class SuntimeControl {
 
-	constructor(suntime) {
-		const settings = compat.get_extension_settings();
-		const box = new Gtk.Box({
-			spacing: 8,
-			orientation: Gtk.Orientation.HORIZONTAL,
-			can_focus: false
-		});
+    constructor(suntime) {
+        const settings = compat.getExtensionSettings();
+        const box = new Gtk.Box({
+            spacing: 8,
+            orientation: Gtk.Orientation.HORIZONTAL,
+            can_focus: false,
+        });
 
-		const time = settings.get_double(`schedule-${suntime}`);
-		const hours = Math.trunc(time);
-		const minutes = Math.round((time - hours) * 60);
+        const time = settings.get_double(`schedule-${suntime}`);
+        const hours = Math.trunc(time);
+        const minutes = Math.round((time - hours) * 60);
 
-		const hours_spin = new Gtk.SpinButton({
-			adjustment: new Gtk.Adjustment({
-				value: hours,
-				lower: 0,
-				upper: 23,
-				step_increment: 1,
-				page_increment: 0,
-				page_size: 0
-			}),
-			value: hours,
-			numeric: true,
-			wrap: true,
-			orientation: Gtk.Orientation.VERTICAL
-		});
-		hours_spin.connect('output', () => {
-			const text = hours_spin.adjustment.value.toString().padStart(2, '0');
-			hours_spin.set_text(text);
-			return true;
-		});
-		hours_spin.connect('value-changed', () => {
-			const old_time = settings.get_double(`schedule-${suntime}`);
-			const old_hour = Math.trunc(old_time);
-			const minutes = old_time - old_hour;
-			const new_time = hours_spin.value + minutes;
-			settings.set_double(`schedule-${suntime}`, new_time);
-		});
+        const hoursSpin = new Gtk.SpinButton({
+            adjustment: new Gtk.Adjustment({
+                value: hours,
+                lower: 0,
+                upper: 23,
+                step_increment: 1,
+                page_increment: 0,
+                page_size: 0,
+            }),
+            value: hours,
+            numeric: true,
+            wrap: true,
+            orientation: Gtk.Orientation.VERTICAL,
+        });
+        hoursSpin.connect('output', () => {
+            const text = hoursSpin.adjustment.value.toString().padStart(2, '0');
+            hoursSpin.set_text(text);
+            return true;
+        });
+        hoursSpin.connect('value-changed', () => {
+            const oldTime = settings.get_double(`schedule-${suntime}`);
+            const oldHour = Math.trunc(oldTime);
+            const newMinutes = oldTime - oldHour;
+            const newTime = hoursSpin.value + newMinutes;
+            settings.set_double(`schedule-${suntime}`, newTime);
+        });
 
-		const separator = new Gtk.Label({ label: ':' });
+        const separator = new Gtk.Label({ label: ':' });
 
-		const minutes_spin = new Gtk.SpinButton({
-			adjustment: new Gtk.Adjustment({
-				value: minutes,
-				lower: 0,
-				upper: 59,
-				step_increment: 1,
-				page_increment: 0,
-				page_size: 0
-			}),
-			value: minutes,
-			numeric: true,
-			wrap: true,
-			orientation: Gtk.Orientation.VERTICAL
-		});
-		minutes_spin.connect('output', () => {
-			const text = minutes_spin.adjustment.value.toString().padStart(2, '0');
-			minutes_spin.set_text(text);
-			return true;
-		});
-		minutes_spin.connect('value-changed', () => {
-			const hour = Math.trunc(settings.get_double(`schedule-${suntime}`));
-			const minutes = minutes_spin.value / 60;
-			const new_time = hour + minutes;
-			settings.set_double(`schedule-${suntime}`, new_time);
-		});
+        const minutesSpin = new Gtk.SpinButton({
+            adjustment: new Gtk.Adjustment({
+                value: minutes,
+                lower: 0,
+                upper: 59,
+                step_increment: 1,
+                page_increment: 0,
+                page_size: 0,
+            }),
+            value: minutes,
+            numeric: true,
+            wrap: true,
+            orientation: Gtk.Orientation.VERTICAL,
+        });
+        minutesSpin.connect('output', () => {
+            const text = minutesSpin.adjustment.value.toString().padStart(2, '0');
+            minutesSpin.set_text(text);
+            return true;
+        });
+        minutesSpin.connect('value-changed', () => {
+            const hour = Math.trunc(settings.get_double(`schedule-${suntime}`));
+            const newMinutes = minutesSpin.value / 60;
+            const newTime = hour + newMinutes;
+            settings.set_double(`schedule-${suntime}`, newTime);
+        });
 
-		box.pack_start(hours_spin, false, false, 0);
-		box.pack_start(separator, false, false, 0);
-		box.pack_start(minutes_spin, false, false, 0);
-		return box;
-	}
+        box.pack_start(hoursSpin, false, false, 0);
+        box.pack_start(separator, false, false, 0);
+        box.pack_start(minutesSpin, false, false, 0);
+        return box;
+    }
 
 }

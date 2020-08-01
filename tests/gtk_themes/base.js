@@ -20,31 +20,31 @@ const test = require('ava');
 const { Variants } = require('./_variants');
 
 test('base', t => {
-	const variants = Variants.guess_from('base');
-	t.is(variants.get('day'), 'base');
-	t.is(variants.get('night'), 'base-dark');
+    const variants = Variants.guessFrom('base');
+    t.is(variants.get('day'), 'base');
+    t.is(variants.get('night'), 'base-dark');
 });
 
 test('base-dark', t => {
-	const variants = Variants.guess_from('base-dark');
-	t.is(variants.get('day'), 'base');
-	t.is(variants.get('night'), 'base-dark');
+    const variants = Variants.guessFrom('base-dark');
+    t.is(variants.get('day'), 'base');
+    t.is(variants.get('night'), 'base-dark');
 });
 
 test('base-light', t => {
-	const variants = Variants.guess_from('base-light');
-	t.is(variants.get('day'), 'base-light');
-	t.is(variants.get('night'), 'base-dark');
+    const variants = Variants.guessFrom('base-light');
+    t.is(variants.get('day'), 'base-light');
+    t.is(variants.get('night'), 'base-dark');
 });
 
 test('base-darker', t => {
-	const variants = Variants.guess_from('base-darker');
-	t.is(variants.get('day'), 'base-darker');
-	t.is(variants.get('night'), 'base-dark');
+    const variants = Variants.guessFrom('base-darker');
+    t.is(variants.get('day'), 'base-darker');
+    t.is(variants.get('night'), 'base-dark');
 });
 
 test('base-darkest', t => {
-	const variants = Variants.guess_from('base-darkest');
-	t.is(variants.get('day'), 'base');
-	t.is(variants.get('night'), 'base-darkest');
+    const variants = Variants.guessFrom('base-darkest');
+    t.is(variants.get('day'), 'base');
+    t.is(variants.get('night'), 'base-darkest');
 });
