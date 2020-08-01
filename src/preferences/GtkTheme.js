@@ -23,7 +23,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const compat = Me.imports.compat;
 const { SettingsPage, SettingsList, SettingsListRow } = Me.imports.preferences.bases;
-const { get_installed_gtk_themes } = Me.imports.utils;
+const { getInstalledGtkThemes } = Me.imports.utils;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
@@ -31,96 +31,96 @@ const _ = Gettext.gettext;
 
 var GtkThemePreferences = class {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
+    constructor() {
+        const settings = compat.getExtensionSettings();
 
-		const label = _('GTK theme');
-		const description = _('The extension will try to automatically detect the day and night variants of your GTK theme.\n\nIf the theme you use isn\'t supported, please <a href="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues">submit a request</a>. You can also manually set variants.');
-		const content = new SettingsList();
+        const label = _('GTK theme');
+        const description = _('The extension will try to automatically detect the day and night variants of your GTK theme.\n\nIf the theme you use isn\'t supported, please <a href="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues">submit a request</a>. You can also manually set variants.');
+        const content = new SettingsList();
 
-		content.add_row(new SettingsListRow(_('Switch GTK variants'), new GtkVariantsEnabledControl()));
+        content.add_row(new SettingsListRow(_('Switch GTK variants'), new GtkVariantsEnabledControl()));
 
-		const manual_variants_row = new SettingsListRow(_('Manual variants'), new ManualGtkVariantsControl());
-		settings.bind(
-			'gtk-variants-enabled',
-			manual_variants_row,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		content.add_row(manual_variants_row);
+        const manualVariantsRow = new SettingsListRow(_('Manual variants'), new ManualGtkVariantsControl());
+        settings.bind(
+            'gtk-variants-enabled',
+            manualVariantsRow,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        content.add_row(manualVariantsRow);
 
-		const day_variant_row = new SettingsListRow(_('Day variant'), new TimeGtkVariantControl('day'));
-		const update_day_variant_row_sensitivity = () => day_variant_row.set_sensitive(!!(settings.get_boolean('gtk-variants-enabled') && settings.get_boolean('manual-gtk-variants')));
-		settings.connect('changed::gtk-variants-enabled', update_day_variant_row_sensitivity);
-		settings.connect('changed::manual-gtk-variants', update_day_variant_row_sensitivity)
-		update_day_variant_row_sensitivity();
-		content.add_row(day_variant_row);
+        const dayVariantRow = new SettingsListRow(_('Day variant'), new TimeGtkVariantControl('day'));
+        const updateDayVariantRowSensitivity = () => dayVariantRow.set_sensitive(!!(settings.get_boolean('gtk-variants-enabled') && settings.get_boolean('manual-gtk-variants')));
+        settings.connect('changed::gtk-variants-enabled', updateDayVariantRowSensitivity);
+        settings.connect('changed::manual-gtk-variants', updateDayVariantRowSensitivity);
+        updateDayVariantRowSensitivity();
+        content.add_row(dayVariantRow);
 
-		const night_variant_row = new SettingsListRow(_('Night variant'), new TimeGtkVariantControl('night'));
-		const update_night_variant_row_sensitivity = () => night_variant_row.set_sensitive(!!(settings.get_boolean('gtk-variants-enabled') && settings.get_boolean('manual-gtk-variants')));
-		settings.connect('changed::gtk-variants-enabled', update_night_variant_row_sensitivity);
-		settings.connect('changed::manual-gtk-variants', update_night_variant_row_sensitivity)
-		update_night_variant_row_sensitivity();
-		content.add_row(night_variant_row);
+        const nightVariantRow = new SettingsListRow(_('Night variant'), new TimeGtkVariantControl('night'));
+        const updateNightVariantRowSensitivity = () => nightVariantRow.set_sensitive(!!(settings.get_boolean('gtk-variants-enabled') && settings.get_boolean('manual-gtk-variants')));
+        settings.connect('changed::gtk-variants-enabled', updateNightVariantRowSensitivity);
+        settings.connect('changed::manual-gtk-variants', updateNightVariantRowSensitivity);
+        updateNightVariantRowSensitivity();
+        content.add_row(nightVariantRow);
 
-		return new SettingsPage(label, description, content);
-	}
+        return new SettingsPage(label, description, content);
+    }
 
-}
+};
 
 
 class GtkVariantsEnabledControl {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
-		const toggle = new Gtk.Switch({
-			active: settings.get_boolean('gtk-variants-enabled')
-		});
-		settings.bind(
-			'gtk-variants-enabled',
-			toggle,
-			'active',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return toggle;
-	}
+    constructor() {
+        const settings = compat.getExtensionSettings();
+        const toggle = new Gtk.Switch({
+            active: settings.get_boolean('gtk-variants-enabled'),
+        });
+        settings.bind(
+            'gtk-variants-enabled',
+            toggle,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return toggle;
+    }
 
 }
 
 
 class ManualGtkVariantsControl {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
-		const toggle = new Gtk.Switch({
-			active: false
-		});
-		settings.bind(
-			'manual-gtk-variants',
-			toggle,
-			'active',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return toggle;
-	}
+    constructor() {
+        const settings = compat.getExtensionSettings();
+        const toggle = new Gtk.Switch({
+            active: false,
+        });
+        settings.bind(
+            'manual-gtk-variants',
+            toggle,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return toggle;
+    }
 
 }
 
 
 class TimeGtkVariantControl {
 
-	constructor(time) {
-		const settings = compat.get_extension_settings();
-		const combo = new Gtk.ComboBoxText();
-		const themes = Array.from(get_installed_gtk_themes()).sort();
-		themes.forEach(theme => combo.append(theme, theme));
-		settings.bind(
-			`gtk-variant-${time}`,
-			combo,
-			'active-id',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return combo;
-	}
+    constructor(time) {
+        const settings = compat.getExtensionSettings();
+        const combo = new Gtk.ComboBoxText();
+        const themes = Array.from(getInstalledGtkThemes()).sort();
+        themes.forEach(theme => combo.append(theme, theme));
+        settings.bind(
+            `gtk-variant-${time}`,
+            combo,
+            'active-id',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return combo;
+    }
 
 }

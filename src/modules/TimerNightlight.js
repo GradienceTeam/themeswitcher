@@ -16,20 +16,20 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-const { Gio, GLib } = imports.gi;
+const { Gio } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const { log_debug } = Me.imports.utils;
+const { logDebug } = Me.imports.utils;
 
 
 const COLOR_INTERFACE = `
 <node>
-	<interface name="org.gnome.SettingsDaemon.Color">
-		<property name="NightLightActive" type="b" access="read"/>
-	</interface>
+    <interface name="org.gnome.SettingsDaemon.Color">
+        <property name="NightLightActive" type="b" access="read"/>
+    </interface>
 </node>`;
 
 
@@ -41,68 +41,73 @@ const COLOR_INTERFACE = `
  */
 var TimerNightlight = class {
 
-	enable() {
-		log_debug('Enabling Night Light Timer...');
-		this._connect_to_color_dbus_proxy();
-		this._listen_to_nightlight_state();
-		this.emit('time-changed', this.time);
-		log_debug('Night Light Timer enabled.');
-	}
+    constructor() {
+        this._colorDbusProxy = null;
+        this._nightlightStateConnect = null;
+    }
 
-	disable() {
-		log_debug('Disabling Night Light Timer...');
-		this._stop_listening_to_nightlight_state();
-		this._disconnect_from_color_dbus_proxy();
-		log_debug('Night Light Timer disabled.');
-	}
+    enable() {
+        logDebug('Enabling Night Light Timer...');
+        this._connectToColorDbusProxy();
+        this._listenToNightlightState();
+        this.emit('time-changed', this.time);
+        logDebug('Night Light Timer enabled.');
+    }
+
+    disable() {
+        logDebug('Disabling Night Light Timer...');
+        this._stopListeningToNightlightState();
+        this._disconnectFromColorDbusProxy();
+        logDebug('Night Light Timer disabled.');
+    }
 
 
-	get time() {
-		return this._is_nightlight_active() ? 'night' : 'day';
-	}
+    get time() {
+        return this._isNightlightActive() ? 'night' : 'day';
+    }
 
 
-	_connect_to_color_dbus_proxy() {
-		log_debug('Connecting to Color DBus proxy...');
-		const ColorProxy = Gio.DBusProxy.makeProxyWrapper(COLOR_INTERFACE);
-		this._color_dbus_proxy = new ColorProxy(
-			Gio.DBus.session,
-			'org.gnome.SettingsDaemon.Color',
-			'/org/gnome/SettingsDaemon/Color'
-		);
-		log_debug('Connected to Color DBus proxy.');
-	}
+    _connectToColorDbusProxy() {
+        logDebug('Connecting to Color DBus proxy...');
+        const ColorProxy = Gio.DBusProxy.makeProxyWrapper(COLOR_INTERFACE);
+        this._colorDbusProxy = new ColorProxy(
+            Gio.DBus.session,
+            'org.gnome.SettingsDaemon.Color',
+            '/org/gnome/SettingsDaemon/Color'
+        );
+        logDebug('Connected to Color DBus proxy.');
+    }
 
-	_disconnect_from_color_dbus_proxy() {
-		log_debug('Disconnecting from Color DBus proxy...');
-		this._color_dbus_proxy = null;
-		log_debug('Disconnected from Color DBus proxy.');
-	}
+    _disconnectFromColorDbusProxy() {
+        logDebug('Disconnecting from Color DBus proxy...');
+        this._colorDbusProxy = null;
+        logDebug('Disconnected from Color DBus proxy.');
+    }
 
-	_listen_to_nightlight_state() {
-		log_debug('Listening to Night Light state...');
-		this._nightlight_state_connect = this._color_dbus_proxy.connect(
-			'g-properties-changed',
-			this._on_nightlight_state_changed.bind(this)
-		);
-	}
+    _listenToNightlightState() {
+        logDebug('Listening to Night Light state...');
+        this._nightlightStateConnect = this._colorDbusProxy.connect(
+            'g-properties-changed',
+            this._onNightlightStateChanged.bind(this)
+        );
+    }
 
-	_stop_listening_to_nightlight_state() {
-		this._color_dbus_proxy.disconnect(this._nightlight_state_connect);
-		log_debug('Stopped listening to Night Light state.');
-	}
+    _stopListeningToNightlightState() {
+        this._colorDbusProxy.disconnect(this._nightlightStateConnect);
+        logDebug('Stopped listening to Night Light state.');
+    }
 
-	_on_nightlight_state_changed(sender, dbus_properties) {
-		const properties = dbus_properties.deep_unpack();
-		if ( properties.NightLightActive ) {
-			log_debug('Night Light has become ' + (properties.NightLightActive.unpack() ? '' : 'in') + 'active.');
-			this.emit('time-changed', this.time);
-		}
-	}
+    _onNightlightStateChanged(_sender, dbusProperties) {
+        const properties = dbusProperties.deep_unpack();
+        if (properties.NightLightActive) {
+            logDebug(`Night Light has become ${properties.NightLightActive.unpack() ? '' : 'in'}active.`);
+            this.emit('time-changed', this.time);
+        }
+    }
 
-	_is_nightlight_active() {
-		return this._color_dbus_proxy.NightLightActive;
-	}
+    _isNightlightActive() {
+        return this._colorDbusProxy.NightLightActive;
+    }
 
-}
+};
 Signals.addSignalMethods(TimerNightlight.prototype);

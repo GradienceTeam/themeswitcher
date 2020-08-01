@@ -21,37 +21,37 @@ const { Variants } = require('./_variants');
 
 
 test('Layan', t => {
-	const variants = Variants.guess_from('Layan');
-	t.is(variants.get('day'), 'Layan');
-	t.is(variants.get('night'), 'Layan-dark');
+    const variants = Variants.guessFrom('Layan');
+    t.is(variants.get('day'), 'Layan');
+    t.is(variants.get('night'), 'Layan-dark');
 });
 
 test('Layan-dark', t => {
-	const variants = Variants.guess_from('Layan-dark');
-	t.is(variants.get('day'), 'Layan');
-	t.is(variants.get('night'), 'Layan-dark');
+    const variants = Variants.guessFrom('Layan-dark');
+    t.is(variants.get('day'), 'Layan');
+    t.is(variants.get('night'), 'Layan-dark');
 });
 
 test('Layan-light', t => {
-	const variants = Variants.guess_from('Layan-light');
-	t.is(variants.get('day'), 'Layan-light');
-	t.is(variants.get('night'), 'Layan-dark');
+    const variants = Variants.guessFrom('Layan-light');
+    t.is(variants.get('day'), 'Layan-light');
+    t.is(variants.get('night'), 'Layan-dark');
 });
 
 test('Layan-solid', t => {
-	const variants = Variants.guess_from('Layan-solid');
-	t.is(variants.get('day'), 'Layan-solid');
-	t.is(variants.get('night'), 'Layan-dark-solid');
+    const variants = Variants.guessFrom('Layan-solid');
+    t.is(variants.get('day'), 'Layan-solid');
+    t.is(variants.get('night'), 'Layan-dark-solid');
 });
 
 test('Layan-dark-solid', t => {
-	const variants = Variants.guess_from('Layan-dark-solid');
-	t.is(variants.get('day'), 'Layan-solid');
-	t.is(variants.get('night'), 'Layan-dark-solid');
+    const variants = Variants.guessFrom('Layan-dark-solid');
+    t.is(variants.get('day'), 'Layan-solid');
+    t.is(variants.get('night'), 'Layan-dark-solid');
 });
 
 test('Layan-light-solid', t => {
-	const variants = Variants.guess_from('Layan-light-solid');
-	t.is(variants.get('day'), 'Layan-light-solid');
-	t.is(variants.get('night'), 'Layan-dark-solid');
+    const variants = Variants.guessFrom('Layan-light-solid');
+    t.is(variants.get('day'), 'Layan-light-solid');
+    t.is(variants.get('night'), 'Layan-dark-solid');
 });

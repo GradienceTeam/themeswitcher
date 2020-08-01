@@ -21,21 +21,21 @@ const { Variants } = require('./_variants');
 
 
 ['', '-Compact'].forEach(size => {
-	test(`Plata${size}`, t => {
-		const variants = Variants.guess_from(`Plata${size}`);
-		t.is(variants.get('day'), `Plata${size}`);
-		t.is(variants.get('night'), `Plata-Noir${size}`);
-	});
+    test(`Plata${size}`, t => {
+        const variants = Variants.guessFrom(`Plata${size}`);
+        t.is(variants.get('day'), `Plata${size}`);
+        t.is(variants.get('night'), `Plata-Noir${size}`);
+    });
 
-	test(`Plata-Noir${size}`, t => {
-		const variants = Variants.guess_from(`Plata-Noir${size}`);
-		t.is(variants.get('day'), `Plata${size}`);
-		t.is(variants.get('night'), `Plata-Noir${size}`);
-	});
+    test(`Plata-Noir${size}`, t => {
+        const variants = Variants.guessFrom(`Plata-Noir${size}`);
+        t.is(variants.get('day'), `Plata${size}`);
+        t.is(variants.get('night'), `Plata-Noir${size}`);
+    });
 
-	test(`Plata-Lumine${size}`, t => {
-		const variants = Variants.guess_from(`Plata-Lumine${size}`);
-		t.is(variants.get('day'), `Plata-Lumine${size}`);
-		t.is(variants.get('night'), `Plata-Noir${size}`);
-	});
-})
+    test(`Plata-Lumine${size}`, t => {
+        const variants = Variants.guessFrom(`Plata-Lumine${size}`);
+        t.is(variants.get('day'), `Plata-Lumine${size}`);
+        t.is(variants.get('night'), `Plata-Noir${size}`);
+    });
+});

@@ -21,89 +21,89 @@ const { Gtk } = imports.gi;
 
 var SettingsPage = class {
 
-	constructor(label, description, content_widget) {
-		this.label = new Gtk.Label({
-			label: label
-		});
+    constructor(label, description, contentWidget) {
+        this.label = new Gtk.Label({
+            label,
+        });
 
-		this.page = new Gtk.Box({
-			orientation: Gtk.Orientation.VERTICAL,
-			spacing: 30,
-			margin_top: 30,
-			margin_end: 36,
-			margin_start: 36,
-			margin_bottom: 36,
-			valign: Gtk.Align.START,
-			halign: Gtk.Align.CENTER
-		});
+        this.page = new Gtk.Box({
+            orientation: Gtk.Orientation.VERTICAL,
+            spacing: 30,
+            margin_top: 30,
+            margin_end: 36,
+            margin_start: 36,
+            margin_bottom: 36,
+            valign: Gtk.Align.START,
+            halign: Gtk.Align.CENTER,
+        });
 
-		const description_widget = new Gtk.Label({
-			label: description,
-			use_markup: true,
-			width_request: 600,
-			max_width_chars: 60,
-			wrap: true,
-			justify: Gtk.Justification.LEFT,
-			halign: Gtk.Align.START
-		});
-		this.page.pack_start(description_widget, false, false, 0);
+        const descriptionWidget = new Gtk.Label({
+            label: description,
+            use_markup: true,
+            width_request: 600,
+            max_width_chars: 60,
+            wrap: true,
+            justify: Gtk.Justification.LEFT,
+            halign: Gtk.Align.START,
+        });
+        this.page.pack_start(descriptionWidget, false, false, 0);
 
-		this.page.pack_start(content_widget, false, false, 0);
-	}
+        this.page.pack_start(contentWidget, false, false, 0);
+    }
 
-}
+};
 
 var SettingsList = class {
 
-	constructor() {
-		const frame = new Gtk.Frame({
-			can_focus: false
-		});
+    constructor() {
+        const frame = new Gtk.Frame({
+            can_focus: false,
+        });
 
-		const list = new Gtk.ListBox({
-			border_width: 0,
-			margin: 0,
-			can_focus: false,
-			selection_mode: Gtk.SelectionMode.NONE
-		});
-		frame.add(list);
+        const list = new Gtk.ListBox({
+            border_width: 0,
+            margin: 0,
+            can_focus: false,
+            selection_mode: Gtk.SelectionMode.NONE,
+        });
+        frame.add(list);
 
-		frame.add_row = (widget) => {
-			if ( list.get_children().length > 0 ) {
-				const separator = new Gtk.Separator({
-					orientation: Gtk.Orientation.VERTICAL,
-					can_focus: false
-				});
-				list.add(separator);
-			}
-			list.add(widget);
-		}
+        frame.add_row = widget => {
+            if (list.get_children().length > 0) {
+                const separator = new Gtk.Separator({
+                    orientation: Gtk.Orientation.VERTICAL,
+                    can_focus: false,
+                });
+                list.add(separator);
+            }
+            list.add(widget);
+        };
 
-		return frame;
-	}
+        return frame;
+    }
 
-}
+};
 
 var SettingsListRow = class {
 
-	constructor(label, widget) {
-		const row = new Gtk.Box({
-			margin: 16,
-			spacing: 30,
-			orientation: Gtk.Orientation.HORIZONTAL,
-			can_focus: false
-		});
+    constructor(label, widget) {
+        const row = new Gtk.Box({
+            margin: 16,
+            spacing: 30,
+            orientation: Gtk.Orientation.HORIZONTAL,
+            can_focus: false,
+        });
 
-		const label_widget = new Gtk.Label({
-			label: label,
-			halign: Gtk.Align.START
-		});
-		row.pack_start(label_widget, true, true, 0);
+        const labelWidget = new Gtk.Label({
+            label,
+            halign: Gtk.Align.START,
+        });
+        row.pack_start(labelWidget, true, true, 0);
 
-		widget.set_halign(Gtk.Align.END);
-		row.pack_start(widget, false, false, 0);
+        widget.set_halign(Gtk.Align.END);
+        row.pack_start(widget, false, false, 0);
 
-		return row;
-	}
+        return row;
+    }
 
-}
+};

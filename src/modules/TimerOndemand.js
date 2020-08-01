@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-const { GLib, Shell, St } = imports.gi;
+const { Shell, St } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
@@ -25,8 +25,8 @@ const { main, panelMenu } = imports.ui;
 const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
-const { log_debug } = Me.imports.utils;
-const { key_binding_auto_repeat, get_actor } = Me.imports.compat;
+const { logDebug } = Me.imports.utils;
+const { keyBindingAutoRepeat, getActor } = Me.imports.compat;
 
 /**
  * The On-demand Timer allows the user to manually switch between the day and
@@ -36,85 +36,85 @@ const { key_binding_auto_repeat, get_actor } = Me.imports.compat;
  */
 var TimerOndemand = class {
 
-	constructor() {
-		this._button = null;
-		this._icon = null;
-	}
+    constructor() {
+        this._button = null;
+        this._icon = null;
+    }
 
-	enable() {
-		log_debug('Enabling On-demand Timer ...');
-		this._add_keybinding();
-		this._add_button();
-		log_debug('On-demand Timer enabled.');
-	}
+    enable() {
+        logDebug('Enabling On-demand Timer ...');
+        this._addKeybinding();
+        this._addButton();
+        logDebug('On-demand Timer enabled.');
+    }
 
-	disable() {
-		log_debug('Disabling On-demand Timer ...');
-		this._remove_keybinding();
-		this._remove_button();
-		log_debug('On-demand Timer disabled.');
-	}
+    disable() {
+        logDebug('Disabling On-demand Timer ...');
+        this._removeKeybinding();
+        this._removeButton();
+        logDebug('On-demand Timer disabled.');
+    }
 
 
-	get time() {
-		return e.settingsManager.ondemand_time;
-	}
+    get time() {
+        return e.settingsManager.ondemandTime;
+    }
 
-	_add_keybinding() {
-		log_debug('Adding On-demand Timer keybinding...');
-		// add our own keydinging handler
-		main.wm.addKeybinding(
-			'nightthemeswitcher-ondemand-keybinding',
-			e.settingsManager._extensionsSettings,
-			key_binding_auto_repeat(),
-			Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
-			this._toggle_time.bind(this)
-		);
-		log_debug('Added On-demand Timer keybinding.');
-	}
+    _addKeybinding() {
+        logDebug('Adding On-demand Timer keybinding...');
+        // add our own keydinging handler
+        main.wm.addKeybinding(
+            'nightthemeswitcher-ondemand-keybinding',
+            e.settingsManager._extensionsSettings,
+            keyBindingAutoRepeat(),
+            Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
+            this._toggleTime.bind(this)
+        );
+        logDebug('Added On-demand Timer keybinding.');
+    }
 
-	_remove_keybinding() {
-		log_debug('Removing On-demand Timer keybinding...');
-		main.wm.removeKeybinding('nightthemeswitcher-ondemand-keybinding');
-		log_debug('Removed On-demand Timer keybinding.');
-	}
+    _removeKeybinding() {
+        logDebug('Removing On-demand Timer keybinding...');
+        main.wm.removeKeybinding('nightthemeswitcher-ondemand-keybinding');
+        logDebug('Removed On-demand Timer keybinding.');
+    }
 
-	_add_button() {
-		log_debug('Adding On-demand Timer button...');
+    _addButton() {
+        logDebug('Adding On-demand Timer button...');
 
-		this._icon = new St.Icon({
-			icon_name: this._get_icon_name_for_current_time(),
-			style_class: 'system-status-icon'
-		});
+        this._icon = new St.Icon({
+            icon_name: this._getIconNameForCurrentTime(),
+            style_class: 'system-status-icon',
+        });
 
-		this._button = new panelMenu.Button(0.0);
-		const button_actor = get_actor(this._button);
-		button_actor.add_actor(this._icon);
-		button_actor.connect(
-			'button-press-event',
-			this._toggle_time.bind(this)
-		);
-		main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
+        this._button = new panelMenu.Button(0.0);
+        const buttonActor = getActor(this._button);
+        buttonActor.add_actor(this._icon);
+        buttonActor.connect(
+            'button-press-event',
+            this._toggleTime.bind(this)
+        );
+        main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
 
-		log_debug('Added On-demand Timer button.');
-	}
+        logDebug('Added On-demand Timer button.');
+    }
 
-	_remove_button() {
-		log_debug('Removing On-demand Timer button...');
-		this._button.destroy();
-		log_debug('Removed On-demand Timer button.');
-	}
+    _removeButton() {
+        logDebug('Removing On-demand Timer button...');
+        this._button.destroy();
+        logDebug('Removed On-demand Timer button.');
+    }
 
-	_toggle_time() {
-		e.settingsManager.ondemand_time = e.timer.time === 'day' ? 'night' : 'day';
-		this.emit('time-changed', this.time);
-		this._icon.icon_name = this._get_icon_name_for_current_time();
+    _toggleTime() {
+        e.settingsManager.ondemandTime = e.timer.time === 'day' ? 'night' : 'day';
+        this.emit('time-changed', this.time);
+        this._icon.icon_name = this._getIconNameForCurrentTime();
 
-	}
+    }
 
-	_get_icon_name_for_current_time() {
-		return e.timer.time === 'day' ? 'weather-clear-symbolic' : 'weather-clear-night-symbolic';
-	}
+    _getIconNameForCurrentTime() {
+        return e.timer.time === 'day' ? 'weather-clear-symbolic' : 'weather-clear-night-symbolic';
+    }
 
-}
+};
 Signals.addSignalMethods(TimerOndemand.prototype);

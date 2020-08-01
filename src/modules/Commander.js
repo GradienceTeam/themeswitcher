@@ -22,7 +22,7 @@ const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
-const { log_debug } = Me.imports.utils;
+const { logDebug } = Me.imports.utils;
 
 
 /**
@@ -30,64 +30,68 @@ const { log_debug } = Me.imports.utils;
  */
 var Commander = class {
 
-	enable() {
-		log_debug('Enabling Commander...');
-		this._watch_status();
-		if ( e.settingsManager.commands_enabled ) {
-			this._connect_timer();
-		}
-		log_debug('Commander enabled.');
-	}
+    constructor() {
+        this._commandsStatusChangedConnect = null;
+        this._timeChangedConnect = null;
+    }
 
-	disable() {
-		log_debug('Disabling Commander...');
-		this._disconnect_timer();
-		this._unwatch_status();
-		log_debug('Commander disabled.');
-	}
+    enable() {
+        logDebug('Enabling Commander...');
+        this._watchStatus();
+        if (e.settingsManager.commandsEnabled)
+            this._connectTimer();
+        logDebug('Commander enabled.');
+    }
 
-
-	_watch_status() {
-		log_debug('Watching commands status...');
-		this._commands_status_changed_connect = e.settingsManager.connect('commands-status-changed', this._on_commands_status_changed.bind(this));
-	}
-
-	_unwatch_status() {
-		if ( this._commands_status_changed_connect ) {
-			e.settingsManager.disconnect(this._commands_status_changed_connect);
-			this._commands_status_changed_connect = null;
-		}
-		log_debug('Stopped watching commands status.');
-	}
-
-	_connect_timer() {
-		log_debug('Connecting Commander to Timer...');
-		this._time_changed_connect = e.timer.connect('time-changed', this._on_time_changed.bind(this));
-	}
-
-	_disconnect_timer() {
-		if ( this._time_changed_connect ) {
-			e.timer.disconnect(this._time_changed_connect);
-			this._time_changed_connect = null;
-		}
-		log_debug('Disconnecting Commander from Timer.');
-	}
+    disable() {
+        logDebug('Disabling Commander...');
+        this._disconnectTimer();
+        this._unwatchStatus();
+        logDebug('Commander disabled.');
+    }
 
 
-	_on_commands_status_changed(settings, enabled) {
-		this.disable();
-		this.enable();
-	}
+    _watchStatus() {
+        logDebug('Watching commands status...');
+        this._commandsStatusChangedConnect = e.settingsManager.connect('commands-status-changed', this._onCommandsStatusChanged.bind(this));
+    }
 
-	_on_time_changed(timer, new_time) {
-		this._spawn_command(new_time);
-	}
+    _unwatchStatus() {
+        if (this._commandsStatusChangedConnect) {
+            e.settingsManager.disconnect(this._commandsStatusChangedConnect);
+            this._commandsStatusChangedConnect = null;
+        }
+        logDebug('Stopped watching commands status.');
+    }
+
+    _connectTimer() {
+        logDebug('Connecting Commander to Timer...');
+        this._timeChangedConnect = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
+    }
+
+    _disconnectTimer() {
+        if (this._timeChangedConnect) {
+            e.timer.disconnect(this._timeChangedConnect);
+            this._timeChangedConnect = null;
+        }
+        logDebug('Disconnecting Commander from Timer.');
+    }
 
 
-	_spawn_command(time) {
-		const command = time === 'day' ? e.settingsManager.command_sunrise : e.settingsManager.command_sunset;
-		GLib.spawn_async(null, ['sh', '-c', command], null, GLib.SpawnFlags.SEARCH_PATH, null);
-		log_debug(`Spawned ${time} command.`);
-	}
+    _onCommandsStatusChanged(_settings, _enabled) {
+        this.disable();
+        this.enable();
+    }
 
-}
+    _onTimeChanged(_timer, newTime) {
+        this._spawnCommand(newTime);
+    }
+
+
+    _spawnCommand(time) {
+        const command = time === 'day' ? e.settingsManager.commandSunrise : e.settingsManager.commandSunset;
+        GLib.spawn_async(null, ['sh', '-c', command], null, GLib.SpawnFlags.SEARCH_PATH, null);
+        logDebug(`Spawned ${time} command.`);
+    }
+
+};

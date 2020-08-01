@@ -20,21 +20,21 @@ const test = require('ava');
 const { Variants } = require('./_variants');
 
 ['', '-compact'].forEach(size => {
-	test(`ChromeOS${size}`, t => {
-		const variants = Variants.guess_from(`ChromeOS${size}`);
-		t.is(variants.get('day'), `ChromeOS${size}`);
-		t.is(variants.get('night'), `ChromeOS-dark${size}`);
-	});
+    test(`ChromeOS${size}`, t => {
+        const variants = Variants.guessFrom(`ChromeOS${size}`);
+        t.is(variants.get('day'), `ChromeOS${size}`);
+        t.is(variants.get('night'), `ChromeOS-dark${size}`);
+    });
 
-	test(`ChromeOS-dark${size}`, t => {
-		const variants = Variants.guess_from(`ChromeOS-dark${size}`);
-		t.is(variants.get('day'), `ChromeOS${size}`);
-		t.is(variants.get('night'), `ChromeOS-dark${size}`);
-	});
+    test(`ChromeOS-dark${size}`, t => {
+        const variants = Variants.guessFrom(`ChromeOS-dark${size}`);
+        t.is(variants.get('day'), `ChromeOS${size}`);
+        t.is(variants.get('night'), `ChromeOS-dark${size}`);
+    });
 
-	test(`ChromeOS-light${size}`, t => {
-		const variants = Variants.guess_from(`ChromeOS-light${size}`);
-		t.is(variants.get('day'), `ChromeOS-light${size}`);
-		t.is(variants.get('night'), `ChromeOS-dark${size}`);
-	});
-})
+    test(`ChromeOS-light${size}`, t => {
+        const variants = Variants.guessFrom(`ChromeOS-light${size}`);
+        t.is(variants.get('day'), `ChromeOS-light${size}`);
+        t.is(variants.get('night'), `ChromeOS-dark${size}`);
+    });
+});

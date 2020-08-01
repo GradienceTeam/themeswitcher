@@ -23,7 +23,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const compat = Me.imports.compat;
 const { SettingsPage, SettingsList, SettingsListRow } = Me.imports.preferences.bases;
-const { get_installed_cursor_themes } = Me.imports.utils;
+const { getInstalledCursorThemes } = Me.imports.utils;
 
 const Gettext = imports.gettext.domain(Me.metadata.uuid);
 const _ = Gettext.gettext;
@@ -31,72 +31,72 @@ const _ = Gettext.gettext;
 
 var CursorThemePreferences = class {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
+    constructor() {
+        const settings = compat.getExtensionSettings();
 
-		const label = _('Cursor theme');
-		const description = _('You can set different cursor themes for day and night.');
-		const content = new SettingsList();
+        const label = _('Cursor theme');
+        const description = _('You can set different cursor themes for day and night.');
+        const content = new SettingsList();
 
-		content.add_row(new SettingsListRow(_('Switch cursor variants'), new CursorVariantsEnabledControl()));
+        content.add_row(new SettingsListRow(_('Switch cursor variants'), new CursorVariantsEnabledControl()));
 
-		const day_variant_row = new SettingsListRow(_('Day variant'), new TimeCursorVariantControl('day'));
-		settings.bind(
-			'cursor-variants-enabled',
-			day_variant_row,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		content.add_row(day_variant_row);
+        const dayVariantRow = new SettingsListRow(_('Day variant'), new TimeCursorVariantControl('day'));
+        settings.bind(
+            'cursor-variants-enabled',
+            dayVariantRow,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        content.add_row(dayVariantRow);
 
-		const night_variant_row = new SettingsListRow(_('Night variant'), new TimeCursorVariantControl('night'));
-		settings.bind(
-			'cursor-variants-enabled',
-			night_variant_row,
-			'sensitive',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		content.add_row(night_variant_row);
+        const nightVariantRow = new SettingsListRow(_('Night variant'), new TimeCursorVariantControl('night'));
+        settings.bind(
+            'cursor-variants-enabled',
+            nightVariantRow,
+            'sensitive',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        content.add_row(nightVariantRow);
 
-		return new SettingsPage(label, description, content);
-	}
+        return new SettingsPage(label, description, content);
+    }
 
-}
+};
 
 
 class CursorVariantsEnabledControl {
 
-	constructor() {
-		const settings = compat.get_extension_settings();
-		const toggle = new Gtk.Switch({
-			active: settings.get_boolean('cursor-variants-enabled')
-		});
-		settings.bind(
-			'cursor-variants-enabled',
-			toggle,
-			'active',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return toggle;
-	}
+    constructor() {
+        const settings = compat.getExtensionSettings();
+        const toggle = new Gtk.Switch({
+            active: settings.get_boolean('cursor-variants-enabled'),
+        });
+        settings.bind(
+            'cursor-variants-enabled',
+            toggle,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return toggle;
+    }
 
 }
 
 
 class TimeCursorVariantControl {
 
-	constructor(time) {
-		const settings = compat.get_extension_settings();
-		const combo = new Gtk.ComboBoxText();
-		const themes = Array.from(get_installed_cursor_themes()).sort();
-		themes.forEach(theme => combo.append(theme, theme));
-		settings.bind(
-			`cursor-variant-${time}`,
-			combo,
-			'active-id',
-			Gio.SettingsBindFlags.DEFAULT
-		);
-		return combo;
-	}
+    constructor(time) {
+        const settings = compat.getExtensionSettings();
+        const combo = new Gtk.ComboBoxText();
+        const themes = Array.from(getInstalledCursorThemes()).sort();
+        themes.forEach(theme => combo.append(theme, theme));
+        settings.bind(
+            `cursor-variant-${time}`,
+            combo,
+            'active-id',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        return combo;
+    }
 
 }

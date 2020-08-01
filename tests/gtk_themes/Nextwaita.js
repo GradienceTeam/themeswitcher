@@ -20,13 +20,13 @@ const test = require('ava');
 const { Variants } = require('./_variants');
 
 test('Nextwaita', t => {
-	const variants = Variants.guess_from('Nextwaita-2.2');
-	t.is(variants.get('day'), 'Nextwaita-2.2');
-	t.is(variants.get('night'), 'Nextwaita-dark-2.2');
+    const variants = Variants.guessFrom('Nextwaita-2.2');
+    t.is(variants.get('day'), 'Nextwaita-2.2');
+    t.is(variants.get('night'), 'Nextwaita-dark-2.2');
 });
 
 test('Nextwaita-dark', t => {
-	const variants = Variants.guess_from('Nextwaita-dark-2.2');
-	t.is(variants.get('day'), 'Nextwaita-2.2');
-	t.is(variants.get('night'), 'Nextwaita-dark-2.2');
+    const variants = Variants.guessFrom('Nextwaita-dark-2.2');
+    t.is(variants.get('day'), 'Nextwaita-2.2');
+    t.is(variants.get('night'), 'Nextwaita-dark-2.2');
 });

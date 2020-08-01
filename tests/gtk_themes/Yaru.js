@@ -21,19 +21,19 @@ const { Variants } = require('./_variants');
 
 
 test('Yaru', t => {
-	const variants = Variants.guess_from('Yaru');
-	t.is(variants.get('day'), 'Yaru');
-	t.is(variants.get('night'), 'Yaru-dark');
+    const variants = Variants.guessFrom('Yaru');
+    t.is(variants.get('day'), 'Yaru');
+    t.is(variants.get('night'), 'Yaru-dark');
 });
 
 test('Yaru-dark', t => {
-	const variants = Variants.guess_from('Yaru-dark');
-	t.is(variants.get('day'), 'Yaru');
-	t.is(variants.get('night'), 'Yaru-dark');
+    const variants = Variants.guessFrom('Yaru-dark');
+    t.is(variants.get('day'), 'Yaru');
+    t.is(variants.get('night'), 'Yaru-dark');
 });
 
 test('Yaru-light', t => {
-	const variants = Variants.guess_from('Yaru-light');
-	t.is(variants.get('day'), 'Yaru-light');
-	t.is(variants.get('night'), 'Yaru-dark');
+    const variants = Variants.guessFrom('Yaru-light');
+    t.is(variants.get('day'), 'Yaru-light');
+    t.is(variants.get('night'), 'Yaru-dark');
 });

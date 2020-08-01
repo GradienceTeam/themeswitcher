@@ -4,11 +4,31 @@ You're welcome to contribute to the [code](#contributing-to-the-code) or to the 
 
 ## Contributing to the code
 
-Create a new branch describing what your're working on, for example `feature/{name-of-the-feature}` or `theme/{name-of-the-theme}`. When you're done, commit all your changes and create a new merge request. Choose the appropriate merge request template.
+You'll need `make` and [NPM](https://www.npmjs.com/) to install the development dependencies:
+
+```bash
+make deps-install
+```
+
+Create a new branch describing what your're working on, for example `feature/{name-of-the-feature}` or `theme/{name-of-the-theme}`.
+
+To make sure your code passes basic checks, run:
+
+```bash
+make test
+```
+
+When you're done, commit all your changes and create a new merge request. Choose the appropriate merge request template.
 
 ### Coding style
 
-Please follow the coding style of each file.
+We follow the [GNOME Shell coding style](https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/master/HACKING.md) and we use [ESLint](https://eslint.org/) to enforce it.
+
+To make sure your code follows it:
+
+```bash
+make test-lint
+```
 
 ### Copyright notice
 
@@ -16,18 +36,12 @@ If you make changes to a file, please add your copyright notice at the top of th
 
 ### Themes and unit tests
 
-If you add support for a theme, please write a unit test for each of its variants, in the `tests` directory, with the theme name as filename. Unit tests are written for [AVA](https://github.com/avajs/ava) and run with node and npm.
-
-To install the tests dependencies:
-
-```bash
-npm install
-```
+If you add support for a theme, please write a unit test for each of its variants, in the `tests` directory, with the theme name as filename. Unit tests are written for [AVA](https://github.com/avajs/ava).
 
 To run the tests:
 
 ```bash
-make test
+make test-variants
 ```
 
 ## Contributing to the translations

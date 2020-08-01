@@ -21,13 +21,13 @@ const { Variants } = require('./_variants');
 
 
 test('Adwaita', t => {
-	const variants = Variants.guess_from('Adwaita');
-	t.is(variants.get('day'), 'Adwaita');
-	t.is(variants.get('night'), 'Adwaita-dark');
+    const variants = Variants.guessFrom('Adwaita');
+    t.is(variants.get('day'), 'Adwaita');
+    t.is(variants.get('night'), 'Adwaita-dark');
 });
 
 test('Adwaita-dark', t => {
-	const variants = Variants.guess_from('Adwaita-dark');
-	t.is(variants.get('day'), 'Adwaita');
-	t.is(variants.get('night'), 'Adwaita-dark');
+    const variants = Variants.guessFrom('Adwaita-dark');
+    t.is(variants.get('day'), 'Adwaita');
+    t.is(variants.get('night'), 'Adwaita-dark');
 });

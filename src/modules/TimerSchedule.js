@@ -23,7 +23,7 @@ const Signals = imports.signals;
 const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
-const { log_debug } = Me.imports.utils;
+const { logDebug } = Me.imports.utils;
 
 
 /**
@@ -36,53 +36,54 @@ const { log_debug } = Me.imports.utils;
  */
 var TimerSchedule = class {
 
-	constructor() {
-		this._previously_daytime = null;
-	}
+    constructor() {
+        this._previouslyDaytime = null;
+        this._timeChangeTimer = null;
+    }
 
-	enable() {
-		log_debug('Enabling Schedule Timer...');
-		this._watch_for_time_change();
-		log_debug('Schedule Timer enabled.');
-	}
+    enable() {
+        logDebug('Enabling Schedule Timer...');
+        this._watchForTimeChange();
+        logDebug('Schedule Timer enabled.');
+    }
 
-	disable() {
-		log_debug('Disabling Schedule Timer...');
-		this._stop_watching_for_time_change();
-		log_debug('Schedule Timer disabled.');
-	}
-
-
-	get time() {
-		return this._is_daytime() ? 'day' : 'night';
-	}
+    disable() {
+        logDebug('Disabling Schedule Timer...');
+        this._stopWatchingForTimeChange();
+        logDebug('Schedule Timer disabled.');
+    }
 
 
-	_is_daytime() {
-		const time = GLib.DateTime.new_now_local();
-		const hour = time.get_hour() + time.get_minute() / 60 + time.get_second() / 3600;
-		return ( hour >= e.settingsManager.schedule_sunrise && hour <= e.settingsManager.schedule_sunset );
-	}
+    get time() {
+        return this._isDaytime() ? 'day' : 'night';
+    }
 
-	_watch_for_time_change() {
-		log_debug('Watching for time change...');
-		this._time_change_timer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
-			if ( !Me.imports.extension.enabled ) {
-				// The extension doesn't exist anymore, quit the loop
-				return false;
-			}
-			if ( this._previously_daytime !== this._is_daytime() ) {
-				this._previously_daytime = this._is_daytime();
-				this.emit('time-changed', this.time);
-			}
-			return true; // Repeat the loop
-		});
-	}
 
-	_stop_watching_for_time_change() {
-		GLib.Source.remove(this._time_change_timer);
-		log_debug('Stopped watching for time change.');
-	}
+    _isDaytime() {
+        const time = GLib.DateTime.new_now_local();
+        const hour = time.get_hour() + time.get_minute() / 60 + time.get_second() / 3600;
+        return hour >= e.settingsManager.scheduleSunrise && hour <= e.settingsManager.scheduleSunset;
+    }
 
-}
+    _watchForTimeChange() {
+        logDebug('Watching for time change...');
+        this._timeChangeTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
+            if (!Me.imports.extension.enabled) {
+                // The extension doesn't exist anymore, quit the loop
+                return false;
+            }
+            if (this._previouslyDaytime !== this._isDaytime()) {
+                this._previouslyDaytime = this._isDaytime();
+                this.emit('time-changed', this.time);
+            }
+            return true; // Repeat the loop
+        });
+    }
+
+    _stopWatchingForTimeChange() {
+        GLib.Source.remove(this._timeChangeTimer);
+        logDebug('Stopped watching for time change.');
+    }
+
+};
 Signals.addSignalMethods(TimerSchedule.prototype);
