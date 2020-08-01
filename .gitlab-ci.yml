@@ -36,6 +36,7 @@ test:
   rules:
     - changes:
       - src/**/*
+      - tests/**/*
   script:
     - dnf --setopt=cachedir=$(pwd)/.dnf_cache --setopt=keepcache=True install -y node npm
     - make deps-install
