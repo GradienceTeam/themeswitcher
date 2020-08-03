@@ -455,8 +455,11 @@ const Preferences = class {
         this.settings.connect('changed::background-day', () => updateBackgroundsBackgroundsDayBackgroundButtonUri());
         backgroundsBackgroundsDayBackgroundButton.connect('update-preview', () => {
             const file = backgroundsBackgroundsDayBackgroundButton.get_preview_filename();
-            const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file, 256, 256);
-            dayBackgroundPreview.set_from_pixbuf(pixbuf);
+            const allowedContentTypes = ['image/jpeg', 'image/png', 'image/tiff'];
+            if (allowedContentTypes.includes(Gio.content_type_guess(file, null)[0])) {
+                const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file, 256, 256);
+                dayBackgroundPreview.set_from_pixbuf(pixbuf);
+            }
         });
         backgroundsBackgroundsDayBackgroundButton.connect('file-set', () => {
             this.settings.set_string('background-day', backgroundsBackgroundsDayBackgroundButton.get_uri());
@@ -471,8 +474,11 @@ const Preferences = class {
         this.settings.connect('changed::background-night', () => updateBackgroundsBackgroundsNightBackgroundButtonUri());
         backgroundsBackgroundsNightBackgroundButton.connect('update-preview', () => {
             const file = backgroundsBackgroundsNightBackgroundButton.get_preview_filename();
-            const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file, 256, 256);
-            nightBackgroundPreview.set_from_pixbuf(pixbuf);
+            const allowedContentTypes = ['image/jpeg', 'image/png', 'image/tiff'];
+            if (allowedContentTypes.includes(Gio.content_type_guess(file, null)[0])) {
+                const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file, 256, 256);
+                nightBackgroundPreview.set_from_pixbuf(pixbuf);
+            }
         });
         backgroundsBackgroundsNightBackgroundButton.connect('file-set', () => {
             this.settings.set_string('background-night', backgroundsBackgroundsNightBackgroundButton.get_uri());
