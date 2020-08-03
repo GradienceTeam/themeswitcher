@@ -31,9 +31,9 @@ build: build-clean
 		--extra-source=./compat.js \
 		--extra-source=./config.js \
 		--extra-source=./convenience.js \
+		--extra-source=./prefs.ui \
 		--extra-source=./utils.js \
 		--extra-source=./modules/ \
-		--extra-source=./preferences/ \
 		--extra-source=./schemas/ \
 		--podir=./po/ \
 		--gettext-domain=$(UUID) \
@@ -85,7 +85,7 @@ pot:
 		--package-name="$(NAME)" \
 		--package-version="$(VERSION)" \
 		--output=./src/po/$(UUID).pot \
-		./src/*.js ./src/**/*.js ./src/**/*.xml
+		./src/*.js ./src/**/*.js ./src/**/*.xml ./src/*.ui
 	sed -i '1,4s/SOME DESCRIPTIVE TITLE./$(NAME)/g' ./src/po/$(UUID).pot
 	sed -i '1,4s/YEAR/$(COPYRIGHT_YEAR)/' ./src/po/$(UUID).pot
 	sed -i "1,4s/THE PACKAGE'S COPYRIGHT HOLDER/$(AUTHOR_NAME)/" ./src/po/$(UUID).pot
