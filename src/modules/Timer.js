@@ -172,8 +172,17 @@ var Timer = class {
         logDebug('Getting time source...');
 
         if (e.settingsManager.manualTimeSource) {
-            logDebug(`Time source is forced to ${e.settingsManager.timeSource}.`);
-            return e.settingsManager.timeSource;
+            let source = e.settingsManager.timeSource;
+            logDebug(`Time source is forced to ${source}.`);
+            if (
+                (source === 'nightlight' && !e.settingsManager.nightlightEnabled) ||
+                (source === 'location' && !e.settingsManager.locationEnabled)
+            ) {
+                logDebug(`Unable to choose ${source} time source, falling back to manual schedule.`);
+                source = 'schedule';
+                e.settingsManager.timeSource = source;
+            }
+            return source;
         }
 
         let source;
