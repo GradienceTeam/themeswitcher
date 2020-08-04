@@ -39,19 +39,23 @@ var TimerOndemand = class {
     constructor() {
         this._button = null;
         this._icon = null;
+        this._ondemandKeybindingConnect = null;
     }
 
     enable() {
-        logDebug('Enabling On-demand Timer ...');
+        logDebug('Enabling On-demand Timer...');
+        this._connectSettings();
         this._addKeybinding();
         this._addButton();
+        this.emit('time-changed', this.time);
         logDebug('On-demand Timer enabled.');
     }
 
     disable() {
-        logDebug('Disabling On-demand Timer ...');
+        logDebug('Disabling On-demand Timer...');
         this._removeKeybinding();
         this._removeButton();
+        this._disconnectSettings();
         logDebug('On-demand Timer disabled.');
     }
 
@@ -60,9 +64,31 @@ var TimerOndemand = class {
         return e.settingsManager.ondemandTime;
     }
 
+
+    _connectSettings() {
+        logDebug('Connecting On-demand Timer to settings...');
+        this._ondemandKeybindingConnect = e.settingsManager.connect('ondemand-keybinding-changed', this._onOndemandKeybindingChanged.bind(this));
+    }
+
+    _disconnectSettings() {
+        logDebug('Disconnecting On-demand Timer from settings...');
+        if (this._ondemandKeybindingConnect) {
+            e.settingsManager.disconnect(this._ondemandKeybindingConnect);
+            this._ondemandKeybindingConnect = null;
+        }
+    }
+
+
+    _onOndemandKeybindingChanged(_settings, _keybinding) {
+        this._removeKeybinding();
+        this._addKeybinding();
+    }
+
+
     _addKeybinding() {
+        if (!e.settingsManager.ondemandKeybinding)
+            return;
         logDebug('Adding On-demand Timer keybinding...');
-        // add our own keydinging handler
         main.wm.addKeybinding(
             'nightthemeswitcher-ondemand-keybinding',
             e.settingsManager._extensionsSettings,
