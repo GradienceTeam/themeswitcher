@@ -64,6 +64,7 @@ var SettingsManager = class {
         this._cursorVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::cursor-variant-original', this._onCursorVariantOriginalChanged.bind(this));
         this._timeSourceChangedConnect = this._extensionsSettings.connect('changed::time-source', this._onTimeSourceChanged.bind(this));
         this._manualTimeSourceChangedConnect = this._extensionsSettings.connect('changed::manual-time-source', this._onManualTimeSourceChanged.bind(this));
+        this._ondemandKeybindingChangedConnect = this._extensionsSettings.connect('changed::nightthemeswitcher-ondemand-keybinding', this._onOndemandKeybindingChanged.bind(this));
         this._commandsStatusConnect = this._extensionsSettings.connect('changed::commands-enabled', this._onCommandsStatusChanged.bind(this));
         this._backgroundsStatusConnect = this._extensionsSettings.connect('changed::backgrounds-enabled', this._onBackgroundsStatusChanged.bind(this));
         this._backgroundDayChangedConnect = this._extensionsSettings.connect('changed::background-day', this._onBackgroundDayChanged.bind(this));
@@ -99,6 +100,7 @@ var SettingsManager = class {
         this._extensionsSettings.disconnect(this._cursorVariantOriginalChangedConnect);
         this._extensionsSettings.disconnect(this._timeSourceChangedConnect);
         this._extensionsSettings.disconnect(this._manualTimeSourceChangedConnect);
+        this._extensionsSettings.disconnect(this._ondemandKeybindingChangedConnect);
         this._extensionsSettings.disconnect(this._commandsStatusConnect);
         this._extensionsSettings.disconnect(this._backgroundsStatusConnect);
         this._extensionsSettings.disconnect(this._backgroundDayChangedConnect);
@@ -310,6 +312,10 @@ var SettingsManager = class {
             this._extensionsSettings.set_string('ondemand-time', value);
             logDebug(`The on-demand time has been set to ${value}.`);
         }
+    }
+
+    get ondemandKeybinding() {
+        return this._extensionsSettings.get_strv('nightthemeswitcher-ondemand-keybinding')[0];
     }
 
     get scheduleSunrise() {
@@ -552,6 +558,14 @@ var SettingsManager = class {
     _onManualTimeSourceChanged(_settings, _changedKey) {
         logDebug(`Manual time source has been ${this.manualTimeSource ? 'ena' : 'disa'}bled.`);
         this.emit('manual-time-source-changed', this.manualTimeSource);
+    }
+
+    _onOndemandKeybindingChanged(_settings, _changedKey) {
+        if (this.ondemandKeybinding)
+            logDebug(`On-demand keybinding has changed to ${this.ondemandKeybinding}.`);
+        else
+            logDebug('On-demand keybinding has been cleared.');
+        this.emit('ondemand-keybinding-changed', this.ondemandKeybinding);
     }
 
 
