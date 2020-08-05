@@ -46,6 +46,7 @@ var ShellThemer = class {
         this._shellVariantsStatusChangedConnect = null;
         this._shellVariantChangedConnect = null;
         this._shellThemeChangedConnect = null;
+        this._manualShellVariantsChangedConnect = null;
         this._timeChangedConnect = null;
     }
 
@@ -55,8 +56,8 @@ var ShellThemer = class {
             this._watchStatus();
             this._saveOriginalTheme();
             if (e.settingsManager.shellVariantsEnabled) {
-                this._updateVariants();
                 this._connectSettings();
+                this._updateVariants();
                 this._connectTimer();
             }
         } catch (error) {
@@ -92,6 +93,7 @@ var ShellThemer = class {
         logDebug('Connecting Shell Themer to settings...');
         this._shellVariantChangedConnect = e.settingsManager.connect('shell-variant-changed', this._onShellVariantChanged.bind(this));
         this._shellThemeChangedConnect = e.settingsManager.connect('shell-theme-changed', this._onShellThemeChanged.bind(this));
+        this._manualShellVariantsChangedConnect = e.settingsManager.connect('manual-shell-variants-changed', this._onManualShellVariantsChanged.bind(this));
     }
 
     _disconnectSettings() {
@@ -137,6 +139,13 @@ var ShellThemer = class {
         } catch (error) {
             notifyError(error);
         }
+    }
+
+    _onManualShellVariantsChanged(_settings, enabled) {
+        this.disable();
+        this.enable();
+        if (enabled && e.timer.time)
+            this._setVariant(e.timer.time);
     }
 
     _onTimeChanged(_timer, newTime) {
