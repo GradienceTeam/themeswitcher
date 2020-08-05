@@ -50,6 +50,7 @@ var SettingsManager = class {
         this._gtkVariantDayChangedConnect = this._extensionsSettings.connect('changed::gtk-variant-day', this._onGtkVariantDayChanged.bind(this));
         this._gtkVariantNightChangedConnect = this._extensionsSettings.connect('changed::gtk-variant-night', this._onGtkVariantNightChanged.bind(this));
         this._gtkVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::gtk-variant-original', this._onGtkVariantOriginalChanged.bind(this));
+        this._manualGtkVariantsChangedConnect = this._extensionsSettings.connect('changed::manual-gtk-variants', this._onManualGtkVariantsChanged.bind(this));
         this._shellVariantsStatusChangedConnect = this._extensionsSettings.connect('changed::shell-variants-enabled', this._onShellVariantsStatusChanged.bind(this));
         this._shellVariantDayChangedConnect = this._extensionsSettings.connect('changed::shell-variant-day', this._onShellVariantDayChanged.bind(this));
         this._shellVariantNightChangedConnect = this._extensionsSettings.connect('changed::shell-variant-night', this._onShellVariantNightChanged.bind(this));
@@ -86,6 +87,7 @@ var SettingsManager = class {
         this._extensionsSettings.disconnect(this._gtkVariantDayChangedConnect);
         this._extensionsSettings.disconnect(this._gtkVariantNightChangedConnect);
         this._extensionsSettings.disconnect(this._gtkVariantOriginalChangedConnect);
+        this._extensionsSettings.disconnect(this._manualGtkVariantsChangedConnect);
         this._extensionsSettings.disconnect(this._shellVariantsStatusChangedConnect);
         this._extensionsSettings.disconnect(this._shellVariantDayChangedConnect);
         this._extensionsSettings.disconnect(this._shellVariantNightChangedConnect);
@@ -476,6 +478,11 @@ var SettingsManager = class {
     _onGtkVariantOriginalChanged(_settings, _changedKey) {
         logDebug(`GTK original variant has changed to '${this.gtkVariantOriginal}'.`);
         this.emit('gtk-variant-changed', 'original');
+    }
+
+    _onManualGtkVariantsChanged(_settings, _changedKey) {
+        logDebug(`Manual GTK variants have been ${this.manualGtkVariants ? 'ena' : 'disa'}bled.`);
+        this.emit('manual-gtk-variants-changed', this.manualGtkVariants);
     }
 
 
