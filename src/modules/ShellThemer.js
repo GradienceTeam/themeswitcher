@@ -46,6 +46,7 @@ var ShellThemer = class {
         this._shellVariantsStatusChangedConnect = null;
         this._shellVariantChangedConnect = null;
         this._shellThemeChangedConnect = null;
+        this._manualShellVariantsChangedConnect = null;
         this._timeChangedConnect = null;
     }
 
@@ -55,8 +56,8 @@ var ShellThemer = class {
             this._watchStatus();
             this._saveOriginalTheme();
             if (e.settingsManager.shellVariantsEnabled) {
-                this._updateVariants();
                 this._connectSettings();
+                this._updateVariants();
                 this._connectTimer();
             }
         } catch (error) {
@@ -92,6 +93,7 @@ var ShellThemer = class {
         logDebug('Connecting Shell Themer to settings...');
         this._shellVariantChangedConnect = e.settingsManager.connect('shell-variant-changed', this._onShellVariantChanged.bind(this));
         this._shellThemeChangedConnect = e.settingsManager.connect('shell-theme-changed', this._onShellThemeChanged.bind(this));
+        this._manualShellVariantsChangedConnect = e.settingsManager.connect('manual-shell-variants-changed', this._onManualShellVariantsChanged.bind(this));
     }
 
     _disconnectSettings() {
@@ -139,6 +141,13 @@ var ShellThemer = class {
         }
     }
 
+    _onManualShellVariantsChanged(_settings, enabled) {
+        this.disable();
+        this.enable();
+        if (enabled)
+            this._setVariant(e.timer.time);
+    }
+
     _onTimeChanged(_timer, newTime) {
         this._setVariant(newTime);
     }
@@ -149,6 +158,8 @@ var ShellThemer = class {
     }
 
     _setVariant(time) {
+        if (!time)
+            return;
         logDebug(`Setting the shell ${time} variant...`);
         let shellTheme;
         switch (time) {
