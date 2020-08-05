@@ -55,6 +55,7 @@ var SettingsManager = class {
         this._shellVariantDayChangedConnect = this._extensionsSettings.connect('changed::shell-variant-day', this._onShellVariantDayChanged.bind(this));
         this._shellVariantNightChangedConnect = this._extensionsSettings.connect('changed::shell-variant-night', this._onShellVariantNightChanged.bind(this));
         this._shellVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::shell-variant-original', this._onShellVariantOriginalChanged.bind(this));
+        this._manualShellVariantsChangedConnect = this._extensionsSettings.connect('changed::manual-shell-variants', this._onManualShellVariantsChanged.bind(this));
         this._iconVariantsStatusConnect = this._extensionsSettings.connect('changed::icon-variants-enabled', this._onIconVariantsStatusChanged.bind(this));
         this._iconVariantDayChangedConnect = this._extensionsSettings.connect('changed::icon-variant-day', this._onIconVariantDayChanged.bind(this));
         this._iconVariantNightChangedConnect = this._extensionsSettings.connect('changed::icon-variant-night', this._onIconVariantNightChanged.bind(this));
@@ -92,6 +93,7 @@ var SettingsManager = class {
         this._extensionsSettings.disconnect(this._shellVariantDayChangedConnect);
         this._extensionsSettings.disconnect(this._shellVariantNightChangedConnect);
         this._extensionsSettings.disconnect(this._shellVariantOriginalChangedConnect);
+        this._extensionsSettings.disconnect(this._manualShellVariantsChangedConnect);
         this._extensionsSettings.disconnect(this._iconVariantsStatusConnect);
         this._extensionsSettings.disconnect(this._iconVariantDayChangedConnect);
         this._extensionsSettings.disconnect(this._iconVariantNightChangedConnect);
@@ -506,6 +508,11 @@ var SettingsManager = class {
     _onShellVariantOriginalChanged(_settings, _changedKey) {
         logDebug(`Shell original variant has changed to '${this.shellVariantOriginal}'.`);
         this.emit('shell-variant-changed', 'original');
+    }
+
+    _onManualShellVariantsChanged(_settings, _changedKey) {
+        logDebug(`Manual Shell variants have been ${this.manualShellVariants ? 'ena' : 'disa'}bled.`);
+        this.emit('manual-shell-variants-changed', this.manualShellVariants);
     }
 
 
