@@ -46,6 +46,7 @@ var GtkThemer = class {
         this._gtkVariantsStatusChangedConnect = null;
         this._gtkVariantChangedConnect = null;
         this._gtkThemeChangedConnect = null;
+        this._manualGtkVariantsChangedConnect = null;
         this._timeChangedConnect = null;
     }
 
@@ -55,8 +56,8 @@ var GtkThemer = class {
             this._watchStatus();
             this._saveOriginalTheme();
             if (e.settingsManager.gtkVariantsEnabled) {
-                this._updateVariants();
                 this._connectSettings();
+                this._updateVariants();
                 this._connectTimer();
             }
         } catch (error) {
@@ -92,6 +93,7 @@ var GtkThemer = class {
         logDebug('Connecting GTK Themer to settings...');
         this._gtkVariantChangedConnect = e.settingsManager.connect('gtk-variant-changed', this._onGtkVariantChanged.bind(this));
         this._gtkThemeChangedConnect = e.settingsManager.connect('gtk-theme-changed', this._onGtkThemeChanged.bind(this));
+        this._manualGtkVariantsChangedConnect = e.settingsManager.connect('manual-gtk-variants-changed', this._onManualGtkVariantsChanged.bind(this));
     }
 
     _disconnectSettings() {
@@ -137,6 +139,13 @@ var GtkThemer = class {
         } catch (error) {
             notifyError(error);
         }
+    }
+
+    _onManualGtkVariantsChanged(_settings, enabled) {
+        this.disable();
+        this.enable();
+        if (enabled && e.timer.time)
+            this._setVariant(e.timer.time);
     }
 
     _onTimeChanged(_timer, newTime) {
