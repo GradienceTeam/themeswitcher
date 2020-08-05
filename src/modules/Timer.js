@@ -75,7 +75,7 @@ var Timer = class {
 
 
     get time() {
-        return this._source.time;
+        return this._source ? this._source.time : null;
     }
 
 

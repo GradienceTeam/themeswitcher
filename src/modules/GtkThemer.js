@@ -144,7 +144,7 @@ var GtkThemer = class {
     _onManualGtkVariantsChanged(_settings, enabled) {
         this.disable();
         this.enable();
-        if (enabled && e.timer.time)
+        if (enabled)
             this._setVariant(e.timer.time);
     }
 
@@ -158,6 +158,8 @@ var GtkThemer = class {
     }
 
     _setVariant(time) {
+        if (!time)
+            return;
         logDebug(`Setting the GTK ${time} variant...`);
         switch (time) {
         case 'day':

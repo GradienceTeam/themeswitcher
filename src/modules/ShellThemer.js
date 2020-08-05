@@ -144,7 +144,7 @@ var ShellThemer = class {
     _onManualShellVariantsChanged(_settings, enabled) {
         this.disable();
         this.enable();
-        if (enabled && e.timer.time)
+        if (enabled)
             this._setVariant(e.timer.time);
     }
 
@@ -158,6 +158,8 @@ var ShellThemer = class {
     }
 
     _setVariant(time) {
+        if (!time)
+            return;
         logDebug(`Setting the shell ${time} variant...`);
         let shellTheme;
         switch (time) {
