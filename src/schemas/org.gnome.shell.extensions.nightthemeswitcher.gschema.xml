@@ -116,6 +116,16 @@
 			<summary>Key combination to toggle time</summary>
 			<description>The key combination that will toggle time in on-demand mode</description>
 		</key>
+		<key name="ondemand-button-placement" type="s">
+			<choices>
+				<choice value="none"/>
+				<choice value="panel"/>
+				<choice value="menu"/>
+			</choices>
+			<default>"panel"</default>
+			<summary>On-demand button placement</summary>
+			<description>Where the on-demand button will be placed</description>
+		</key>
 		<key name="manual-time-source" type="b">
 			<default>false</default>
 			<summary>Use manual time source</summary>
