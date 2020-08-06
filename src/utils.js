@@ -270,3 +270,14 @@ function isBindingValid({ mask, keycode, keyval }) {
 function isAccelValid({ mask, keyval }) {
     return Gtk.accelerator_valid(keyval, mask) || (keyval === Gdk.KEY_Tab && mask !== 0);
 }
+
+/**
+ * Find the position of a menu item in the Shell aggregate menu.
+ * @param {*} menuItem The desired menu item.
+ * @returns {number} The position of the menu item, `-1` if not found.
+ */
+function findShellAggregateMenuItemPosition(menuItem) {
+    const menu = imports.ui.main.panel.statusArea.aggregateMenu.menu;
+    const items = menu._getMenuItems();
+    return items.indexOf(menuItem);
+}

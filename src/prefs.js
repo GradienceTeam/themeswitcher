@@ -243,6 +243,14 @@ const Preferences = class {
         };
         this.settings.connect('changed::nightthemeswitcher-ondemand-keybinding', () => updateScheduleOndemandShortcutClearButtonVisibility());
         updateScheduleOndemandShortcutClearButtonVisibility();
+
+        const scheduleOndemandButtonPlacementCombo = this.builder.get_object('prefs_schedule_ondemand_button_placement_combo');
+        this.settings.bind(
+            'ondemand-button-placement',
+            scheduleOndemandButtonPlacementCombo,
+            'active-id',
+            Gio.SettingsBindFlags.DEFAULT
+        );
     }
 
     _connectGtkThemePreferences() {

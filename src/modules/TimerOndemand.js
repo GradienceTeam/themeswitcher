@@ -20,13 +20,16 @@ const { Shell, St } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
-const { main, panelMenu } = imports.ui;
+const { main, panelMenu: PanelMenu, popupMenu: PopupMenu } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
-const { logDebug } = Me.imports.utils;
+const { logDebug, findShellAggregateMenuItemPosition } = Me.imports.utils;
 const { keyBindingAutoRepeat, getActor } = Me.imports.compat;
+
+const Gettext = imports.gettext.domain(Me.metadata.uuid);
+const _ = Gettext.gettext;
 
 /**
  * The On-demand Timer allows the user to manually switch between the day and
@@ -38,8 +41,8 @@ var TimerOndemand = class {
 
     constructor() {
         this._button = null;
-        this._icon = null;
         this._ondemandKeybindingConnect = null;
+        this._ondemandButtonPlacementConnect = null;
     }
 
     enable() {
@@ -68,6 +71,7 @@ var TimerOndemand = class {
     _connectSettings() {
         logDebug('Connecting On-demand Timer to settings...');
         this._ondemandKeybindingConnect = e.settingsManager.connect('ondemand-keybinding-changed', this._onOndemandKeybindingChanged.bind(this));
+        this._ondemandButtonPlacementConnect = e.settingsManager.connect('ondemand-button-placement-changed', this._onOndemandButtonPlacementChanged.bind(this));
     }
 
     _disconnectSettings() {
@@ -76,12 +80,21 @@ var TimerOndemand = class {
             e.settingsManager.disconnect(this._ondemandKeybindingConnect);
             this._ondemandKeybindingConnect = null;
         }
+        if (this._ondemandButtonPlacementConnect) {
+            e.settingsManager.disconnect(this._ondemandButtonPlacementConnect);
+            this._ondemandButtonPlacementConnect = null;
+        }
     }
 
 
     _onOndemandKeybindingChanged(_settings, _keybinding) {
         this._removeKeybinding();
         this._addKeybinding();
+    }
+
+    _onOndemandButtonPlacementChanged(_settings, _placement) {
+        this._removeButton();
+        this._addButton();
     }
 
 
@@ -106,40 +119,62 @@ var TimerOndemand = class {
     }
 
     _addButton() {
-        logDebug('Adding On-demand Timer button...');
-
-        this._icon = new St.Icon({
-            icon_name: this._getIconNameForCurrentTime(),
-            style_class: 'system-status-icon',
-        });
-
-        this._button = new panelMenu.Button(0.0);
-        const buttonActor = getActor(this._button);
-        buttonActor.add_actor(this._icon);
-        buttonActor.connect(
-            'button-press-event',
-            this._toggleTime.bind(this)
-        );
-        main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
-
-        logDebug('Added On-demand Timer button.');
+        switch (e.settingsManager.ondemandButtonPlacement) {
+        case 'panel':
+            this._addButtonToPanel();
+            break;
+        case 'menu':
+            this._addButtonToMenu();
+            break;
+        }
     }
 
     _removeButton() {
-        logDebug('Removing On-demand Timer button...');
-        this._button.destroy();
-        logDebug('Removed On-demand Timer button.');
+        if (this._button) {
+            logDebug('Removing On-demand Timer button...');
+            this._button.destroy();
+            this._button = null;
+            logDebug('Removed On-demand Timer button.');
+        }
+    }
+
+    _addButtonToPanel() {
+        logDebug('Adding On-demand Timer button to the panel...');
+        const getIconNameForCurrentTime = () => e.timer.time === 'day' ? 'weather-clear-symbolic' : 'weather-clear-night-symbolic';
+        const icon = new St.Icon({
+            icon_name: getIconNameForCurrentTime(),
+            style_class: 'system-status-icon',
+        });
+        this._button = new PanelMenu.Button(0.0);
+        const buttonActor = getActor(this._button);
+        buttonActor.add_actor(icon);
+        buttonActor.connect('button-press-event', () => {
+            this._toggleTime();
+            icon.icon_name = getIconNameForCurrentTime();
+        });
+        main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
+        logDebug('Added On-demand Timer button to the panel.');
+    }
+
+    _addButtonToMenu() {
+        logDebug('Adding On-demand Timer button to the menu...');
+        const aggregateMenu = main.panel.statusArea.aggregateMenu;
+        const position = findShellAggregateMenuItemPosition(aggregateMenu._system.menu) - 1;
+        const getLabelForCurrentTime = () => e.timer.time === 'day' ? _('Switch to night theme') : _('Switch to day theme');
+        const getIconNameForCurrentTime = () => e.timer.time === 'day' ? 'weather-clear-night-symbolic' : 'weather-clear-symbolic';
+        this._button = new PopupMenu.PopupImageMenuItem(getLabelForCurrentTime(), getIconNameForCurrentTime());
+        this._button.connect('activate', () => {
+            this._toggleTime();
+            this._button.label.text = getLabelForCurrentTime();
+            this._button.setIcon(getIconNameForCurrentTime());
+        });
+        aggregateMenu.menu.addMenuItem(this._button, position);
+        logDebug('Added On-demand Timer button to the menu.');
     }
 
     _toggleTime() {
         e.settingsManager.ondemandTime = e.timer.time === 'day' ? 'night' : 'day';
         this.emit('time-changed', this.time);
-        this._icon.icon_name = this._getIconNameForCurrentTime();
-
-    }
-
-    _getIconNameForCurrentTime() {
-        return e.timer.time === 'day' ? 'weather-clear-symbolic' : 'weather-clear-night-symbolic';
     }
 
 };

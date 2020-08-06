@@ -65,6 +65,7 @@ var SettingsManager = class {
         this._timeSourceChangedConnect = this._extensionsSettings.connect('changed::time-source', this._onTimeSourceChanged.bind(this));
         this._manualTimeSourceChangedConnect = this._extensionsSettings.connect('changed::manual-time-source', this._onManualTimeSourceChanged.bind(this));
         this._ondemandKeybindingChangedConnect = this._extensionsSettings.connect('changed::nightthemeswitcher-ondemand-keybinding', this._onOndemandKeybindingChanged.bind(this));
+        this._ondemandButtonPlacementChangedConnect = this._extensionsSettings.connect('changed::ondemand-button-placement', this._onOndemandButtonPlacementChanged.bind(this));
         this._commandsStatusConnect = this._extensionsSettings.connect('changed::commands-enabled', this._onCommandsStatusChanged.bind(this));
         this._backgroundsStatusConnect = this._extensionsSettings.connect('changed::backgrounds-enabled', this._onBackgroundsStatusChanged.bind(this));
         this._backgroundDayChangedConnect = this._extensionsSettings.connect('changed::background-day', this._onBackgroundDayChanged.bind(this));
@@ -101,6 +102,7 @@ var SettingsManager = class {
         this._extensionsSettings.disconnect(this._timeSourceChangedConnect);
         this._extensionsSettings.disconnect(this._manualTimeSourceChangedConnect);
         this._extensionsSettings.disconnect(this._ondemandKeybindingChangedConnect);
+        this._extensionsSettings.disconnect(this._ondemandButtonPlacementChangedConnect);
         this._extensionsSettings.disconnect(this._commandsStatusConnect);
         this._extensionsSettings.disconnect(this._backgroundsStatusConnect);
         this._extensionsSettings.disconnect(this._backgroundDayChangedConnect);
@@ -316,6 +318,10 @@ var SettingsManager = class {
 
     get ondemandKeybinding() {
         return this._extensionsSettings.get_strv('nightthemeswitcher-ondemand-keybinding')[0];
+    }
+
+    get ondemandButtonPlacement() {
+        return this._extensionsSettings.get_string('ondemand-button-placement');
     }
 
     get scheduleSunrise() {
@@ -566,6 +572,11 @@ var SettingsManager = class {
         else
             logDebug('On-demand keybinding has been cleared.');
         this.emit('ondemand-keybinding-changed', this.ondemandKeybinding);
+    }
+
+    _onOndemandButtonPlacementChanged(_settings, _changedKey) {
+        logDebug(`On-demand button placement has changed to ${this.ondemandButtonPlacement}`);
+        this.emit('ondemand-button-placement-changed', this.ondemandButtonPlacement);
     }
 
 
