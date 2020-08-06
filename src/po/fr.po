@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-05 08:43+0200\n"
-"PO-Revision-Date: 2020-08-06 12:51+0200\n"
+"PO-Revision-Date: 2020-08-06 12:53+0200\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: French - France <romain@romainvigier.fr>\n"
 "Language: fr_FR\n"
@@ -493,7 +493,7 @@ msgstr "notify-send \"Bonjour!\""
 
 #: src/prefs.ui:2444
 msgid "notify-send \"Hello moonshine!\""
-msgstr "notify-send \"Bonsoir\""
+msgstr "notify-send \"Bonsoir!\""
 
 #~ msgid "You can set different backgrounds for day and night."
 #~ msgstr ""
