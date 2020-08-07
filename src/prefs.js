@@ -474,6 +474,16 @@ const Preferences = class {
         });
         updateBackgroundsBackgroundsDayBackgroundButtonUri();
 
+        const backgroundsBackgroundsDayBackgroundClearButton = this.builder.get_object('prefs_backgrounds_backgrounds_day_background_clear_button');
+        backgroundsBackgroundsDayBackgroundClearButton.connect('clicked', () => {
+            this.settings.set_string('background-day', '');
+        });
+        const updateBackgroundsBackgroundsDayBackgroundClearButtonSensitivity = () => {
+            backgroundsBackgroundsDayBackgroundClearButton.sensitive = !!this.settings.get_string('background-day');
+        };
+        this.settings.connect('changed::background-day', () => updateBackgroundsBackgroundsDayBackgroundClearButtonSensitivity());
+        updateBackgroundsBackgroundsDayBackgroundClearButtonSensitivity();
+
         const backgroundsBackgroundsNightBackgroundButton = this.builder.get_object('prefs_backgrounds_backgrounds_night_background_button');
         const nightBackgroundPreview = this.builder.get_object('night_background_preview');
         const updateBackgroundsBackgroundsNightBackgroundButtonUri = () => {
@@ -492,6 +502,16 @@ const Preferences = class {
             this.settings.set_string('background-night', backgroundsBackgroundsNightBackgroundButton.get_uri());
         });
         updateBackgroundsBackgroundsNightBackgroundButtonUri();
+
+        const backgroundsBackgroundsNightBackgroundClearButton = this.builder.get_object('prefs_backgrounds_backgrounds_night_background_clear_button');
+        backgroundsBackgroundsNightBackgroundClearButton.connect('clicked', () => {
+            this.settings.set_string('background-night', '');
+        });
+        const updateBackgroundsBackgroundsNightBackgroundClearButtonSensitivity = () => {
+            backgroundsBackgroundsNightBackgroundClearButton.sensitive = !!this.settings.get_string('background-night');
+        };
+        this.settings.connect('changed::background-night', () => updateBackgroundsBackgroundsNightBackgroundClearButtonSensitivity());
+        updateBackgroundsBackgroundsNightBackgroundClearButtonSensitivity();
     }
 
     _connectCommandsPreferences() {
@@ -519,6 +539,16 @@ const Preferences = class {
             Gio.SettingsBindFlags.DEFAULT
         );
 
+        const commandsCommandsSunriseCommandClearButton = this.builder.get_object('prefs_commands_commands_sunrise_command_clear_button');
+        commandsCommandsSunriseCommandClearButton.connect('clicked', () => {
+            this.settings.set_string('command-sunrise', '');
+        });
+        const updateCommandsCommandsSunriseCommandClearButtonSensitivity = () => {
+            commandsCommandsSunriseCommandClearButton.sensitive = !!this.settings.get_string('command-sunrise');
+        };
+        this.settings.connect('changed::command-sunrise', () => updateCommandsCommandsSunriseCommandClearButtonSensitivity());
+        updateCommandsCommandsSunriseCommandClearButtonSensitivity();
+
         const commandsCommandsSunsetCommandEntry = this.builder.get_object('prefs_commands_commands_sunset_command_entry');
         this.settings.bind(
             'command-sunset',
@@ -526,6 +556,16 @@ const Preferences = class {
             'text',
             Gio.SettingsBindFlags.DEFAULT
         );
+
+        const commandsCommandsSunsetCommandClearButton = this.builder.get_object('prefs_commands_commands_sunset_command_clear_button');
+        commandsCommandsSunsetCommandClearButton.connect('clicked', () => {
+            this.settings.set_string('command-sunset', '');
+        });
+        const updateCommandsCommandsSunsetCommandClearButtonSensitivity = () => {
+            commandsCommandsSunsetCommandClearButton.sensitive = !!this.settings.get_string('command-sunset');
+        };
+        this.settings.connect('changed::command-sunset', () => updateCommandsCommandsSunsetCommandClearButtonSensitivity());
+        updateCommandsCommandsSunsetCommandClearButtonSensitivity();
     }
 
     _connectOndemandKeyboardShortcutDialog() {
