@@ -41,6 +41,7 @@ var TimerOndemand = class {
 
     constructor() {
         this._button = null;
+        this._previousKeybinding = null;
         this._ondemandKeybindingConnect = null;
         this._ondemandButtonPlacementConnect = null;
     }
@@ -99,6 +100,7 @@ var TimerOndemand = class {
 
 
     _addKeybinding() {
+        this._previousKeybinding = e.settingsManager.ondemandKeybinding;
         if (!e.settingsManager.ondemandKeybinding)
             return;
         logDebug('Adding On-demand Timer keybinding...');
@@ -113,9 +115,11 @@ var TimerOndemand = class {
     }
 
     _removeKeybinding() {
-        logDebug('Removing On-demand Timer keybinding...');
-        main.wm.removeKeybinding('nightthemeswitcher-ondemand-keybinding');
-        logDebug('Removed On-demand Timer keybinding.');
+        if (this._previousKeybinding) {
+            logDebug('Removing On-demand Timer keybinding...');
+            main.wm.removeKeybinding('nightthemeswitcher-ondemand-keybinding');
+            logDebug('Removed On-demand Timer keybinding.');
+        }
     }
 
     _addButton() {
