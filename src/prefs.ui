@@ -638,7 +638,6 @@
                               <object class="GtkBox">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="spacing">8</property>
                                 <child>
                                   <object class="GtkButton" id="prefs_schedule_ondemand_shortcut_button">
                                     <property name="label" translatable="yes">Choose</property>
@@ -660,6 +659,9 @@
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
+                                    <style>
+                                      <class name="destructive-action"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -667,6 +669,9 @@
                                     <property name="position">1</property>
                                   </packing>
                                 </child>
+                                <style>
+                                  <class name="linked"/>
+                                </style>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -2089,15 +2094,44 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkFileChooserButton" id="prefs_backgrounds_backgrounds_day_background_button">
+                              <object class="GtkBox">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="filter">image_filter</property>
-                                <property name="preview_widget">day_background_preview</property>
-                                <property name="use_preview_label">False</property>
-                                <property name="title" translatable="yes">Select your background image</property>
+                                <property name="spacing">8</property>
+                                <child>
+                                  <object class="GtkFileChooserButton" id="prefs_backgrounds_backgrounds_day_background_button">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="halign">end</property>
+                                    <property name="valign">center</property>
+                                    <property name="filter">image_filter</property>
+                                    <property name="preview_widget">day_background_preview</property>
+                                    <property name="use_preview_label">False</property>
+                                    <property name="title" translatable="yes">Select your background image</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="prefs_backgrounds_backgrounds_day_background_clear_button">
+                                    <property name="label" translatable="yes">Clear</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">True</property>
+                                    <style>
+                                      <class name="destructive-action"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -2149,15 +2183,44 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkFileChooserButton" id="prefs_backgrounds_backgrounds_night_background_button">
+                              <object class="GtkBox">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="filter">image_filter</property>
-                                <property name="preview_widget">night_background_preview</property>
-                                <property name="use_preview_label">False</property>
-                                <property name="title" translatable="yes">Select your background image</property>
+                                <property name="spacing">8</property>
+                                <child>
+                                  <object class="GtkFileChooserButton" id="prefs_backgrounds_backgrounds_night_background_button">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="halign">end</property>
+                                    <property name="valign">center</property>
+                                    <property name="filter">image_filter</property>
+                                    <property name="preview_widget">night_background_preview</property>
+                                    <property name="use_preview_label">False</property>
+                                    <property name="title" translatable="yes">Select your background image</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="prefs_backgrounds_backgrounds_night_background_clear_button">
+                                    <property name="label" translatable="yes">Clear</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">True</property>
+                                    <style>
+                                      <class name="destructive-action"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -2375,14 +2438,46 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="prefs_commands_commands_sunrise_command_entry">
+                              <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
+                                <property name="can_focus">False</property>
                                 <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="width_chars">36</property>
-                                <property name="truncate_multiline">True</property>
-                                <property name="placeholder_text" translatable="yes">notify-send "Hello sunshine!"</property>
+                                <child>
+                                  <object class="GtkEntry" id="prefs_commands_commands_sunrise_command_entry">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="halign">end</property>
+                                    <property name="valign">center</property>
+                                    <property name="width_chars">28</property>
+                                    <property name="truncate_multiline">True</property>
+                                    <property name="placeholder_text" translatable="yes">notify-send "Hello sunshine!"</property>
+                                    <property name="input_purpose">terminal</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="prefs_commands_commands_sunrise_command_clear_button">
+                                    <property name="label" translatable="yes">Clear</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">True</property>
+                                    <style>
+                                      <class name="destructive-action"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <style>
+                                  <class name="linked"/>
+                                </style>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -2434,14 +2529,46 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="prefs_commands_commands_sunset_command_entry">
+                              <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
+                                <property name="can_focus">False</property>
                                 <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="width_chars">36</property>
-                                <property name="truncate_multiline">True</property>
-                                <property name="placeholder_text" translatable="yes">notify-send "Hello moonshine!"</property>
+                                <child>
+                                  <object class="GtkEntry" id="prefs_commands_commands_sunset_command_entry">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="halign">end</property>
+                                    <property name="valign">center</property>
+                                    <property name="width_chars">28</property>
+                                    <property name="truncate_multiline">True</property>
+                                    <property name="placeholder_text" translatable="yes">notify-send "Hello moonshine!"</property>
+                                    <property name="input_purpose">terminal</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="prefs_commands_commands_sunset_command_clear_button">
+                                    <property name="label" translatable="yes">Clear</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">True</property>
+                                    <style>
+                                      <class name="destructive-action"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <style>
+                                  <class name="linked"/>
+                                </style>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
