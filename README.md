@@ -51,6 +51,7 @@ These themes have been tested and work out of the box without any configuration.
 - Matcha (Manjaro default)
 - Materia
 - Mc-OS CTLina
+- McOS11-Shell
 - Mojave
 - Orchis
 - Plata (Solus default)

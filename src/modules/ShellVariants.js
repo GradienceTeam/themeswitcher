@@ -68,6 +68,9 @@ var ShellVariants = class {
             const basename = name.split('-')[0];
             variants.set('day', name.replace('-dark', ''));
             variants.set('night', variants.get('day').replace(new RegExp(`${basename}(-light)?`), `${basename}-dark`));
+        } else if (name.includes('mcOS11-Shell')) {
+            variants.set('day', name.replace('-Dark', ''));
+            variants.set('night', `${variants.get('day')}-Dark`);
         } else if (name.match(/^Mc-?OS-CTLina-Gnome/)) {
             const version = name.split('-').pop();
             variants.set('day', `McOS-CTLina-Gnome-${version}`);
