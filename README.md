@@ -37,6 +37,7 @@ These themes have been tested and work out of the box without any configuration.
 - Simply Circles
 - Teja
 - Vimix
+- WhiteSur
 - Yaru (Ubuntu default)
 - Yaru Colors
 
@@ -61,6 +62,7 @@ These themes have been tested and work out of the box without any configuration.
 - Simply Circles
 - Teja
 - Vimix
+- WhiteSur
 - Yaru Colors
 
 ## Graphical installation

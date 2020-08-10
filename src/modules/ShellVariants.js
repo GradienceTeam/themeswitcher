@@ -75,7 +75,7 @@ var ShellVariants = class {
             const version = name.split('-').pop();
             variants.set('day', `McOS-CTLina-Gnome-${version}`);
             variants.set('night', `Mc-OS-CTLina-Gnome-Dark-${version}`);
-        } else if (name.includes('Mojave')) {
+        } else if (name.match(/^(Mojave|WhiteSur)/)) {
             variants.set('day', name.replace('-dark', '-light'));
             variants.set('night', variants.get('day').replace('-light', '-dark'));
         } else if (name.includes('Plata')) {
