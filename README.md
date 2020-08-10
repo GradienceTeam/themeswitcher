@@ -38,6 +38,7 @@ These themes have been tested and work out of the box without any configuration.
 - Teja
 - Vimix
 - Yaru (Ubuntu default)
+- Yaru Colors
 
 ### Shell themes
 
@@ -60,6 +61,7 @@ These themes have been tested and work out of the box without any configuration.
 - Simply Circles
 - Teja
 - Vimix
+- Yaru Colors
 
 ## Graphical installation
 
