@@ -26,6 +26,7 @@ These themes have been tested and work out of the box without any configuration.
 - Macwaita
 - Matcha (Manjaro default)
 - Materia
+- Mc-OS CTLina
 - Mojave
 - Nextwaita
 - Orchis
@@ -49,6 +50,7 @@ These themes have been tested and work out of the box without any configuration.
 - Layan
 - Matcha (Manjaro default)
 - Materia
+- Mc-OS CTLina
 - Mojave
 - Orchis
 - Plata (Solus default)
