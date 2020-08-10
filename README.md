@@ -15,6 +15,7 @@ These themes have been tested and work out of the box without any configuration.
 
 - Adapta
 - Adwaita (GNOME & Fedora default)
+- Adwaita Colors
 - Arc
 - Canta
 - Cabinet
@@ -44,6 +45,7 @@ These themes have been tested and work out of the box without any configuration.
 ### Shell themes
 
 - Adapta
+- Adwaita Colors
 - Arc
 - Canta
 - ChromeOS
