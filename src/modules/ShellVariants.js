@@ -44,7 +44,6 @@ var ShellVariants = class {
 
     static guessFrom(name) {
         const variants = new Map();
-        variants.set('original', name);
 
         if (name === '') {
             variants.set('day', '');

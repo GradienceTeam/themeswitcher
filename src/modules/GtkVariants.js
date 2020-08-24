@@ -44,7 +44,6 @@ var GtkVariants = class {
 
     static guessFrom(name) {
         const variants = new Map();
-        variants.set('original', name);
 
         if (name.includes('Adapta')) {
             variants.set('day', name.replace('-Nokto', ''));

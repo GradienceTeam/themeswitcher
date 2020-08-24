@@ -41,7 +41,6 @@ var CursorThemer = class {
     enable() {
         logDebug('Enabling Cursor Themer...');
         this._watchStatus();
-        this._saveOriginalTheme();
         if (e.settingsManager.cursorVariantsEnabled) {
             this._connectSettings();
             this._connectTimer();
@@ -53,7 +52,6 @@ var CursorThemer = class {
         logDebug('Disabling Cursor Themer...');
         this._disconnectTimer();
         this._disconnectSettings();
-        this._resetOriginalTheme();
         this._unwatchStatus();
         logDebug('Cursor Themer disabled.');
     }
@@ -132,30 +130,7 @@ var CursorThemer = class {
 
     _setVariant(time) {
         logDebug(`Setting the cursor ${time} variant...`);
-        switch (time) {
-        case 'day':
-            e.settingsManager.cursorTheme = e.settingsManager.cursorVariantDay;
-            break;
-        case 'night':
-            e.settingsManager.cursorTheme = e.settingsManager.cursorVariantNight;
-            break;
-        case 'original':
-            e.settingsManager.cursorTheme = e.settingsManager.cursorVariantOriginal;
-            break;
-        }
-    }
-
-    _saveOriginalTheme() {
-        e.settingsManager.cursorVariantOriginal = e.settingsManager.cursorTheme;
-    }
-
-    _resetOriginalTheme() {
-        // We don't reset the theme when locking the session to prevent
-        // flicker on unlocking
-        if (!main.screenShield.locked) {
-            logDebug('Resetting to the user\'s original cursor theme...');
-            this._setVariant('original');
-        }
+        e.settingsManager.cursorTheme = time === 'day' ? e.settingsManager.cursorVariantDay : e.settingsManager.cursorVariantNight;
     }
 
 };

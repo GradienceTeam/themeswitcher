@@ -49,21 +49,17 @@ var SettingsManager = class {
         this._gtkVariantsStatusChangedConnect = this._extensionsSettings.connect('changed::gtk-variants-enabled', this._onGtkVariantsStatusChanged.bind(this));
         this._gtkVariantDayChangedConnect = this._extensionsSettings.connect('changed::gtk-variant-day', this._onGtkVariantDayChanged.bind(this));
         this._gtkVariantNightChangedConnect = this._extensionsSettings.connect('changed::gtk-variant-night', this._onGtkVariantNightChanged.bind(this));
-        this._gtkVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::gtk-variant-original', this._onGtkVariantOriginalChanged.bind(this));
         this._manualGtkVariantsChangedConnect = this._extensionsSettings.connect('changed::manual-gtk-variants', this._onManualGtkVariantsChanged.bind(this));
         this._shellVariantsStatusChangedConnect = this._extensionsSettings.connect('changed::shell-variants-enabled', this._onShellVariantsStatusChanged.bind(this));
         this._shellVariantDayChangedConnect = this._extensionsSettings.connect('changed::shell-variant-day', this._onShellVariantDayChanged.bind(this));
         this._shellVariantNightChangedConnect = this._extensionsSettings.connect('changed::shell-variant-night', this._onShellVariantNightChanged.bind(this));
-        this._shellVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::shell-variant-original', this._onShellVariantOriginalChanged.bind(this));
         this._manualShellVariantsChangedConnect = this._extensionsSettings.connect('changed::manual-shell-variants', this._onManualShellVariantsChanged.bind(this));
         this._iconVariantsStatusConnect = this._extensionsSettings.connect('changed::icon-variants-enabled', this._onIconVariantsStatusChanged.bind(this));
         this._iconVariantDayChangedConnect = this._extensionsSettings.connect('changed::icon-variant-day', this._onIconVariantDayChanged.bind(this));
         this._iconVariantNightChangedConnect = this._extensionsSettings.connect('changed::icon-variant-night', this._onIconVariantNightChanged.bind(this));
-        this._iconVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::icon-variant-original', this._onIconVariantOriginalChanged.bind(this));
         this._cursorVariantsStatusConnect = this._extensionsSettings.connect('changed::cursor-variants-enabled', this._onCursorVariantsStatusChanged.bind(this));
         this._cursorVariantDayChangedConnect = this._extensionsSettings.connect('changed::cursor-variant-day', this._onCursorVariantDayChanged.bind(this));
         this._cursorVariantNightChangedConnect = this._extensionsSettings.connect('changed::cursor-variant-night', this._onCursorVariantNightChanged.bind(this));
-        this._cursorVariantOriginalChangedConnect = this._extensionsSettings.connect('changed::cursor-variant-original', this._onCursorVariantOriginalChanged.bind(this));
         this._timeSourceChangedConnect = this._extensionsSettings.connect('changed::time-source', this._onTimeSourceChanged.bind(this));
         this._manualTimeSourceChangedConnect = this._extensionsSettings.connect('changed::manual-time-source', this._onManualTimeSourceChanged.bind(this));
         this._ondemandKeybindingChangedConnect = this._extensionsSettings.connect('changed::nightthemeswitcher-ondemand-keybinding', this._onOndemandKeybindingChanged.bind(this));
@@ -88,21 +84,17 @@ var SettingsManager = class {
         this._extensionsSettings.disconnect(this._gtkVariantsStatusChangedConnect);
         this._extensionsSettings.disconnect(this._gtkVariantDayChangedConnect);
         this._extensionsSettings.disconnect(this._gtkVariantNightChangedConnect);
-        this._extensionsSettings.disconnect(this._gtkVariantOriginalChangedConnect);
         this._extensionsSettings.disconnect(this._manualGtkVariantsChangedConnect);
         this._extensionsSettings.disconnect(this._shellVariantsStatusChangedConnect);
         this._extensionsSettings.disconnect(this._shellVariantDayChangedConnect);
         this._extensionsSettings.disconnect(this._shellVariantNightChangedConnect);
-        this._extensionsSettings.disconnect(this._shellVariantOriginalChangedConnect);
         this._extensionsSettings.disconnect(this._manualShellVariantsChangedConnect);
         this._extensionsSettings.disconnect(this._iconVariantsStatusConnect);
         this._extensionsSettings.disconnect(this._iconVariantDayChangedConnect);
         this._extensionsSettings.disconnect(this._iconVariantNightChangedConnect);
-        this._extensionsSettings.disconnect(this._iconVariantOriginalChangedConnect);
         this._extensionsSettings.disconnect(this._cursorVariantsStatusConnect);
         this._extensionsSettings.disconnect(this._cursorVariantDayChangedConnect);
         this._extensionsSettings.disconnect(this._cursorVariantNightChangedConnect);
-        this._extensionsSettings.disconnect(this._cursorVariantOriginalChangedConnect);
         this._extensionsSettings.disconnect(this._timeSourceChangedConnect);
         this._extensionsSettings.disconnect(this._manualTimeSourceChangedConnect);
         this._extensionsSettings.disconnect(this._ondemandKeybindingChangedConnect);
@@ -154,17 +146,6 @@ var SettingsManager = class {
         }
     }
 
-    get gtkVariantOriginal() {
-        return this._extensionsSettings.get_string('gtk-variant-original');
-    }
-
-    set gtkVariantOriginal(value) {
-        if (value !== this.gtkVariantOriginal) {
-            this._extensionsSettings.set_string('gtk-variant-original', value);
-            logDebug(`The GTK original variant has been set to '${value}'.`);
-        }
-    }
-
     get manualGtkVariants() {
         return this._extensionsSettings.get_boolean('manual-gtk-variants');
     }
@@ -195,17 +176,6 @@ var SettingsManager = class {
         if (value !== this.shellVariantNight) {
             this._extensionsSettings.set_string('shell-variant-night', value);
             logDebug(`The shell night variant has been set to '${value}'.`);
-        }
-    }
-
-    get shellVariantOriginal() {
-        return this._extensionsSettings.get_string('shell-variant-original');
-    }
-
-    set shellVariantOriginal(value) {
-        if (value !== this.shellVariantOriginal) {
-            this._extensionsSettings.set_string('shell-variant-original', value);
-            logDebug(`The shell original variant has been set to '${value}'.`);
         }
     }
 
@@ -241,17 +211,6 @@ var SettingsManager = class {
         }
     }
 
-    get cursorVariantOriginal() {
-        return this._extensionsSettings.get_string('cursor-variant-original');
-    }
-
-    set cursorVariantOriginal(value) {
-        if (value !== this.cursorVariantOriginal) {
-            this._extensionsSettings.set_string('cursor-variant-original', value);
-            logDebug(`The cursor original variant has been set to '${value}'.`);
-        }
-    }
-
     /* Icon variants settings */
 
     get iconVariantsEnabled() {
@@ -277,17 +236,6 @@ var SettingsManager = class {
         if (value !== this.iconVariantNight) {
             this._extensionsSettings.set_string('icon-variant-night', value);
             logDebug(`The icon night variant has been set to '${value}'.`);
-        }
-    }
-
-    get iconVariantOriginal() {
-        return this._extensionsSettings.get_string('icon-variant-original');
-    }
-
-    set iconVariantOriginal(value) {
-        if (value !== this.iconVariantOriginal) {
-            this._extensionsSettings.set_string('icon-variant-original', value);
-            logDebug(`The icon original variant has been set to '${value}'.`);
         }
     }
 
@@ -483,11 +431,6 @@ var SettingsManager = class {
         this.emit('gtk-variant-changed', 'night');
     }
 
-    _onGtkVariantOriginalChanged(_settings, _changedKey) {
-        logDebug(`GTK original variant has changed to '${this.gtkVariantOriginal}'.`);
-        this.emit('gtk-variant-changed', 'original');
-    }
-
     _onManualGtkVariantsChanged(_settings, _changedKey) {
         logDebug(`Manual GTK variants have been ${this.manualGtkVariants ? 'ena' : 'disa'}bled.`);
         this.emit('manual-gtk-variants-changed', this.manualGtkVariants);
@@ -509,11 +452,6 @@ var SettingsManager = class {
     _onShellVariantNightChanged(_settings, _changedKey) {
         logDebug(`Shell night variant has changed to '${this.shellVariantNight}'.`);
         this.emit('shell-variant-changed', 'night');
-    }
-
-    _onShellVariantOriginalChanged(_settings, _changedKey) {
-        logDebug(`Shell original variant has changed to '${this.shellVariantOriginal}'.`);
-        this.emit('shell-variant-changed', 'original');
     }
 
     _onManualShellVariantsChanged(_settings, _changedKey) {
@@ -539,11 +477,6 @@ var SettingsManager = class {
         this.emit('cursor-variant-changed', 'night');
     }
 
-    _onCursorVariantOriginalChanged(_settings, _changedKey) {
-        logDebug(`Cursor original variant has changed to '${this.cursorVariantOriginal}'.`);
-        this.emit('cursor-variant-changed', 'original');
-    }
-
 
     /* Icon variants */
 
@@ -560,11 +493,6 @@ var SettingsManager = class {
     _onIconVariantNightChanged(_settings, _changedKey) {
         logDebug(`Icon night variant has changed to '${this.iconVariantNight}'.`);
         this.emit('icon-variant-changed', 'night');
-    }
-
-    _onIconVariantOriginalChanged(_settings, _changedKey) {
-        logDebug(`Icon original variant has changed to '${this.iconVariantOriginal}'.`);
-        this.emit('icon-variant-changed', 'original');
     }
 
 

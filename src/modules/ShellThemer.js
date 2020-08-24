@@ -54,7 +54,6 @@ var ShellThemer = class {
         logDebug('Enabling Shell Themer...');
         try {
             this._watchStatus();
-            this._saveOriginalTheme();
             if (e.settingsManager.shellVariantsEnabled) {
                 this._connectSettings();
                 this._updateVariants();
@@ -70,7 +69,6 @@ var ShellThemer = class {
         logDebug('Disabling Shell Themer...');
         this._disconnectTimer();
         this._disconnectSettings();
-        this._resetOriginalTheme();
         this._unwatchStatus();
         logDebug('Shell Themer disabled.');
     }
@@ -161,18 +159,7 @@ var ShellThemer = class {
         if (!time)
             return;
         logDebug(`Setting the shell ${time} variant...`);
-        let shellTheme;
-        switch (time) {
-        case 'day':
-            shellTheme = e.settingsManager.shellVariantDay;
-            break;
-        case 'night':
-            shellTheme = e.settingsManager.shellVariantNight;
-            break;
-        case 'original':
-            shellTheme = e.settingsManager.shellVariantOriginal;
-            break;
-        }
+        const shellTheme = time === 'day' ? e.settingsManager.shellVariantDay : e.settingsManager.shellVariantNight;
         if (e.settingsManager.useUserthemes) {
             e.settingsManager.shellTheme = shellTheme;
         } else {
@@ -186,32 +173,18 @@ var ShellThemer = class {
             return;
 
         logDebug('Updating Shell variants...');
-        const variants = ShellVariants.guessFrom(e.settingsManager.shellTheme);
+        const originalTheme = e.settingsManager.shellTheme;
+        const variants = ShellVariants.guessFrom(originalTheme);
         const installedThemes = getInstalledShellThemes();
 
         if (!installedThemes.has(variants.get('day')) || !installedThemes.has(variants.get('night'))) {
-            e.settingsManager.shellVariantOriginal = variants.get('original');
-            const message = _('Unable to automatically detect the day and night variants for the "%s" GNOME Shell theme. Please manually choose them in the extension\'s preferences.').format(variants.get('original'));
+            const message = _('Unable to automatically detect the day and night variants for the "%s" GNOME Shell theme. Please manually choose them in the extension\'s preferences.').format(originalTheme);
             throw new Error(message);
         }
 
         e.settingsManager.shellVariantDay = variants.get('day');
         e.settingsManager.shellVariantNight = variants.get('night');
-        e.settingsManager.shellVariantOriginal = variants.get('original');
         logDebug(`New Shell variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
-    }
-
-    _saveOriginalTheme() {
-        e.settingsManager.shellVariantOriginal = e.settingsManager.shellTheme;
-    }
-
-    _resetOriginalTheme() {
-        // We don't reset the theme when locking the session to prevent
-        // flicker on unlocking
-        if (!main.screenShield.locked) {
-            logDebug('Resetting to the user\'s original Shell theme...');
-            this._setVariant('original');
-        }
     }
 
 };

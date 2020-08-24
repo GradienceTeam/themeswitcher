@@ -54,7 +54,6 @@ var GtkThemer = class {
         logDebug('Enabling GTK Themer...');
         try {
             this._watchStatus();
-            this._saveOriginalTheme();
             if (e.settingsManager.gtkVariantsEnabled) {
                 this._connectSettings();
                 this._updateVariants();
@@ -70,7 +69,6 @@ var GtkThemer = class {
         logDebug('Disabling GTK Themer...');
         this._disconnectTimer();
         this._disconnectSettings();
-        this._resetOriginalTheme();
         this._unwatchStatus();
         logDebug('GTK Themer disabled.');
     }
@@ -161,17 +159,7 @@ var GtkThemer = class {
         if (!time)
             return;
         logDebug(`Setting the GTK ${time} variant...`);
-        switch (time) {
-        case 'day':
-            e.settingsManager.gtkTheme = e.settingsManager.gtkVariantDay;
-            break;
-        case 'night':
-            e.settingsManager.gtkTheme = e.settingsManager.gtkVariantNight;
-            break;
-        case 'original':
-            e.settingsManager.gtkTheme = e.settingsManager.gtkVariantOriginal;
-            break;
-        }
+        e.settingsManager.gtkTheme = time === 'day' ? e.settingsManager.gtkVariantDay : e.settingsManager.gtkVariantNight;
     }
 
     _updateVariants() {
@@ -179,32 +167,18 @@ var GtkThemer = class {
             return;
 
         logDebug('Updating GTK variants...');
-        const variants = GtkVariants.guessFrom(e.settingsManager.gtkTheme);
+        const originalTheme = e.settingsManager.gtkTheme;
+        const variants = GtkVariants.guessFrom(originalTheme);
         const installedThemes = getInstalledGtkThemes();
 
         if (!installedThemes.has(variants.get('day')) || !installedThemes.has(variants.get('night'))) {
-            e.settingsManager.gtkVariantOriginal = variants.get('original');
-            const message = _('Unable to automatically detect the day and night variants for the "%s" GTK theme. Please manually choose them in the extension\'s preferences.').format(variants.get('original'));
+            const message = _('Unable to automatically detect the day and night variants for the "%s" GTK theme. Please manually choose them in the extension\'s preferences.').format(originalTheme);
             throw new Error(message);
         }
 
         e.settingsManager.gtkVariantDay = variants.get('day');
         e.settingsManager.gtkVariantNight = variants.get('night');
-        e.settingsManager.gtkVariantOriginal = variants.get('original');
         logDebug(`New GTK variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
-    }
-
-    _saveOriginalTheme() {
-        e.settingsManager.gtkVariantOriginal = e.settingsManager.gtkTheme;
-    }
-
-    _resetOriginalTheme() {
-        // We don't reset the theme when locking the session to prevent
-        // flicker on unlocking
-        if (!main.screenShield.locked) {
-            logDebug('Resetting to the user\'s original GTK theme...');
-            this._setVariant('original');
-        }
     }
 
 };

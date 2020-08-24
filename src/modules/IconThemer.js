@@ -41,7 +41,6 @@ var IconThemer = class {
     enable() {
         logDebug('Enabling Icon Themer...');
         this._watchStatus();
-        this._saveOriginalTheme();
         if (e.settingsManager.iconVariantsEnabled) {
             this._connectSettings();
             this._connectTimer();
@@ -53,7 +52,6 @@ var IconThemer = class {
         logDebug('Disabling Icon Themer...');
         this._disconnectTimer();
         this._disconnectSettings();
-        this._resetOriginalTheme();
         this._unwatchStatus();
         logDebug('Icon Themer disabled.');
     }
@@ -132,30 +130,7 @@ var IconThemer = class {
 
     _setVariant(time) {
         logDebug(`Setting the icon ${time} variant...`);
-        switch (time) {
-        case 'day':
-            e.settingsManager.iconTheme = e.settingsManager.iconVariantDay;
-            break;
-        case 'night':
-            e.settingsManager.iconTheme = e.settingsManager.iconVariantNight;
-            break;
-        case 'original':
-            e.settingsManager.iconTheme = e.settingsManager.iconVariantOriginal;
-            break;
-        }
-    }
-
-    _saveOriginalTheme() {
-        e.settingsManager.iconVariantOriginal = e.settingsManager.iconTheme;
-    }
-
-    _resetOriginalTheme() {
-        // We don't reset the theme when locking the session to prevent
-        // flicker on unlocking
-        if (!main.screenShield.locked) {
-            logDebug('Resetting to the user\'s original icon theme...');
-            this._setVariant('original');
-        }
+        e.settingsManager.iconTheme = time === 'day' ? e.settingsManager.iconVariantDay : e.settingsManager.iconVariantNight;
     }
 
 };

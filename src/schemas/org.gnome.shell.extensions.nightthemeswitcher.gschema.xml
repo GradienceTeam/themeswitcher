@@ -16,11 +16,6 @@
 			<summary>Night GTK theme</summary>
 			<description>The GTK theme to use during nighttime</description>
 		</key>
-		<key name="gtk-variant-original" type="s">
-			<default>"Adwaita"</default>
-			<summary>Original GTK theme</summary>
-			<description>The GTK theme to restore when the extension is disabled</description>
-		</key>
 		<key name="manual-gtk-variants" type="b">
 			<default>false</default>
 			<summary>Use manual GTK variants</summary>
@@ -40,11 +35,6 @@
 			<default>""</default>
 			<summary>Night shell theme</summary>
 			<description>The shell theme to use during nighttime</description>
-		</key>
-		<key name="shell-variant-original" type="s">
-			<default>""</default>
-			<summary>Original shell theme</summary>
-			<description>The shell theme to restore when the extension is disabled</description>
 		</key>
 		<key name="manual-shell-variants" type="b">
 			<default>false</default>
@@ -66,11 +56,6 @@
 			<summary>Night icon theme</summary>
 			<description>The icon theme to use during nighttime</description>
 		</key>
-		<key name="icon-variant-original" type="s">
-			<default>""</default>
-			<summary>Original icon theme</summary>
-			<description>The icon theme to restore when the extension is disabled</description>
-		</key>
 		<key name="cursor-variants-enabled" type="b">
 			<default>false</default>
 			<summary>Switch cursor variants</summary>
@@ -85,11 +70,6 @@
 			<default>""</default>
 			<summary>Night cursor theme</summary>
 			<description>The cursor theme to use during nighttime</description>
-		</key>
-		<key name="cursor-variant-original" type="s">
-			<default>""</default>
-			<summary>Original cursor theme</summary>
-			<description>The cursor theme to restore when the extension is disabled</description>
 		</key>
 		<key name="time-source" type="s">
 			<choices>
