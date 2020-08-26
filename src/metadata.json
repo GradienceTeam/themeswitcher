@@ -5,6 +5,6 @@
 	"gettext-domain": "nightthemeswitcher@romainvigier.fr",
 	"settings-schema": "org.gnome.shell.extensions.nightthemeswitcher",
 	"url": "https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/",
-	"shell-version": ["3.28", "3.30", "3.32", "3.34", "3.36"],
+	"shell-version": ["3.28", "3.30", "3.32", "3.34", "3.36", "3.38"],
 	"version": 36
 }
