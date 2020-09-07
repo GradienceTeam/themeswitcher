@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-const { Gio, GLib } = imports.gi;
+const { Geoclue, GLib } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
@@ -24,64 +24,6 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const { logDebug } = Me.imports.utils;
-
-
-// GeoClue2 interfaces from https://gitlab.freedesktop.org/geoclue/geoclue/
-const GEOCLUE_MANAGER_INTERFACE = `
-<node>
-    <interface name="org.freedesktop.GeoClue2.Manager">
-        <property name="InUse" type="b" access="read"/>
-        <property name="AvailableAccuracyLevel" type="u" access="read"/>
-        <method name="GetClient">
-            <arg name="client" type="o" direction="out"/>
-        </method>
-        <method name="CreateClient">
-            <arg name="client" type="o" direction="out"/>
-        </method>
-        <method name="DeleteClient">
-            <arg name="client" type="o" direction="in"/>
-        </method>
-        <method name="AddAgent">
-            <arg name="id" type="s" direction="in"/>
-        </method>
-    </interface>
-</node>`;
-
-const GEOCLUE_CLIENT_INTERFACE = `
-<node>
-    <interface name="org.freedesktop.GeoClue2.Client">
-        <property name="Location" type="o" access="read"/>
-        <property name="DistanceThreshold" type="u" access="readwrite">
-            <annotation name="org.freedesktop.Accounts.DefaultValue" value="0"/>
-        </property>
-        <property name="TimeThreshold" type="u" access="readwrite">
-            <annotation name="org.freedesktop.Accounts.DefaultValue" value="0"/>
-        </property>
-        <property name="DesktopId" type="s" access="readwrite"/>
-        <property name="RequestedAccuracyLevel" type="u" access="readwrite"/>
-        <property name="Active" type="b" access="read"/>
-        <method name="Start"/>
-        <method name="Stop"/>
-        <signal name="LocationUpdated">
-            <arg name="old" type="o"/>
-            <arg name="new" type="o"/>
-        </signal>
-    </interface>
-</node>`;
-
-const GEOCLUE_LOCATION_INTERFACE = `
-<node>
-    <interface name="org.freedesktop.GeoClue2.Location">
-        <property name="Latitude" type="d" access="read"/>
-        <property name="Longitude" type="d" access="read"/>
-        <property name="Accuracy" type="d" access="read"/>
-        <property name="Altitude" type="d" access="read"/>
-        <property name="Speed" type="d" access="read"/>
-        <property name="Heading" type="d" access="read"/>
-        <property name="Description" type="s" access="read"/>
-        <property name="Timestamp" type="(tt)" access="read"/>
-    </interface>
-</node>`;
 
 
 /**
@@ -107,22 +49,15 @@ var TimerLocation = class {
             ['sunrise', e.settingsManager.scheduleSunrise],
             ['sunset', e.settingsManager.scheduleSunrise],
         ]);
-        this._geoclueClient = null;
-        this._geoclueClientDbusProxy = null;
-        this._geoclueManagerDbusProxy = null;
-        this._geoclueLocationDbusProxy = null;
-        this._locationUpdatesConnect = null;
+        this._geoclue = null;
+        this._geoclueConnect = null;
         this._timeChangeTimer = null;
         this._regularlyUpdateSuntimesTimer = null;
     }
 
     enable() {
         logDebug('Enabling Location Timer...');
-        this._connectToGeoclueDbusProxy();
-        this._listenToLocationUpdates();
-        this._connectToGeoclueLocationDbusProxy();
-        this._updateLocation();
-        this._updateSuntimes();
+        this._connectToGeoclue();
         this._watchForTimeChange();
         this._regularlyUpdateSuntimes();
         logDebug('Location Timer enabled.');
@@ -132,9 +67,7 @@ var TimerLocation = class {
         logDebug('Disabling Location Timer...');
         this._stopRegularlyUpdatingSuntimes();
         this._stopWatchingForTimeChange();
-        this._stopListeningToLocationUpdates();
-        this._disconnectFromGeoclueLocationDbusProxy();
-        this._disconnectFromGeoclueDbusProxy();
+        this._disconnectFromGeoclue();
         logDebug('Location Timer disabled.');
     }
 
@@ -143,89 +76,45 @@ var TimerLocation = class {
         return this._isDaytime() ? 'day' : 'night';
     }
 
-    _connectToGeoclueDbusProxy() {
-        logDebug('Connecting to GeoClue manager DBus proxy...');
-        const GeoClueManagerProxy = Gio.DBusProxy.makeProxyWrapper(GEOCLUE_MANAGER_INTERFACE);
-        this._geoclueManagerDbusProxy = new GeoClueManagerProxy(
-            Gio.DBus.system,
-            'org.freedesktop.GeoClue2',
-            '/org/freedesktop/GeoClue2/Manager'
+
+    _connectToGeoclue() {
+        logDebug('Connecting to GeoClue...');
+        Geoclue.Simple.new(
+            'org.gnome.Shell',
+            Geoclue.AccuracyLevel.CITY,
+            null,
+            this._onGeoclueReady.bind(this)
         );
-        logDebug('Connected to GeoClue manager DBus proxy.');
-
-        logDebug('Getting a GeoClue client...');
-        this._geoclueClient = this._geoclueManagerDbusProxy.GetClientSync()[0];
-        logDebug(`Got a GeoClue client at ${this._geoclueClient}`);
-
-        logDebug('Connecting to GeoClue client DBus proxy...');
-        const GeoClueClientProxy = Gio.DBusProxy.makeProxyWrapper(GEOCLUE_CLIENT_INTERFACE);
-        this._geoclueClientDbusProxy = new GeoClueClientProxy(
-            Gio.DBus.system,
-            'org.freedesktop.GeoClue2',
-            this._geoclueClient
-        );
-        this._geoclueClientDbusProxy.DesktopId = Me.metadata.uuid;
-        this._geoclueClientDbusProxy.DistanceThreshold = 10000;
-        this._geoclueClientDbusProxy.RequestedAccuracyLevel = 4;
-        logDebug('Connected to GeoClue client DBus proxy.');
     }
 
-    _disconnectFromGeoclueDbusProxy() {
-        logDebug('Disconnecting from GeoClue DBus proxy...');
-        this._geoclueManagerDbusProxy.DeleteClientSync(this._geoclueClient);
-        this._geoclueClient = null;
-        this._geoclueClientDbusProxy = null;
-        this._geoclueManagerDbusProxy = null;
-        logDebug('Disconnected from GeoClue DBus proxy.');
+    _disconnectFromGeoclue() {
+        logDebug('Disconnecting from GeoClue...');
+        if (this._geoclueConnect) {
+            this._geoclue.disconnect(this._geoclueConnect);
+            this._geoclueConnect = null;
+        }
+        logDebug('Disconnected from GeoClue.');
     }
 
-    _listenToLocationUpdates() {
-        logDebug('Listening to location updates...');
-        this._locationUpdatesConnect = this._geoclueClientDbusProxy.connectSignal('LocationUpdated', this._onLocationUpdated.bind(this));
-        this._geoclueClientDbusProxy.StartSync();
+
+    _onGeoclueReady(_, result) {
+        this._geoclue = Geoclue.Simple.new_finish(result);
+        this._geoclueConnect = this._geoclue.connect('notify::location', this._onLocationUpdated.bind(this));
+        logDebug('Connected to GeoClue.');
+        this._onLocationUpdated();
     }
 
-    _stopListeningToLocationUpdates() {
-        this._geoclueClientDbusProxy.disconnectSignal(this._locationUpdatesConnect);
-        this._locationUpdatesConnect = null;
-        this._geoclueClientDbusProxy.StopSync();
-        logDebug('Stopped listening to location updates.');
-    }
-
-    _onLocationUpdated(_proxy, _sender, [_oldLocationPath, newLocationPath]) {
+    _onLocationUpdated(_geoclue, _location) {
         logDebug('Location has changed.');
-        this._connectToGeoclueLocationDbusProxy(newLocationPath);
         this._updateLocation();
         this._updateSuntimes();
     }
 
-    _connectToGeoclueLocationDbusProxy(path) {
-        if (!path)
-            path = this._geoclueClientDbusProxy.Location;
-        if (path !== '/') {
-            logDebug('Connecting to GeoClue location DBus proxy...');
-            const GeoClueLocationProxy = Gio.DBusProxy.makeProxyWrapper(GEOCLUE_LOCATION_INTERFACE);
-            this._geoclueLocationDbusProxy = new GeoClueLocationProxy(
-                Gio.DBus.system,
-                'org.freedesktop.GeoClue2',
-                path
-            );
-            logDebug('Connected to GeoClue location DBus proxy.');
-        }
-    }
-
-    _disconnectFromGeoclueLocationDbusProxy() {
-        logDebug('Disconnecting from GeoClue location DBus proxy...');
-        this._geoclueLocationDbusProxy = null;
-        logDebug('Disconnected from GeoClue location DBus proxy.');
-    }
 
     _updateLocation() {
-        if (this._geoclueLocationDbusProxy) {
+        if (this._geoclue) {
             logDebug('Updating location...');
-            const latitude = this._geoclueLocationDbusProxy.Latitude;
-            const longitude = this._geoclueLocationDbusProxy.Longitude;
-
+            const { latitude, longitude } = this._geoclue.get_location();
             this.location = new Map([
                 ['latitude', latitude],
                 ['longitude', longitude],
