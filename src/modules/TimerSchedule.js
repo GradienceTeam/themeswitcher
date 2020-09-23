@@ -62,7 +62,7 @@ var TimerSchedule = class {
     _isDaytime() {
         const time = GLib.DateTime.new_now_local();
         const hour = time.get_hour() + time.get_minute() / 60 + time.get_second() / 3600;
-        return hour >= e.settingsManager.scheduleSunrise && hour <= e.settingsManager.scheduleSunset;
+        return hour >= e.settings.time.scheduleSunrise && hour <= e.settings.time.scheduleSunset;
     }
 
     _watchForTimeChange() {

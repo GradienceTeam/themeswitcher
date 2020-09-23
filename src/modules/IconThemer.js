@@ -32,16 +32,16 @@ const { logDebug } = Me.imports.utils;
 var IconThemer = class {
 
     constructor() {
-        this._iconVariantsStatusChangedConnect = null;
-        this._iconVariantChangedConnect = null;
-        this._iconThemeChangedConnect = null;
+        this._statusChangedConnect = null;
+        this._variantChangedConnect = null;
+        this._systemIconThemeChangedConnect = null;
         this._timeChangedConnect = null;
     }
 
     enable() {
         logDebug('Enabling Icon Themer...');
         this._watchStatus();
-        if (e.settingsManager.iconVariantsEnabled) {
+        if (e.settings.iconVariants.enabled) {
             this._connectSettings();
             this._connectTimer();
         }
@@ -59,31 +59,31 @@ var IconThemer = class {
 
     _watchStatus() {
         logDebug('Watching icon variants status...');
-        this._iconVariantsStatusChangedConnect = e.settingsManager.connect('icon-variants-status-changed', this._onIconVariantsStatusChanged.bind(this));
+        this._statusChangedConnect = e.settings.iconVariants.connect('status-changed', this._onStatusChanged.bind(this));
     }
 
     _unwatchStatus() {
-        if (this._iconVariantsStatusChangedConnect) {
-            e.settingsManager.disconnect(this._iconVariantsStatusChangedConnect);
-            this._iconVariantsStatusChangedConnect = null;
+        if (this._statusChangedConnect) {
+            e.settings.iconVariants.disconnect(this._statusChangedConnect);
+            this._statusChangedConnect = null;
         }
         logDebug('Stopped watching icon variants status.');
     }
 
     _connectSettings() {
         logDebug('Connecting Icon Themer to settings...');
-        this._iconVariantChangedConnect = e.settingsManager.connect('icon-variant-changed', this._onIconVariantChanged.bind(this));
-        this._iconThemeChangedConnect = e.settingsManager.connect('icon-theme-changed', this._onIconThemeChanged.bind(this));
+        this._variantChangedConnect = e.settings.iconVariants.connect('variant-changed', this._onVariantChanged.bind(this));
+        this._systemIconThemeChangedConnect = e.settings.system.connect('icon-theme-changed', this._onSystemIconThemeChanged.bind(this));
     }
 
     _disconnectSettings() {
-        if (this._iconVariantChangedConnect) {
-            e.settingsManager.disconnect(this._iconVariantChangedConnect);
-            this._iconVariantChangedConnect = null;
+        if (this._variantChangedConnect) {
+            e.settings.iconVariants.disconnect(this._variantChangedConnect);
+            this._variantChangedConnect = null;
         }
-        if (this._iconThemeChangedConnect) {
-            e.settingsManager.disconnect(this._iconThemeChangedConnect);
-            this._iconThemeChangedConnect = null;
+        if (this._systemIconThemeChangedConnect) {
+            e.settings.system.disconnect(this._systemIconThemeChangedConnect);
+            this._systemIconThemeChangedConnect = null;
         }
         logDebug('Disconnected Icon Themer from settings.');
     }
@@ -102,35 +102,43 @@ var IconThemer = class {
     }
 
 
-    _onIconVariantsStatusChanged(_settings, _enabled) {
+    _onStatusChanged(_settings, _enabled) {
         this.disable();
         this.enable();
     }
 
-    _onIconVariantChanged(_settings, changedVariantTime) {
+    _onVariantChanged(_settings, changedVariantTime) {
         if (changedVariantTime === e.timer.time)
-            this._setVariant(changedVariantTime);
+            this._setSystemVariant(changedVariantTime);
     }
 
-    _onIconThemeChanged(_settings, newTheme) {
+    _onSystemIconThemeChanged(_settings, newTheme) {
         switch (e.timer.time) {
         case 'day':
-            e.settingsManager.iconVariantDay = newTheme;
+            e.settings.iconVariants.day = newTheme;
             break;
         case 'night':
-            e.settingsManager.iconVariantNight = newTheme;
+            e.settings.iconVariants.night = newTheme;
         }
-        this._setVariant(e.timer.time);
+        this._setSystemVariant(e.timer.time);
     }
 
     _onTimeChanged(_timer, newTime) {
-        this._setVariant(newTime);
+        this._setSystemVariant(newTime);
     }
 
 
-    _setVariant(time) {
+    _setSystemVariant(time) {
         logDebug(`Setting the icon ${time} variant...`);
-        e.settingsManager.iconTheme = time === 'day' ? e.settingsManager.iconVariantDay : e.settingsManager.iconVariantNight;
+        switch (time) {
+        case 'day':
+            if (e.settings.iconVariants.day)
+                e.settings.system.iconTheme = e.settings.iconVariants.day;
+            break;
+        case 'night':
+            if (e.settings.iconVariants.night)
+                e.settings.system.iconTheme = e.settings.iconVariants.night;
+        }
     }
 
 };

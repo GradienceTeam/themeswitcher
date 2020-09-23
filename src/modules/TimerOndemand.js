@@ -65,24 +65,24 @@ var TimerOndemand = class {
 
 
     get time() {
-        return e.settingsManager.ondemandTime;
+        return e.settings.time.ondemandTime;
     }
 
 
     _connectSettings() {
         logDebug('Connecting On-demand Timer to settings...');
-        this._ondemandKeybindingConnect = e.settingsManager.connect('ondemand-keybinding-changed', this._onOndemandKeybindingChanged.bind(this));
-        this._ondemandButtonPlacementConnect = e.settingsManager.connect('ondemand-button-placement-changed', this._onOndemandButtonPlacementChanged.bind(this));
+        this._ondemandKeybindingConnect = e.settings.time.connect('ondemand-keybinding-changed', this._onOndemandKeybindingChanged.bind(this));
+        this._ondemandButtonPlacementConnect = e.settings.time.connect('ondemand-button-placement-changed', this._onOndemandButtonPlacementChanged.bind(this));
     }
 
     _disconnectSettings() {
         logDebug('Disconnecting On-demand Timer from settings...');
         if (this._ondemandKeybindingConnect) {
-            e.settingsManager.disconnect(this._ondemandKeybindingConnect);
+            e.settings.time.disconnect(this._ondemandKeybindingConnect);
             this._ondemandKeybindingConnect = null;
         }
         if (this._ondemandButtonPlacementConnect) {
-            e.settingsManager.disconnect(this._ondemandButtonPlacementConnect);
+            e.settings.time.disconnect(this._ondemandButtonPlacementConnect);
             this._ondemandButtonPlacementConnect = null;
         }
     }
@@ -100,13 +100,13 @@ var TimerOndemand = class {
 
 
     _addKeybinding() {
-        this._previousKeybinding = e.settingsManager.ondemandKeybinding;
-        if (!e.settingsManager.ondemandKeybinding)
+        this._previousKeybinding = e.settings.time.ondemandKeybinding;
+        if (!e.settings.time.ondemandKeybinding)
             return;
         logDebug('Adding On-demand Timer keybinding...');
         main.wm.addKeybinding(
             'nightthemeswitcher-ondemand-keybinding',
-            e.settingsManager._extensionsSettings,
+            e.settings.time.settings,
             keyBindingAutoRepeat(),
             Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
             this._toggleTime.bind(this)
@@ -123,7 +123,7 @@ var TimerOndemand = class {
     }
 
     _addButton() {
-        switch (e.settingsManager.ondemandButtonPlacement) {
+        switch (e.settings.time.ondemandButtonPlacement) {
         case 'panel':
             this._addButtonToPanel();
             break;
@@ -177,7 +177,7 @@ var TimerOndemand = class {
     }
 
     _toggleTime() {
-        e.settingsManager.ondemandTime = e.timer.time === 'day' ? 'night' : 'day';
+        e.settings.time.ondemandTime = e.timer.time === 'day' ? 'night' : 'day';
         this.emit('time-changed', this.time);
     }
 

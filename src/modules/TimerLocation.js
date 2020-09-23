@@ -46,8 +46,8 @@ var TimerLocation = class {
         // Before we have the location suntimes, we'll use the manual schedule
         // times
         this._suntimes = new Map([
-            ['sunrise', e.settingsManager.scheduleSunrise],
-            ['sunset', e.settingsManager.scheduleSunrise],
+            ['sunrise', e.settings.time.scheduleSunrise],
+            ['sunset', e.settings.time.scheduleSunrise],
         ]);
         this._geoclue = null;
         this._geoclueConnect = null;

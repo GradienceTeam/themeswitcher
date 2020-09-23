@@ -24,7 +24,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const compat = Me.imports.compat;
 const { logDebug } = Me.imports.utils;
-const { SettingsManager } = Me.imports.modules.SettingsManager;
+const { Settings } = Me.imports.settings.Settings;
 const { Timer } = Me.imports.modules.Timer;
 const { GtkThemer } = Me.imports.modules.GtkThemer;
 const { ShellThemer } = Me.imports.modules.ShellThemer;
@@ -35,7 +35,7 @@ const { Commander } = Me.imports.modules.Commander;
 
 
 var enabled = false;
-var settingsManager = null;
+var settings = null;
 var timer = null;
 var gtkThemer = null;
 var shellThemer = null;
@@ -54,7 +54,7 @@ function init() {
 function enable() {
     _awaitExtensionManagerInit().then(() => {
         logDebug('Enabling extension...');
-        settingsManager = new SettingsManager();
+        settings = new Settings();
         timer = new Timer();
         gtkThemer = new GtkThemer();
         shellThemer = new ShellThemer();
@@ -63,7 +63,7 @@ function enable() {
         backgrounder = new Backgrounder();
         commander = new Commander();
 
-        settingsManager.enable();
+        settings.enable();
         gtkThemer.enable();
         shellThemer.enable();
         iconThemer.enable();
@@ -88,9 +88,9 @@ function disable() {
     backgrounder.disable();
     commander.disable();
     timer.disable();
-    settingsManager.disable();
+    settings.disable();
 
-    settingsManager = null;
+    settings = null;
     timer = null;
     gtkThemer = null;
     shellThemer = null;

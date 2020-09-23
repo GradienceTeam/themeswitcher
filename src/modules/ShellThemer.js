@@ -43,10 +43,10 @@ const _ = Gettext.gettext;
 var ShellThemer = class {
 
     constructor() {
-        this._shellVariantsStatusChangedConnect = null;
-        this._shellVariantChangedConnect = null;
-        this._shellThemeChangedConnect = null;
-        this._manualShellVariantsChangedConnect = null;
+        this._statusChangedConnect = null;
+        this._variantChangedConnect = null;
+        this._manualChangedConnect = null;
+        this._systemShellThemeChangedConnect = null;
         this._timeChangedConnect = null;
     }
 
@@ -54,7 +54,7 @@ var ShellThemer = class {
         logDebug('Enabling Shell Themer...');
         try {
             this._watchStatus();
-            if (e.settingsManager.shellVariantsEnabled) {
+            if (e.settings.shellVariants.enabled) {
                 this._connectSettings();
                 this._updateVariants();
                 this._connectTimer();
@@ -76,32 +76,36 @@ var ShellThemer = class {
 
     _watchStatus() {
         logDebug('Watching shell variants status...');
-        this._shellVariantsStatusChangedConnect = e.settingsManager.connect('shell-variants-status-changed', this._onShellVariantsStatusChanged.bind(this));
+        this._statusChangedConnect = e.settings.shellVariants.connect('status-changed', this._onStatusChanged.bind(this));
     }
 
     _unwatchStatus() {
-        if (this._shellVariantsStatusChangedConnect) {
-            e.settingsManager.disconnect(this._shellVariantsStatusChangedConnect);
-            this._shellVariantsStatusChangedConnect = null;
+        if (this._statusChangedConnect) {
+            e.settings.shellVariants.disconnect(this._statusChangedConnect);
+            this._statusChangedConnect = null;
         }
         logDebug('Stopped watching shell variants status.');
     }
 
     _connectSettings() {
         logDebug('Connecting Shell Themer to settings...');
-        this._shellVariantChangedConnect = e.settingsManager.connect('shell-variant-changed', this._onShellVariantChanged.bind(this));
-        this._shellThemeChangedConnect = e.settingsManager.connect('shell-theme-changed', this._onShellThemeChanged.bind(this));
-        this._manualShellVariantsChangedConnect = e.settingsManager.connect('manual-shell-variants-changed', this._onManualShellVariantsChanged.bind(this));
+        this._variantChangedConnect = e.settings.shellVariants.connect('variant-changed', this._onVariantChanged.bind(this));
+        this._manualChangedConnect = e.settings.shellVariants.connect('manual-changed', this._onManualChanged.bind(this));
+        this._systemShellThemeChangedConnect = e.settings.system.connect('shell-theme-changed', this._onSystemShellThemeChanged.bind(this));
     }
 
     _disconnectSettings() {
-        if (this._shellVariantChangedConnect) {
-            e.settingsManager.disconnect(this._shellVariantChangedConnect);
-            this._shellVariantChangedConnect = null;
+        if (this._variantChangedConnect) {
+            e.settings.shellVariants.disconnect(this._variantChangedConnect);
+            this._variantChangedConnect = null;
         }
-        if (this._shellThemeChangedConnect) {
-            e.settingsManager.disconnect(this._shellThemeChangedConnect);
-            this._shellThemeChangedConnect = null;
+        if (this._manualChangedConnect) {
+            e.settings.shellVariants.disconnect(this._manualChangedConnect);
+            this._manualChangedConnect = null;
+        }
+        if (this._systemShellThemeChangedConnect) {
+            e.settings.system.disconnect(this._systemShellThemeChangedConnect);
+            this._systemShellThemeChangedConnect = null;
         }
         logDebug('Disconnected Shell Themer from settings.');
     }
@@ -120,48 +124,48 @@ var ShellThemer = class {
     }
 
 
-    _onShellVariantsStatusChanged(_settings, _enabled) {
+    _onStatusChanged(_settings, _enabled) {
         this.disable();
         this.enable();
     }
 
-    _onShellVariantChanged(_settings, changedVariantTime) {
+    _onVariantChanged(_settings, changedVariantTime) {
         if (changedVariantTime === e.timer.time)
-            this._setVariant(e.timer.time);
+            this._setSystemVariant(e.timer.time);
     }
 
-    _onShellThemeChanged(_settings, _newTheme) {
+    _onSystemShellThemeChanged(_settings, _newTheme) {
         try {
             this._updateVariants();
-            this._setVariant(e.timer.time);
+            this._setSystemVariant(e.timer.time);
         } catch (error) {
             notifyError(error);
         }
     }
 
-    _onManualShellVariantsChanged(_settings, enabled) {
+    _onManualChanged(_settings, enabled) {
         this.disable();
         this.enable();
         if (enabled)
-            this._setVariant(e.timer.time);
+            this._setSystemVariant(e.timer.time);
     }
 
     _onTimeChanged(_timer, newTime) {
-        this._setVariant(newTime);
+        this._setSystemVariant(newTime);
     }
 
 
     _areVariantsUpToDate() {
-        return e.settingsManager.shellTheme === e.settingsManager.shellVariantDay || e.settingsManager.shellTheme === e.settingsManager.shellVariantNight;
+        return e.settings.system.shellTheme === e.settings.shellVariants.day || e.settings.system.shellTheme === e.settings.shellVariants.night;
     }
 
-    _setVariant(time) {
+    _setSystemVariant(time) {
         if (!time)
             return;
         logDebug(`Setting the shell ${time} variant...`);
-        const shellTheme = time === 'day' ? e.settingsManager.shellVariantDay : e.settingsManager.shellVariantNight;
-        if (e.settingsManager.useUserthemes) {
-            e.settingsManager.shellTheme = shellTheme;
+        const shellTheme = time === 'day' ? e.settings.shellVariants.day : e.settings.shellVariants.night;
+        if (e.settings.system.useUserthemes) {
+            e.settings.system.shellTheme = shellTheme;
         } else {
             const stylesheet = getShellThemeStylesheet(shellTheme);
             applyShellStylesheet(stylesheet);
@@ -169,11 +173,11 @@ var ShellThemer = class {
     }
 
     _updateVariants() {
-        if (!e.settingsManager.useUserthemes || e.settingsManager.manualShellVariants || this._areVariantsUpToDate())
+        if (!e.settings.system.useUserthemes || e.settings.shellVariants.manual || this._areVariantsUpToDate())
             return;
 
         logDebug('Updating Shell variants...');
-        const originalTheme = e.settingsManager.shellTheme;
+        const originalTheme = e.settings.system.shellTheme;
         const variants = ShellVariants.guessFrom(originalTheme);
         const installedThemes = getInstalledShellThemes();
 
@@ -182,8 +186,8 @@ var ShellThemer = class {
             throw new Error(message);
         }
 
-        e.settingsManager.shellVariantDay = variants.get('day');
-        e.settingsManager.shellVariantNight = variants.get('night');
+        e.settings.shellVariants.day = variants.get('day');
+        e.settings.shellVariants.night = variants.get('night');
         logDebug(`New Shell variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
     }
 

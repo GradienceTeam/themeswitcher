@@ -43,10 +43,10 @@ const _ = Gettext.gettext;
 var GtkThemer = class {
 
     constructor() {
-        this._gtkVariantsStatusChangedConnect = null;
-        this._gtkVariantChangedConnect = null;
-        this._gtkThemeChangedConnect = null;
-        this._manualGtkVariantsChangedConnect = null;
+        this._statusChangedConnect = null;
+        this._variantChangedConnect = null;
+        this._manualChangedConnect = null;
+        this._systemGtkThemeChangedConnect = null;
         this._timeChangedConnect = null;
     }
 
@@ -54,7 +54,7 @@ var GtkThemer = class {
         logDebug('Enabling GTK Themer...');
         try {
             this._watchStatus();
-            if (e.settingsManager.gtkVariantsEnabled) {
+            if (e.settings.gtkVariants.enabled) {
                 this._connectSettings();
                 this._updateVariants();
                 this._connectTimer();
@@ -76,32 +76,36 @@ var GtkThemer = class {
 
     _watchStatus() {
         logDebug('Watching GTK variants status...');
-        this._gtkVariantsStatusChangedConnect = e.settingsManager.connect('gtk-variants-status-changed', this._onGtkVariantsStatusChanged.bind(this));
+        this._statusChangedConnect = e.settings.gtkVariants.connect('status-changed', this._onStatusChanged.bind(this));
     }
 
     _unwatchStatus() {
-        if (this._gtkVariantsStatusChangedConnect) {
-            e.settingsManager.disconnect(this._gtkVariantsStatusChangedConnect);
-            this._gtkVariantsStatusChangedConnect = null;
+        if (this._statusChangedConnect) {
+            e.settings.gtkVariants.disconnect(this._statusChangedConnect);
+            this._statusChangedConnect = null;
         }
         logDebug('Stopped watching GTK variants status.');
     }
 
     _connectSettings() {
         logDebug('Connecting GTK Themer to settings...');
-        this._gtkVariantChangedConnect = e.settingsManager.connect('gtk-variant-changed', this._onGtkVariantChanged.bind(this));
-        this._gtkThemeChangedConnect = e.settingsManager.connect('gtk-theme-changed', this._onGtkThemeChanged.bind(this));
-        this._manualGtkVariantsChangedConnect = e.settingsManager.connect('manual-gtk-variants-changed', this._onManualGtkVariantsChanged.bind(this));
+        this._variantChangedConnect = e.settings.gtkVariants.connect('variant-changed', this._onVariantChanged.bind(this));
+        this._manualChangedConnect = e.settings.gtkVariants.connect('manual-changed', this._onManualChanged.bind(this));
+        this._systemGtkThemeChangedConnect = e.settings.system.connect('gtk-theme-changed', this._onSystemGtkThemeChanged.bind(this));
     }
 
     _disconnectSettings() {
-        if (this._gtkVariantChangedConnect) {
-            e.settingsManager.disconnect(this._gtkVariantChangedConnect);
-            this._gtkVariantChangedConnect = null;
+        if (this._variantChangedConnect) {
+            e.settings.gtkVariants.disconnect(this._variantChangedConnect);
+            this._variantChangedConnect = null;
         }
-        if (this._gtkThemeChangedConnect) {
-            e.settingsManager.disconnect(this._gtkThemeChangedConnect);
-            this._gtkThemeChangedConnect = null;
+        if (this._manualChangedConnect) {
+            e.settings.gtkVariants.disconnect(this._manualChangedConnect);
+            this._manualChangedConnect = null;
+        }
+        if (this._systemGtkThemeChangedConnect) {
+            e.settings.system.disconnect(this._systemGtkThemeChangedConnect);
+            this._systemGtkThemeChangedConnect = null;
         }
         logDebug('Disconnected GTK Themer from settings.');
     }
@@ -120,54 +124,54 @@ var GtkThemer = class {
     }
 
 
-    _onGtkVariantsStatusChanged(_settings, _enabled) {
+    _onStatusChanged(_settings, _enabled) {
         this.disable();
         this.enable();
     }
 
-    _onGtkVariantChanged(_settings, changedVariantTime) {
+    _onVariantChanged(_settings, changedVariantTime) {
         if (changedVariantTime === e.timer.time)
-            this._setVariant(changedVariantTime);
+            this._setSystemVariant(changedVariantTime);
     }
 
-    _onGtkThemeChanged(_settings, _newTheme) {
+    _onSystemGtkThemeChanged(_settings, _newTheme) {
         try {
             this._updateVariants();
-            this._setVariant(e.timer.time);
+            this._setSystemVariant(e.timer.time);
         } catch (error) {
             notifyError(error);
         }
     }
 
-    _onManualGtkVariantsChanged(_settings, enabled) {
+    _onManualChanged(_settings, enabled) {
         this.disable();
         this.enable();
         if (enabled)
-            this._setVariant(e.timer.time);
+            this._setSystemVariant(e.timer.time);
     }
 
     _onTimeChanged(_timer, newTime) {
-        this._setVariant(newTime);
+        this._setSystemVariant(newTime);
     }
 
 
     _areVariantsUpToDate() {
-        return e.settingsManager.gtkTheme === e.settingsManager.gtkVariantDay || e.settingsManager.gtkTheme === e.settingsManager.gtkVariantNight;
+        return e.settings.system.gtkTheme === e.settings.gtkVariants.day || e.settings.system.gtkTheme === e.settings.gtkVariants.night;
     }
 
-    _setVariant(time) {
+    _setSystemVariant(time) {
         if (!time)
             return;
         logDebug(`Setting the GTK ${time} variant...`);
-        e.settingsManager.gtkTheme = time === 'day' ? e.settingsManager.gtkVariantDay : e.settingsManager.gtkVariantNight;
+        e.settings.system.gtkTheme = time === 'day' ? e.settings.gtkVariants.day : e.settings.gtkVariants.night;
     }
 
     _updateVariants() {
-        if (e.settingsManager.manualGtkVariants || this._areVariantsUpToDate())
+        if (e.settings.gtkVariants.manual || this._areVariantsUpToDate())
             return;
 
         logDebug('Updating GTK variants...');
-        const originalTheme = e.settingsManager.gtkTheme;
+        const originalTheme = e.settings.system.gtkTheme;
         const variants = GtkVariants.guessFrom(originalTheme);
         const installedThemes = getInstalledGtkThemes();
 
@@ -176,8 +180,8 @@ var GtkThemer = class {
             throw new Error(message);
         }
 
-        e.settingsManager.gtkVariantDay = variants.get('day');
-        e.settingsManager.gtkVariantNight = variants.get('night');
+        e.settings.gtkVariants.day = variants.get('day');
+        e.settings.gtkVariants.night = variants.get('night');
         logDebug(`New GTK variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
     }
 

@@ -31,14 +31,14 @@ const { logDebug } = Me.imports.utils;
 var Commander = class {
 
     constructor() {
-        this._commandsStatusChangedConnect = null;
+        this._statusChangedConnect = null;
         this._timeChangedConnect = null;
     }
 
     enable() {
         logDebug('Enabling Commander...');
         this._watchStatus();
-        if (e.settingsManager.commandsEnabled)
+        if (e.settings.commands.enabled)
             this._connectTimer();
         logDebug('Commander enabled.');
     }
@@ -53,13 +53,13 @@ var Commander = class {
 
     _watchStatus() {
         logDebug('Watching commands status...');
-        this._commandsStatusChangedConnect = e.settingsManager.connect('commands-status-changed', this._onCommandsStatusChanged.bind(this));
+        this._statusChangedConnect = e.settings.commands.connect('status-changed', this._onStatusChanged.bind(this));
     }
 
     _unwatchStatus() {
-        if (this._commandsStatusChangedConnect) {
-            e.settingsManager.disconnect(this._commandsStatusChangedConnect);
-            this._commandsStatusChangedConnect = null;
+        if (this._statusChangedConnect) {
+            e.settings.commands.disconnect(this._statusChangedConnect);
+            this._statusChangedConnect = null;
         }
         logDebug('Stopped watching commands status.');
     }
@@ -78,7 +78,7 @@ var Commander = class {
     }
 
 
-    _onCommandsStatusChanged(_settings, _enabled) {
+    _onStatusChanged(_settings, _enabled) {
         this.disable();
         this.enable();
     }
@@ -89,7 +89,7 @@ var Commander = class {
 
 
     _spawnCommand(time) {
-        const command = time === 'day' ? e.settingsManager.commandSunrise : e.settingsManager.commandSunset;
+        const command = time === 'day' ? e.settings.commands.sunrise : e.settings.commands.sunset;
         GLib.spawn_async(null, ['sh', '-c', command], null, GLib.SpawnFlags.SEARCH_PATH, null);
         logDebug(`Spawned ${time} command.`);
     }

@@ -39,18 +39,27 @@ function extensionManagerInitialized() {
 
 
 function extensionManagerLookup(uuid) {
-    if (shellMinorVersion > 32)
-        return imports.ui.main.extensionManager.lookup(uuid);
+    try {
+        if (shellMinorVersion > 32)
+            return imports.ui.main.extensionManager.lookup(uuid);
+        else
+            return extensionUtils.extensions[uuid] || null;
+    } catch (_) {
+        return null;
+    }
+}
+
+
+function getSettings(schema) {
+    if (shellMinorVersion <= 30)
+        return Me.imports.convenience.getSettings(schema);
     else
-        return extensionUtils.extensions[uuid] || null;
+        return extensionUtils.getSettings(schema);
 }
 
 
 function getExtensionSettings() {
-    if (shellMinorVersion <= 30)
-        return Me.imports.convenience.getSettings();
-    else
-        return extensionUtils.getSettings();
+    return getSettings();
 }
 
 

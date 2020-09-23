@@ -81,27 +81,27 @@ var Timer = class {
 
     _connectSettings() {
         logDebug('Connecting Timer to settings...');
-        this._nightlightStatusChangedConnect = e.settingsManager.connect('nightlight-status-changed', this._onSourceChanged.bind(this));
-        this._locationStatusChangedConnect = e.settingsManager.connect('location-status-changed', this._onSourceChanged.bind(this));
-        this._manualTimeSourceChangedConnect = e.settingsManager.connect('manual-time-source-changed', this._onSourceChanged.bind(this));
-        this._timeSourceChangedConnect = e.settingsManager.connect('time-source-changed', this._onTimeSourceChanged.bind(this));
+        this._nightlightStatusChangedConnect = e.settings.system.connect('nightlight-status-changed', this._onSourceChanged.bind(this));
+        this._locationStatusChangedConnect = e.settings.system.connect('location-status-changed', this._onSourceChanged.bind(this));
+        this._manualTimeSourceChangedConnect = e.settings.time.connect('manual-time-source-changed', this._onSourceChanged.bind(this));
+        this._timeSourceChangedConnect = e.settings.time.connect('time-source-changed', this._onTimeSourceChanged.bind(this));
     }
 
     _disconnectSettings() {
         if (this._nightlightStatusChangedConnect) {
-            e.settingsManager.disconnect(this._nightlightStatusChangedConnect);
+            e.settings.system.disconnect(this._nightlightStatusChangedConnect);
             this._nightlightStatusChangedConnect = null;
         }
         if (this._locationStatusChangedConnect) {
-            e.settingsManager.disconnect(this._locationStatusChangedConnect);
+            e.settings.system.disconnect(this._locationStatusChangedConnect);
             this._locationStatusChangedConnect = null;
         }
         if (this._manualTimeSourceChangedConnect) {
-            e.settingsManager.disconnect(this._manualTimeSourceChangedConnect);
+            e.settings.time.disconnect(this._manualTimeSourceChangedConnect);
             this._manualTimeSourceChangedConnect = null;
         }
         if (this._timeSourceChangedConnect) {
-            e.settingsManager.disconnect(this._timeSourceChangedConnect);
+            e.settings.time.disconnect(this._timeSourceChangedConnect);
             this._timeSourceChangedConnect = null;
         }
         logDebug('Disconnected Timer from settings.');
@@ -155,7 +155,7 @@ var Timer = class {
     }
 
     _onTimeSourceChanged(_settings, _newSource) {
-        if (e.settingsManager.manualTimeSource)
+        if (e.settings.time.manualTimeSource)
             this._onSourceChanged();
     }
 
@@ -171,30 +171,30 @@ var Timer = class {
     _getSource() {
         logDebug('Getting time source...');
 
-        if (e.settingsManager.manualTimeSource) {
-            let source = e.settingsManager.timeSource;
+        if (e.settings.time.manualTimeSource) {
+            let source = e.settings.time.timeSource;
             logDebug(`Time source is forced to ${source}.`);
             if (
-                (source === 'nightlight' && !e.settingsManager.nightlightEnabled) ||
-                (source === 'location' && !e.settingsManager.locationEnabled)
+                (source === 'nightlight' && !e.settings.system.nightlightEnabled) ||
+                (source === 'location' && !e.settings.system.locationEnabled)
             ) {
                 logDebug(`Unable to choose ${source} time source, falling back to manual schedule.`);
                 source = 'schedule';
-                e.settingsManager.timeSource = source;
+                e.settings.time.timeSource = source;
             }
             return source;
         }
 
         let source;
-        if (e.settingsManager.nightlightEnabled)
+        if (e.settings.system.nightlightEnabled)
             source = 'nightlight';
-        else if (e.settingsManager.locationEnabled)
+        else if (e.settings.system.locationEnabled)
             source = 'location';
         else
             source = 'schedule';
 
         logDebug(`Time source is ${source}.`);
-        e.settingsManager.timeSource = source;
+        e.settings.time.timeSource = source;
         return source;
     }
 

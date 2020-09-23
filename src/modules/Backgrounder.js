@@ -33,16 +33,16 @@ const { logDebug } = Me.imports.utils;
 var Backgrounder = class {
 
     constructor() {
-        this._backgroundsStatusChangedConnect = null;
-        this._backgroundTimeChangedConnect = null;
+        this._statusChangedConnect = null;
         this._backgroundChangedConnect = null;
-        this._timeChangedConnect = null;
+        this._systemBackgroundChangedConnect = null;
+        this._backgroundChangedConnect = null;
     }
 
     enable() {
         logDebug('Enabling Backgrounder...');
         this._watchStatus();
-        if (e.settingsManager.backgroundsEnabled) {
+        if (e.settings.backgrounds.enabled) {
             this._connectSettings();
             this._connectTimer();
         }
@@ -60,76 +60,84 @@ var Backgrounder = class {
 
     _watchStatus() {
         logDebug('Watching backgrounds status...');
-        this._backgroundsStatusChangedConnect = e.settingsManager.connect('backgrounds-status-changed', this._onBackgroundsStatusChanged.bind(this));
+        this._statusChangedConnect = e.settings.backgrounds.connect('status-changed', this._onStatusChanged.bind(this));
     }
 
     _unwatchStatus() {
-        if (this._backgroundsStatusChangedConnect) {
-            e.settingsManager.disconnect(this._backgroundsStatusChangedConnect);
-            this._backgroundsStatusChangedConnect = null;
+        if (this._statusChangedConnect) {
+            e.settings.backgrounds.disconnect(this._statusChangedConnect);
+            this._statusChangedConnect = null;
         }
         logDebug('Stopped watching backgrounds status.');
     }
 
     _connectSettings() {
         logDebug('Connecting Backgrounder to settings...');
-        this._backgroundTimeChangedConnect = e.settingsManager.connect('background-time-changed', this._onBackgroundTimeChanged.bind(this));
-        this._backgroundChangedConnect = e.settingsManager.connect('background-changed', this._onBackgroundChanged.bind(this));
+        this._backgroundChangedConnect = e.settings.backgrounds.connect('time-changed', this._onBackgroundChanged.bind(this));
+        this._systemBackgroundChangedConnect = e.settings.system.connect('background-changed', this._onSystemBackgroundChanged.bind(this));
     }
 
     _disconnectSettings() {
-        if (this._backgroundTimeChangedConnect) {
-            e.settingsManager.disconnect(this._backgroundTimeChangedConnect);
-            this._backgroundTimeChangedConnect = null;
-        }
         if (this._backgroundChangedConnect) {
-            e.settingsManager.disconnect(this._backgroundChangedConnect);
+            e.settings.backgrounds.disconnect(this._backgroundChangedConnect);
             this._backgroundChangedConnect = null;
+        }
+        if (this._systemBackgroundChangedConnect) {
+            e.settings.system.disconnect(this._systemBackgroundChangedConnect);
+            this._systemBackgroundChangedConnect = null;
         }
         logDebug('Disconnected Backgrounder from settings.');
     }
 
     _connectTimer() {
         logDebug('Connecting Backgrounder to Timer...');
-        this._timeChangedConnect = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
+        this._backgroundChangedConnect = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
     }
 
     _disconnectTimer() {
-        if (this._timeChangedConnect) {
-            e.timer.disconnect(this._timeChangedConnect);
-            this._timeChangedConnect = null;
+        if (this._backgroundChangedConnect) {
+            e.timer.disconnect(this._backgroundChangedConnect);
+            this._backgroundChangedConnect = null;
         }
         logDebug('Disconnected Backgrounder from Timer.');
     }
 
 
-    _onBackgroundsStatusChanged(_settings, _enabled) {
+    _onStatusChanged(_settings, _enabled) {
         this.disable();
         this.enable();
     }
 
-    _onBackgroundTimeChanged(_settings, changedBackgroundTime) {
+    _onBackgroundChanged(_settings, changedBackgroundTime) {
         if (changedBackgroundTime === e.timer.time)
-            this._changeBackground(changedBackgroundTime);
+            this._changeSystemBackground(changedBackgroundTime);
     }
 
-    _onBackgroundChanged(_settings, newBackground) {
+    _onSystemBackgroundChanged(_settings, newBackground) {
         switch (e.timer.time) {
         case 'day':
-            e.settingsManager.backgroundDay = newBackground;
+            e.settings.backgrounds.day = newBackground;
             break;
         case 'night':
-            e.settingsManager.backgroundNight = newBackground;
+            e.settings.backgrounds.night = newBackground;
         }
     }
 
     _onTimeChanged(_timer, newTime) {
-        this._changeBackground(newTime);
+        this._changeSystemBackground(newTime);
     }
 
 
-    _changeBackground(time) {
-        e.settingsManager.background = time === 'day' ? e.settingsManager.backgroundDay : e.settingsManager.backgroundNight;
+    _changeSystemBackground(time) {
+        switch (time) {
+        case 'day':
+            if (e.settings.backgrounds.day)
+                e.settings.system.background = e.settings.backgrounds.day;
+            break;
+        case 'night':
+            if (e.settings.backgrounds.night)
+                e.settings.system.background = e.settings.backgrounds.night;
+        }
     }
 
 };

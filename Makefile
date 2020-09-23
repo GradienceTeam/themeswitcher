@@ -35,6 +35,7 @@ build: build-clean
 		--extra-source=./utils.js \
 		--extra-source=./modules/ \
 		--extra-source=./schemas/ \
+		--extra-source=./settings/ \
 		--podir=./po/ \
 		--gettext-domain=$(UUID) \
 		--out-dir=./build \

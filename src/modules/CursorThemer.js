@@ -32,16 +32,16 @@ const { logDebug } = Me.imports.utils;
 var CursorThemer = class {
 
     constructor() {
-        this._cursorVariantsStatusChangedConnect = null;
-        this._cursorVariantChangedConnect = null;
-        this._cursorThemeChangedConnect = null;
+        this._statusChangedConnect = null;
+        this._variantChangedConnect = null;
+        this._systemCursorThemeChangedConnect = null;
         this._timeChangedConnect = null;
     }
 
     enable() {
         logDebug('Enabling Cursor Themer...');
         this._watchStatus();
-        if (e.settingsManager.cursorVariantsEnabled) {
+        if (e.settings.cursorVariants.enabled) {
             this._connectSettings();
             this._connectTimer();
         }
@@ -59,31 +59,31 @@ var CursorThemer = class {
 
     _watchStatus() {
         logDebug('Watching cursor variants status...');
-        this._cursorVariantsStatusChangedConnect = e.settingsManager.connect('cursor-variants-status-changed', this._onCursorVariantsStatusChanged.bind(this));
+        this._statusChangedConnect = e.settings.cursorVariants.connect('status-changed', this._onStatusChanged.bind(this));
     }
 
     _unwatchStatus() {
-        if (this._cursorVariantsStatusChangedConnect) {
-            e.settingsManager.disconnect(this._cursorVariantsStatusChangedConnect);
-            this._cursorVariantsStatusChangedConnect = null;
+        if (this._statusChangedConnect) {
+            e.settings.cursorVariants.disconnect(this._statusChangedConnect);
+            this._statusChangedConnect = null;
         }
         logDebug('Stopped watching cursor variants status.');
     }
 
     _connectSettings() {
         logDebug('Connecting Cursor Themer to settings...');
-        this._cursorVariantChangedConnect = e.settingsManager.connect('cursor-variant-changed', this._onCursorVariantChanged.bind(this));
-        this._cursorThemeChangedConnect = e.settingsManager.connect('cursor-theme-changed', this._onCursorThemeChanged.bind(this));
+        this._variantChangedConnect = e.settings.cursorVariants.connect('variant-changed', this._onVariantChanged.bind(this));
+        this._systemCursorThemeChangedConnect = e.settings.system.connect('cursor-theme-changed', this._onSystemCursorThemeChanged.bind(this));
     }
 
     _disconnectSettings() {
-        if (this._cursorVariantChangedConnect) {
-            e.settingsManager.disconnect(this._cursorVariantChangedConnect);
-            this._cursorVariantChangedConnect = null;
+        if (this._variantChangedConnect) {
+            e.settings.cursorVariants.disconnect(this._variantChangedConnect);
+            this._variantChangedConnect = null;
         }
-        if (this._cursorThemeChangedConnect) {
-            e.settingsManager.disconnect(this._cursorThemeChangedConnect);
-            this._cursorThemeChangedConnect = null;
+        if (this._systemCursorThemeChangedConnect) {
+            e.settings.system.disconnect(this._systemCursorThemeChangedConnect);
+            this._systemCursorThemeChangedConnect = null;
         }
         logDebug('Disconnected Cursor Themer from settings.');
     }
@@ -102,35 +102,43 @@ var CursorThemer = class {
     }
 
 
-    _onCursorVariantsStatusChanged(_settings, _enabled) {
+    _onStatusChanged(_settings, _enabled) {
         this.disable();
         this.enable();
     }
 
-    _onCursorVariantChanged(_settings, changedVariantTime) {
+    _onVariantChanged(_settings, changedVariantTime) {
         if (changedVariantTime === e.timer.time)
-            this._setVariant(changedVariantTime);
+            this._setSystemVariant(changedVariantTime);
     }
 
-    _onCursorThemeChanged(_settings, newTheme) {
+    _onSystemCursorThemeChanged(_settings, newTheme) {
         switch (e.timer.time) {
         case 'day':
-            e.settingsManager.cursorVariantDay = newTheme;
+            e.settings.cursorVariants.day = newTheme;
             break;
         case 'night':
-            e.settingsManager.cursorVariantNight = newTheme;
+            e.settings.cursorVariants.night = newTheme;
         }
-        this._setVariant(e.timer.time);
+        this._setSystemVariant(e.timer.time);
     }
 
     _onTimeChanged(_timer, newTime) {
-        this._setVariant(newTime);
+        this._setSystemVariant(newTime);
     }
 
 
-    _setVariant(time) {
+    _setSystemVariant(time) {
         logDebug(`Setting the cursor ${time} variant...`);
-        e.settingsManager.cursorTheme = time === 'day' ? e.settingsManager.cursorVariantDay : e.settingsManager.cursorVariantNight;
+        switch (time) {
+        case 'day':
+            if (e.settings.cursorVariants.day)
+                e.settings.system.cursorTheme = e.settings.cursorVariants.day;
+            break;
+        case 'night':
+            if (e.settings.cursorVariants.night)
+                e.settings.system.cursorTheme = e.settings.cursorVariants.night;
+        }
     }
 
 };
