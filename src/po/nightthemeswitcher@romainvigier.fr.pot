@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 37\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-23 11:56+0200\n"
+"POT-Creation-Date: 2020-09-23 20:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/prefs.js:230 src/prefs.ui:643
-msgid "Choose"
-msgstr ""
-
-#: src/prefs.js:350
-msgid "Default"
-msgstr ""
 
 #: src/modules/GtkThemer.js:179
 #, javascript-format
@@ -48,6 +40,42 @@ msgstr ""
 msgid "Switch to day theme"
 msgstr ""
 
+#: src/preferences/Backgrounds.js:36 src/preferences/ui/backgrounds.ui:145
+msgid "Backgrounds"
+msgstr ""
+
+#: src/preferences/Commands.js:36 src/preferences/ui/commands.ui:132
+msgid "Commands"
+msgstr ""
+
+#: src/preferences/CursorTheme.js:38
+msgid "Cursor theme"
+msgstr ""
+
+#: src/preferences/GtkTheme.js:38
+msgid "GTK theme"
+msgstr ""
+
+#: src/preferences/IconTheme.js:38
+msgid "Icon theme"
+msgstr ""
+
+#: src/preferences/Schedule.js:38
+msgid "Schedule"
+msgstr ""
+
+#: src/preferences/Schedule.js:193 src/preferences/ui/schedule.ui:595
+msgid "Choose"
+msgstr ""
+
+#: src/preferences/ShellTheme.js:38
+msgid "Shell theme"
+msgstr ""
+
+#: src/preferences/ShellTheme.js:80
+msgid "Default"
+msgstr ""
+
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:6
 msgid "Settings version"
 msgstr ""
@@ -58,7 +86,7 @@ msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:13
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.v0.gschema.xml:6
-#: src/prefs.ui:821
+#: src/preferences/ui/gtk_theme.ui:76
 msgid "Switch GTK variants"
 msgstr ""
 
@@ -139,7 +167,7 @@ msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:57
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.v0.gschema.xml:46
-#: src/prefs.ui:1509
+#: src/preferences/ui/icon_theme.ui:76
 msgid "Switch icon variants"
 msgstr ""
 
@@ -170,7 +198,7 @@ msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:74
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.v0.gschema.xml:61
-#: src/prefs.ui:1755
+#: src/preferences/ui/cursor_theme.ui:76
 msgid "Switch cursor variants"
 msgstr ""
 
@@ -211,7 +239,7 @@ msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:96
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.v0.gschema.xml:131
-#: src/prefs.ui:2432
+#: src/preferences/ui/commands.ui:174
 msgid "Sunrise command"
 msgstr ""
 
@@ -222,7 +250,7 @@ msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:101
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.v0.gschema.xml:136
-#: src/prefs.ui:2523
+#: src/preferences/ui/commands.ui:268
 msgid "Sunset command"
 msgstr ""
 
@@ -243,7 +271,7 @@ msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:113
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.v0.gschema.xml:146
-#: src/prefs.ui:2088
+#: src/preferences/ui/backgrounds.ui:187
 msgid "Day background"
 msgstr ""
 
@@ -254,7 +282,7 @@ msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:118
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.v0.gschema.xml:151
-#: src/prefs.ui:2177
+#: src/preferences/ui/backgrounds.ui:279
 msgid "Night background"
 msgstr ""
 
@@ -333,95 +361,58 @@ msgstr ""
 msgid "When the day ends"
 msgstr ""
 
-#: src/prefs.ui:58
-msgid "Press your keyboard shortcut..."
+#: src/preferences/ui/backgrounds.ui:97
+msgid "Switch backgrounds"
 msgstr ""
 
-#: src/prefs.ui:72 src/prefs.ui:629
-msgid "Keyboard shortcut"
+#: src/preferences/ui/backgrounds.ui:210 src/preferences/ui/backgrounds.ui:302
+msgid "Select your background image"
 msgstr ""
 
-#: src/prefs.ui:75
-msgid "Cancel"
-msgstr ""
-
-#: src/prefs.ui:159
-msgid "Automatic time source"
-msgstr ""
-
-#: src/prefs.ui:172
-msgid ""
-"<small>The extension will try to use Night Light or Location Services to "
-"automatically set your current sunrise and sunset times if they are enabled. "
-"If you prefer, you can manually choose a time source.</small>"
-msgstr ""
-
-#: src/prefs.ui:236
-msgid "Manual time source"
-msgstr ""
-
-#: src/prefs.ui:256
-msgid "Night Light"
-msgstr ""
-
-#: src/prefs.ui:271
-msgid "Location Services"
-msgstr ""
-
-#: src/prefs.ui:286
-msgid "Manual schedule"
-msgstr ""
-
-#: src/prefs.ui:301 src/prefs.ui:590
-msgid "On-demand"
-msgstr ""
-
-#: src/prefs.ui:343
-msgid "Manual schedule times"
-msgstr ""
-
-#: src/prefs.ui:382
-msgid "Sunrise"
-msgstr ""
-
-#: src/prefs.ui:418 src/prefs.ui:522
-msgid ":"
-msgstr ""
-
-#: src/prefs.ui:486
-msgid "Sunset"
-msgstr ""
-
-#: src/prefs.ui:658 src/prefs.ui:2121 src/prefs.ui:2210 src/prefs.ui:2464
-#: src/prefs.ui:2555
+#: src/preferences/ui/backgrounds.ui:220 src/preferences/ui/backgrounds.ui:312
+#: src/preferences/ui/commands.ui:206 src/preferences/ui/commands.ui:300
+#: src/preferences/ui/schedule.ui:610
 msgid "Clear"
 msgstr ""
 
-#: src/prefs.ui:718
-msgid "Button location"
+#: src/preferences/ui/commands.ui:57
+msgid "Run commands"
 msgstr ""
 
-#: src/prefs.ui:733
-msgid "None"
+#: src/preferences/ui/commands.ui:70
+msgid ""
+"<small>You can set custom commands that will be run when the time of the day "
+"changes.</small>"
 msgstr ""
 
-#: src/prefs.ui:734
-msgid "Top bar"
+#: src/preferences/ui/commands.ui:195
+msgid "notify-send \"Hello sunshine!\""
 msgstr ""
 
-#: src/prefs.ui:735
-msgid "System menu"
+#: src/preferences/ui/commands.ui:289
+msgid "notify-send \"Hello moonshine!\""
 msgstr ""
 
-#: src/prefs.ui:773
-msgid "Schedule"
+#: src/preferences/ui/cursor_theme.ui:125 src/preferences/ui/icon_theme.ui:125
+msgid "Variants"
 msgstr ""
 
-#: src/prefs.ui:893 src/prefs.ui:968 src/prefs.ui:1237 src/prefs.ui:1312
+#: src/preferences/ui/cursor_theme.ui:167 src/preferences/ui/gtk_theme.ui:268
+#: src/preferences/ui/icon_theme.ui:167 src/preferences/ui/shell_theme.ui:268
+msgid "Day variant"
+msgstr ""
+
+#: src/preferences/ui/cursor_theme.ui:226 src/preferences/ui/gtk_theme.ui:327
+#: src/preferences/ui/icon_theme.ui:226 src/preferences/ui/shell_theme.ui:327
+msgid "Night variant"
+msgstr ""
+
+#: src/preferences/ui/gtk_theme.ui:151 src/preferences/ui/gtk_theme.ui:226
+#: src/preferences/ui/shell_theme.ui:151 src/preferences/ui/shell_theme.ui:226
 msgid "Manual variants"
 msgstr ""
 
-#: src/prefs.ui:906
+#: src/preferences/ui/gtk_theme.ui:164
 msgid ""
 "<small>You can manually set variants if the extension cannot automatically "
 "detect the day and night variants of your GTK theme. Please <a href="
@@ -429,76 +420,95 @@ msgid ""
 "\">submit a request</a> to get your theme supported.</small>"
 msgstr ""
 
-#: src/prefs.ui:1007 src/prefs.ui:1351 src/prefs.ui:1597 src/prefs.ui:1843
-msgid "Day variant"
+#: src/preferences/ui/ondemand_keyboard_shortcut_dialog.ui:62
+msgid "Press your keyboard shortcut..."
 msgstr ""
 
-#: src/prefs.ui:1063 src/prefs.ui:1407 src/prefs.ui:1653 src/prefs.ui:1899
-msgid "Night variant"
+#: src/preferences/ui/ondemand_keyboard_shortcut_dialog.ui:76
+#: src/preferences/ui/schedule.ui:581
+msgid "Keyboard shortcut"
 msgstr ""
 
-#: src/prefs.ui:1116
-msgid "GTK theme"
+#: src/preferences/ui/ondemand_keyboard_shortcut_dialog.ui:79
+msgid "Cancel"
 msgstr ""
 
-#: src/prefs.ui:1165
+#: src/preferences/ui/schedule.ui:82
+msgid "Automatic time source"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:95
+msgid ""
+"<small>The extension will try to use Night Light or Location Services to "
+"automatically set your current sunrise and sunset times if they are enabled. "
+"If you prefer, you can manually choose a time source.</small>"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:158
+msgid "Manual time source"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:178
+msgid "Night Light"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:193
+msgid "Location Services"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:208
+msgid "Manual schedule"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:223 src/preferences/ui/schedule.ui:539
+#: src/preferences/ui/schedule.ui:719
+msgid "On-demand"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:271
+msgid "No preferences"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:286 src/preferences/ui/schedule.ui:523
+msgid "Manual schedule times"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:328
+msgid "Sunrise"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:364 src/preferences/ui/schedule.ui:471
+msgid ":"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:435
+msgid "Sunset"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:673
+msgid "Button location"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:689
+msgid "None"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:690
+msgid "Top bar"
+msgstr ""
+
+#: src/preferences/ui/schedule.ui:691
+msgid "System menu"
+msgstr ""
+
+#: src/preferences/ui/shell_theme.ui:76
 msgid "Switch Shell variants"
 msgstr ""
 
-#: src/prefs.ui:1250
+#: src/preferences/ui/shell_theme.ui:164
 msgid ""
 "<small>You can manually set variants if the extension cannot automatically "
 "detect the day and night variants of your GNOME Shell theme. Please <a href="
 "\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues"
 "\">submit a request</a> to get your theme supported.</small>"
-msgstr ""
-
-#: src/prefs.ui:1460
-msgid "Shell theme"
-msgstr ""
-
-#: src/prefs.ui:1558 src/prefs.ui:1804
-msgid "Variants"
-msgstr ""
-
-#: src/prefs.ui:1706
-msgid "Icon theme"
-msgstr ""
-
-#: src/prefs.ui:1952
-msgid "Cursor theme"
-msgstr ""
-
-#: src/prefs.ui:2001
-msgid "Switch backgrounds"
-msgstr ""
-
-#: src/prefs.ui:2049 src/prefs.ui:2263
-msgid "Backgrounds"
-msgstr ""
-
-#: src/prefs.ui:2111 src/prefs.ui:2200
-msgid "Select your background image"
-msgstr ""
-
-#: src/prefs.ui:2318
-msgid "Run commands"
-msgstr ""
-
-#: src/prefs.ui:2331
-msgid ""
-"<small>You can set custom commands that will be run when the time of the day "
-"changes.</small>"
-msgstr ""
-
-#: src/prefs.ui:2393 src/prefs.ui:2611
-msgid "Commands"
-msgstr ""
-
-#: src/prefs.ui:2453
-msgid "notify-send \"Hello sunshine!\""
-msgstr ""
-
-#: src/prefs.ui:2544
-msgid "notify-send \"Hello moonshine!\""
 msgstr ""

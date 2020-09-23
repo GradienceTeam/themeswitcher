@@ -1,4 +1,6 @@
 build
 node_modules
 
+**/*.ui~
+
 tests/**/_variants.js
