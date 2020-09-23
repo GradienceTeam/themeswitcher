@@ -1,4 +1,4 @@
-# Night Theme Switcher
+# Night Theme Switcher <!-- omit in toc -->
 
 ![](./res/screenshot.png)
 <!-- Background picture by Adrien Converse from https://unsplash.com/photos/kCrrUx7US04 -->
@@ -6,6 +6,19 @@
 Automatically toggle your light and dark GTK, GNOME Shell, icon and cursor themes variants, switch backgrounds and run custom commands at sunset and sunrise.
 
 Supports Night Light, Location Services, manual schedule and on-demand switch.
+
+---
+
+## Table of contents <!-- omit in toc -->
+
+- [Theme compatibility](#theme-compatibility)
+	- [GTK themes](#gtk-themes)
+	- [Shell themes](#shell-themes)
+- [Graphical installation](#graphical-installation)
+- [Command line installation](#command-line-installation)
+- [Contributing](#contributing)
+
+---
 
 ## Theme compatibility
 

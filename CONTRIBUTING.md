@@ -1,6 +1,20 @@
-# Contributing
+# Contributing <!-- omit in toc -->
 
 You're welcome to contribute to the [code](#contributing-to-the-code) or to the [translations](#contributing-to-the-translations)!
+
+---
+
+## Table of contents <!-- omit in toc -->
+
+- [Contributing to the code](#contributing-to-the-code)
+	- [Coding style](#coding-style)
+	- [Copyright notice](#copyright-notice)
+	- [Themes and unit tests](#themes-and-unit-tests)
+- [Contributing to the translations](#contributing-to-the-translations)
+	- [Updating an existing translation](#updating-an-existing-translation)
+	- [Adding a new translation](#adding-a-new-translation)
+
+---
 
 ## Contributing to the code
 
