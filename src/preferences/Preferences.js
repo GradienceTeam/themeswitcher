@@ -31,6 +31,8 @@ const { IconThemePreferences } = Me.imports.preferences.IconTheme;
 const { SchedulePreferences } = Me.imports.preferences.Schedule;
 const { ShellThemePreferences } = Me.imports.preferences.ShellTheme;
 
+const { Headerbar } = Me.imports.preferences.Headerbar;
+
 
 var Preferences = class {
 
@@ -66,10 +68,7 @@ var Preferences = class {
         const commandsPreferences = new CommandsPreferences(this.settings);
         this.widget.add_titled(commandsPreferences.widget, commandsPreferences.name, commandsPreferences.title);
 
-        this.titlebar = new Gtk.StackSwitcher({
-            stack: this.widget,
-            visible: true,
-        });
+        this.headerbar = new Headerbar(this.widget);
     }
 
 };

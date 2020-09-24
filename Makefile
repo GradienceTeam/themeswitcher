@@ -32,6 +32,7 @@ build: build-clean
 		--extra-source=./config.js \
 		--extra-source=./convenience.js \
 		--extra-source=./utils.js \
+		--extra-source=./icons/ \
 		--extra-source=./modules/ \
 		--extra-source=./preferences/ \
 		--extra-source=./schemas/ \

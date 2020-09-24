@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 37\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-23 20:13+0200\n"
+"POT-Creation-Date: 2020-09-24 13:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,26 +41,28 @@ msgid "Switch to day theme"
 msgstr ""
 
 #: src/preferences/Backgrounds.js:36 src/preferences/ui/backgrounds.ui:145
+#: src/preferences/ui/headerbar.ui:338
 msgid "Backgrounds"
 msgstr ""
 
 #: src/preferences/Commands.js:36 src/preferences/ui/commands.ui:132
+#: src/preferences/ui/headerbar.ui:391
 msgid "Commands"
 msgstr ""
 
-#: src/preferences/CursorTheme.js:38
+#: src/preferences/CursorTheme.js:38 src/preferences/ui/headerbar.ui:285
 msgid "Cursor theme"
 msgstr ""
 
-#: src/preferences/GtkTheme.js:38
+#: src/preferences/GtkTheme.js:38 src/preferences/ui/headerbar.ui:126
 msgid "GTK theme"
 msgstr ""
 
-#: src/preferences/IconTheme.js:38
+#: src/preferences/IconTheme.js:38 src/preferences/ui/headerbar.ui:232
 msgid "Icon theme"
 msgstr ""
 
-#: src/preferences/Schedule.js:38
+#: src/preferences/Schedule.js:38 src/preferences/ui/headerbar.ui:73
 msgid "Schedule"
 msgstr ""
 
@@ -68,7 +70,7 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: src/preferences/ShellTheme.js:38
+#: src/preferences/ShellTheme.js:38 src/preferences/ui/headerbar.ui:179
 msgid "Shell theme"
 msgstr ""
 
