@@ -73,7 +73,7 @@ var Backgrounder = class {
 
     _connectSettings() {
         logDebug('Connecting Backgrounder to settings...');
-        this._backgroundChangedConnect = e.settings.backgrounds.connect('time-changed', this._onBackgroundChanged.bind(this));
+        this._backgroundChangedConnect = e.settings.backgrounds.connect('background-changed', this._onBackgroundChanged.bind(this));
         this._systemBackgroundChangedConnect = e.settings.system.connect('background-changed', this._onSystemBackgroundChanged.bind(this));
     }
 
