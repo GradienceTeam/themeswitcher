@@ -45,6 +45,7 @@ build: build-clean
 .PHONY: build-clean
 build-clean:
 	-rm -rf ./build
+	find ./src/ -type f -name "*.ui~" -delete
 
 .PHONY: install
 install: uninstall
