@@ -57,7 +57,7 @@ Author: Romain Vigier
                   <object class="GtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-schedule-symbolic</property>
+                    <property name="icon_name">nightthemeswitcher-schedule-symbolic</property>
                     <property name="icon_size">2</property>
                   </object>
                   <packing>
@@ -110,7 +110,7 @@ Author: Romain Vigier
                   <object class="GtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-gtktheme-symbolic</property>
+                    <property name="icon_name">nightthemeswitcher-gtktheme-symbolic</property>
                     <property name="icon_size">2</property>
                   </object>
                   <packing>
@@ -163,7 +163,7 @@ Author: Romain Vigier
                   <object class="GtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-shelltheme-symbolic</property>
+                    <property name="icon_name">nightthemeswitcher-shelltheme-symbolic</property>
                     <property name="icon_size">2</property>
                   </object>
                   <packing>
@@ -216,7 +216,7 @@ Author: Romain Vigier
                   <object class="GtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-icontheme-symbolic</property>
+                    <property name="icon_name">nightthemeswitcher-icontheme-symbolic</property>
                     <property name="icon_size">2</property>
                   </object>
                   <packing>
@@ -269,7 +269,7 @@ Author: Romain Vigier
                   <object class="GtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-cursortheme-symbolic</property>
+                    <property name="icon_name">nightthemeswitcher-cursortheme-symbolic</property>
                     <property name="icon_size">2</property>
                   </object>
                   <packing>
@@ -322,7 +322,7 @@ Author: Romain Vigier
                   <object class="GtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-backgrounds-symbolic</property>
+                    <property name="icon_name">nightthemeswitcher-backgrounds-symbolic</property>
                     <property name="icon_size">2</property>
                   </object>
                   <packing>
@@ -375,7 +375,7 @@ Author: Romain Vigier
                   <object class="GtkImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-commands-symbolic</property>
+                    <property name="icon_name">nightthemeswitcher-commands-symbolic</property>
                     <property name="icon_size">2</property>
                   </object>
                   <packing>
