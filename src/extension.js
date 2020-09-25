@@ -47,7 +47,7 @@ var commander = null;
 
 function init() {
     logDebug('Initializing extension...');
-    compat.initTranslations(Me.metadata.uuid);
+    compat.initTranslations(Me.metadata['gettext-domain']);
     logDebug('Extension initialized.');
 }
 

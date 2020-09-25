@@ -31,7 +31,7 @@ const e = Me.imports.extension;
 const { logDebug, findShellAggregateMenuItemPosition } = Me.imports.utils;
 const { keyBindingAutoRepeat, getActor } = Me.imports.compat;
 
-const Gettext = imports.gettext.domain(Me.metadata.uuid);
+const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
 const _ = Gettext.gettext;
 
 /**

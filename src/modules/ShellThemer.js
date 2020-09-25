@@ -26,7 +26,7 @@ const e = Me.imports.extension;
 const { logDebug, notifyError, getInstalledShellThemes, getShellThemeStylesheet, applyShellStylesheet } = Me.imports.utils;
 const { ShellVariants } = Me.imports.modules.ShellVariants;
 
-const Gettext = imports.gettext.domain(Me.metadata.uuid);
+const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
 const _ = Gettext.gettext;
 
 /**

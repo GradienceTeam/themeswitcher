@@ -23,7 +23,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const utils = Me.imports.utils;
 
-const Gettext = imports.gettext.domain(Me.metadata.uuid);
+const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
 const _ = Gettext.gettext;
 
 

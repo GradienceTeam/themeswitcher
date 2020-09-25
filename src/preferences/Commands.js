@@ -21,7 +21,7 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const Gettext = imports.gettext.domain(Me.metadata.uuid);
+const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
 const _ = Gettext.gettext;
 
 

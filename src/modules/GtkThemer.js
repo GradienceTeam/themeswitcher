@@ -25,7 +25,7 @@ const e = Me.imports.extension;
 const { logDebug, notifyError, getInstalledGtkThemes } = Me.imports.utils;
 const { GtkVariants } = Me.imports.modules.GtkVariants;
 
-const Gettext = imports.gettext.domain(Me.metadata.uuid);
+const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
 const _ = Gettext.gettext;
 
 
