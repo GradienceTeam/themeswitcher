@@ -16,11 +16,14 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-const { Shell, St } = imports.gi;
+const { Gio, GLib, Shell, St } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
-const { main, panelMenu: PanelMenu, popupMenu: PopupMenu } = imports.ui;
+const { main } = imports.ui;
+
+const { Button: PanelMenuButton } = imports.ui.panelMenu;
+const { PopupImageMenuItem } = imports.ui.popupMenu;
 
 const Me = extensionUtils.getCurrentExtension();
 
@@ -144,17 +147,16 @@ var TimerOndemand = class {
 
     _addButtonToPanel() {
         logDebug('Adding On-demand Timer button to the panel...');
-        const getIconNameForCurrentTime = () => e.timer.time === 'day' ? 'weather-clear-symbolic' : 'weather-clear-night-symbolic';
         const icon = new St.Icon({
-            icon_name: getIconNameForCurrentTime(),
+            gicon: this._getIconForTime(e.timer.time),
             style_class: 'system-status-icon',
         });
-        this._button = new PanelMenu.Button(0.0);
+        this._button = new PanelMenuButton(0.0);
         const buttonActor = getActor(this._button);
         buttonActor.add_actor(icon);
         buttonActor.connect('button-press-event', () => {
             this._toggleTime();
-            icon.icon_name = getIconNameForCurrentTime();
+            icon.gicon = this._getIconForTime(e.timer.time);
         });
         main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
         logDebug('Added On-demand Timer button to the panel.');
@@ -164,16 +166,23 @@ var TimerOndemand = class {
         logDebug('Adding On-demand Timer button to the menu...');
         const aggregateMenu = main.panel.statusArea.aggregateMenu;
         const position = findShellAggregateMenuItemPosition(aggregateMenu._system.menu) - 1;
-        const getLabelForCurrentTime = () => e.timer.time === 'day' ? _('Switch to night theme') : _('Switch to day theme');
-        const getIconNameForCurrentTime = () => e.timer.time === 'day' ? 'weather-clear-night-symbolic' : 'weather-clear-symbolic';
-        this._button = new PopupMenu.PopupImageMenuItem(getLabelForCurrentTime(), getIconNameForCurrentTime());
+        this._button = new PopupImageMenuItem(this._getLabelForTime(e.timer.time), this._getIconForTime(e.timer.time));
         this._button.connect('activate', () => {
             this._toggleTime();
-            this._button.label.text = getLabelForCurrentTime();
-            this._button.setIcon(getIconNameForCurrentTime());
+            this._button.label.text = this._getLabelForTime(e.timer.time);
+            this._button.setIcon(this._getIconForTime(e.timer.time));
         });
         aggregateMenu.menu.addMenuItem(this._button, position);
         logDebug('Added On-demand Timer button to the menu.');
+    }
+
+    _getIconForTime(time) {
+        const name = time === 'day' ? 'nightthemeswitcher-ondemand-off-symbolic' : 'nightthemeswitcher-ondemand-on-symbolic';
+        return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, 'icons', 'hicolor', 'scalable', 'status', `${name}.svg`]));
+    }
+
+    _getLabelForTime(time) {
+        return time === 'day' ? _('Switch to night theme') : _('Switch to day theme');
     }
 
     _toggleTime() {
