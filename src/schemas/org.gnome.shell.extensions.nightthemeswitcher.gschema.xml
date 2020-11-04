@@ -131,6 +131,11 @@
 			<summary>Time source</summary>
 			<description>The source used to check current time</description>
 		</key>
+		<key name="nightlight-follow-disable" type="b">
+			<default>false</default>
+			<summary>Follow Night Light "Disable until tomorrow"</summary>
+			<description>Switch back to day time when Night Light is temporarily disabled</description>
+		</key>
 		<key name="ondemand-time" type="s">
 			<choices>
 				<choice value="day"/>

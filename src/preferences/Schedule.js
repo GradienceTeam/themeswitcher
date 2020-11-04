@@ -116,6 +116,9 @@ var SchedulePreferences = class {
         const manualPrefsStack = this._builder.get_object('manual_prefs_stack');
         const updateManualPrefsStackVisible = () => {
             switch (settings.time.timeSource) {
+            case 'nightlight':
+                manualPrefsStack.set_visible_child_name('nightlight');
+                break;
             case 'schedule':
                 manualPrefsStack.set_visible_child_name('schedule_times');
                 break;
@@ -128,6 +131,14 @@ var SchedulePreferences = class {
         };
         settings.time.connect('time-source-changed', () => updateManualPrefsStackVisible());
         updateManualPrefsStackVisible();
+
+        const nightlightFollowDisableSwitch = this._builder.get_object('nightlight_follow_disable_switch');
+        settings.time.settings.bind(
+            'nightlight-follow-disable',
+            nightlightFollowDisableSwitch,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
 
         const scheduleTimesSunriseHoursSpin = this._builder.get_object('schedule_times_sunrise_hours_spin');
         scheduleTimesSunriseHoursSpin.value = Math.trunc(settings.time.scheduleSunrise);

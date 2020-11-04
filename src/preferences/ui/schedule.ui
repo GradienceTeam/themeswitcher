@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.36.0 
+<!-- Generated with glade 3.38.1 
 
 Copyright (C) 2020
 
@@ -27,57 +27,73 @@ Author: Romain Vigier
   <!-- interface-name Night Theme Switcher -->
   <!-- interface-copyright 2020 -->
   <!-- interface-authors Romain Vigier -->
+  <object class="GtkAdjustment" id="sunrise_hours_adjustment">
+    <property name="upper">23</property>
+    <property name="step-increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="sunrise_minutes_adjustment">
+    <property name="upper">59</property>
+    <property name="step-increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="sunset_hours_adjustment">
+    <property name="upper">23</property>
+    <property name="step-increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="sunset_minutes_adjustment">
+    <property name="upper">59</property>
+    <property name="step-increment">1</property>
+  </object>
   <object class="GtkBox" id="schedule">
-    <property name="width_request">600</property>
+    <property name="width-request">600</property>
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="halign">center</property>
     <property name="valign">start</property>
-    <property name="margin_left">36</property>
-    <property name="margin_right">36</property>
-    <property name="margin_start">36</property>
-    <property name="margin_end">36</property>
-    <property name="margin_top">36</property>
-    <property name="margin_bottom">36</property>
+    <property name="margin-left">36</property>
+    <property name="margin-right">36</property>
+    <property name="margin-start">36</property>
+    <property name="margin-end">36</property>
+    <property name="margin-top">36</property>
+    <property name="margin-bottom">36</property>
     <property name="orientation">vertical</property>
     <property name="spacing">30</property>
-    <property name="baseline_position">top</property>
+    <property name="baseline-position">top</property>
     <child>
       <object class="GtkFrame" id="auto">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label_xalign">0</property>
+        <property name="can-focus">False</property>
+        <property name="label-xalign">0</property>
         <child>
           <object class="GtkListBox">
-            <property name="width_request">600</property>
+            <property name="width-request">600</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="selection_mode">none</property>
+            <property name="can-focus">False</property>
+            <property name="selection-mode">none</property>
             <child>
               <object class="GtkListBoxRow">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
+                <property name="can-focus">True</property>
                 <property name="activatable">False</property>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_left">16</property>
-                    <property name="margin_right">16</property>
-                    <property name="margin_start">16</property>
-                    <property name="margin_end">16</property>
-                    <property name="margin_top">16</property>
-                    <property name="margin_bottom">16</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-left">16</property>
+                    <property name="margin-right">16</property>
+                    <property name="margin-start">16</property>
+                    <property name="margin-end">16</property>
+                    <property name="margin-top">16</property>
+                    <property name="margin-bottom">16</property>
                     <property name="spacing">30</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">start</property>
                             <property name="label" translatable="yes">Automatic time source</property>
                           </object>
@@ -90,12 +106,12 @@ Author: Romain Vigier
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">start</property>
                             <property name="label" translatable="yes">&lt;small&gt;The extension will try to use Night Light or Location Services to automatically set your current sunrise and sunset times if they are enabled. If you prefer, you can manually choose a time source.&lt;/small&gt;</property>
-                            <property name="use_markup">True</property>
+                            <property name="use-markup">True</property>
                             <property name="wrap">True</property>
-                            <property name="max_width_chars">50</property>
+                            <property name="max-width-chars">50</property>
                             <property name="xalign">0</property>
                             <style>
                               <class name="dim-label"/>
@@ -117,7 +133,7 @@ Author: Romain Vigier
                     <child>
                       <object class="GtkSwitch" id="auto_switch">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can-focus">True</property>
                         <property name="halign">end</property>
                         <property name="valign">center</property>
                         <property name="active">True</property>
@@ -147,13 +163,13 @@ Author: Romain Vigier
     <child>
       <object class="GtkBox" id="manual">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">8</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="halign">start</property>
             <property name="label" translatable="yes">Manual time source</property>
             <attributes>
@@ -168,19 +184,19 @@ Author: Romain Vigier
         </child>
         <child>
           <object class="GtkBox">
-            <property name="width_request">600</property>
+            <property name="width-request">600</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="halign">center</property>
             <property name="homogeneous">True</property>
             <child>
               <object class="GtkRadioButton" id="manual_nightlight_radio">
                 <property name="label" translatable="yes">Night Light</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
                 <property name="active">True</property>
-                <property name="draw_indicator">False</property>
+                <property name="draw-indicator">False</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -192,9 +208,9 @@ Author: Romain Vigier
               <object class="GtkRadioButton" id="manual_location_radio">
                 <property name="label" translatable="yes">Location Services</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="draw_indicator">False</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="draw-indicator">False</property>
                 <property name="group">manual_nightlight_radio</property>
               </object>
               <packing>
@@ -207,9 +223,9 @@ Author: Romain Vigier
               <object class="GtkRadioButton" id="manual_schedule_radio">
                 <property name="label" translatable="yes">Manual schedule</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="draw_indicator">False</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="draw-indicator">False</property>
                 <property name="group">manual_nightlight_radio</property>
               </object>
               <packing>
@@ -222,9 +238,9 @@ Author: Romain Vigier
               <object class="GtkRadioButton" id="manual_ondemand_radio">
                 <property name="label" translatable="yes">On-demand</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="draw_indicator">False</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="draw-indicator">False</property>
                 <property name="group">manual_nightlight_radio</property>
               </object>
               <packing>
@@ -253,14 +269,14 @@ Author: Romain Vigier
     <child>
       <object class="GtkStack" id="manual_prefs_stack">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="vhomogeneous">False</property>
-        <property name="transition_type">crossfade</property>
-        <property name="interpolate_size">True</property>
+        <property name="transition-type">crossfade</property>
+        <property name="interpolate-size">True</property>
         <child>
           <object class="GtkBox" id="none">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
               <placeholder/>
@@ -272,16 +288,146 @@ Author: Romain Vigier
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="schedule_times">
-            <property name="width_request">600</property>
+          <object class="GtkBox" id="nightlight">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Night Light</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
+                <child>
+                  <object class="GtkListBox">
+                    <property name="width-request">600</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="selection-mode">none</property>
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="activatable">False</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-left">16</property>
+                            <property name="margin-right">16</property>
+                            <property name="margin-start">16</property>
+                            <property name="margin-end">16</property>
+                            <property name="margin-top">16</property>
+                            <property name="margin-bottom">16</property>
+                            <property name="spacing">30</property>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="label" translatable="yes">Follow &lt;i&gt;Disable until tomorrow&lt;/i&gt;</property>
+                                    <property name="use-markup">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="label" translatable="yes">&lt;small&gt;When Night Light is temporarily disabled, the extension will switch to day variants.&lt;/small&gt;</property>
+                                    <property name="use-markup">True</property>
+                                    <property name="wrap">True</property>
+                                    <property name="max-width-chars">50</property>
+                                    <property name="xalign">0</property>
+                                    <style>
+                                      <class name="dim-label"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkSwitch" id="nightlight_follow_disable_switch">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="label_item">
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="name">nightlight</property>
+            <property name="title" translatable="yes">Night Light</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="schedule_times">
+            <property name="width-request">600</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <property name="spacing">8</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="label" translatable="yes">Manual schedule times</property>
                 <attributes>
@@ -297,34 +443,34 @@ Author: Romain Vigier
             <child>
               <object class="GtkFrame">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label_xalign">0</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
                 <child>
                   <object class="GtkListBox">
-                    <property name="width_request">600</property>
+                    <property name="width-request">600</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="selection_mode">none</property>
+                    <property name="can-focus">False</property>
+                    <property name="selection-mode">none</property>
                     <child>
                       <object class="GtkListBoxRow">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can-focus">True</property>
                         <property name="activatable">False</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="margin_left">16</property>
-                            <property name="margin_right">16</property>
-                            <property name="margin_start">16</property>
-                            <property name="margin_end">16</property>
-                            <property name="margin_top">16</property>
-                            <property name="margin_bottom">16</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-left">16</property>
+                            <property name="margin-right">16</property>
+                            <property name="margin-start">16</property>
+                            <property name="margin-end">16</property>
+                            <property name="margin-top">16</property>
+                            <property name="margin-bottom">16</property>
                             <property name="spacing">30</property>
                             <child>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">Sunrise</property>
                               </object>
                               <packing>
@@ -336,15 +482,15 @@ Author: Romain Vigier
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="halign">end</property>
                                 <property name="spacing">8</property>
                                 <child>
                                   <object class="GtkSpinButton" id="schedule_times_sunrise_hours_spin">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="max_length">2</property>
-                                    <property name="width_chars">2</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="max-length">2</property>
+                                    <property name="width-chars">2</property>
                                     <property name="text">0</property>
                                     <property name="orientation">vertical</property>
                                     <property name="adjustment">sunrise_hours_adjustment</property>
@@ -360,7 +506,7 @@ Author: Romain Vigier
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">:</property>
                                   </object>
                                   <packing>
@@ -372,9 +518,9 @@ Author: Romain Vigier
                                 <child>
                                   <object class="GtkSpinButton" id="schedule_times_sunrise_minutes_spin">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="max_length">2</property>
-                                    <property name="width_chars">2</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="max-length">2</property>
+                                    <property name="width-chars">2</property>
                                     <property name="text">0</property>
                                     <property name="orientation">vertical</property>
                                     <property name="adjustment">sunrise_minutes_adjustment</property>
@@ -401,13 +547,13 @@ Author: Romain Vigier
                     <child>
                       <object class="GtkListBoxRow">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can-focus">True</property>
                         <property name="activatable">False</property>
                         <property name="selectable">False</property>
                         <child>
                           <object class="GtkSeparator">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                           </object>
                         </child>
                       </object>
@@ -415,23 +561,23 @@ Author: Romain Vigier
                     <child>
                       <object class="GtkListBoxRow">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can-focus">True</property>
                         <property name="activatable">False</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="margin_left">16</property>
-                            <property name="margin_right">16</property>
-                            <property name="margin_start">16</property>
-                            <property name="margin_end">16</property>
-                            <property name="margin_top">16</property>
-                            <property name="margin_bottom">16</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-left">16</property>
+                            <property name="margin-right">16</property>
+                            <property name="margin-start">16</property>
+                            <property name="margin-end">16</property>
+                            <property name="margin-top">16</property>
+                            <property name="margin-bottom">16</property>
                             <property name="spacing">30</property>
                             <child>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">Sunset</property>
                               </object>
                               <packing>
@@ -443,15 +589,15 @@ Author: Romain Vigier
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="halign">end</property>
                                 <property name="spacing">8</property>
                                 <child>
                                   <object class="GtkSpinButton" id="schedule_times_sunset_hours_spin">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="max_length">2</property>
-                                    <property name="width_chars">2</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="max-length">2</property>
+                                    <property name="width-chars">2</property>
                                     <property name="text">0</property>
                                     <property name="orientation">vertical</property>
                                     <property name="adjustment">sunset_hours_adjustment</property>
@@ -467,7 +613,7 @@ Author: Romain Vigier
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">:</property>
                                   </object>
                                   <packing>
@@ -479,9 +625,9 @@ Author: Romain Vigier
                                 <child>
                                   <object class="GtkSpinButton" id="schedule_times_sunset_minutes_spin">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="max_length">2</property>
-                                    <property name="width_chars">2</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="max-length">2</property>
+                                    <property name="width-chars">2</property>
                                     <property name="text">0</property>
                                     <property name="orientation">vertical</property>
                                     <property name="adjustment">sunset_minutes_adjustment</property>
@@ -521,20 +667,20 @@ Author: Romain Vigier
           <packing>
             <property name="name">schedule_times</property>
             <property name="title" translatable="yes">Manual schedule times</property>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
           <object class="GtkBox" id="ondemand">
-            <property name="width_request">600</property>
+            <property name="width-request">600</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <property name="spacing">8</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="label" translatable="yes">On-demand</property>
                 <attributes>
@@ -550,34 +696,34 @@ Author: Romain Vigier
             <child>
               <object class="GtkFrame">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label_xalign">0</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
                 <child>
                   <object class="GtkListBox">
-                    <property name="width_request">600</property>
+                    <property name="width-request">600</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="selection_mode">none</property>
+                    <property name="can-focus">False</property>
+                    <property name="selection-mode">none</property>
                     <child>
                       <object class="GtkListBoxRow">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can-focus">True</property>
                         <property name="activatable">False</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="margin_left">16</property>
-                            <property name="margin_right">16</property>
-                            <property name="margin_start">16</property>
-                            <property name="margin_end">16</property>
-                            <property name="margin_top">16</property>
-                            <property name="margin_bottom">16</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-left">16</property>
+                            <property name="margin-right">16</property>
+                            <property name="margin-start">16</property>
+                            <property name="margin-end">16</property>
+                            <property name="margin-top">16</property>
+                            <property name="margin-bottom">16</property>
                             <property name="spacing">30</property>
                             <child>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">Keyboard shortcut</property>
                               </object>
                               <packing>
@@ -589,13 +735,13 @@ Author: Romain Vigier
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <child>
                                   <object class="GtkButton" id="ondemand_shortcut_button">
                                     <property name="label" translatable="yes">Choose</property>
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">True</property>
                                     <property name="halign">end</property>
                                     <property name="valign">center</property>
                                   </object>
@@ -609,8 +755,8 @@ Author: Romain Vigier
                                   <object class="GtkButton" id="ondemand_shortcut_clear_button">
                                     <property name="label" translatable="yes">Clear</property>
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">True</property>
                                     <style>
                                       <class name="destructive-action"/>
                                     </style>
@@ -628,7 +774,7 @@ Author: Romain Vigier
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
-                                <property name="pack_type">end</property>
+                                <property name="pack-type">end</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -639,13 +785,13 @@ Author: Romain Vigier
                     <child>
                       <object class="GtkListBoxRow">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can-focus">True</property>
                         <property name="activatable">False</property>
                         <property name="selectable">False</property>
                         <child>
                           <object class="GtkSeparator">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                           </object>
                         </child>
                       </object>
@@ -653,23 +799,23 @@ Author: Romain Vigier
                     <child>
                       <object class="GtkListBoxRow">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can-focus">True</property>
                         <property name="activatable">False</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="margin_left">16</property>
-                            <property name="margin_right">16</property>
-                            <property name="margin_start">16</property>
-                            <property name="margin_end">16</property>
-                            <property name="margin_top">16</property>
-                            <property name="margin_bottom">16</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-left">16</property>
+                            <property name="margin-right">16</property>
+                            <property name="margin-start">16</property>
+                            <property name="margin-end">16</property>
+                            <property name="margin-top">16</property>
+                            <property name="margin-bottom">16</property>
                             <property name="spacing">30</property>
                             <child>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">Button location</property>
                               </object>
                               <packing>
@@ -681,10 +827,10 @@ Author: Romain Vigier
                             <child>
                               <object class="GtkComboBoxText" id="ondemand_button_placement_combo">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="halign">end</property>
                                 <property name="active">1</property>
-                                <property name="active_id">panel</property>
+                                <property name="active-id">panel</property>
                                 <items>
                                   <item id="none" translatable="yes">None</item>
                                   <item id="panel" translatable="yes">Top bar</item>
@@ -717,7 +863,7 @@ Author: Romain Vigier
           <packing>
             <property name="name">ondemand</property>
             <property name="title" translatable="yes">On-demand</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
@@ -727,21 +873,5 @@ Author: Romain Vigier
         <property name="position">2</property>
       </packing>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="sunrise_hours_adjustment">
-    <property name="upper">23</property>
-    <property name="step_increment">1</property>
-  </object>
-  <object class="GtkAdjustment" id="sunrise_minutes_adjustment">
-    <property name="upper">59</property>
-    <property name="step_increment">1</property>
-  </object>
-  <object class="GtkAdjustment" id="sunset_hours_adjustment">
-    <property name="upper">23</property>
-    <property name="step_increment">1</property>
-  </object>
-  <object class="GtkAdjustment" id="sunset_minutes_adjustment">
-    <property name="upper">59</property>
-    <property name="step_increment">1</property>
   </object>
 </interface>
