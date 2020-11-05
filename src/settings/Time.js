@@ -141,7 +141,7 @@ var TimeSettings = class {
     }
 
     _onNightlightFollowDisableChanged(_settings, _changedKey) {
-        logDebug(`Follow Night Light "Disable unti tomorrow" has been ${this.nightlightFollowDisable ? 'ena' : 'disa'}bled.`);
+        logDebug(`Follow Night Light "Disable until tomorrow" has been ${this.nightlightFollowDisable ? 'ena' : 'disa'}bled.`);
         this.emit('nightlight-follow-disable-changed', this.nightlightFollowDisable);
     }
 
