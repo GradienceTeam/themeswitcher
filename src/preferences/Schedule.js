@@ -49,6 +49,14 @@ var SchedulePreferences = class {
             Gio.SettingsBindFlags.INVERT_BOOLEAN
         );
 
+        const alwaysEnableOndemandSwitch = this._builder.get_object('always_enable_ondemand_switch');
+        settings.time.settings.bind(
+            'always-enable-ondemand',
+            alwaysEnableOndemandSwitch,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+
         const manual = this._builder.get_object('manual');
         settings.time.settings.bind(
             'manual-time-source',
@@ -122,9 +130,6 @@ var SchedulePreferences = class {
             case 'schedule':
                 manualPrefsStack.set_visible_child_name('schedule_times');
                 break;
-            case 'ondemand':
-                manualPrefsStack.set_visible_child_name('ondemand');
-                break;
             default:
                 manualPrefsStack.set_visible_child_name('none');
             }
@@ -197,6 +202,14 @@ var SchedulePreferences = class {
             const newTime = hour + newMinutes;
             settings.time.scheduleSunset = newTime;
         });
+
+        const ondemand = this._builder.get_object('ondemand');
+        const updateOndemandVisibility = () => {
+            ondemand.visible = settings.time.alwaysEnableOndemand || settings.time.timeSource === 'ondemand';
+        };
+        settings.time.connect('always-enable-ondemand-changed', () => updateOndemandVisibility());
+        settings.time.connect('time-source-changed', () => updateOndemandVisibility());
+        updateOndemandVisibility();
 
         const ondemandShortcutButton = this._builder.get_object('ondemand_shortcut_button');
         const updateOndemandShortcutButtonLabel = () => {

@@ -136,6 +136,11 @@
 			<summary>Follow Night Light "Disable until tomorrow"</summary>
 			<description>Switch back to day time when Night Light is temporarily disabled</description>
 		</key>
+		<key name="always-enable-ondemand" type="b">
+			<default>false</default>
+			<summary>Always enable the on-demand timer</summary>
+			<description>The on-demand timer will always be enabled alongside other timers</description>
+		</key>
 		<key name="ondemand-time" type="s">
 			<choices>
 				<choice value="day"/>

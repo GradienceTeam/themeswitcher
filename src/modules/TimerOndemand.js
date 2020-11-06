@@ -47,6 +47,7 @@ var TimerOndemand = class {
         this._previousKeybinding = null;
         this._ondemandKeybindingConnect = null;
         this._ondemandButtonPlacementConnect = null;
+        this._timeChangedConnect = null;
     }
 
     enable() {
@@ -54,12 +55,14 @@ var TimerOndemand = class {
         this._connectSettings();
         this._addKeybinding();
         this._addButton();
+        this._connectTimer();
         this.emit('time-changed', this.time);
         logDebug('On-demand Timer enabled.');
     }
 
     disable() {
         logDebug('Disabling On-demand Timer...');
+        this._disconnectTimer();
         this._removeKeybinding();
         this._removeButton();
         this._disconnectSettings();
@@ -90,6 +93,19 @@ var TimerOndemand = class {
         }
     }
 
+    _connectTimer() {
+        logDebug('Connecting On-demand Timer to Timer...');
+        this._timeChangedConnect = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
+    }
+
+    _disconnectTimer() {
+        if (this._timeChangedConnect) {
+            e.timer.disconnect(this._timeChangedConnect);
+            this._timeChangedConnect = null;
+        }
+        logDebug('Disconnected On-demand Timer from Timer.');
+    }
+
 
     _onOndemandKeybindingChanged(_settings, _keybinding) {
         this._removeKeybinding();
@@ -99,6 +115,10 @@ var TimerOndemand = class {
     _onOndemandButtonPlacementChanged(_settings, _placement) {
         this._removeButton();
         this._addButton();
+    }
+
+    _onTimeChanged(_timer, _newTime) {
+        this._updateButton();
     }
 
 
@@ -145,6 +165,14 @@ var TimerOndemand = class {
         }
     }
 
+    _updateButton() {
+        if (this._button) {
+            logDebug('Updating On-demand Timer button state...');
+            this._button.update();
+            logDebug('Updated On-demand Timer button state.');
+        }
+    }
+
     _addButtonToPanel() {
         logDebug('Adding On-demand Timer button to the panel...');
         const icon = new St.Icon({
@@ -154,9 +182,11 @@ var TimerOndemand = class {
         this._button = new PanelMenuButton(0.0);
         const buttonActor = getActor(this._button);
         buttonActor.add_actor(icon);
+        this._button.update = () => {
+            icon.gicon = this._getIconForTime(e.timer.time);
+        };
         buttonActor.connect('button-press-event', () => {
             this._toggleTime();
-            icon.gicon = this._getIconForTime(e.timer.time);
         });
         main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
         logDebug('Added On-demand Timer button to the panel.');
@@ -167,10 +197,12 @@ var TimerOndemand = class {
         const aggregateMenu = main.panel.statusArea.aggregateMenu;
         const position = findShellAggregateMenuItemPosition(aggregateMenu._system.menu) - 1;
         this._button = new PopupImageMenuItem(this._getLabelForTime(e.timer.time), this._getIconForTime(e.timer.time));
-        this._button.connect('activate', () => {
-            this._toggleTime();
+        this._button.update = () => {
             this._button.label.text = this._getLabelForTime(e.timer.time);
             this._button.setIcon(this._getIconForTime(e.timer.time));
+        };
+        this._button.connect('activate', () => {
+            this._toggleTime();
         });
         aggregateMenu.menu.addMenuItem(this._button, position);
         logDebug('Added On-demand Timer button to the menu.');

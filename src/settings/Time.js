@@ -38,6 +38,7 @@ var TimeSettings = class {
         this._timeSourceChangedConnect = this.settings.connect('changed::time-source', this._onTimeSourceChanged.bind(this));
         this._manualTimeSourceChangedConnect = this.settings.connect('changed::manual-time-source', this._onManualTimeSourceChanged.bind(this));
         this._nightlightFollowDisableConnect = this.settings.connect('changed::nightlight-follow-disable', this._onNightlightFollowDisableChanged.bind(this));
+        this._alwaysEnableOndemandConnect = this.settings.connect('changed::always-enable-ondemand', this._onAlwaysEnableOndemandChanged.bind(this));
         this._ondemandKeybindingChangedConnect = this.settings.connect('changed::nightthemeswitcher-ondemand-keybinding', this._onOndemandKeybindingChanged.bind(this));
         this._ondemandButtonPlacementChangedConnect = this.settings.connect('changed::ondemand-button-placement', this._onOndemandButtonPlacementChanged.bind(this));
         logDebug('System time signals connected.');
@@ -48,6 +49,7 @@ var TimeSettings = class {
         this.settings.disconnect(this._timeSourceChangedConnect);
         this.settings.disconnect(this._manualTimeSourceChangedConnect);
         this.settings.disconnect(this._nightlightFollowDisableConnect);
+        this.settings.disconnect(this._alwaysEnableOndemandConnect);
         this.settings.disconnect(this._ondemandKeybindingChangedConnect);
         this.settings.disconnect(this._ondemandButtonPlacementChangedConnect);
         logDebug('Time settings signals disconnected.');
@@ -81,6 +83,15 @@ var TimeSettings = class {
     set nightlightFollowDisable(value) {
         if (value !== this.nightlightFollowDisable)
             this.settings.set_boolean('nightlight-follow-disable', value);
+    }
+
+    get alwaysEnableOndemand() {
+        return this.settings.get_boolean('always-enable-ondemand');
+    }
+
+    set alwaysEnableOndemand(value) {
+        if (value !== this.alwaysEnableOndemand)
+            this.settings.set_boolean('always-enable-ondemand', value);
     }
 
     get ondemandTime() {
@@ -143,6 +154,11 @@ var TimeSettings = class {
     _onNightlightFollowDisableChanged(_settings, _changedKey) {
         logDebug(`Follow Night Light "Disable until tomorrow" has been ${this.nightlightFollowDisable ? 'ena' : 'disa'}bled.`);
         this.emit('nightlight-follow-disable-changed', this.nightlightFollowDisable);
+    }
+
+    _onAlwaysEnableOndemandChanged(_settings, _changedKey) {
+        logDebug(`Always enable on-demand timer has been ${this.alwaysEnableOndemand ? 'ena' : 'disa'}bled.`);
+        this.emit('always-enable-ondemand-changed', this.alwaysEnableOndemand);
     }
 
     _onOndemandKeybindingChanged(_settings, _changedKey) {

@@ -35,8 +35,8 @@ const { TimerOndemand } = Me.imports.modules.TimerOndemand;
  * They can connect to its 'time-changed' signal and ask its 'time' property
  * for the current time.
  *
- * It will try to use one of this three different time sources, in this order of
- * preference:
+ * It will try to use one of these three different time sources, in this order
+ * of preference:
  *   - Night Light
  *   - Location Services
  *   - Manual schedule
@@ -47,35 +47,35 @@ const { TimerOndemand } = Me.imports.modules.TimerOndemand;
 var Timer = class {
 
     constructor() {
-        this._source = null;
+        this._sources = [];
         this._previousTime = null;
         this._nightlightStatusChangedConnect = null;
         this._locationStatusChangedConnect = null;
         this._manualTimeSourceChangedConnect = null;
         this._timeSourceChangedConnect = null;
-        this._timeChangedConnect = null;
+        this._timeChangedConnects = [];
     }
 
     enable() {
         logDebug('Enabling Timer...');
         this._connectSettings();
-        this._createSource();
-        this._connectSource();
-        this._enableSource();
+        this._createSources();
+        this._connectSources();
+        this._enableSources();
         logDebug('Timer enabled.');
     }
 
     disable() {
         logDebug('Disabling Timer...');
-        this._disconnectSource();
-        this._disableSource();
+        this._disconnectSources();
+        this._disableSources();
         this._disconnectSettings();
         logDebug('Timer disabled.');
     }
 
 
     get time() {
-        return this._source ? this._source.time : null;
+        return this._previousTime;
     }
 
 
@@ -84,6 +84,7 @@ var Timer = class {
         this._nightlightStatusChangedConnect = e.settings.system.connect('nightlight-status-changed', this._onSourceChanged.bind(this));
         this._locationStatusChangedConnect = e.settings.system.connect('location-status-changed', this._onSourceChanged.bind(this));
         this._manualTimeSourceChangedConnect = e.settings.time.connect('manual-time-source-changed', this._onSourceChanged.bind(this));
+        this._alwaysEnableOndemandChangedConnect = e.settings.time.connect('always-enable-ondemand-changed', this._onSourceChanged.bind(this));
         this._timeSourceChangedConnect = e.settings.time.connect('time-source-changed', this._onTimeSourceChanged.bind(this));
     }
 
@@ -107,45 +108,48 @@ var Timer = class {
         logDebug('Disconnected Timer from settings.');
     }
 
-    _createSource() {
-        switch (this._getSource()) {
+    _createSources() {
+        const source = this._getSource();
+        switch (source) {
         case 'nightlight':
-            this._source = new TimerNightlight();
+            this._sources.push(new TimerNightlight());
             break;
         case 'location':
-            this._source = new TimerLocation();
+            this._sources.push(new TimerLocation());
             break;
         case 'schedule':
-            this._source = new TimerSchedule();
+            this._sources.push(new TimerSchedule());
             break;
         case 'ondemand':
-            this._source = new TimerOndemand();
+            this._sources.push(new TimerOndemand());
             break;
         }
+
+        if (e.settings.time.alwaysEnableOndemand && ['nightlight', 'location', 'schedule'].includes(source))
+            this._sources.push(new TimerOndemand());
     }
 
-    _enableSource() {
-        this._source.enable();
+    _enableSources() {
+        this._sources.forEach(source => source.enable());
     }
 
-    _disableSource() {
-        if (this._source) {
-            this._source.disable();
-            this._source = null;
-        }
+    _disableSources() {
+        this._sources.forEach(source => source.disable());
+        this._sources = [];
     }
 
-    _connectSource() {
-        logDebug('Connecting to time source...');
-        this._timeChangedConnect = this._source.connect('time-changed', this._onTimeChanged.bind(this));
+    _connectSources() {
+        logDebug('Connecting to time sources...');
+        this._sources.forEach(source => this._timeChangedConnects.push({
+            source,
+            connect: source.connect('time-changed', this._onTimeChanged.bind(this)),
+        }));
     }
 
-    _disconnectSource() {
-        if (this._timeChangedConnect) {
-            this._source.disconnect(this._timeChangedConnect);
-            this._timeChangedConnect = null;
-        }
-        logDebug('Disconnected from time source.');
+    _disconnectSources() {
+        this._timeChangedConnects.forEach(timeChangedConnect => timeChangedConnect.source.disconnect(timeChangedConnect.connect));
+        this._timeChangedConnects = [];
+        logDebug('Disconnected from time sources.');
     }
 
 
@@ -162,8 +166,8 @@ var Timer = class {
     _onTimeChanged(_source, newTime) {
         if (newTime !== this._previousTime) {
             logDebug(`Time has changed to ${newTime}.`);
-            this.emit('time-changed', newTime);
             this._previousTime = newTime;
+            this.emit('time-changed', newTime);
         }
     }
 
@@ -171,8 +175,9 @@ var Timer = class {
     _getSource() {
         logDebug('Getting time source...');
 
+        let source;
         if (e.settings.time.manualTimeSource) {
-            let source = e.settings.time.timeSource;
+            source = e.settings.time.timeSource;
             logDebug(`Time source is forced to ${source}.`);
             if (
                 (source === 'nightlight' && !e.settings.system.nightlightEnabled) ||
@@ -182,19 +187,16 @@ var Timer = class {
                 source = 'schedule';
                 e.settings.time.timeSource = source;
             }
-            return source;
+        } else {
+            if (e.settings.system.nightlightEnabled)
+                source = 'nightlight';
+            else if (e.settings.system.locationEnabled)
+                source = 'location';
+            else
+                source = 'schedule';
+            logDebug(`Time source is ${source}.`);
+            e.settings.time.timeSource = source;
         }
-
-        let source;
-        if (e.settings.system.nightlightEnabled)
-            source = 'nightlight';
-        else if (e.settings.system.locationEnabled)
-            source = 'location';
-        else
-            source = 'schedule';
-
-        logDebug(`Time source is ${source}.`);
-        e.settings.time.timeSource = source;
         return source;
     }
 
