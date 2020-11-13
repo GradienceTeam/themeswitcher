@@ -87,7 +87,7 @@ function getInstalledResources(type) {
                 break;
             const resourceDir = resourcesDirsEnumerator.get_child(resourceDirInfo);
             if (resourceDir === null)
-                break;
+                continue;
             const resource = new Map([
                 ['name', resourceDir.get_basename()],
                 ['path', resourceDir.get_path()],
