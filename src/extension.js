@@ -18,6 +18,7 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 
 'use strict';
 
+const { GLib } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
@@ -52,29 +53,31 @@ function init() {
 }
 
 function enable() {
-    _awaitExtensionManagerInit().then(() => {
-        logDebug('Enabling extension...');
-        settings = new Settings();
-        timer = new Timer();
-        gtkThemer = new GtkThemer();
-        shellThemer = new ShellThemer();
-        iconThemer = new IconThemer();
-        cursorThemer = new CursorThemer();
-        backgrounder = new Backgrounder();
-        commander = new Commander();
+    GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => waitForExtensionManager(start));
+}
 
-        settings.enable();
-        gtkThemer.enable();
-        shellThemer.enable();
-        iconThemer.enable();
-        cursorThemer.enable();
-        backgrounder.enable();
-        commander.enable();
-        timer.enable();
+function start() {
+    logDebug('Enabling extension...');
+    settings = new Settings();
+    timer = new Timer();
+    gtkThemer = new GtkThemer();
+    shellThemer = new ShellThemer();
+    iconThemer = new IconThemer();
+    cursorThemer = new CursorThemer();
+    backgrounder = new Backgrounder();
+    commander = new Commander();
 
-        enabled = true;
-        logDebug('Extension enabled.');
-    });
+    settings.enable();
+    gtkThemer.enable();
+    shellThemer.enable();
+    iconThemer.enable();
+    cursorThemer.enable();
+    backgrounder.enable();
+    commander.enable();
+    timer.enable();
+
+    enabled = true;
+    logDebug('Extension enabled.');
 }
 
 function disable() {
@@ -101,8 +104,11 @@ function disable() {
     logDebug('Extension disabled.');
 }
 
-async function _awaitExtensionManagerInit() {
-    logDebug('Waiting for the Extension Manager to be initialized...');
+function waitForExtensionManager(callback) {
+    logDebug('Waiting for Extension Manager initialization...');
     while (!compat.extensionManagerInitialized())
-        await undefined; // eslint-disable-line no-await-in-loop
+        continue;
+    logDebug('Extension Manager initialized.');
+    callback();
+    return false;
 }
