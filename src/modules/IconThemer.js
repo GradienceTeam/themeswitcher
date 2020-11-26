@@ -30,7 +30,6 @@ const { logDebug } = Me.imports.utils;
  * time.
  */
 var IconThemer = class {
-
     constructor() {
         this._statusChangedConnect = null;
         this._variantChangedConnect = null;
@@ -140,5 +139,4 @@ var IconThemer = class {
                 e.settings.system.iconTheme = e.settings.iconVariants.night;
         }
     }
-
 };

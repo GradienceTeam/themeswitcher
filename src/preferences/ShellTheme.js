@@ -28,7 +28,6 @@ const _ = Gettext.gettext;
 
 
 var ShellThemePreferences = class {
-
     constructor(settings) {
         this._builder = new Gtk.Builder();
         this._builder.add_from_file(GLib.build_filenamev([Me.path, 'preferences', 'ui', 'shell_theme.ui']));
@@ -94,5 +93,4 @@ var ShellThemePreferences = class {
             Gio.SettingsBindFlags.DEFAULT
         );
     }
-
 };

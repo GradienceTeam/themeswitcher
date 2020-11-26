@@ -26,7 +26,6 @@ const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var TimeSettings = class {
-
     constructor() {
         logDebug('Initializing time settings...');
         this.settings = compat.getSettings(getSettingsSchema('time'));
@@ -173,7 +172,5 @@ var TimeSettings = class {
         logDebug(`On-demand button placement has changed to ${this.ondemandButtonPlacement}`);
         this.emit('ondemand-button-placement-changed', this.ondemandButtonPlacement);
     }
-
-
 };
 Signals.addSignalMethods(TimeSettings.prototype);

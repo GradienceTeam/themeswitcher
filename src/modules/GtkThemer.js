@@ -41,7 +41,6 @@ const _ = Gettext.gettext;
  * change the GTK variants in the extension's preferences.
  */
 var GtkThemer = class {
-
     constructor() {
         this._statusChangedConnect = null;
         this._variantChangedConnect = null;
@@ -184,5 +183,4 @@ var GtkThemer = class {
         e.settings.gtkVariants.night = variants.get('night');
         logDebug(`New GTK variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
     }
-
 };

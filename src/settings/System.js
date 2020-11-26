@@ -32,7 +32,6 @@ const { logDebug, getUserthemesExtension, getUserthemesSettings } = Me.imports.u
  * changes.
  */
 var SystemSettings = class {
-
     constructor() {
         logDebug('Initializing system settings...');
         this.colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
@@ -172,6 +171,5 @@ var SystemSettings = class {
         logDebug(`Background has changed to '${this.background}'.`);
         this.emit('background-changed', this.background);
     }
-
 };
 Signals.addSignalMethods(SystemSettings.prototype);

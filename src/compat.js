@@ -22,6 +22,11 @@ const Me = extensionUtils.getCurrentExtension();
 const shellMinorVersion = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
 
 
+/**
+ * Initialize translations for a given gettext domain.
+ *
+ * @param {string} domain Gettext domain.
+ */
 function initTranslations(domain) {
     if (shellMinorVersion <= 30)
         return Me.imports.convenience.initTranslations(domain);
@@ -30,6 +35,12 @@ function initTranslations(domain) {
 }
 
 
+/**
+ * Get the Extension Manager initialization status.
+ *
+ * @returns {boolean} `true` if the Extension Manager is initialized, `false`
+ * otherwise.
+ */
 function extensionManagerInitialized() {
     if (shellMinorVersion > 32)
         return imports.ui.main.extensionManager._initialized;
@@ -38,6 +49,12 @@ function extensionManagerInitialized() {
 }
 
 
+/**
+ * Get a specific extension from the Extension Manager.
+ *
+ * @param {string} uuid UUID of the extension.
+ * @returns {(object|null)} The desired extension or `null` if it doesn't exist.
+ */
 function extensionManagerLookup(uuid) {
     try {
         if (shellMinorVersion > 32)
@@ -50,6 +67,12 @@ function extensionManagerLookup(uuid) {
 }
 
 
+/**
+ * Get GSettings for the given schema ID.
+ *
+ * @param {(string|null)} schema The GSettings schema ID. If not given, will use
+ * the extension's schema ID.
+ */
 function getSettings(schema) {
     if (shellMinorVersion <= 30)
         return Me.imports.convenience.getSettings(schema);
@@ -58,11 +81,17 @@ function getSettings(schema) {
 }
 
 
+/**
+ * Get the extension's GSettings.
+ */
 function getExtensionSettings() {
     return getSettings();
 }
 
 
+/**
+ * Get the KeyBinding AutoRepeat flag.
+ */
 function keyBindingAutoRepeat() {
     // if version is less then 3.30 the keybinding flags are NONE
     if (shellMinorVersion < 30)
@@ -72,6 +101,11 @@ function keyBindingAutoRepeat() {
 }
 
 
+/**
+ * Get the actor from a given subject.
+ *
+ * @param {object} subject The object to get the actor from.
+ */
 function getActor(subject) {
     if (shellMinorVersion > 34)
         return subject;

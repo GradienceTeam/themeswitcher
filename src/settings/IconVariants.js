@@ -26,7 +26,6 @@ const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var IconVariantsSettings = class {
-
     constructor() {
         logDebug('Initializing icon variants settings...');
         this.settings = compat.getSettings(getSettingsSchema('icon-variants'));
@@ -96,6 +95,5 @@ var IconVariantsSettings = class {
         logDebug(`Icon night variant has changed to '${this.night}'.`);
         this.emit('variant-changed', 'night');
     }
-
 };
 Signals.addSignalMethods(IconVariantsSettings.prototype);

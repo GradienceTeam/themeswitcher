@@ -29,6 +29,7 @@ const _ = Gettext.gettext;
 
 /**
  * Output a debug message to the console if the debug config is active.
+ *
  * @param {string} message The message to log.
  */
 function logDebug(message) {
@@ -38,6 +39,7 @@ function logDebug(message) {
 
 /**
  * Log an error and show a notification if it has a message.
+ *
  * @param {Error} error The error to log.
  */
 function notifyError(error) {
@@ -49,6 +51,7 @@ function notifyError(error) {
 
 /**
  * Build the full settings schema from a subschema.
+ *
  * @param {string} subSchema The subschema to get.
  * @returns {string} The full schema.
  */
@@ -58,6 +61,7 @@ function getSettingsSchema(subSchema) {
 
 /**
  * Get all the directories of the system for a resource.
+ *
  * @param {string} resource The resource to get the directories.
  * @returns {string[]} An array of paths.
  */
@@ -71,6 +75,7 @@ function getResourcesDirsPaths(resource) {
 
 /**
  * Get all the resources installed on the system.
+ *
  * @param {string} type The resources to get.
  * @returns {Set} A set of installed resources.
  */
@@ -101,6 +106,7 @@ function getInstalledResources(type) {
 
 /**
  * Get all the installed GTK themes on the system.
+ *
  * @returns {Set<string>} A set containing all the installed GTK themes names.
  */
 function getInstalledGtkThemes() {
@@ -120,6 +126,7 @@ function getInstalledGtkThemes() {
 
 /**
  * Get all the installed shell themes on the system.
+ *
  * @returns {Set<string>} A set containing all the installed shell themes names.
  */
 function getInstalledShellThemes() {
@@ -134,6 +141,7 @@ function getInstalledShellThemes() {
 
 /**
  * Get all the installed icon themes on the system.
+ *
  * @returns {Set<string>} A set containing all the installed icon themes names.
  */
 function getInstalledIconThemes() {
@@ -149,6 +157,7 @@ function getInstalledIconThemes() {
 
 /**
  * Get all the installed cursor themes on the system.
+ *
  * @returns {Set<string>} A set containing all the installed cursor themes names.
  */
 function getInstalledCursorThemes() {
@@ -163,7 +172,8 @@ function getInstalledCursorThemes() {
 
 /**
  * Get the User Themes extension.
- * @returns {Object|undefined} The User Themes extension object or undefined if
+ *
+ * @returns {object|undefined} The User Themes extension object or undefined if
  * it isn't installed.
  */
 function getUserthemesExtension() {
@@ -172,6 +182,7 @@ function getUserthemesExtension() {
 
 /**
  * Get the User Themes extension settings.
+ *
  * @returns {Gio.Settings|null} The User Themes extension settings or null if
  * the extension isn't installed.
  */
@@ -192,6 +203,7 @@ function getUserthemesSettings() {
 
 /**
  * Get the shell theme stylesheet.
+ *
  * @param {string} theme The shell theme name.
  * @returns {string|null} Path to the shell theme stylesheet.
  */
@@ -211,6 +223,7 @@ function getShellThemeStylesheet(theme) {
 
 /**
  * Apply a stylesheet to the shell.
+ *
  * @param {string} stylesheet The shell stylesheet to apply.
  */
 function applyShellStylesheet(stylesheet) {
@@ -222,6 +235,7 @@ function applyShellStylesheet(stylesheet) {
 
 /**
  * Check if the given keyval is forbidden.
+ *
  * @param {number} keyval The keyval number.
  * @returns {boolean} `true` if the keyval is forbidden.
  */
@@ -245,6 +259,7 @@ function isKeyvalForbidden(keyval) {
 
 /**
  * Check if the given key combo is a valid binding
+ *
  * @param {{mask: number, keycode: number, keyval:number}} combo An object
  * representing the key combo.
  * @returns {boolean} `true` if the key combo is a valid binding.
@@ -272,6 +287,7 @@ function isBindingValid({ mask, keycode, keyval }) {
 
 /**
  * Check if the given key combo is a valid accelerator.
+ *
  * @param {{mask: number, keyval:number}} combo An object representing the key
  * combo.
  * @returns {boolean} `true` if the key combo is a valid accelerator.
@@ -282,6 +298,7 @@ function isAccelValid({ mask, keyval }) {
 
 /**
  * Find the position of a menu item in the Shell aggregate menu.
+ *
  * @param {*} menuItem The desired menu item.
  * @returns {number} The position of the menu item, `-1` if not found.
  */

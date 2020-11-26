@@ -30,7 +30,6 @@ const { logDebug } = Me.imports.utils;
  * the time.
  */
 var CursorThemer = class {
-
     constructor() {
         this._statusChangedConnect = null;
         this._variantChangedConnect = null;
@@ -140,5 +139,4 @@ var CursorThemer = class {
                 e.settings.system.cursorTheme = e.settings.cursorVariants.night;
         }
     }
-
 };

@@ -34,7 +34,6 @@ const { TimeSettings } = Me.imports.settings.Time;
 
 
 var Settings = class {
-
     constructor() {
         logDebug('Initializing settings...');
         this.extension = compat.getExtensionSettings();
@@ -91,5 +90,4 @@ var Settings = class {
             }
         }
     }
-
 };

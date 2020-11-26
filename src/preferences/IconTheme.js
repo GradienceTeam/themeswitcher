@@ -28,7 +28,6 @@ const _ = Gettext.gettext;
 
 
 var IconThemePreferences = class {
-
     constructor(settings) {
         this._builder = new Gtk.Builder();
         this._builder.add_from_file(GLib.build_filenamev([Me.path, 'preferences', 'ui', 'icon_theme.ui']));
@@ -77,5 +76,4 @@ var IconThemePreferences = class {
             Gio.SettingsBindFlags.DEFAULT
         );
     }
-
 };

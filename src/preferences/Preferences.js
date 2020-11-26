@@ -35,7 +35,6 @@ const { Headerbar } = Me.imports.preferences.Headerbar;
 
 
 var Preferences = class {
-
     constructor() {
         this.settings = new Settings();
         this.settings.enable();
@@ -70,5 +69,4 @@ var Preferences = class {
 
         this.headerbar = new Headerbar(this.widget);
     }
-
 };

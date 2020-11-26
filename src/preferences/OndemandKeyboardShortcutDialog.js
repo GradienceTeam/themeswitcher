@@ -28,7 +28,6 @@ const utils = Me.imports.utils;
 
 
 var OndemandKeyboardShortcutDialog = class {
-
     constructor(settings) {
         this._builder = new Gtk.Builder();
         this._builder.add_from_file(GLib.build_filenamev([Me.path, 'preferences', 'ui', 'ondemand_keyboard_shortcut_dialog.ui']));
@@ -85,5 +84,4 @@ var OndemandKeyboardShortcutDialog = class {
             this.widget.close();
         });
     }
-
 };

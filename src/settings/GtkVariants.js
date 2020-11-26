@@ -26,7 +26,6 @@ const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var GtkVariantsSettings = class {
-
     constructor() {
         logDebug('Initializing GTK variants settings...');
         this.settings = compat.getSettings(getSettingsSchema('gtk-variants'));
@@ -112,6 +111,5 @@ var GtkVariantsSettings = class {
         logDebug(`Manual GTK variants have been ${this.manual ? 'ena' : 'disa'}bled.`);
         this.emit('manual-changed', this.manual);
     }
-
 };
 Signals.addSignalMethods(GtkVariantsSettings.prototype);

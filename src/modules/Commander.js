@@ -29,7 +29,6 @@ const { logDebug } = Me.imports.utils;
  * The Commander is responsible for spawning commands according to the time.
  */
 var Commander = class {
-
     constructor() {
         this._statusChangedConnect = null;
         this._timeChangedConnect = null;
@@ -93,5 +92,4 @@ var Commander = class {
         GLib.spawn_async(null, ['sh', '-c', command], null, GLib.SpawnFlags.SEARCH_PATH, null);
         logDebug(`Spawned ${time} command.`);
     }
-
 };

@@ -31,7 +31,6 @@ const { logDebug } = Me.imports.utils;
  * settings), it will use it as the current time background.
  */
 var Backgrounder = class {
-
     constructor() {
         this._statusChangedConnect = null;
         this._backgroundChangedConnect = null;
@@ -139,5 +138,4 @@ var Backgrounder = class {
                 e.settings.system.background = e.settings.backgrounds.night;
         }
     }
-
 };

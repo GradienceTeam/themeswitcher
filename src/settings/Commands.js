@@ -26,7 +26,6 @@ const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var CommandsSettings = class {
-
     constructor() {
         logDebug('Initializing commands settings...');
         this.settings = compat.getSettings(getSettingsSchema('commands'));
@@ -94,6 +93,5 @@ var CommandsSettings = class {
         this.emit('command-changed', 'sunset');
         this.emit('sunset-changed');
     }
-
 };
 Signals.addSignalMethods(CommandsSettings.prototype);

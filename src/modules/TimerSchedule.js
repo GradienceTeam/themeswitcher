@@ -35,7 +35,6 @@ const { logDebug } = Me.imports.utils;
  * The user can change the schedule in the extension's preferences.
  */
 var TimerSchedule = class {
-
     constructor() {
         this._previouslyDaytime = null;
         this._timeChangeTimer = null;
@@ -84,6 +83,5 @@ var TimerSchedule = class {
         GLib.Source.remove(this._timeChangeTimer);
         logDebug('Stopped watching for time change.');
     }
-
 };
 Signals.addSignalMethods(TimerSchedule.prototype);

@@ -28,7 +28,6 @@ const utils = Me.imports.utils;
 
 
 var Headerbar = class {
-
     constructor(stack) {
         this._builder = new Gtk.Builder();
         this._builder.add_from_file(GLib.build_filenamev([Me.path, 'preferences', 'ui', 'headerbar.ui']));
@@ -62,5 +61,4 @@ var Headerbar = class {
         const commandsRadio = this._builder.get_object('commands_radio');
         commandsRadio.connect('clicked', () => stack.set_visible_child_name('commands'));
     }
-
 };

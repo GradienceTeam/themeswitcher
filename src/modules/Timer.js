@@ -45,7 +45,6 @@ const { TimerOndemand } = Me.imports.modules.TimerOndemand;
  * schedule in the extensions's preferences.
  */
 var Timer = class {
-
     constructor() {
         this._sources = [];
         this._previousTime = null;
@@ -199,6 +198,5 @@ var Timer = class {
         }
         return source;
     }
-
 };
 Signals.addSignalMethods(Timer.prototype);

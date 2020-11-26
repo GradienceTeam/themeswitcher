@@ -41,7 +41,6 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
  *   - '-darkest'
  */
 var ShellVariants = class {
-
     static guessFrom(name) {
         const variants = new Map();
 
@@ -97,5 +96,4 @@ var ShellVariants = class {
 
         return variants;
     }
-
 };

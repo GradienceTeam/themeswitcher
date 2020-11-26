@@ -46,16 +46,26 @@ var backgrounder = null;
 var commander = null;
 
 
+/**
+ * Extension initialization.
+ */
 function init() {
     logDebug('Initializing extension...');
     compat.initTranslations(Me.metadata['gettext-domain']);
     logDebug('Extension initialized.');
 }
 
+/**
+ * When the extension is enabled, we wait for the Extension Manager to be
+ * initialized before starting.
+ */
 function enable() {
-    GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => waitForExtensionManager(start));
+    GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => _waitForExtensionManager(start));
 }
 
+/**
+ * When the extension is started, we create and enable all the modules.
+ */
 function start() {
     logDebug('Enabling extension...');
     settings = new Settings();
@@ -80,6 +90,9 @@ function start() {
     logDebug('Extension enabled.');
 }
 
+/**
+ * When the extension is disabled, we disable and remove all the modules.
+ */
 function disable() {
     logDebug('Disabling extension...');
     enabled = false;
@@ -104,7 +117,13 @@ function disable() {
     logDebug('Extension disabled.');
 }
 
-function waitForExtensionManager(callback) {
+/**
+ * Wait for the Extension Manager to be initialized and run a callback function.
+ *
+ * @param {Function} callback The function to run when the Extension Manager
+ * is initialized.
+ */
+function _waitForExtensionManager(callback) {
     logDebug('Waiting for Extension Manager initialization...');
     while (!compat.extensionManagerInitialized())
         continue;

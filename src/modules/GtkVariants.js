@@ -41,7 +41,6 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
  *   - '-darkest'
  */
 var GtkVariants = class {
-
     static guessFrom(name) {
         const variants = new Map();
 
@@ -100,5 +99,4 @@ var GtkVariants = class {
 
         return variants;
     }
-
 };

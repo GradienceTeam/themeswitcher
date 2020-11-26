@@ -26,7 +26,6 @@ const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var BackgroundsSettings = class {
-
     constructor() {
         logDebug('Initializing backgrounds settings...');
         this.settings = compat.getSettings(getSettingsSchema('backgrounds'));
@@ -94,6 +93,5 @@ var BackgroundsSettings = class {
         this.emit('background-changed', 'night');
         this.emit('night-changed');
     }
-
 };
 Signals.addSignalMethods(BackgroundsSettings.prototype);

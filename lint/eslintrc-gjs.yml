@@ -3,6 +3,8 @@
 env:
   es6: true
 extends: 'eslint:recommended'
+plugins:
+  - jsdoc
 rules:
   array-bracket-newline:
     - error
@@ -60,6 +62,17 @@ rules:
       - 'CallExpression[callee.object.name=GObject][callee.property.name=registerClass] > ClassExpression:first-child'
       # Allow dedenting chained member expressions
       MemberExpression: 'off'
+  jsdoc/check-alignment: error
+  jsdoc/check-param-names: error
+  jsdoc/check-tag-names: error
+  jsdoc/check-types: error
+  jsdoc/implements-on-classes: error
+  jsdoc/newline-after-description: error
+  jsdoc/require-jsdoc: error
+  jsdoc/require-param: error
+  jsdoc/require-param-description: error
+  jsdoc/require-param-name: error
+  jsdoc/require-param-type: error
   key-spacing:
     - error
     - beforeColon: false
@@ -110,14 +123,14 @@ rules:
   no-restricted-properties:
     - error
     - object: Lang
+      property: copyProperties
+      message: Use Object.assign()
+    - object: Lang
       property: bind
       message: Use arrow notation or Function.prototype.bind()
     - object: Lang
       property: Class
       message: Use ES6 classes
-    - object: imports
-      property: mainloop
-      message: Use GLib main loops and timeouts
   no-restricted-syntax:
     - error
     - selector: >-
@@ -133,6 +146,8 @@ rules:
         BlockStatement[body.length=1]
         CallExpression[arguments.length=0][callee.object.type="Super"][callee.property.name="_init"]
       message: _init() that only calls super._init() is unnecessary
+    - selector: BinaryExpression[operator="instanceof"][right.name="Array"]
+      message: Use Array.isArray()
   no-return-assign: error
   no-return-await: error
   no-self-compare: error
@@ -169,6 +184,9 @@ rules:
   object-shorthand: error
   operator-assignment: error
   operator-linebreak: error
+  padded-blocks:
+    - error
+    - never
   # These may be a bit controversial, we can try them out and enable them later
   # prefer-const: error
   # prefer-destructuring: error
@@ -209,9 +227,6 @@ rules:
   template-curly-spacing: error
   template-tag-spacing: error
   unicode-bom: error
-  valid-jsdoc:
-    - error
-    - requireReturn: false
   wrap-iife:
     - error
     - inside
@@ -229,4 +244,4 @@ globals:
   print: readonly
   printerr: readonly
 parserOptions:
-  ecmaVersion: 2019
+  ecmaVersion: 2020

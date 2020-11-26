@@ -40,7 +40,6 @@ const { logDebug } = Me.imports.utils;
  * case.
  */
 var TimerLocation = class {
-
     constructor() {
         this._previouslyDaytime = null;
         // Before we have the location suntimes, we'll use the manual schedule
@@ -211,6 +210,5 @@ var TimerLocation = class {
         GLib.Source.remove(this._timeChangeTimer);
         logDebug('Stopped watching for time change.');
     }
-
 };
 Signals.addSignalMethods(TimerLocation.prototype);

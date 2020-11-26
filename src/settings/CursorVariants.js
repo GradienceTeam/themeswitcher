@@ -26,7 +26,6 @@ const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var CursorVariantsSettings = class {
-
     constructor() {
         logDebug('Initializing cursor variants settings...');
         this.settings = compat.getSettings(getSettingsSchema('cursor-variants'));
@@ -96,6 +95,5 @@ var CursorVariantsSettings = class {
         logDebug(`Cursor night variant has changed to '${this.night}'.`);
         this.emit('variant-changed', 'night');
     }
-
 };
 Signals.addSignalMethods(CursorVariantsSettings.prototype);

@@ -24,6 +24,11 @@ const compat = Me.imports.compat;
 
 const { getSettingsSchema } = Me.imports.utils;
 
+/**
+ *  Migrate settings from v0 to v1.
+ *
+ * @param {Settings} settings The current settings.
+ */
 function migrate(settings) {
     const oldSettings = compat.getSettings(getSettingsSchema('v0'));
 

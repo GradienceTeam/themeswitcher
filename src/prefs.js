@@ -27,12 +27,18 @@ const { compat, utils } = Me.imports;
 const { Preferences } = Me.imports.preferences.Preferences;
 
 
+/**
+ * Initialize the preferences.
+ */
 function init() {
     compat.initTranslations(Me.metadata.uuid);
     const iconTheme = Gtk.IconTheme.get_default();
     iconTheme.append_search_path(GLib.build_filenamev([Me.path, 'icons']));
 }
 
+/**
+ * Build the preferences widget.
+ */
 function buildPrefsWidget() {
     const preferences = new Preferences();
     GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {

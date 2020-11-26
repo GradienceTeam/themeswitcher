@@ -42,7 +42,6 @@ const COLOR_INTERFACE = `
  * 'NightLightActive' property and will signal any change.
  */
 var TimerNightlight = class {
-
     constructor() {
         this._colorDbusProxy = null;
         this._nightlightFollowDisableConnect = null;
@@ -135,6 +134,5 @@ var TimerNightlight = class {
             ? !this._colorDbusProxy.DisabledUntilTomorrow && this._colorDbusProxy.NightLightActive
             : this._colorDbusProxy.NightLightActive;
     }
-
 };
 Signals.addSignalMethods(TimerNightlight.prototype);

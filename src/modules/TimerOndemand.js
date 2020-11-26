@@ -41,7 +41,6 @@ const _ = Gettext.gettext;
  * The user can change the key combination in the extension's preferences.
  */
 var TimerOndemand = class {
-
     constructor() {
         this._button = null;
         this._previousKeybinding = null;
@@ -221,6 +220,5 @@ var TimerOndemand = class {
         e.settings.time.ondemandTime = e.timer.time === 'day' ? 'night' : 'day';
         this.emit('time-changed', this.time);
     }
-
 };
 Signals.addSignalMethods(TimerOndemand.prototype);

@@ -26,7 +26,6 @@ const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var ShellVariantsSettings = class {
-
     constructor() {
         logDebug('Initializing shell variants settings...');
         this.settings = compat.getSettings(getSettingsSchema('shell-variants'));
@@ -112,6 +111,5 @@ var ShellVariantsSettings = class {
         logDebug(`Manual Shell variants have been ${this.manual ? 'ena' : 'disa'}bled.`);
         this.emit('manual-changed', this.manual);
     }
-
 };
 Signals.addSignalMethods(ShellVariantsSettings.prototype);

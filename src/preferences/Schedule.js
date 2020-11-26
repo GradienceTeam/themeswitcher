@@ -28,7 +28,6 @@ const _ = Gettext.gettext;
 
 
 var SchedulePreferences = class {
-
     constructor(settings) {
         this._builder = new Gtk.Builder();
         this._builder.add_from_file(GLib.build_filenamev([Me.path, 'preferences', 'ui', 'schedule.ui']));
@@ -242,5 +241,4 @@ var SchedulePreferences = class {
             Gio.SettingsBindFlags.DEFAULT
         );
     }
-
 };

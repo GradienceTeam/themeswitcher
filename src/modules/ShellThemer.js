@@ -41,7 +41,6 @@ const _ = Gettext.gettext;
  * change the shell variants in the extension's preferences.
  */
 var ShellThemer = class {
-
     constructor() {
         this._statusChangedConnect = null;
         this._variantChangedConnect = null;
@@ -190,6 +189,5 @@ var ShellThemer = class {
         e.settings.shellVariants.night = variants.get('night');
         logDebug(`New Shell variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
     }
-
 };
 Signals.addSignalMethods(ShellThemer.prototype);

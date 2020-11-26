@@ -26,7 +26,6 @@ const _ = Gettext.gettext;
 
 
 var CommandsPreferences = class {
-
     constructor(settings) {
         this._builder = new Gtk.Builder();
         this._builder.add_from_file(GLib.build_filenamev([Me.path, 'preferences', 'ui', 'commands.ui']));
@@ -91,5 +90,4 @@ var CommandsPreferences = class {
         settings.commands.connect('sunset-changed', () => updateSunsetClearButtonSensitivity());
         updateSunsetClearButtonSensitivity();
     }
-
 };

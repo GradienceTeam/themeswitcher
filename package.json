@@ -9,6 +9,7 @@
 	},
 	"devDependencies": {
 		"ava": "^3.8.2",
-		"eslint": "^7.5.0"
+		"eslint": "^7.5.0",
+		"eslint-plugin-jsdoc": "^30.7.8"
 	}
 }
