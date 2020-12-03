@@ -125,7 +125,7 @@ var Timer = class {
         }
 
         if (e.settings.time.alwaysEnableOndemand && ['nightlight', 'location', 'schedule'].includes(source))
-            this._sources.push(new TimerOndemand());
+            this._sources.unshift(new TimerOndemand());
     }
 
     _enableSources() {

@@ -44,6 +44,7 @@ var Backgrounder = class {
         if (e.settings.backgrounds.enabled) {
             this._connectSettings();
             this._connectTimer();
+            this._changeSystemBackground(e.timer.time);
         }
         logDebug('Backgrounder enabled.');
     }

@@ -57,6 +57,7 @@ var GtkThemer = class {
                 this._connectSettings();
                 this._updateVariants();
                 this._connectTimer();
+                this._setSystemVariant(e.timer.time);
             }
         } catch (error) {
             notifyError(error);
@@ -142,11 +143,9 @@ var GtkThemer = class {
         }
     }
 
-    _onManualChanged(_settings, enabled) {
+    _onManualChanged(_settings, _enabled) {
         this.disable();
         this.enable();
-        if (enabled)
-            this._setSystemVariant(e.timer.time);
     }
 
     _onTimeChanged(_timer, newTime) {

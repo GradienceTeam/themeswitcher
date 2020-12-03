@@ -78,13 +78,13 @@ function start() {
     commander = new Commander();
 
     settings.enable();
+    timer.enable();
     gtkThemer.enable();
     shellThemer.enable();
     iconThemer.enable();
     cursorThemer.enable();
     backgrounder.enable();
     commander.enable();
-    timer.enable();
 
     enabled = true;
     logDebug('Extension enabled.');

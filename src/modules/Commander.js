@@ -37,8 +37,10 @@ var Commander = class {
     enable() {
         logDebug('Enabling Commander...');
         this._watchStatus();
-        if (e.settings.commands.enabled)
+        if (e.settings.commands.enabled) {
             this._connectTimer();
+            this._spawnCommand(e.timer.time);
+        }
         logDebug('Commander enabled.');
     }
 

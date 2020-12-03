@@ -43,6 +43,7 @@ var CursorThemer = class {
         if (e.settings.cursorVariants.enabled) {
             this._connectSettings();
             this._connectTimer();
+            this._setSystemVariant(e.timer.time);
         }
         logDebug('Cursor Themer enabled.');
     }

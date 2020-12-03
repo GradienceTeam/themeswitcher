@@ -43,6 +43,7 @@ var IconThemer = class {
         if (e.settings.iconVariants.enabled) {
             this._connectSettings();
             this._connectTimer();
+            this._setSystemVariant(e.timer.time);
         }
         logDebug('Icon Themer enabled.');
     }
