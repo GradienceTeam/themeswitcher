@@ -62,7 +62,7 @@ var BackgroundsPreferences = class {
         settings.backgrounds.connect('day-changed', () => updateDayChooserUri());
         dayChooser.connect('update-preview', () => {
             const file = dayChooser.get_preview_filename();
-            const allowedContentTypes = ['image/jpeg', 'image/png', 'image/tiff'];
+            const allowedContentTypes = ['image/jpeg', 'image/png', 'image/tiff', 'application/xml'];
             if (allowedContentTypes.includes(Gio.content_type_guess(file, null)[0])) {
                 const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file, 256, 256);
                 dayBackgroundPreview.set_from_pixbuf(pixbuf);
@@ -91,7 +91,7 @@ var BackgroundsPreferences = class {
         settings.backgrounds.connect('night-changed', () => updateNightChooserUri());
         nightChooser.connect('update-preview', () => {
             const file = nightChooser.get_preview_filename();
-            const allowedContentTypes = ['image/jpeg', 'image/png', 'image/tiff'];
+            const allowedContentTypes = ['image/jpeg', 'image/png', 'image/tiff', 'application/xml'];
             if (allowedContentTypes.includes(Gio.content_type_guess(file, null)[0])) {
                 const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file, 256, 256);
                 nightBackgroundPreview.set_from_pixbuf(pixbuf);

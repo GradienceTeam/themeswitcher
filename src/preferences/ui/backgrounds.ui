@@ -39,6 +39,7 @@ Author: Romain Vigier
       <mime-type>image/jpeg</mime-type>
       <mime-type>image/png</mime-type>
       <mime-type>image/tiff</mime-type>
+      <mime-type>application/xml</mime-type>
     </mime-types>
   </object>
   <object class="GtkImage" id="night_background_preview">
