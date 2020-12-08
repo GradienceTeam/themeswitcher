@@ -60,7 +60,7 @@ function init() {
  * initialized before starting.
  */
 function enable() {
-    GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => _waitForExtensionManager(start));
+    _waitForExtensionManager().then(() => start());
 }
 
 /**
@@ -118,16 +118,17 @@ function disable() {
 }
 
 /**
- * Wait for the Extension Manager to be initialized and run a callback function.
- *
- * @param {Function} callback The function to run when the Extension Manager
- * is initialized.
+ * Wait for the Extension Manager to be initialized. Returns a Promise.
  */
-function _waitForExtensionManager(callback) {
-    logDebug('Waiting for Extension Manager initialization...');
-    while (!compat.extensionManagerInitialized())
-        continue;
-    logDebug('Extension Manager initialized.');
-    callback();
-    return false;
+function _waitForExtensionManager() {
+    return new Promise(resolve => {
+        logDebug('Waiting for Extension Manager initialization...');
+        GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
+            while (!compat.extensionManagerInitialized())
+                continue;
+            return false;
+        });
+        logDebug('Extension Manager initialized.');
+        resolve();
+    });
 }
