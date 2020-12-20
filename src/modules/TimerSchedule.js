@@ -43,6 +43,7 @@ var TimerSchedule = class {
     enable() {
         logDebug('Enabling Schedule Timer...');
         this._watchForTimeChange();
+        this.emit('time-changed', this.time);
         logDebug('Schedule Timer enabled.');
     }
 
