@@ -184,9 +184,8 @@ var TimerOndemand = class {
         this._button.update = () => {
             icon.gicon = this._getIconForTime(e.timer.time);
         };
-        buttonActor.connect('button-press-event', () => {
-            this._toggleTime();
-        });
+        buttonActor.connect('button-press-event', () => this._toggleTime());
+        buttonActor.connect('touch-event', () => this._toggleTime());
         main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
         logDebug('Added On-demand Timer button to the panel.');
     }
