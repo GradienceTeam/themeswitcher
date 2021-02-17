@@ -19,7 +19,7 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
-const shellMinorVersion = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]);
+const shellMinorVersion = parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[1]) || parseInt(imports.misc.config.PACKAGE_VERSION.split('.')[0]);
 
 
 /**
