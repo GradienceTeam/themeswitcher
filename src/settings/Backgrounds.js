@@ -21,14 +21,13 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
 const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var BackgroundsSettings = class {
     constructor() {
         logDebug('Initializing backgrounds settings...');
-        this.settings = compat.getSettings(getSettingsSchema('backgrounds'));
+        this.settings = extensionUtils.getSettings(getSettingsSchema('backgrounds'));
         logDebug('Backgrounds settings initialized.');
     }
 

@@ -20,10 +20,10 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 
 const { GLib } = imports.gi;
 const { extensionUtils } = imports.misc;
+const { extensionManager } = imports.ui.main;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
 const { logDebug } = Me.imports.utils;
 const { Settings } = Me.imports.settings.Settings;
 const { Timer } = Me.imports.modules.Timer;
@@ -51,7 +51,7 @@ var commander = null;
  */
 function init() {
     logDebug('Initializing extension...');
-    compat.initTranslations(Me.metadata['gettext-domain']);
+    extensionUtils.initTranslations(Me.metadata['gettext-domain']);
     logDebug('Extension initialized.');
 }
 
@@ -124,7 +124,7 @@ function _waitForExtensionManager() {
     return new Promise(resolve => {
         logDebug('Waiting for Extension Manager initialization...');
         GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
-            while (!compat.extensionManagerInitialized())
+            while (!extensionManager._initialized)
                 continue;
             return false;
         });

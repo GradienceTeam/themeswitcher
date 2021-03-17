@@ -1,412 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.36.0 
-
-Copyright (C) 2020
-
-This file is part of Night Theme Switcher.
-
-Night Theme Switcher is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Night Theme Switcher is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with Night Theme Switcher.  If not, see <http://www.gnu.org/licenses/>.
-
-Author: Romain Vigier
-
--->
 <interface domain="nightthemeswitcher@romainvigier.fr">
-  <requires lib="gtk+" version="3.22"/>
-  <!-- interface-local-resource-path ../../icons/ -->
-  <!-- interface-license-type gplv3 -->
-  <!-- interface-name Night Theme Switcher -->
-  <!-- interface-copyright 2020 -->
-  <!-- interface-authors Romain Vigier -->
+  <requires lib="gtk" version="4.0"/>
   <object class="GtkHeaderBar" id="headerbar">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="show_close_button">True</property>
     <child type="title">
       <object class="GtkBox" id="switcher">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="homogeneous">True</property>
+        <property name="homogeneous">1</property>
         <child>
-          <object class="GtkRadioButton" id="schedule_radio">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">False</property>
+          <object class="GtkToggleButton" id="schedule_radio">
+            <property name="focus_on_click">0</property>
+            <property name="active">1</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">4</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="icon_name">nightthemeswitcher-schedule-symbolic</property>
-                    <property name="icon_size">2</property>
+                    <property name="icon_size">1</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Schedule</property>
                     <attributes>
-                      <attribute name="size" value="8192"/>
+                      <attribute name="size" value="8192"></attribute>
                     </attributes>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="gtk_theme_radio">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">False</property>
+          <object class="GtkToggleButton" id="gtk_theme_radio">
+            <property name="focus_on_click">0</property>
             <property name="group">schedule_radio</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">4</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="icon_name">nightthemeswitcher-gtktheme-symbolic</property>
-                    <property name="icon_size">2</property>
+                    <property name="icon_size">1</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="label" translatable="yes">GTK theme</property>
                     <attributes>
-                      <attribute name="size" value="8192"/>
+                      <attribute name="size" value="8192"></attribute>
                     </attributes>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="shell_theme_radio">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">False</property>
+          <object class="GtkToggleButton" id="shell_theme_radio">
+            <property name="focus_on_click">0</property>
             <property name="group">schedule_radio</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">4</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="icon_name">nightthemeswitcher-shelltheme-symbolic</property>
-                    <property name="icon_size">2</property>
+                    <property name="icon_size">1</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Shell theme</property>
                     <attributes>
-                      <attribute name="size" value="8192"/>
+                      <attribute name="size" value="8192"></attribute>
                     </attributes>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="icon_theme_radio">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">False</property>
+          <object class="GtkToggleButton" id="icon_theme_radio">
+            <property name="focus_on_click">0</property>
             <property name="group">schedule_radio</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">4</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="icon_name">nightthemeswitcher-icontheme-symbolic</property>
-                    <property name="icon_size">2</property>
+                    <property name="icon_size">1</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Icon theme</property>
                     <attributes>
-                      <attribute name="size" value="8192"/>
+                      <attribute name="size" value="8192"></attribute>
                     </attributes>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">3</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="cursor_theme_radio">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">False</property>
+          <object class="GtkToggleButton" id="cursor_theme_radio">
+            <property name="focus_on_click">0</property>
             <property name="group">schedule_radio</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">4</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="icon_name">nightthemeswitcher-cursortheme-symbolic</property>
-                    <property name="icon_size">2</property>
+                    <property name="icon_size">1</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Cursor theme</property>
                     <attributes>
-                      <attribute name="size" value="8192"/>
+                      <attribute name="size" value="8192"></attribute>
                     </attributes>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">4</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="backgrounds_radio">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">False</property>
+          <object class="GtkToggleButton" id="backgrounds_radio">
+            <property name="focus_on_click">0</property>
             <property name="group">schedule_radio</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">4</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="icon_name">nightthemeswitcher-backgrounds-symbolic</property>
-                    <property name="icon_size">2</property>
+                    <property name="icon_size">1</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Backgrounds</property>
                     <attributes>
-                      <attribute name="size" value="8192"/>
+                      <attribute name="size" value="8192"></attribute>
                     </attributes>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">5</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="commands_radio">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">False</property>
+          <object class="GtkToggleButton" id="commands_radio">
+            <property name="focus_on_click">0</property>
             <property name="group">schedule_radio</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="margin_top">4</property>
                 <property name="margin_bottom">4</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">4</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="icon_name">nightthemeswitcher-commands-symbolic</property>
-                    <property name="icon_size">2</property>
+                    <property name="icon_size">1</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Commands</property>
                     <attributes>
-                      <attribute name="size" value="8192"/>
+                      <attribute name="size" value="8192"></attribute>
                     </attributes>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">6</property>
-          </packing>
         </child>
         <style>
           <class name="linked"/>

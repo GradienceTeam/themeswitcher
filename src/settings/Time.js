@@ -21,14 +21,13 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
 const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var TimeSettings = class {
     constructor() {
         logDebug('Initializing time settings...');
-        this.settings = compat.getSettings(getSettingsSchema('time'));
+        this.settings = extensionUtils.getSettings(getSettingsSchema('time'));
         logDebug('Time settings initialized.');
     }
 

@@ -21,14 +21,13 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
 const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var CursorVariantsSettings = class {
     constructor() {
         logDebug('Initializing cursor variants settings...');
-        this.settings = compat.getSettings(getSettingsSchema('cursor-variants'));
+        this.settings = extensionUtils.getSettings(getSettingsSchema('cursor-variants'));
         logDebug('Cursor variants settings initialized.');
     }
 

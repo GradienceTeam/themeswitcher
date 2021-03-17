@@ -21,14 +21,13 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
 const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var GtkVariantsSettings = class {
     constructor() {
         logDebug('Initializing GTK variants settings...');
-        this.settings = compat.getSettings(getSettingsSchema('gtk-variants'));
+        this.settings = extensionUtils.getSettings(getSettingsSchema('gtk-variants'));
         logDebug('GTK variants settings initialized.');
     }
 

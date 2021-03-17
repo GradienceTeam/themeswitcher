@@ -20,8 +20,6 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
-
 const { logDebug, notifyError, getSettingsSchema } = Me.imports.utils;
 const { BackgroundsSettings } = Me.imports.settings.Backgrounds;
 const { CommandsSettings } = Me.imports.settings.Commands;
@@ -36,7 +34,7 @@ const { TimeSettings } = Me.imports.settings.Time;
 var Settings = class {
     constructor() {
         logDebug('Initializing settings...');
-        this.extension = compat.getExtensionSettings();
+        this.extension = extensionUtils.getSettings();
         this.backgrounds = new BackgroundsSettings();
         this.commands = new CommandsSettings();
         this.cursorVariants = new CursorVariantsSettings();

@@ -22,7 +22,6 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
 const { logDebug, getUserthemesExtension, getUserthemesSettings } = Me.imports.utils;
 
 

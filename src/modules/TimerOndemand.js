@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-const { Gio, GLib, Shell, St } = imports.gi;
+const { Gio, GLib, Meta, Shell, St } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
@@ -29,7 +29,6 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const { logDebug, findShellAggregateMenuItemPosition } = Me.imports.utils;
-const { keyBindingAutoRepeat, getActor } = Me.imports.compat;
 
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
 const _ = Gettext.gettext;
@@ -129,7 +128,7 @@ var TimerOndemand = class {
         main.wm.addKeybinding(
             'nightthemeswitcher-ondemand-keybinding',
             e.settings.time.settings,
-            keyBindingAutoRepeat(),
+            Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
             Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
             this._toggleTime.bind(this)
         );
@@ -179,13 +178,12 @@ var TimerOndemand = class {
             style_class: 'system-status-icon',
         });
         this._button = new PanelMenuButton(0.0);
-        const buttonActor = getActor(this._button);
-        buttonActor.add_actor(icon);
+        this._button.add_actor(icon);
         this._button.update = () => {
             icon.gicon = this._getIconForTime(e.timer.time);
         };
-        buttonActor.connect('button-press-event', () => this._toggleTime());
-        buttonActor.connect('touch-event', () => this._toggleTime());
+        this._button.connect('button-press-event', () => this._toggleTime());
+        this._button.connect('touch-event', () => this._toggleTime());
         main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
         logDebug('Added On-demand Timer button to the panel.');
     }

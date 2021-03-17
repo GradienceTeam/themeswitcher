@@ -40,27 +40,15 @@ var OndemandKeyboardShortcutDialog = class {
     }
 
     _connectSettings(settings) {
-        this.widget.connect('key-press-event', (_widget, event) => {
-            const state = event.get_state()[1];
+        const eventController = this._builder.get_object('event-controller');
+        eventController.connect('key-pressed', (_widget, keyval, keycode, state) => {
             let mask = state & Gtk.accelerator_get_default_mod_mask();
             mask &= ~Gdk.ModifierType.LOCK_MASK;
-            const keycode = event.get_keycode()[1];
-            const eventKeyval = event.get_keyval()[1];
-            let keyval = Gdk.keyval_to_lower(eventKeyval);
 
             if (mask === 0 && keyval === Gdk.KEY_Escape) {
                 this.widget.visible = false;
                 return Gdk.EVENT_STOP;
             }
-
-            if (keyval === Gdk.KEY_ISO_Left_Tab)
-                keyval = Gdk.KEY_Tab;
-
-            if (keyval !== eventKeyval)
-                mask |= Gdk.ModifierType.SHIFT_MASK;
-
-            if (keyval === Gdk.KEY_Sys_Req && (mask & Gdk.ModifierType.MOD1_MASK) !== 0)
-                keyval = Gdk.KEY_Print;
 
             if (
                 !utils.isBindingValid({ mask, keycode, keyval }) ||
@@ -77,11 +65,6 @@ var OndemandKeyboardShortcutDialog = class {
             settings.time.ondemandKeybinding = binding;
             this.widget.close();
             return Gdk.EVENT_STOP;
-        });
-
-        const cancelButton = this._builder.get_object('cancel_button');
-        cancelButton.connect('clicked', () => {
-            this.widget.close();
         });
     }
 };

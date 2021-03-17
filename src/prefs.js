@@ -18,12 +18,12 @@ this program. If not, see <http s ://www.gnu.org/licenses/>.
 
 'use strict';
 
-const { GLib, Gtk } = imports.gi;
+const { Gdk, GLib, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const { compat, utils } = Me.imports;
+const { utils } = Me.imports;
 const { Preferences } = Me.imports.preferences.Preferences;
 
 
@@ -31,9 +31,9 @@ const { Preferences } = Me.imports.preferences.Preferences;
  * Initialize the preferences.
  */
 function init() {
-    compat.initTranslations(Me.metadata.uuid);
-    const iconTheme = Gtk.IconTheme.get_default();
-    iconTheme.append_search_path(GLib.build_filenamev([Me.path, 'icons']));
+    extensionUtils.initTranslations(Me.metadata.uuid);
+    const iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
+    iconTheme.add_search_path(GLib.build_filenamev([Me.path, 'icons']));
 }
 
 /**
@@ -42,8 +42,7 @@ function init() {
 function buildPrefsWidget() {
     const preferences = new Preferences();
     GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
-        const window = preferences.widget.get_toplevel();
-        window.resize(600, 200);
+        const window = preferences.widget.get_root();
         window.set_titlebar(preferences.headerbar);
     });
     return preferences.widget;

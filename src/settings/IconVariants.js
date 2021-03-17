@@ -21,14 +21,13 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
 const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var IconVariantsSettings = class {
     constructor() {
         logDebug('Initializing icon variants settings...');
-        this.settings = compat.getSettings(getSettingsSchema('icon-variants'));
+        this.settings = extensionUtils.getSettings(getSettingsSchema('icon-variants'));
         logDebug('Icon variants settings initialized.');
     }
 

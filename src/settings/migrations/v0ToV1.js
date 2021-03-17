@@ -20,8 +20,6 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
-
 const { getSettingsSchema } = Me.imports.utils;
 
 /**
@@ -30,7 +28,7 @@ const { getSettingsSchema } = Me.imports.utils;
  * @param {Settings} settings The current settings.
  */
 function migrate(settings) {
-    const oldSettings = compat.getSettings(getSettingsSchema('v0'));
+    const oldSettings = extensionUtils.getSettings(getSettingsSchema('v0'));
 
     settings.gtkVariants.enabled = oldSettings.get_boolean('gtk-variants-enabled');
     settings.gtkVariants.day = oldSettings.get_string('gtk-variant-day');

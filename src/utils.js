@@ -20,7 +20,6 @@ const { Gdk, Gio, GLib, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
-const compat = Me.imports.compat;
 const config = Me.imports.config;
 
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
@@ -177,7 +176,11 @@ function getInstalledCursorThemes() {
  * it isn't installed.
  */
 function getUserthemesExtension() {
-    return compat.extensionManagerLookup('user-theme@gnome-shell-extensions.gcampax.github.com');
+    try {
+        return imports.ui.main.extensionManager.lookup('user-theme@gnome-shell-extensions.gcampax.github.com');
+    } catch (_e) {
+        return undefined;
+    }
 }
 
 /**

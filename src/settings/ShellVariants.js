@@ -21,14 +21,13 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const compat = Me.imports.compat;
 const { logDebug, getSettingsSchema } = Me.imports.utils;
 
 
 var ShellVariantsSettings = class {
     constructor() {
         logDebug('Initializing shell variants settings...');
-        this.settings = compat.getSettings(getSettingsSchema('shell-variants'));
+        this.settings = extensionUtils.getSettings(getSettingsSchema('shell-variants'));
         logDebug('Shell variants settings initialized.');
     }
 

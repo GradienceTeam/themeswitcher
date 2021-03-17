@@ -218,7 +218,7 @@ var SchedulePreferences = class {
         settings.time.connect('ondemand-keybinding-changed', () => updateOndemandShortcutButtonLabel());
         ondemandShortcutButton.connect('clicked', () => {
             const dialog = new OndemandKeyboardShortcutDialog(settings);
-            dialog.set_transient_for(this.widget.get_toplevel());
+            dialog.set_transient_for(this.widget.get_root());
             dialog.present();
         });
         updateOndemandShortcutButtonLabel();

@@ -54,24 +54,22 @@ var BackgroundsPreferences = class {
             Gio.SettingsBindFlags.DEFAULT
         );
 
+        const dayChooserButton = this._builder.get_object('day_chooser_button');
         const dayChooser = this._builder.get_object('day_chooser');
-        const dayBackgroundPreview = this._builder.get_object('day_background_preview');
-        const updateDayChooserUri = () => {
-            dayChooser.set_uri(settings.backgrounds.day);
+        const updateDayChooserButtonLabel = () => {
+            dayChooserButton.set_label(settings.backgrounds.day ? GLib.filename_display_basename(settings.backgrounds.day) : _('Choose...'));
         };
-        settings.backgrounds.connect('day-changed', () => updateDayChooserUri());
-        dayChooser.connect('update-preview', () => {
-            const file = dayChooser.get_preview_filename();
-            const allowedContentTypes = ['image/jpeg', 'image/png', 'image/tiff', 'application/xml'];
-            if (allowedContentTypes.includes(Gio.content_type_guess(file, null)[0])) {
-                const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file, 256, 256);
-                dayBackgroundPreview.set_from_pixbuf(pixbuf);
-            }
+        settings.backgrounds.connect('day-changed', () => updateDayChooserButtonLabel());
+        dayChooser.connect('response', (_fileChooser, responseId) => {
+            if (responseId !== Gtk.ResponseType.ACCEPT)
+                return;
+            settings.backgrounds.day = dayChooser.get_file().get_uri();
         });
-        dayChooser.connect('file-set', () => {
-            settings.backgrounds.day = dayChooser.get_uri();
+        dayChooserButton.connect('clicked', () => {
+            dayChooser.set_transient_for(dayChooserButton.get_root());
+            dayChooser.show();
         });
-        updateDayChooserUri();
+        updateDayChooserButtonLabel();
 
         const dayClearButton = this._builder.get_object('day_clear_button');
         dayClearButton.connect('clicked', () => {
@@ -83,24 +81,22 @@ var BackgroundsPreferences = class {
         settings.backgrounds.connect('day-changed', () => updateDayClearButtonSensitivity());
         updateDayClearButtonSensitivity();
 
+        const nightChooserButton = this._builder.get_object('night_chooser_button');
         const nightChooser = this._builder.get_object('night_chooser');
-        const nightBackgroundPreview = this._builder.get_object('night_background_preview');
-        const updateNightChooserUri = () => {
-            nightChooser.set_uri(settings.backgrounds.night);
+        const updateNightChooserButtonLabel = () => {
+            nightChooserButton.set_label(settings.backgrounds.night ? GLib.filename_display_basename(settings.backgrounds.night) : _('Choose...'));
         };
-        settings.backgrounds.connect('night-changed', () => updateNightChooserUri());
-        nightChooser.connect('update-preview', () => {
-            const file = nightChooser.get_preview_filename();
-            const allowedContentTypes = ['image/jpeg', 'image/png', 'image/tiff', 'application/xml'];
-            if (allowedContentTypes.includes(Gio.content_type_guess(file, null)[0])) {
-                const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(file, 256, 256);
-                nightBackgroundPreview.set_from_pixbuf(pixbuf);
-            }
+        settings.backgrounds.connect('night-changed', () => updateNightChooserButtonLabel());
+        nightChooser.connect('response', (_fileChooser, responseId) => {
+            if (responseId !== Gtk.ResponseType.ACCEPT)
+                return;
+            settings.backgrounds.night = nightChooser.get_file().get_uri();
         });
-        nightChooser.connect('file-set', () => {
-            settings.backgrounds.night = nightChooser.get_uri();
+        nightChooserButton.connect('clicked', () => {
+            nightChooser.set_transient_for(nightChooserButton.get_root());
+            nightChooser.show();
         });
-        updateNightChooserUri();
+        updateNightChooserButtonLabel();
 
         const nightClearButton = this._builder.get_object('night_clear_button');
         nightClearButton.connect('clicked', () => {
