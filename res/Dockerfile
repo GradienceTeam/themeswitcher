@@ -14,12 +14,12 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http s ://www.gnu.org/licenses/>.
 
-FROM fedora:33
+FROM fedora:34
 
 # Build gnome-extensions
 RUN dnf install --nodocs -y gcc git glib2-devel gnome-autoar-devel json-glib-devel meson \
 	&& dnf clean all \
-	&& git clone --depth 1 --branch 3.38.3 https://gitlab.gnome.org/GNOME/gnome-shell.git /src/gnome-shell \
+	&& git clone --depth 1 --branch 40.0 https://gitlab.gnome.org/GNOME/gnome-shell.git /src/gnome-shell \
 	&& cd /src/gnome-shell/subprojects/extensions-tool \
 	&& ./generate-translations.sh \
 	&& meson builddir --prefix=/usr --buildtype=release -Dman=false -Dbash_completion=disabled \
