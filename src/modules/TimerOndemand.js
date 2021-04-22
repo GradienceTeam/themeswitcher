@@ -16,14 +16,14 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http s ://www.gnu.org/licenses/>.
 */
 
-const { Gio, GLib, Meta, Shell, St } = imports.gi;
+const { Clutter, Gio, GLib, GObject, Meta, Shell, St } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
 const { main } = imports.ui;
 
 const { Button: PanelMenuButton } = imports.ui.panelMenu;
-const { PopupImageMenuItem } = imports.ui.popupMenu;
+const { PopupBaseMenuItem } = imports.ui.popupMenu;
 
 const Me = extensionUtils.getCurrentExtension();
 
@@ -173,15 +173,7 @@ var TimerOndemand = class {
 
     _addButtonToPanel() {
         logDebug('Adding On-demand Timer button to the panel...');
-        const icon = new St.Icon({
-            gicon: this._getIconForTime(e.timer.time),
-            style_class: 'system-status-icon',
-        });
-        this._button = new PanelMenuButton(0.0);
-        this._button.add_actor(icon);
-        this._button.update = () => {
-            icon.gicon = this._getIconForTime(e.timer.time);
-        };
+        this._button = new NtsPanelMenuButton();
         this._button.connect('button-press-event', () => this._toggleTime());
         this._button.connect('touch-event', () => this._toggleTime());
         main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
@@ -192,25 +184,12 @@ var TimerOndemand = class {
         logDebug('Adding On-demand Timer button to the menu...');
         const aggregateMenu = main.panel.statusArea.aggregateMenu;
         const position = findShellAggregateMenuItemPosition(aggregateMenu._system.menu) - 1;
-        this._button = new PopupImageMenuItem(this._getLabelForTime(e.timer.time), this._getIconForTime(e.timer.time));
-        this._button.update = () => {
-            this._button.label.text = this._getLabelForTime(e.timer.time);
-            this._button.setIcon(this._getIconForTime(e.timer.time));
-        };
+        this._button = new NtsPopupMenuItem();
         this._button.connect('activate', () => {
             this._toggleTime();
         });
         aggregateMenu.menu.addMenuItem(this._button, position);
         logDebug('Added On-demand Timer button to the menu.');
-    }
-
-    _getIconForTime(time) {
-        const name = time === 'day' ? 'nightthemeswitcher-ondemand-off-symbolic' : 'nightthemeswitcher-ondemand-on-symbolic';
-        return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, 'icons', 'hicolor', 'scalable', 'status', `${name}.svg`]));
-    }
-
-    _getLabelForTime(time) {
-        return time === 'day' ? _('Switch to night theme') : _('Switch to day theme');
     }
 
     _toggleTime() {
@@ -219,3 +198,56 @@ var TimerOndemand = class {
     }
 };
 Signals.addSignalMethods(TimerOndemand.prototype);
+
+var NtsPanelMenuButton = GObject.registerClass(
+    class NtsPanelMenuButton extends PanelMenuButton {
+        _init() {
+            super._init(0.0);
+            this.icon = new St.Icon({
+                style_class: 'system-status-icon',
+            });
+            this.add_child(this.icon);
+            this.update();
+        }
+
+        update() {
+            this.icon.icon_name = _getIconNameForTime(e.timer.time);
+            this.icon.fallback_gicon = _getGiconForTime(e.timer.time);
+            this.accessible_name = _getLabelForTime(e.timer.time);
+        }
+    }
+);
+
+var NtsPopupMenuItem = GObject.registerClass(
+    class NtsPopupMenuItem extends PopupBaseMenuItem {
+        _init(params) {
+            super._init(params);
+            this.icon = new St.Icon({
+                style_class: 'popup-menu-icon',
+                x_align: Clutter.ActorAlign.END,
+            });
+            this.add_child(this.icon);
+            this.label = new St.Label();
+            this.add_child(this.label);
+            this.update();
+        }
+
+        update() {
+            this.icon.icon_name = _getIconNameForTime(e.timer.time);
+            this.icon.fallback_gicon = _getGiconForTime(e.timer.time);
+            this.label.text = _getLabelForTime(e.timer.time);
+        }
+    }
+);
+
+const _getIconNameForTime = time => {
+    return time === 'day' ? 'nightthemeswitcher-ondemand-off-symbolic' : 'nightthemeswitcher-ondemand-on-symbolic';
+};
+
+const _getGiconForTime = time => {
+    return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, 'icons', 'hicolor', 'scalable', 'status', `${this._getIconNameForTime(time)}.svg`]));
+};
+
+const _getLabelForTime = time => {
+    return time === 'day' ? _('Switch to night theme') : _('Switch to day theme');
+};
