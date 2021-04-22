@@ -6,5 +6,5 @@
 	"settings-schema": "org.gnome.shell.extensions.nightthemeswitcher",
 	"url": "https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/",
 	"shell-version": ["40"],
-	"version": 49
+	"version": 50
 }
