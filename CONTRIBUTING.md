@@ -15,6 +15,7 @@ You're welcome to contribute to the [code](#contributing-to-the-code) or to the 
 	- [Coding style](#coding-style)
 	- [Copyright notice](#copyright-notice)
 	- [Themes and unit tests](#themes-and-unit-tests)
+	- [Localized strings](#localized-strings)
 - [Contributing to the translations](#contributing-to-the-translations)
 
 ---
@@ -24,22 +25,10 @@ You're welcome to contribute to the [code](#contributing-to-the-code) or to the 
 You'll need `make` and [NPM](https://www.npmjs.com/) to install the development dependencies:
 
 ```bash
-make deps-install
+npm install --save-dev
 ```
 
 Create a new branch describing what your're working on, for example `feature/{name-of-the-feature}` or `theme/{name-of-the-theme}`.
-
-To make sure your code passes basic checks, run:
-
-```bash
-make test
-```
-
-If you modify localized strings, make your changed available for translation:
-
-```bash
-make pot
-```
 
 When you're done, commit all your changes and create a new merge request. Choose the appropriate merge request template.
 
@@ -50,12 +39,18 @@ We follow the [GNOME Shell coding style](https://gitlab.gnome.org/GNOME/gnome-sh
 To make sure your code follows it:
 
 ```bash
-make test-lint
+npm run test-lint
 ```
 
 ### Copyright notice
 
 If you make changes to a file, please your copyright notice to the top of the file, or in a separate file (named `original-file.ext.license`), following the [SPDX specification](https://spdx.dev/).
+
+Run [`reuse`](https://reuse.software/) to check that all the needed information is present:
+
+```bash
+reuse lint
+```
 
 ### Themes and unit tests
 
@@ -64,7 +59,15 @@ If you add support for a theme, please write a unit test for each of its variant
 To run the tests:
 
 ```bash
-make test-variants
+npm run test-variants
+```
+
+### Localized strings
+
+If you modify localized strings, make your changes available for translation:
+
+```bash
+make pot
 ```
 
 ## Contributing to the translations

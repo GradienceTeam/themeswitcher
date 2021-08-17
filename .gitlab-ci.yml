@@ -23,8 +23,8 @@ test:
     paths:
       - node_modules
   script:
-    - make deps-install
-    - make test
+    - npm install
+    - npm run test
 
 build:
   stage: build
