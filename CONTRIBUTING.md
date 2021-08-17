@@ -11,8 +11,6 @@ You're welcome to contribute to the [code](#contributing-to-the-code) or to the 
 	- [Copyright notice](#copyright-notice)
 	- [Themes and unit tests](#themes-and-unit-tests)
 - [Contributing to the translations](#contributing-to-the-translations)
-	- [Updating an existing translation](#updating-an-existing-translation)
-	- [Adding a new translation](#adding-a-new-translation)
 
 ---
 
@@ -30,6 +28,12 @@ To make sure your code passes basic checks, run:
 
 ```bash
 make test
+```
+
+If you modify localized strings, make your changed available for translation:
+
+```bash
+make pot
 ```
 
 When you're done, commit all your changes and create a new merge request. Choose the appropriate merge request template.
@@ -60,40 +64,8 @@ make test-variants
 
 ## Contributing to the translations
 
-The extension uses Gettext for its localization. When working on a translation, create a new branch named `translation/{language}`.
+The project uses Weblate to manage translations. Head over [Night Theme Switcher's project page](https://hosted.weblate.org/projects/night-theme-switcher/) to start translating the extension. If you need help, check out [Weblate's user documentation](https://docs.weblate.org/en/latest/user/translating.html).
 
-### Updating an existing translation
+Current translation status:
 
-First update all the strings in the source code:
-
-```bash
-make pot
-```
-
-Then update the translations files:
-
-```bash
-make update-po
-```
-
-You can then edit the language you want in `src/po/`, either by hand or with a tool like [GNOME Translation Editor](https://wiki.gnome.org/Apps/Gtranslator).
-
-When you're done, commit both the `.pot` file and the `.po` file you've worked on and create a new merge request.
-
-### Adding a new translation
-
-First update all the strings in the source code:
-
-```bash
-make pot
-```
-
-Then run the following command, replacing `{language-code}` with the [actual code](https://www.loc.gov/standards/iso639-2/php/code_list.php) of the language you want to add:
-
-```bash
-make add-po LANGUAGE_CODE={language-code}
-```
-
-You can then edit the new `{language-code}.po` file in `src/po/`, either by hand or with a tool like [GNOME Translation Editor](https://wiki.gnome.org/Apps/Gtranslator).
-
-When you're done, commit both the `.pot` file and the `.po` file you've worked on and create a new merge request. Choose the appropriate merge request template.
+[![Translation status](https://hosted.weblate.org/widgets/night-theme-switcher/-/multi-auto.svg)](https://hosted.weblate.org/engage/night-theme-switcher/)
