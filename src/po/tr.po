@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the Night Theme Switcher package.
 # Romain Vigier <>, 2019, 2020.
 # Veli Tasalı <me@velitasali.com>, 2021.
-#
+# Romain Vigier <romain@romainvigier.fr>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-13 09:50+0100\n"
-"PO-Revision-Date: 2021-03-28 14:38+0300\n"
-"Last-Translator: Veli Tasalı <me@velitasali.com>\n"
-"Language-Team: Turkish <contact@monora.org>\n"
+"PO-Revision-Date: 2021-08-17 09:39+0000\n"
+"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=0\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"Plural-Forms: nplurals=2; plural=0;\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: src/modules/GtkThemer.js:177
 #, javascript-format
@@ -476,7 +477,7 @@ msgid ""
 msgstr ""
 "<small>Eklenti, Gece Işığı veya Konum Servisleri'ni kullanarak gün doğumu ve "
 "batımı saatlerini tespit etmeye çalışacaktır. İsterseniz elle de zaman "
-"kaynağını belirtebilirsiniz.</small> "
+"kaynağını belirtebilirsiniz.</small>"
 
 #: src/preferences/ui/schedule.ui:191
 msgid "Always show on-demand controls"
@@ -523,7 +524,7 @@ msgid ""
 "to day variants.</small>"
 msgstr ""
 "<small>Gece Işığı geçici süreliğine devre dışı bırakılınca gündüz "
-"karşılıklarına geçiş yapılır.</>"
+"karşılıklarına geçiş yapılır.</small>"
 
 #: src/preferences/ui/schedule.ui:524 src/preferences/ui/schedule.ui:761
 msgid "Manual schedule times"
