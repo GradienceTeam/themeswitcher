@@ -1,9 +1,9 @@
 # SPDX-FileCopyrightText: 2021 Romain Vigier <contact AT romainvigier.fr>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+.cache
+
 build
 node_modules
-
-**/*.ui~
 
 tests/**/_variants.js
