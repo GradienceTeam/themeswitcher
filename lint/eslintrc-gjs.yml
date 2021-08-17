@@ -1,7 +1,9 @@
 ---
-# From https://gitlab.gnome.org/GNOME/gjs/
+# SPDX-License-Identifier: MIT OR LGPL-2.0-or-later
+# SPDX-FileCopyrightText: 2018 Claudio André <claudioandre.br@gmail.com>
 env:
   es6: true
+  es2020: true
 extends: 'eslint:recommended'
 plugins:
   - jsdoc
@@ -120,8 +122,15 @@ rules:
   no-octal-escape: error
   no-proto: error
   no-prototype-builtins: 'off'
+  no-restricted-globals: [error, window]
   no-restricted-properties:
     - error
+    - object: imports
+      property: format
+      message: Use template strings
+    - object: pkg
+      property: initFormat
+      message: Use template strings
     - object: Lang
       property: copyProperties
       message: Use Object.assign()
@@ -180,6 +189,7 @@ rules:
   object-curly-newline:
     - error
     - consistent: true
+      multiline: true
   object-curly-spacing: error
   object-shorthand: error
   operator-assignment: error
@@ -232,6 +242,9 @@ rules:
     - inside
   yield-star-spacing: error
   yoda: error
+settings:
+  jsdoc:
+    mode: typescript
 globals:
   ARGV: readonly
   Debugger: readonly
@@ -243,5 +256,9 @@ globals:
   logError: readonly
   print: readonly
   printerr: readonly
+  window: readonly
+  TextEncoder: readonly
+  TextDecoder: readonly
+  console: readonly
 parserOptions:
   ecmaVersion: 2020
