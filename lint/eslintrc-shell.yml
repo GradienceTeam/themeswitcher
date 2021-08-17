@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: GNOME Shell developers
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 # From https://gitlab.gnome.org/GNOME/gnome-shell/
 rules:
   camelcase:

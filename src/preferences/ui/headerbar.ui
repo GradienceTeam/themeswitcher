@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-FileCopyrightText: 2021 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
 <interface domain="nightthemeswitcher@romainvigier.fr">
   <requires lib="gtk" version="4.0"/>
   <object class="GtkHeaderBar" id="headerbar">

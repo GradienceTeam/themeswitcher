@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: nightthemeswitcher-gnome-shell-extension
+Upstream-Contact: Romain Vigier <romain@romainvigier.fr>
+Source: https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/
+
+Files: src/po/*.po
+Copyright: Translators
+License: CC-BY-SA-4.0

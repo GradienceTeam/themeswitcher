@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2021 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # Night Theme Switcher <!-- omit in toc -->
 
 ![](./res/screenshot.png)

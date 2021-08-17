@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2021 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # Contributing <!-- omit in toc -->
 
 You're welcome to contribute to the [code](#contributing-to-the-code) or to the [translations](#contributing-to-the-translations)!
@@ -50,7 +55,7 @@ make test-lint
 
 ### Copyright notice
 
-If you make changes to a file, please add your copyright notice at the top of the file, in the form `Copyright (C) YEAR Your Name`.
+If you make changes to a file, please your copyright notice to the top of the file, or in a separate file (named `original-file.ext.license`), following the [SPDX specification](https://spdx.dev/).
 
 ### Themes and unit tests
 
