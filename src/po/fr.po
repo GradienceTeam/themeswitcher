@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-06 11:27+0100\n"
+"POT-Creation-Date: 2020-12-13 09:50+0100\n"
 "PO-Revision-Date: 2020-11-06 11:29+0100\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: French <romain@romainvigier.fr>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Gtranslator 3.38.0\n"
 
-#: src/modules/GtkThemer.js:179
+#: src/modules/GtkThemer.js:177
 #, javascript-format
 msgid ""
 "Unable to automatically detect the day and night variants for the \"%s\" GTK "
@@ -28,7 +28,7 @@ msgstr ""
 "pour le thème GTK \"%s\". Veuillez les sélectionner manuellement dans les "
 "préférences de l’extension."
 
-#: src/modules/ShellThemer.js:185
+#: src/modules/ShellThemer.js:183
 #, javascript-format
 msgid ""
 "Unable to automatically detect the day and night variants for the \"%s\" "
@@ -39,49 +39,49 @@ msgstr ""
 "pour le thème GNOME Shell \"%s\". Veuillez les sélectionner manuellement "
 "dans les préférences de l’extension."
 
-#: src/modules/TimerOndemand.js:217
+#: src/modules/TimerOndemand.js:216
 msgid "Switch to night theme"
 msgstr "Passer au thème nocturne"
 
-#: src/modules/TimerOndemand.js:217
+#: src/modules/TimerOndemand.js:216
 msgid "Switch to day theme"
 msgstr "Passer au thème diurne"
 
-#: src/preferences/Backgrounds.js:36 src/preferences/ui/backgrounds.ui:145
+#: src/preferences/Backgrounds.js:35 src/preferences/ui/backgrounds.ui:146
 #: src/preferences/ui/headerbar.ui:338
 msgid "Backgrounds"
 msgstr "Arrière-plans"
 
-#: src/preferences/Commands.js:36 src/preferences/ui/commands.ui:132
+#: src/preferences/Commands.js:35 src/preferences/ui/commands.ui:132
 #: src/preferences/ui/headerbar.ui:391
 msgid "Commands"
 msgstr "Commandes"
 
-#: src/preferences/CursorTheme.js:38 src/preferences/ui/headerbar.ui:285
+#: src/preferences/CursorTheme.js:37 src/preferences/ui/headerbar.ui:285
 msgid "Cursor theme"
 msgstr "Thème de curseur"
 
-#: src/preferences/GtkTheme.js:38 src/preferences/ui/headerbar.ui:126
+#: src/preferences/GtkTheme.js:37 src/preferences/ui/headerbar.ui:126
 msgid "GTK theme"
 msgstr "Thème GTK"
 
-#: src/preferences/IconTheme.js:38 src/preferences/ui/headerbar.ui:232
+#: src/preferences/IconTheme.js:37 src/preferences/ui/headerbar.ui:232
 msgid "Icon theme"
 msgstr "Thème d’icônes"
 
-#: src/preferences/Schedule.js:38 src/preferences/ui/headerbar.ui:73
+#: src/preferences/Schedule.js:37 src/preferences/ui/headerbar.ui:73
 msgid "Schedule"
 msgstr "Horaires"
 
-#: src/preferences/Schedule.js:217 src/preferences/ui/schedule.ui:842
+#: src/preferences/Schedule.js:216 src/preferences/ui/schedule.ui:842
 msgid "Choose"
 msgstr "Choisir"
 
-#: src/preferences/ShellTheme.js:38 src/preferences/ui/headerbar.ui:179
+#: src/preferences/ShellTheme.js:37 src/preferences/ui/headerbar.ui:179
 msgid "Shell theme"
 msgstr "Thème du shell"
 
-#: src/preferences/ShellTheme.js:80
+#: src/preferences/ShellTheme.js:79
 msgid "Default"
 msgstr "Par défaut"
 
@@ -280,7 +280,7 @@ msgstr "L’arrière-plan changera au changement d’horaire"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:113
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.v0.gschema.xml:146
-#: src/preferences/ui/backgrounds.ui:187
+#: src/preferences/ui/backgrounds.ui:188
 msgid "Day background"
 msgstr "Arrière-plan diurne"
 
@@ -291,7 +291,7 @@ msgstr "Chemin vers l’arrière-plan diurne"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:118
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.v0.gschema.xml:151
-#: src/preferences/ui/backgrounds.ui:279
+#: src/preferences/ui/backgrounds.ui:280
 msgid "Night background"
 msgstr "Arrière-plan nocturne"
 
@@ -390,15 +390,15 @@ msgstr "Heure du coucher"
 msgid "When the day ends"
 msgstr "Quand le jour se couche"
 
-#: src/preferences/ui/backgrounds.ui:97
+#: src/preferences/ui/backgrounds.ui:98
 msgid "Switch backgrounds"
 msgstr "Permuter les arrière-plans"
 
-#: src/preferences/ui/backgrounds.ui:210 src/preferences/ui/backgrounds.ui:302
+#: src/preferences/ui/backgrounds.ui:211 src/preferences/ui/backgrounds.ui:303
 msgid "Select your background image"
 msgstr "Sélectionnez votre image d’arrière-plan"
 
-#: src/preferences/ui/backgrounds.ui:220 src/preferences/ui/backgrounds.ui:312
+#: src/preferences/ui/backgrounds.ui:221 src/preferences/ui/backgrounds.ui:313
 #: src/preferences/ui/commands.ui:206 src/preferences/ui/commands.ui:300
 #: src/preferences/ui/schedule.ui:857
 msgid "Clear"
@@ -719,7 +719,6 @@ msgstr ""
 #~ "et de coucher du soleil.\n"
 #~ "Si vous préférez, vous pouvez définir manuellement un horaire."
 
-#, javascript-format
 #~ msgid ""
 #~ "The extension cannot detect the day and night variants for the \"%s\" "
 #~ "theme. Please choose another theme or manually set variants in the "

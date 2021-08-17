@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 45\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-30 09:55+0100\n"
+"POT-Creation-Date: 2020-12-13 09:50+0100\n"
 "PO-Revision-Date: 2021-01-30 15:55+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -25,9 +25,8 @@ msgid ""
 "Unable to automatically detect the day and night variants for the \"%s\" GTK "
 "theme. Please manually choose them in the extension's preferences."
 msgstr ""
-"Die Tag- und Nachtvariante für das GTK-Thema \"%s\" konnte nicht "
-"automatisch erkannt werden. Bitte wählen Sie diese manuell in den "
-"Einstellungen aus."
+"Die Tag- und Nachtvariante für das GTK-Thema \"%s\" konnte nicht automatisch "
+"erkannt werden. Bitte wählen Sie diese manuell in den Einstellungen aus."
 
 #: src/modules/ShellThemer.js:183
 #, javascript-format
@@ -40,11 +39,11 @@ msgstr ""
 "automatisch erkannt werden. Bitte wählen Sie diese manuell in den "
 "Einstellungen aus."
 
-#: src/modules/TimerOndemand.js:215
+#: src/modules/TimerOndemand.js:216
 msgid "Switch to night theme"
 msgstr "Auf Nacht-Thema umschalten"
 
-#: src/modules/TimerOndemand.js:215
+#: src/modules/TimerOndemand.js:216
 msgid "Switch to day theme"
 msgstr "Auf Tag-Thema umschalten"
 
