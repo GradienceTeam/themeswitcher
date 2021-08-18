@@ -6,7 +6,6 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Night Theme Switcher <!-- omit in toc -->
 
 ![](./res/screenshot.png)
-<!-- Background picture by Adrien Converse from https://unsplash.com/photos/kCrrUx7US04 -->
 
 Automatically toggle your light and dark GTK, GNOME Shell, icon and cursor themes variants, switch backgrounds and run custom commands at sunset and sunrise.
 

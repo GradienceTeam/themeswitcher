@@ -295,3 +295,19 @@ function findShellAggregateMenuItemPosition(menuItem) {
     const items = menu._getMenuItems();
     return items.indexOf(menuItem);
 }
+
+/**
+ * Find an item in a `Gio.ListModel`.
+ *
+ * @param {Gio.ListModel} model The ListModel to search.
+ * @param {Function} findFunction The function used to find the item. Gets the item as argument.
+ * @returns {(*|undefined)} The found item or `undefined`.
+ */
+function findItemPositionInModel(model, findFunction) {
+    const nItems = model.get_n_items();
+    for (let i = 0; i < nItems; i++) {
+        if (findFunction(model.get_item(i)))
+            return i;
+    }
+    return undefined;
+}

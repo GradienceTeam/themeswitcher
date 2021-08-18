@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: 2021 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const { Gio, GLib, GObject, Gtk } = imports.gi;
@@ -9,23 +9,27 @@ const Me = extensionUtils.getCurrentExtension();
 const utils = Me.imports.utils;
 
 
-var Commands = GObject.registerClass({
-    GTypeName: 'Commands',
-    Template: `file://${GLib.build_filenamev([Me.path, 'preferences', 'ui', 'Commands.ui'])}`,
-    InternalChildren: ['enabled_switch', 'sunrise_entry', 'sunset_entry'],
+var BackgroundsPreferences = GObject.registerClass({
+    GTypeName: 'BackgroundsPreferences',
+    Template: `file://${GLib.build_filenamev([Me.path, 'preferences', 'ui', 'BackgroundsPreferences.ui'])}`,
+    InternalChildren: [
+        'enabled_switch',
+        'day_button',
+        'night_button',
+    ],
     Properties: {
         settings: GObject.ParamSpec.object(
             'settings',
             'Settings',
-            'Command GSettings',
+            'Backgrounds GSettings',
             GObject.ParamFlags.READWRITE,
             Gio.Settings.$gtype
         ),
     },
-}, class Commands extends Gtk.ScrolledWindow {
+}, class BackgroundsPreferences extends Gtk.Box {
     _init(props = {}) {
         super._init(props);
-        this.settings = extensionUtils.getSettings(utils.getSettingsSchema('commands'));
+        this.settings = extensionUtils.getSettings(utils.getSettingsSchema('backgrounds'));
 
         this.settings.bind(
             'enabled',
@@ -35,16 +39,16 @@ var Commands = GObject.registerClass({
         );
 
         this.settings.bind(
-            'sunrise',
-            this._sunrise_entry,
-            'text',
+            'day',
+            this._day_button,
+            'path',
             Gio.SettingsBindFlags.DEFAULT
         );
 
         this.settings.bind(
-            'sunset',
-            this._sunset_entry,
-            'text',
+            'night',
+            this._night_button,
+            'path',
             Gio.SettingsBindFlags.DEFAULT
         );
     }
