@@ -4,7 +4,7 @@
 
 NAME = $(shell grep '"name"' ./src/metadata.json | sed 's/\s"name":\s"\(.\+\)",\?/\1/')
 UUID = $(shell grep '"uuid"' ./src/metadata.json | sed 's/\s"uuid":\s"\(.\+\)",\?/\1/')
-VERSION = $(shell grep '"version"' ./src/metadata.json | sed 's/\s"version":\s\([0-9]\+\),\?/\1/')
+DOMAIN = $(shell grep '"gettext-domain"' ./src/metadata.json | sed 's/\s"gettext-domain":\s"\(.\+\)",\?/\1/')
 
 
 .PHONY: build
@@ -21,7 +21,7 @@ build:
 		--extra-source=./schemas/ \
 		--extra-source=./settings/ \
 		--podir=./po/ \
-		--gettext-domain=$(UUID) \
+		--gettext-domain=$(DOMAIN) \
 		--out-dir=./build \
 		./src
 
@@ -48,11 +48,11 @@ pot:
 	xgettext \
 		--from-code=UTF-8 \
 		--package-name="$(NAME)" \
-		--output=./src/po/$(UUID).pot \
+		--output=./src/po/$(DOMAIN).pot \
 		./src/*.js ./src/**/*.js ./src/schemas/*.xml ./src/preferences/ui/*.ui
 
 .PHONY: update-po
 update-po:
 	for po_file in $(wildcard ./src/po/*.po); do \
-		msgmerge --update $$po_file src/po/$(UUID).pot; \
+		msgmerge --update $$po_file src/po/$(DOMAIN).pot; \
 	done
