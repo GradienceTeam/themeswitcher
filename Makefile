@@ -12,7 +12,6 @@ build:
 	mkdir -p ./build
 	gnome-extensions pack \
 		--force \
-		--extra-source=../LICENSE \
 		--extra-source=./config.js \
 		--extra-source=./utils.js \
 		--extra-source=./icons/ \
