@@ -2,22 +2,22 @@
 # Copyright (C) 2019, 2020 Romain Vigier
 # This file is distributed under the same license as the Night Theme Switcher package.
 # Romain Vigier <>, 2019, 2020.
-# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2020.
-#
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 15:12+0200\n"
-"PO-Revision-Date: 2020-12-13 12:47+0100\n"
+"PO-Revision-Date: 2021-08-19 17:24+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
-"Language-Team: Spanish\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: src/modules/GtkThemer.js:162
 #, javascript-format
@@ -369,16 +369,12 @@ msgstr "Cuando el día termina"
 
 #: src/preferences/ui/BackgroundButton.ui:15
 #: src/preferences/ui/ShortcutButton.ui:15
-#, fuzzy
-#| msgid "Choose"
 msgid "Choose…"
-msgstr "Seleccionar"
+msgstr "Seleccionar…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
-#, fuzzy
-#| msgid "Day background"
 msgid "Change background"
-msgstr "Fondo diurno"
+msgstr "Cambiar fondo"
 
 #: src/preferences/ui/BackgroundButton.ui:44
 #: src/preferences/ui/BackgroundButton.ui:46
@@ -419,10 +415,8 @@ msgid "notify-send \"Hello moonshine!\""
 msgstr "notify-send \"¡Buenas noches!\""
 
 #: src/preferences/ui/CursorPreferences.ui:15
-#, fuzzy
-#| msgid "Switch cursor variants"
 msgid "Switch cursor theme variants"
-msgstr "Cambiar las variantes del cursor"
+msgstr "Cambiar las variantes del tema del cursor"
 
 #: src/preferences/ui/CursorPreferences.ui:39
 #: src/preferences/ui/GtkPreferences.ui:48
@@ -439,10 +433,8 @@ msgid "Night variant"
 msgstr "Variante nocturna"
 
 #: src/preferences/ui/GtkPreferences.ui:15
-#, fuzzy
-#| msgid "Switch GTK variants"
 msgid "Switch GTK theme variants"
-msgstr "Cambiar las variantes de GTK"
+msgstr "Cambiar las variantes de tema GTK"
 
 #: src/preferences/ui/GtkPreferences.ui:39
 #: src/preferences/ui/ShellPreferences.ui:39
@@ -450,46 +442,37 @@ msgid "Manual variants"
 msgstr "Variantes manuales"
 
 #: src/preferences/ui/GtkPreferences.ui:40
-#, fuzzy
-#| msgid ""
-#| "<small>You can manually set variants if the extension cannot "
-#| "automatically detect the day and night variants of your GTK theme. Please "
-#| "<a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-"
-#| "extension/-/issues\">submit a request</a> to get your theme supported.</"
-#| "small>"
 msgid ""
 "You can manually set variants if the extension cannot automatically detect "
 "the day and night variants of your GTK theme. Please <a href=\"https://"
 "gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">submit "
 "a request</a> to get your theme supported."
 msgstr ""
-"<small>Puede establecer variantes manualmente si la extensión no puede "
-"detectar automáticamente las variantes diurnas y nocturnas de su tema GTK. "
-"Por favor <a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-"
-"extension/-/issues\">presente una solicitud</a> para conseguir que tu tema "
-"sea soportado.</small>"
+"Puede establecer variantes manualmente si la extensión no puede detectar "
+"automáticamente las variantes diurnas y nocturnas de su tema GTK. Por favor "
+"<a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/"
+"-/issues\">presente una solicitud</a> para conseguir que tu tema sea "
+"soportado."
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
-msgstr ""
+msgstr "Apóyenos"
 
 #: src/preferences/ui/Headerbar.ui:48
 msgid "View code on GitLab"
-msgstr ""
+msgstr "Ver el código en GitLab"
 
 #: src/preferences/ui/Headerbar.ui:71
 msgid "Translate on Weblate"
-msgstr ""
+msgstr "Traducir en Weblate"
 
 #: src/preferences/ui/Headerbar.ui:94
 msgid "Donate on Liberapay"
-msgstr ""
+msgstr "Donar en Liberapay"
 
 #: src/preferences/ui/IconPreferences.ui:15
-#, fuzzy
-#| msgid "Switch icon variants"
 msgid "Switch icon theme variants"
-msgstr "Cambiar las variantes de iconos"
+msgstr "Cambiar las variantes del tema de los iconos"
 
 #: src/preferences/ui/Preferences.ui:14
 msgid "Schedule"
@@ -497,7 +480,7 @@ msgstr "Horario"
 
 #: src/preferences/ui/Preferences.ui:24
 msgid "Appearance"
-msgstr ""
+msgstr "Apariencia"
 
 #: src/preferences/ui/Preferences.ui:34
 msgid "Commands"
@@ -508,50 +491,35 @@ msgid "Manual time source"
 msgstr "Fuente de tiempo manual"
 
 #: src/preferences/ui/Schedule.ui:28
-#, fuzzy
-#| msgid ""
-#| "<small>The extension will try to use Night Light or Location Services to "
-#| "automatically set your current sunrise and sunset times if they are "
-#| "enabled. If you prefer, you can manually choose a time source.</small>"
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are enabled. "
 "If you prefer, you can manually choose a time source."
 msgstr ""
-"<small>La extensión intentará utilizar los servicios de luz nocturna o de "
+"La extensión intentará utilizar los servicios de luz nocturna o de "
 "localización para fijar automáticamente las horas actuales de salida y "
 "puesta del sol, si están activados. Si lo prefiere, puede elegir manualmente "
-"una fuente de tiempo.</small>"
+"una fuente de tiempo."
 
 #: src/preferences/ui/Schedule.ui:45
 msgid "Always show on-demand controls"
 msgstr "Mostrar siempre los controles a la carta"
 
 #: src/preferences/ui/Schedule.ui:46
-#, fuzzy
-#| msgid ""
-#| "<small>This allows you to override the current time when using a schedule."
-#| "</small>"
 msgid "Allows you to override the current time when using a schedule."
-msgstr ""
-"<small>Esto le permite anular la hora actual cuando se utiliza un horario.</"
-"small>"
+msgstr "Esto le permite anular la hora actual cuando se utiliza un horario."
 
 #: src/preferences/ui/Schedule.ui:74
 msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "Seguir <i>Desactivar hasta mañana</i>"
 
 #: src/preferences/ui/Schedule.ui:75
-#, fuzzy
-#| msgid ""
-#| "<small>When Night Light is temporarily disabled, the extension will "
-#| "switch to day variants.</small>"
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
-"<small>Cuando la luz nocturna esté temporalmente desactivada, la extensión "
-"cambiará a variantes diurnas.</small>"
+"Cuando la luz nocturna esté temporalmente desactivada, la extensión cambiará "
+"a variantes diurnas."
 
 #: src/preferences/ui/Schedule.ui:95
 msgid "Manual schedule times"
@@ -578,42 +546,29 @@ msgid "System menu"
 msgstr "Menú del sistema"
 
 #: src/preferences/ui/ShellPreferences.ui:15
-#, fuzzy
-#| msgid "Switch Shell variants"
 msgid "Switch Shell theme variants"
-msgstr "Cambiar las variantes de shell"
+msgstr "Cambiar las variantes del tema de Shell"
 
 #: src/preferences/ui/ShellPreferences.ui:40
-#, fuzzy
-#| msgid ""
-#| "<small>You can manually set variants if the extension cannot "
-#| "automatically detect the day and night variants of your GNOME Shell "
-#| "theme. Please <a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-"
-#| "gnome-shell-extension/-/issues\">submit a request</a> to get your theme "
-#| "supported.</small>"
 msgid ""
 "You can manually set variants if the extension cannot automatically detect "
 "the day and night variants of your GNOME Shell theme. Please <a href="
 "\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues"
 "\">submit a request</a> to get your theme supported."
 msgstr ""
-"<small>Puede establecer variantes manualmente si la extensión no puede "
-"detectar automáticamente las variantes diurnas y nocturnas de su tema de "
-"GNOME Shell. Por favor <a href=\"https://gitlab.com/rmnvgr/"
+"Puede establecer variantes manualmente si la extensión no puede detectar "
+"automáticamente las variantes diurnas y nocturnas de su tema de GNOME Shell. "
+"Por favor <a href=\"https://gitlab.com/rmnvgr/"
 "nightthemeswitcher-gnome-shell-extension/-/issues\">presente una solicitud</"
-"a> para conseguir que tu tema sea soportado.</small>"
+"a> para conseguir que tu tema sea soportado."
 
 #: src/preferences/ui/ShortcutButton.ui:32
-#, fuzzy
-#| msgid "Keyboard shortcut"
 msgid "Change keyboard shortcut"
-msgstr "Atajo de teclado"
+msgstr "Cambiar el atajo de teclado"
 
 #: src/preferences/ui/ShortcutButton.ui:100
-#, fuzzy
-#| msgid "Press your keyboard shortcut..."
 msgid "Press your keyboard shortcut…"
-msgstr "Presione el atajo de teclado..."
+msgstr "Introduzca el atajo de teclado…"
 
 #. Time separator (eg. 08:27)
 #: src/preferences/ui/TimeChooser.ui:23
