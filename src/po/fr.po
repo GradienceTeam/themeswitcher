@@ -1,22 +1,22 @@
 # Night Theme Switcher
 # Copyright (C) 2019 Romain Vigier
 # This file is distributed under the same license as the Night Theme Switcher package.
-# Romain Vigier <romain@romainvigier.fr>, 2019-2020.
-#
+# Romain Vigier <romain@romainvigier.fr>, 2019-2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 14:00+0200\n"
-"PO-Revision-Date: 2020-11-06 11:29+0100\n"
+"PO-Revision-Date: 2021-08-19 13:13+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: French <romain@romainvigier.fr>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: src/modules/GtkThemer.js:162
 #, javascript-format
@@ -370,16 +370,12 @@ msgstr "Quand le jour se couche"
 
 #: src/preferences/ui/BackgroundButton.ui:15
 #: src/preferences/ui/ShortcutButton.ui:15
-#, fuzzy
-#| msgid "Choose"
 msgid "Choose…"
-msgstr "Choisir"
+msgstr "Choisir…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
-#, fuzzy
-#| msgid "Change backgrounds"
 msgid "Change background"
-msgstr "Changer les arrière-plans"
+msgstr "Changer l’arrière-plan"
 
 #: src/preferences/ui/BackgroundButton.ui:44
 #: src/preferences/ui/BackgroundButton.ui:46
@@ -420,10 +416,8 @@ msgid "notify-send \"Hello moonshine!\""
 msgstr "notify-send \"Bonsoir!\""
 
 #: src/preferences/ui/CursorPreferences.ui:15
-#, fuzzy
-#| msgid "Switch cursor variants"
 msgid "Switch cursor theme variants"
-msgstr "Permuter les variantes de curseur"
+msgstr "Permuter les variantes du thème de curseur"
 
 #: src/preferences/ui/CursorPreferences.ui:39
 #: src/preferences/ui/GtkPreferences.ui:48
@@ -440,10 +434,8 @@ msgid "Night variant"
 msgstr "Variante nocturne"
 
 #: src/preferences/ui/GtkPreferences.ui:15
-#, fuzzy
-#| msgid "Switch GTK variants"
 msgid "Switch GTK theme variants"
-msgstr "Permuter les variantes GTK"
+msgstr "Permuter les variantes du thème GTK"
 
 #: src/preferences/ui/GtkPreferences.ui:39
 #: src/preferences/ui/ShellPreferences.ui:39
@@ -452,25 +444,23 @@ msgstr "Variantes manuelles"
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
-msgstr ""
+msgstr "Nous soutenir"
 
 #: src/preferences/ui/Headerbar.ui:48
 msgid "View code on GitLab"
-msgstr ""
+msgstr "Voir le code sur GitLab"
 
 #: src/preferences/ui/Headerbar.ui:71
 msgid "Translate on Weblate"
-msgstr ""
+msgstr "Traduire sur Weblate"
 
 #: src/preferences/ui/Headerbar.ui:94
 msgid "Donate on Liberapay"
-msgstr ""
+msgstr "Donner sur Liberapay"
 
 #: src/preferences/ui/IconPreferences.ui:15
-#, fuzzy
-#| msgid "Switch icon variants"
 msgid "Switch icon theme variants"
-msgstr "Permuter les variantes d’icônes"
+msgstr "Permuter les variantes du thème d’icônes"
 
 #: src/preferences/ui/Preferences.ui:14
 msgid "Schedule"
@@ -478,7 +468,7 @@ msgstr "Horaires"
 
 #: src/preferences/ui/Preferences.ui:24
 msgid "Appearance"
-msgstr ""
+msgstr "Apparence"
 
 #: src/preferences/ui/Preferences.ui:34
 msgid "Commands"
@@ -489,13 +479,6 @@ msgid "Manual time source"
 msgstr "Source d’horaires manuelle"
 
 #: src/preferences/ui/Schedule.ui:28
-#, fuzzy
-#| msgid ""
-#| "The extension will try to use Night Light or Location Services to "
-#| "automatically set your current sunrise and sunset times if they are "
-#| "enabled.\n"
-#| "\n"
-#| "If you prefer, you can manually choose a time source."
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are enabled. "
@@ -503,40 +486,28 @@ msgid ""
 msgstr ""
 "S’ils sont activés, l’extension essayera d’utiliser le mode nuit ou les "
 "services de localisation pour déterminer automatiquement les heures "
-"actuelles de lever et de coucher du soleil.\n"
-"\n"
-"Si vous préférez, vous pouvez sélectionner manuellement une source "
-"d’horaires."
+"actuelles de lever et de coucher du soleil. Si vous préférez, vous pouvez "
+"sélectionner manuellement une source d’horaires."
 
 #: src/preferences/ui/Schedule.ui:45
 msgid "Always show on-demand controls"
 msgstr "Toujours afficher les contrôles à la demande"
 
 #: src/preferences/ui/Schedule.ui:46
-#, fuzzy
-#| msgid ""
-#| "<small>This allows you to override the current time when using a schedule."
-#| "</small>"
 msgid "Allows you to override the current time when using a schedule."
-msgstr ""
-"<small>Cela vous permet de contrôler le temps quand vous utiliser un horaire."
-"</small>"
+msgstr "Permet de contrôler le temps quand vous utiliser un horaire."
 
 #: src/preferences/ui/Schedule.ui:74
 msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "Suivre <i>Désactiver jusqu’à demain</i>"
 
 #: src/preferences/ui/Schedule.ui:75
-#, fuzzy
-#| msgid ""
-#| "<small>When Night Light is temporarily disabled, the extension will "
-#| "switch to day variants.</small>"
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
-"<small>Quand le mode nuit est temporairement désactivé, l’extension va "
-"permuter vers les variantes diurnes.</small>"
+"Quand le mode nuit est temporairement désactivé, l’extension va permuter "
+"vers les variantes diurnes."
 
 #: src/preferences/ui/Schedule.ui:95
 msgid "Manual schedule times"
@@ -563,20 +534,14 @@ msgid "System menu"
 msgstr "Menu système"
 
 #: src/preferences/ui/ShellPreferences.ui:15
-#, fuzzy
-#| msgid "Switch Shell variants"
 msgid "Switch Shell theme variants"
-msgstr "Permuter les variantes Shell"
+msgstr "Permuter les variantes du thème du Shell"
 
 #: src/preferences/ui/ShortcutButton.ui:32
-#, fuzzy
-#| msgid "Keyboard shortcut"
 msgid "Change keyboard shortcut"
-msgstr "Raccourci clavier"
+msgstr "Changer le raccourci clavier"
 
 #: src/preferences/ui/ShortcutButton.ui:100
-#, fuzzy
-#| msgid "Press your keyboard shortcut..."
 msgid "Press your keyboard shortcut…"
 msgstr "Pressez votre raccourci clavier…"
 
