@@ -37,7 +37,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <child>
               <object class="PreferenceRow">
                 <property name="title" translatable="yes">Manual variants</property>
-                <property name="subtitle"><![CDATA[You can manually set variants if the extension cannot automatically detect the day and night variants of your GTK theme. Please <a href="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues">submit a request</a> to get your theme supported.]]></property>
+                <property name="subtitle" translatable="yes"><![CDATA[You can manually set variants if the extension cannot automatically detect the day and night variants of your GTK theme. Please <a href="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues">submit a request</a> to get your theme supported.]]></property>
                 <property name="activatable-widget">
                   <object class="GtkSwitch" id="manual_switch"/>
                 </property>

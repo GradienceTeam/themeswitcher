@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-19 14:00+0200\n"
+"POT-Creation-Date: 2021-08-19 15:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -431,6 +431,14 @@ msgstr ""
 msgid "Manual variants"
 msgstr ""
 
+#: src/preferences/ui/GtkPreferences.ui:40
+msgid ""
+"You can manually set variants if the extension cannot automatically detect "
+"the day and night variants of your GTK theme. Please <a href=\"https://"
+"gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">submit "
+"a request</a> to get your theme supported."
+msgstr ""
+
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
 msgstr ""
@@ -518,6 +526,14 @@ msgstr ""
 
 #: src/preferences/ui/ShellPreferences.ui:15
 msgid "Switch Shell theme variants"
+msgstr ""
+
+#: src/preferences/ui/ShellPreferences.ui:40
+msgid ""
+"You can manually set variants if the extension cannot automatically detect "
+"the day and night variants of your GNOME Shell theme. Please <a href="
+"\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues"
+"\">submit a request</a> to get your theme supported."
 msgstr ""
 
 #: src/preferences/ui/ShortcutButton.ui:32
