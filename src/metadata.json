@@ -4,7 +4,7 @@
 	"uuid": "nightthemeswitcher@romainvigier.fr",
 	"gettext-domain": "nightthemeswitcher@romainvigier.fr",
 	"settings-schema": "org.gnome.shell.extensions.nightthemeswitcher",
-	"url": "https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/",
+	"url": "https://nightthemeswitcher.romainvigier.fr",
 	"shell-version": ["40"],
 	"version": 50
 }
