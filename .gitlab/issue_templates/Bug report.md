@@ -14,7 +14,3 @@
 ## Steps to reproduce
 
 1.
-
-
-<!-- Don't remove the following line -->
-/label ~"bug::not confirmed"
