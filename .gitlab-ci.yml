@@ -71,6 +71,12 @@ reuse:
 extension:
   stage: build
   interruptible: true
+  needs:
+    - job: lint
+      optional: true
+    - job: variants
+      optional: true
+    - reuse
   image: registry.gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension:latest
   script:
     - make build
