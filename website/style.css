@@ -54,7 +54,7 @@ html
 	height: 100%;
 	background: #020417;
 	font: 1em/1em sans-serif;
-	animation: background 20s linear infinite alternate;
+	animation: background 20s linear infinite alternate -2s;
 }
 
 html::before,
@@ -93,7 +93,7 @@ html::before
 	z-index: -2;
 	background: radial-gradient(ellipse 200% 100% at 50% 100%, #8d092c, #221a52 50%, #162171) center;
 	background-size: 100% 200%;
-	animation: background-night 20s linear infinite alternate;
+	animation: background-night 20s linear infinite alternate -2s;
 }
 
 @keyframes background-day
@@ -120,7 +120,7 @@ html::after
 	z-index: -1;
 	background: radial-gradient(ellipse 200% 100% at 50% 100%, #c79edd, #5a8ae4 50%, #4995eb) center;
 	background-size: 100% 200%;
-	animation: background-day 20s linear infinite alternate;
+	animation: background-day 20s linear infinite alternate -2s;
 }
 
 body
@@ -156,7 +156,7 @@ body
 	font: 1rem/1.2em Cantarell, sans-serif;
 	text-align: center;
 	box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-	animation: content 20s linear infinite alternate;
+	animation: content 20s linear infinite alternate -2s;
 }
 
 .title
@@ -189,7 +189,7 @@ body
 	-webkit-mask-size: 100%;
 	mask: url(icon.svg) no-repeat center;
 	mask-size: 100%;
-	animation: icon 20s linear infinite alternate;
+	animation: icon 20s linear infinite alternate -2s;
 }
 
 .description
