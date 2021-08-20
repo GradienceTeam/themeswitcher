@@ -4,13 +4,14 @@
 # Romain Vigier <>, 2019, 2020.
 # Veli Tasalı <me@velitasali.com>, 2021.
 # Romain Vigier <romain@romainvigier.fr>, 2021.
+# Veli Tasalı <veli.tasali@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 15:12+0200\n"
-"PO-Revision-Date: 2021-08-20 09:50+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"PO-Revision-Date: 2021-08-20 18:44+0000\n"
+"Last-Translator: Veli Tasalı <veli.tasali@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/tr/>\n"
 "Language: tr\n"
@@ -372,10 +373,8 @@ msgid "Choose…"
 msgstr "Seç…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
-#, fuzzy
-#| msgid "Day background"
 msgid "Change background"
-msgstr "Gündüz arkaplanı"
+msgstr "Arkaplanı değiştir"
 
 #: src/preferences/ui/BackgroundButton.ui:44
 #: src/preferences/ui/BackgroundButton.ui:46
@@ -416,10 +415,8 @@ msgid "notify-send \"Hello moonshine!\""
 msgstr "notify-send \"Merhaba ay ışığı!\""
 
 #: src/preferences/ui/CursorPreferences.ui:15
-#, fuzzy
-#| msgid "Switch cursor variants"
 msgid "Switch cursor theme variants"
-msgstr "İmleç karşılıklarına geçiş"
+msgstr "İmleç tema karşılıklarını değiştir"
 
 #: src/preferences/ui/CursorPreferences.ui:39
 #: src/preferences/ui/GtkPreferences.ui:48
@@ -436,10 +433,8 @@ msgid "Night variant"
 msgstr "Gece karşılığı"
 
 #: src/preferences/ui/GtkPreferences.ui:15
-#, fuzzy
-#| msgid "Switch GTK variants"
 msgid "Switch GTK theme variants"
-msgstr "GTK karşılıklarına geçiş"
+msgstr "GTK tema karşılıklarını değiştir"
 
 #: src/preferences/ui/GtkPreferences.ui:39
 #: src/preferences/ui/ShellPreferences.ui:39
@@ -461,25 +456,23 @@ msgstr ""
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
-msgstr ""
+msgstr "Bizi destekleyin"
 
 #: src/preferences/ui/Headerbar.ui:48
 msgid "View code on GitLab"
-msgstr ""
+msgstr "Kodu GitLab üzerinde görüntüle"
 
 #: src/preferences/ui/Headerbar.ui:71
 msgid "Translate on Weblate"
-msgstr ""
+msgstr "Weblate ile yerelleştirin"
 
 #: src/preferences/ui/Headerbar.ui:94
 msgid "Donate on Liberapay"
-msgstr ""
+msgstr "Liberapay ile bağış yapın"
 
 #: src/preferences/ui/IconPreferences.ui:15
-#, fuzzy
-#| msgid "Switch icon variants"
 msgid "Switch icon theme variants"
-msgstr "İkon karşılıklarına geçiş"
+msgstr "İkon tema karşılıklarını değiştir"
 
 #: src/preferences/ui/Preferences.ui:14
 msgid "Schedule"
@@ -487,7 +480,7 @@ msgstr "Kur"
 
 #: src/preferences/ui/Preferences.ui:24
 msgid "Appearance"
-msgstr ""
+msgstr "Görünüm"
 
 #: src/preferences/ui/Preferences.ui:34
 msgid "Commands"
@@ -512,12 +505,8 @@ msgid "Always show on-demand controls"
 msgstr "İsteğe bağlı yönetimini her zaman göster"
 
 #: src/preferences/ui/Schedule.ui:46
-#, fuzzy
-#| msgid ""
-#| "<small>This allows you to override the current time when using a schedule."
-#| "</small>"
 msgid "Allows you to override the current time when using a schedule."
-msgstr "<small> Bu şu anki kurulmuş zamanı geçersiz kılmanızı sağlar.</small>"
+msgstr "Şu anki kurulmuş zamanı geçersiz kılmanızı sağlar."
 
 #: src/preferences/ui/Schedule.ui:74
 msgid "Follow <i>Disable until tomorrow</i>"
@@ -556,10 +545,8 @@ msgid "System menu"
 msgstr "Sistem menüsü"
 
 #: src/preferences/ui/ShellPreferences.ui:15
-#, fuzzy
-#| msgid "Switch Shell variants"
 msgid "Switch Shell theme variants"
-msgstr "Shell karşılıklarına geçiş"
+msgstr "Shell tema karşılıklarını değiştir"
 
 #: src/preferences/ui/ShellPreferences.ui:40
 msgid ""
@@ -575,10 +562,8 @@ msgstr ""
 "bulunabilirsiniz</a>."
 
 #: src/preferences/ui/ShortcutButton.ui:32
-#, fuzzy
-#| msgid "Keyboard shortcut"
 msgid "Change keyboard shortcut"
-msgstr "Klavye kısayolu"
+msgstr "Klavye kısayolunu değiştir"
 
 #: src/preferences/ui/ShortcutButton.ui:100
 msgid "Press your keyboard shortcut…"
