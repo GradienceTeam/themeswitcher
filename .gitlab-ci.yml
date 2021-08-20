@@ -53,6 +53,8 @@ variants:
   interruptible: true
   rules:
     - changes:
+      - src/modules/GtkVariants.js
+      - src/modules/ShellVariants.js
       - tests/**/*.js
   script:
     - npm run test-variants
