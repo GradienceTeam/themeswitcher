@@ -101,7 +101,7 @@ package:
 pages:
   stage: deploy
   needs: []
-  image: fedora:latest
+  image: registry.gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension:latest
   script:
     - cp -r website public
     - find public -type f -regex '.*\.\(|html\|css\|svg\|png\|woff\|woff2\)$' -exec gzip -f -k {} \;
