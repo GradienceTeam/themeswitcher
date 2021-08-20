@@ -1,0 +1,227 @@
+/*
+SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: GPL-3.0-or-later
+*/
+
+@font-face
+{
+	font-family: 'Cantarell';
+	src: url('fonts/Cantarell-Regular.woff2') format('woff2'),
+		url('fonts/Cantarell-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face
+{
+	font-family: 'Cantarell';
+	src: url('fonts/Cantarell-Bold.woff2') format('woff2'),
+		url('fonts/Cantarell-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+
+html,
+body,
+h1,
+p
+{
+	margin: 0;
+	padding: 0;
+}
+
+a
+{
+	color: inherit;
+	text-decoration: none;
+}
+
+
+@keyframes background {
+	from, 20% {
+		background: #020417;
+	}
+	80%, to {
+		background: #4995eb;
+	}
+}
+
+html
+{
+	height: 100%;
+	background: #020417;
+	font: 1em/1em sans-serif;
+	animation: background 20s linear infinite alternate;
+}
+
+html::before,
+html::after
+{
+	content: '';
+	display: block;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+@keyframes background-night
+{
+	from, 10%
+	{
+		background-position-y: bottom;
+		opacity: 0;
+	}
+
+	30%
+	{
+		opacity: 1;
+	}
+
+	60%, to
+	{
+		background-position-y: top;
+	}
+}
+
+html::before
+{
+	z-index: -2;
+	background: radial-gradient(ellipse 200% 100% at 50% 100%, #8d092c, #221a52 50%, #162171) center;
+	background-size: 100% 200%;
+	animation: background-night 20s linear infinite alternate;
+}
+
+@keyframes background-day
+{
+	from, 35%
+	{
+		background-position-y: bottom;
+		opacity: 0;
+	}
+
+	65%
+	{
+		opacity: 1;
+	}
+
+	to
+	{
+		background-position-y: top;
+	}
+}
+
+html::after
+{
+	z-index: -1;
+	background: radial-gradient(ellipse 200% 100% at 50% 100%, #c79edd, #5a8ae4 50%, #4995eb) center;
+	background-size: 100% 200%;
+	animation: background-day 20s linear infinite alternate;
+}
+
+body
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100%;
+}
+
+@keyframes content {
+	from, 50% {
+		border-color: rgba(255, 255, 255, 0.1);
+		background: #000;
+		color: #fcfcfc;
+		--test: #fcfcfc;
+	}
+	51%, to {
+		border-color: rgba(0, 0, 0, 0.2);
+		background: #fefefe;
+		color: #000;
+	}
+}
+
+.content
+{
+	max-width: 20em;
+	padding: 4em 2em;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 0.5em;
+	background: #000;
+	color: #fcfcfc;
+	font: 1rem/1.2em Cantarell, sans-serif;
+	text-align: center;
+	box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+	animation: content 20s linear infinite alternate;
+}
+
+.title
+{
+	margin: 0 0 2.5rem;
+	font-weight: bold;
+	font-size: 1.4em;
+	line-height: 1.2em;
+}
+
+@keyframes icon {
+	from, 50% {
+		background: #fcfcfc;
+	}
+	51%, to {
+		background: #000;
+	}
+}
+
+.title::before
+{
+	content: '';
+	display: block;
+	width: 4em;
+	height: 4em;
+	margin: 0 auto 2em;
+	background: #fcfcfc;
+	font-size: 1rem;
+	-webkit-mask: url(icon.svg) no-repeat center;
+	-webkit-mask-size: 100%;
+	mask: url(icon.svg) no-repeat center;
+	mask-size: 100%;
+	animation: icon 20s linear infinite alternate;
+}
+
+.description
+{
+	margin-bottom: 2.5rem;
+	font-size: 0.9em;
+	line-height: inherit;
+}
+
+.button
+{
+	display: inline-block;
+	padding: 0.5em 1em;
+	border: 0.15em solid;
+	border-radius: 0.4em;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.button:hover,
+.button:focus
+{
+	text-decoration: underline;
+}
+
+
+@media (max-width: 26em)
+{
+	body
+	{
+		display: block;
+		padding: 2em 2em;
+		min-height: 0;
+	}
+}

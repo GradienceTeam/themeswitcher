@@ -11,6 +11,7 @@ workflow:
 stages:
   - check
   - build
+  - deploy
 
 .python:
   image: python:latest
@@ -78,4 +79,21 @@ extension:
     expose_as: Extension
     paths:
       - build/nightthemeswitcher@romainvigier.fr.shell-extension.zip
+    expire_in: 1 day
+
+pages:
+  stage: deploy
+  needs: []
+  image: fedora:latest
+  script:
+    - cp -r website public
+    - find public -type f -regex '.*\.\(|html\|css\|svg\|png\|woff\|woff2\)$' -exec gzip -f -k {} \;
+    - find public -type f -regex '.*\.\(|html\|css\|svg\|png\|woff\|woff2\)$' -exec brotli -f -k {} \;
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes:
+      - website/**/*
+  artifacts:
+    paths:
+      - public
     expire_in: 1 day
