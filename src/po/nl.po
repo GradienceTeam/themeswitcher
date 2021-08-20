@@ -4,13 +4,14 @@
 # Romain Vigier <>, 2019, 2020.
 #
 # Romain Vigier <romain@romainvigier.fr>, 2021.
+# Heimen Stoffels <vistausss@fastmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 15:12+0200\n"
-"PO-Revision-Date: 2021-08-20 09:50+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"PO-Revision-Date: 2021-08-20 18:44+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/nl/>\n"
 "Language: nl\n"
@@ -374,10 +375,8 @@ msgid "Choose…"
 msgstr "Kiezen…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
-#, fuzzy
-#| msgid "Day background"
 msgid "Change background"
-msgstr "Dagachtergrond"
+msgstr "Achtergrond wijzigen"
 
 #: src/preferences/ui/BackgroundButton.ui:44
 #: src/preferences/ui/BackgroundButton.ui:46
@@ -418,8 +417,6 @@ msgid "notify-send \"Hello moonshine!\""
 msgstr "notify-send \"Zie de maan schijnt door de bomen…\""
 
 #: src/preferences/ui/CursorPreferences.ui:15
-#, fuzzy
-#| msgid "Switch cursor variants"
 msgid "Switch cursor theme variants"
 msgstr "Schakelen tussen cursorthemavarianten"
 
@@ -438,8 +435,6 @@ msgid "Night variant"
 msgstr "Nachtvariant"
 
 #: src/preferences/ui/GtkPreferences.ui:15
-#, fuzzy
-#| msgid "Switch GTK variants"
 msgid "Switch GTK theme variants"
 msgstr "Schakelen tussen GTK-themavarianten"
 
@@ -462,23 +457,21 @@ msgstr ""
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
-msgstr ""
+msgstr "Draag bij aan de ontwikkeling"
 
 #: src/preferences/ui/Headerbar.ui:48
 msgid "View code on GitLab"
-msgstr ""
+msgstr "Bekijk de code op GitLab"
 
 #: src/preferences/ui/Headerbar.ui:71
 msgid "Translate on Weblate"
-msgstr ""
+msgstr "Vertaal op Weblate"
 
 #: src/preferences/ui/Headerbar.ui:94
 msgid "Donate on Liberapay"
-msgstr ""
+msgstr "Doneer via Liberapay"
 
 #: src/preferences/ui/IconPreferences.ui:15
-#, fuzzy
-#| msgid "Switch icon variants"
 msgid "Switch icon theme variants"
 msgstr "Schakelen tussen pictogramthemavarianten"
 
@@ -488,7 +481,7 @@ msgstr "Schema"
 
 #: src/preferences/ui/Preferences.ui:24
 msgid "Appearance"
-msgstr ""
+msgstr "Uiterlijk"
 
 #: src/preferences/ui/Preferences.ui:34
 msgid "Commands"
@@ -513,14 +506,8 @@ msgid "Always show on-demand controls"
 msgstr "Bediening van modus ‘op aanvraag’ altijd tonen"
 
 #: src/preferences/ui/Schedule.ui:46
-#, fuzzy
-#| msgid ""
-#| "<small>This allows you to override the current time when using a schedule."
-#| "</small>"
 msgid "Allows you to override the current time when using a schedule."
-msgstr ""
-"<small>Hiermee negeert u het huidige tijdstip bij gebruik van een schema.</"
-"small>"
+msgstr "Hiermee negeert u het huidige tijdstip bij gebruik van een schema."
 
 #: src/preferences/ui/Schedule.ui:74
 msgid "Follow <i>Disable until tomorrow</i>"
@@ -559,8 +546,6 @@ msgid "System menu"
 msgstr "Systeemmenu"
 
 #: src/preferences/ui/ShellPreferences.ui:15
-#, fuzzy
-#| msgid "Switch Shell variants"
 msgid "Switch Shell theme variants"
 msgstr "Schakelen tussen Shell-themavarianten"
 
@@ -577,14 +562,10 @@ msgstr ""
 "thema toe te voegen aan de lijst met ondersteunde thema's."
 
 #: src/preferences/ui/ShortcutButton.ui:32
-#, fuzzy
-#| msgid "Keyboard shortcut"
 msgid "Change keyboard shortcut"
-msgstr "Sneltoets"
+msgstr "Sneltoets wijzigen"
 
 #: src/preferences/ui/ShortcutButton.ui:100
-#, fuzzy
-#| msgid "Press your keyboard shortcut..."
 msgid "Press your keyboard shortcut…"
 msgstr "Druk op een sneltoets…"
 
