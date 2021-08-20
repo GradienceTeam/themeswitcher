@@ -4,15 +4,16 @@
 # Romain Vigier <>, 2019, 2020.
 #
 # Allan Nordhøy <epost@anotheragency.no>, 2021.
+# Romain Vigier <romain@romainvigier.fr>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 15:12+0200\n"
-"PO-Revision-Date: 2021-08-17 14:51+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/night-"
-"theme-switcher/extension/nb_NO/>\n"
+"PO-Revision-Date: 2021-08-20 09:50+0000\n"
+"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -371,10 +372,8 @@ msgstr "Når dagen slutter"
 
 #: src/preferences/ui/BackgroundButton.ui:15
 #: src/preferences/ui/ShortcutButton.ui:15
-#, fuzzy
-#| msgid "Choose"
 msgid "Choose…"
-msgstr "Velg"
+msgstr "Velg…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
 #, fuzzy
@@ -452,23 +451,16 @@ msgid "Manual variants"
 msgstr "Manuelle varianter"
 
 #: src/preferences/ui/GtkPreferences.ui:40
-#, fuzzy
-#| msgid ""
-#| "<small>You can manually set variants if the extension cannot "
-#| "automatically detect the day and night variants of your GTK theme. Please "
-#| "<a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-"
-#| "extension/-/issues\">submit a request</a> to get your theme supported.</"
-#| "small>"
 msgid ""
 "You can manually set variants if the extension cannot automatically detect "
 "the day and night variants of your GTK theme. Please <a href=\"https://"
 "gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">submit "
 "a request</a> to get your theme supported."
 msgstr ""
-"<small>Du kan manuelt sette varianter hvis tillegget ikke kan oppdage dag- "
-"og natt-varianter av din GTK-drakt automatisk. <a href=\"https://gitlab.com/"
-"rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">Send inn en "
-"forespørsel</a> for å få din drakt støttet.</small>"
+"Du kan manuelt sette varianter hvis tillegget ikke kan oppdage dag- og natt-"
+"varianter av din GTK-drakt automatisk. <a href=\"https://gitlab.com/rmnvgr/"
+"nightthemeswitcher-gnome-shell-extension/-/issues\">Send inn en forespørsel</"
+"a> for å få din drakt støttet."
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
@@ -509,19 +501,14 @@ msgid "Manual time source"
 msgstr "Manuell tidskilde"
 
 #: src/preferences/ui/Schedule.ui:28
-#, fuzzy
-#| msgid ""
-#| "<small>The extension will try to use Night Light or Location Services to "
-#| "automatically set your current sunrise and sunset times if they are "
-#| "enabled. If you prefer, you can manually choose a time source.</small>"
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are enabled. "
 "If you prefer, you can manually choose a time source."
 msgstr ""
-"<small>Tillegget kan prøve å bruke nattlys eller posisjonstjenester for å "
+"Tillegget kan prøve å bruke nattlys eller posisjonstjenester for å "
 "automatisk sette din nåværende soloppgang- og solnedgangstider hvis de er "
-"påslått. Hvis du foretrekker det, kan du manuelt velge en tidskilde.</small>"
+"påslått. Hvis du foretrekker det, kan du manuelt velge en tidskilde."
 
 #: src/preferences/ui/Schedule.ui:45
 #, fuzzy
@@ -543,16 +530,11 @@ msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "Følg <i>Skru av til i morgen</i>"
 
 #: src/preferences/ui/Schedule.ui:75
-#, fuzzy
-#| msgid ""
-#| "<small>When Night Light is temporarily disabled, the extension will "
-#| "switch to day variants.</small>"
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
-"<small>Når nattlys skrus av midlertidig, vil tillegget bytte til dag-"
-"variantene.</small>"
+"Når nattlys skrus av midlertidig, vil tillegget bytte til dag-variantene."
 
 #: src/preferences/ui/Schedule.ui:95
 msgid "Manual schedule times"
@@ -587,23 +569,16 @@ msgid "Switch Shell theme variants"
 msgstr "Bytt skallvarianter"
 
 #: src/preferences/ui/ShellPreferences.ui:40
-#, fuzzy
-#| msgid ""
-#| "<small>You can manually set variants if the extension cannot "
-#| "automatically detect the day and night variants of your GNOME Shell "
-#| "theme. Please <a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-"
-#| "gnome-shell-extension/-/issues\">submit a request</a> to get your theme "
-#| "supported.</small>"
 msgid ""
 "You can manually set variants if the extension cannot automatically detect "
 "the day and night variants of your GNOME Shell theme. Please <a href="
 "\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues"
 "\">submit a request</a> to get your theme supported."
 msgstr ""
-"<small>Du kan manuelt sette varianter hvis tillegget ikke kan oppdage dag- "
-"og natt-varianter av din GNOME-drakt automatisk. <a href=\"https://gitlab."
-"com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">Send inn en "
-"forespørsel</a> for å få din drakt støttet.</small>"
+"Du kan manuelt sette varianter hvis tillegget ikke kan oppdage dag- og natt-"
+"varianter av din GNOME-drakt automatisk. <a href=\"https://gitlab.com/rmnvgr/"
+"nightthemeswitcher-gnome-shell-extension/-/issues\">Send inn en forespørsel</"
+"a> for å få din drakt støttet."
 
 #: src/preferences/ui/ShortcutButton.ui:32
 #, fuzzy
