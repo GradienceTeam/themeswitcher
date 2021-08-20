@@ -60,12 +60,17 @@ var TimerOndemand = class {
 
     _connectSettings() {
         logDebug('Connecting On-demand Timer to settings...');
+        this._ondemandTimeConnect = e.settings.time.connect('ondemand-time-changed', this._onOndemandTimeChanged.bind(this));
         this._ondemandKeybindingConnect = e.settings.time.connect('ondemand-keybinding-changed', this._onOndemandKeybindingChanged.bind(this));
         this._ondemandButtonPlacementConnect = e.settings.time.connect('ondemand-button-placement-changed', this._onOndemandButtonPlacementChanged.bind(this));
     }
 
     _disconnectSettings() {
         logDebug('Disconnecting On-demand Timer from settings...');
+        if (this._ondemandTimeConnect) {
+            e.settings.time.disconnect(this._ondemandTimeConnect);
+            this._ondemandTimeConnect = null;
+        }
         if (this._ondemandKeybindingConnect) {
             e.settings.time.disconnect(this._ondemandKeybindingConnect);
             this._ondemandKeybindingConnect = null;
@@ -90,6 +95,10 @@ var TimerOndemand = class {
     }
 
 
+    _onOndemandTimeChanged(_settings, _time) {
+        this.emit('time-changed', this.time);
+    }
+
     _onOndemandKeybindingChanged(_settings, _keybinding) {
         this._removeKeybinding();
         this._addKeybinding();
@@ -101,6 +110,7 @@ var TimerOndemand = class {
     }
 
     _onTimeChanged(_timer, _newTime) {
+        e.settings.time.ondemandTime = e.timer.time;
         this._updateButton();
     }
 
