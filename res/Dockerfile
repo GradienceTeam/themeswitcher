@@ -15,5 +15,5 @@ RUN dnf install --nodocs -y gcc git glib2-devel gnome-autoar-devel json-glib-dev
 	&& dnf remove -y gcc git glib2-devel gnome-autoar-devel json-glib-devel meson
 
 # Install runtime dependencies
-RUN dnf install --nodocs -y findutils gettext gnome-autoar make \
+RUN dnf install --nodocs -y findutils gettext gnome-autoar make gzip brotli \
 	&& dnf clean all
