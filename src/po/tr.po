@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 15:12+0200\n"
-"PO-Revision-Date: 2021-08-17 09:39+0000\n"
+"PO-Revision-Date: 2021-08-20 09:50+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -368,10 +368,8 @@ msgstr "Gün sona erdiği an"
 
 #: src/preferences/ui/BackgroundButton.ui:15
 #: src/preferences/ui/ShortcutButton.ui:15
-#, fuzzy
-#| msgid "Choose"
 msgid "Choose…"
-msgstr "Seç"
+msgstr "Seç…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
 #, fuzzy
@@ -449,23 +447,17 @@ msgid "Manual variants"
 msgstr "Elle belirlenmiş karşılıklar"
 
 #: src/preferences/ui/GtkPreferences.ui:40
-#, fuzzy
-#| msgid ""
-#| "<small>You can manually set variants if the extension cannot "
-#| "automatically detect the day and night variants of your GTK theme. Please "
-#| "<a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-"
-#| "extension/-/issues\">submit a request</a> to get your theme supported.</"
-#| "small>"
 msgid ""
 "You can manually set variants if the extension cannot automatically detect "
 "the day and night variants of your GTK theme. Please <a href=\"https://"
 "gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">submit "
 "a request</a> to get your theme supported."
 msgstr ""
-"<small>Eğer bu eklenti kullandığınız GTK temasını algılayamıyorsa, temanın "
+"Eğer bu eklenti kullandığınız GTK temasını algılayamıyorsa, temanın "
 "karşılığını elle girebilirsiniz. Temanın desteklenmesini sağlamak için "
-"ayrıca <a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-"
-"extension/-/issues\">istekte bulunabilirsiniz</a>.</small>"
+"ayrıca <a href=\"https://gitlab.com/rmnvgr/"
+"nightthemeswitcher-gnome-shell-extension/-/issues\">istekte "
+"bulunabilirsiniz</a>."
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
@@ -506,19 +498,14 @@ msgid "Manual time source"
 msgstr "Elle zaman kaynağı"
 
 #: src/preferences/ui/Schedule.ui:28
-#, fuzzy
-#| msgid ""
-#| "<small>The extension will try to use Night Light or Location Services to "
-#| "automatically set your current sunrise and sunset times if they are "
-#| "enabled. If you prefer, you can manually choose a time source.</small>"
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are enabled. "
 "If you prefer, you can manually choose a time source."
 msgstr ""
-"<small>Eklenti, Gece Işığı veya Konum Servisleri'ni kullanarak gün doğumu ve "
-"batımı saatlerini tespit etmeye çalışacaktır. İsterseniz elle de zaman "
-"kaynağını belirtebilirsiniz.</small>"
+"Eklenti, Gece Işığı veya Konum Servisleri'ni kullanarak gün doğumu ve batımı "
+"saatlerini tespit etmeye çalışacaktır. İsterseniz elle de zaman kaynağını "
+"belirtebilirsiniz."
 
 #: src/preferences/ui/Schedule.ui:45
 msgid "Always show on-demand controls"
@@ -537,16 +524,12 @@ msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "<i>Yarına kadar devre dışı bırak</i>'ı takip et"
 
 #: src/preferences/ui/Schedule.ui:75
-#, fuzzy
-#| msgid ""
-#| "<small>When Night Light is temporarily disabled, the extension will "
-#| "switch to day variants.</small>"
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
-"<small>Gece Işığı geçici süreliğine devre dışı bırakılınca gündüz "
-"karşılıklarına geçiş yapılır.</small>"
+"Gece Işığı geçici süreliğine devre dışı bırakılınca gündüz karşılıklarına "
+"geçiş yapılır."
 
 #: src/preferences/ui/Schedule.ui:95
 msgid "Manual schedule times"
@@ -579,23 +562,17 @@ msgid "Switch Shell theme variants"
 msgstr "Shell karşılıklarına geçiş"
 
 #: src/preferences/ui/ShellPreferences.ui:40
-#, fuzzy
-#| msgid ""
-#| "<small>You can manually set variants if the extension cannot "
-#| "automatically detect the day and night variants of your GNOME Shell "
-#| "theme. Please <a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-"
-#| "gnome-shell-extension/-/issues\">submit a request</a> to get your theme "
-#| "supported.</small>"
 msgid ""
 "You can manually set variants if the extension cannot automatically detect "
 "the day and night variants of your GNOME Shell theme. Please <a href="
 "\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues"
 "\">submit a request</a> to get your theme supported."
 msgstr ""
-"<small>Eğer bu eklenti shell temanızın karşılıklarını tespit edemiyorsa, "
-"temanın karşılığını elle girebilirsiniz. Temanın desteklenmesini sağlamak "
-"için ayrıca <a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-"
-"shell-extension/-/issues\">istekte bulunabilirsiniz</a>.</small>"
+"Eğer bu eklenti shell temanızın karşılıklarını tespit edemiyorsa, temanın "
+"karşılığını elle girebilirsiniz. Temanın desteklenmesini sağlamak için "
+"ayrıca <a href=\"https://gitlab.com/rmnvgr/"
+"nightthemeswitcher-gnome-shell-extension/-/issues\">istekte "
+"bulunabilirsiniz</a>."
 
 #: src/preferences/ui/ShortcutButton.ui:32
 #, fuzzy
@@ -604,10 +581,8 @@ msgid "Change keyboard shortcut"
 msgstr "Klavye kısayolu"
 
 #: src/preferences/ui/ShortcutButton.ui:100
-#, fuzzy
-#| msgid "Press your keyboard shortcut..."
 msgid "Press your keyboard shortcut…"
-msgstr "Klavye kısayolunu tuşlayın"
+msgstr "Klavye kısayolunu tuşlayın…"
 
 #. Time separator (eg. 08:27)
 #: src/preferences/ui/TimeChooser.ui:23
