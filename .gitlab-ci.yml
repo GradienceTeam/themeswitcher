@@ -78,3 +78,4 @@ extension:
     expose_as: Extension
     paths:
       - build/nightthemeswitcher@romainvigier.fr.shell-extension.zip
+    expire_in: 1 day
