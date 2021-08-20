@@ -87,6 +87,17 @@ extension:
       - build/nightthemeswitcher@romainvigier.fr.shell-extension.zip
     expire_in: 1 day
 
+package:
+  stage: deploy
+  needs:
+    - job: extension
+      artifacts: true
+  image: curlimages/curl:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/nightthemeswitcher@romainvigier.fr.shell-extension.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/nightthemeswitcher/$CI_COMMIT_TAG/nightthemeswitcher@romainvigier.fr.shell-extension.zip"'
+
 pages:
   stage: deploy
   needs: []
