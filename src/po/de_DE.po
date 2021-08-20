@@ -4,20 +4,22 @@
 # Romain Vigier <>, 2019, 2020.
 # Automatically generated <>, 2021.
 #
+# Romain Vigier <romain@romainvigier.fr>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 45\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 15:12+0200\n"
-"PO-Revision-Date: 2021-01-30 15:55+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: de\n"
+"PO-Revision-Date: 2021-08-20 09:50+0000\n"
+"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/de/>\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: src/modules/GtkThemer.js:162
 #, javascript-format
@@ -368,10 +370,8 @@ msgstr "Wann der Tag endet"
 
 #: src/preferences/ui/BackgroundButton.ui:15
 #: src/preferences/ui/ShortcutButton.ui:15
-#, fuzzy
-#| msgid "Choose"
 msgid "Choose…"
-msgstr "Auswählen"
+msgstr "Auswählen…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
 #, fuzzy
@@ -449,24 +449,16 @@ msgid "Manual variants"
 msgstr "Manuelle Varianten"
 
 #: src/preferences/ui/GtkPreferences.ui:40
-#, fuzzy
-#| msgid ""
-#| "<small>You can manually set variants if the extension cannot "
-#| "automatically detect the day and night variants of your GTK theme. Please "
-#| "<a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-"
-#| "extension/-/issues\">submit a request</a> to get your theme supported.</"
-#| "small>"
 msgid ""
 "You can manually set variants if the extension cannot automatically detect "
 "the day and night variants of your GTK theme. Please <a href=\"https://"
 "gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">submit "
 "a request</a> to get your theme supported."
 msgstr ""
-"<small>Sie können die Tag- und Nachtvarianten des GTK-Themas selbst "
-"festlegen, falls die Erweiterung diese nicht automatisch erkennt. Bitte <a "
-"href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/"
-"issues\">reichen Sie eine Anfrage ein</a>, damit Ihr Thema unterstützt "
-"werden kann.</small>"
+"Sie können die Tag- und Nachtvarianten des GTK-Themas selbst festlegen, "
+"falls die Erweiterung diese nicht automatisch erkennt. Bitte <a href=\"https"
+"://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\""
+">reichen Sie eine Anfrage ein</a>, damit Ihr Thema unterstützt werden kann."
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
@@ -507,19 +499,14 @@ msgid "Manual time source"
 msgstr "Manuelle Zeitquelle"
 
 #: src/preferences/ui/Schedule.ui:28
-#, fuzzy
-#| msgid ""
-#| "<small>The extension will try to use Night Light or Location Services to "
-#| "automatically set your current sunrise and sunset times if they are "
-#| "enabled. If you prefer, you can manually choose a time source.</small>"
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are enabled. "
 "If you prefer, you can manually choose a time source."
 msgstr ""
-"<small>Die Erweiterung wird versuchen, anhand des Nachtlichts oder des "
+"Die Erweiterung wird versuchen, anhand des Nachtlichts oder des "
 "Ortungsdienstes die aktuelle Zeit für Sonnenaufgang und Sonnenuntergang zu "
-"bestimmen. Sie können diese Einstellung aber auch selbst vornehmen.</small>"
+"bestimmen. Sie können diese Einstellung aber auch selbst vornehmen."
 
 #: src/preferences/ui/Schedule.ui:45
 msgid "Always show on-demand controls"
@@ -540,16 +527,12 @@ msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "<i>Bis morgen deaktivieren</i> berücksichtigen"
 
 #: src/preferences/ui/Schedule.ui:75
-#, fuzzy
-#| msgid ""
-#| "<small>When Night Light is temporarily disabled, the extension will "
-#| "switch to day variants.</small>"
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
-"<small>Auf Tagesvariante wechseln, wenn das Nachtlicht vorübergehend "
-"deaktiviert wird.</small>"
+"Auf Tagesvariante wechseln, wenn das Nachtlicht vorübergehend deaktiviert "
+"wird."
 
 #: src/preferences/ui/Schedule.ui:95
 msgid "Manual schedule times"
@@ -582,24 +565,17 @@ msgid "Switch Shell theme variants"
 msgstr "Shell-Varianten wechseln"
 
 #: src/preferences/ui/ShellPreferences.ui:40
-#, fuzzy
-#| msgid ""
-#| "<small>You can manually set variants if the extension cannot "
-#| "automatically detect the day and night variants of your GNOME Shell "
-#| "theme. Please <a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-"
-#| "gnome-shell-extension/-/issues\">submit a request</a> to get your theme "
-#| "supported.</small>"
 msgid ""
 "You can manually set variants if the extension cannot automatically detect "
 "the day and night variants of your GNOME Shell theme. Please <a href="
 "\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues"
 "\">submit a request</a> to get your theme supported."
 msgstr ""
-"<small>Sie können die Tag- und Nachtvarianten des GNOME-Shell-Themas selbst "
+"Sie können die Tag- und Nachtvarianten des GNOME-Shell-Themas selbst "
 "festlegen, falls die Erweiterung diese nicht automatisch erkennt. Bitte <a "
 "href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/"
 "issues\">reichen Sie eine Anfrage ein</a>, damit Ihr Thema unterstützt "
-"werden kann.</small>"
+"werden kann."
 
 #: src/preferences/ui/ShortcutButton.ui:32
 #, fuzzy
@@ -608,10 +584,8 @@ msgid "Change keyboard shortcut"
 msgstr "Tastaturkürzel"
 
 #: src/preferences/ui/ShortcutButton.ui:100
-#, fuzzy
-#| msgid "Press your keyboard shortcut..."
 msgid "Press your keyboard shortcut…"
-msgstr "Drücken Sie den Tastaturkürzel..."
+msgstr "Drücken Sie den Tastaturkürzel…"
 
 #. Time separator (eg. 08:27)
 #: src/preferences/ui/TimeChooser.ui:23
