@@ -1,6 +1,10 @@
 # SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+variables:
+  PACKAGE_NAME: nightthemeswitcher.zip
+  PACKAGE_REGISTRY_URL: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/nightthemeswitcher
+
 workflow:
   rules:
     - if: $CI_MERGE_REQUEST_IID
@@ -16,7 +20,7 @@ stages:
 .python:
   image: python:latest
   variables:
-    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+    PIP_CACHE_DIR: $CI_PROJECT_DIR/.cache/pip
   cache:
     key: python
     paths:
@@ -96,7 +100,47 @@ package:
   rules:
     - if: $CI_COMMIT_TAG
   script:
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/nightthemeswitcher@romainvigier.fr.shell-extension.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/nightthemeswitcher/$CI_COMMIT_TAG/nightthemeswitcher@romainvigier.fr.shell-extension.zip"'
+    - |
+      curl \
+        --header "JOB-TOKEN: $CI_JOB_TOKEN" \
+        --upload-file build/nightthemeswitcher@romainvigier.fr.shell-extension.zip \
+        "${PACKAGE_REGISTRY_URL}/${CI_COMMIT_TAG}/${PACKAGE_NAME}"
+
+release-notes:
+  stage: deploy
+  needs:
+    - reuse
+  image: rust:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - cargo install parse-changelog
+    - parse-changelog --version-format="^\d+$" CHANGELOG.md $CI_COMMIT_TAG > release-notes.md
+  artifacts:
+    paths:
+      - release-notes.md
+    expire_in: 1 day
+
+release:
+  stage: deploy
+  needs:
+    - package
+    - job: release-notes
+      artifacts: true
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - echo "Creating release for version $CI_COMMIT_TAG"
+  release:
+    name: Version $CI_COMMIT_TAG
+    tag_name: $CI_COMMIT_TAG
+    description: release-notes.md
+    assets:
+      links:
+        - name: Night Theme Switcher v${CI_COMMIT_TAG}
+          url: ${PACKAGE_REGISTRY_URL}/${CI_COMMIT_TAG}/${PACKAGE_NAME}
+          filepath: /${PACKAGE_NAME}
 
 pages:
   stage: deploy
