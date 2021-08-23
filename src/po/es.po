@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 15:12+0200\n"
-"PO-Revision-Date: 2021-08-19 17:24+0000\n"
+"PO-Revision-Date: 2021-08-24 12:34+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: src/modules/GtkThemer.js:162
 #, javascript-format
@@ -54,7 +54,7 @@ msgstr "Luz nocturna"
 
 #: src/preferences/Schedule.js:67
 msgid "Location Services"
-msgstr "Servicios de localización"
+msgstr "Servicios de ubicación"
 
 #: src/preferences/Schedule.js:80
 msgid "Manual schedule"
@@ -296,7 +296,7 @@ msgstr "Seguir \"Desactivar hasta mañana\" de luz nocturna"
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:141
 msgid "Switch back to day time when Night Light is temporarily disabled"
 msgstr ""
-"Volver a la hora diurna cuando luz nocturna es temporalmente desactivada"
+"Volver a la hora diurna cuando luz nocturna esté temporalmente desactivada"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:145
 msgid "Always enable the on-demand timer"
@@ -386,7 +386,7 @@ msgstr "Quitar"
 
 #: src/preferences/ui/BackgroundButton.ui:61
 msgid "Select your background image"
-msgstr "Seleccione su imagen de fondo"
+msgstr "Seleccionar imagen de fondo"
 
 #: src/preferences/ui/BackgroundsPreferences.ui:15
 msgid "Switch backgrounds"
@@ -434,7 +434,7 @@ msgstr "Variante nocturna"
 
 #: src/preferences/ui/GtkPreferences.ui:15
 msgid "Switch GTK theme variants"
-msgstr "Cambiar las variantes de tema GTK"
+msgstr "Cambiar las variantes del tema GTK"
 
 #: src/preferences/ui/GtkPreferences.ui:39
 #: src/preferences/ui/ShellPreferences.ui:39
@@ -449,9 +449,9 @@ msgid ""
 "a request</a> to get your theme supported."
 msgstr ""
 "Puede establecer variantes manualmente si la extensión no puede detectar "
-"automáticamente las variantes diurnas y nocturnas de su tema GTK. Por favor "
+"automáticamente las variantes diurnas y nocturnas de su tema GTK. Por favor, "
 "<a href=\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/"
-"-/issues\">presente una solicitud</a> para conseguir que tu tema sea "
+"-/issues\">presente una solicitud</a> para conseguir que su tema sea "
 "soportado."
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
@@ -496,10 +496,10 @@ msgid ""
 "automatically set your current sunrise and sunset times if they are enabled. "
 "If you prefer, you can manually choose a time source."
 msgstr ""
-"La extensión intentará utilizar los servicios de luz nocturna o de "
-"localización para fijar automáticamente las horas actuales de salida y "
-"puesta del sol, si están activados. Si lo prefiere, puede elegir manualmente "
-"una fuente de tiempo."
+"La extensión intentará utilizar los servicios de luz nocturna o de ubicación "
+"para fijar automáticamente las horas actuales de salida y puesta del sol, si "
+"están activados. Si lo prefiere, puede elegir manualmente una fuente de "
+"tiempo."
 
 #: src/preferences/ui/Schedule.ui:45
 msgid "Always show on-demand controls"
@@ -558,9 +558,9 @@ msgid ""
 msgstr ""
 "Puede establecer variantes manualmente si la extensión no puede detectar "
 "automáticamente las variantes diurnas y nocturnas de su tema de GNOME Shell. "
-"Por favor <a href=\"https://gitlab.com/rmnvgr/"
+"Por favor, <a href=\"https://gitlab.com/rmnvgr/"
 "nightthemeswitcher-gnome-shell-extension/-/issues\">presente una solicitud</"
-"a> para conseguir que tu tema sea soportado."
+"a> para conseguir que su tema sea soportado."
 
 #: src/preferences/ui/ShortcutButton.ui:32
 msgid "Change keyboard shortcut"
