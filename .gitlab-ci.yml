@@ -141,6 +141,7 @@ release:
         - name: Night Theme Switcher v${CI_COMMIT_TAG}
           url: ${PACKAGE_REGISTRY_URL}/${CI_COMMIT_TAG}/${PACKAGE_NAME}
           filepath: /${PACKAGE_NAME}
+          link_type: package
 
 pages:
   stage: deploy
