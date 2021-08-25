@@ -7,8 +7,8 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const e = Me.imports.extension;
-const { logDebug } = Me.imports.utils;
+const utils = Me.imports.utils;
+const { logDebug } = utils;
 
 
 /**
@@ -21,6 +21,7 @@ const { logDebug } = Me.imports.utils;
  */
 var TimerSchedule = class {
     constructor() {
+        this._timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
         this._previouslyDaytime = null;
         this._timeChangeTimer = null;
     }
@@ -47,7 +48,7 @@ var TimerSchedule = class {
     _isDaytime() {
         const time = GLib.DateTime.new_now_local();
         const hour = time.get_hour() + time.get_minute() / 60 + time.get_second() / 3600;
-        return hour >= e.settings.time.scheduleSunrise && hour <= e.settings.time.scheduleSunset;
+        return hour >= this._timeSettings.get_double('schedule-sunrise') && hour <= this._timeSettings.get_double('schedule-sunset');
     }
 
     _watchForTimeChange() {

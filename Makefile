@@ -18,7 +18,6 @@ build:
 		--extra-source=./modules/ \
 		--extra-source=./preferences/ \
 		--extra-source=./schemas/ \
-		--extra-source=./settings/ \
 		--podir=./po/ \
 		--gettext-domain=$(DOMAIN) \
 		--out-dir=./build \

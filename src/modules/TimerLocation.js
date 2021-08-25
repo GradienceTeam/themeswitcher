@@ -7,8 +7,8 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const e = Me.imports.extension;
-const { logDebug } = Me.imports.utils;
+const utils = Me.imports.utils;
+const { logDebug } = utils;
 
 
 /**
@@ -29,12 +29,13 @@ var TimerLocation = class {
         this._previouslyDaytime = null;
         // Before we have the location suntimes, we'll use the manual schedule
         // times
+        const timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
         this._suntimes = new Map([
-            ['sunrise', e.settings.time.scheduleSunrise],
-            ['sunset', e.settings.time.scheduleSunrise],
+            ['sunrise', timeSettings.get_double('schedule-sunrise')],
+            ['sunset', timeSettings.get_double('schedule-sunset')],
         ]);
         this._geoclue = null;
-        this._geoclueConnect = null;
+        this._geoclueConnection = null;
         this._timeChangeTimer = null;
         this._regularlyUpdateSuntimesTimer = null;
     }
@@ -73,9 +74,9 @@ var TimerLocation = class {
 
     _disconnectFromGeoclue() {
         logDebug('Disconnecting from GeoClue...');
-        if (this._geoclueConnect) {
-            this._geoclue.disconnect(this._geoclueConnect);
-            this._geoclueConnect = null;
+        if (this._geoclueConnection) {
+            this._geoclue.disconnect(this._geoclueConnection);
+            this._geoclueConnection = null;
         }
         logDebug('Disconnected from GeoClue.');
     }
@@ -83,7 +84,7 @@ var TimerLocation = class {
 
     _onGeoclueReady(_, result) {
         this._geoclue = Geoclue.Simple.new_finish(result);
-        this._geoclueConnect = this._geoclue.connect('notify::location', this._onLocationUpdated.bind(this));
+        this._geoclueConnection = this._geoclue.connect('notify::location', this._onLocationUpdated.bind(this));
         logDebug('Connected to GeoClue.');
         this._onLocationUpdated();
     }

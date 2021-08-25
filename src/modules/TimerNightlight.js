@@ -7,8 +7,8 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const e = Me.imports.extension;
-const { logDebug } = Me.imports.utils;
+const utils = Me.imports.utils;
+const { logDebug } = utils;
 
 
 const COLOR_INTERFACE = `
@@ -28,9 +28,10 @@ const COLOR_INTERFACE = `
  */
 var TimerNightlight = class {
     constructor() {
+        this._timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
         this._colorDbusProxy = null;
-        this._nightlightFollowDisableConnect = null;
-        this._nightlightStateConnect = null;
+        this._settingsConnections = [];
+        this._nightlightStateConnection = null;
         this._previousNightlightActive = null;
     }
 
@@ -76,32 +77,33 @@ var TimerNightlight = class {
 
     _connectSettings() {
         logDebug('Connecting Night Light Timer to settings...');
-        this._nightlightFollowDisableConnect = e.settings.time.connect('nightlight-follow-disable-changed', this._onNightlightFollowDisableChanged.bind(this));
+        this._settingsConnections.push({
+            settings: this._timeSettings,
+            id: this._timeSettings.connect('changed::nightlight-follow-disable', this._onNightlightFollowDisableChanged.bind(this)),
+        });
     }
 
     _disconnectSettings() {
         logDebug('Disconnecting Night Light Timer from settings...');
-        if (this._nightlightFollowDisableConnect) {
-            e.settings.time.disconnect(this._nightlightFollowDisableConnect);
-            this._nightlightFollowDisableConnect = null;
-        }
+        this._settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
+        this._settingsConnections = [];
     }
 
     _listenToNightlightState() {
         logDebug('Listening to Night Light state...');
-        this._nightlightStateConnect = this._colorDbusProxy.connect(
+        this._nightlightStateConnection = this._colorDbusProxy.connect(
             'g-properties-changed',
             this._onNightlightStateChanged.bind(this)
         );
     }
 
     _stopListeningToNightlightState() {
-        this._colorDbusProxy.disconnect(this._nightlightStateConnect);
+        this._colorDbusProxy.disconnect(this._nightlightStateConnection);
         logDebug('Stopped listening to Night Light state.');
     }
 
 
-    _onNightlightFollowDisableChanged(_settings, _value) {
+    _onNightlightFollowDisableChanged() {
         this._onNightlightStateChanged();
     }
 
@@ -115,7 +117,7 @@ var TimerNightlight = class {
 
 
     _isNightlightActive() {
-        return e.settings.time.nightlightFollowDisable
+        return this._timeSettings.get_boolean('nightlight-follow-disable')
             ? !this._colorDbusProxy.DisabledUntilTomorrow && this._colorDbusProxy.NightLightActive
             : this._colorDbusProxy.NightLightActive;
     }

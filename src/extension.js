@@ -10,7 +10,6 @@ const { extensionManager } = imports.ui.main;
 const Me = extensionUtils.getCurrentExtension();
 
 const { logDebug } = Me.imports.utils;
-const { Settings } = Me.imports.settings.Settings;
 const { Timer } = Me.imports.modules.Timer;
 const { GtkThemer } = Me.imports.modules.GtkThemer;
 const { ShellThemer } = Me.imports.modules.ShellThemer;
@@ -21,7 +20,6 @@ const { Commander } = Me.imports.modules.Commander;
 
 
 var enabled = false;
-var settings = null;
 var timer = null;
 var gtkThemer = null;
 var shellThemer = null;
@@ -53,7 +51,6 @@ function enable() {
  */
 function start() {
     logDebug('Enabling extension...');
-    settings = new Settings();
     timer = new Timer();
     gtkThemer = new GtkThemer();
     shellThemer = new ShellThemer();
@@ -62,7 +59,6 @@ function start() {
     backgrounder = new Backgrounder();
     commander = new Commander();
 
-    settings.enable();
     timer.enable();
     gtkThemer.enable();
     shellThemer.enable();
@@ -89,9 +85,7 @@ function disable() {
     backgrounder.disable();
     commander.disable();
     timer.disable();
-    settings.disable();
 
-    settings = null;
     timer = null;
     gtkThemer = null;
     shellThemer = null;
