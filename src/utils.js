@@ -5,23 +5,10 @@ const { Gdk, Gio, GLib, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
-const config = Me.imports.config;
 
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
 const _ = Gettext.gettext;
 
-
-/**
- * Log an error and show a notification if it has a message.
- *
- * @param {Error} error The error to log.
- */
-function notifyError(error) {
-    if (config.debug)
-        logError(error, Me.metadata.name);
-    if (error.message && imports.ui)
-        imports.ui.main.notifyError(Me.metadata.name, error.message);
-}
 
 /**
  * Build the full settings schema from a subschema.

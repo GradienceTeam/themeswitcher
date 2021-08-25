@@ -9,7 +9,6 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
-const { notifyError } = utils;
 const { GtkVariants } = Me.imports.modules.GtkVariants;
 
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
@@ -47,7 +46,7 @@ var GtkThemer = class {
                 this._updateSystemGtkTheme();
             }
         } catch (error) {
-            notifyError(error);
+            main.notifyError(Me.metadata.name, error);
         }
         console.debug('GTK Themer enabled.');
     }
@@ -137,7 +136,7 @@ var GtkThemer = class {
             this._updateCurrentVariant();
             this._updateSystemGtkTheme();
         } catch (error) {
-            notifyError(error);
+            main.notifyError(Me.metadata.name, error);
         }
     }
 

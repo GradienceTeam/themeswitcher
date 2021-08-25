@@ -3,14 +3,12 @@
 
 const { Gio } = imports.gi;
 const { extensionUtils } = imports.misc;
-const Signals = imports.signals;
 const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
-const { notifyError } = Me.imports.utils;
 const { ShellVariants } = Me.imports.modules.ShellVariants;
 
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
@@ -47,7 +45,7 @@ var ShellThemer = class {
                 this._updateSystemShellTheme();
             }
         } catch (error) {
-            notifyError(error);
+            main.notifyError(Me.metadata.name, error);
         }
         console.debug('Shell Themer enabled.');
     }
@@ -141,7 +139,7 @@ var ShellThemer = class {
             this._updateCurrentVariant();
             this._updateSystemShellTheme();
         } catch (error) {
-            notifyError(error);
+            main.notifyError(Me.metadata.name, error);
         }
     }
 
