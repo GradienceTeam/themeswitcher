@@ -12,16 +12,6 @@ const _ = Gettext.gettext;
 
 
 /**
- * Output a debug message to the console if the debug config is active.
- *
- * @param {string} message The message to log.
- */
-function logDebug(message) {
-    if (config.debug)
-        log(`[DEBUG] ${Me.metadata.name}: ${message}`);
-}
-
-/**
  * Log an error and show a notification if it has a message.
  *
  * @param {Error} error The error to log.
@@ -197,7 +187,7 @@ function getUserthemesSettings() {
  */
 function getShellThemeStylesheet(theme) {
     const themeName = theme ? `'${theme}'` : 'default';
-    logDebug(`Getting the ${themeName} theme shell stylesheet...`);
+    console.debug(`Getting the ${themeName} theme shell stylesheet...`);
     let stylesheet = null;
     if (theme) {
         const stylesheetPaths = getResourcesDirsPaths('themes').map(path => GLib.build_filenamev([path, theme, 'gnome-shell', 'gnome-shell.css']));
@@ -215,10 +205,10 @@ function getShellThemeStylesheet(theme) {
  * @param {string} stylesheet The shell stylesheet to apply.
  */
 function applyShellStylesheet(stylesheet) {
-    logDebug('Applying shell stylesheet...');
+    console.debug('Applying shell stylesheet...');
     imports.ui.main.setThemeStylesheet(stylesheet);
     imports.ui.main.loadTheme();
-    logDebug('Shell stylesheet applied.');
+    console.debug('Shell stylesheet applied.');
 }
 
 /**

@@ -10,7 +10,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
-const { logDebug, notifyError } = Me.imports.utils;
+const { notifyError } = Me.imports.utils;
 const { ShellVariants } = Me.imports.modules.ShellVariants;
 
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
@@ -37,7 +37,7 @@ var ShellThemer = class {
     }
 
     enable() {
-        logDebug('Enabling Shell Themer...');
+        console.debug('Enabling Shell Themer...');
         try {
             this._watchStatus();
             if (this._shellVariantsSettings.get_boolean('enabled')) {
@@ -49,20 +49,20 @@ var ShellThemer = class {
         } catch (error) {
             notifyError(error);
         }
-        logDebug('Shell Themer enabled.');
+        console.debug('Shell Themer enabled.');
     }
 
     disable() {
-        logDebug('Disabling Shell Themer...');
+        console.debug('Disabling Shell Themer...');
         this._disconnectTimer();
         this._disconnectSettings();
         this._unwatchStatus();
-        logDebug('Shell Themer disabled.');
+        console.debug('Shell Themer disabled.');
     }
 
 
     _watchStatus() {
-        logDebug('Watching shell variants status...');
+        console.debug('Watching shell variants status...');
         this._statusConnection = this._shellVariantsSettings.connect('changed::enabled', this._onStatusChanged.bind(this));
     }
 
@@ -71,11 +71,11 @@ var ShellThemer = class {
             this._shellVariantsSettings.disconnect(this._statusConnection);
             this._statusConnection = null;
         }
-        logDebug('Stopped watching shell variants status.');
+        console.debug('Stopped watching shell variants status.');
     }
 
     _connectSettings() {
-        logDebug('Connecting Shell Themer to settings...');
+        console.debug('Connecting Shell Themer to settings...');
         this._settingsConnections.push({
             settings: this._shellVariantsSettings,
             id: this._shellVariantsSettings.connect('changed::day', this._onDayVariantChanged.bind(this)),
@@ -99,11 +99,11 @@ var ShellThemer = class {
     _disconnectSettings() {
         this._settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
         this._settingsConnections = [];
-        logDebug('Disconnected Shell Themer from settings.');
+        console.debug('Disconnected Shell Themer from settings.');
     }
 
     _connectTimer() {
-        logDebug('Connecting Shell Themer to Timer...');
+        console.debug('Connecting Shell Themer to Timer...');
         this._timerConnection = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
     }
 
@@ -112,30 +112,30 @@ var ShellThemer = class {
             e.timer.disconnect(this._timerConnection);
             this._timerConnection = null;
         }
-        logDebug('Disconnected Shell Themer from Timer.');
+        console.debug('Disconnected Shell Themer from Timer.');
     }
 
 
     _onStatusChanged() {
-        logDebug(`Shell variants switching has been ${this._shellVariantsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
+        console.debug(`Shell variants switching has been ${this._shellVariantsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
         this.disable();
         this.enable();
     }
 
     _onDayVariantChanged() {
-        logDebug(`Day Shell variant changed to '${this._shellVariantsSettings.get_string('day')}'.`);
+        console.debug(`Day Shell variant changed to '${this._shellVariantsSettings.get_string('day')}'.`);
         this._updateSystemShellTheme();
     }
 
     _onNightVariantChanged() {
-        logDebug(`Night Shell variant changed to '${this._shellVariantsSettings.get_string('night')}'.`);
+        console.debug(`Night Shell variant changed to '${this._shellVariantsSettings.get_string('night')}'.`);
         this._updateSystemShellTheme();
     }
 
     _onSystemShellThemeChanged(_settings, _newTheme) {
         if (!this._userthemesSettings)
             return;
-        logDebug(`System Shell theme changed to '${this._userthemesSettings.get_string('name')}'.`);
+        console.debug(`System Shell theme changed to '${this._userthemesSettings.get_string('name')}'.`);
         try {
             this._updateVariants();
             this._updateCurrentVariant();
@@ -146,7 +146,7 @@ var ShellThemer = class {
     }
 
     _onManualChanged() {
-        logDebug(`Manual Shell variants choice has been ${this._shellVariantsSettings.get_boolean('manual') ? 'enabled' : 'disabled'}.`);
+        console.debug(`Manual Shell variants choice has been ${this._shellVariantsSettings.get_boolean('manual') ? 'enabled' : 'disabled'}.`);
         this.disable();
         this.enable();
     }
@@ -173,7 +173,7 @@ var ShellThemer = class {
     _updateSystemShellTheme() {
         if (!e.timer.time)
             return;
-        logDebug(`Setting the ${e.timer.time} Shell variant...`);
+        console.debug(`Setting the ${e.timer.time} Shell variant...`);
         const shellTheme = this._shellVariantsSettings.get_string(e.timer.time);
         if (this._userthemesSettings) {
             this._userthemesSettings.set_string('name', shellTheme);
@@ -187,7 +187,7 @@ var ShellThemer = class {
         if (!this._userthemesSettings || this._shellVariantsSettings.get_boolean('manual') || this._areVariantsUpToDate())
             return;
 
-        logDebug('Updating Shell variants...');
+        console.debug('Updating Shell variants...');
         const originalTheme = this._userthemesSettings.get_string('name');
         const variants = ShellVariants.guessFrom(originalTheme);
         const installedThemes = utils.getInstalledShellThemes();
@@ -199,6 +199,6 @@ var ShellThemer = class {
 
         this._shellVariantsSettings.set_string('day', variants.get('day'));
         this._shellVariantsSettings.set_string('night', variants.get('night'));
-        logDebug(`New Shell variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
+        console.debug(`New Shell variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
     }
 };

@@ -9,7 +9,6 @@ const { extensionManager } = imports.ui.main;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const { logDebug } = Me.imports.utils;
 const { Timer } = Me.imports.modules.Timer;
 const { GtkThemer } = Me.imports.modules.GtkThemer;
 const { ShellThemer } = Me.imports.modules.ShellThemer;
@@ -33,9 +32,9 @@ var commander = null;
  * Extension initialization.
  */
 function init() {
-    logDebug('Initializing extension...');
+    console.debug('Initializing extension...');
     extensionUtils.initTranslations(Me.metadata['gettext-domain']);
-    logDebug('Extension initialized.');
+    console.debug('Extension initialized.');
 }
 
 /**
@@ -50,7 +49,7 @@ function enable() {
  * When the extension is started, we create and enable all the modules.
  */
 function start() {
-    logDebug('Enabling extension...');
+    console.debug('Enabling extension...');
     timer = new Timer();
     gtkThemer = new GtkThemer();
     shellThemer = new ShellThemer();
@@ -68,14 +67,14 @@ function start() {
     commander.enable();
 
     enabled = true;
-    logDebug('Extension enabled.');
+    console.debug('Extension enabled.');
 }
 
 /**
  * When the extension is disabled, we disable and remove all the modules.
  */
 function disable() {
-    logDebug('Disabling extension...');
+    console.debug('Disabling extension...');
     enabled = false;
 
     gtkThemer.disable();
@@ -93,7 +92,7 @@ function disable() {
     cursorThemer = null;
     backgrounder = null;
     commander = null;
-    logDebug('Extension disabled.');
+    console.debug('Extension disabled.');
 }
 
 /**
@@ -101,13 +100,13 @@ function disable() {
  */
 function _waitForExtensionManager() {
     return new Promise(resolve => {
-        logDebug('Waiting for Extension Manager initialization...');
+        console.debug('Waiting for Extension Manager initialization...');
         GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
             while (!extensionManager._initialized)
                 continue;
             return false;
         });
-        logDebug('Extension Manager initialized.');
+        console.debug('Extension Manager initialized.');
         resolve();
     });
 }

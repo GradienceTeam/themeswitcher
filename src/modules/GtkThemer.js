@@ -9,7 +9,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
-const { logDebug, notifyError } = utils;
+const { notifyError } = utils;
 const { GtkVariants } = Me.imports.modules.GtkVariants;
 
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
@@ -37,7 +37,7 @@ var GtkThemer = class {
     }
 
     enable() {
-        logDebug('Enabling GTK Themer...');
+        console.debug('Enabling GTK Themer...');
         try {
             this._watchStatus();
             if (this._gtkVariantsSettings.get_boolean('enabled')) {
@@ -49,20 +49,20 @@ var GtkThemer = class {
         } catch (error) {
             notifyError(error);
         }
-        logDebug('GTK Themer enabled.');
+        console.debug('GTK Themer enabled.');
     }
 
     disable() {
-        logDebug('Disabling GTK Themer...');
+        console.debug('Disabling GTK Themer...');
         this._disconnectTimer();
         this._disconnectSettings();
         this._unwatchStatus();
-        logDebug('GTK Themer disabled.');
+        console.debug('GTK Themer disabled.');
     }
 
 
     _watchStatus() {
-        logDebug('Watching GTK variants status...');
+        console.debug('Watching GTK variants status...');
         this._statusConnection = this._gtkVariantsSettings.connect('changed::enabled', this._onStatusChanged.bind(this));
     }
 
@@ -71,11 +71,11 @@ var GtkThemer = class {
             this._gtkVariantsSettings.disconnect(this._statusConnection);
             this._statusConnection = null;
         }
-        logDebug('Stopped watching GTK variants status.');
+        console.debug('Stopped watching GTK variants status.');
     }
 
     _connectSettings() {
-        logDebug('Connecting GTK Themer to settings...');
+        console.debug('Connecting GTK Themer to settings...');
         this._settingsConnections.push({
             settings: this._gtkVariantsSettings,
             id: this._gtkVariantsSettings.connect('changed::day', this._onDayVariantChanged.bind(this)),
@@ -97,11 +97,11 @@ var GtkThemer = class {
     _disconnectSettings() {
         this._settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
         this._settingsConnections = [];
-        logDebug('Disconnected GTK Themer from settings.');
+        console.debug('Disconnected GTK Themer from settings.');
     }
 
     _connectTimer() {
-        logDebug('Connecting GTK Themer to Timer...');
+        console.debug('Connecting GTK Themer to Timer...');
         this._timerConnection = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
     }
 
@@ -110,28 +110,28 @@ var GtkThemer = class {
             e.timer.disconnect(this._timerConnection);
             this._timerConnection = null;
         }
-        logDebug('Disconnected GTK Themer from Timer.');
+        console.debug('Disconnected GTK Themer from Timer.');
     }
 
 
     _onStatusChanged() {
-        logDebug(`GTK variants switching has been ${this._gtkVariantsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
+        console.debug(`GTK variants switching has been ${this._gtkVariantsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
         this.disable();
         this.enable();
     }
 
     _onDayVariantChanged() {
-        logDebug(`Day GTK variant changed to '${this._gtkVariantsSettings.get_string('day')}'.`);
+        console.debug(`Day GTK variant changed to '${this._gtkVariantsSettings.get_string('day')}'.`);
         this._updateSystemGtkTheme();
     }
 
     _onNightVariantChanged() {
-        logDebug(`Night GTK variant changed to '${this._gtkVariantsSettings.get_string('night')}'.`);
+        console.debug(`Night GTK variant changed to '${this._gtkVariantsSettings.get_string('night')}'.`);
         this._updateSystemGtkTheme();
     }
 
     _onSystemGtkThemeChanged() {
-        logDebug(`System GTK theme changed to '${this._interfaceSettings.get_string('gtk-theme')}'.`);
+        console.debug(`System GTK theme changed to '${this._interfaceSettings.get_string('gtk-theme')}'.`);
         try {
             this._updateVariants();
             this._updateCurrentVariant();
@@ -142,7 +142,7 @@ var GtkThemer = class {
     }
 
     _onManualChanged() {
-        logDebug(`Manual GTK variants choice has been ${this._gtkVariantsSettings.get_boolean('manual') ? 'enabled' : 'disabled'}.`);
+        console.debug(`Manual GTK variants choice has been ${this._gtkVariantsSettings.get_boolean('manual') ? 'enabled' : 'disabled'}.`);
         this.disable();
         this.enable();
     }
@@ -167,7 +167,7 @@ var GtkThemer = class {
     _updateSystemGtkTheme() {
         if (!e.timer.time)
             return;
-        logDebug(`Setting the ${e.timer.time} GTK variant...`);
+        console.debug(`Setting the ${e.timer.time} GTK variant...`);
         this._interfaceSettings.set_string('gtk-theme', this._gtkVariantsSettings.get_string(e.timer.time));
     }
 
@@ -175,7 +175,7 @@ var GtkThemer = class {
         if (this._gtkVariantsSettings.get_boolean('manual') || this._areVariantsUpToDate())
             return;
 
-        logDebug('Updating GTK variants...');
+        console.debug('Updating GTK variants...');
         const originalTheme = this._interfaceSettings.get_string('gtk-theme');
         const variants = GtkVariants.guessFrom(originalTheme);
         const installedThemes = utils.getInstalledGtkThemes();
@@ -187,6 +187,6 @@ var GtkThemer = class {
 
         this._gtkVariantsSettings.set_string('day', variants.get('day'));
         this._gtkVariantsSettings.set_string('night', variants.get('night'));
-        logDebug(`New GTK variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
+        console.debug(`New GTK variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
     }
 };

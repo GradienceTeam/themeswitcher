@@ -8,7 +8,6 @@ const Signals = imports.signals;
 const Me = extensionUtils.getCurrentExtension();
 
 const utils = Me.imports.utils;
-const { logDebug } = utils;
 
 
 /**
@@ -27,16 +26,16 @@ var TimerSchedule = class {
     }
 
     enable() {
-        logDebug('Enabling Schedule Timer...');
+        console.debug('Enabling Schedule Timer...');
         this._watchForTimeChange();
         this.emit('time-changed', this.time);
-        logDebug('Schedule Timer enabled.');
+        console.debug('Schedule Timer enabled.');
     }
 
     disable() {
-        logDebug('Disabling Schedule Timer...');
+        console.debug('Disabling Schedule Timer...');
         this._stopWatchingForTimeChange();
-        logDebug('Schedule Timer disabled.');
+        console.debug('Schedule Timer disabled.');
     }
 
 
@@ -52,7 +51,7 @@ var TimerSchedule = class {
     }
 
     _watchForTimeChange() {
-        logDebug('Watching for time change...');
+        console.debug('Watching for time change...');
         this._timeChangeTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
             if (!Me.imports.extension.enabled) {
                 // The extension doesn't exist anymore, quit the loop
@@ -68,7 +67,7 @@ var TimerSchedule = class {
 
     _stopWatchingForTimeChange() {
         GLib.Source.remove(this._timeChangeTimer);
-        logDebug('Stopped watching for time change.');
+        console.debug('Stopped watching for time change.');
     }
 };
 Signals.addSignalMethods(TimerSchedule.prototype);

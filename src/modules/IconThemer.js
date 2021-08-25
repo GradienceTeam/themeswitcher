@@ -9,7 +9,6 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
-const { logDebug } = utils;
 
 
 /**
@@ -26,27 +25,27 @@ var IconThemer = class {
     }
 
     enable() {
-        logDebug('Enabling Icon Themer...');
+        console.debug('Enabling Icon Themer...');
         this._watchStatus();
         if (this._iconVariantsSettings.get_boolean('enabled')) {
             this._connectSettings();
             this._connectTimer();
             this._updateSystemIconTheme();
         }
-        logDebug('Icon Themer enabled.');
+        console.debug('Icon Themer enabled.');
     }
 
     disable() {
-        logDebug('Disabling Icon Themer...');
+        console.debug('Disabling Icon Themer...');
         this._disconnectTimer();
         this._disconnectSettings();
         this._unwatchStatus();
-        logDebug('Icon Themer disabled.');
+        console.debug('Icon Themer disabled.');
     }
 
 
     _watchStatus() {
-        logDebug('Watching icon variants status...');
+        console.debug('Watching icon variants status...');
         this._statusConnection = this._iconVariantsSettings.connect('changed::enabled', this._onStatusChanged.bind(this));
     }
 
@@ -55,11 +54,11 @@ var IconThemer = class {
             this._iconVariantsSettings.disconnect(this._statusConnection);
             this._statusConnection = null;
         }
-        logDebug('Stopped watching icon variants status.');
+        console.debug('Stopped watching icon variants status.');
     }
 
     _connectSettings() {
-        logDebug('Connecting Icon Themer to settings...');
+        console.debug('Connecting Icon Themer to settings...');
         this._settingsConnections.push({
             settings: this._iconVariantsSettings,
             id: this._iconVariantsSettings.connect('changed::day', this._onDayVariantChanged.bind(this)),
@@ -77,11 +76,11 @@ var IconThemer = class {
     _disconnectSettings() {
         this._settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
         this._settingsConnections = [];
-        logDebug('Disconnected Icon Themer from settings.');
+        console.debug('Disconnected Icon Themer from settings.');
     }
 
     _connectTimer() {
-        logDebug('Connecting Icon Themer to Timer...');
+        console.debug('Connecting Icon Themer to Timer...');
         this._timerConnection = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
     }
 
@@ -90,28 +89,28 @@ var IconThemer = class {
             e.timer.disconnect(this._timerConnection);
             this._timerConnection = null;
         }
-        logDebug('Disconnected Icon Themer from Timer.');
+        console.debug('Disconnected Icon Themer from Timer.');
     }
 
 
     _onStatusChanged() {
-        logDebug(`Icon variants switching has been ${this._iconVariantsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
+        console.debug(`Icon variants switching has been ${this._iconVariantsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
         this.disable();
         this.enable();
     }
 
     _onDayVariantChanged() {
-        logDebug(`Day icon variant changed to '${this._iconVariantsSettings.get_string('day')}'.`);
+        console.debug(`Day icon variant changed to '${this._iconVariantsSettings.get_string('day')}'.`);
         this._updateSystemIconTheme();
     }
 
     _onNightVariantChanged() {
-        logDebug(`Night icon variant changed to '${this._iconVariantsSettings.get_string('night')}'.`);
+        console.debug(`Night icon variant changed to '${this._iconVariantsSettings.get_string('night')}'.`);
         this._updateSystemIconTheme();
     }
 
     _onSystemIconThemeChanged() {
-        logDebug(`System icon theme changed to '${this._iconVariantsSettings.get_string('icon-theme')}'.`);
+        console.debug(`System icon theme changed to '${this._iconVariantsSettings.get_string('icon-theme')}'.`);
         this._updateCurrentVariant();
     }
 

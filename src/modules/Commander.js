@@ -8,7 +8,6 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
-const { logDebug } = utils;
 
 
 /**
@@ -22,25 +21,25 @@ var Commander = class {
     }
 
     enable() {
-        logDebug('Enabling Commander...');
+        console.debug('Enabling Commander...');
         this._watchStatus();
         if (this._commandsSettings.get_boolean('enabled')) {
             this._connectTimer();
             this._spawnCommand(e.timer.time);
         }
-        logDebug('Commander enabled.');
+        console.debug('Commander enabled.');
     }
 
     disable() {
-        logDebug('Disabling Commander...');
+        console.debug('Disabling Commander...');
         this._disconnectTimer();
         this._unwatchStatus();
-        logDebug('Commander disabled.');
+        console.debug('Commander disabled.');
     }
 
 
     _watchStatus() {
-        logDebug('Watching commands status...');
+        console.debug('Watching commands status...');
         this._statusConnection = this._commandsSettings.connect('changed::enabled', this._onStatusChanged.bind(this));
     }
 
@@ -49,11 +48,11 @@ var Commander = class {
             this._commandsSettings.disconnect(this._statusConnection);
             this._statusConnection = null;
         }
-        logDebug('Stopped watching commands status.');
+        console.debug('Stopped watching commands status.');
     }
 
     _connectTimer() {
-        logDebug('Connecting Commander to Timer...');
+        console.debug('Connecting Commander to Timer...');
         this._timerConnection = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
     }
 
@@ -62,12 +61,12 @@ var Commander = class {
             e.timer.disconnect(this._timerConnection);
             this._timerConnection = null;
         }
-        logDebug('Disconnecting Commander from Timer.');
+        console.debug('Disconnecting Commander from Timer.');
     }
 
 
     _onStatusChanged() {
-        logDebug(`Commands launching has been ${this._commandsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
+        console.debug(`Commands launching has been ${this._commandsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
         this.disable();
         this.enable();
     }
@@ -82,6 +81,6 @@ var Commander = class {
             return;
         const command = this._commandsSettings.get_string(e.timer.time === 'day' ? 'sunrise' : 'sunset');
         GLib.spawn_async(null, ['sh', '-c', command], null, GLib.SpawnFlags.SEARCH_PATH, null);
-        logDebug(`Spawned ${e.timer.time} command.`);
+        console.debug(`Spawned ${e.timer.time} command.`);
     }
 };

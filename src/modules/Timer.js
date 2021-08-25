@@ -8,7 +8,6 @@ const Signals = imports.signals;
 const Me = extensionUtils.getCurrentExtension();
 
 const utils = Me.imports.utils;
-const { logDebug } = utils;
 
 const { TimerNightlight } = Me.imports.modules.TimerNightlight;
 const { TimerLocation } = Me.imports.modules.TimerLocation;
@@ -43,20 +42,20 @@ var Timer = class {
     }
 
     enable() {
-        logDebug('Enabling Timer...');
+        console.debug('Enabling Timer...');
         this._connectSettings();
         this._createSources();
         this._connectSources();
         this._enableSources();
-        logDebug('Timer enabled.');
+        console.debug('Timer enabled.');
     }
 
     disable() {
-        logDebug('Disabling Timer...');
+        console.debug('Disabling Timer...');
         this._disconnectSources();
         this._disableSources();
         this._disconnectSettings();
-        logDebug('Timer disabled.');
+        console.debug('Timer disabled.');
     }
 
 
@@ -66,7 +65,7 @@ var Timer = class {
 
 
     _connectSettings() {
-        logDebug('Connecting Timer to settings...');
+        console.debug('Connecting Timer to settings...');
         this._settingsConnections.push({
             settings: this._colorSettings,
             id: this._colorSettings.connect('changed::night-light-enabled', this._onSourceChanged.bind(this)),
@@ -92,7 +91,7 @@ var Timer = class {
     _disconnectSettings() {
         this._settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
         this._settingsConnections = [];
-        logDebug('Disconnected Timer from settings.');
+        console.debug('Disconnected Timer from settings.');
     }
 
     _createSources() {
@@ -126,7 +125,7 @@ var Timer = class {
     }
 
     _connectSources() {
-        logDebug('Connecting to time sources...');
+        console.debug('Connecting to time sources...');
         this._sources.forEach(source => this._timeConnections.push({
             source,
             id: source.connect('time-changed', this._onTimeChanged.bind(this)),
@@ -136,7 +135,7 @@ var Timer = class {
     _disconnectSources() {
         this._timeConnections.forEach(connection => connection.source.disconnect(connection.id));
         this._timeConnections = [];
-        logDebug('Disconnected from time sources.');
+        console.debug('Disconnected from time sources.');
     }
 
 
@@ -152,7 +151,7 @@ var Timer = class {
 
     _onTimeChanged(_source, newTime) {
         if (newTime !== this._previousTime) {
-            logDebug(`Time has changed to ${newTime}.`);
+            console.debug(`Time has changed to ${newTime}.`);
             this._previousTime = newTime;
             this.emit('time-changed', newTime);
         }
@@ -160,17 +159,17 @@ var Timer = class {
 
 
     _getSource() {
-        logDebug('Getting time source...');
+        console.debug('Getting time source...');
 
         let source;
         if (this._timeSettings.get_boolean('manual-time-source')) {
             source = this._timeSettings.get_string('time-source');
-            logDebug(`Time source is forced to ${source}.`);
+            console.debug(`Time source is forced to ${source}.`);
             if (
                 (source === 'nightlight' && !this._colorSettings.get_boolean('night-light-enabled')) ||
                 (source === 'location' && !this._locationSettings.get_boolean('enabled'))
             ) {
-                logDebug(`Unable to choose ${source} time source, falling back to manual schedule.`);
+                console.debug(`Unable to choose ${source} time source, falling back to manual schedule.`);
                 source = 'schedule';
                 this._timeSettings.set_string('time-source', source);
             }
@@ -181,7 +180,7 @@ var Timer = class {
                 source = 'location';
             else
                 source = 'schedule';
-            logDebug(`Time source is ${source}.`);
+            console.debug(`Time source is ${source}.`);
             this._timeSettings.set_string('time-source', source);
         }
         return source;

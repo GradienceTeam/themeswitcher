@@ -8,7 +8,6 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
-const { logDebug } = utils;
 
 /**
  * The Backgrounder is responsible for changing the desktop background
@@ -27,27 +26,27 @@ var Backgrounder = class {
     }
 
     enable() {
-        logDebug('Enabling Backgrounder...');
+        console.debug('Enabling Backgrounder...');
         this._watchStatus();
         if (this._backgroundsSettings.get_boolean('enabled')) {
             this._connectSettings();
             this._connectTimer();
             this._updateSystemBackground(e.timer.time);
         }
-        logDebug('Backgrounder enabled.');
+        console.debug('Backgrounder enabled.');
     }
 
     disable() {
-        logDebug('Disabling Backgrounder...');
+        console.debug('Disabling Backgrounder...');
         this._disconnectTimer();
         this._disconnectSettings();
         this._unwatchStatus();
-        logDebug('Backgrounder disabled.');
+        console.debug('Backgrounder disabled.');
     }
 
 
     _watchStatus() {
-        logDebug('Watching backgrounds status...');
+        console.debug('Watching backgrounds status...');
         this._statusConnection = this._backgroundsSettings.connect('changed::enabled', this._onStatusChanged.bind(this));
     }
 
@@ -56,11 +55,11 @@ var Backgrounder = class {
             this._backgroundsSettings.disconnect(this._statusConnection);
             this._statusConnection = null;
         }
-        logDebug('Stopped watching backgrounds status.');
+        console.debug('Stopped watching backgrounds status.');
     }
 
     _connectSettings() {
-        logDebug('Connecting Backgrounder to settings...');
+        console.debug('Connecting Backgrounder to settings...');
         this._settingsConnections.push({
             settings: this._backgroundsSettings,
             id: this._backgroundsSettings.connect('changed::day', this._onDayBackgroundChanged.bind(this)),
@@ -78,11 +77,11 @@ var Backgrounder = class {
     _disconnectSettings() {
         this._settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
         this._settingsConnections = [];
-        logDebug('Disconnected Backgrounder from settings.');
+        console.debug('Disconnected Backgrounder from settings.');
     }
 
     _connectTimer() {
-        logDebug('Connecting Backgrounder to Timer...');
+        console.debug('Connecting Backgrounder to Timer...');
         this._timerConnection = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
     }
 
@@ -91,28 +90,28 @@ var Backgrounder = class {
             e.timer.disconnect(this._timerConnection);
             this._timerConnection = null;
         }
-        logDebug('Disconnected Backgrounder from Timer.');
+        console.debug('Disconnected Backgrounder from Timer.');
     }
 
 
     _onStatusChanged() {
-        logDebug(`Backgrounds switching has been ${this._backgroundsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
+        console.debug(`Backgrounds switching has been ${this._backgroundsSettings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
         this.disable();
         this.enable();
     }
 
     _onDayBackgroundChanged() {
-        logDebug(`Day background changed to '${this._backgroundsSettings.get_string('day')}'.`);
+        console.debug(`Day background changed to '${this._backgroundsSettings.get_string('day')}'.`);
         this._updateSystemBackground();
     }
 
     _onNightBackgroundChanged() {
-        logDebug(`Night background changed to '${this._backgroundsSettings.get_string('night')}'.`);
+        console.debug(`Night background changed to '${this._backgroundsSettings.get_string('night')}'.`);
         this._updateSystemBackground();
     }
 
     _onSystemBackgroundChanged() {
-        logDebug(`System background changed to '${this._systemBackgroundSettings.get_string('picture-uri')}'.`);
+        console.debug(`System background changed to '${this._systemBackgroundSettings.get_string('picture-uri')}'.`);
         this._updateCurrentBackground();
     }
 
