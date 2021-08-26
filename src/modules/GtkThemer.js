@@ -9,6 +9,8 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
+
+const { Time } = Me.imports.enums.Time;
 const { GtkVariants } = Me.imports.modules.GtkVariants;
 
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
@@ -159,12 +161,13 @@ var GtkThemer = class {
     }
 
     _updateCurrentVariant() {
-        if (this._gtkVariantsSettings.get_boolean('manual') && e.timer.time)
-            this._gtkVariantsSettings.set_string(e.timer.time, this._interfaceSettings.get_string('gtk-theme'));
+        if (e.timer.time === Time.UNKNOWN || !this._gtkVariantsSettings.get_boolean('manual'))
+            return;
+        this._gtkVariantsSettings.set_string(e.timer.time, this._interfaceSettings.get_string('gtk-theme'));
     }
 
     _updateSystemGtkTheme() {
-        if (!e.timer.time)
+        if (e.timer.time === Time.UNKNOWN)
             return;
         console.debug(`Setting the ${e.timer.time} GTK variant...`);
         this._interfaceSettings.set_string('gtk-theme', this._gtkVariantsSettings.get_string(e.timer.time));
@@ -179,13 +182,13 @@ var GtkThemer = class {
         const variants = GtkVariants.guessFrom(originalTheme);
         const installedThemes = utils.getInstalledGtkThemes();
 
-        if (!installedThemes.has(variants.get('day')) || !installedThemes.has(variants.get('night'))) {
+        if (!installedThemes.has(variants.get(Time.DAY)) || !installedThemes.has(variants.get(Time.NIGHT))) {
             const message = _('Unable to automatically detect the day and night variants for the "%s" GTK theme. Please manually choose them in the extension\'s preferences.').format(originalTheme);
             throw new Error(message);
         }
 
-        this._gtkVariantsSettings.set_string('day', variants.get('day'));
-        this._gtkVariantsSettings.set_string('night', variants.get('night'));
-        console.debug(`New GTK variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
+        this._gtkVariantsSettings.set_string('day', variants.get(Time.DAY));
+        this._gtkVariantsSettings.set_string('night', variants.get(Time.NIGHT));
+        console.debug(`New GTK variants. { day: '${variants.get(Time.DAY)}'; night: '${variants.get(Time.NIGHT)}' }`);
     }
 };

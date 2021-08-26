@@ -10,6 +10,8 @@ const Me = extensionUtils.getCurrentExtension();
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
+const { Time } = Me.imports.enums.Time;
+
 
 /**
  * The Icon Themer is responsible for changing the icon theme according to the
@@ -120,12 +122,14 @@ var IconThemer = class {
 
 
     _updateCurrentVariant() {
-        if (e.timer.time)
-            this._iconVariantsSettings.set_string(e.timer.time, this._interfaceSettings.get_string('icon-theme'));
+        if (e.timer.time === Time.UNKNOWN)
+            return;
+        this._iconVariantsSettings.set_string(e.timer.time, this._interfaceSettings.get_string('icon-theme'));
     }
 
     _updateSystemIconTheme() {
-        if (e.timer.time && this._iconVariantsSettings.get_string(e.timer.time))
-            this._interfaceSettings.set_string('icon-theme', this._iconVariantsSettings.get_string(e.timer.time));
+        if (e.timer.time === Time.UNKNOWN || !this._iconVariantsSettings.get_string(e.timer.time))
+            return;
+        this._interfaceSettings.set_string('icon-theme', this._iconVariantsSettings.get_string(e.timer.time));
     }
 };

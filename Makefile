@@ -14,6 +14,7 @@ build:
 		--force \
 		--extra-source=./config.js \
 		--extra-source=./utils.js \
+		--extra-source=./enums/ \
 		--extra-source=./icons/ \
 		--extra-source=./modules/ \
 		--extra-source=./preferences/ \

@@ -9,6 +9,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const utils = Me.imports.utils;
 
+const { Time } = Me.imports.enums.Time;
 const { TimerNightlight } = Me.imports.modules.TimerNightlight;
 const { TimerLocation } = Me.imports.modules.TimerLocation;
 const { TimerSchedule } = Me.imports.modules.TimerSchedule;
@@ -36,7 +37,7 @@ var Timer = class {
         this._colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
         this._locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
         this._sources = [];
-        this._previousTime = null;
+        this._previousTime = Time.UNKNOWN;
         this._settingsConnections = [];
         this._timeConnections = [];
     }

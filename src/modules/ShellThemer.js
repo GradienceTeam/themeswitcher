@@ -9,6 +9,8 @@ const Me = extensionUtils.getCurrentExtension();
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
+
+const { Time } = Me.imports.enums.Time;
 const { ShellVariants } = Me.imports.modules.ShellVariants;
 
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
@@ -164,12 +166,13 @@ var ShellThemer = class {
     }
 
     _updateCurrentVariant() {
-        if (this._userthemesSettings && this._shellVariantsSettings.get_boolean('manual') && e.timer.time)
-            this._shellVariantsSettings.set_string(e.timer.time, this._userthemesSettings.get_string('name'));
+        if (e.timer.time === Time.UNKNOWN || !this._userthemesSettings || !this._shellVariantsSettings.get_boolean('manual'))
+            return;
+        this._shellVariantsSettings.set_string(e.timer.time, this._userthemesSettings.get_string('name'));
     }
 
     _updateSystemShellTheme() {
-        if (!e.timer.time)
+        if (e.timer.time === Time.UNKNOWN)
             return;
         console.debug(`Setting the ${e.timer.time} Shell variant...`);
         const shellTheme = this._shellVariantsSettings.get_string(e.timer.time);
@@ -190,13 +193,13 @@ var ShellThemer = class {
         const variants = ShellVariants.guessFrom(originalTheme);
         const installedThemes = utils.getInstalledShellThemes();
 
-        if (!installedThemes.has(variants.get('day')) || !installedThemes.has(variants.get('night'))) {
+        if (!installedThemes.has(variants.get(Time.DAY)) || !installedThemes.has(variants.get(Time.NIGHT))) {
             const message = _('Unable to automatically detect the day and night variants for the "%s" GNOME Shell theme. Please manually choose them in the extension\'s preferences.').format(originalTheme);
             throw new Error(message);
         }
 
-        this._shellVariantsSettings.set_string('day', variants.get('day'));
-        this._shellVariantsSettings.set_string('night', variants.get('night'));
-        console.debug(`New Shell variants. { day: '${variants.get('day')}'; night: '${variants.get('night')}' }`);
+        this._shellVariantsSettings.set_string('day', variants.get(Time.DAY));
+        this._shellVariantsSettings.set_string('night', variants.get(Time.NIGHT));
+        console.debug(`New Shell variants. { day: '${variants.get(Time.DAY)}'; night: '${variants.get(Time.NIGHT)}' }`);
     }
 };

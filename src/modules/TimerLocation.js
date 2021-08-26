@@ -9,6 +9,8 @@ const Me = extensionUtils.getCurrentExtension();
 
 const utils = Me.imports.utils;
 
+const { Time } = Me.imports.enums.Time;
+
 
 /**
  * The Location Timer uses Location Services to get the current sunrise and
@@ -57,7 +59,7 @@ var TimerLocation = class {
 
 
     get time() {
-        return this._isDaytime() ? 'day' : 'night';
+        return this._isDaytime() ? Time.DAY : Time.NIGHT;
     }
 
 

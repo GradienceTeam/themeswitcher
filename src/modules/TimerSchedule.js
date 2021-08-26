@@ -9,6 +9,8 @@ const Me = extensionUtils.getCurrentExtension();
 
 const utils = Me.imports.utils;
 
+const { Time } = Me.imports.enums.Time;
+
 
 /**
  * The Schedule Timer uses a manual schedule to get the current time.
@@ -40,7 +42,7 @@ var TimerSchedule = class {
 
 
     get time() {
-        return this._isDaytime() ? 'day' : 'night';
+        return this._isDaytime() ? Time.DAY : Time.NIGHT;
     }
 
 

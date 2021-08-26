@@ -15,6 +15,8 @@ const Me = extensionUtils.getCurrentExtension();
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
+const { Time } = Me.imports.enums.Time;
+
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
 const _ = Gettext.gettext;
 
@@ -186,7 +188,7 @@ var TimerOndemand = class {
     }
 
     _toggleTime() {
-        this._timeSettings.set_string('ondemand-time', e.timer.time === 'day' ? 'night' : 'day');
+        this._timeSettings.set_string('ondemand-time', e.timer.time === Time.DAY ? Time.NIGHT : Time.DAY);
         this.emit('time-changed', this.time);
     }
 };
@@ -234,7 +236,7 @@ var NtsPopupMenuItem = GObject.registerClass(
 );
 
 var _getIconNameForTime = time => {
-    return time === 'day' ? 'nightthemeswitcher-ondemand-off-symbolic' : 'nightthemeswitcher-ondemand-on-symbolic';
+    return time === Time.DAY ? 'nightthemeswitcher-ondemand-off-symbolic' : 'nightthemeswitcher-ondemand-on-symbolic';
 };
 
 var _getGiconForTime = time => {
@@ -242,5 +244,5 @@ var _getGiconForTime = time => {
 };
 
 var _getLabelForTime = time => {
-    return time === 'day' ? _('Switch to night theme') : _('Switch to day theme');
+    return time === Time.DAY ? _('Switch to night theme') : _('Switch to day theme');
 };

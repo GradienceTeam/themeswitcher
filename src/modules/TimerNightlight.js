@@ -9,6 +9,8 @@ const Me = extensionUtils.getCurrentExtension();
 
 const utils = Me.imports.utils;
 
+const { Time } = Me.imports.enums.Time;
+
 
 const COLOR_INTERFACE = `
 <node>
@@ -53,7 +55,7 @@ var TimerNightlight = class {
 
 
     get time() {
-        return this._isNightlightActive() ? 'night' : 'day';
+        return this._isNightlightActive() ? Time.NIGHT : Time.DAY;
     }
 
 

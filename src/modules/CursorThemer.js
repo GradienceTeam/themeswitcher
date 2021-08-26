@@ -10,6 +10,8 @@ const Me = extensionUtils.getCurrentExtension();
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
+const { Time } = Me.imports.enums.Time;
+
 
 /**
  * The Cursor Themer is responsible for changing the cursor theme according to
@@ -120,12 +122,14 @@ var CursorThemer = class {
 
 
     _updateCurrentVariant() {
-        if (e.timer.time)
-            this._cursorVariantsSettings.set_string(e.timer.time, this._interfaceSettings.get_string('cursor-theme'));
+        if (e.timer.time === Time.UNKNOWN)
+            return;
+        this._cursorVariantsSettings.set_string(e.timer.time, this._interfaceSettings.get_string('cursor-theme'));
     }
 
     _updateSystemCursorTheme() {
-        if (e.timer.time && this._cursorVariantsSettings.get_string(e.timer.time))
-            this._interfaceSettings.set_string('cursor-theme', this._cursorVariantsSettings.get_string(e.timer.time));
+        if (e.timer.time === Time.UNKNOWN || !this._cursorVariantsSettings.get_string(e.timer.time))
+            return;
+        this._interfaceSettings.set_string('cursor-theme', this._cursorVariantsSettings.get_string(e.timer.time));
     }
 };

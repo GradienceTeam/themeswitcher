@@ -9,6 +9,8 @@ const Me = extensionUtils.getCurrentExtension();
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
+const { Time } = Me.imports.enums.Time;
+
 
 /**
  * The Commander is responsible for spawning commands according to the time.
@@ -77,7 +79,7 @@ var Commander = class {
 
 
     _spawnCommand() {
-        if (!e.timer.time)
+        if (e.timer.time === Time.UNKNOWN)
             return;
         const command = this._commandsSettings.get_string(e.timer.time === 'day' ? 'sunrise' : 'sunset');
         GLib.spawn_async(null, ['sh', '-c', command], null, GLib.SpawnFlags.SEARCH_PATH, null);

@@ -9,6 +9,8 @@ const Me = extensionUtils.getCurrentExtension();
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
+const { Time } = Me.imports.enums.Time;
+
 /**
  * The Backgrounder is responsible for changing the desktop background
  * according to the time.
@@ -121,12 +123,14 @@ var Backgrounder = class {
 
 
     _updateCurrentBackground() {
-        if (e.timer.time)
-            this._backgroundsSettings.set_string(e.timer.time, this._systemBackgroundSettings.get_string('picture-uri'));
+        if (e.timer.time === Time.UNKNOWN)
+            return;
+        this._backgroundsSettings.set_string(e.timer.time, this._systemBackgroundSettings.get_string('picture-uri'));
     }
 
     _updateSystemBackground() {
-        if (e.timer.time && this._backgroundsSettings.get_string(e.timer.time))
-            this._systemBackgroundSettings.set_string('picture-uri', this._backgroundsSettings.get_string(e.timer.time));
+        if (e.timer.time === Time.UNKNOWN || !this._backgroundsSettings.get_string(e.timer.time))
+            return;
+        this._systemBackgroundSettings.set_string('picture-uri', this._backgroundsSettings.get_string(e.timer.time));
     }
 };
