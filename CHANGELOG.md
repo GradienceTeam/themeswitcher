@@ -6,6 +6,15 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [52] - 2021-08-27
+
+### Added
+- GNOME 41 support
+- Zorin themes support
+- Arabic translation by Omar TS
+
+
+
 ## [51] - 2021-08-22
 
 ### Added
