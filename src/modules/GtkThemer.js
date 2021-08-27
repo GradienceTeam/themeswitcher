@@ -48,7 +48,7 @@ var GtkThemer = class {
                 this._updateSystemGtkTheme();
             }
         } catch (error) {
-            main.notifyError(Me.metadata.name, error);
+            main.notifyError(Me.metadata.name, error.message);
         }
         console.debug('GTK Themer enabled.');
     }
@@ -138,7 +138,7 @@ var GtkThemer = class {
             this._updateCurrentVariant();
             this._updateSystemGtkTheme();
         } catch (error) {
-            main.notifyError(Me.metadata.name, error);
+            main.notifyError(Me.metadata.name, error.message);
         }
     }
 

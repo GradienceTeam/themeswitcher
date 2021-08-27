@@ -47,7 +47,7 @@ var ShellThemer = class {
                 this._updateSystemShellTheme();
             }
         } catch (error) {
-            main.notifyError(Me.metadata.name, error);
+            main.notifyError(Me.metadata.name, error.message);
         }
         console.debug('Shell Themer enabled.');
     }
@@ -141,7 +141,7 @@ var ShellThemer = class {
             this._updateCurrentVariant();
             this._updateSystemShellTheme();
         } catch (error) {
-            main.notifyError(Me.metadata.name, error);
+            main.notifyError(Me.metadata.name, error.message);
         }
     }
 
