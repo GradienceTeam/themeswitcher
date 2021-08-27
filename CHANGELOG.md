@@ -54,7 +54,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 ## [46] - 2021-17-02
 
-## Added
+### Added
 - German translation contributed by @ls-moose
 
 ### Fixed
