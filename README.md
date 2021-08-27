@@ -16,8 +16,6 @@ Supports Night Light, Location Services, manual schedule and on-demand switch.
 ## Table of contents <!-- omit in toc -->
 
 - [Theme compatibility](#theme-compatibility)
-	- [GTK themes](#gtk-themes)
-	- [Shell themes](#shell-themes)
 - [Graphical installation](#graphical-installation)
 - [Command line installation](#command-line-installation)
 - [Contributing](#contributing)
@@ -28,7 +26,8 @@ Supports Night Light, Location Services, manual schedule and on-demand switch.
 
 These themes have been tested and work out of the box without any configuration. Other themes might work as well, let me know if there is a specific theme you'd like supported! And you can also manually set your day and night variants.
 
-### GTK themes
+<details>
+<summary>GTK themes</summary>
 
 - Adapta
 - Adwaita (GNOME & Fedora default)
@@ -58,8 +57,12 @@ These themes have been tested and work out of the box without any configuration.
 - WhiteSur
 - Yaru (Ubuntu default)
 - Yaru Colors
+- Zorin
 
-### Shell themes
+</details>
+
+<details>
+<summary>Shell themes</summary>
 
 - Adapta
 - Adwaita Colors
@@ -83,6 +86,9 @@ These themes have been tested and work out of the box without any configuration.
 - Vimix
 - WhiteSur
 - Yaru Colors
+- Zorin
+
+</details>
 
 ## Graphical installation
 

@@ -80,6 +80,9 @@ var ShellVariants = class {
         } else if (name.includes('vimix')) {
             variants.set(Time.DAY, name.replace('-dark', ''));
             variants.set(Time.NIGHT, variants.get(Time.DAY).replace(/vimix(-light)?/, 'vimix-dark'));
+        } else if (name.includes('Zorin')) {
+            variants.set(Time.DAY, name.replace('-Dark', '-Light'));
+            variants.set(Time.NIGHT, variants.get(Time.DAY).replace('-Light', '-Dark'));
         } else {
             variants.set(Time.DAY, name.replace(/-dark(?!er)(est)?/, ''));
             variants.set(Time.NIGHT, variants.get(Time.DAY).replace(/(-light|-darker)/, '') + (name.includes('-darkest') ? '-darkest' : '-dark'));
