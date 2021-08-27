@@ -107,15 +107,14 @@ package:
         "${PACKAGE_REGISTRY_URL}/${CI_COMMIT_TAG}/${PACKAGE_NAME}"
 
 release-notes:
+  extends: .python
   stage: deploy
   needs:
     - reuse
-  image: rust:latest
   rules:
     - if: $CI_COMMIT_TAG
   script:
-    - cargo install parse-changelog
-    - parse-changelog --version-format="^\d+$" CHANGELOG.md $CI_COMMIT_TAG > release-notes.md
+    - ./build-aux/get_release_notes.py $CI_COMMIT_TAG > release-notes.md
   artifacts:
     paths:
       - release-notes.md
