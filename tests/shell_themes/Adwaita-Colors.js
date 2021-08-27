@@ -2,19 +2,19 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const test = require('ava');
-const { Variants } = require('./_variants');
+const { Time, Variants } = require('./_variants');
 
 
 ['blue', 'cyan', 'grass', 'gray', 'green', 'indigo', 'magenta', 'orange', 'pink', 'red', 'teal', 'violet', 'yellow'].forEach(color => {
     test(`Adwaita-${color}`, t => {
         const variants = Variants.guessFrom(`Adwaita-${color}`);
-        t.is(variants.get('day'), `Adwaita-${color}`);
-        t.is(variants.get('night'), `Adwaita-${color}-dark`);
+        t.is(variants.get(Time.DAY), `Adwaita-${color}`);
+        t.is(variants.get(Time.NIGHT), `Adwaita-${color}-dark`);
     });
 
     test(`Adwaita-${color}-dark`, t => {
         const variants = Variants.guessFrom(`Adwaita-${color}-dark`);
-        t.is(variants.get('day'), `Adwaita-${color}`);
-        t.is(variants.get('night'), `Adwaita-${color}-dark`);
+        t.is(variants.get(Time.DAY), `Adwaita-${color}`);
+        t.is(variants.get(Time.NIGHT), `Adwaita-${color}-dark`);
     });
 });

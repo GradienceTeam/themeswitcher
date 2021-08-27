@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const test = require('ava');
-const { Variants } = require('./_variants');
+const { Time, Variants } = require('./_variants');
 
 test('default', t => {
     const variants = Variants.guessFrom('');
-    t.is(variants.get('day'), '');
-    t.is(variants.get('night'), '');
+    t.is(variants.get(Time.DAY), '');
+    t.is(variants.get(Time.NIGHT), '');
 });

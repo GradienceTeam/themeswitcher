@@ -2,26 +2,26 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const test = require('ava');
-const { Variants } = require('./_variants');
+const { Time, Variants } = require('./_variants');
 
 ['', '-Miami'].forEach(color => {
     ['', '-fullPanel'].forEach(size => {
         test(`Flat-Remix${color}${size}`, t => {
             const variants = Variants.guessFrom(`Flat-Remix${color}${size}`);
-            t.is(variants.get('day'), `Flat-Remix${color}${size}`);
-            t.is(variants.get('night'), `Flat-Remix${color}-Dark${size}`);
+            t.is(variants.get(Time.DAY), `Flat-Remix${color}${size}`);
+            t.is(variants.get(Time.NIGHT), `Flat-Remix${color}-Dark${size}`);
         });
 
         test(`Flat-Remix${color}-Dark${size}`, t => {
             const variants = Variants.guessFrom(`Flat-Remix${color}-Dark${size}`);
-            t.is(variants.get('day'), `Flat-Remix${color}${size}`);
-            t.is(variants.get('night'), `Flat-Remix${color}-Dark${size}`);
+            t.is(variants.get(Time.DAY), `Flat-Remix${color}${size}`);
+            t.is(variants.get(Time.NIGHT), `Flat-Remix${color}-Dark${size}`);
         });
 
         test(`Flat-Remix${color}-Darkest${size}`, t => {
             const variants = Variants.guessFrom(`Flat-Remix${color}-Darkest${size}`);
-            t.is(variants.get('day'), `Flat-Remix${color}${size}`);
-            t.is(variants.get('night'), `Flat-Remix${color}-Darkest${size}`);
+            t.is(variants.get(Time.DAY), `Flat-Remix${color}${size}`);
+            t.is(variants.get(Time.NIGHT), `Flat-Remix${color}-Darkest${size}`);
         });
     });
 });

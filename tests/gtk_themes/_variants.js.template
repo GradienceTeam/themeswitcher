@@ -1,1 +1,2 @@
 exports.Variants = GtkVariants;
+exports.Time = Time;
