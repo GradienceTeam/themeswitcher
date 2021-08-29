@@ -11,14 +11,12 @@ const { Button: PanelMenuButton } = imports.ui.panelMenu;
 const { PopupBaseMenuItem } = imports.ui.popupMenu;
 
 const Me = extensionUtils.getCurrentExtension();
+const _ = extensionUtils.gettext;
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
-
-const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
-const _ = Gettext.gettext;
 
 /**
  * The On-demand Timer allows the user to manually switch between the day and

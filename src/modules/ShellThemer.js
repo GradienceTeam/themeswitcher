@@ -6,15 +6,13 @@ const { extensionUtils } = imports.misc;
 const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
+const _ = extensionUtils.gettext;
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
 const { ShellVariants } = Me.imports.modules.ShellVariants;
-
-const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
-const _ = Gettext.gettext;
 
 /**
  * The Shell Themer is responsible for changing the GTK theme according to the

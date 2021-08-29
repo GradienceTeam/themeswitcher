@@ -33,7 +33,7 @@ var commander = null;
  */
 function init() {
     console.debug('Initializing extension...');
-    extensionUtils.initTranslations(Me.metadata['gettext-domain']);
+    extensionUtils.initTranslations();
     console.debug('Extension initialized.');
 }
 

@@ -6,15 +6,13 @@ const { extensionUtils } = imports.misc;
 const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
+const _ = extensionUtils.gettext;
 
 const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
 const { GtkVariants } = Me.imports.modules.GtkVariants;
-
-const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
-const _ = Gettext.gettext;
 
 
 /**
