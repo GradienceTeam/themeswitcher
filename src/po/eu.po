@@ -7,13 +7,16 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 14:58+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-08-29 16:56+0000\n"
+"Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/eu/>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: src/modules/GtkThemer.js:184
 #, javascript-format
@@ -21,6 +24,8 @@ msgid ""
 "Unable to automatically detect the day and night variants for the \"%s\" GTK "
 "theme. Please manually choose them in the extension's preferences."
 msgstr ""
+"Ezin izan ziren automatikoki detektatu eguneko eta gaueko aldaerak GTK \"%s\""
+" gairako. Mesedez, aukeratu eskuz hedapenaren hobespenetan."
 
 #: src/modules/ShellThemer.js:196
 #, javascript-format
@@ -29,14 +34,16 @@ msgid ""
 "GNOME Shell theme. Please manually choose them in the extension's "
 "preferences."
 msgstr ""
+"Ezin izan ziren automatikoki detektatu GNOME Shell \"%s\" gairako eguneko "
+"eta gaueko aldaerak. Mesedez, aukeratu eskuz hedapenaren hobespenetan."
 
 #: src/modules/TimerOndemand.js:246
 msgid "Switch to night theme"
-msgstr ""
+msgstr "Gaueko gaira aldatu"
 
 #: src/modules/TimerOndemand.js:246
 msgid "Switch to day theme"
-msgstr ""
+msgstr "Eguneko gaira aldatu"
 
 #: src/preferences/Schedule.js:57 src/preferences/ui/Schedule.ui:62
 msgid "Night Light"
@@ -56,79 +63,79 @@ msgstr ""
 
 #: src/preferences/ShellPreferences.js:55
 msgid "Default"
-msgstr ""
+msgstr "Lehenetsita"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
-msgstr ""
+msgstr "Konfigurazioaren bertsioa"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
 msgid "The current extension settings version"
-msgstr ""
+msgstr "Hedapenaren konfigurazioaren egungo bertsioa"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 msgid "Switch GTK variants"
-msgstr ""
+msgstr "GTKren aldaerak aldatu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
-msgstr ""
+msgstr "GTKren aldaeren aldaketa gaitu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
 msgid "Day GTK theme"
-msgstr ""
+msgstr "Eguneko GTK gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
 msgid "The GTK theme to use during daytime"
-msgstr ""
+msgstr "Egunez erabiltzeko GTK gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Night GTK theme"
-msgstr ""
+msgstr "Gaueko STK gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:28
 msgid "The GTK theme to use during nighttime"
-msgstr ""
+msgstr "GTK gaia gauez erabiltzeko"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:32
 msgid "Use manual GTK variants"
-msgstr ""
+msgstr "GTKren eskuzko aldaerak erabili"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:33
 msgid "Disable automatic GTK theme variants detection"
-msgstr ""
+msgstr "GTK gaien aldaeren detekzio automatikoa desgaitu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:39
 msgid "Switch shell variants"
-msgstr ""
+msgstr "Aldatu shell aldaerak"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:40
 msgid "Enable shell variants switching"
-msgstr ""
+msgstr "Shell aldaeren aldaketa gaitu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
 msgid "Day shell theme"
-msgstr ""
+msgstr "Eguneko shell gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
 msgid "The shell theme to use during daytime"
-msgstr ""
+msgstr "Egunez erabiltzeko shell gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:49
 msgid "Night shell theme"
-msgstr ""
+msgstr "Gaueko shell gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:50
 msgid "The shell theme to use during nighttime"
-msgstr ""
+msgstr "Gauean erabiltzeko shell gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:54
 msgid "Use manual shell variants"
-msgstr ""
+msgstr "Eskuzko shell aldaerak erabili"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:55
 msgid "Disable automatic shell theme variants detection"
-msgstr ""
+msgstr "Shell gaien aldaeren detekzio automatikoa desgaitu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
 msgid "Switch icon variants"
