@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 14:58+0200\n"
-"PO-Revision-Date: 2021-08-26 09:07+0000\n"
-"Last-Translator: Omar TS <omats@criptext.com>\n"
+"PO-Revision-Date: 2021-08-29 16:56+0000\n"
+"Last-Translator: Omar TS <omats@vivaldi.net>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/ar/>\n"
 "Language: ar\n"
@@ -26,7 +26,7 @@ msgid ""
 "Unable to automatically detect the day and night variants for the \"%s\" GTK "
 "theme. Please manually choose them in the extension's preferences."
 msgstr ""
-"تعذر اكتشاف متغيرات النهار والليل تلقائيًا لوضع\"GTK \"%s. يرجى اختيارهم "
+"تعذر اكتشاف متغيرات النهار والليل تلقائيًا لسمة\"GTK \"%s. يرجى اختيارهم "
 "يدويًا في تفضيلات الامتداد."
 
 #: src/modules/ShellThemer.js:196
@@ -36,16 +36,16 @@ msgid ""
 "GNOME Shell theme. Please manually choose them in the extension's "
 "preferences."
 msgstr ""
-"تعذر اكتشاف متغيرات النهار والليل تلقائيًا لوضع \"GNOME Shell \"%s. يرجى "
+"تعذر اكتشاف متغيرات النهار والليل تلقائيًا لسمة \"GNOME Shell \"%s. يرجى "
 "اختيارهم يدويًا في تفضيلات الامتداد."
 
 #: src/modules/TimerOndemand.js:246
 msgid "Switch to night theme"
-msgstr "قم بالتبديل إلى المظهر الليلي"
+msgstr "قم بالتبديل إلى السمة الليلية"
 
 #: src/modules/TimerOndemand.js:246
 msgid "Switch to day theme"
-msgstr "التبديل إلى الوضع النهاري"
+msgstr "التبديل إلى السمة النهارية"
 
 #: src/preferences/Schedule.js:57 src/preferences/ui/Schedule.ui:62
 msgid "Night Light"
@@ -85,19 +85,19 @@ msgstr "تفعيل تبديل متغيرات GTK"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
 msgid "Day GTK theme"
-msgstr "وضع GTK النهاري"
+msgstr "سمة GTK النهارية"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
 msgid "The GTK theme to use during daytime"
-msgstr "وضع GTK للاستخدام أثناء النهار"
+msgstr "سمة GTK للاستخدام أثناء النهار"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Night GTK theme"
-msgstr "وضع GTK الليلي"
+msgstr "سمة GTK الليلية"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:28
 msgid "The GTK theme to use during nighttime"
-msgstr "وضع GTK للاستخدام أثناء الليل"
+msgstr "سمة GTK للاستخدام أثناء الليل"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:32
 msgid "Use manual GTK variants"
@@ -117,15 +117,15 @@ msgstr "تفعيل تبديل متغيرات الصَّدَفة"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
 msgid "Day shell theme"
-msgstr "وضع الصّدَفة النهاري"
+msgstr "سمة الصّدَفة النهارية"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
 msgid "The shell theme to use during daytime"
-msgstr "وضع الصّدَفة لاستخدامه خلال النهار"
+msgstr "سمة الصّدَفة لاستخدامها خلال النهار"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:49
 msgid "Night shell theme"
-msgstr "وضع الصّدَفة الليلي"
+msgstr "سمة الصّدَفة الليلية"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:50
 msgid "The shell theme to use during nighttime"
@@ -149,7 +149,7 @@ msgstr "تفعيل تبديل متغيرات الأيقونات"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:66
 msgid "Day icon theme"
-msgstr "أيقونات الوضع النهاري"
+msgstr "أيقونات السمة النهارية"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:67
 msgid "The icon theme to use during daytime"
@@ -157,11 +157,11 @@ msgstr "سمة الأيقونات المراد استخدامها أثناء ا�
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:71
 msgid "Night icon theme"
-msgstr "أيقونات الوضع الليلي"
+msgstr "أيقونات السمة الليلية"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:72
 msgid "The icon theme to use during nighttime"
-msgstr "أيقونات الوضع المستخدم أثناء الليل"
+msgstr "أيقونات السمة المستخدمة أثناء الليل"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:78
 msgid "Switch cursor variants"
@@ -173,19 +173,19 @@ msgstr "تفعيل تبديل متغيرات المؤشر"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:83
 msgid "Day cursor theme"
-msgstr "مؤشر الوضع النهاري"
+msgstr "مؤشر السمة النهارية"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:84
 msgid "The cursor theme to use during daytime"
-msgstr "مؤشر الوضع المستخدم أثناء النهار"
+msgstr "مؤشر السمة المستخدمة أثناء النهار"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:88
 msgid "Night cursor theme"
-msgstr "مؤشر الوضع الليلي"
+msgstr "مؤشر السمة الليلية"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:89
 msgid "The cursor theme to use during nighttime"
-msgstr "مؤشر الوضع المستخدم أثناء الليل"
+msgstr "مؤشر السمة المستخدمة أثناء الليل"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:95
 msgid "Enable commands"
@@ -289,7 +289,7 @@ msgstr "حيث سيتم وضع الزر عند الطلب"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
 msgid "Use manual time source"
-msgstr "استخدم مصدر الوقت اليدوي"
+msgstr "استخدم المصدر اليدوي للوقت"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
 msgid "Disable automatic time source detection"
@@ -378,7 +378,7 @@ msgstr "متغير الليل"
 
 #: src/preferences/ui/GtkPreferences.ui:15
 msgid "Switch GTK theme variants"
-msgstr "تبديل متغيرات وضع GTK"
+msgstr "تبديل متغيرات سمة GTK"
 
 #: src/preferences/ui/GtkPreferences.ui:39
 #: src/preferences/ui/ShellPreferences.ui:39
@@ -393,9 +393,9 @@ msgid ""
 "a request</a> to get your theme supported."
 msgstr ""
 "يمكنك تعيين المتغيرات يدويًا إذا كان الامتداد لا يكتشف تلقائيًا متغيرات "
-"النهار والليل لوضع GTK الخاص بك. الرجاء <a href=\"https://gitlab.com/rmnvgr/"
+"النهار والليل لسمة GTK الخاصة بك. الرجاء <a href=\"https://gitlab.com/rmnvgr/"
 "nightthemeswitcher-gnome-shell-extension/-/issues\"> إرسال طلب </a> لدعم "
-"مظهرك."
+"سمتك."
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
@@ -498,9 +498,9 @@ msgid ""
 "\">submit a request</a> to get your theme supported."
 msgstr ""
 "يمكنك تعيين المتغيرات يدويًا إذا لم يتمكن الامتداد من الكشف تلقائيًا عن "
-"متغيرات النهار والليل لوضع GNOME Shell. الرجاء <a href=\"https://gitlab.com/"
+"متغيرات النهار والليل لسمة GNOME Shell. الرجاء <a href=\"https://gitlab.com/"
 "rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\"> إرسال طلب </a> "
-"لدعم مظهرك."
+"لدعم سمتك."
 
 #: src/preferences/ui/ShortcutButton.ui:32
 msgid "Change keyboard shortcut"
