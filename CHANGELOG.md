@@ -13,6 +13,9 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 - Zorin themes support
 - Arabic translation by Omar TS
 
+### Removed
+- GNOME 40 support
+
 
 
 ## [51] - 2021-08-22
