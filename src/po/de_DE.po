@@ -5,21 +5,22 @@
 # Automatically generated <>, 2021.
 #
 # Romain Vigier <romain@romainvigier.fr>, 2021.
+# Kepler 69c <schmittfranz20@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 45\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 14:58+0200\n"
-"PO-Revision-Date: 2021-08-20 09:50+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/de/>\n"
+"PO-Revision-Date: 2021-09-16 18:34+0000\n"
+"Last-Translator: Kepler 69c <schmittfranz20@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/de/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: src/modules/GtkThemer.js:184
 #, javascript-format
@@ -320,10 +321,8 @@ msgid "Choose…"
 msgstr "Auswählen…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
-#, fuzzy
-#| msgid "Day background"
 msgid "Change background"
-msgstr "Hintergrund bei Tag"
+msgstr "Hintergrundbild wechseln"
 
 #: src/preferences/ui/BackgroundButton.ui:44
 #: src/preferences/ui/BackgroundButton.ui:46
@@ -331,7 +330,7 @@ msgstr "Hintergrund bei Tag"
 #: src/preferences/ui/ShortcutButton.ui:43
 #: src/preferences/ui/ShortcutButton.ui:45
 msgid "Clear"
-msgstr "Bereinigen"
+msgstr "löschen"
 
 #: src/preferences/ui/BackgroundButton.ui:61
 msgid "Select your background image"
@@ -364,10 +363,8 @@ msgid "notify-send \"Hello moonshine!\""
 msgstr "notify-send \"Hallo Mondschein!\""
 
 #: src/preferences/ui/CursorPreferences.ui:15
-#, fuzzy
-#| msgid "Switch cursor variants"
 msgid "Switch cursor theme variants"
-msgstr "Cursor-Varianten wechseln"
+msgstr "Cursor-Themenvarianten wechseln"
 
 #: src/preferences/ui/CursorPreferences.ui:39
 #: src/preferences/ui/GtkPreferences.ui:48
@@ -384,8 +381,6 @@ msgid "Night variant"
 msgstr "Nachtvarianten"
 
 #: src/preferences/ui/GtkPreferences.ui:15
-#, fuzzy
-#| msgid "Switch GTK variants"
 msgid "Switch GTK theme variants"
 msgstr "GTK-Varianten wechseln"
 
@@ -408,25 +403,23 @@ msgstr ""
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
-msgstr ""
+msgstr "Unterstützen Sie uns"
 
 #: src/preferences/ui/Headerbar.ui:48
 msgid "View code on GitLab"
-msgstr ""
+msgstr "Code auf GitLab anzeigen"
 
 #: src/preferences/ui/Headerbar.ui:71
 msgid "Translate on Weblate"
-msgstr ""
+msgstr "Auf Weblate übersetzen"
 
 #: src/preferences/ui/Headerbar.ui:94
 msgid "Donate on Liberapay"
-msgstr ""
+msgstr "Spenden auf Liberapay"
 
 #: src/preferences/ui/IconPreferences.ui:15
-#, fuzzy
-#| msgid "Switch icon variants"
 msgid "Switch icon theme variants"
-msgstr "Symbol-Varianten wechseln"
+msgstr "Symbol-Themenvarianten wechseln"
 
 #: src/preferences/ui/Preferences.ui:14
 msgid "Schedule"
@@ -434,7 +427,7 @@ msgstr "Zeitplan"
 
 #: src/preferences/ui/Preferences.ui:24
 msgid "Appearance"
-msgstr ""
+msgstr "Erscheinung"
 
 #: src/preferences/ui/Preferences.ui:34
 msgid "Commands"
@@ -459,14 +452,9 @@ msgid "Always show on-demand controls"
 msgstr "On-Demand Steuerelemente immer anzeigen"
 
 #: src/preferences/ui/Schedule.ui:46
-#, fuzzy
-#| msgid ""
-#| "<small>This allows you to override the current time when using a schedule."
-#| "</small>"
 msgid "Allows you to override the current time when using a schedule."
 msgstr ""
-"<small>Diese Einstellung erlaubt es Ihnen, den aktuellen Zeitplan zu "
-"überschreiben.</small>"
+"Diese Einstellung erlaubt es Ihnen, den aktuellen Zeitplan zu überschreiben."
 
 #: src/preferences/ui/Schedule.ui:74
 msgid "Follow <i>Disable until tomorrow</i>"
@@ -505,8 +493,6 @@ msgid "System menu"
 msgstr "Systemmenü"
 
 #: src/preferences/ui/ShellPreferences.ui:15
-#, fuzzy
-#| msgid "Switch Shell variants"
 msgid "Switch Shell theme variants"
 msgstr "Shell-Varianten wechseln"
 
@@ -524,10 +510,8 @@ msgstr ""
 "werden kann."
 
 #: src/preferences/ui/ShortcutButton.ui:32
-#, fuzzy
-#| msgid "Keyboard shortcut"
 msgid "Change keyboard shortcut"
-msgstr "Tastaturkürzel"
+msgstr "Tastaturkürzel ändern"
 
 #: src/preferences/ui/ShortcutButton.ui:100
 msgid "Press your keyboard shortcut…"
