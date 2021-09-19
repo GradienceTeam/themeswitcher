@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 14:58+0200\n"
-"PO-Revision-Date: 2021-08-29 16:56+0000\n"
+"PO-Revision-Date: 2021-09-20 00:46+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/eu/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: src/modules/GtkThemer.js:184
 #, javascript-format
@@ -47,19 +47,19 @@ msgstr "Eguneko gaira aldatu"
 
 #: src/preferences/Schedule.js:57 src/preferences/ui/Schedule.ui:62
 msgid "Night Light"
-msgstr ""
+msgstr "Gaueko argia"
 
 #: src/preferences/Schedule.js:67
 msgid "Location Services"
-msgstr ""
+msgstr "Kokapen-zerbitzuak"
 
 #: src/preferences/Schedule.js:80
 msgid "Manual schedule"
-msgstr ""
+msgstr "Eskuzko ordutegia"
 
 #: src/preferences/Schedule.js:81 src/preferences/ui/Schedule.ui:135
 msgid "On-demand"
-msgstr ""
+msgstr "Nahieran"
 
 #: src/preferences/ShellPreferences.js:55
 msgid "Default"
@@ -139,183 +139,186 @@ msgstr "Shell gaien aldaeren detekzio automatikoa desgaitu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
 msgid "Switch icon variants"
-msgstr ""
+msgstr "Ikonoen aldaerak aldatu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:62
 msgid "Enable icon variants switching"
-msgstr ""
+msgstr "Ikono-aldaeren aldaketa aktibatu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:66
 msgid "Day icon theme"
-msgstr ""
+msgstr "Eguneko ikonoen gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:67
 msgid "The icon theme to use during daytime"
-msgstr ""
+msgstr "Egunez erabiltzeko ikonoen gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:71
 msgid "Night icon theme"
-msgstr ""
+msgstr "Gaueko ikonoen gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:72
 msgid "The icon theme to use during nighttime"
-msgstr ""
+msgstr "Gauean erabiltzeko ikonoen gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:78
 msgid "Switch cursor variants"
-msgstr ""
+msgstr "Kurtsorearen aldaerak aldatu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:79
 msgid "Enable cursor variants switching"
-msgstr ""
+msgstr "Kurtsorearen aldaeren aldaketa aktibatu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:83
 msgid "Day cursor theme"
-msgstr ""
+msgstr "Eguneko kurtsorearen gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:84
 msgid "The cursor theme to use during daytime"
-msgstr ""
+msgstr "Egunez erabiltzeko kurtsorearen gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:88
 msgid "Night cursor theme"
-msgstr ""
+msgstr "Gaueko kurtsorearen gaia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:89
 msgid "The cursor theme to use during nighttime"
-msgstr ""
+msgstr "Kurtsorearen gaia gauez erabiltzeko"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:95
 msgid "Enable commands"
-msgstr ""
+msgstr "Komandoak aktibatu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:96
 msgid "Commands will be spawned on time change"
-msgstr ""
+msgstr "Komandoak ordutegi-aldaketan sortuko dira"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:100
 msgid "Sunrise command"
-msgstr ""
+msgstr "Egunsentiko komandoa"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:101
 msgid "The command to spawn at sunrise"
-msgstr ""
+msgstr "Egunsentian sortuko den komandoa"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:105
 msgid "Sunset command"
-msgstr ""
+msgstr "Ilunabarreko komandoa"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:106
 msgid "The command to spawn at sunset"
-msgstr ""
+msgstr "Ilunabarrean sortuko den komandoa"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:112
 msgid "Enable backgrounds"
-msgstr ""
+msgstr "Aktibatu fondoak"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:113
 msgid "Background will be changed on time change"
-msgstr ""
+msgstr "Fondoa aldatu egingo da eguraldia aldatzen denean"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:117
 #: src/preferences/ui/BackgroundsPreferences.ui:39
 msgid "Day background"
-msgstr ""
+msgstr "Eguneko fondoa"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:118
 msgid "Path to the day background"
-msgstr ""
+msgstr "Ibilbidea eguneko fondora"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:122
 #: src/preferences/ui/BackgroundsPreferences.ui:47
 msgid "Night background"
-msgstr ""
+msgstr "Gaueko fondoa"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:123
 msgid "Path to the night background"
-msgstr ""
+msgstr "Ibilbidea gaueko fondoara"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:135
 #: src/preferences/ui/Schedule.ui:36
 msgid "Time source"
-msgstr ""
+msgstr "Denbora-iturria"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:136
 msgid "The source used to check current time"
-msgstr ""
+msgstr "Gaur egungo ordua egiaztatzeko erabilitako iturria"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:140
 msgid "Follow Night Light \"Disable until tomorrow\""
-msgstr ""
+msgstr "Gaueko argitik \"bihar arte desaktibatu\""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:141
 msgid "Switch back to day time when Night Light is temporarily disabled"
 msgstr ""
+"Gaueko argia aldi baterako desaktibatuta dagoenean, itzuli eguneko ordura"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:145
 msgid "Always enable the on-demand timer"
-msgstr ""
+msgstr "Tenporizadorea beti nahierara aktibatzea"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:146
 msgid "The on-demand timer will always be enabled alongside other timers"
 msgstr ""
+"Nahierako tenporizadorea beti aktibatuko da beste tenporizadore batzuekin "
+"batera"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:154
 msgid "On-demand time"
-msgstr ""
+msgstr "Denbora nahieran"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:155
 msgid "The current time used in on-demand mode"
-msgstr ""
+msgstr "Egungo ordua, neurrira egindako moduan erabilia"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
 msgid "Key combination to toggle time"
-msgstr ""
+msgstr "Teklen konbinazioa denbora kommutatzeko"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:160
 msgid "The key combination that will toggle time in on-demand mode"
-msgstr ""
+msgstr "Denbora nahieran konbinatzen duen tekla-konbinazioa"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:169
 msgid "On-demand button placement"
-msgstr ""
+msgstr "Botoia nahierara jarri"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:170
 msgid "Where the on-demand button will be placed"
-msgstr ""
+msgstr "Gutunaren botoia jarriko den lekuan"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
 msgid "Use manual time source"
-msgstr ""
+msgstr "Eskuzko denbora-iturria erabili"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
 msgid "Disable automatic time source detection"
-msgstr ""
+msgstr "Denbora-iturriaren detekzio automatikoa desaktibatu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:179
 msgid "Sunrise time"
-msgstr ""
+msgstr "Egunsentiaren ordua"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:180
 msgid "When the day starts"
-msgstr ""
+msgstr "Eguna hasten denean"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:184
 msgid "Sunset time"
-msgstr ""
+msgstr "Ilunabarreko ordua"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:185
 msgid "When the day ends"
-msgstr ""
+msgstr "Eguna amaitzen denean"
 
 #: src/preferences/ui/BackgroundButton.ui:15
 #: src/preferences/ui/ShortcutButton.ui:15
 msgid "Choose…"
-msgstr ""
+msgstr "Hautatu…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
 msgid "Change background"
-msgstr ""
+msgstr "Aldatu fondoa"
 
 #: src/preferences/ui/BackgroundButton.ui:44
 #: src/preferences/ui/BackgroundButton.ui:46
@@ -323,64 +326,64 @@ msgstr ""
 #: src/preferences/ui/ShortcutButton.ui:43
 #: src/preferences/ui/ShortcutButton.ui:45
 msgid "Clear"
-msgstr ""
+msgstr "Ezabatu"
 
 #: src/preferences/ui/BackgroundButton.ui:61
 msgid "Select your background image"
-msgstr ""
+msgstr "Hautatu hondoko irudia"
 
 #: src/preferences/ui/BackgroundsPreferences.ui:15
 msgid "Switch backgrounds"
-msgstr ""
+msgstr "Fondoak aldatu"
 
 #: src/preferences/ui/Commands.ui:31
 msgid "Run commands"
-msgstr ""
+msgstr "Komandoak exekutatu"
 
 #: src/preferences/ui/Commands.ui:55 src/preferences/ui/Schedule.ui:107
 msgid "Sunrise"
-msgstr ""
+msgstr "Egunsentia"
 
 #. Don't translate the `notify-send` command.
 #: src/preferences/ui/Commands.ui:58
 msgid "notify-send \"Hello sunshine!\""
-msgstr ""
+msgstr "notify-send \"egunon!\""
 
 #: src/preferences/ui/Commands.ui:67 src/preferences/ui/Schedule.ui:115
 msgid "Sunset"
-msgstr ""
+msgstr "Ilunabarra"
 
 #. Don't translate the `notify-send` command.
 #: src/preferences/ui/Commands.ui:70
 msgid "notify-send \"Hello moonshine!\""
-msgstr ""
+msgstr "notify-send \"Gabon!\""
 
 #: src/preferences/ui/CursorPreferences.ui:15
 msgid "Switch cursor theme variants"
-msgstr ""
+msgstr "Kurtsorearen gaiaren aldaerak aldatu"
 
 #: src/preferences/ui/CursorPreferences.ui:39
 #: src/preferences/ui/GtkPreferences.ui:48
 #: src/preferences/ui/IconPreferences.ui:39
 #: src/preferences/ui/ShellPreferences.ui:48
 msgid "Day variant"
-msgstr ""
+msgstr "Eguneko aldaera"
 
 #: src/preferences/ui/CursorPreferences.ui:49
 #: src/preferences/ui/GtkPreferences.ui:59
 #: src/preferences/ui/IconPreferences.ui:49
 #: src/preferences/ui/ShellPreferences.ui:59
 msgid "Night variant"
-msgstr ""
+msgstr "Gaueko aldaera"
 
 #: src/preferences/ui/GtkPreferences.ui:15
 msgid "Switch GTK theme variants"
-msgstr ""
+msgstr "GTK gaiaren aldaerak aldatu"
 
 #: src/preferences/ui/GtkPreferences.ui:39
 #: src/preferences/ui/ShellPreferences.ui:39
 msgid "Manual variants"
-msgstr ""
+msgstr "Eskuzko aldaerak"
 
 #: src/preferences/ui/GtkPreferences.ui:40
 msgid ""
@@ -389,42 +392,46 @@ msgid ""
 "gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">submit "
 "a request</a> to get your theme supported."
 msgstr ""
+"Aldaerak eskuz ezar ditzake, baldin eta hedapenak ezin baditu automatikoki "
+"detektatu bere GTK gaiaren eguneko eta gaueko aldaerak. Mesedez, <a href="
+"\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/"
+"issues\">aurkez ezazu eskaera </a> zure gaia euskarria lortzeko."
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
-msgstr ""
+msgstr "Lagundu gaitzazue"
 
 #: src/preferences/ui/Headerbar.ui:48
 msgid "View code on GitLab"
-msgstr ""
+msgstr "Ikusi kodea GitLaben"
 
 #: src/preferences/ui/Headerbar.ui:71
 msgid "Translate on Weblate"
-msgstr ""
+msgstr "Itzulpena Weblateen"
 
 #: src/preferences/ui/Headerbar.ui:94
 msgid "Donate on Liberapay"
-msgstr ""
+msgstr "Dohaintza egin Liberapayen"
 
 #: src/preferences/ui/IconPreferences.ui:15
 msgid "Switch icon theme variants"
-msgstr ""
+msgstr "Ikonoen gaiaren aldaerak aldatu"
 
 #: src/preferences/ui/Preferences.ui:14
 msgid "Schedule"
-msgstr ""
+msgstr "Ordutegia"
 
 #: src/preferences/ui/Preferences.ui:24
 msgid "Appearance"
-msgstr ""
+msgstr "Itxura"
 
 #: src/preferences/ui/Preferences.ui:34
 msgid "Commands"
-msgstr ""
+msgstr "Komandoak"
 
 #: src/preferences/ui/Schedule.ui:27
 msgid "Manual time source"
-msgstr ""
+msgstr "Eskuzko denbora-iturria"
 
 #: src/preferences/ui/Schedule.ui:28
 msgid ""
@@ -432,52 +439,60 @@ msgid ""
 "automatically set your current sunrise and sunset times if they are enabled. "
 "If you prefer, you can manually choose a time source."
 msgstr ""
+"Gaueko argiaren edo kokapenaren zerbitzuak erabiltzen saiatuko da luzapena, "
+"gaur egungo irteera eta ilunabar-orduak automatikoki ezartzeko, baldin eta "
+"ordu horiek aktibatuta badaude. Nahiago baduzu, eskuz aukera dezakezu "
+"denbora-iturri bat."
 
 #: src/preferences/ui/Schedule.ui:45
 msgid "Always show on-demand controls"
-msgstr ""
+msgstr "Erakutsi beti kontrolak nahierara"
 
 #: src/preferences/ui/Schedule.ui:46
 msgid "Allows you to override the current time when using a schedule."
 msgstr ""
+"Horri esker, ordutegi bat erabiltzen denean, egungo ordua baliogabetu "
+"daiteke."
 
 #: src/preferences/ui/Schedule.ui:74
 msgid "Follow <i>Disable until tomorrow</i>"
-msgstr ""
+msgstr "Jarraitu <i>Desaktibatu bihar arte</i>"
 
 #: src/preferences/ui/Schedule.ui:75
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
+"Gaueko argia aldi baterako desaktibatuta dagoenean, luzapena eguneko "
+"aldaeretara aldatuko da."
 
 #: src/preferences/ui/Schedule.ui:95
 msgid "Manual schedule times"
-msgstr ""
+msgstr "Eskuzko programazioaren ordutegiak"
 
 #: src/preferences/ui/Schedule.ui:147
 msgid "Keyboard shortcut"
-msgstr ""
+msgstr "Teklatuaren lasterbidea"
 
 #: src/preferences/ui/Schedule.ui:155
 msgid "Button location"
-msgstr ""
+msgstr "Botoiaren kokapena"
 
 #: src/preferences/ui/Schedule.ui:160
 msgid "None"
-msgstr ""
+msgstr "Bat ere ez"
 
 #: src/preferences/ui/Schedule.ui:161
 msgid "Top bar"
-msgstr ""
+msgstr "Goiko barra"
 
 #: src/preferences/ui/Schedule.ui:162
 msgid "System menu"
-msgstr ""
+msgstr "Sistemaren menua"
 
 #: src/preferences/ui/ShellPreferences.ui:15
 msgid "Switch Shell theme variants"
-msgstr ""
+msgstr "Shell gaiaren aldaerak aldatu"
 
 #: src/preferences/ui/ShellPreferences.ui:40
 msgid ""
@@ -486,16 +501,20 @@ msgid ""
 "\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues"
 "\">submit a request</a> to get your theme supported."
 msgstr ""
+"Aldaerak eskuz ezar ditzake, baldin eta hedapenak ezin baditu automatikoki "
+"detektatu GNOME Shell gaiaren eguneko eta gaueko aldaerak. Mesedez, <a href="
+"\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/"
+"issues\">aurkez ezazu eskaera</a> zure gaia euskarria lortzeko."
 
 #: src/preferences/ui/ShortcutButton.ui:32
 msgid "Change keyboard shortcut"
-msgstr ""
+msgstr "Teklatuko lasterbidea aldatu"
 
 #: src/preferences/ui/ShortcutButton.ui:100
 msgid "Press your keyboard shortcut…"
-msgstr ""
+msgstr "Teklatuaren lasterbidea sartu…"
 
 #. Time separator (eg. 08:27)
 #: src/preferences/ui/TimeChooser.ui:23
 msgid ":"
-msgstr ""
+msgstr ":"
