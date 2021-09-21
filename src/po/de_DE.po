@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 45\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 14:58+0200\n"
-"PO-Revision-Date: 2021-09-16 18:34+0000\n"
-"Last-Translator: Kepler 69c <schmittfranz20@gmail.com>\n"
+"PO-Revision-Date: 2021-09-21 08:55+0000\n"
+"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/de/>\n"
 "Language: de_DE\n"
@@ -330,7 +330,7 @@ msgstr "Hintergrundbild wechseln"
 #: src/preferences/ui/ShortcutButton.ui:43
 #: src/preferences/ui/ShortcutButton.ui:45
 msgid "Clear"
-msgstr "löschen"
+msgstr "Löschen"
 
 #: src/preferences/ui/BackgroundButton.ui:61
 msgid "Select your background image"
