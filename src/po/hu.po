@@ -7,13 +7,16 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 14:58+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-09-25 20:03+0000\n"
+"Last-Translator: Balázs Úr <balazs@urbalazs.hu>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: src/modules/GtkThemer.js:184
 #, javascript-format
@@ -21,6 +24,8 @@ msgid ""
 "Unable to automatically detect the day and night variants for the \"%s\" GTK "
 "theme. Please manually choose them in the extension's preferences."
 msgstr ""
+"Nem lehet automatikusan felismerni a(z) „%s” GTK-téma nappali és éjszakai "
+"változatait. Válassza ki kézzel azokat a kiterjesztés beállításaiban."
 
 #: src/modules/ShellThemer.js:196
 #, javascript-format
@@ -29,286 +34,291 @@ msgid ""
 "GNOME Shell theme. Please manually choose them in the extension's "
 "preferences."
 msgstr ""
+"Nem lehet automatikusan felismerni a(z) „%s” GNOME Shell témájának nappali "
+"és éjszakai változatait. Válassza ki kézzel azokat a kiterjesztés "
+"beállításaiban."
 
 #: src/modules/TimerOndemand.js:246
 msgid "Switch to night theme"
-msgstr ""
+msgstr "Váltás éjszakai témára"
 
 #: src/modules/TimerOndemand.js:246
 msgid "Switch to day theme"
-msgstr ""
+msgstr "Váltás nappali témára"
 
 #: src/preferences/Schedule.js:57 src/preferences/ui/Schedule.ui:62
 msgid "Night Light"
-msgstr ""
+msgstr "Éjszakai fény"
 
 #: src/preferences/Schedule.js:67
 msgid "Location Services"
-msgstr ""
+msgstr "Helymeghatározó szolgáltatások"
 
 #: src/preferences/Schedule.js:80
 msgid "Manual schedule"
-msgstr ""
+msgstr "Kézi ütemezés"
 
 #: src/preferences/Schedule.js:81 src/preferences/ui/Schedule.ui:135
 msgid "On-demand"
-msgstr ""
+msgstr "Igény szerint"
 
 #: src/preferences/ShellPreferences.js:55
 msgid "Default"
-msgstr ""
+msgstr "Alapértelmezett"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
-msgstr ""
+msgstr "Beállítások verziója"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
 msgid "The current extension settings version"
-msgstr ""
+msgstr "A jelenlegi kiterjesztés beállításainak verziója"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 msgid "Switch GTK variants"
-msgstr ""
+msgstr "GTK-változatok átváltása"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
-msgstr ""
+msgstr "GTK-változatok átváltásának engedélyezése"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
 msgid "Day GTK theme"
-msgstr ""
+msgstr "Nappali GTK-téma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
 msgid "The GTK theme to use during daytime"
-msgstr ""
+msgstr "A nappal használandó GTK-téma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Night GTK theme"
-msgstr ""
+msgstr "Éjszakai GTK-téma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:28
 msgid "The GTK theme to use during nighttime"
-msgstr ""
+msgstr "Az éjszaka használandó GTK-téma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:32
 msgid "Use manual GTK variants"
-msgstr ""
+msgstr "Kézi GTK-változatok használata"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:33
 msgid "Disable automatic GTK theme variants detection"
-msgstr ""
+msgstr "GTK-témaváltozat automatikus felismerésének letiltása"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:39
 msgid "Switch shell variants"
-msgstr ""
+msgstr "Shell-változatok átváltása"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:40
 msgid "Enable shell variants switching"
-msgstr ""
+msgstr "Shell-változatok átváltásának engedélyezése"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
 msgid "Day shell theme"
-msgstr ""
+msgstr "Nappali Shell-téma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
 msgid "The shell theme to use during daytime"
-msgstr ""
+msgstr "A nappal használandó Shell-téma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:49
 msgid "Night shell theme"
-msgstr ""
+msgstr "Éjszakai Shell-téma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:50
 msgid "The shell theme to use during nighttime"
-msgstr ""
+msgstr "Az éjszaka használandó Shell-téma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:54
 msgid "Use manual shell variants"
-msgstr ""
+msgstr "Kézi Shell-változatok használata"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:55
 msgid "Disable automatic shell theme variants detection"
-msgstr ""
+msgstr "Shell-témaváltozat automatikus felismerésének letiltása"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
 msgid "Switch icon variants"
-msgstr ""
+msgstr "Ikonváltozatok átváltása"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:62
 msgid "Enable icon variants switching"
-msgstr ""
+msgstr "Ikonváltozatok átváltásának engedélyezése"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:66
 msgid "Day icon theme"
-msgstr ""
+msgstr "Nappali ikontéma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:67
 msgid "The icon theme to use during daytime"
-msgstr ""
+msgstr "A nappal használandó ikontéma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:71
 msgid "Night icon theme"
-msgstr ""
+msgstr "Éjszakai ikontéma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:72
 msgid "The icon theme to use during nighttime"
-msgstr ""
+msgstr "Az éjszaka használandó ikontéma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:78
 msgid "Switch cursor variants"
-msgstr ""
+msgstr "Kurzorváltozatok átváltása"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:79
 msgid "Enable cursor variants switching"
-msgstr ""
+msgstr "Kurzorváltozatok átváltásának engedélyezése"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:83
 msgid "Day cursor theme"
-msgstr ""
+msgstr "Nappali kurzortéma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:84
 msgid "The cursor theme to use during daytime"
-msgstr ""
+msgstr "A nappal használandó kurzortéma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:88
 msgid "Night cursor theme"
-msgstr ""
+msgstr "Éjszakai kurzortéma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:89
 msgid "The cursor theme to use during nighttime"
-msgstr ""
+msgstr "Az éjszaka használandó kurzortéma"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:95
 msgid "Enable commands"
-msgstr ""
+msgstr "Parancsok engedélyezése"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:96
 msgid "Commands will be spawned on time change"
-msgstr ""
+msgstr "A parancsok az idő megváltozásakor lesznek végrehajtva"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:100
 msgid "Sunrise command"
-msgstr ""
+msgstr "Napfelkelte parancs"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:101
 msgid "The command to spawn at sunrise"
-msgstr ""
+msgstr "A napfelkeltekor futtatandó parancs"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:105
 msgid "Sunset command"
-msgstr ""
+msgstr "Napnyugta parancs"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:106
 msgid "The command to spawn at sunset"
-msgstr ""
+msgstr "A napnyugtakor futtatandó parancs"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:112
 msgid "Enable backgrounds"
-msgstr ""
+msgstr "Hátterek engedélyezése"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:113
 msgid "Background will be changed on time change"
-msgstr ""
+msgstr "A hátterek az idő megváltozásakor lesznek megváltoztatva"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:117
 #: src/preferences/ui/BackgroundsPreferences.ui:39
 msgid "Day background"
-msgstr ""
+msgstr "Nappali háttér"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:118
 msgid "Path to the day background"
-msgstr ""
+msgstr "A nappali háttér elérési útja"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:122
 #: src/preferences/ui/BackgroundsPreferences.ui:47
 msgid "Night background"
-msgstr ""
+msgstr "Éjszakai háttér"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:123
 msgid "Path to the night background"
-msgstr ""
+msgstr "Az éjszakai háttér elérési útja"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:135
 #: src/preferences/ui/Schedule.ui:36
 msgid "Time source"
-msgstr ""
+msgstr "Idő forrása"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:136
 msgid "The source used to check current time"
-msgstr ""
+msgstr "A jelenlegi idő ellenőrzéséhez használt forrás"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:140
 msgid "Follow Night Light \"Disable until tomorrow\""
-msgstr ""
+msgstr "Az éjszakai fény „Letiltás holnapig” funkciójának követése"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:141
 msgid "Switch back to day time when Night Light is temporarily disabled"
 msgstr ""
+"Visszaváltás nappali időre, ha az éjszakai fény átmenetileg le van tiltva"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:145
 msgid "Always enable the on-demand timer"
-msgstr ""
+msgstr "Mindig engedélyezze az igény szerinti időzítőt"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:146
 msgid "The on-demand timer will always be enabled alongside other timers"
 msgstr ""
+"Az igény szerinti időzítő mindig engedélyezve lesz a többi időzítő mellett"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:154
 msgid "On-demand time"
-msgstr ""
+msgstr "Igény szerinti idő"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:155
 msgid "The current time used in on-demand mode"
-msgstr ""
+msgstr "Az igény szerinti módban használt jelenlegi idő"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
 msgid "Key combination to toggle time"
-msgstr ""
+msgstr "Billentyűkombináció az idő átváltásához"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:160
 msgid "The key combination that will toggle time in on-demand mode"
-msgstr ""
+msgstr "Az a billentyűkombináció, amely átváltja az időt igény szerinti módban"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:169
 msgid "On-demand button placement"
-msgstr ""
+msgstr "Igény szerinti gomb elhelyezése"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:170
 msgid "Where the on-demand button will be placed"
-msgstr ""
+msgstr "Hol lesz az igény szerinti gomb elhelyezve"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
 msgid "Use manual time source"
-msgstr ""
+msgstr "Kézi időforrás használata"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
 msgid "Disable automatic time source detection"
-msgstr ""
+msgstr "Időforrás automatikus felismerésének letiltása"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:179
 msgid "Sunrise time"
-msgstr ""
+msgstr "Napfelkelte ideje"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:180
 msgid "When the day starts"
-msgstr ""
+msgstr "Mikor kezdődik a nap"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:184
 msgid "Sunset time"
-msgstr ""
+msgstr "Napnyugta ideje"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:185
 msgid "When the day ends"
-msgstr ""
+msgstr "Mikor végződik a nap"
 
 #: src/preferences/ui/BackgroundButton.ui:15
 #: src/preferences/ui/ShortcutButton.ui:15
 msgid "Choose…"
-msgstr ""
+msgstr "Válasszon…"
 
 #: src/preferences/ui/BackgroundButton.ui:32
 msgid "Change background"
-msgstr ""
+msgstr "Háttér megváltoztatása"
 
 #: src/preferences/ui/BackgroundButton.ui:44
 #: src/preferences/ui/BackgroundButton.ui:46
@@ -316,64 +326,64 @@ msgstr ""
 #: src/preferences/ui/ShortcutButton.ui:43
 #: src/preferences/ui/ShortcutButton.ui:45
 msgid "Clear"
-msgstr ""
+msgstr "Törlés"
 
 #: src/preferences/ui/BackgroundButton.ui:61
 msgid "Select your background image"
-msgstr ""
+msgstr "Válassza ki a háttérképet"
 
 #: src/preferences/ui/BackgroundsPreferences.ui:15
 msgid "Switch backgrounds"
-msgstr ""
+msgstr "Hátterek átváltása"
 
 #: src/preferences/ui/Commands.ui:31
 msgid "Run commands"
-msgstr ""
+msgstr "Parancsok futtatása"
 
 #: src/preferences/ui/Commands.ui:55 src/preferences/ui/Schedule.ui:107
 msgid "Sunrise"
-msgstr ""
+msgstr "Napfelkelte"
 
 #. Don't translate the `notify-send` command.
 #: src/preferences/ui/Commands.ui:58
 msgid "notify-send \"Hello sunshine!\""
-msgstr ""
+msgstr "notify-send \"Helló, napfény!\""
 
 #: src/preferences/ui/Commands.ui:67 src/preferences/ui/Schedule.ui:115
 msgid "Sunset"
-msgstr ""
+msgstr "Napnyugta"
 
 #. Don't translate the `notify-send` command.
 #: src/preferences/ui/Commands.ui:70
 msgid "notify-send \"Hello moonshine!\""
-msgstr ""
+msgstr "notify-send \"Helló, holdfény!\""
 
 #: src/preferences/ui/CursorPreferences.ui:15
 msgid "Switch cursor theme variants"
-msgstr ""
+msgstr "Kurzortéma-változatok átváltása"
 
 #: src/preferences/ui/CursorPreferences.ui:39
 #: src/preferences/ui/GtkPreferences.ui:48
 #: src/preferences/ui/IconPreferences.ui:39
 #: src/preferences/ui/ShellPreferences.ui:48
 msgid "Day variant"
-msgstr ""
+msgstr "Nappali változat"
 
 #: src/preferences/ui/CursorPreferences.ui:49
 #: src/preferences/ui/GtkPreferences.ui:59
 #: src/preferences/ui/IconPreferences.ui:49
 #: src/preferences/ui/ShellPreferences.ui:59
 msgid "Night variant"
-msgstr ""
+msgstr "Éjszakai változat"
 
 #: src/preferences/ui/GtkPreferences.ui:15
 msgid "Switch GTK theme variants"
-msgstr ""
+msgstr "GTK-témaváltozatok átváltása"
 
 #: src/preferences/ui/GtkPreferences.ui:39
 #: src/preferences/ui/ShellPreferences.ui:39
 msgid "Manual variants"
-msgstr ""
+msgstr "Kézi változatok"
 
 #: src/preferences/ui/GtkPreferences.ui:40
 msgid ""
@@ -382,42 +392,46 @@ msgid ""
 "gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues\">submit "
 "a request</a> to get your theme supported."
 msgstr ""
+"Kézzel is beállíthatja a változatokat, ha a kiterjesztés nem tudja "
+"automatikusan felismerni a GTK-téma nappali és éjszakai változatait. <a href="
+"\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/"
+"issues\">Küldjön egy kérést</a>, hogy támogatva legyen az Ön témája."
 
 #: src/preferences/ui/Headerbar.ui:12 src/preferences/ui/Headerbar.ui:24
 msgid "Support us"
-msgstr ""
+msgstr "Támogasson minket"
 
 #: src/preferences/ui/Headerbar.ui:48
 msgid "View code on GitLab"
-msgstr ""
+msgstr "A forráskód megtekintése GitLabon"
 
 #: src/preferences/ui/Headerbar.ui:71
 msgid "Translate on Weblate"
-msgstr ""
+msgstr "Fordítás Weblate-en"
 
 #: src/preferences/ui/Headerbar.ui:94
 msgid "Donate on Liberapay"
-msgstr ""
+msgstr "Támogasson Liberapay-en"
 
 #: src/preferences/ui/IconPreferences.ui:15
 msgid "Switch icon theme variants"
-msgstr ""
+msgstr "Ikontéma-változatok átváltása"
 
 #: src/preferences/ui/Preferences.ui:14
 msgid "Schedule"
-msgstr ""
+msgstr "Ütemezés"
 
 #: src/preferences/ui/Preferences.ui:24
 msgid "Appearance"
-msgstr ""
+msgstr "Megjelenés"
 
 #: src/preferences/ui/Preferences.ui:34
 msgid "Commands"
-msgstr ""
+msgstr "Parancsok"
 
 #: src/preferences/ui/Schedule.ui:27
 msgid "Manual time source"
-msgstr ""
+msgstr "Kézi időforrás"
 
 #: src/preferences/ui/Schedule.ui:28
 msgid ""
@@ -425,52 +439,58 @@ msgid ""
 "automatically set your current sunrise and sunset times if they are enabled. "
 "If you prefer, you can manually choose a time source."
 msgstr ""
+"A kiterjesztés megpróbálja használni az éjszakai fényt vagy a "
+"helymeghatározási szolgáltatásokat, hogy automatikusan beállítsa az aktuális "
+"napfelkelte és napnyugta idejét, ha ezek engedélyezve vannak. Ha szeretné, "
+"akkor kézzel is kiválaszthatja az idő forrását."
 
 #: src/preferences/ui/Schedule.ui:45
 msgid "Always show on-demand controls"
-msgstr ""
+msgstr "Mindig jelenítse meg az igény szerinti vezérlőket"
 
 #: src/preferences/ui/Schedule.ui:46
 msgid "Allows you to override the current time when using a schedule."
-msgstr ""
+msgstr "Lehetővé teszi a jelenlegi idő felülbírálását, ha ütemezést használ."
 
 #: src/preferences/ui/Schedule.ui:74
 msgid "Follow <i>Disable until tomorrow</i>"
-msgstr ""
+msgstr "A <i>Letiltás holnapig</i> funkció követése"
 
 #: src/preferences/ui/Schedule.ui:75
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
+"Ha az éjszakai fény átmenetileg le van tiltva, akkor a kiterjesztés át fog "
+"váltani a nappali változatokra."
 
 #: src/preferences/ui/Schedule.ui:95
 msgid "Manual schedule times"
-msgstr ""
+msgstr "Idők kézi ütemezése"
 
 #: src/preferences/ui/Schedule.ui:147
 msgid "Keyboard shortcut"
-msgstr ""
+msgstr "Gyorsbillentyű"
 
 #: src/preferences/ui/Schedule.ui:155
 msgid "Button location"
-msgstr ""
+msgstr "Gomb helye"
 
 #: src/preferences/ui/Schedule.ui:160
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 #: src/preferences/ui/Schedule.ui:161
 msgid "Top bar"
-msgstr ""
+msgstr "Felső sáv"
 
 #: src/preferences/ui/Schedule.ui:162
 msgid "System menu"
-msgstr ""
+msgstr "Rendszermenü"
 
 #: src/preferences/ui/ShellPreferences.ui:15
 msgid "Switch Shell theme variants"
-msgstr ""
+msgstr "Shell-témaváltozatok átváltása"
 
 #: src/preferences/ui/ShellPreferences.ui:40
 msgid ""
@@ -479,16 +499,21 @@ msgid ""
 "\"https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/-/issues"
 "\">submit a request</a> to get your theme supported."
 msgstr ""
+"Kézzel is beállíthatja a változatokat, ha a kiterjesztés nem tudja "
+"automatikusan felismerni a GNOME Shell témájának nappali és éjszakai "
+"változatait. <a href=\"https://gitlab.com/rmnvgr/"
+"nightthemeswitcher-gnome-shell-extension/-/issues\">Küldjön egy kérést</a>, "
+"hogy támogatva legyen az Ön témája."
 
 #: src/preferences/ui/ShortcutButton.ui:32
 msgid "Change keyboard shortcut"
-msgstr ""
+msgstr "Gyorsbillentyű megváltoztatása"
 
 #: src/preferences/ui/ShortcutButton.ui:100
 msgid "Press your keyboard shortcut…"
-msgstr ""
+msgstr "Nyomja meg a gyorsbillentyűt…"
 
 #. Time separator (eg. 08:27)
 #: src/preferences/ui/TimeChooser.ui:23
 msgid ":"
-msgstr ""
+msgstr ":"
