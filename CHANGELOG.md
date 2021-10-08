@@ -6,6 +6,22 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [53] - 2021-10-08
+
+### Added
+
+- Basque translation by @sergitroll9
+- Galician translation by @frandieguez
+- Hungarian translation by @urbalazs
+- Portuguese (Brazil) translation by @gusta-glitch
+
+### Changed
+
+- Updated Arabic translation by @ots25
+- Updated German translation by Kepler 69c
+- Updated Spanish translation by @oscfdezdz
+
+
 ## [52] - 2021-08-27
 
 ### Added
@@ -15,7 +31,6 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 ### Removed
 - GNOME 40 support
-
 
 
 ## [51] - 2021-08-22
