@@ -44,7 +44,7 @@ var ShellVariants = class {
         } else if (name.includes('Arc')) {
             variants.set(Time.DAY, name.replace('-Dark', ''));
             variants.set(Time.NIGHT, variants.get(Time.DAY).replace('Arc', 'Arc-Dark'));
-        } else if (name.match(/^(Canta|ChromeOS|Materia|Orchis).*-compact/)) {
+        } else if (name.match(/^(Canta|ChromeOS|Fluent|Materia|Orchis).*-compact/)) {
             variants.set(Time.DAY, name.replace('-dark', ''));
             variants.set(Time.NIGHT, variants.get(Time.DAY).replace(/(-light)?-compact/, '-dark-compact'));
         } else if (name.includes('Flat-Remix')) {

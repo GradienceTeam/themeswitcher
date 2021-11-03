@@ -44,7 +44,7 @@ var GtkVariants = class {
         } else if (name.match('Cabinet')) {
             variants.set(Time.DAY, name.replace(/-Dark(?!er)/, '-Light'));
             variants.set(Time.NIGHT, variants.get(Time.DAY).replace(/(-Light|-Darker)/, '-Dark'));
-        } else if (name.match(/^(Canta|ChromeOS|Materia|Orchis).*-compact/)) {
+        } else if (name.match(/^(Canta|ChromeOS|Fluent|Materia|Orchis).*-compact/)) {
             variants.set(Time.DAY, name.replace('-dark', ''));
             variants.set(Time.NIGHT, variants.get(Time.DAY).replace(/(-light)?-compact/, '-dark-compact'));
         } else if (name.includes('Flat-Remix-GTK')) {

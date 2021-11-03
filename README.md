@@ -37,6 +37,7 @@ These themes have been tested and work out of the box without any configuration.
 - Cabinet
 - ChromeOS
 - Flat-Remix-GTK
+- Fluent
 - HighContrast
 - Kimi
 - Layan
@@ -70,6 +71,7 @@ These themes have been tested and work out of the box without any configuration.
 - Canta
 - ChromeOS
 - Flat-Remix
+- Fluent
 - Kimi
 - Layan
 - Matcha (Manjaro default)
