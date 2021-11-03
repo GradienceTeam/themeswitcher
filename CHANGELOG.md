@@ -6,6 +6,13 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [54] - 2021-11-03
+
+### Added
+- Fluent themes support
+- Initial Romanian translation by Andrei Lazarov
+
+
 ## [53] - 2021-10-08
 
 ### Added
