@@ -2,21 +2,22 @@
 # Copyright (C) 2019 Romain Vigier
 # This file is distributed under the same license as the Night Theme Switcher package.
 # Romain Vigier <romain@romainvigier.fr>, 2019-2020, 2021.
+# Sixella <sixella@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 14:58+0200\n"
-"PO-Revision-Date: 2021-08-19 13:22+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/fr/>\n"
+"PO-Revision-Date: 2021-11-21 21:56+0000\n"
+"Last-Translator: Sixella <sixella@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #: src/modules/GtkThemer.js:184
 #, javascript-format
@@ -24,8 +25,8 @@ msgid ""
 "Unable to automatically detect the day and night variants for the \"%s\" GTK "
 "theme. Please manually choose them in the extension's preferences."
 msgstr ""
-"Impossible de détecter automatiquement les variantes diurnes et nocturnes "
-"pour le thème GTK \"%s\". Veuillez les sélectionner manuellement dans les "
+"Impossible de détecter automatiquement les variantes du jour et de nuit pour "
+"le thème GTK \"%s\". Veuillez les sélectionner manuellement dans les "
 "préférences de l’extension."
 
 #: src/modules/ShellThemer.js:196
@@ -35,9 +36,9 @@ msgid ""
 "GNOME Shell theme. Please manually choose them in the extension's "
 "preferences."
 msgstr ""
-"Impossible de détecter automatiquement les variantes diurnes et nocturnes "
-"pour le thème GNOME Shell \"%s\". Veuillez les sélectionner manuellement "
-"dans les préférences de l’extension."
+"Impossible de détecter automatiquement les variantes du jour et de nuit pour "
+"le thème GNOME Shell \"%s\". Veuillez les sélectionner manuellement dans les "
+"préférences de l’extension."
 
 #: src/modules/TimerOndemand.js:246
 msgid "Switch to night theme"
@@ -45,7 +46,7 @@ msgstr "Passer au thème nocturne"
 
 #: src/modules/TimerOndemand.js:246
 msgid "Switch to day theme"
-msgstr "Passer au thème diurne"
+msgstr "Passer au thème de la journée"
 
 #: src/preferences/Schedule.js:57 src/preferences/ui/Schedule.ui:62
 msgid "Night Light"
@@ -85,7 +86,7 @@ msgstr "Activer le changement de variantes GTK"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
 msgid "Day GTK theme"
-msgstr "Thème GTK diurne"
+msgstr "Thème GTK pour le jour"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
 msgid "The GTK theme to use during daytime"
@@ -117,7 +118,7 @@ msgstr "Activer le changement des variantes du shell"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
 msgid "Day shell theme"
-msgstr "Thème shell diurne"
+msgstr "Thème shell pour la journée"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
 msgid "The shell theme to use during daytime"
@@ -173,7 +174,7 @@ msgstr "Activer le changement de variantes de curseur"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:83
 msgid "Day cursor theme"
-msgstr "Thème de curseurs diurne"
+msgstr "Thème de curseurs pour la journée"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:84
 msgid "The cursor theme to use during daytime"
@@ -222,11 +223,11 @@ msgstr "L’arrière-plan changera au changement d’horaire"
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:117
 #: src/preferences/ui/BackgroundsPreferences.ui:39
 msgid "Day background"
-msgstr "Arrière-plan diurne"
+msgstr "Arrière-plan de la journée"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:118
 msgid "Path to the day background"
-msgstr "Chemin vers l’arrière-plan diurne"
+msgstr "Chemin vers l’arrière-plan de la journée"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:122
 #: src/preferences/ui/BackgroundsPreferences.ui:47
