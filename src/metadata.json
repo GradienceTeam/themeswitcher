@@ -6,5 +6,5 @@
 	"settings-schema": "org.gnome.shell.extensions.nightthemeswitcher",
 	"url": "https://nightthemeswitcher.romainvigier.fr",
 	"shell-version": ["41"],
-	"version": 54
+	"version": 55
 }

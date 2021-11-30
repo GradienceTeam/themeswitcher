@@ -6,6 +6,12 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [55] - 2021-11-03
+
+### Added
+- Russian translation by Sixella
+
+
 ## [54] - 2021-11-03
 
 ### Added
