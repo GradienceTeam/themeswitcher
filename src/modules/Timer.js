@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const { Gio } = imports.gi;
@@ -34,12 +34,13 @@ const { TimerOndemand } = Me.imports.modules.TimerOndemand;
 var Timer = class {
     constructor() {
         this._timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
+        this._interfaceSettings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
         this._colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
         this._locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
         this._sources = [];
-        this._previousTime = Time.UNKNOWN;
         this._settingsConnections = [];
         this._timeConnections = [];
+        this._previousTime = this._interfaceSettings.get_string('color-scheme') === 'prefer-dark' ? Time.NIGHT : Time.DAY;
     }
 
     enable() {
@@ -64,6 +65,15 @@ var Timer = class {
         return this._previousTime;
     }
 
+    set time(time) {
+        if (time === this._previousTime)
+            return;
+        console.debug(`Time has changed to ${time}.`);
+        this._previousTime = time;
+        this._interfaceSettings.set_string('color-scheme', time === Time.NIGHT ? 'prefer-dark' : 'default');
+        this.emit('time-changed', time);
+    }
+
 
     _connectSettings() {
         console.debug('Connecting Timer to settings...');
@@ -86,6 +96,10 @@ var Timer = class {
         this._settingsConnections.push({
             settings: this._timeSettings,
             id: this._timeSettings.connect('changed::time-source', this._onTimeSourceChanged.bind(this)),
+        });
+        this._settingsConnections.push({
+            settings: this._interfaceSettings,
+            id: this._interfaceSettings.connect('changed::color-scheme', this._onColorSchemeChanged.bind(this)),
         });
     }
 
@@ -151,11 +165,11 @@ var Timer = class {
     }
 
     _onTimeChanged(_source, newTime) {
-        if (newTime !== this._previousTime) {
-            console.debug(`Time has changed to ${newTime}.`);
-            this._previousTime = newTime;
-            this.emit('time-changed', newTime);
-        }
+        this.time = newTime;
+    }
+
+    _onColorSchemeChanged() {
+        this.time = this._interfaceSettings.get_string('color-scheme') === 'prefer-dark' ? Time.NIGHT : Time.DAY;
     }
 
 
