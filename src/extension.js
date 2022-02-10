@@ -1,20 +1,21 @@
-// SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 'use strict';
 
-const { GLib } = imports.gi;
+const { Gio, GLib } = imports.gi;
 const { extensionUtils } = imports.misc;
 const { extensionManager } = imports.ui.main;
 
 const Me = extensionUtils.getCurrentExtension();
+
+const utils = Me.imports.utils;
 
 const { Timer } = Me.imports.modules.Timer;
 const { GtkThemer } = Me.imports.modules.GtkThemer;
 const { ShellThemer } = Me.imports.modules.ShellThemer;
 const { IconThemer } = Me.imports.modules.IconThemer;
 const { CursorThemer } = Me.imports.modules.CursorThemer;
-const { Backgrounder } = Me.imports.modules.Backgrounder;
 const { Commander } = Me.imports.modules.Commander;
 
 
@@ -24,7 +25,6 @@ var gtkThemer = null;
 var shellThemer = null;
 var iconThemer = null;
 var cursorThemer = null;
-var backgrounder = null;
 var commander = null;
 
 
@@ -34,6 +34,7 @@ var commander = null;
 function init() {
     console.debug('Initializing extension...');
     extensionUtils.initTranslations();
+    _migrateBackgroundSettings();
     console.debug('Extension initialized.');
 }
 
@@ -55,7 +56,6 @@ function start() {
     shellThemer = new ShellThemer();
     iconThemer = new IconThemer();
     cursorThemer = new CursorThemer();
-    backgrounder = new Backgrounder();
     commander = new Commander();
 
     timer.enable();
@@ -63,7 +63,6 @@ function start() {
     shellThemer.enable();
     iconThemer.enable();
     cursorThemer.enable();
-    backgrounder.enable();
     commander.enable();
 
     enabled = true;
@@ -81,7 +80,6 @@ function disable() {
     shellThemer.disable();
     iconThemer.disable();
     cursorThemer.disable();
-    backgrounder.disable();
     commander.disable();
     timer.disable();
 
@@ -90,7 +88,6 @@ function disable() {
     shellThemer = null;
     iconThemer = null;
     cursorThemer = null;
-    backgrounder = null;
     commander = null;
     console.debug('Extension disabled.');
 }
@@ -109,4 +106,23 @@ function _waitForExtensionManager() {
         console.debug('Extension Manager initialized.');
         resolve();
     });
+}
+
+/**
+ * Migrate background settings from the extension to the system.
+ */
+function _migrateBackgroundSettings() {
+    const systemSettings = new Gio.Settings({ schema: 'org.gnome.desktop.background' });
+    const extensionSettings = extensionUtils.getSettings(utils.getSettingsSchema('backgrounds'));
+
+    if (extensionSettings.get_string('day')) {
+        systemSettings.set_string('picture-uri', extensionSettings.get_string('day'));
+        systemSettings.set_string('picture-uri-dark', extensionSettings.get_string('day'));
+        extensionSettings.set_string('day', '');
+    }
+
+    if (extensionSettings.get_string('night')) {
+        systemSettings.set_string('picture-uri-dark', extensionSettings.get_string('night'));
+        extensionSettings.set_string('night', '');
+    }
 }
