@@ -112,7 +112,7 @@ var IconThemer = class {
     }
 
     _onSystemIconThemeChanged() {
-        console.debug(`System icon theme changed to '${this._iconVariantsSettings.get_string('icon-theme')}'.`);
+        console.debug(`System icon theme changed to '${this._interfaceSettings.get_string('icon-theme')}'.`);
         this._updateCurrentVariant();
     }
 
