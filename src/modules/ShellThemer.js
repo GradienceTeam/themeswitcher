@@ -3,7 +3,6 @@
 
 const { Gio } = imports.gi;
 const { extensionUtils } = imports.misc;
-const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 const _ = extensionUtils.gettext;
@@ -12,7 +11,6 @@ const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
-const { ShellVariants } = Me.imports.modules.ShellVariants;
 
 /**
  * The Shell Themer is responsible for changing the GTK theme according to the
@@ -36,16 +34,11 @@ var ShellThemer = class {
 
     enable() {
         console.debug('Enabling Shell Themer...');
-        try {
-            this._watchStatus();
-            if (this._shellVariantsSettings.get_boolean('enabled')) {
-                this._connectSettings();
-                this._updateVariants();
-                this._connectTimer();
-                this._updateSystemShellTheme();
-            }
-        } catch (error) {
-            main.notifyError(Me.metadata.name, error.message);
+        this._watchStatus();
+        if (this._shellVariantsSettings.get_boolean('enabled')) {
+            this._connectSettings();
+            this._connectTimer();
+            this._updateSystemShellTheme();
         }
         console.debug('Shell Themer enabled.');
     }
@@ -81,10 +74,6 @@ var ShellThemer = class {
         this._settingsConnections.push({
             settings: this._shellVariantsSettings,
             id: this._shellVariantsSettings.connect('changed::night', this._onNightVariantChanged.bind(this)),
-        });
-        this._settingsConnections.push({
-            settings: this._shellVariantsSettings,
-            id: this._shellVariantsSettings.connect('changed::manual', this._onManualChanged.bind(this)),
         });
         if (this._userthemesSettings) {
             this._settingsConnections.push({
@@ -134,19 +123,7 @@ var ShellThemer = class {
         if (!this._userthemesSettings)
             return;
         console.debug(`System Shell theme changed to '${this._userthemesSettings.get_string('name')}'.`);
-        try {
-            this._updateVariants();
-            this._updateCurrentVariant();
-            this._updateSystemShellTheme();
-        } catch (error) {
-            main.notifyError(Me.metadata.name, error.message);
-        }
-    }
-
-    _onManualChanged() {
-        console.debug(`Manual Shell variants choice has been ${this._shellVariantsSettings.get_boolean('manual') ? 'enabled' : 'disabled'}.`);
-        this.disable();
-        this.enable();
+        this._updateCurrentVariant();
     }
 
     _onTimeChanged() {
@@ -154,17 +131,8 @@ var ShellThemer = class {
     }
 
 
-    _areVariantsUpToDate() {
-        if (!this._userthemesSettings)
-            return true;
-        return (
-            this._userthemesSettings.get_string('name') === this._shellVariantsSettings.get_string('day') ||
-            this._userthemesSettings.get_string('name') === this._shellVariantsSettings.get_string('night')
-        );
-    }
-
     _updateCurrentVariant() {
-        if (e.timer.time === Time.UNKNOWN || !this._userthemesSettings || !this._shellVariantsSettings.get_boolean('manual'))
+        if (e.timer.time === Time.UNKNOWN || !this._userthemesSettings)
             return;
         this._shellVariantsSettings.set_string(e.timer.time, this._userthemesSettings.get_string('name'));
     }
@@ -180,24 +148,5 @@ var ShellThemer = class {
             const stylesheet = utils.getShellThemeStylesheet(shellTheme);
             utils.applyShellStylesheet(stylesheet);
         }
-    }
-
-    _updateVariants() {
-        if (!this._userthemesSettings || this._shellVariantsSettings.get_boolean('manual') || this._areVariantsUpToDate())
-            return;
-
-        console.debug('Updating Shell variants...');
-        const originalTheme = this._userthemesSettings.get_string('name');
-        const variants = ShellVariants.guessFrom(originalTheme);
-        const installedThemes = utils.getInstalledShellThemes();
-
-        if (!installedThemes.has(variants.get(Time.DAY)) || !installedThemes.has(variants.get(Time.NIGHT))) {
-            const message = _('Unable to automatically detect the day and night variants for the "%s" GNOME Shell theme. Please manually choose them in the extension\'s preferences.').format(originalTheme);
-            throw new Error(message);
-        }
-
-        this._shellVariantsSettings.set_string('day', variants.get(Time.DAY));
-        this._shellVariantsSettings.set_string('night', variants.get(Time.NIGHT));
-        console.debug(`New Shell variants. { day: '${variants.get(Time.DAY)}'; night: '${variants.get(Time.NIGHT)}' }`);
     }
 };

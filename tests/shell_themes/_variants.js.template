@@ -1,2 +1,0 @@
-exports.Variants = ShellVariants;
-exports.Time = Time;

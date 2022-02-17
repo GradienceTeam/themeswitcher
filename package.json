@@ -6,12 +6,9 @@
 	"license": "GPL-3.0-or-later",
 	"scripts": {
 		"test-lint": "eslint .",
-		"pretest-variants": "./tests/prepare_variants.sh",
-		"test-variants": "ava",
-		"test": "npm run test-lint && npm run test-variants"
+		"test": "npm run test-lint"
 	},
 	"devDependencies": {
-		"ava": "^3.15.0",
 		"eslint": "^8.0.1",
 		"eslint-plugin-jsdoc": "^36.1.1"
 	}

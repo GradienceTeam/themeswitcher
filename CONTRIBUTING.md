@@ -14,7 +14,6 @@ You're welcome to contribute to the [code](#contributing-to-the-code) or to the 
 - [Contributing to the code](#contributing-to-the-code)
 	- [Coding style](#coding-style)
 	- [Copyright notice](#copyright-notice)
-	- [Themes and unit tests](#themes-and-unit-tests)
 	- [Localized strings](#localized-strings)
 - [Contributing to the translations](#contributing-to-the-translations)
 
@@ -50,16 +49,6 @@ Run [`reuse`](https://reuse.software/) to check that all the needed information 
 
 ```bash
 reuse lint
-```
-
-### Themes and unit tests
-
-If you add support for a theme, please write a unit test for each of its variants, in the `tests` directory, with the theme name as filename. Unit tests are written for [AVA](https://github.com/avajs/ava).
-
-To run the tests:
-
-```bash
-npm run test-variants
 ```
 
 ### Localized strings

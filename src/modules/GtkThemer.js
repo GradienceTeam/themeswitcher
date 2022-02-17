@@ -3,7 +3,6 @@
 
 const { Gio } = imports.gi;
 const { extensionUtils } = imports.misc;
-const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 const _ = extensionUtils.gettext;
@@ -12,7 +11,6 @@ const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
-const { GtkVariants } = Me.imports.modules.GtkVariants;
 
 
 /**
@@ -37,16 +35,11 @@ var GtkThemer = class {
 
     enable() {
         console.debug('Enabling GTK Themer...');
-        try {
-            this._watchStatus();
-            if (this._gtkVariantsSettings.get_boolean('enabled')) {
-                this._connectSettings();
-                this._updateVariants();
-                this._connectTimer();
-                this._updateSystemGtkTheme();
-            }
-        } catch (error) {
-            main.notifyError(Me.metadata.name, error.message);
+        this._watchStatus();
+        if (this._gtkVariantsSettings.get_boolean('enabled')) {
+            this._connectSettings();
+            this._connectTimer();
+            this._updateSystemGtkTheme();
         }
         console.debug('GTK Themer enabled.');
     }
@@ -82,10 +75,6 @@ var GtkThemer = class {
         this._settingsConnections.push({
             settings: this._gtkVariantsSettings,
             id: this._gtkVariantsSettings.connect('changed::night', this._onNightVariantChanged.bind(this)),
-        });
-        this._settingsConnections.push({
-            settings: this._gtkVariantsSettings,
-            id: this._gtkVariantsSettings.connect('changed::manual', this._onManualChanged.bind(this)),
         });
         this._settingsConnections.push({
             settings: this._interfaceSettings,
@@ -131,19 +120,7 @@ var GtkThemer = class {
 
     _onSystemGtkThemeChanged() {
         console.debug(`System GTK theme changed to '${this._interfaceSettings.get_string('gtk-theme')}'.`);
-        try {
-            this._updateVariants();
-            this._updateCurrentVariant();
-            this._updateSystemGtkTheme();
-        } catch (error) {
-            main.notifyError(Me.metadata.name, error.message);
-        }
-    }
-
-    _onManualChanged() {
-        console.debug(`Manual GTK variants choice has been ${this._gtkVariantsSettings.get_boolean('manual') ? 'enabled' : 'disabled'}.`);
-        this.disable();
-        this.enable();
+        this._updateCurrentVariant();
     }
 
     _onTimeChanged() {
@@ -151,15 +128,8 @@ var GtkThemer = class {
     }
 
 
-    _areVariantsUpToDate() {
-        return (
-            this._interfaceSettings.get_string('gtk-theme') === this._gtkVariantsSettings.get_string('day') ||
-            this._interfaceSettings.get_string('gtk-theme') === this._gtkVariantsSettings.get_string('night')
-        );
-    }
-
     _updateCurrentVariant() {
-        if (e.timer.time === Time.UNKNOWN || !this._gtkVariantsSettings.get_boolean('manual'))
+        if (e.timer.time === Time.UNKNOWN)
             return;
         this._gtkVariantsSettings.set_string(e.timer.time, this._interfaceSettings.get_string('gtk-theme'));
     }
@@ -169,24 +139,5 @@ var GtkThemer = class {
             return;
         console.debug(`Setting the ${e.timer.time} GTK variant...`);
         this._interfaceSettings.set_string('gtk-theme', this._gtkVariantsSettings.get_string(e.timer.time));
-    }
-
-    _updateVariants() {
-        if (this._gtkVariantsSettings.get_boolean('manual') || this._areVariantsUpToDate())
-            return;
-
-        console.debug('Updating GTK variants...');
-        const originalTheme = this._interfaceSettings.get_string('gtk-theme');
-        const variants = GtkVariants.guessFrom(originalTheme);
-        const installedThemes = utils.getInstalledGtkThemes();
-
-        if (!installedThemes.has(variants.get(Time.DAY)) || !installedThemes.has(variants.get(Time.NIGHT))) {
-            const message = _('Unable to automatically detect the day and night variants for the "%s" GTK theme. Please manually choose them in the extension\'s preferences.').format(originalTheme);
-            throw new Error(message);
-        }
-
-        this._gtkVariantsSettings.set_string('day', variants.get(Time.DAY));
-        this._gtkVariantsSettings.set_string('night', variants.get(Time.NIGHT));
-        console.debug(`New GTK variants. { day: '${variants.get(Time.DAY)}'; night: '${variants.get(Time.NIGHT)}' }`);
     }
 };

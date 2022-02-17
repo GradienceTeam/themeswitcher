@@ -48,21 +48,8 @@ lint:
   rules:
     - changes:
       - src/**/*.js
-      - tests/**/*.js
   script:
     - npm run test-lint
-
-variants:
-  extends: .node
-  stage: check
-  interruptible: true
-  rules:
-    - changes:
-      - src/modules/GtkVariants.js
-      - src/modules/ShellVariants.js
-      - tests/**/*.js
-  script:
-    - npm run test-variants
 
 reuse:
   extends: .python
@@ -77,8 +64,6 @@ extension:
   interruptible: true
   needs:
     - job: lint
-      optional: true
-    - job: variants
       optional: true
     - reuse
   image: registry.gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension:latest
