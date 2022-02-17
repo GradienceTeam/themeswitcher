@@ -130,6 +130,7 @@ var CursorThemer = class {
     _updateSystemCursorTheme() {
         if (e.timer.time === Time.UNKNOWN)
             return;
+        console.debug(`Setting the ${e.timer.time} cursor variant...`);
         this._interfaceSettings.set_string('cursor-theme', this._cursorVariantsSettings.get_string(e.timer.time));
     }
 };
