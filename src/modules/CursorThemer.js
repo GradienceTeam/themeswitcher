@@ -128,7 +128,7 @@ var CursorThemer = class {
     }
 
     _updateSystemCursorTheme() {
-        if (e.timer.time === Time.UNKNOWN || !this._cursorVariantsSettings.get_string(e.timer.time))
+        if (e.timer.time === Time.UNKNOWN)
             return;
         this._interfaceSettings.set_string('cursor-theme', this._cursorVariantsSettings.get_string(e.timer.time));
     }

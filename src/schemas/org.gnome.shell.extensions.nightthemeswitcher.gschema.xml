@@ -27,11 +27,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<summary>Night GTK theme</summary>
 			<description>The GTK theme to use during nighttime</description>
 		</key>
-		<key name="manual" type="b">
-			<default>false</default>
-			<summary>Use manual GTK variants</summary>
-			<description>Disable automatic GTK theme variants detection</description>
-		</key>
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.shell-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/shell-variants/">
 		<key name="enabled" type="b">
@@ -49,11 +44,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<summary>Night shell theme</summary>
 			<description>The shell theme to use during nighttime</description>
 		</key>
-		<key name="manual" type="b">
-			<default>false</default>
-			<summary>Use manual shell variants</summary>
-			<description>Disable automatic shell theme variants detection</description>
-		</key>
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.icon-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/icon-variants/">
 		<key name="enabled" type="b">
@@ -62,12 +52,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<description>Enable icon variants switching</description>
 		</key>
 		<key name="day" type="s">
-			<default>""</default>
+			<default>"Adwaita"</default>
 			<summary>Day icon theme</summary>
 			<description>The icon theme to use during daytime</description>
 		</key>
 		<key name="night" type="s">
-			<default>""</default>
+			<default>"Adwaita"</default>
 			<summary>Night icon theme</summary>
 			<description>The icon theme to use during nighttime</description>
 		</key>
@@ -79,12 +69,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<description>Enable cursor variants switching</description>
 		</key>
 		<key name="day" type="s">
-			<default>""</default>
+			<default>"Adwaita"</default>
 			<summary>Day cursor theme</summary>
 			<description>The cursor theme to use during daytime</description>
 		</key>
 		<key name="night" type="s">
-			<default>""</default>
+			<default>"Adwaita"</default>
 			<summary>Night cursor theme</summary>
 			<description>The cursor theme to use during nighttime</description>
 		</key>

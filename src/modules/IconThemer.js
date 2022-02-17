@@ -128,7 +128,7 @@ var IconThemer = class {
     }
 
     _updateSystemIconTheme() {
-        if (e.timer.time === Time.UNKNOWN || !this._iconVariantsSettings.get_string(e.timer.time))
+        if (e.timer.time === Time.UNKNOWN)
             return;
         this._interfaceSettings.set_string('icon-theme', this._iconVariantsSettings.get_string(e.timer.time));
     }
