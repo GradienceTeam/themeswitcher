@@ -1,15 +1,24 @@
-// SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 'use strict';
 
-const { Gdk, GLib, Gtk } = imports.gi;
+const { Adw, Gdk, GLib, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
+const _ = extensionUtils.gettext;
 
-const { Headerbar } = Me.imports.preferences.Headerbar;
-const { Preferences } = Me.imports.preferences.Preferences;
+const { BackgroundsPage } = Me.imports.preferences.BackgroundsPage;
+const { CommandsPage } = Me.imports.preferences.CommandsPage;
+const { ContributePage } = Me.imports.preferences.ContributePage;
+const { SchedulePage } = Me.imports.preferences.SchedulePage;
+const { ThemesPage } = Me.imports.preferences.ThemesPage;
+
+const { BackgroundButton } = Me.imports.preferences.BackgroundButton;
+const { ClearableEntry } = Me.imports.preferences.ClearableEntry;
+const { ShortcutButton } = Me.imports.preferences.ShortcutButton;
+const { TimeChooser } = Me.imports.preferences.TimeChooser;
 
 
 /**
@@ -20,22 +29,20 @@ function init() {
 
     const iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
     iconTheme.add_search_path(GLib.build_filenamev([Me.path, 'icons']));
-
-    const styleProvider = new Gtk.CssProvider();
-    styleProvider.load_from_path(GLib.build_filenamev([Me.path, 'preferences', 'ui', 'style.css']));
-    Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), styleProvider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 /**
- * Build the preferences widget.
+ * Fill the PreferencesWindow.
+ *
+ * @param {Adw.PreferencesWindow} window The PreferencesWindow to fill.
  */
-function buildPrefsWidget() {
-    const preferences = new Preferences();
-    preferences.connect('notify::root', () => {
-        const window = preferences.get_root();
-        window.add_css_class('nightthemeswitcher');
-        const headerbar = new Headerbar({ preferences });
-        window.set_titlebar(headerbar);
-    });
-    return preferences;
+function fillPreferencesWindow(window) {
+    [
+        new SchedulePage(),
+        new BackgroundsPage(),
+        new CommandsPage(),
+        new ThemesPage(),
+        new ContributePage(),
+    ].forEach(page => window.add(page));
+    window.search_enabled = true;
 }

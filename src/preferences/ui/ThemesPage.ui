@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-FileCopyrightText: 2021, 2022 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<interface domain="nightthemeswitcher@romainvigier.fr">
+  <template class="ThemesPage" parent="AdwPreferencesPage">
+    <property name="name">themes</property>
+    <property name="title" translatable="yes">Themes</property>
+    <property name="icon-name">nightthemeswitcher-themes-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes">GTK theme</property>
+        <property name="description" translatable="yes">Forcing a dark theme on applications not designed to support it can have undesirable side-effects such as unreadable text or invisible icons.</property>
+        <property name="header-suffix">
+          <object class="GtkSwitch" id="gtk_enabled_switch">
+            <property name="valign">center</property>
+          </object>
+        </property>
+        <child>
+          <object class="AdwComboRow" id="gtk_day_variant_combo_row">
+            <property name="title" translatable="yes">Day variant</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwComboRow" id="gtk_night_variant_combo_row">
+            <property name="title" translatable="yes">Night variant</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes">Shell theme</property>
+        <property name="header-suffix">
+          <object class="GtkSwitch" id="shell_enabled_switch">
+            <property name="valign">center</property>
+          </object>
+        </property>
+        <child>
+          <object class="AdwComboRow" id="shell_day_variant_combo_row">
+            <property name="title" translatable="yes">Day variant</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwComboRow" id="shell_night_variant_combo_row">
+            <property name="title" translatable="yes">Night variant</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes">Icon theme</property>
+        <property name="header-suffix">
+          <object class="GtkSwitch" id="icon_enabled_switch">
+            <property name="valign">center</property>
+          </object>
+        </property>
+        <child>
+          <object class="AdwComboRow" id="icon_day_variant_combo_row">
+            <property name="title" translatable="yes">Day variant</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwComboRow" id="icon_night_variant_combo_row">
+            <property name="title" translatable="yes">Night variant</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes">Cursor theme</property>
+        <property name="header-suffix">
+          <object class="GtkSwitch" id="cursor_enabled_switch">
+            <property name="valign">center</property>
+          </object>
+        </property>
+        <child>
+          <object class="AdwComboRow" id="cursor_day_variant_combo_row">
+            <property name="title" translatable="yes">Day variant</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwComboRow" id="cursor_night_variant_combo_row">
+            <property name="title" translatable="yes">Night variant</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

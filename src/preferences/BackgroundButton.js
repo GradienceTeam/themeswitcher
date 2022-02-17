@@ -21,6 +21,10 @@ var BackgroundButton = GObject.registerClass({
         ),
     },
 }, class BackgroundButton extends Gtk.Stack {
+    vfunc_mnemonic_activate() {
+        this.activate();
+    }
+
     activate() {
         if (this.path)
             return this._change_button.activate();

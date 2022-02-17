@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-FileCopyrightText: 2021, 2022 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<interface domain="nightthemeswitcher@romainvigier.fr">
+  <template class="SchedulePage" parent="AdwPreferencesPage">
+    <property name="name">schedule</property>
+    <property name="title" translatable="yes">Schedule</property>
+    <property name="icon-name">nightthemeswitcher-schedule-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Manual time source</property>
+            <property name="subtitle" translatable="yes">The extension will try to use Night Light or Location Services to automatically set your current sunrise and sunset times if they are enabled. If you prefer, you can manually choose a time source.</property>
+            <property name="activatable-widget">manual_time_source_switch</property>
+            <child>
+              <object class="GtkSwitch" id="manual_time_source_switch">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwComboRow" id="time_source_combo_row">
+            <property name="title" translatable="yes">Time source</property>
+            <property name="sensitive" bind-source="manual_time_source_switch" bind-property="active" bind-flags="sync-create"/>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Always show on-demand controls</property>
+            <property name="subtitle" translatable="yes">Allows you to override the current time when using a schedule.</property>
+            <property name="activatable-widget">always_show_ondemand_switch</property>
+            <child>
+              <object class="GtkSwitch" id="always_show_ondemand_switch">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup" id="nightlight_preferences_group">
+        <property name="title" translatable="yes">Night Light</property>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes"><![CDATA[Follow <i>Disable until tomorrow</i>]]></property>
+            <property name="subtitle" translatable="yes">When Night Light is temporarily disabled, the extension will switch to day variants.</property>
+            <property name="activatable-widget">nightlight_follow_disable_switch</property>
+            <child>
+              <object class="GtkSwitch" id="nightlight_follow_disable_switch">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup" id="manual_schedule_preferences_group">
+        <property name="title" translatable="yes">Manual schedule times</property>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Sunrise</property>
+            <child>
+              <object class="TimeChooser" id="schedule_sunrise_time_chooser">
+                <property name="margin-top">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Sunset</property>
+            <child>
+              <object class="TimeChooser" id="schedule_sunset_time_chooser">
+                <property name="margin-top">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup" id="ondemand_preferences_group">
+        <property name="title" translatable="yes">On-demand</property>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Keyboard shortcut</property>
+            <property name="activatable-widget">ondemand_shortcut_button</property>
+            <child>
+              <object class="ShortcutButton" id="ondemand_shortcut_button">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwComboRow" id="ondemand_button_location_combo_row">
+            <property name="title" translatable="yes">Button location</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: 2021, 2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const { Gdk, GLib, GObject, Gtk } = imports.gi;
@@ -23,6 +23,10 @@ var ShortcutButton = GObject.registerClass({
         ),
     },
 }, class ShortcutButton extends Gtk.Stack {
+    vfunc_mnemonic_activate() {
+        this.activate();
+    }
+
     activate() {
         if (this.keybinding)
             return this._change_button.activate();

@@ -54,63 +54,41 @@ SPDX-License-Identifier: GPL-3.0-or-later
       </object>
     </child>
   </template>
-  <object class="GtkWindow" id="dialog">
+  <object class="AdwWindow" id="dialog">
     <property name="modal">True</property>
-    <property name="default_width">440</property>
-    <property name="default_height">200</property>
+    <property name="default-width">440</property>
     <property name="hide-on-close">True</property>
-    <property name="decorated">False</property>
-    <style>
-      <class name="toolbox"/>
-    </style>
-    <child>
+    <property name="content">
       <object class="GtkWindowHandle">
         <property name="vexpand">True</property>
         <property name="hexpand">True</property>
         <child>
           <object class="GtkOverlay">
             <child type="overlay">
-              <object class="GtkCenterBox">
+              <object class="AdwHeaderBar">
+                <property name="title-widget">
+                  <object class="GtkBox"/>
+                </property>
                 <property name="valign">start</property>
-                <property name="margin-start">6</property>
-                <property name="margin-end">6</property>
-                <property name="margin-top">6</property>
-                <child type="start">
-                  <object class="GtkWindowControls">
-                    <property name="side">start</property>
-                  </object>
-                </child>
-                <child type="end">
-                  <object class="GtkWindowControls">
-                    <property name="side">end</property>
-                  </object>
-                </child>
+                <style>
+                  <class name="flat"/>
+                </style>
               </object>
             </child>
             <child>
-              <object class="GtkBox">
-                <child>
-                  <object class="GtkLabel">
-                    <property name="vexpand">True</property>
-                    <property name="hexpand">True</property>
-                    <property name="margin-start">36</property>
-                    <property name="margin-end">36</property>
-                    <property name="margin-top">36</property>
-                    <property name="margin-bottom">36</property>
-                    <property name="label" translatable="yes">Press your keyboard shortcut…</property>
-                    <property name="justify">center</property>
-                    <property name="wrap">True</property>
-                    <style>
-                      <class name="large-title"/>
-                    </style>
-                  </object>
-                </child>
+              <object class="AdwStatusPage">
+                <property name="title" translatable="yes">Press your keyboard shortcut…</property>
+                <property name="icon-name">preferences-desktop-keyboard-shortcuts-symbolic</property>
+                <property name="vexpand">true</property>
+                <style>
+                  <class name="compact"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
       </object>
-    </child>
+    </property>
     <child>
       <object class="GtkEventControllerKey">
         <signal name="key-pressed" handler="onKeyPressed" swapped="no"/>

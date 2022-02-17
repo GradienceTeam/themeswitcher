@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-FileCopyrightText: 2022 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<interface domain="nightthemeswitcher@romainvigier.fr">
+  <template class="ContributePage" parent="AdwPreferencesPage">
+    <property name="name">contribute</property>
+    <property name="title" translatable="yes">Contribute</property>
+    <property name="icon-name">nightthemeswitcher-contribute-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">View the code and report issues</property>
+            <property name="icon-name">nightthemeswitcher-code-symbolic</property>
+            <property name="activatable-widget">gitlab_button</property>
+            <child>
+              <object class="GtkLinkButton" id="gitlab_button">
+                <property name="label">GitLab</property>
+                <property name="uri">https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Contribute to the translation</property>
+            <property name="icon-name">nightthemeswitcher-translate-symbolic</property>
+            <property name="activatable-widget">weblate_button</property>
+            <child>
+              <object class="GtkLinkButton" id="weblate_button">
+                <property name="label">Weblate</property>
+                <property name="uri">https://hosted.weblate.org/engage/night-theme-switcher/</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Support me with a donation</property>
+            <property name="icon-name">nightthemeswitcher-support-symbolic</property>
+            <property name="activatable-widget">liberapay_button</property>
+            <child>
+              <object class="GtkLinkButton" id="liberapay_button">
+                <property name="label">Liberapay</property>
+                <property name="uri">https://liberapay.com/rmnvgr/donate</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
