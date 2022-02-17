@@ -10,6 +10,21 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="icon-name">nightthemeswitcher-themes-symbolic</property>
     <child>
       <object class="AdwPreferencesGroup">
+        <child>
+          <object class="GtkLabel">
+            <property name="label" translatable="yes">GNOME has a built-in dark mode that the extension uses. Manually switching themes is discouraged and is only here for legacy reasons.</property>
+            <property name="wrap">True</property>
+            <property name="xalign">0</property>
+            <style>
+              <class name="heading"/>
+              <class name="error"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup">
         <property name="title" translatable="yes">GTK theme</property>
         <property name="description" translatable="yes">Forcing a dark theme on applications not designed to support it can have undesirable side-effects such as unreadable text or invisible icons.</property>
         <property name="header-suffix">
