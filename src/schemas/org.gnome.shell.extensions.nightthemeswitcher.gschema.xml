@@ -13,7 +13,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.gtk-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/gtk-variants/">
 		<key name="enabled" type="b">
-			<default>true</default>
+			<default>false</default>
 			<summary>Switch GTK variants</summary>
 			<description>Enable GTK variants switching</description>
 		</key>
@@ -35,7 +35,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.shell-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/shell-variants/">
 		<key name="enabled" type="b">
-			<default>true</default>
+			<default>false</default>
 			<summary>Switch shell variants</summary>
 			<description>Enable shell variants switching</description>
 		</key>
