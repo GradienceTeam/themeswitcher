@@ -4,52 +4,50 @@
 # Romain Vigier <>, 2019, 2020.
 #
 # Romain Vigier <romain@romainvigier.fr>, 2021.
-# Heimen Stoffels <vistausss@fastmail.com>, 2021.
+# Heimen Stoffels <vistausss@fastmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 14:04+0100\n"
-"PO-Revision-Date: 2021-08-30 20:27+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/nl/>\n"
+"PO-Revision-Date: 2022-02-18 14:44+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #: src/modules/TimerOndemand.js:206
 msgid "Turn Night Mode On"
-msgstr ""
+msgstr "Donker thema gebruiken"
 
 #: src/modules/TimerOndemand.js:206
 msgid "Turn Night Mode Off"
-msgstr ""
+msgstr "Donker thema inschakelen"
 
 #: src/modules/TimerOndemand.js:218
-#, fuzzy
-#| msgid "No preferences"
 msgid "Extension Preferences"
-msgstr "Geen voorkeuren"
+msgstr "Uitbreidingsvoorkeuren"
 
 #: src/modules/TimerOndemand.js:227
 msgid "Night Mode Off"
-msgstr ""
+msgstr "Donker thema uit"
 
 #: src/modules/TimerOndemand.js:227
 msgid "Night Mode On"
-msgstr ""
+msgstr "Donker thema aan"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Turn On"
-msgstr ""
+msgstr "Inschakelen"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Turn Off"
-msgstr ""
+msgstr "Uitschakelen"
 
 #: src/preferences/SchedulePage.js:42 src/preferences/ui/SchedulePage.ui:47
 msgid "Night Light"
@@ -355,19 +353,19 @@ msgstr "Zonsondergang"
 
 #: src/preferences/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "Bijdragen"
 
 #: src/preferences/ui/ContributePage.ui:42
 msgid "View the code and report issues"
-msgstr ""
+msgstr "Bekijk de code en meld problemen"
 
 #: src/preferences/ui/ContributePage.ui:55
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "Help met vertalen"
 
 #: src/preferences/ui/ContributePage.ui:68
 msgid "Support me with a donation"
-msgstr ""
+msgstr "Doe een donatie"
 
 #: src/preferences/ui/SchedulePage.ui:9
 msgid "Schedule"
@@ -432,16 +430,16 @@ msgid "Press your keyboard shortcut…"
 msgstr "Druk op een sneltoets…"
 
 #: src/preferences/ui/ThemesPage.ui:9
-#, fuzzy
-#| msgid "GTK theme"
 msgid "Themes"
-msgstr "GTK-thema"
+msgstr "Thema's"
 
 #: src/preferences/ui/ThemesPage.ui:15
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
+"GNOME beschikt over een ingebouwd donker thema waar deze uitbreiding gebruik "
+"van maakt. Het handmatig kiezen van een thema wordt afgeraden."
 
 #: src/preferences/ui/ThemesPage.ui:28
 msgid "GTK theme"
@@ -452,6 +450,9 @@ msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
+"Het afdwingen van een donker thema op toepassingen die dit niet "
+"ondersteunen, kan leiden tot storingen, zoals onleesbare tekst of "
+"onzichtbare pictogrammen."
 
 #: src/preferences/ui/ThemesPage.ui:37 src/preferences/ui/ThemesPage.ui:57
 #: src/preferences/ui/ThemesPage.ui:77 src/preferences/ui/ThemesPage.ui:97
