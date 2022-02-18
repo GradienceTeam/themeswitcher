@@ -5,51 +5,50 @@
 # Veli Tasalı <me@velitasali.com>, 2021.
 # Romain Vigier <romain@romainvigier.fr>, 2021.
 # Veli Tasalı <veli.tasali@gmail.com>, 2021.
+# Oğuz Ersen <oguzersen@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 14:04+0100\n"
-"PO-Revision-Date: 2021-08-20 18:44+0000\n"
-"Last-Translator: Veli Tasalı <veli.tasali@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/tr/>\n"
+"PO-Revision-Date: 2022-02-18 17:25+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=0;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #: src/modules/TimerOndemand.js:206
 msgid "Turn Night Mode On"
-msgstr ""
+msgstr "Gece Modunu Aç"
 
 #: src/modules/TimerOndemand.js:206
 msgid "Turn Night Mode Off"
-msgstr ""
+msgstr "Gece Modunu Kapat"
 
 #: src/modules/TimerOndemand.js:218
-#, fuzzy
-#| msgid "No preferences"
 msgid "Extension Preferences"
-msgstr "Tercih yok"
+msgstr "Eklenti Tercihleri"
 
 #: src/modules/TimerOndemand.js:227
 msgid "Night Mode Off"
-msgstr ""
+msgstr "Gece Modu Kapalı"
 
 #: src/modules/TimerOndemand.js:227
 msgid "Night Mode On"
-msgstr ""
+msgstr "Gece Modu Açık"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Turn On"
-msgstr ""
+msgstr "Aç"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Turn Off"
-msgstr ""
+msgstr "Kapat"
 
 #: src/preferences/SchedulePage.js:42 src/preferences/ui/SchedulePage.ui:47
 msgid "Night Light"
@@ -353,19 +352,19 @@ msgstr "Gün batımı"
 
 #: src/preferences/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "Katkıda Bulun"
 
 #: src/preferences/ui/ContributePage.ui:42
 msgid "View the code and report issues"
-msgstr ""
+msgstr "Kodları görüntüleyin ve sorunları bildirin"
 
 #: src/preferences/ui/ContributePage.ui:55
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "Çevirilere katkıda bulunun"
 
 #: src/preferences/ui/ContributePage.ui:68
 msgid "Support me with a donation"
-msgstr ""
+msgstr "Bağış yaparak beni destekleyin"
 
 #: src/preferences/ui/SchedulePage.ui:9
 msgid "Schedule"
@@ -430,16 +429,16 @@ msgid "Press your keyboard shortcut…"
 msgstr "Klavye kısayolunu tuşlayın…"
 
 #: src/preferences/ui/ThemesPage.ui:9
-#, fuzzy
-#| msgid "GTK theme"
 msgid "Themes"
-msgstr "GTK teması"
+msgstr "Temalar"
 
 #: src/preferences/ui/ThemesPage.ui:15
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
+"GNOME, eklentinin kullandığı yerleşik bir koyu moda sahiptir. Temaların elle "
+"değiştirilmesi önerilmez ve yalnızca eskiye dönük uyumluluk için vardır."
 
 #: src/preferences/ui/ThemesPage.ui:28
 msgid "GTK theme"
@@ -450,6 +449,9 @@ msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
+"Onu destekleyecek şekilde tasarlanmamış uygulamalarda koyu bir temayı "
+"zorlamak, okunamayan metin veya görünmez simgeler gibi istenmeyen yan "
+"etkilere neden olabilir."
 
 #: src/preferences/ui/ThemesPage.ui:37 src/preferences/ui/ThemesPage.ui:57
 #: src/preferences/ui/ThemesPage.ui:77 src/preferences/ui/ThemesPage.ui:97
