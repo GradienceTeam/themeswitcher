@@ -30,8 +30,8 @@ var ThemesPage = GObject.registerClass({
         'cursor_night_variant_combo_row',
     ],
 }, class ThemesPage extends Adw.PreferencesPage {
-    _init(props = {}) {
-        super._init(props);
+    constructor(props = {}) {
+        super(props);
         const gtkSettings = extensionUtils.getSettings(utils.getSettingsSchema('gtk-variants'));
         const shellSettings = extensionUtils.getSettings(utils.getSettingsSchema('shell-variants'));
         const iconSettings = extensionUtils.getSettings(utils.getSettingsSchema('icon-variants'));

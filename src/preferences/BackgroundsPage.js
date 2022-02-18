@@ -15,8 +15,8 @@ var BackgroundsPage = GObject.registerClass({
         'night_button',
     ],
 }, class BackgroundsPage extends Adw.PreferencesPage {
-    _init(props = {}) {
-        super._init(props);
+    constructor(props = {}) {
+        super(props);
         const settings = new Gio.Settings({ schema: 'org.gnome.desktop.background' });
 
         settings.bind('picture-uri', this._day_button, 'path', Gio.SettingsBindFlags.DEFAULT);

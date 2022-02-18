@@ -29,8 +29,8 @@ var SchedulePage = GObject.registerClass({
         'ondemand_preferences_group',
     ],
 }, class SchedulePage extends Adw.PreferencesPage {
-    _init(props = {}) {
-        super._init(props);
+    constructor(props = {}) {
+        super(props);
         const settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
         const colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
         const locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });

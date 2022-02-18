@@ -194,8 +194,8 @@ Signals.addSignalMethods(TimerOndemand.prototype);
 
 var NtsPanelMenuButton = GObject.registerClass(
     class NtsPanelMenuButton extends PanelMenuButton {
-        _init() {
-            super._init(0.0);
+        constructor() {
+            super(0.0);
             this.icon = new St.Icon({
                 style_class: 'system-status-icon',
             });
@@ -213,8 +213,8 @@ var NtsPanelMenuButton = GObject.registerClass(
 
 var NtsPopupMenuItem = GObject.registerClass(
     class NtsPopupMenuItem extends PopupBaseMenuItem {
-        _init(params) {
-            super._init(params);
+        constructor(params) {
+            super(params);
             this.icon = new St.Icon({
                 style_class: 'popup-menu-icon',
                 x_align: Clutter.ActorAlign.END,

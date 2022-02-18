@@ -18,8 +18,8 @@ var CommandsPage = GObject.registerClass({
         'sunset_entry',
     ],
 }, class CommandsPage extends Adw.PreferencesPage {
-    _init(props = {}) {
-        super._init(props);
+    constructor(props = {}) {
+        super(props);
         const settings = extensionUtils.getSettings(utils.getSettingsSchema('commands'));
 
         settings.bind('enabled', this._enabled_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
