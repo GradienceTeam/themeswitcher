@@ -19,7 +19,7 @@ var BackgroundsPage = GObject.registerClass({
         super(props);
         const settings = new Gio.Settings({ schema: 'org.gnome.desktop.background' });
 
-        settings.bind('picture-uri', this._day_button, 'path', Gio.SettingsBindFlags.DEFAULT);
-        settings.bind('picture-uri-dark', this._night_button, 'path', Gio.SettingsBindFlags.DEFAULT);
+        settings.bind('picture-uri', this._day_button, 'uri', Gio.SettingsBindFlags.DEFAULT);
+        settings.bind('picture-uri-dark', this._night_button, 'uri', Gio.SettingsBindFlags.DEFAULT);
     }
 });

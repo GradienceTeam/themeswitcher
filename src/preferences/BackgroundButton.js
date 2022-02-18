@@ -12,10 +12,10 @@ var BackgroundButton = GObject.registerClass({
     Template: `file://${GLib.build_filenamev([Me.path, 'preferences', 'ui', 'BackgroundButton.ui'])}`,
     InternalChildren: ['filechooser'],
     Properties: {
-        path: GObject.ParamSpec.string(
-            'path',
-            'Path',
-            'Path to the background file',
+        uri: GObject.ParamSpec.string(
+            'uri',
+            'URI',
+            'URI to the background file',
             GObject.ParamFlags.READWRITE,
             null
         ),
@@ -45,7 +45,7 @@ var BackgroundButton = GObject.registerClass({
     onFileChooserResponse(fileChooser, responseId) {
         if (responseId !== Gtk.ResponseType.ACCEPT)
             return;
-        this.path = fileChooser.get_file().get_uri();
+        this.uri = fileChooser.get_file().get_uri();
     }
 
     onClicked(_button) {

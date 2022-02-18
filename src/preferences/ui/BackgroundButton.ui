@@ -14,7 +14,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="GtkPicture">
         <binding name="paintable">
           <closure function="getThumbnail" type="GdkPaintable">
-            <lookup name="path">BackgroundButton</lookup>
+            <lookup name="uri">BackgroundButton</lookup>
             <lookup name="thumb-width">BackgroundButton</lookup>
             <lookup name="thumb-height">BackgroundButton</lookup>
           </closure>
