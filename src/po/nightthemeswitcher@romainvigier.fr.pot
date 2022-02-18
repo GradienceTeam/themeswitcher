@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 01:57+0100\n"
+"POT-Creation-Date: 2022-02-18 14:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/TimerOndemand.js:245
-msgid "Switch to night theme"
+#: src/modules/TimerOndemand.js:206
+msgid "Turn Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:245
-msgid "Switch to day theme"
+#: src/modules/TimerOndemand.js:206
+msgid "Turn Night Mode Off"
+msgstr ""
+
+#: src/modules/TimerOndemand.js:218
+msgid "Extension Preferences"
+msgstr ""
+
+#: src/modules/TimerOndemand.js:227
+msgid "Night Mode Off"
+msgstr ""
+
+#: src/modules/TimerOndemand.js:227
+msgid "Night Mode On"
+msgstr ""
+
+#: src/modules/TimerOndemand.js:228
+msgid "Turn On"
+msgstr ""
+
+#: src/modules/TimerOndemand.js:228
+msgid "Turn Off"
 msgstr ""
 
 #: src/preferences/SchedulePage.js:42 src/preferences/ui/SchedulePage.ui:47

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const { Clutter, Gio, GLib, GObject, Meta, Shell, St } = imports.gi;
@@ -8,7 +8,7 @@ const Signals = imports.signals;
 const { main } = imports.ui;
 
 const { Button: PanelMenuButton } = imports.ui.panelMenu;
-const { PopupBaseMenuItem } = imports.ui.popupMenu;
+const { PopupMenuItem, PopupSubMenuMenuItem } = imports.ui.popupMenu;
 
 const Me = extensionUtils.getCurrentExtension();
 const _ = extensionUtils.gettext;
@@ -54,7 +54,7 @@ var TimerOndemand = class {
 
 
     get time() {
-        return this._timeSettings.get_string('ondemand-time');
+        return this._timeSettings.get_string('ondemand-time') === 'day' ? Time.DAY : Time.NIGHT;
     }
 
 
@@ -166,9 +166,7 @@ var TimerOndemand = class {
 
     _addButtonToPanel() {
         console.debug('Adding On-demand Timer button to the panel...');
-        this._button = new NtsPanelMenuButton();
-        this._button.connect('button-press-event', () => this._toggleTime());
-        this._button.connect('touch-event', () => this._toggleTime());
+        this._button = new NtsPanelMenuButton({ toggleCallback: this._toggleTime.bind(this) });
         main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
         console.debug('Added On-demand Timer button to the panel.');
     }
@@ -177,10 +175,7 @@ var TimerOndemand = class {
         console.debug('Adding On-demand Timer button to the menu...');
         const aggregateMenu = main.panel.statusArea.aggregateMenu;
         const position = utils.findShellAggregateMenuItemPosition(aggregateMenu._system.menu) - 1;
-        this._button = new NtsPopupMenuItem();
-        this._button.connect('activate', () => {
-            this._toggleTime();
-        });
+        this._button = new NtsPopupSubMenuMenuItem({ toggleCallback: this._toggleTime.bind(this) });
         aggregateMenu.menu.addMenuItem(this._button, position);
         console.debug('Added On-demand Timer button to the menu.');
     }
@@ -194,41 +189,43 @@ Signals.addSignalMethods(TimerOndemand.prototype);
 
 var NtsPanelMenuButton = GObject.registerClass(
     class NtsPanelMenuButton extends PanelMenuButton {
-        constructor() {
+        constructor({ toggleCallback }) {
             super(0.0);
             this.icon = new St.Icon({
                 style_class: 'system-status-icon',
             });
             this.add_child(this.icon);
+            this.connect('button-press-event', () => toggleCallback());
+            this.connect('touch-event', () => toggleCallback());
             this.update();
         }
 
         update() {
             this.icon.icon_name = _getIconNameForTime(e.timer.time);
             this.icon.fallback_gicon = _getGiconForTime(e.timer.time);
-            this.accessible_name = _getLabelForTime(e.timer.time);
+            this.accessible_name = e.timer.time === Time.DAY ? _('Turn Night Mode On') : _('Turn Night Mode Off');
         }
     }
 );
 
-var NtsPopupMenuItem = GObject.registerClass(
-    class NtsPopupMenuItem extends PopupBaseMenuItem {
-        constructor(params) {
-            super(params);
-            this.icon = new St.Icon({
-                style_class: 'popup-menu-icon',
-                x_align: Clutter.ActorAlign.END,
-            });
-            this.add_child(this.icon);
-            this.label = new St.Label();
-            this.add_child(this.label);
+var NtsPopupSubMenuMenuItem = GObject.registerClass(
+    class NtsPopupSubMenuMenuItem extends PopupSubMenuMenuItem {
+        constructor({ toggleCallback }) {
+            super('', true);
+            this._toggleItem = new PopupMenuItem('');
+            this._toggleItem.connect('activate', () => toggleCallback());
+            this.menu.addMenuItem(this._toggleItem);
+            this._prefsItem = new PopupMenuItem(_('Extension Settings'));
+            this._prefsItem.connect('activate', () => main.extensionManager.openExtensionPrefs(Me.uuid, '', []));
+            this.menu.addMenuItem(this._prefsItem);
             this.update();
         }
 
         update() {
             this.icon.icon_name = _getIconNameForTime(e.timer.time);
             this.icon.fallback_gicon = _getGiconForTime(e.timer.time);
-            this.label.text = _getLabelForTime(e.timer.time);
+            this.label.text = e.timer.time === Time.DAY ? _('Night Mode Off') : _('Night Mode On');
+            this._toggleItem.label.text = e.timer.time === Time.DAY ? _('Turn On') : _('Turn Off');
         }
     }
 );
@@ -239,8 +236,4 @@ var _getIconNameForTime = time => {
 
 var _getGiconForTime = time => {
     return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, 'icons', 'hicolor', 'scalable', 'status', `${this._getIconNameForTime(time)}.svg`]));
-};
-
-var _getLabelForTime = time => {
-    return time === Time.DAY ? _('Switch to night theme') : _('Switch to day theme');
 };
