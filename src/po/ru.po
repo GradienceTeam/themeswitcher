@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 14:04+0100\n"
+"POT-Creation-Date: 2022-02-18 18:25+0100\n"
 "PO-Revision-Date: 2021-11-21 21:56+0000\n"
 "Last-Translator: Sixella <sixella@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/night-theme-"
@@ -28,7 +28,7 @@ msgid "Turn Night Mode Off"
 msgstr ""
 
 #: src/modules/TimerOndemand.js:218
-msgid "Extension Preferences"
+msgid "Extension Settings"
 msgstr ""
 
 #: src/modules/TimerOndemand.js:227
@@ -311,7 +311,7 @@ msgstr "Когда день заканчивается"
 msgid "Change background"
 msgstr "Сменить фоновое изображение"
 
-#: src/preferences/ui/BackgroundButton.ui:27
+#: src/preferences/ui/BackgroundButton.ui:31
 msgid "Select your background image"
 msgstr "Выбрать фоновое изображение"
 
@@ -340,13 +340,18 @@ msgid "Sunrise"
 msgstr "На восходе"
 
 #. Don't translate the `notify-send` command.
-#: src/preferences/ui/CommandsPage.ui:25 src/preferences/ui/CommandsPage.ui:39
+#: src/preferences/ui/CommandsPage.ui:25
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Привет солнышко! Доброго дня, мир !\""
 
 #: src/preferences/ui/CommandsPage.ui:35 src/preferences/ui/SchedulePage.ui:79
 msgid "Sunset"
 msgstr "На закате"
+
+#. Don't translate the `notify-send` command.
+#: src/preferences/ui/CommandsPage.ui:39
+msgid "notify-send \"Hello moonshine!\""
+msgstr "notify-send \"Приятного вечера !\""
 
 #: src/preferences/ui/ContributePage.ui:9
 msgid "Contribute"
@@ -518,9 +523,6 @@ msgstr ":"
 
 #~ msgid "Switch backgrounds"
 #~ msgstr "Переключить фоновое изображение"
-
-#~ msgid "notify-send \"Hello moonshine!\""
-#~ msgstr "notify-send \"Приятного вечера !\""
 
 #~ msgid "Switch cursor theme variants"
 #~ msgstr "Переключение вариантов темы курсора"

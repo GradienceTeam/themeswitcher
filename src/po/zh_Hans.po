@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 14:04+0100\n"
+"POT-Creation-Date: 2022-02-18 18:25+0100\n"
 "PO-Revision-Date: 2022-02-11 18:42+0000\n"
 "Last-Translator: poi <erbaotao@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -27,7 +27,7 @@ msgid "Turn Night Mode Off"
 msgstr ""
 
 #: src/modules/TimerOndemand.js:218
-msgid "Extension Preferences"
+msgid "Extension Settings"
 msgstr ""
 
 #: src/modules/TimerOndemand.js:227
@@ -309,7 +309,7 @@ msgstr "白天什么时候结束"
 msgid "Change background"
 msgstr "更换背景"
 
-#: src/preferences/ui/BackgroundButton.ui:27
+#: src/preferences/ui/BackgroundButton.ui:31
 msgid "Select your background image"
 msgstr "选择您要用的背景图片"
 
@@ -338,13 +338,18 @@ msgid "Sunrise"
 msgstr "日出"
 
 #. Don't translate the `notify-send` command.
-#: src/preferences/ui/CommandsPage.ui:25 src/preferences/ui/CommandsPage.ui:39
+#: src/preferences/ui/CommandsPage.ui:25
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"漱正阳而含朝霞\""
 
 #: src/preferences/ui/CommandsPage.ui:35 src/preferences/ui/SchedulePage.ui:79
 msgid "Sunset"
 msgstr "日落"
+
+#. Don't translate the `notify-send` command.
+#: src/preferences/ui/CommandsPage.ui:39
+msgid "notify-send \"Hello moonshine!\""
+msgstr "notify-send \"有月影 在水面 漂流不定\""
 
 #: src/preferences/ui/ContributePage.ui:9
 msgid "Contribute"
@@ -513,9 +518,6 @@ msgstr ":"
 
 #~ msgid "Switch backgrounds"
 #~ msgstr "切换背景"
-
-#~ msgid "notify-send \"Hello moonshine!\""
-#~ msgstr "notify-send \"有月影 在水面 漂流不定\""
 
 #~ msgid "Switch cursor theme variants"
 #~ msgstr "切换指针的主题样式"
