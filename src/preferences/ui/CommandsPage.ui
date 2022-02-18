@@ -36,7 +36,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="activatable-widget">sunset_entry</property>
             <child>
               <object class="ClearableEntry" id="sunset_entry">
-                <property name="placeholder-text" translatable="yes" comments="Don't translate the `notify-send` command.">notify-send "Hello sunshine!"</property>
+                <property name="placeholder-text" translatable="yes" comments="Don't translate the `notify-send` command.">notify-send "Hello moonshine!"</property>
                 <property name="input-purpose">terminal</property>
                 <property name="width-chars">28</property>
                 <property name="valign">center</property>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 14:04+0100\n"
+"POT-Creation-Date: 2022-02-18 18:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid "Turn Night Mode Off"
 msgstr ""
 
 #: src/modules/TimerOndemand.js:218
-msgid "Extension Preferences"
+msgid "Extension Settings"
 msgstr ""
 
 #: src/modules/TimerOndemand.js:227
@@ -308,7 +308,7 @@ msgstr ""
 msgid "Change background"
 msgstr ""
 
-#: src/preferences/ui/BackgroundButton.ui:27
+#: src/preferences/ui/BackgroundButton.ui:31
 msgid "Select your background image"
 msgstr ""
 
@@ -335,12 +335,17 @@ msgid "Sunrise"
 msgstr ""
 
 #. Don't translate the `notify-send` command.
-#: src/preferences/ui/CommandsPage.ui:25 src/preferences/ui/CommandsPage.ui:39
+#: src/preferences/ui/CommandsPage.ui:25
 msgid "notify-send \"Hello sunshine!\""
 msgstr ""
 
 #: src/preferences/ui/CommandsPage.ui:35 src/preferences/ui/SchedulePage.ui:79
 msgid "Sunset"
+msgstr ""
+
+#. Don't translate the `notify-send` command.
+#: src/preferences/ui/CommandsPage.ui:39
+msgid "notify-send \"Hello moonshine!\""
 msgstr ""
 
 #: src/preferences/ui/ContributePage.ui:9
