@@ -5,6 +5,8 @@ const { Gio } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
+const { main } = imports.ui;
+
 const Me = extensionUtils.getCurrentExtension();
 
 const utils = Me.imports.utils;
@@ -71,6 +73,7 @@ var Timer = class {
         console.debug(`Time has changed to ${time}.`);
         this._previousTime = time;
         this._interfaceSettings.set_string('color-scheme', time === Time.NIGHT ? 'prefer-dark' : 'default');
+        main.layoutManager.screenTransition.run();
         this.emit('time-changed', time);
     }
 
