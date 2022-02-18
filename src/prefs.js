@@ -45,4 +45,5 @@ function fillPreferencesWindow(window) {
         new ContributePage(),
     ].forEach(page => window.add(page));
     window.search_enabled = true;
+    window.set_default_size(720, 460);
 }
