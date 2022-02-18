@@ -19,18 +19,18 @@ var BackgroundButton = GObject.registerClass({
             GObject.ParamFlags.READWRITE,
             null
         ),
-        width: GObject.ParamSpec.int(
-            'width',
-            'Width',
+        thumb_width: GObject.ParamSpec.int(
+            'thumb-width',
             'Thumbnail width',
+            'Width of the displayed thumbnail',
             GObject.ParamFlags.READWRITE,
             0, 600,
             180
         ),
-        height: GObject.ParamSpec.int(
-            'height',
-            'Height',
+        thumb_height: GObject.ParamSpec.int(
+            'thumb-height',
             'Thumbnail height',
+            'Height of the displayed thumbnail',
             GObject.ParamFlags.READWRITE,
             0, 600,
             120
@@ -52,20 +52,38 @@ var BackgroundButton = GObject.registerClass({
         this.openFileChooser();
     }
 
-    getThumbnail(_widget, path) {
+    getThumbnail(_widget, uri, width, height) {
+        if (!uri)
+            return null;
+
+        let path;
+        const file = Gio.File.new_for_uri(uri);
+        const contentType = Gio.content_type_guess(file.get_path(), null)[0];
+        if (Gio.content_type_equals(contentType, 'image/jpeg') || Gio.content_type_equals(contentType, 'image/png') || Gio.content_type_equals(contentType, 'image/tiff')) {
+            path = file.get_path();
+        } else if (Gio.content_type_equals(contentType, 'application/xml')) {
+            const decoder = new TextDecoder('utf-8');
+            const contents = decoder.decode(file.load_contents(null)[1]);
+            try {
+                path = contents.match(/<file>(.+)<\/file>/m)[1];
+            } catch (_e) {}
+        }
+
         if (!path)
             return null;
-        const pixbuf = GdkPixbuf.Pixbuf.new_from_file(Gio.File.new_for_uri(path).get_path());
-        const scale = this.width / (pixbuf.width > pixbuf.height ? pixbuf.height : pixbuf.width);
-        const thumbPixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.GDK_COLORSPACE_RGB, false, pixbuf.bits_per_sample, this.width, this.height);
+
+        const pixbuf = GdkPixbuf.Pixbuf.new_from_file(path);
+        const scale = (width > height ? width : height) / (pixbuf.width > pixbuf.height ? pixbuf.height : pixbuf.width);
+        const thumbPixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.GDK_COLORSPACE_RGB, pixbuf.has_alpha, pixbuf.bits_per_sample, width, height);
         pixbuf.scale(
             thumbPixbuf,
             0, 0,
-            this.width, this.height,
-            -(pixbuf.width * scale - this.width) / 2, -(pixbuf.height * scale - this.height) / 2,
+            width, height,
+            -(pixbuf.width * scale - width) / 2, -(pixbuf.height * scale - height) / 2,
             scale, scale,
             GdkPixbuf.InterpType.GDK_INTERP_BILINEAR
         );
+
         return Gdk.Texture.new_for_pixbuf(thumbPixbuf);
     }
 });

@@ -15,9 +15,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <binding name="paintable">
           <closure function="getThumbnail" type="GdkPaintable">
             <lookup name="path">BackgroundButton</lookup>
+            <lookup name="thumb-width">BackgroundButton</lookup>
+            <lookup name="thumb-height">BackgroundButton</lookup>
           </closure>
         </binding>
         <property name="can-shrink">False</property>
+        <property name="width-request" bind-source="BackgroundButton" bind-property="thumb-width" bind-flags="sync-create"/>
+        <property name="height-request" bind-source="BackgroundButton" bind-property="thumb-height" bind-flags="sync-create"/>
       </object>
     </child>
   </template>
