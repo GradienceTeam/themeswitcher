@@ -2,52 +2,50 @@
 # Copyright (C) 2019, 2020 Romain Vigier
 # This file is distributed under the same license as the Night Theme Switcher package.
 # Romain Vigier <>, 2019, 2020.
-# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2020, 2021.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 14:04+0100\n"
-"PO-Revision-Date: 2021-09-16 18:34+0000\n"
+"PO-Revision-Date: 2022-02-18 17:25+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/es/>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #: src/modules/TimerOndemand.js:206
 msgid "Turn Night Mode On"
-msgstr ""
+msgstr "Activar el modo noche"
 
 #: src/modules/TimerOndemand.js:206
 msgid "Turn Night Mode Off"
-msgstr ""
+msgstr "Desactivar el modo noche"
 
 #: src/modules/TimerOndemand.js:218
-#, fuzzy
-#| msgid "No preferences"
 msgid "Extension Preferences"
-msgstr "Sin preferencias"
+msgstr "Preferencias de la extensión"
 
 #: src/modules/TimerOndemand.js:227
 msgid "Night Mode Off"
-msgstr ""
+msgstr "Modo noche desactivado"
 
 #: src/modules/TimerOndemand.js:227
 msgid "Night Mode On"
-msgstr ""
+msgstr "Modo noche activado"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Turn On"
-msgstr ""
+msgstr "Activar"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Turn Off"
-msgstr ""
+msgstr "Desactivar"
 
 #: src/preferences/SchedulePage.js:42 src/preferences/ui/SchedulePage.ui:47
 msgid "Night Light"
@@ -351,19 +349,19 @@ msgstr "Atardecer"
 
 #: src/preferences/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuir"
 
 #: src/preferences/ui/ContributePage.ui:42
 msgid "View the code and report issues"
-msgstr ""
+msgstr "Ver el código e informar de los errores"
 
 #: src/preferences/ui/ContributePage.ui:55
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "Contribuir a la traducción"
 
 #: src/preferences/ui/ContributePage.ui:68
 msgid "Support me with a donation"
-msgstr ""
+msgstr "Apóyeme con una donación"
 
 #: src/preferences/ui/SchedulePage.ui:9
 msgid "Schedule"
@@ -429,16 +427,16 @@ msgid "Press your keyboard shortcut…"
 msgstr "Introduzca el atajo del teclado…"
 
 #: src/preferences/ui/ThemesPage.ui:9
-#, fuzzy
-#| msgid "GTK theme"
 msgid "Themes"
-msgstr "Tema GTK"
+msgstr "Temas"
 
 #: src/preferences/ui/ThemesPage.ui:15
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
+"GNOME tiene un modo oscuro incorporado que la extensión usa. Se desaconseja "
+"cambiar manualmente de tema y sólo está aquí por cuestiones de legado."
 
 #: src/preferences/ui/ThemesPage.ui:28
 msgid "GTK theme"
@@ -449,6 +447,9 @@ msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
+"Forzar un tema oscuro en aplicaciones que no están diseñadas para soportarlo "
+"puede tener efectos secundarios no deseados, como texto ilegible o iconos "
+"invisibles."
 
 #: src/preferences/ui/ThemesPage.ui:37 src/preferences/ui/ThemesPage.ui:57
 #: src/preferences/ui/ThemesPage.ui:77 src/preferences/ui/ThemesPage.ui:97
