@@ -10,10 +10,10 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 18:25+0100\n"
-"PO-Revision-Date: 2022-02-18 14:44+0000\n"
+"PO-Revision-Date: 2022-02-18 17:52+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,8 +30,6 @@ msgid "Turn Night Mode Off"
 msgstr "Donker thema inschakelen"
 
 #: src/modules/TimerOndemand.js:218
-#, fuzzy
-#| msgid "Extension Preferences"
 msgid "Extension Settings"
 msgstr "Uitbreidingsvoorkeuren"
 
