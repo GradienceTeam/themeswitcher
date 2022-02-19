@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2021 Romain Vigier <contact AT romainvigier.fr>
+SPDX-FileCopyrightText: 2021, 2022 Romain Vigier <contact AT romainvigier.fr>
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
@@ -27,13 +27,11 @@ You'll need `make` and [NPM](https://www.npmjs.com/) to install the development 
 npm install --save-dev
 ```
 
-Create a new branch describing what your're working on, for example `feature/{name-of-the-feature}` or `theme/{name-of-the-theme}`.
-
 When you're done, commit all your changes and create a new merge request. Choose the appropriate merge request template.
 
 ### Coding style
 
-We follow the [GNOME Shell coding style](https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/master/HACKING.md) and we use [ESLint](https://eslint.org/) to enforce it.
+We follow the [GNOME Shell coding style](https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/HEAD/HACKING.md) and we use [ESLint](https://eslint.org/) to enforce it.
 
 To make sure your code follows it:
 
@@ -43,7 +41,7 @@ npm run test-lint
 
 ### Copyright notice
 
-If you make changes to a file, please your copyright notice to the top of the file, or in a separate file (named `original-file.ext.license`), following the [SPDX specification](https://spdx.dev/).
+If you make changes to a file, please put your copyright notice to the top of the file, or in a separate file (named `original-file.ext.license`), following the [SPDX specification](https://spdx.dev/).
 
 Run [`reuse`](https://reuse.software/) to check that all the needed information is present:
 
