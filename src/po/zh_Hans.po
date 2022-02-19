@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 18:25+0100\n"
+"POT-Creation-Date: 2022-02-19 11:38+0100\n"
 "PO-Revision-Date: 2022-02-11 18:42+0000\n"
 "Last-Translator: poi <erbaotao@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -46,31 +46,31 @@ msgstr ""
 msgid "Turn Off"
 msgstr ""
 
-#: src/preferences/SchedulePage.js:42 src/preferences/ui/SchedulePage.ui:47
+#: src/preferences/SchedulePage.js:45 src/preferences/ui/SchedulePage.ui:63
 msgid "Night Light"
 msgstr "夜灯"
 
-#: src/preferences/SchedulePage.js:46
+#: src/preferences/SchedulePage.js:49
 msgid "Location Services"
 msgstr "使用定位服务"
 
-#: src/preferences/SchedulePage.js:54
+#: src/preferences/SchedulePage.js:57
 msgid "Manual schedule"
 msgstr "手动安排"
 
-#: src/preferences/SchedulePage.js:55 src/preferences/ui/SchedulePage.ui:93
+#: src/preferences/SchedulePage.js:58 src/preferences/ui/SchedulePage.ui:109
 msgid "On-demand"
 msgstr "自定"
 
-#: src/preferences/SchedulePage.js:87
+#: src/preferences/SchedulePage.js:90
 msgid "None"
 msgstr "不要按钮"
 
-#: src/preferences/SchedulePage.js:88
+#: src/preferences/SchedulePage.js:91
 msgid "Top bar"
 msgstr "放在上边栏里"
 
-#: src/preferences/SchedulePage.js:89
+#: src/preferences/SchedulePage.js:92
 msgid "System menu"
 msgstr "放在系统菜单里"
 
@@ -207,103 +207,104 @@ msgid "The command to spawn at sunset"
 msgstr "日落时生成此命令"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
-msgid "Enable backgrounds"
-msgstr "背景也要切换"
-
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:103
-msgid "Background will be changed on time change"
-msgstr "时间变化，背景跟着切换"
-
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:107
 #: src/preferences/ui/BackgroundsPage.ui:15
 msgid "Day background"
 msgstr "日间背景"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:108
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:103
 msgid "Path to the day background"
 msgstr "白天用的背景的路径"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:112
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:107
 #: src/preferences/ui/BackgroundsPage.ui:28
 msgid "Night background"
 msgstr "夜间背景"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:113
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:108
 msgid "Path to the night background"
 msgstr "晚上用的背景的路径"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:125
-#: src/preferences/ui/SchedulePage.ui:27
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:120
+#: src/preferences/ui/SchedulePage.ui:43
 msgid "Time source"
 msgstr "时间获取来源"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:121
 msgid "The source used to check current time"
 msgstr "确定现在什么时候了的根据"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:130
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:125
 msgid "Follow Night Light \"Disable until tomorrow\""
 msgstr "根据夜灯“今天不用亮了”推测"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
 msgid "Switch back to day time when Night Light is temporarily disabled"
 msgstr "如果夜灯暂时关上，就换回日间模式"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:135
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:130
 msgid "Always enable the on-demand timer"
 msgstr "不关闭自定的定时"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:136
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
 msgid "The on-demand timer will always be enabled alongside other timers"
 msgstr "自定的定时系统会和其他定时系统一起生效"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:144
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:139
 msgid "On-demand time"
 msgstr "自定时间"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:145
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:140
 msgid "The current time used in on-demand mode"
 msgstr "自定模式依据的当前时间"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:149
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:144
 msgid "Key combination to toggle time"
 msgstr "切换时间的按键组合"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:150
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:145
 msgid "The key combination that will toggle time in on-demand mode"
 msgstr "此按键组合会切换自定模式依据的时间"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:154
 msgid "On-demand button placement"
 msgstr "自定按钮的位置"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:160
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:155
 msgid "Where the on-demand button will be placed"
 msgstr "自定按钮放在哪里"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:164
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
 msgid "Use manual time source"
 msgstr "手动设置时间"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:165
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:160
 msgid "Disable automatic time source detection"
 msgstr "不自动设置时间"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:169
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:164
 msgid "Sunrise time"
 msgstr "日出时间"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:170
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:165
 msgid "When the day starts"
 msgstr "白天什么时候开始"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:169
 msgid "Sunset time"
 msgstr "日落时间"
 
-#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:170
 msgid "When the day ends"
 msgstr "白天什么时候结束"
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
+#: src/preferences/ui/SchedulePage.ui:15
+msgid "Transition"
+msgstr ""
+
+#: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
+msgid "Use a transition when changing the color scheme"
+msgstr ""
 
 #: src/preferences/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -333,7 +334,7 @@ msgstr "命令"
 msgid "Run commands"
 msgstr "运行命令"
 
-#: src/preferences/ui/CommandsPage.ui:21 src/preferences/ui/SchedulePage.ui:67
+#: src/preferences/ui/CommandsPage.ui:21 src/preferences/ui/SchedulePage.ui:83
 msgid "Sunrise"
 msgstr "日出"
 
@@ -342,7 +343,7 @@ msgstr "日出"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"漱正阳而含朝霞\""
 
-#: src/preferences/ui/CommandsPage.ui:35 src/preferences/ui/SchedulePage.ui:79
+#: src/preferences/ui/CommandsPage.ui:35 src/preferences/ui/SchedulePage.ui:95
 msgid "Sunset"
 msgstr "日落"
 
@@ -371,11 +372,15 @@ msgstr ""
 msgid "Schedule"
 msgstr "安排"
 
-#: src/preferences/ui/SchedulePage.ui:15
+#: src/preferences/ui/SchedulePage.ui:16
+msgid "Smooth transition between day and night appearance."
+msgstr ""
+
+#: src/preferences/ui/SchedulePage.ui:31
 msgid "Manual time source"
 msgstr "手动设置时间来源"
 
-#: src/preferences/ui/SchedulePage.ui:16
+#: src/preferences/ui/SchedulePage.ui:32
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are enabled. "
@@ -384,33 +389,33 @@ msgstr ""
 "如果开启了夜灯功能或定位服务，本扩展程序会尝试据此自动设置当前日出与日落时"
 "间。您也可以手动选定一个确定时间的根据。"
 
-#: src/preferences/ui/SchedulePage.ui:33
+#: src/preferences/ui/SchedulePage.ui:49
 msgid "Always show on-demand controls"
 msgstr "一直显示“自定”的控制选项"
 
-#: src/preferences/ui/SchedulePage.ui:34
+#: src/preferences/ui/SchedulePage.ui:50
 msgid "Allows you to override the current time when using a schedule."
 msgstr "用于在安排时强制设定当前时间。"
 
-#: src/preferences/ui/SchedulePage.ui:50
+#: src/preferences/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "根据<i>今天不用亮了</i>推测"
 
-#: src/preferences/ui/SchedulePage.ui:51
+#: src/preferences/ui/SchedulePage.ui:67
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr "如果夜灯暂时关上，就换到日间模式。"
 
-#: src/preferences/ui/SchedulePage.ui:64
+#: src/preferences/ui/SchedulePage.ui:80
 msgid "Manual schedule times"
 msgstr "手动安排时间"
 
-#: src/preferences/ui/SchedulePage.ui:96
+#: src/preferences/ui/SchedulePage.ui:112
 msgid "Keyboard shortcut"
 msgstr "键盘快捷键"
 
-#: src/preferences/ui/SchedulePage.ui:107
+#: src/preferences/ui/SchedulePage.ui:123
 msgid "Button location"
 msgstr "按钮位置"
 
@@ -480,6 +485,12 @@ msgstr "日间指针主题"
 #: src/preferences/ui/TimeChooser.ui:23
 msgid ":"
 msgstr ":"
+
+#~ msgid "Enable backgrounds"
+#~ msgstr "背景也要切换"
+
+#~ msgid "Background will be changed on time change"
+#~ msgstr "时间变化，背景跟着切换"
 
 #, javascript-format
 #~ msgid ""
