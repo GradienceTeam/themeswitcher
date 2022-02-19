@@ -97,11 +97,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 		</key>
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.backgrounds" path="/org/gnome/shell/extensions/nightthemeswitcher/backgrounds/">
-		<key name="enabled" type="b">
-			<default>false</default>
-			<summary>Enable backgrounds</summary>
-			<description>Background will be changed on time change</description>
-		</key>
 		<key name="day" type="s">
 			<default>""</default>
 			<summary>Day background</summary>
