@@ -11,21 +11,18 @@ const Me = extensionUtils.getCurrentExtension();
 
 const utils = Me.imports.utils;
 
+const { SwitcherCommands } = Me.imports.modules.SwitcherCommands;
+const { SwitcherThemeCursor, SwitcherThemeGtk, SwitcherThemeIcon, SwitcherThemeShell } = Me.imports.modules.SwitcherTheme;
 const { Timer } = Me.imports.modules.Timer;
-const { GtkThemer } = Me.imports.modules.GtkThemer;
-const { ShellThemer } = Me.imports.modules.ShellThemer;
-const { IconThemer } = Me.imports.modules.IconThemer;
-const { CursorThemer } = Me.imports.modules.CursorThemer;
-const { Commander } = Me.imports.modules.Commander;
 
 
 var enabled = false;
 var timer = null;
-var gtkThemer = null;
-var shellThemer = null;
-var iconThemer = null;
-var cursorThemer = null;
-var commander = null;
+var switcherThemeGtk = null;
+var switcherThemeShell = null;
+var switcherThemeIcon = null;
+var switcherThemeCursor = null;
+var switcherCommands = null;
 
 
 /**
@@ -52,18 +49,18 @@ function enable() {
 function start() {
     console.debug('Enabling extension...');
     timer = new Timer();
-    gtkThemer = new GtkThemer();
-    shellThemer = new ShellThemer();
-    iconThemer = new IconThemer();
-    cursorThemer = new CursorThemer();
-    commander = new Commander();
+    switcherThemeGtk = new SwitcherThemeGtk({ timer });
+    switcherThemeIcon = new SwitcherThemeIcon({ timer });
+    switcherThemeShell = new SwitcherThemeShell({ timer });
+    switcherThemeCursor = new SwitcherThemeCursor({ timer });
+    switcherCommands = new SwitcherCommands({ timer });
 
     timer.enable();
-    gtkThemer.enable();
-    shellThemer.enable();
-    iconThemer.enable();
-    cursorThemer.enable();
-    commander.enable();
+    switcherThemeGtk.enable();
+    switcherThemeShell.enable();
+    switcherThemeIcon.enable();
+    switcherThemeCursor.enable();
+    switcherCommands.enable();
 
     enabled = true;
     console.debug('Extension enabled.');
@@ -76,19 +73,19 @@ function disable() {
     console.debug('Disabling extension...');
     enabled = false;
 
-    gtkThemer.disable();
-    shellThemer.disable();
-    iconThemer.disable();
-    cursorThemer.disable();
-    commander.disable();
+    switcherThemeGtk.disable();
+    switcherThemeShell.disable();
+    switcherThemeIcon.disable();
+    switcherThemeCursor.disable();
+    switcherCommands.disable();
     timer.disable();
 
     timer = null;
-    gtkThemer = null;
-    shellThemer = null;
-    iconThemer = null;
-    cursorThemer = null;
-    commander = null;
+    switcherThemeGtk = null;
+    switcherThemeShell = null;
+    switcherThemeIcon = null;
+    switcherThemeCursor = null;
+    switcherCommands = null;
     console.debug('Extension disabled.');
 }
 
