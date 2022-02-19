@@ -12,6 +12,22 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwPreferencesGroup">
         <child>
           <object class="AdwActionRow">
+            <property name="title" translatable="yes">Transition</property>
+            <property name="subtitle" translatable="yes">Smooth transition between day and night appearance.</property>
+            <property name="activatable-widget">transition_switch</property>
+            <child>
+              <object class="GtkSwitch" id="transition_switch">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <child>
+          <object class="AdwActionRow">
             <property name="title" translatable="yes">Manual time source</property>
             <property name="subtitle" translatable="yes">The extension will try to use Night Light or Location Services to automatically set your current sunrise and sunset times if they are enabled. If you prefer, you can manually choose a time source.</property>
             <property name="activatable-widget">manual_time_source_switch</property>

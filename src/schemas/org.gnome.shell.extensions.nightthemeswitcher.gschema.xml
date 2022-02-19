@@ -169,5 +169,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<summary>Sunset time</summary>
 			<description>When the day ends</description>
 		</key>
+		<key name="transition" type="b">
+			<default>true</default>
+			<summary>Transition</summary>
+			<description>Use a transition when changing the color scheme</description>
+		</key>
 	</schema>
 </schemalist>
