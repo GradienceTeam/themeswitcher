@@ -63,6 +63,7 @@ var SchedulePage = GObject.registerClass({
             filter: choiceFilter,
         });
         this._time_source_combo_row.expression = Gtk.PropertyExpression.new(DropDownChoice, null, 'title');
+        this._time_source_combo_row.sensitive = settings.get_boolean('manual-time-source');
         this._time_source_combo_row.connect('notify::selected-item', () => settings.set_string('time-source', this._time_source_combo_row.selected_item.id));
         const updateTimeSourceComboRowSelected = () => {
             this._time_source_combo_row.selected = utils.findItemPositionInModel(this._time_source_combo_row.model, item => item.id === settings.get_string('time-source'));
