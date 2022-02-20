@@ -6,6 +6,12 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [57] - 2022-02-20
+
+### Fixed
+- Transition ran after changing the color scheme
+
+
 ## [56] - 2022-02-20
 
 ### Added
