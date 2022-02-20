@@ -13,7 +13,6 @@ const { PopupMenuItem, PopupSubMenuMenuItem } = imports.ui.popupMenu;
 const Me = extensionUtils.getCurrentExtension();
 const _ = extensionUtils.gettext;
 
-const e = Me.imports.extension;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
@@ -25,6 +24,7 @@ const { Time } = Me.imports.enums.Time;
  * The user can change the key combination in the extension's preferences.
  */
 var TimerOndemand = class {
+    #timer;
     #settings;
 
     #settingsConnections = [];
@@ -32,7 +32,8 @@ var TimerOndemand = class {
     #previousKeybinding = null;
     #timerConnection = null;
 
-    constructor() {
+    constructor({ timer }) {
+        this.#timer = timer;
         this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
     }
 
@@ -85,12 +86,12 @@ var TimerOndemand = class {
 
     #connectTimer() {
         console.debug('Connecting On-demand Timer to Timer...');
-        this.#timerConnection = e.timer.connect('time-changed', this.#onTimeChanged.bind(this));
+        this.#timerConnection = this.#timer.connect('time-changed', this.#onTimeChanged.bind(this));
     }
 
     #disconnectTimer() {
         if (this.#timerConnection) {
-            e.timer.disconnect(this.#timerConnection);
+            this.#timer.disconnect(this.#timerConnection);
             this.#timerConnection = null;
         }
         console.debug('Disconnected On-demand Timer from Timer.');
@@ -112,7 +113,7 @@ var TimerOndemand = class {
     }
 
     #onTimeChanged(_timer, _newTime) {
-        this.#settings.set_string('ondemand-time', e.timer.time);
+        this.#settings.set_string('ondemand-time', this.#timer.time);
         this.#updateButton();
     }
 
@@ -169,7 +170,7 @@ var TimerOndemand = class {
 
     #addButtonToPanel() {
         console.debug('Adding On-demand Timer button to the panel...');
-        this.#button = new NtsPanelMenuButton({ toggleCallback: this.#toggleTime.bind(this) });
+        this.#button = new NtsPanelMenuButton({ timer: this.#timer, toggleCallback: this.#toggleTime.bind(this) });
         main.panel.addToStatusArea('NightThemeSwitcherButton', this.#button);
         console.debug('Added On-demand Timer button to the panel.');
     }
@@ -178,13 +179,13 @@ var TimerOndemand = class {
         console.debug('Adding On-demand Timer button to the menu...');
         const aggregateMenu = main.panel.statusArea.aggregateMenu;
         const position = utils.findShellAggregateMenuItemPosition(aggregateMenu._system.menu) - 1;
-        this.#button = new NtsPopupSubMenuMenuItem({ toggleCallback: this.#toggleTime.bind(this) });
+        this.#button = new NtsPopupSubMenuMenuItem({ timer: this.#timer, toggleCallback: this.#toggleTime.bind(this) });
         aggregateMenu.menu.addMenuItem(this.#button, position);
         console.debug('Added On-demand Timer button to the menu.');
     }
 
     #toggleTime() {
-        this.#settings.set_string('ondemand-time', e.timer.time === Time.DAY ? Time.NIGHT : Time.DAY);
+        this.#settings.set_string('ondemand-time', this.#timer.time === Time.DAY ? Time.NIGHT : Time.DAY);
         this.emit('time-changed', this.time);
     }
 };
@@ -192,8 +193,11 @@ Signals.addSignalMethods(TimerOndemand.prototype);
 
 var NtsPanelMenuButton = GObject.registerClass(
     class NtsPanelMenuButton extends PanelMenuButton {
-        constructor({ toggleCallback }) {
+        #timer;
+
+        constructor({ timer, toggleCallback }) {
             super(0.0);
+            this.#timer = timer;
             this.icon = new St.Icon({
                 style_class: 'system-status-icon',
             });
@@ -204,17 +208,20 @@ var NtsPanelMenuButton = GObject.registerClass(
         }
 
         update() {
-            this.icon.icon_name = _getIconNameForTime(e.timer.time);
-            this.icon.fallback_gicon = _getGiconForTime(e.timer.time);
-            this.accessible_name = e.timer.time === Time.DAY ? _('Turn Night Mode On') : _('Turn Night Mode Off');
+            this.icon.icon_name = _getIconNameForTime(this.#timer.time);
+            this.icon.fallback_gicon = _getGiconForTime(this.#timer.time);
+            this.accessible_name = this.#timer.time === Time.DAY ? _('Turn Night Mode On') : _('Turn Night Mode Off');
         }
     }
 );
 
 var NtsPopupSubMenuMenuItem = GObject.registerClass(
     class NtsPopupSubMenuMenuItem extends PopupSubMenuMenuItem {
-        constructor({ toggleCallback }) {
+        #timer;
+
+        constructor({ timer, toggleCallback }) {
             super('', true);
+            this.#timer = timer;
             this._toggleItem = new PopupMenuItem('');
             this._toggleItem.connect('activate', () => toggleCallback());
             this.menu.addMenuItem(this._toggleItem);
@@ -225,10 +232,10 @@ var NtsPopupSubMenuMenuItem = GObject.registerClass(
         }
 
         update() {
-            this.icon.icon_name = _getIconNameForTime(e.timer.time);
-            this.icon.fallback_gicon = _getGiconForTime(e.timer.time);
-            this.label.text = e.timer.time === Time.DAY ? _('Night Mode Off') : _('Night Mode On');
-            this._toggleItem.label.text = e.timer.time === Time.DAY ? _('Turn On') : _('Turn Off');
+            this.icon.icon_name = _getIconNameForTime(this.#timer.time);
+            this.icon.fallback_gicon = _getGiconForTime(this.#timer.time);
+            this.label.text = this.#timer.time === Time.DAY ? _('Night Mode Off') : _('Night Mode On');
+            this._toggleItem.label.text = this.#timer.time === Time.DAY ? _('Turn On') : _('Turn Off');
         }
     }
 );

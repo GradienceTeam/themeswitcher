@@ -133,12 +133,12 @@ var Timer = class {
             this.#sources.push(new TimerSchedule());
             break;
         case 'ondemand':
-            this.#sources.push(new TimerOndemand());
+            this.#sources.push(new TimerOndemand({ timer: this }));
             break;
         }
 
         if (this.#settings.get_boolean('always-enable-ondemand') && ['nightlight', 'location', 'schedule'].includes(source))
-            this.#sources.unshift(new TimerOndemand());
+            this.#sources.unshift(new TimerOndemand({ timer: this }));
     }
 
     #enableSources() {
