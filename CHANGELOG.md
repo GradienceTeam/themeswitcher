@@ -6,6 +6,29 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [56] - 2022-02-20
+
+### Added
+- GNOME 42 support
+- Use of the new color scheme desktop setting
+- Transition between day and night mode
+- Chinese (Simplified) translation by poi
+
+### Changed
+- Preferences ported to libadwaita
+- Backgrounds preferences set the system regular and dark backgrounds
+- GTK and Shell themes switching disabled by default
+- System menu button follows other entries style
+- Updated Dutch translation by @Vistaus
+- Updated French translation
+- Updated Spanish translation by @oscfdezdz
+- Updated Turkish translation by @ersen
+
+### Removed
+- GNOME 41 support
+- Automatic theme variants detection
+
+
 ## [55] - 2021-11-03
 
 ### Added
