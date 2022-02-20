@@ -34,173 +34,180 @@ const { TimerOndemand } = Me.imports.modules.TimerOndemand;
  * schedule in the extensions's preferences.
  */
 var Timer = class {
+    #settings;
+    #interfaceSettings;
+    #colorSettings;
+    #locationSettings;
+    #time;
+
+    #sources = [];
+    #settingsConnections = [];
+    #timeConnections = [];
+
     constructor() {
-        this._timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
-        this._interfaceSettings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
-        this._colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
-        this._locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
-        this._sources = [];
-        this._settingsConnections = [];
-        this._timeConnections = [];
-        this._previousTime = this._interfaceSettings.get_string('color-scheme') === 'prefer-dark' ? Time.NIGHT : Time.DAY;
+        this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
+        this.#interfaceSettings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
+        this.#colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
+        this.#locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
+        this.#time = this.#interfaceSettings.get_string('color-scheme') === 'prefer-dark' ? Time.NIGHT : Time.DAY;
     }
 
     enable() {
         console.debug('Enabling Timer...');
-        this._connectSettings();
-        this._createSources();
-        this._connectSources();
-        this._enableSources();
+        this.#connectSettings();
+        this.#createSources();
+        this.#connectSources();
+        this.#enableSources();
         console.debug('Timer enabled.');
     }
 
     disable() {
         console.debug('Disabling Timer...');
-        this._disconnectSources();
-        this._disableSources();
-        this._disconnectSettings();
+        this.#disconnectSources();
+        this.#disableSources();
+        this.#disconnectSettings();
         console.debug('Timer disabled.');
     }
 
 
     get time() {
-        return this._previousTime;
+        return this.#time;
     }
 
     set time(time) {
-        if (time === this._previousTime)
+        if (time === this.#time)
             return;
         console.debug(`Time has changed to ${time}.`);
-        this._previousTime = time;
-        this._interfaceSettings.set_string('color-scheme', time === Time.NIGHT ? 'prefer-dark' : 'default');
-        if (this._timeSettings.get_boolean('transition'))
+        this.#time = time;
+        this.#interfaceSettings.set_string('color-scheme', time === Time.NIGHT ? 'prefer-dark' : 'default');
+        if (this.#settings.get_boolean('transition'))
             main.layoutManager.screenTransition.run();
         this.emit('time-changed', time);
     }
 
 
-    _connectSettings() {
+    #connectSettings() {
         console.debug('Connecting Timer to settings...');
-        this._settingsConnections.push({
-            settings: this._colorSettings,
-            id: this._colorSettings.connect('changed::night-light-enabled', this._onSourceChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#colorSettings,
+            id: this.#colorSettings.connect('changed::night-light-enabled', this.#onSourceChanged.bind(this)),
         });
-        this._settingsConnections.push({
-            settings: this._locationSettings,
-            id: this._locationSettings.connect('changed::enabled', this._onSourceChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#locationSettings,
+            id: this.#locationSettings.connect('changed::enabled', this.#onSourceChanged.bind(this)),
         });
-        this._settingsConnections.push({
-            settings: this._timeSettings,
-            id: this._timeSettings.connect('changed::manual-time-source', this._onSourceChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#settings,
+            id: this.#settings.connect('changed::manual-time-source', this.#onSourceChanged.bind(this)),
         });
-        this._settingsConnections.push({
-            settings: this._timeSettings,
-            id: this._timeSettings.connect('changed::always-enable-ondemand', this._onSourceChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#settings,
+            id: this.#settings.connect('changed::always-enable-ondemand', this.#onSourceChanged.bind(this)),
         });
-        this._settingsConnections.push({
-            settings: this._timeSettings,
-            id: this._timeSettings.connect('changed::time-source', this._onTimeSourceChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#settings,
+            id: this.#settings.connect('changed::time-source', this.#onTimeSourceChanged.bind(this)),
         });
-        this._settingsConnections.push({
-            settings: this._interfaceSettings,
-            id: this._interfaceSettings.connect('changed::color-scheme', this._onColorSchemeChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#interfaceSettings,
+            id: this.#interfaceSettings.connect('changed::color-scheme', this.#onColorSchemeChanged.bind(this)),
         });
     }
 
-    _disconnectSettings() {
-        this._settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
-        this._settingsConnections = [];
+    #disconnectSettings() {
+        this.#settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
+        this.#settingsConnections = [];
         console.debug('Disconnected Timer from settings.');
     }
 
-    _createSources() {
-        const source = this._getSource();
+    #createSources() {
+        const source = this.#getSource();
         switch (source) {
         case 'nightlight':
-            this._sources.push(new TimerNightlight());
+            this.#sources.push(new TimerNightlight());
             break;
         case 'location':
-            this._sources.push(new TimerLocation());
+            this.#sources.push(new TimerLocation());
             break;
         case 'schedule':
-            this._sources.push(new TimerSchedule());
+            this.#sources.push(new TimerSchedule());
             break;
         case 'ondemand':
-            this._sources.push(new TimerOndemand());
+            this.#sources.push(new TimerOndemand());
             break;
         }
 
-        if (this._timeSettings.get_boolean('always-enable-ondemand') && ['nightlight', 'location', 'schedule'].includes(source))
-            this._sources.unshift(new TimerOndemand());
+        if (this.#settings.get_boolean('always-enable-ondemand') && ['nightlight', 'location', 'schedule'].includes(source))
+            this.#sources.unshift(new TimerOndemand());
     }
 
-    _enableSources() {
-        this._sources.forEach(source => source.enable());
+    #enableSources() {
+        this.#sources.forEach(source => source.enable());
     }
 
-    _disableSources() {
-        this._sources.forEach(source => source.disable());
-        this._sources = [];
+    #disableSources() {
+        this.#sources.forEach(source => source.disable());
+        this.#sources = [];
     }
 
-    _connectSources() {
+    #connectSources() {
         console.debug('Connecting to time sources...');
-        this._sources.forEach(source => this._timeConnections.push({
+        this.#sources.forEach(source => this.#timeConnections.push({
             source,
-            id: source.connect('time-changed', this._onTimeChanged.bind(this)),
+            id: source.connect('time-changed', this.#onTimeChanged.bind(this)),
         }));
     }
 
-    _disconnectSources() {
-        this._timeConnections.forEach(connection => connection.source.disconnect(connection.id));
-        this._timeConnections = [];
+    #disconnectSources() {
+        this.#timeConnections.forEach(connection => connection.source.disconnect(connection.id));
+        this.#timeConnections = [];
         console.debug('Disconnected from time sources.');
     }
 
 
-    _onSourceChanged() {
+    #onSourceChanged() {
         this.disable();
         this.enable();
     }
 
-    _onTimeSourceChanged() {
-        if (this._timeSettings.get_boolean('manual-time-source'))
-            this._onSourceChanged();
+    #onTimeSourceChanged() {
+        if (this.#settings.get_boolean('manual-time-source'))
+            this.#onSourceChanged();
     }
 
-    _onTimeChanged(_source, newTime) {
+    #onTimeChanged(_source, newTime) {
         this.time = newTime;
     }
 
-    _onColorSchemeChanged() {
-        this.time = this._interfaceSettings.get_string('color-scheme') === 'prefer-dark' ? Time.NIGHT : Time.DAY;
+    #onColorSchemeChanged() {
+        this.time = this.#interfaceSettings.get_string('color-scheme') === 'prefer-dark' ? Time.NIGHT : Time.DAY;
     }
 
 
-    _getSource() {
+    #getSource() {
         console.debug('Getting time source...');
 
         let source;
-        if (this._timeSettings.get_boolean('manual-time-source')) {
-            source = this._timeSettings.get_string('time-source');
+        if (this.#settings.get_boolean('manual-time-source')) {
+            source = this.#settings.get_string('time-source');
             console.debug(`Time source is forced to ${source}.`);
             if (
-                (source === 'nightlight' && !this._colorSettings.get_boolean('night-light-enabled')) ||
-                (source === 'location' && !this._locationSettings.get_boolean('enabled'))
+                (source === 'nightlight' && !this.#colorSettings.get_boolean('night-light-enabled')) ||
+                (source === 'location' && !this.#locationSettings.get_boolean('enabled'))
             ) {
                 console.debug(`Unable to choose ${source} time source, falling back to manual schedule.`);
                 source = 'schedule';
-                this._timeSettings.set_string('time-source', source);
+                this.#settings.set_string('time-source', source);
             }
         } else {
-            if (this._colorSettings.get_boolean('night-light-enabled'))
+            if (this.#colorSettings.get_boolean('night-light-enabled'))
                 source = 'nightlight';
-            else if (this._locationSettings.get_boolean('enabled'))
+            else if (this.#locationSettings.get_boolean('enabled'))
                 source = 'location';
             else
                 source = 'schedule';
             console.debug(`Time source is ${source}.`);
-            this._timeSettings.set_string('time-source', source);
+            this.#settings.set_string('time-source', source);
         }
         return source;
     }

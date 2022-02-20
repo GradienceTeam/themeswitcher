@@ -25,163 +25,166 @@ const { Time } = Me.imports.enums.Time;
  * The user can change the key combination in the extension's preferences.
  */
 var TimerOndemand = class {
+    #settings;
+
+    #settingsConnections = [];
+    #button = null;
+    #previousKeybinding = null;
+    #timerConnection = null;
+
     constructor() {
-        this._timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
-        this._settingsConnections = [];
-        this._button = null;
-        this._previousKeybinding = null;
-        this._timerConnection = null;
+        this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
     }
 
     enable() {
         console.debug('Enabling On-demand Timer...');
-        this._connectSettings();
-        this._addKeybinding();
-        this._addButton();
-        this._connectTimer();
+        this.#connectSettings();
+        this.#addKeybinding();
+        this.#addButton();
+        this.#connectTimer();
         this.emit('time-changed', this.time);
         console.debug('On-demand Timer enabled.');
     }
 
     disable() {
         console.debug('Disabling On-demand Timer...');
-        this._disconnectTimer();
-        this._removeKeybinding();
-        this._removeButton();
-        this._disconnectSettings();
+        this.#disconnectTimer();
+        this.#removeKeybinding();
+        this.#removeButton();
+        this.#disconnectSettings();
         console.debug('On-demand Timer disabled.');
     }
 
 
     get time() {
-        return this._timeSettings.get_string('ondemand-time') === 'day' ? Time.DAY : Time.NIGHT;
+        return this.#settings.get_string('ondemand-time') === 'day' ? Time.DAY : Time.NIGHT;
     }
 
 
-    _connectSettings() {
+    #connectSettings() {
         console.debug('Connecting On-demand Timer to settings...');
-        this._settingsConnections.push({
-            settings: this._timeSettings,
-            id: this._timeSettings.connect('changed::ondemand-time', this._onOndemandTimeChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#settings,
+            id: this.#settings.connect('changed::ondemand-time', this.#onOndemandTimeChanged.bind(this)),
         });
-        this._settingsConnections.push({
-            settings: this._timeSettings,
-            id: this._timeSettings.connect('changed::nightthemeswitcher-ondemand-keybinding', this._onOndemandKeybindingChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#settings,
+            id: this.#settings.connect('changed::nightthemeswitcher-ondemand-keybinding', this.#onOndemandKeybindingChanged.bind(this)),
         });
-        this._settingsConnections.push({
-            settings: this._timeSettings,
-            id: this._timeSettings.connect('changed::ondemand-button-placement', this._onOndemandButtonPlacementChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#settings,
+            id: this.#settings.connect('changed::ondemand-button-placement', this.#onOndemandButtonPlacementChanged.bind(this)),
         });
     }
 
-    _disconnectSettings() {
+    #disconnectSettings() {
         console.debug('Disconnecting On-demand Timer from settings...');
-        this._settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
-        this._settingsConnections = [];
+        this.#settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
+        this.#settingsConnections = [];
     }
 
-    _connectTimer() {
+    #connectTimer() {
         console.debug('Connecting On-demand Timer to Timer...');
-        this._timerConnection = e.timer.connect('time-changed', this._onTimeChanged.bind(this));
+        this.#timerConnection = e.timer.connect('time-changed', this.#onTimeChanged.bind(this));
     }
 
-    _disconnectTimer() {
-        if (this._timerConnection) {
-            e.timer.disconnect(this._timerConnection);
-            this._timerConnection = null;
+    #disconnectTimer() {
+        if (this.#timerConnection) {
+            e.timer.disconnect(this.#timerConnection);
+            this.#timerConnection = null;
         }
         console.debug('Disconnected On-demand Timer from Timer.');
     }
 
 
-    _onOndemandTimeChanged() {
+    #onOndemandTimeChanged() {
         this.emit('time-changed', this.time);
     }
 
-    _onOndemandKeybindingChanged() {
-        this._removeKeybinding();
-        this._addKeybinding();
+    #onOndemandKeybindingChanged() {
+        this.#removeKeybinding();
+        this.#addKeybinding();
     }
 
-    _onOndemandButtonPlacementChanged() {
-        this._removeButton();
-        this._addButton();
+    #onOndemandButtonPlacementChanged() {
+        this.#removeButton();
+        this.#addButton();
     }
 
-    _onTimeChanged(_timer, _newTime) {
-        this._timeSettings.set_string('ondemand-time', e.timer.time);
-        this._updateButton();
+    #onTimeChanged(_timer, _newTime) {
+        this.#settings.set_string('ondemand-time', e.timer.time);
+        this.#updateButton();
     }
 
 
-    _addKeybinding() {
-        this._previousKeybinding = this._timeSettings.get_strv('nightthemeswitcher-ondemand-keybinding')[0];
-        if (!this._timeSettings.get_strv('nightthemeswitcher-ondemand-keybinding')[0])
+    #addKeybinding() {
+        this.#previousKeybinding = this.#settings.get_strv('nightthemeswitcher-ondemand-keybinding')[0];
+        if (!this.#settings.get_strv('nightthemeswitcher-ondemand-keybinding')[0])
             return;
         console.debug('Adding On-demand Timer keybinding...');
         main.wm.addKeybinding(
             'nightthemeswitcher-ondemand-keybinding',
-            this._timeSettings,
+            this.#settings,
             Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
             Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
-            this._toggleTime.bind(this)
+            this.#toggleTime.bind(this)
         );
         console.debug('Added On-demand Timer keybinding.');
     }
 
-    _removeKeybinding() {
-        if (this._previousKeybinding) {
+    #removeKeybinding() {
+        if (this.#previousKeybinding) {
             console.debug('Removing On-demand Timer keybinding...');
             main.wm.removeKeybinding('nightthemeswitcher-ondemand-keybinding');
             console.debug('Removed On-demand Timer keybinding.');
         }
     }
 
-    _addButton() {
-        switch (this._timeSettings.get_string('ondemand-button-placement')) {
+    #addButton() {
+        switch (this.#settings.get_string('ondemand-button-placement')) {
         case 'panel':
-            this._addButtonToPanel();
+            this.#addButtonToPanel();
             break;
         case 'menu':
-            this._addButtonToMenu();
+            this.#addButtonToMenu();
         }
     }
 
-    _removeButton() {
-        if (this._button) {
+    #removeButton() {
+        if (this.#button) {
             console.debug('Removing On-demand Timer button...');
-            this._button.destroy();
-            this._button = null;
+            this.#button.destroy();
+            this.#button = null;
             console.debug('Removed On-demand Timer button.');
         }
     }
 
-    _updateButton() {
-        if (this._button) {
+    #updateButton() {
+        if (this.#button) {
             console.debug('Updating On-demand Timer button state...');
-            this._button.update();
+            this.#button.update();
             console.debug('Updated On-demand Timer button state.');
         }
     }
 
-    _addButtonToPanel() {
+    #addButtonToPanel() {
         console.debug('Adding On-demand Timer button to the panel...');
-        this._button = new NtsPanelMenuButton({ toggleCallback: this._toggleTime.bind(this) });
-        main.panel.addToStatusArea('NightThemeSwitcherButton', this._button);
+        this.#button = new NtsPanelMenuButton({ toggleCallback: this.#toggleTime.bind(this) });
+        main.panel.addToStatusArea('NightThemeSwitcherButton', this.#button);
         console.debug('Added On-demand Timer button to the panel.');
     }
 
-    _addButtonToMenu() {
+    #addButtonToMenu() {
         console.debug('Adding On-demand Timer button to the menu...');
         const aggregateMenu = main.panel.statusArea.aggregateMenu;
         const position = utils.findShellAggregateMenuItemPosition(aggregateMenu._system.menu) - 1;
-        this._button = new NtsPopupSubMenuMenuItem({ toggleCallback: this._toggleTime.bind(this) });
-        aggregateMenu.menu.addMenuItem(this._button, position);
+        this.#button = new NtsPopupSubMenuMenuItem({ toggleCallback: this.#toggleTime.bind(this) });
+        aggregateMenu.menu.addMenuItem(this.#button, position);
         console.debug('Added On-demand Timer button to the menu.');
     }
 
-    _toggleTime() {
-        this._timeSettings.set_string('ondemand-time', e.timer.time === Time.DAY ? Time.NIGHT : Time.DAY);
+    #toggleTime() {
+        this.#settings.set_string('ondemand-time', e.timer.time === Time.DAY ? Time.NIGHT : Time.DAY);
         this.emit('time-changed', this.time);
     }
 };

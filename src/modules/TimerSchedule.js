@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const { GLib } = imports.gi;
@@ -21,54 +21,57 @@ const { Time } = Me.imports.enums.Time;
  * The user can change the schedule in the extension's preferences.
  */
 var TimerSchedule = class {
+    #settings;
+
+    #previouslyDaytime = null;
+    #timeChangeTimer = null;
+
     constructor() {
-        this._timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
-        this._previouslyDaytime = null;
-        this._timeChangeTimer = null;
+        this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
     }
 
     enable() {
         console.debug('Enabling Schedule Timer...');
-        this._watchForTimeChange();
+        this.#watchForTimeChange();
         this.emit('time-changed', this.time);
         console.debug('Schedule Timer enabled.');
     }
 
     disable() {
         console.debug('Disabling Schedule Timer...');
-        this._stopWatchingForTimeChange();
+        this.#stopWatchingForTimeChange();
         console.debug('Schedule Timer disabled.');
     }
 
 
     get time() {
-        return this._isDaytime() ? Time.DAY : Time.NIGHT;
+        return this.#isDaytime() ? Time.DAY : Time.NIGHT;
     }
 
 
-    _isDaytime() {
+    #isDaytime() {
         const time = GLib.DateTime.new_now_local();
         const hour = time.get_hour() + time.get_minute() / 60 + time.get_second() / 3600;
-        return hour >= this._timeSettings.get_double('schedule-sunrise') && hour <= this._timeSettings.get_double('schedule-sunset');
+        return hour >= this.#settings.get_double('schedule-sunrise') && hour <= this.#settings.get_double('schedule-sunset');
     }
 
-    _watchForTimeChange() {
+    #watchForTimeChange() {
         console.debug('Watching for time change...');
-        this._timeChangeTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
+        this.#timeChangeTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
             if (!Me.imports.extension.enabled) {
                 // The extension doesn't exist anymore, quit the loop
                 return false;
             }
-            if (this._previouslyDaytime !== this._isDaytime()) {
-                this._previouslyDaytime = this._isDaytime();
+            if (this.#previouslyDaytime !== this.#isDaytime()) {
+                this.#previouslyDaytime = this.#isDaytime();
                 this.emit('time-changed', this.time);
             }
             return true; // Repeat the loop
         });
     }
 
-    _stopWatchingForTimeChange() {
-        GLib.Source.remove(this._timeChangeTimer);
+    #stopWatchingForTimeChange() {
+        GLib.Source.remove(this.#timeChangeTimer);
         console.debug('Stopped watching for time change.');
     }
 };

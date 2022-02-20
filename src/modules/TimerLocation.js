@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const { Geoclue, GLib } = imports.gi;
@@ -26,81 +26,84 @@ const { Time } = Me.imports.enums.Time;
  * case.
  */
 var TimerLocation = class {
+    #suntimes;
+
+    #previouslyDaytime = null;
+    #geoclue = null;
+    #geoclueConnection = null;
+    #timeChangeTimer = null;
+    #regularlyUpdateSuntimesTimer = null;
+
     constructor() {
-        this._previouslyDaytime = null;
         // Before we have the location suntimes, we'll use the manual schedule
         // times
         const timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
-        this._suntimes = new Map([
+        this.#suntimes = new Map([
             ['sunrise', timeSettings.get_double('schedule-sunrise')],
             ['sunset', timeSettings.get_double('schedule-sunset')],
         ]);
-        this._geoclue = null;
-        this._geoclueConnection = null;
-        this._timeChangeTimer = null;
-        this._regularlyUpdateSuntimesTimer = null;
     }
 
     enable() {
         console.debug('Enabling Location Timer...');
-        this._connectToGeoclue();
-        this._watchForTimeChange();
-        this._regularlyUpdateSuntimes();
+        this.#connectToGeoclue();
+        this.#watchForTimeChange();
+        this.#regularlyUpdateSuntimes();
         console.debug('Location Timer enabled.');
     }
 
     disable() {
         console.debug('Disabling Location Timer...');
-        this._stopRegularlyUpdatingSuntimes();
-        this._stopWatchingForTimeChange();
-        this._disconnectFromGeoclue();
+        this.#stopRegularlyUpdatingSuntimes();
+        this.#stopWatchingForTimeChange();
+        this.#disconnectFromGeoclue();
         console.debug('Location Timer disabled.');
     }
 
 
     get time() {
-        return this._isDaytime() ? Time.DAY : Time.NIGHT;
+        return this.#isDaytime() ? Time.DAY : Time.NIGHT;
     }
 
 
-    _connectToGeoclue() {
+    #connectToGeoclue() {
         console.debug('Connecting to GeoClue...');
         Geoclue.Simple.new(
             'org.gnome.Shell',
             Geoclue.AccuracyLevel.CITY,
             null,
-            this._onGeoclueReady.bind(this)
+            this.#onGeoclueReady.bind(this)
         );
     }
 
-    _disconnectFromGeoclue() {
+    #disconnectFromGeoclue() {
         console.debug('Disconnecting from GeoClue...');
-        if (this._geoclueConnection) {
-            this._geoclue.disconnect(this._geoclueConnection);
-            this._geoclueConnection = null;
+        if (this.#geoclueConnection) {
+            this.#geoclue.disconnect(this.#geoclueConnection);
+            this.#geoclueConnection = null;
         }
         console.debug('Disconnected from GeoClue.');
     }
 
 
-    _onGeoclueReady(_, result) {
-        this._geoclue = Geoclue.Simple.new_finish(result);
-        this._geoclueConnection = this._geoclue.connect('notify::location', this._onLocationUpdated.bind(this));
+    #onGeoclueReady(_, result) {
+        this.#geoclue = Geoclue.Simple.new_finish(result);
+        this.#geoclueConnection = this.#geoclue.connect('notify::location', this.#onLocationUpdated.bind(this));
         console.debug('Connected to GeoClue.');
-        this._onLocationUpdated();
+        this.#onLocationUpdated();
     }
 
-    _onLocationUpdated(_geoclue, _location) {
+    #onLocationUpdated(_geoclue, _location) {
         console.debug('Location has changed.');
-        this._updateLocation();
-        this._updateSuntimes();
+        this.#updateLocation();
+        this.#updateSuntimes();
     }
 
 
-    _updateLocation() {
-        if (this._geoclue) {
+    #updateLocation() {
+        if (this.#geoclue) {
             console.debug('Updating location...');
-            const { latitude, longitude } = this._geoclue.get_location();
+            const { latitude, longitude } = this.#geoclue.get_location();
             this.location = new Map([
                 ['latitude', latitude],
                 ['longitude', longitude],
@@ -109,7 +112,7 @@ var TimerLocation = class {
         }
     }
 
-    _updateSuntimes() {
+    #updateSuntimes() {
         if (!this.location)
             return;
 
@@ -153,48 +156,48 @@ var TimerLocation = class {
         const sunrise = timeSunrise * 24;
         const sunset = timeSunset * 24;
 
-        this._suntimes.set('sunrise', sunrise);
-        this._suntimes.set('sunset', sunset);
+        this.#suntimes.set('sunrise', sunrise);
+        this.#suntimes.set('sunset', sunset);
         console.debug(`New sun times: (sunrise: ${sunrise}; sunset: ${sunset})`);
     }
 
-    _regularlyUpdateSuntimes() {
+    #regularlyUpdateSuntimes() {
         console.debug('Regularly updating sun times...');
-        this._regularlyUpdateSuntimesTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 3600, () => {
-            this._updateSuntimes();
+        this.#regularlyUpdateSuntimesTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 3600, () => {
+            this.#updateSuntimes();
             return true; // Repeat the loop
         });
     }
 
-    _stopRegularlyUpdatingSuntimes() {
-        GLib.Source.remove(this._regularlyUpdateSuntimesTimer);
-        this._regularlyUpdateSuntimesTimer = null;
+    #stopRegularlyUpdatingSuntimes() {
+        GLib.Source.remove(this.#regularlyUpdateSuntimesTimer);
+        this.#regularlyUpdateSuntimesTimer = null;
         console.debug('Stopped regularly updating sun times.');
     }
 
-    _isDaytime() {
+    #isDaytime() {
         const time = GLib.DateTime.new_now_local();
         const hour = time.get_hour() + time.get_minute() / 60 + time.get_second() / 3600;
-        return hour >= this._suntimes.get('sunrise') && hour <= this._suntimes.get('sunset');
+        return hour >= this.#suntimes.get('sunrise') && hour <= this.#suntimes.get('sunset');
     }
 
-    _watchForTimeChange() {
+    #watchForTimeChange() {
         console.debug('Watching for time change...');
-        this._timeChangeTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
+        this.#timeChangeTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
             if (!Me.imports.extension.enabled) {
                 // The extension doesn't exist anymore, quit the loop
                 return false;
             }
-            if (this._previouslyDaytime !== this._isDaytime()) {
-                this._previouslyDaytime = this._isDaytime();
+            if (this.#previouslyDaytime !== this.#isDaytime()) {
+                this.#previouslyDaytime = this.#isDaytime();
                 this.emit('time-changed', this.time);
             }
             return true; // Repeat the loop
         });
     }
 
-    _stopWatchingForTimeChange() {
-        GLib.Source.remove(this._timeChangeTimer);
+    #stopWatchingForTimeChange() {
+        GLib.Source.remove(this.#timeChangeTimer);
         console.debug('Stopped watching for time change.');
     }
 };

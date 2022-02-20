@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 const { Gio } = imports.gi;
@@ -28,41 +28,44 @@ const COLOR_INTERFACE = `
  * 'NightLightActive' property and will signal any change.
  */
 var TimerNightlight = class {
+    #settings;
+
+    #colorDbusProxy = null;
+    #settingsConnections = [];
+    #nightlightStateConnection = null;
+    #previousNightlightActive = null;
+
     constructor() {
-        this._timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
-        this._colorDbusProxy = null;
-        this._settingsConnections = [];
-        this._nightlightStateConnection = null;
-        this._previousNightlightActive = null;
+        this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
     }
 
     enable() {
         console.debug('Enabling Night Light Timer...');
-        this._connectToColorDbusProxy();
-        this._connectSettings();
-        this._listenToNightlightState();
+        this.#connectToColorDbusProxy();
+        this.#connectSettings();
+        this.#listenToNightlightState();
         this.emit('time-changed', this.time);
         console.debug('Night Light Timer enabled.');
     }
 
     disable() {
         console.debug('Disabling Night Light Timer...');
-        this._stopListeningToNightlightState();
-        this._disconnectSettings();
-        this._disconnectFromColorDbusProxy();
+        this.#stopListeningToNightlightState();
+        this.#disconnectSettings();
+        this.#disconnectFromColorDbusProxy();
         console.debug('Night Light Timer disabled.');
     }
 
 
     get time() {
-        return this._isNightlightActive() ? Time.NIGHT : Time.DAY;
+        return this.#isNightlightActive() ? Time.NIGHT : Time.DAY;
     }
 
 
-    _connectToColorDbusProxy() {
+    #connectToColorDbusProxy() {
         console.debug('Connecting to Color DBus proxy...');
         const ColorProxy = Gio.DBusProxy.makeProxyWrapper(COLOR_INTERFACE);
-        this._colorDbusProxy = new ColorProxy(
+        this.#colorDbusProxy = new ColorProxy(
             Gio.DBus.session,
             'org.gnome.SettingsDaemon.Color',
             '/org/gnome/SettingsDaemon/Color'
@@ -70,57 +73,57 @@ var TimerNightlight = class {
         console.debug('Connected to Color DBus proxy.');
     }
 
-    _disconnectFromColorDbusProxy() {
+    #disconnectFromColorDbusProxy() {
         console.debug('Disconnecting from Color DBus proxy...');
-        this._colorDbusProxy = null;
+        this.#colorDbusProxy = null;
         console.debug('Disconnected from Color DBus proxy.');
     }
 
-    _connectSettings() {
+    #connectSettings() {
         console.debug('Connecting Night Light Timer to settings...');
-        this._settingsConnections.push({
-            settings: this._timeSettings,
-            id: this._timeSettings.connect('changed::nightlight-follow-disable', this._onNightlightFollowDisableChanged.bind(this)),
+        this.#settingsConnections.push({
+            settings: this.#settings,
+            id: this.#settings.connect('changed::nightlight-follow-disable', this.#onNightlightFollowDisableChanged.bind(this)),
         });
     }
 
-    _disconnectSettings() {
+    #disconnectSettings() {
         console.debug('Disconnecting Night Light Timer from settings...');
-        this._settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
-        this._settingsConnections = [];
+        this.#settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
+        this.#settingsConnections = [];
     }
 
-    _listenToNightlightState() {
+    #listenToNightlightState() {
         console.debug('Listening to Night Light state...');
-        this._nightlightStateConnection = this._colorDbusProxy.connect(
+        this.#nightlightStateConnection = this.#colorDbusProxy.connect(
             'g-properties-changed',
-            this._onNightlightStateChanged.bind(this)
+            this.#onNightlightStateChanged.bind(this)
         );
     }
 
-    _stopListeningToNightlightState() {
-        this._colorDbusProxy.disconnect(this._nightlightStateConnection);
+    #stopListeningToNightlightState() {
+        this.#colorDbusProxy.disconnect(this.#nightlightStateConnection);
         console.debug('Stopped listening to Night Light state.');
     }
 
 
-    _onNightlightFollowDisableChanged() {
-        this._onNightlightStateChanged();
+    #onNightlightFollowDisableChanged() {
+        this.#onNightlightStateChanged();
     }
 
-    _onNightlightStateChanged(_sender, _dbusProperties) {
-        if (this._isNightlightActive() !== this._previousNightlightActive) {
-            console.debug(`Night Light has become ${this._isNightlightActive() ? '' : 'in'}active.`);
-            this._previousNightlightActive = this._isNightlightActive();
+    #onNightlightStateChanged(_sender, _dbusProperties) {
+        if (this.#isNightlightActive() !== this.#previousNightlightActive) {
+            console.debug(`Night Light has become ${this.#isNightlightActive() ? '' : 'in'}active.`);
+            this.#previousNightlightActive = this.#isNightlightActive();
             this.emit('time-changed', this.time);
         }
     }
 
 
-    _isNightlightActive() {
-        return this._timeSettings.get_boolean('nightlight-follow-disable')
-            ? !this._colorDbusProxy.DisabledUntilTomorrow && this._colorDbusProxy.NightLightActive
-            : this._colorDbusProxy.NightLightActive;
+    #isNightlightActive() {
+        return this.#settings.get_boolean('nightlight-follow-disable')
+            ? !this.#colorDbusProxy.DisabledUntilTomorrow && this.#colorDbusProxy.NightLightActive
+            : this.#colorDbusProxy.NightLightActive;
     }
 };
 Signals.addSignalMethods(TimerNightlight.prototype);
