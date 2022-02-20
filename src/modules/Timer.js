@@ -79,9 +79,9 @@ var Timer = class {
             return;
         console.debug(`Time has changed to ${time}.`);
         this.#time = time;
-        this.#interfaceSettings.set_string('color-scheme', time === Time.NIGHT ? 'prefer-dark' : 'default');
         if (this.#settings.get_boolean('transition'))
             main.layoutManager.screenTransition.run();
+        this.#interfaceSettings.set_string('color-scheme', time === Time.NIGHT ? 'prefer-dark' : 'default');
         this.emit('time-changed', time);
     }
 
