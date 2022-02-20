@@ -35,6 +35,8 @@ class NightThemeSwitcher {
     }
 
     enable() {
+        // We need to wait for the extension manager to be initialized in order
+        // to access the User Themes extension settings.
         this.#waitForExtensionManager().then(() => this.start());
     }
 
@@ -92,6 +94,9 @@ class NightThemeSwitcher {
     }
 
     #migrateBackgroundSettings() {
+        // GNOME 42 has its own background switching mechanism. Move the day
+        // and night backgrounds settings from the extension to the shell.
+        // Only run once when the extension is initialized.
         const systemSettings = new Gio.Settings({ schema: 'org.gnome.desktop.background' });
         const extensionSettings = extensionUtils.getSettings(utils.getSettingsSchema('backgrounds'));
 
