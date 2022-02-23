@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 11:38+0100\n"
+"POT-Creation-Date: 2022-02-23 22:56+0100\n"
 "PO-Revision-Date: 2021-08-20 09:50+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/night-"
@@ -21,48 +21,52 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.8-dev\n"
 
-#: src/modules/TimerOndemand.js:206
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:206
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:218
+#: src/modules/TimerOndemand.js:228
 #, fuzzy
 msgid "Extension Settings"
 msgstr "Ingen innstillinger"
 
-#: src/modules/TimerOndemand.js:227
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:227
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:228
+#: src/modules/TimerOndemand.js:238
 msgid "Turn On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:228
+#: src/modules/TimerOndemand.js:238
 msgid "Turn Off"
 msgstr ""
 
-#: src/preferences/SchedulePage.js:45 src/preferences/ui/SchedulePage.ui:63
+#: src/preferences/BackgroundButton.js:71
+msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
+msgstr ""
+
+#: src/preferences/SchedulePage.js:43 src/preferences/ui/SchedulePage.ui:62
 msgid "Night Light"
 msgstr "Nattlys"
 
-#: src/preferences/SchedulePage.js:49
+#: src/preferences/SchedulePage.js:48
 msgid "Location Services"
 msgstr "Posisjonstjenester"
 
-#: src/preferences/SchedulePage.js:57
+#: src/preferences/SchedulePage.js:56 src/preferences/ui/SchedulePage.ui:79
 msgid "Manual schedule"
 msgstr "Manuell timeplan"
 
-#: src/preferences/SchedulePage.js:58 src/preferences/ui/SchedulePage.ui:109
+#: src/preferences/SchedulePage.js:57 src/preferences/ui/SchedulePage.ui:108
 msgid "On-demand"
 msgstr "Ved behov"
 
@@ -231,7 +235,7 @@ msgid "Path to the night background"
 msgstr "Sti til natt-bakgrunnen"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:120
-#: src/preferences/ui/SchedulePage.ui:43
+#: src/preferences/ui/SchedulePage.ui:27
 msgid "Time source"
 msgstr "Tidskilde"
 
@@ -309,7 +313,7 @@ msgid "When the day ends"
 msgstr "Når dagen slutter"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
-#: src/preferences/ui/SchedulePage.ui:15
+#: src/preferences/ui/SchedulePage.ui:50
 msgid "Transition"
 msgstr ""
 
@@ -345,7 +349,7 @@ msgstr "Kommandoer"
 msgid "Run commands"
 msgstr "Kjør kommandoer"
 
-#: src/preferences/ui/CommandsPage.ui:21 src/preferences/ui/SchedulePage.ui:83
+#: src/preferences/ui/CommandsPage.ui:21 src/preferences/ui/SchedulePage.ui:82
 msgid "Sunrise"
 msgstr "Soloppgang"
 
@@ -354,7 +358,7 @@ msgstr "Soloppgang"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Hei solskinn.\""
 
-#: src/preferences/ui/CommandsPage.ui:35 src/preferences/ui/SchedulePage.ui:95
+#: src/preferences/ui/CommandsPage.ui:35 src/preferences/ui/SchedulePage.ui:94
 msgid "Sunset"
 msgstr "Solnedgang"
 
@@ -383,15 +387,11 @@ msgstr ""
 msgid "Schedule"
 msgstr "Timeplan"
 
-#: src/preferences/ui/SchedulePage.ui:16
-msgid "Smooth transition between day and night appearance."
-msgstr ""
-
-#: src/preferences/ui/SchedulePage.ui:31
+#: src/preferences/ui/SchedulePage.ui:15
 msgid "Manual time source"
 msgstr "Manuell tidskilde"
 
-#: src/preferences/ui/SchedulePage.ui:32
+#: src/preferences/ui/SchedulePage.ui:16
 msgid ""
 "The extension will try to use Night Light or Location Services to "
 "automatically set your current sunrise and sunset times if they are enabled. "
@@ -401,12 +401,12 @@ msgstr ""
 "automatisk sette din nåværende soloppgang- og solnedgangstider hvis de er "
 "påslått. Hvis du foretrekker det, kan du manuelt velge en tidskilde."
 
-#: src/preferences/ui/SchedulePage.ui:49
+#: src/preferences/ui/SchedulePage.ui:33
 #, fuzzy
 msgid "Always show on-demand controls"
 msgstr "Alltid vis behovsprøvde kontroller"
 
-#: src/preferences/ui/SchedulePage.ui:50
+#: src/preferences/ui/SchedulePage.ui:34
 #, fuzzy
 #| msgid ""
 #| "<small>This allows you to override the current time when using a schedule."
@@ -416,26 +416,30 @@ msgstr ""
 "<small>Dette lar deg overstyre nåværende tid når du bruker en timeplan.</"
 "small>"
 
-#: src/preferences/ui/SchedulePage.ui:66
+#: src/preferences/ui/SchedulePage.ui:47
+msgid "Advanced Settings"
+msgstr ""
+
+#: src/preferences/ui/SchedulePage.ui:51
+msgid "Smooth transition between day and night appearance."
+msgstr ""
+
+#: src/preferences/ui/SchedulePage.ui:65
 msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "Følg <i>Skru av til i morgen</i>"
 
-#: src/preferences/ui/SchedulePage.ui:67
+#: src/preferences/ui/SchedulePage.ui:66
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
 "Når nattlys skrus av midlertidig, vil tillegget bytte til dag-variantene."
 
-#: src/preferences/ui/SchedulePage.ui:80
-msgid "Manual schedule times"
-msgstr "Planlegg tider manuelt"
-
-#: src/preferences/ui/SchedulePage.ui:112
+#: src/preferences/ui/SchedulePage.ui:111
 msgid "Keyboard shortcut"
 msgstr "Tastatursnarvei"
 
-#: src/preferences/ui/SchedulePage.ui:123
+#: src/preferences/ui/SchedulePage.ui:122
 msgid "Button location"
 msgstr "Knappeposisjon"
 
@@ -503,6 +507,9 @@ msgstr "Pekerdrakt"
 #: src/preferences/ui/TimeChooser.ui:23
 msgid ":"
 msgstr ":"
+
+#~ msgid "Manual schedule times"
+#~ msgstr "Planlegg tider manuelt"
 
 #~ msgid "Enable backgrounds"
 #~ msgstr "Skru på bakgrunner"
