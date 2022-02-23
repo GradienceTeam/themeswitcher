@@ -34,13 +34,23 @@ var BackgroundButton = GObject.registerClass({
             'Height of the displayed thumbnail',
             GObject.ParamFlags.READWRITE,
             0, 600,
-            120
+            180
         ),
     },
 }, class BackgroundButton extends Gtk.Button {
     constructor(props = {}) {
         super(props);
+        this.#setupSize();
         this.#setupDropTarget();
+    }
+
+    #setupSize() {
+        const display = Gdk.Display.get_default();
+        const monitor = display.get_monitors().get_item(0);
+        if (monitor.width_mm > monitor.height_mm)
+            this.thumb_height *= monitor.height_mm / monitor.width_mm;
+        else
+            this.thumb_width *= monitor.width_mm / monitor.height_mm;
     }
 
     #setupDropTarget() {
