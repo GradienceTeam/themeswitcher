@@ -89,8 +89,12 @@ var BackgroundButton = GObject.registerClass({
 
         let path;
         const file = Gio.File.new_for_uri(uri);
-        const contentType = Gio.content_type_guess(file.get_path(), null)[0];
-        if (Gio.content_type_equals(contentType, 'image/jpeg') || Gio.content_type_equals(contentType, 'image/png') || Gio.content_type_equals(contentType, 'image/tiff')) {
+        const contentType = Gio.content_type_guess(file.get_basename(), null)[0];
+        if (
+            Gio.content_type_equals(contentType, 'image/jpeg') ||
+            Gio.content_type_equals(contentType, 'image/png') ||
+            Gio.content_type_equals(contentType, 'image/tiff')
+        ) {
             path = file.get_path();
         } else if (Gio.content_type_equals(contentType, 'application/xml')) {
             const decoder = new TextDecoder('utf-8');
