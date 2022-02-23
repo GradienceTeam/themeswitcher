@@ -44,7 +44,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </child>
     <child>
       <object class="AdwPreferencesGroup">
-        <property name="title" translatable="yes">Advanced Settings</property>
+        <property name="title" translatable="yes">Advanced</property>
         <child>
           <object class="AdwActionRow">
             <property name="title" translatable="yes">Transition</property>
