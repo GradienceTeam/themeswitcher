@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-23 22:56+0100\n"
+"POT-Creation-Date: 2022-02-23 23:40+0100\n"
 "PO-Revision-Date: 2022-02-11 18:42+0000\n"
 "Last-Translator: poi <erbaotao@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -398,7 +398,7 @@ msgid "Allows you to override the current time when using a schedule."
 msgstr "用于在安排时强制设定当前时间。"
 
 #: src/preferences/ui/SchedulePage.ui:47
-msgid "Advanced Settings"
+msgid "Advanced"
 msgstr ""
 
 #: src/preferences/ui/SchedulePage.ui:51

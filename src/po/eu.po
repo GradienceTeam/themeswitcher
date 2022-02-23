@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-23 22:56+0100\n"
+"POT-Creation-Date: 2022-02-23 23:40+0100\n"
 "PO-Revision-Date: 2021-09-20 00:46+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/night-theme-"
@@ -405,7 +405,7 @@ msgstr ""
 "daiteke."
 
 #: src/preferences/ui/SchedulePage.ui:47
-msgid "Advanced Settings"
+msgid "Advanced"
 msgstr ""
 
 #: src/preferences/ui/SchedulePage.ui:51

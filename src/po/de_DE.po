@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 45\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-23 22:56+0100\n"
+"POT-Creation-Date: 2022-02-23 23:40+0100\n"
 "PO-Revision-Date: 2021-09-21 08:55+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/night-theme-"
@@ -406,7 +406,7 @@ msgstr ""
 "Diese Einstellung erlaubt es Ihnen, den aktuellen Zeitplan zu überschreiben."
 
 #: src/preferences/ui/SchedulePage.ui:47
-msgid "Advanced Settings"
+msgid "Advanced"
 msgstr ""
 
 #: src/preferences/ui/SchedulePage.ui:51
