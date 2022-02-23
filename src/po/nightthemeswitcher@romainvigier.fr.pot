@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 11:38+0100\n"
+"POT-Creation-Date: 2022-02-23 21:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/TimerOndemand.js:206
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:206
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:218
+#: src/modules/TimerOndemand.js:228
 msgid "Extension Settings"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:227
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:227
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:228
+#: src/modules/TimerOndemand.js:238
 msgid "Turn On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:228
+#: src/modules/TimerOndemand.js:238
 msgid "Turn Off"
+msgstr ""
+
+#: src/preferences/BackgroundButton.js:61
+msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
 msgstr ""
 
 #: src/preferences/SchedulePage.js:45 src/preferences/ui/SchedulePage.ui:63
@@ -61,15 +65,15 @@ msgstr ""
 msgid "On-demand"
 msgstr ""
 
-#: src/preferences/SchedulePage.js:90
+#: src/preferences/SchedulePage.js:91
 msgid "None"
 msgstr ""
 
-#: src/preferences/SchedulePage.js:91
+#: src/preferences/SchedulePage.js:92
 msgid "Top bar"
 msgstr ""
 
-#: src/preferences/SchedulePage.js:92
+#: src/preferences/SchedulePage.js:93
 msgid "System menu"
 msgstr ""
 

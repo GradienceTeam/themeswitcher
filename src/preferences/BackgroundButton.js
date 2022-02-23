@@ -1,10 +1,11 @@
 // SPDX-FileCopyrightText: 2021, 2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const { Gdk, GdkPixbuf, Gio, GLib, GObject, Gtk } = imports.gi;
+const { Adw, Gdk, GdkPixbuf, Gio, GLib, GObject, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
+const _ = extensionUtils.gettext;
 
 
 var BackgroundButton = GObject.registerClass({
@@ -37,6 +38,36 @@ var BackgroundButton = GObject.registerClass({
         ),
     },
 }, class BackgroundButton extends Gtk.Button {
+    constructor(props = {}) {
+        super(props);
+        this.#setupDropTarget();
+    }
+
+    #setupDropTarget() {
+        const dropTarget = Gtk.DropTarget.new(Gio.File.$gtype, Gdk.DragAction.COPY);
+        dropTarget.connect('drop', (_target, file, _x, _y) => {
+            const contentType = Gio.content_type_guess(file.get_basename(), null)[0];
+            if (
+                Gio.content_type_equals(contentType, 'image/jpeg') ||
+                Gio.content_type_equals(contentType, 'image/png') ||
+                Gio.content_type_equals(contentType, 'image/tiff') ||
+                Gio.content_type_equals(contentType, 'application/xml')
+            ) {
+                this.uri = file.get_uri();
+                return true;
+            } else {
+                if (this.root instanceof Adw.PreferencesWindow) {
+                    this.root.add_toast(new Adw.Toast({
+                        title: _('Only JPEG, PNG, TIFF and XML files can be set as background image.'),
+                        timeout: 10,
+                    }));
+                }
+                return false;
+            }
+        });
+        this.add_controller(dropTarget);
+    }
+
     openFileChooser() {
         this._filechooser.transient_for = this.get_root();
         this._filechooser.show();
