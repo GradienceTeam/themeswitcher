@@ -25,9 +25,7 @@ var SchedulePage = GObject.registerClass({
         'schedule_sunset_time_chooser',
         'ondemand_shortcut_button',
         'ondemand_button_location_combo_row',
-        'nightlight_preferences_group',
-        'manual_schedule_preferences_group',
-        'ondemand_preferences_group',
+        'nightlight_expander_row',
     ],
 }, class SchedulePage extends Adw.PreferencesPage {
     constructor(props = {}) {
@@ -44,6 +42,7 @@ var SchedulePage = GObject.registerClass({
 
         const nightlightChoice = new DropDownChoice({ id: 'nightlight', title: _('Night Light') });
         nightlightChoice.connect('notify::enabled', () => choiceFilter.changed(Gtk.FilterChange.DIFFERENT));
+        nightlightChoice.bind_property('enabled', this._nightlight_expander_row, 'visible', GObject.BindingFlags.DEFAULT);
         colorSettings.bind('night-light-enabled', nightlightChoice, 'enabled', Gio.SettingsBindFlags.GET);
 
         const locationChoice = new DropDownChoice({ id: 'location', title: _('Location Services') });
@@ -101,15 +100,5 @@ var SchedulePage = GObject.registerClass({
         };
         settings.connect('changed::ondemand-button-placement', () => updateOndemandButtonLocationComboRowSelected());
         updateOndemandButtonLocationComboRowSelected();
-
-        const updateGroupsVisibility = () => {
-            const timeSource = settings.get_string('time-source');
-            this._nightlight_preferences_group.visible = timeSource === 'nightlight';
-            this._manual_schedule_preferences_group.visible = timeSource === 'schedule';
-            this._ondemand_preferences_group.visible = timeSource === 'ondemand' || settings.get_boolean('always-enable-ondemand');
-        };
-        settings.connect('changed::time-source', () => updateGroupsVisibility());
-        settings.connect('changed::always-enable-ondemand', () => updateGroupsVisibility());
-        updateGroupsVisibility();
     }
 });
