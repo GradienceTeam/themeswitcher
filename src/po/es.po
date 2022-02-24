@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-23 23:40+0100\n"
-"PO-Revision-Date: 2022-02-20 12:11+0000\n"
+"PO-Revision-Date: 2022-02-25 14:37+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/es/>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,6 +50,8 @@ msgstr "Desactivar"
 #: src/preferences/BackgroundButton.js:71
 msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
 msgstr ""
+"Sólo se pueden establecer como imagen de fondo archivos JPEG, PNG, TIFF y "
+"XML."
 
 #: src/preferences/SchedulePage.js:43 src/preferences/ui/SchedulePage.ui:62
 msgid "Night Light"
@@ -402,7 +404,7 @@ msgstr "Esto le permite anular la hora actual cuando se utiliza un horario."
 
 #: src/preferences/ui/SchedulePage.ui:47
 msgid "Advanced"
-msgstr ""
+msgstr "Avanzado"
 
 #: src/preferences/ui/SchedulePage.ui:51
 msgid "Smooth transition between day and night appearance."
