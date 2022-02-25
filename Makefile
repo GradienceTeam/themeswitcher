@@ -12,15 +12,11 @@ build:
 	mkdir -p ./build
 	gnome-extensions pack \
 		--force \
-		--extra-source=./config.js \
 		--extra-source=./utils.js \
 		--extra-source=./enums/ \
 		--extra-source=./icons/ \
 		--extra-source=./modules/ \
 		--extra-source=./preferences/ \
-		--extra-source=./schemas/ \
-		--podir=./po/ \
-		--gettext-domain=$(DOMAIN) \
 		--out-dir=./build \
 		./src
 
