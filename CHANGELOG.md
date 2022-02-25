@@ -6,6 +6,22 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [58] - 2022-02-25
+
+### Added
+- Allow dropping images on background chooser button
+- Keep extension enabled on lock screen
+
+### Changed
+- Time source settings grouped under an Advanced section
+- Background chooser button follows monitor aspect ratio
+- Updated Dutch translation by @Vistaus
+- Updated French translation
+- Updated Norwegian Bokmål translation by @kingu
+- Updated Spanish translation by @oscfdezdz
+- Updated Turkish translation by @ersen
+
+
 ## [57] - 2022-02-20
 
 ### Fixed
