@@ -7,41 +7,44 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-23 23:40+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-02-26 10:43+0000\n"
+"Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
+"Language-Team: Occitan <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/oc/>\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.11.1-dev\n"
 
 #: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
-msgstr ""
+msgstr "Activar lo mòde nuèch"
 
 #: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode Off"
-msgstr ""
+msgstr "Desactivar lo mòde nuèch"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Extension Settings"
-msgstr ""
+msgstr "Preferéncias de l’extension"
 
 #: src/modules/TimerOndemand.js:237
 msgid "Night Mode Off"
-msgstr ""
+msgstr "Mòde nucèh desactivat"
 
 #: src/modules/TimerOndemand.js:237
 msgid "Night Mode On"
-msgstr ""
+msgstr "Mòde nuèch activat"
 
 #: src/modules/TimerOndemand.js:238
 msgid "Turn On"
-msgstr ""
+msgstr "Activar"
 
 #: src/modules/TimerOndemand.js:238
 msgid "Turn Off"
-msgstr ""
+msgstr "Desactivar"
 
 #: src/preferences/BackgroundButton.js:71
 msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
@@ -49,39 +52,39 @@ msgstr ""
 
 #: src/preferences/SchedulePage.js:43 src/preferences/ui/SchedulePage.ui:62
 msgid "Night Light"
-msgstr ""
+msgstr "Lutz nocturna"
 
 #: src/preferences/SchedulePage.js:48
 msgid "Location Services"
-msgstr ""
+msgstr "Servicis de localizacion"
 
 #: src/preferences/SchedulePage.js:56 src/preferences/ui/SchedulePage.ui:79
 msgid "Manual schedule"
-msgstr ""
+msgstr "Orari manual"
 
 #: src/preferences/SchedulePage.js:57 src/preferences/ui/SchedulePage.ui:108
 msgid "On-demand"
-msgstr ""
+msgstr "A la demanda"
 
 #: src/preferences/SchedulePage.js:90
 msgid "None"
-msgstr ""
+msgstr "Cap"
 
 #: src/preferences/SchedulePage.js:91
 msgid "Top bar"
-msgstr ""
+msgstr "Barra superiora"
 
 #: src/preferences/SchedulePage.js:92
 msgid "System menu"
-msgstr ""
+msgstr "Menú sistèma"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
-msgstr ""
+msgstr "Per defaut"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
-msgstr ""
+msgstr "Version dels paramètres"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
 msgid "The current extension settings version"
