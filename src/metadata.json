@@ -5,6 +5,7 @@
 	"gettext-domain": "nightthemeswitcher@romainvigier.fr",
 	"settings-schema": "org.gnome.shell.extensions.nightthemeswitcher",
 	"url": "https://nightthemeswitcher.romainvigier.fr",
+	"session-modes": ["unlock-dialog", "user"],
 	"shell-version": ["42"],
 	"version": 57
 }
