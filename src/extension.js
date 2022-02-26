@@ -61,6 +61,9 @@ class NightThemeSwitcher {
     }
 
     disable() {
+        // Extension won't be disabled in `unlock-dialog` session mode. This is
+        // to enable the color scheme switch while the lock screen is displayed,
+        // as the background image and the shell theme are visible in this mode.
         console.debug('Disabling extension...');
         enabled = false;
 
