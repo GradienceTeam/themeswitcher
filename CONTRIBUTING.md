@@ -21,13 +21,19 @@ You're welcome to contribute to the [code](#contributing-to-the-code) or to the 
 
 ## Contributing to the code
 
-You'll need `make` and [NPM](https://www.npmjs.com/) to install the development dependencies:
+You'll need [NPM](https://www.npmjs.com/) to install the development dependencies:
 
 ```bash
 npm install --save-dev
 ```
 
-When you're done, commit all your changes and create a new merge request. Choose the appropriate merge request template.
+When you're done, commit all your changes. Make one commit per change. The commit message must include which part of the code you worked on. Example:
+
+```
+Commands Switcher: Change spawned command
+```
+
+You can then push to a branch and create a new merge request.
 
 ### Coding style
 
