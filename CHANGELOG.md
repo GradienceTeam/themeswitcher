@@ -6,6 +6,12 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [59] 0 2022-02-26
+
+### Added
+- Initial work on Occitan translation by @quenty_occitania
+
+
 ## [58] - 2022-02-25
 
 ### Added
