@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-23 23:40+0100\n"
-"PO-Revision-Date: 2022-02-11 18:42+0000\n"
+"PO-Revision-Date: 2022-03-07 10:54+0000\n"
 "Last-Translator: poi <erbaotao@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/zh_Hans/>\n"
@@ -16,39 +16,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
-msgstr ""
+msgstr "打开夜间模式"
 
 #: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode Off"
-msgstr ""
+msgstr "关闭夜间模式"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Extension Settings"
-msgstr ""
+msgstr "扩展程序设置"
 
 #: src/modules/TimerOndemand.js:237
 msgid "Night Mode Off"
-msgstr ""
+msgstr "夜间模式关闭"
 
 #: src/modules/TimerOndemand.js:237
 msgid "Night Mode On"
-msgstr ""
+msgstr "夜间模式开启"
 
 #: src/modules/TimerOndemand.js:238
 msgid "Turn On"
-msgstr ""
+msgstr "开启"
 
 #: src/modules/TimerOndemand.js:238
 msgid "Turn Off"
-msgstr ""
+msgstr "关闭"
 
 #: src/preferences/BackgroundButton.js:71
 msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
-msgstr ""
+msgstr "背景图片必须是 JPEG、PNG、TIFF 或 XML 格式。"
 
 #: src/preferences/SchedulePage.js:43 src/preferences/ui/SchedulePage.ui:62
 msgid "Night Light"
@@ -304,11 +304,11 @@ msgstr "白天什么时候结束"
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
 #: src/preferences/ui/SchedulePage.ui:50
 msgid "Transition"
-msgstr ""
+msgstr "渐变过渡"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
 msgid "Use a transition when changing the color scheme"
-msgstr ""
+msgstr "渐变地切换色彩设计"
 
 #: src/preferences/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -319,10 +319,8 @@ msgid "Select your background image"
 msgstr "选择您要用的背景图片"
 
 #: src/preferences/ui/BackgroundsPage.ui:9
-#, fuzzy
-#| msgid "Day background"
 msgid "Backgrounds"
-msgstr "日间背景"
+msgstr "背景"
 
 #: src/preferences/ui/ClearableEntry.ui:10
 #: src/preferences/ui/ShortcutButton.ui:43
@@ -358,19 +356,19 @@ msgstr "notify-send \"有月影 在水面 漂流不定\""
 
 #: src/preferences/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "支持本软件"
 
 #: src/preferences/ui/ContributePage.ui:42
 msgid "View the code and report issues"
-msgstr ""
+msgstr "查看源代码，提交软件错误"
 
 #: src/preferences/ui/ContributePage.ui:55
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "帮忙翻译本软件"
 
 #: src/preferences/ui/ContributePage.ui:68
 msgid "Support me with a donation"
-msgstr ""
+msgstr "捐款支持我开发本软件"
 
 #: src/preferences/ui/SchedulePage.ui:9
 msgid "Schedule"
@@ -399,11 +397,11 @@ msgstr "用于在安排时强制设定当前时间。"
 
 #: src/preferences/ui/SchedulePage.ui:47
 msgid "Advanced"
-msgstr ""
+msgstr "高级设置"
 
 #: src/preferences/ui/SchedulePage.ui:51
 msgid "Smooth transition between day and night appearance."
-msgstr ""
+msgstr "渐变地过渡日间模式和夜间模式。"
 
 #: src/preferences/ui/SchedulePage.ui:65
 msgid "Follow <i>Disable until tomorrow</i>"
@@ -437,25 +435,25 @@ msgstr "按下您想设置的键盘快捷键……"
 
 #: src/preferences/ui/ThemesPage.ui:9
 msgid "Themes"
-msgstr ""
+msgstr "主题"
 
 #: src/preferences/ui/ThemesPage.ui:15
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
-msgstr ""
+msgstr "GNOME 有自带的、兼容本扩展程序的深色模式。最好只在旧版不兼容时再手动切换主题"
+"，其他情况下最好不要手动切换。"
 
 #: src/preferences/ui/ThemesPage.ui:28
-#, fuzzy
-#| msgid "Day GTK theme"
 msgid "GTK theme"
-msgstr "日间 GTK 主题"
+msgstr "GTK 主题"
 
 #: src/preferences/ui/ThemesPage.ui:29
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
-msgstr ""
+msgstr "对于设计时没有考虑深色主题的软件，非要使用深色主题可能会有“不良反应”，比如说"
+"，文字可能没法读、图标可能看不见。"
 
 #: src/preferences/ui/ThemesPage.ui:37 src/preferences/ui/ThemesPage.ui:57
 #: src/preferences/ui/ThemesPage.ui:77 src/preferences/ui/ThemesPage.ui:97
@@ -468,22 +466,16 @@ msgid "Night variant"
 msgstr "夜间模式"
 
 #: src/preferences/ui/ThemesPage.ui:49
-#, fuzzy
-#| msgid "Day shell theme"
 msgid "Shell theme"
-msgstr "日间 shell 主题"
+msgstr "Shell 主题"
 
 #: src/preferences/ui/ThemesPage.ui:69
-#, fuzzy
-#| msgid "Day icon theme"
 msgid "Icon theme"
-msgstr "日间图标主题"
+msgstr "图标主题"
 
 #: src/preferences/ui/ThemesPage.ui:89
-#, fuzzy
-#| msgid "Day cursor theme"
 msgid "Cursor theme"
-msgstr "日间指针主题"
+msgstr "指针主题"
 
 #. Time separator (eg. 08:27)
 #: src/preferences/ui/TimeChooser.ui:23
