@@ -60,13 +60,13 @@ var TimerSchedule = class {
         this.#timeChangeTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
             if (!Me.imports.extension.enabled) {
                 // The extension doesn't exist anymore, quit the loop
-                return false;
+                return GLib.SOURCE_REMOVE;
             }
             if (this.#previouslyDaytime !== this.#isDaytime()) {
                 this.#previouslyDaytime = this.#isDaytime();
                 this.emit('time-changed', this.time);
             }
-            return true; // Repeat the loop
+            return GLib.SOURCE_CONTINUE;
         });
     }
 

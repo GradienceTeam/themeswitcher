@@ -103,7 +103,7 @@ class NightThemeSwitcher {
             GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
                 while (!extensionManager._initialized)
                     continue;
-                return false;
+                return GLib.SOURCE_REMOVE;
             });
             console.debug('Extension Manager initialized.');
             resolve();
