@@ -37,7 +37,9 @@ class NightThemeSwitcher {
     enable() {
         // We need to wait for the extension manager to be initialized in order
         // to access the User Themes extension settings.
-        this.#waitForExtensionManager().then(() => this.start());
+        this.#waitForExtensionManager()
+            .then(() => this.start())
+            .catch(e => console.error(e));
     }
 
     start() {
