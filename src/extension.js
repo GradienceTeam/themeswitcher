@@ -69,19 +69,31 @@ class NightThemeSwitcher {
         console.debug('Disabling extension...');
         enabled = false;
 
-        this.#switcherThemeGtk.disable();
-        this.#switcherThemeShell.disable();
-        this.#switcherThemeIcon.disable();
-        this.#switcherThemeCursor.disable();
-        this.#switcherCommands.disable();
-        this.#timer.disable();
+        if (this.#switcherThemeGtk) {
+            this.#switcherThemeGtk.disable();
+            this.#switcherThemeGtk = null;
+        }
+        if (this.#switcherThemeShell) {
+            this.#switcherThemeShell.disable();
+            this.#switcherThemeShell = null;
+        }
+        if (this.#switcherThemeIcon) {
+            this.#switcherThemeIcon.disable();
+            this.#switcherThemeIcon = null;
+        }
+        if (this.#switcherThemeCursor) {
+            this.#switcherThemeCursor.disable();
+            this.#switcherThemeCursor = null;
+        }
+        if (this.#switcherCommands) {
+            this.#switcherCommands.disable();
+            this.#switcherCommands = null;
+        }
+        if (this.#timer) {
+            this.#timer.disable();
+            this.#timer = null;
+        }
 
-        this.#timer = null;
-        this.#switcherThemeGtk = null;
-        this.#switcherThemeShell = null;
-        this.#switcherThemeIcon = null;
-        this.#switcherThemeCursor = null;
-        this.#switcherCommands = null;
         console.debug('Extension disabled.');
     }
 
