@@ -16,9 +16,6 @@ const { SwitcherThemeCursor, SwitcherThemeGtk, SwitcherThemeIcon, SwitcherThemeS
 const { Timer } = Me.imports.modules.Timer;
 
 
-var enabled = false;
-
-
 class NightThemeSwitcher {
     #timer = null;
     #switcherThemeGtk = null;
@@ -58,7 +55,6 @@ class NightThemeSwitcher {
         this.#switcherThemeCursor.enable();
         this.#switcherCommands.enable();
 
-        enabled = true;
         console.debug('Extension started.');
     }
 
@@ -67,7 +63,6 @@ class NightThemeSwitcher {
         // to enable the color scheme switch while the lock screen is displayed,
         // as the background image and the shell theme are visible in this mode.
         console.debug('Disabling extension...');
-        enabled = false;
 
         if (this.#switcherThemeGtk) {
             this.#switcherThemeGtk.disable();
