@@ -3,9 +3,8 @@
 
 'use strict';
 
-const { Gio, GLib } = imports.gi;
+const { Gio } = imports.gi;
 const { extensionUtils } = imports.misc;
-const { extensionManager } = imports.ui.main;
 
 const Me = extensionUtils.getCurrentExtension();
 
@@ -32,15 +31,7 @@ class NightThemeSwitcher {
     }
 
     enable() {
-        // We need to wait for the extension manager to be initialized in order
-        // to access the User Themes extension settings.
-        this.#waitForExtensionManager()
-            .then(() => this.start())
-            .catch(e => console.error(e));
-    }
-
-    start() {
-        console.debug('Starting extension...');
+        console.debug('Enabling extension...');
         this.#timer = new Timer();
         this.#switcherThemeGtk = new SwitcherThemeGtk({ timer: this.#timer });
         this.#switcherThemeIcon = new SwitcherThemeIcon({ timer: this.#timer });
@@ -55,7 +46,7 @@ class NightThemeSwitcher {
         this.#switcherThemeCursor.enable();
         this.#switcherCommands.enable();
 
-        console.debug('Extension started.');
+        console.debug('Extension enabled.');
     }
 
     disable() {
@@ -90,19 +81,6 @@ class NightThemeSwitcher {
         }
 
         console.debug('Extension disabled.');
-    }
-
-    #waitForExtensionManager() {
-        return new Promise(resolve => {
-            console.debug('Waiting for Extension Manager initialization...');
-            GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
-                while (!extensionManager._initialized)
-                    continue;
-                return GLib.SOURCE_REMOVE;
-            });
-            console.debug('Extension Manager initialized.');
-            resolve();
-        });
     }
 
     #migrateBackgroundSettings() {
