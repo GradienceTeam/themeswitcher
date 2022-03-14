@@ -3,6 +3,7 @@
 
 const { Gio } = imports.gi;
 const { extensionUtils } = imports.misc;
+const { extensionManager } = imports.ui.main;
 
 const Me = extensionUtils.getCurrentExtension();
 
@@ -69,6 +70,10 @@ var SwitcherTheme = class extends Switcher {
     disable() {
         this.#disconnectSettings();
         super.disable();
+    }
+
+    set systemSettings(settings) {
+        this.#systemSettings = settings;
     }
 
     #connectSettings() {
@@ -186,6 +191,7 @@ var SwitcherThemeShell = class extends SwitcherTheme {
             themeKey: 'name',
             noSettingsUpdateSystemThemeCallback: time => this.#noSettingsUpdateSystemThemeCallback(time),
         });
+        extensionManager.connect('extension-state-changed', this.#onExtensionStateChanged.bind(this));
         this.#settings = settings;
     }
 
@@ -193,5 +199,9 @@ var SwitcherThemeShell = class extends SwitcherTheme {
         const shellTheme = this.#settings.get_string(time);
         const stylesheet = utils.getShellThemeStylesheet(shellTheme);
         utils.applyShellStylesheet(stylesheet);
+    }
+
+    #onExtensionStateChanged() {
+        this.systemSettings = utils.getUserthemesSettings();
     }
 };
