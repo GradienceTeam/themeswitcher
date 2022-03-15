@@ -6,7 +6,17 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
-## [59] 0 2022-02-26
+## [60] - 2022-03-15
+
+### Added
+- Polish translation by Tomasz Dróżdż
+
+### Changed
+- Updated Chinese (Simplified) translation by poi
+- Updated German translation by eladyn
+
+
+## [59] - 2022-02-26
 
 ### Added
 - Initial work on Occitan translation by @quenty_occitania
