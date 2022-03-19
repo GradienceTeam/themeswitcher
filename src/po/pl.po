@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Night Theme Switcher package.
 # Tomasz Dróżdż <apexv4@protonmail.com>, 2022.
+# Przemek Juszczyk <apexv4@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-23 23:40+0100\n"
-"PO-Revision-Date: 2022-02-28 14:08+0000\n"
-"Last-Translator: Tomasz Dróżdż <apexv4@protonmail.com>\n"
+"PO-Revision-Date: 2022-03-20 18:57+0000\n"
+"Last-Translator: Przemek Juszczyk <apexv4@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/pl/>\n"
 "Language: pl\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
@@ -65,7 +66,7 @@ msgstr "Manualny harmonogram"
 
 #: src/preferences/SchedulePage.js:57 src/preferences/ui/SchedulePage.ui:108
 msgid "On-demand"
-msgstr "Na żądanie"
+msgstr "Ręcznie"
 
 #: src/preferences/SchedulePage.js:90
 msgid "None"
@@ -250,19 +251,19 @@ msgstr ""
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:130
 msgid "Always enable the on-demand timer"
-msgstr "Zawsze włączaj minutnik na żądanie"
+msgstr "Zawsze włączaj ręczny minutnik"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
 msgid "The on-demand timer will always be enabled alongside other timers"
-msgstr "Minutnik na żądanie zawsze będzie włączony obok innych minutników"
+msgstr "Ręczny minutnik zawsze będzie włączony obok innych minutników"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:139
 msgid "On-demand time"
-msgstr "Czas na żądanie"
+msgstr "Ręczny"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:140
 msgid "The current time used in on-demand mode"
-msgstr "Aktualny czas używany w trybie na żądanie"
+msgstr "Aktualny czas używany w trybie ręcznym"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:144
 msgid "Key combination to toggle time"
@@ -270,15 +271,15 @@ msgstr "Kombinacja klawiszy do przełączania czasu"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:145
 msgid "The key combination that will toggle time in on-demand mode"
-msgstr "Kombinacja klawiszy do przełączania czasu w trybie na żądanie"
+msgstr "Kombinacja klawiszy do przełączania czasu w trybie ręcznym"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:154
 msgid "On-demand button placement"
-msgstr "Położenie przycisku zmiany na żądanie"
+msgstr "Położenie przycisku zmiany ręcznej"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:155
 msgid "Where the on-demand button will be placed"
-msgstr "Gdzie zostanie położony przycisk zmiany na żadanie"
+msgstr "Gdzie zostanie położony przycisk zmiany ręcznej"
 
 #: src/schemas/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
 msgid "Use manual time source"
@@ -393,7 +394,7 @@ msgstr ""
 
 #: src/preferences/ui/SchedulePage.ui:33
 msgid "Always show on-demand controls"
-msgstr "Zawsze pokazuj kontrolki trybu na żądanie"
+msgstr "Zawsze pokazuj kontrolki trybu ręcznego"
 
 #: src/preferences/ui/SchedulePage.ui:34
 msgid "Allows you to override the current time when using a schedule."
