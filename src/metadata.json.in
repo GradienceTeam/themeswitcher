@@ -1,11 +1,11 @@
 {
 	"name": "Night Theme Switcher",
 	"description": "Make your desktop easy on the eye, day and night.",
-	"uuid": "nightthemeswitcher@romainvigier.fr",
-	"gettext-domain": "nightthemeswitcher@romainvigier.fr",
-	"settings-schema": "org.gnome.shell.extensions.nightthemeswitcher",
+	"uuid": "@UUID@",
+	"gettext-domain": "@UUID@",
+	"settings-schema": "@DNS@",
 	"url": "https://nightthemeswitcher.romainvigier.fr",
 	"session-modes": ["unlock-dialog", "user"],
 	"shell-version": ["42"],
-	"version": 60
+	"version": @VERSION@
 }

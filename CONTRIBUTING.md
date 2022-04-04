@@ -55,12 +55,21 @@ Run [`reuse`](https://reuse.software/) to check that all the needed information 
 reuse lint
 ```
 
+### Creating new files
+
+If you add new source files, you have to add their paths in different files:
+
+- `./src/meson.build` for Javascript files
+- `./src/po/POTFILES` for Javascript and UI files
+
+Add them in the correct place alphabetically.
+
 ### Localized strings
 
-If you modify localized strings, make your changes available for translation:
+If you create or modify localized strings, make your changes available for translation:
 
 ```bash
-make pot
+meson compile -C builddir nightthemeswitcher@romainvigier.fr-pot
 ```
 
 ## Contributing to the translations

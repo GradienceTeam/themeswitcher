@@ -69,12 +69,16 @@ extension:
     - reuse
   image: registry.gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension:latest
   script:
-    - make build
+    - meson builddir
+    - DESTDIR=${CI_PROJECT_DIR}/buildroot meson install -C builddir
+    - cd buildroot/usr/local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr
+    - zip -r nightthemeswitcher@romainvigier.fr.zip *
+    - mv nightthemeswitcher@romainvigier.fr.zip $CI_PROJECT_DIR
   artifacts:
     name: $CI_COMMIT_REF_NAME
     expose_as: Extension
     paths:
-      - build/nightthemeswitcher@romainvigier.fr.shell-extension.zip
+      - nightthemeswitcher@romainvigier.fr.zip
     expire_in: 1 day
 
 package:
@@ -89,7 +93,7 @@ package:
     - |
       curl \
         --header "JOB-TOKEN: $CI_JOB_TOKEN" \
-        --upload-file build/nightthemeswitcher@romainvigier.fr.shell-extension.zip \
+        --upload-file nightthemeswitcher@romainvigier.fr.zip \
         "${PACKAGE_REGISTRY_URL}/${CI_COMMIT_TAG}/${PACKAGE_NAME}"
 
 release-notes:

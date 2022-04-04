@@ -29,9 +29,9 @@ Visit [the extension page on extensions.gnome.org](https://extensions.gnome.org/
 
 You will need these tools:
 
-- `make`
+- `meson`
 - `gettext`
-- `gnome-extensions` (comes with GNOME Shell >= 3.34)
+- `glib-compile-schemas`
 
 Clone the repository and enter the directory:
 
@@ -39,10 +39,10 @@ Clone the repository and enter the directory:
 git clone https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension.git && cd nightthemeswitcher-gnome-shell-extension
 ```
 
-Build and install using `make`:
+Build and install using `meson`:
 
 ```bash
-make build && make install
+meson builddir && meson install -C builddir
 ```
 
 Restart your GNOME session and enable the extension:
