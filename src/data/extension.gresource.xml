@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-FileCopyrightText: 2022 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<gresources>
+	<gresource prefix="/org/gnome/shell/icons">
+		<file compressed="true" preprocess="xml-stripblanks" alias="scalable/status/nightthemeswitcher-ondemand-off-symbolic.svg">icons/ondemand-off-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks" alias="scalable/status/nightthemeswitcher-ondemand-on-symbolic.svg">icons/ondemand-on-symbolic.svg</file>
+	</gresource>
+</gresources>

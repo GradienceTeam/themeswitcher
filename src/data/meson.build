@@ -2,6 +2,14 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 gnome.compile_resources(
+  'extension',
+  'extension.gresource.xml',
+  gresource_bundle: true,
+  install: true,
+  install_dir: INSTALL_DIR / 'resources',
+)
+
+gnome.compile_resources(
   'preferences',
   'preferences.gresource.xml',
   gresource_bundle: true,
@@ -22,9 +30,3 @@ custom_target(
 	install: true,
 	install_dir: INSTALL_DIR / 'schemas'
 )
-
-icons = [
-	'icons/nightthemeswitcher-ondemand-off-symbolic.svg',
-	'icons/nightthemeswitcher-ondemand-on-symbolic.svg'
-]
-install_data(icons, install_dir: INSTALL_DIR / 'icons' / 'hicolor' / 'scalable' / 'status')
