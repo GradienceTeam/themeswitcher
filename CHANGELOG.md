@@ -6,6 +6,15 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [61] - 2022-04-04
+
+### Changed
+- Build system has been replaced by Meson to make packaging easier, see the README for the updated installation instructions
+- Updated Arabic translation
+- Updated Polish translation by Przemek Juszczyk
+- Updated Portuguese (Brazil) translation
+
+
 ## [60] - 2022-03-15
 
 ### Added
