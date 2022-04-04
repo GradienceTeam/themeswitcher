@@ -16,7 +16,7 @@ const _ = extensionUtils.gettext;
 function init() {
     extensionUtils.initTranslations();
 
-    const resource = Gio.Resource.load(GLib.build_filenamev([Me.path, 'resources', 'org.gnome.shell.extensions.nightthemeswitcher.gresource']));
+    const resource = Gio.Resource.load(GLib.build_filenamev([Me.path, 'resources', 'preferences.gresource']));
     Gio.resources_register(resource);
 
     GObject.type_ensure(Me.imports.preferences.BackgroundsPage.BackgroundsPage);
@@ -31,7 +31,7 @@ function init() {
     GObject.type_ensure(Me.imports.preferences.TimeChooser.TimeChooser);
 
     const iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
-    iconTheme.add_search_path(GLib.build_filenamev([Me.path, 'icons']));
+    iconTheme.add_resource_path('/org/gnome/shell/extensions/nightthemeswitcher/preferences/icons');
 }
 
 /**

@@ -9,7 +9,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 var ClearableEntry = GObject.registerClass({
     GTypeName: 'ClearableEntry',
-    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/ui/ClearableEntry.ui',
+    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/ClearableEntry.ui',
 }, class ClearableEntry extends Gtk.Entry {
     onIconReleased(entry, position) {
         if (position === Gtk.EntryIconPosition.SECONDARY)

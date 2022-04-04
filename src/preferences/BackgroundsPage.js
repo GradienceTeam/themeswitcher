@@ -9,7 +9,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 var BackgroundsPage = GObject.registerClass({
     GTypeName: 'BackgroundsPage',
-    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/ui/BackgroundsPage.ui',
+    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/BackgroundsPage.ui',
     InternalChildren: [
         'day_button',
         'night_button',

@@ -9,7 +9,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 var TimeChooser = GObject.registerClass({
     GTypeName: 'TimeChooser',
-    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/ui/TimeChooser.ui',
+    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/TimeChooser.ui',
     InternalChildren: ['hours', 'minutes'],
     Properties: {
         time: GObject.ParamSpec.double(

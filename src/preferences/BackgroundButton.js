@@ -10,7 +10,7 @@ const _ = extensionUtils.gettext;
 
 var BackgroundButton = GObject.registerClass({
     GTypeName: 'BackgroundButton',
-    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/ui/BackgroundButton.ui',
+    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/BackgroundButton.ui',
     InternalChildren: ['filechooser'],
     Properties: {
         uri: GObject.ParamSpec.string(

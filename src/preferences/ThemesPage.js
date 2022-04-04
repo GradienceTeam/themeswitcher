@@ -14,7 +14,7 @@ const { DropDownChoice } = Me.imports.preferences.DropDownChoice;
 
 var ThemesPage = GObject.registerClass({
     GTypeName: 'ThemesPage',
-    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/ui/ThemesPage.ui',
+    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/ThemesPage.ui',
     InternalChildren: [
         'gtk_enabled_switch',
         'gtk_day_variant_combo_row',

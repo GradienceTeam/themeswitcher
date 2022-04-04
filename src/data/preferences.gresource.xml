@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-FileCopyrightText: 2022 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<gresources>
+	<gresource prefix="/org/gnome/shell/extensions/nightthemeswitcher/preferences">
+		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/actions/nightthemeswitcher-code-symbolic.svg">icons/code-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/actions/nightthemeswitcher-support-symbolic.svg">icons/support-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/actions/nightthemeswitcher-translate-symbolic.svg">icons/translate-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/apps/nightthemeswitcher-symbolic.svg">icons/nightthemeswitcher-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/categories/nightthemeswitcher-backgrounds-symbolic.svg">icons/backgrounds-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/categories/nightthemeswitcher-commands-symbolic.svg">icons/commands-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/categories/nightthemeswitcher-contribute-symbolic.svg">icons/contribute-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/categories/nightthemeswitcher-schedule-symbolic.svg">icons/schedule-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/categories/nightthemeswitcher-themes-symbolic.svg">icons/themes-symbolic.svg</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/BackgroundButton.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/BackgroundsPage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/ClearableEntry.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/CommandsPage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/ContributePage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/SchedulePage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/ShortcutButton.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/ThemesPage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/TimeChooser.ui</file>
+	</gresource>
+</gresources>
