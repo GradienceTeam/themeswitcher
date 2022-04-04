@@ -1,6 +1,14 @@
 # SPDX-FileCopyrightText: 2022 Romain Vigier <contact AT romainvigier.fr>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+gnome.compile_resources(
+  DNS,
+  DNS + '.gresource.xml',
+  gresource_bundle: true,
+  install: true,
+  install_dir: INSTALL_DIR / 'resources',
+)
+
 glib_compile_schemas_exe = find_program('glib-compile-schemas')
 custom_target(
 	'gschemas',
@@ -16,4 +24,3 @@ custom_target(
 )
 
 install_subdir('icons', install_dir: INSTALL_DIR)
-install_subdir('ui', install_dir: INSTALL_DIR / 'preferences')

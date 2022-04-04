@@ -14,7 +14,7 @@ const { DropDownChoice } = Me.imports.preferences.DropDownChoice;
 
 var SchedulePage = GObject.registerClass({
     GTypeName: 'SchedulePage',
-    Template: `file://${GLib.build_filenamev([Me.path, 'preferences', 'ui', 'SchedulePage.ui'])}`,
+    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/ui/SchedulePage.ui',
     InternalChildren: [
         'transition_switch',
         'manual_time_source_switch',

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-FileCopyrightText: 2022 Romain Vigier <contact AT romainvigier.fr>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<gresources>
+	<gresource prefix="/org/gnome/shell/extensions/nightthemeswitcher">
+		<file compressed="true" preprocess="xml-stripblanks">ui/BackgroundButton.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/BackgroundsPage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/ClearableEntry.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/CommandsPage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/ContributePage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/SchedulePage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/ShortcutButton.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/ThemesPage.ui</file>
+		<file compressed="true" preprocess="xml-stripblanks">ui/TimeChooser.ui</file>
+	</gresource>
+</gresources>

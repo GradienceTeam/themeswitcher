@@ -9,5 +9,5 @@ const Me = extensionUtils.getCurrentExtension();
 
 var ContributePage = GObject.registerClass({
     GTypeName: 'ContributePage',
-    Template: `file://${GLib.build_filenamev([Me.path, 'preferences', 'ui', 'ContributePage.ui'])}`,
+    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/ui/ContributePage.ui',
 }, class ContributePage extends Adw.PreferencesPage {});

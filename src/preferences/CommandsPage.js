@@ -11,7 +11,7 @@ const utils = Me.imports.utils;
 
 var CommandsPage = GObject.registerClass({
     GTypeName: 'CommandsPage',
-    Template: `file://${GLib.build_filenamev([Me.path, 'preferences', 'ui', 'CommandsPage.ui'])}`,
+    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/ui/CommandsPage.ui',
     InternalChildren: [
         'enabled_switch',
         'sunrise_entry',

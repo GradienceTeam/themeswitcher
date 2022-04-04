@@ -11,7 +11,7 @@ const utils = Me.imports.utils;
 
 var ShortcutButton = GObject.registerClass({
     GTypeName: 'ShortcutButton',
-    Template: `file://${GLib.build_filenamev([Me.path, 'preferences', 'ui', 'ShortcutButton.ui'])}`,
+    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/ui/ShortcutButton.ui',
     InternalChildren: ['choose_button', 'change_button', 'clear_button', 'dialog'],
     Properties: {
         keybinding: GObject.ParamSpec.string(
