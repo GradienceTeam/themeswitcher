@@ -32,6 +32,7 @@ You will need these tools:
 - `meson`
 - `gettext`
 - `glib-compile-schemas`
+- `glib-compile-resources`
 
 Clone the repository and enter the directory:
 
@@ -42,7 +43,11 @@ git clone https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension.git
 Build and install using `meson`:
 
 ```bash
+# System-wide installation
 meson builddir && meson install -C builddir
+
+# User installation
+meson builddir --prefix=~/.local && meson install -C builddir
 ```
 
 Restart your GNOME session and enable the extension:
