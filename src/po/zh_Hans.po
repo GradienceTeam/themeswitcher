@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Night Theme Switcher package.
 # poi <erbaotao@outlook.com>, 2022.
+# Dingzhong Chen <wsxy162@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 12:01+0200\n"
-"PO-Revision-Date: 2022-03-07 10:54+0000\n"
-"Last-Translator: poi <erbaotao@outlook.com>\n"
+"PO-Revision-Date: 2022-04-06 14:41+0000\n"
+"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -28,10 +29,8 @@ msgstr "当前本扩展程序设置的版本"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 #: src/data/ui/ThemesPage.ui:30
-#, fuzzy
-#| msgid "Switch GTK theme variants"
 msgid "Switch GTK theme"
-msgstr "切换 GTK 的主题的样式"
+msgstr "切换 GTK 的主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
@@ -55,10 +54,8 @@ msgstr "夜间要使用的 GTK 主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
 #: src/data/ui/ThemesPage.ui:47
-#, fuzzy
-#| msgid "Switch Shell theme variants"
 msgid "Switch Shell theme"
-msgstr "切换 Shell 的主题的样式"
+msgstr "切换 Shell 的主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
@@ -82,10 +79,8 @@ msgstr "夜间要使用的 shell 主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 #: src/data/ui/ThemesPage.ui:63
-#, fuzzy
-#| msgid "Switch icon theme variants"
 msgid "Switch icon theme"
-msgstr "切换图标的主题样式"
+msgstr "切换图标的主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
@@ -109,10 +104,8 @@ msgstr "晚上要使用的图标的主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
 #: src/data/ui/ThemesPage.ui:79
-#, fuzzy
-#| msgid "Night cursor theme"
 msgid "Switch cursor theme"
-msgstr "夜间指针主题"
+msgstr "切换指针主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
@@ -307,7 +300,7 @@ msgstr "支持本软件"
 
 #: src/data/ui/ContributePage.ui:42
 msgid "View the code and report issues"
-msgstr "查看源代码，提交软件错误"
+msgstr "查看源代码，报告软件错误"
 
 #: src/data/ui/ContributePage.ui:55
 msgid "Contribute to the translation"
@@ -356,7 +349,7 @@ msgstr "夜灯"
 
 #: src/data/ui/SchedulePage.ui:63
 msgid "These settings only apply when Night Light is the time source."
-msgstr ""
+msgstr "这些设置仅在夜灯作为时间源时应用。"
 
 #: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
@@ -375,7 +368,7 @@ msgstr "手动安排"
 #: src/data/ui/SchedulePage.ui:81
 msgid ""
 "These settings only apply when using the manual schedule as the time source."
-msgstr ""
+msgstr "这些设置仅在使用手动安排作为时间源时应用。"
 
 #: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
@@ -383,7 +376,7 @@ msgstr "自定"
 
 #: src/data/ui/SchedulePage.ui:111
 msgid "These settings only apply when using the on-demand time source."
-msgstr ""
+msgstr "这些设置仅在使用自定时间源时应用。"
 
 #: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
