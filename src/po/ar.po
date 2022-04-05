@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 13:15+0200\n"
+"POT-Creation-Date: 2022-04-05 12:01+0200\n"
 "PO-Revision-Date: 2022-04-04 21:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/"
-"night-theme-switcher/extension/ar/>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/night-theme-"
+"switcher/extension/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,8 +30,11 @@ msgid "The current extension settings version"
 msgstr "إصدار إعدادات الامتداد الحالي"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
-msgid "Switch GTK variants"
-msgstr "تبديل متغيرات GTK"
+#: src/data/ui/ThemesPage.ui:30
+#, fuzzy
+#| msgid "Switch GTK theme variants"
+msgid "Switch GTK theme"
+msgstr "تبديل متغيرات سمة GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
@@ -54,8 +57,11 @@ msgid "The GTK theme to use during nighttime"
 msgstr "سمة GTK للاستخدام أثناء الليل"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
-msgid "Switch shell variants"
-msgstr "تبديل متغيرات الصَّدَفة"
+#: src/data/ui/ThemesPage.ui:47
+#, fuzzy
+#| msgid "Switch Shell theme variants"
+msgid "Switch Shell theme"
+msgstr "تبديل متغيرات سمة الصَّدَفة"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
@@ -78,8 +84,11 @@ msgid "The shell theme to use during nighttime"
 msgstr "سمة الصّدَفة التي سيتم استخدامها أثناء الليل"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
-msgid "Switch icon variants"
-msgstr "تبديل متغيرات الأيقونات"
+#: src/data/ui/ThemesPage.ui:63
+#, fuzzy
+#| msgid "Switch icon theme variants"
+msgid "Switch icon theme"
+msgstr "تبديل متغيرات أيقونة السمة"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
@@ -102,8 +111,11 @@ msgid "The icon theme to use during nighttime"
 msgstr "أيقونات السمة المستخدمة أثناء الليل"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
-msgid "Switch cursor variants"
-msgstr "تبديل متغيرات المؤشر"
+#: src/data/ui/ThemesPage.ui:79
+#, fuzzy
+#| msgid "Night cursor theme"
+msgid "Switch cursor theme"
+msgstr "مؤشر السمة الليلية"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
@@ -277,7 +289,7 @@ msgstr "أوامر"
 msgid "Run commands"
 msgstr "قم بتشغيل الأوامر"
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:82
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:84
 msgid "Sunrise"
 msgstr "شروق الشمس"
 
@@ -286,7 +298,7 @@ msgstr "شروق الشمس"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "أخطر وأرسل \"أهلا بشروق الشمس!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:94
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:96
 msgid "Sunset"
 msgstr "غروب الشمس"
 
@@ -349,30 +361,43 @@ msgstr ""
 msgid "Night Light"
 msgstr "الإضاءة الليلية"
 
-#: src/data/ui/SchedulePage.ui:65
+#: src/data/ui/SchedulePage.ui:63
+msgid "These settings only apply when Night Light is the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "اتبع <i> تعطيل حتى الغد </i>"
 
-#: src/data/ui/SchedulePage.ui:66
+#: src/data/ui/SchedulePage.ui:67
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
 "عندما يتم تعطيل الإضاءة الليلية مؤقتًا، سيتحول الامتداد إلى متغيرات النهار."
 
-#: src/data/ui/SchedulePage.ui:79 src/preferences/SchedulePage.js:56
+#: src/data/ui/SchedulePage.ui:80 src/preferences/SchedulePage.js:56
 msgid "Manual schedule"
 msgstr "الجدولة اليدوية"
 
-#: src/data/ui/SchedulePage.ui:108 src/preferences/SchedulePage.js:57
+#: src/data/ui/SchedulePage.ui:81
+msgid ""
+"These settings only apply when using the manual schedule as the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
 msgstr "عند الطلب"
 
 #: src/data/ui/SchedulePage.ui:111
+msgid "These settings only apply when using the on-demand time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
 msgstr "اختصار لوحة المفاتيح"
 
-#: src/data/ui/SchedulePage.ui:122
+#: src/data/ui/SchedulePage.ui:125
 msgid "Button location"
 msgstr "زر الموقع"
 
@@ -398,76 +423,52 @@ msgid ""
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:28
-#, fuzzy
-#| msgid "Day GTK theme"
-msgid "GTK theme"
-msgstr "سمة GTK النهارية"
-
-#: src/data/ui/ThemesPage.ui:29
+#: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:37 src/data/ui/ThemesPage.ui:57
-#: src/data/ui/ThemesPage.ui:77 src/data/ui/ThemesPage.ui:97
+#: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
+#: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
 msgstr "متغير النهار"
 
-#: src/data/ui/ThemesPage.ui:42 src/data/ui/ThemesPage.ui:62
-#: src/data/ui/ThemesPage.ui:82 src/data/ui/ThemesPage.ui:102
+#: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
+#: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
 msgstr "متغير الليل"
-
-#: src/data/ui/ThemesPage.ui:49
-#, fuzzy
-#| msgid "Day shell theme"
-msgid "Shell theme"
-msgstr "سمة الصّدَفة النهارية"
-
-#: src/data/ui/ThemesPage.ui:69
-#, fuzzy
-#| msgid "Day icon theme"
-msgid "Icon theme"
-msgstr "أيقونات السمة النهارية"
-
-#: src/data/ui/ThemesPage.ui:89
-#, fuzzy
-#| msgid "Day cursor theme"
-msgid "Cursor theme"
-msgstr "مؤشر السمة النهارية"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
 msgstr ":"
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:228
+#: src/modules/TimerOndemand.js:227
 msgid "Extension Settings"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn Off"
 msgstr "الايقاف"
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn On"
 msgstr "شغل"
 
@@ -494,6 +495,38 @@ msgstr "قائمة النظام"
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "الافتراضي"
+
+#~ msgid "Switch GTK variants"
+#~ msgstr "تبديل متغيرات GTK"
+
+#~ msgid "Switch shell variants"
+#~ msgstr "تبديل متغيرات الصَّدَفة"
+
+#~ msgid "Switch icon variants"
+#~ msgstr "تبديل متغيرات الأيقونات"
+
+#~ msgid "Switch cursor variants"
+#~ msgstr "تبديل متغيرات المؤشر"
+
+#, fuzzy
+#~| msgid "Day GTK theme"
+#~ msgid "GTK theme"
+#~ msgstr "سمة GTK النهارية"
+
+#, fuzzy
+#~| msgid "Day shell theme"
+#~ msgid "Shell theme"
+#~ msgstr "سمة الصّدَفة النهارية"
+
+#, fuzzy
+#~| msgid "Day icon theme"
+#~ msgid "Icon theme"
+#~ msgstr "أيقونات السمة النهارية"
+
+#, fuzzy
+#~| msgid "Day cursor theme"
+#~ msgid "Cursor theme"
+#~ msgstr "مؤشر السمة النهارية"
 
 #~ msgid "Manual schedule times"
 #~ msgstr "أوقات الجدولة اليدوية"
@@ -545,9 +578,6 @@ msgstr "الافتراضي"
 #~ msgid "Switch cursor theme variants"
 #~ msgstr "تبديل متغيرات سمة المؤشر"
 
-#~ msgid "Switch GTK theme variants"
-#~ msgstr "تبديل متغيرات سمة GTK"
-
 #~ msgid "Manual variants"
 #~ msgstr "المتغيرات اليدوية"
 
@@ -574,14 +604,8 @@ msgstr "الافتراضي"
 #~ msgid "Donate on Liberapay"
 #~ msgstr "تبرع على Liberapay"
 
-#~ msgid "Switch icon theme variants"
-#~ msgstr "تبديل متغيرات أيقونة السمة"
-
 #~ msgid "Appearance"
 #~ msgstr "مظهر"
-
-#~ msgid "Switch Shell theme variants"
-#~ msgstr "تبديل متغيرات سمة الصَّدَفة"
 
 #~ msgid ""
 #~ "You can manually set variants if the extension cannot automatically "

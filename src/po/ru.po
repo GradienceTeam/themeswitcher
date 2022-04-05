@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 13:15+0200\n"
+"POT-Creation-Date: 2022-04-05 12:01+0200\n"
 "PO-Revision-Date: 2021-11-21 21:56+0000\n"
 "Last-Translator: Sixella <sixella@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/night-theme-"
@@ -28,8 +28,11 @@ msgid "The current extension settings version"
 msgstr "Текущая версия настроек расширения"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
-msgid "Switch GTK variants"
-msgstr "Переключение тем GTK"
+#: src/data/ui/ThemesPage.ui:30
+#, fuzzy
+#| msgid "Switch GTK theme variants"
+msgid "Switch GTK theme"
+msgstr "Переключить вариант GTK темы"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
@@ -52,8 +55,11 @@ msgid "The GTK theme to use during nighttime"
 msgstr "GTK тема используемая ночью"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
-msgid "Switch shell variants"
-msgstr "Варианты переключателя оболочки"
+#: src/data/ui/ThemesPage.ui:47
+#, fuzzy
+#| msgid "Switch Shell theme variants"
+msgid "Switch Shell theme"
+msgstr "Переключить варианты темы оболочки"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
@@ -76,8 +82,11 @@ msgid "The shell theme to use during nighttime"
 msgstr "Тема оболочки для использования в ночное время"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
-msgid "Switch icon variants"
-msgstr "Варианты переключения иконок"
+#: src/data/ui/ThemesPage.ui:63
+#, fuzzy
+#| msgid "Switch icon theme variants"
+msgid "Switch icon theme"
+msgstr "Переключение вариантов темы иконок"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
@@ -100,8 +109,11 @@ msgid "The icon theme to use during nighttime"
 msgstr "Тема иконок для использования в ночное время"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
-msgid "Switch cursor variants"
-msgstr "Переключение вариантов курсора"
+#: src/data/ui/ThemesPage.ui:79
+#, fuzzy
+#| msgid "Night cursor theme"
+msgid "Switch cursor theme"
+msgstr "Тема ночных курсоров"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
@@ -275,7 +287,7 @@ msgstr "Команды"
 msgid "Run commands"
 msgstr "Выполнять команды"
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:82
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:84
 msgid "Sunrise"
 msgstr "На восходе"
 
@@ -284,7 +296,7 @@ msgstr "На восходе"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Привет солнышко! Доброго дня, мир !\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:94
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:96
 msgid "Sunset"
 msgstr "На закате"
 
@@ -347,11 +359,15 @@ msgstr ""
 msgid "Night Light"
 msgstr "Ночное освещение"
 
-#: src/data/ui/SchedulePage.ui:65
+#: src/data/ui/SchedulePage.ui:63
+msgid "These settings only apply when Night Light is the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "Следить <i>Отключить до завтра</i>"
 
-#: src/data/ui/SchedulePage.ui:66
+#: src/data/ui/SchedulePage.ui:67
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
@@ -359,19 +375,28 @@ msgstr ""
 "Если функция Night Light временно отключена, расширение переключится на "
 "дневной вариант."
 
-#: src/data/ui/SchedulePage.ui:79 src/preferences/SchedulePage.js:56
+#: src/data/ui/SchedulePage.ui:80 src/preferences/SchedulePage.js:56
 msgid "Manual schedule"
 msgstr "Расписание работы вручную"
 
-#: src/data/ui/SchedulePage.ui:108 src/preferences/SchedulePage.js:57
+#: src/data/ui/SchedulePage.ui:81
+msgid ""
+"These settings only apply when using the manual schedule as the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
 msgstr "По запросу"
 
 #: src/data/ui/SchedulePage.ui:111
+msgid "These settings only apply when using the on-demand time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
 msgstr "Сочетание клавиш"
 
-#: src/data/ui/SchedulePage.ui:122
+#: src/data/ui/SchedulePage.ui:125
 msgid "Button location"
 msgstr "Расположение кнопки"
 
@@ -397,76 +422,52 @@ msgid ""
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:28
-#, fuzzy
-#| msgid "Day GTK theme"
-msgid "GTK theme"
-msgstr "Дневная тема GTK"
-
-#: src/data/ui/ThemesPage.ui:29
+#: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:37 src/data/ui/ThemesPage.ui:57
-#: src/data/ui/ThemesPage.ui:77 src/data/ui/ThemesPage.ui:97
+#: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
+#: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
 msgstr "Дневной вариант темы"
 
-#: src/data/ui/ThemesPage.ui:42 src/data/ui/ThemesPage.ui:62
-#: src/data/ui/ThemesPage.ui:82 src/data/ui/ThemesPage.ui:102
+#: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
+#: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
 msgstr "Ночной вариант темы"
-
-#: src/data/ui/ThemesPage.ui:49
-#, fuzzy
-#| msgid "Day shell theme"
-msgid "Shell theme"
-msgstr "Тема дневной оболочки"
-
-#: src/data/ui/ThemesPage.ui:69
-#, fuzzy
-#| msgid "Day icon theme"
-msgid "Icon theme"
-msgstr "Тема дневных иконок"
-
-#: src/data/ui/ThemesPage.ui:89
-#, fuzzy
-#| msgid "Day cursor theme"
-msgid "Cursor theme"
-msgstr "Тема дневных курсоров"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
 msgstr ":"
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:228
+#: src/modules/TimerOndemand.js:227
 msgid "Extension Settings"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn On"
 msgstr ""
 
@@ -493,6 +494,38 @@ msgstr "Системное меню"
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "По умолчанию"
+
+#~ msgid "Switch GTK variants"
+#~ msgstr "Переключение тем GTK"
+
+#~ msgid "Switch shell variants"
+#~ msgstr "Варианты переключателя оболочки"
+
+#~ msgid "Switch icon variants"
+#~ msgstr "Варианты переключения иконок"
+
+#~ msgid "Switch cursor variants"
+#~ msgstr "Переключение вариантов курсора"
+
+#, fuzzy
+#~| msgid "Day GTK theme"
+#~ msgid "GTK theme"
+#~ msgstr "Дневная тема GTK"
+
+#, fuzzy
+#~| msgid "Day shell theme"
+#~ msgid "Shell theme"
+#~ msgstr "Тема дневной оболочки"
+
+#, fuzzy
+#~| msgid "Day icon theme"
+#~ msgid "Icon theme"
+#~ msgstr "Тема дневных иконок"
+
+#, fuzzy
+#~| msgid "Day cursor theme"
+#~ msgid "Cursor theme"
+#~ msgstr "Тема дневных курсоров"
 
 #~ msgid "Manual schedule times"
 #~ msgstr "Время по расписанию вручную"
@@ -544,9 +577,6 @@ msgstr "По умолчанию"
 #~ msgid "Switch cursor theme variants"
 #~ msgstr "Переключение вариантов темы курсора"
 
-#~ msgid "Switch GTK theme variants"
-#~ msgstr "Переключить вариант GTK темы"
-
 #~ msgid "Manual variants"
 #~ msgstr "Ручной вариант"
 
@@ -574,14 +604,8 @@ msgstr "По умолчанию"
 #~ msgid "Donate on Liberapay"
 #~ msgstr "Пожертвовать на Liberapay"
 
-#~ msgid "Switch icon theme variants"
-#~ msgstr "Переключение вариантов темы иконок"
-
 #~ msgid "Appearance"
 #~ msgstr "Внешний вид"
-
-#~ msgid "Switch Shell theme variants"
-#~ msgstr "Переключить варианты темы оболочки"
 
 #~ msgid ""
 #~ "You can manually set variants if the extension cannot automatically "

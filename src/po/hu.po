@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 13:15+0200\n"
+"POT-Creation-Date: 2022-04-05 12:01+0200\n"
 "PO-Revision-Date: 2021-09-25 20:03+0000\n"
 "Last-Translator: Balázs Úr <balazs@urbalazs.hu>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/night-theme-"
@@ -27,8 +27,11 @@ msgid "The current extension settings version"
 msgstr "A jelenlegi kiterjesztés beállításainak verziója"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
-msgid "Switch GTK variants"
-msgstr "GTK-változatok átváltása"
+#: src/data/ui/ThemesPage.ui:30
+#, fuzzy
+#| msgid "Switch GTK theme variants"
+msgid "Switch GTK theme"
+msgstr "GTK-témaváltozatok átváltása"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
@@ -51,8 +54,11 @@ msgid "The GTK theme to use during nighttime"
 msgstr "Az éjszaka használandó GTK-téma"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
-msgid "Switch shell variants"
-msgstr "Shell-változatok átváltása"
+#: src/data/ui/ThemesPage.ui:47
+#, fuzzy
+#| msgid "Switch Shell theme variants"
+msgid "Switch Shell theme"
+msgstr "Shell-témaváltozatok átváltása"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
@@ -75,8 +81,11 @@ msgid "The shell theme to use during nighttime"
 msgstr "Az éjszaka használandó Shell-téma"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
-msgid "Switch icon variants"
-msgstr "Ikonváltozatok átváltása"
+#: src/data/ui/ThemesPage.ui:63
+#, fuzzy
+#| msgid "Switch icon theme variants"
+msgid "Switch icon theme"
+msgstr "Ikontéma-változatok átváltása"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
@@ -99,8 +108,11 @@ msgid "The icon theme to use during nighttime"
 msgstr "Az éjszaka használandó ikontéma"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
-msgid "Switch cursor variants"
-msgstr "Kurzorváltozatok átváltása"
+#: src/data/ui/ThemesPage.ui:79
+#, fuzzy
+#| msgid "Night cursor theme"
+msgid "Switch cursor theme"
+msgstr "Éjszakai kurzortéma"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
@@ -275,7 +287,7 @@ msgstr "Parancsok"
 msgid "Run commands"
 msgstr "Parancsok futtatása"
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:82
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:84
 msgid "Sunrise"
 msgstr "Napfelkelte"
 
@@ -284,7 +296,7 @@ msgstr "Napfelkelte"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Helló, napfény!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:94
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:96
 msgid "Sunset"
 msgstr "Napnyugta"
 
@@ -348,11 +360,15 @@ msgstr ""
 msgid "Night Light"
 msgstr "Éjszakai fény"
 
-#: src/data/ui/SchedulePage.ui:65
+#: src/data/ui/SchedulePage.ui:63
+msgid "These settings only apply when Night Light is the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "A <i>Letiltás holnapig</i> funkció követése"
 
-#: src/data/ui/SchedulePage.ui:66
+#: src/data/ui/SchedulePage.ui:67
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
@@ -360,19 +376,28 @@ msgstr ""
 "Ha az éjszakai fény átmenetileg le van tiltva, akkor a kiterjesztés át fog "
 "váltani a nappali változatokra."
 
-#: src/data/ui/SchedulePage.ui:79 src/preferences/SchedulePage.js:56
+#: src/data/ui/SchedulePage.ui:80 src/preferences/SchedulePage.js:56
 msgid "Manual schedule"
 msgstr "Kézi ütemezés"
 
-#: src/data/ui/SchedulePage.ui:108 src/preferences/SchedulePage.js:57
+#: src/data/ui/SchedulePage.ui:81
+msgid ""
+"These settings only apply when using the manual schedule as the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
 msgstr "Igény szerint"
 
 #: src/data/ui/SchedulePage.ui:111
+msgid "These settings only apply when using the on-demand time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
 msgstr "Gyorsbillentyű"
 
-#: src/data/ui/SchedulePage.ui:122
+#: src/data/ui/SchedulePage.ui:125
 msgid "Button location"
 msgstr "Gomb helye"
 
@@ -398,76 +423,52 @@ msgid ""
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:28
-#, fuzzy
-#| msgid "Day GTK theme"
-msgid "GTK theme"
-msgstr "Nappali GTK-téma"
-
-#: src/data/ui/ThemesPage.ui:29
+#: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:37 src/data/ui/ThemesPage.ui:57
-#: src/data/ui/ThemesPage.ui:77 src/data/ui/ThemesPage.ui:97
+#: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
+#: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
 msgstr "Nappali változat"
 
-#: src/data/ui/ThemesPage.ui:42 src/data/ui/ThemesPage.ui:62
-#: src/data/ui/ThemesPage.ui:82 src/data/ui/ThemesPage.ui:102
+#: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
+#: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
 msgstr "Éjszakai változat"
-
-#: src/data/ui/ThemesPage.ui:49
-#, fuzzy
-#| msgid "Day shell theme"
-msgid "Shell theme"
-msgstr "Nappali Shell-téma"
-
-#: src/data/ui/ThemesPage.ui:69
-#, fuzzy
-#| msgid "Day icon theme"
-msgid "Icon theme"
-msgstr "Nappali ikontéma"
-
-#: src/data/ui/ThemesPage.ui:89
-#, fuzzy
-#| msgid "Day cursor theme"
-msgid "Cursor theme"
-msgstr "Nappali kurzortéma"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
 msgstr ":"
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:228
+#: src/modules/TimerOndemand.js:227
 msgid "Extension Settings"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn On"
 msgstr ""
 
@@ -494,6 +495,38 @@ msgstr "Rendszermenü"
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "Alapértelmezett"
+
+#~ msgid "Switch GTK variants"
+#~ msgstr "GTK-változatok átváltása"
+
+#~ msgid "Switch shell variants"
+#~ msgstr "Shell-változatok átváltása"
+
+#~ msgid "Switch icon variants"
+#~ msgstr "Ikonváltozatok átváltása"
+
+#~ msgid "Switch cursor variants"
+#~ msgstr "Kurzorváltozatok átváltása"
+
+#, fuzzy
+#~| msgid "Day GTK theme"
+#~ msgid "GTK theme"
+#~ msgstr "Nappali GTK-téma"
+
+#, fuzzy
+#~| msgid "Day shell theme"
+#~ msgid "Shell theme"
+#~ msgstr "Nappali Shell-téma"
+
+#, fuzzy
+#~| msgid "Day icon theme"
+#~ msgid "Icon theme"
+#~ msgstr "Nappali ikontéma"
+
+#, fuzzy
+#~| msgid "Day cursor theme"
+#~ msgid "Cursor theme"
+#~ msgstr "Nappali kurzortéma"
 
 #~ msgid "Manual schedule times"
 #~ msgstr "Idők kézi ütemezése"
@@ -546,9 +579,6 @@ msgstr "Alapértelmezett"
 #~ msgid "Switch cursor theme variants"
 #~ msgstr "Kurzortéma-változatok átváltása"
 
-#~ msgid "Switch GTK theme variants"
-#~ msgstr "GTK-témaváltozatok átváltása"
-
 #~ msgid "Manual variants"
 #~ msgstr "Kézi változatok"
 
@@ -576,14 +606,8 @@ msgstr "Alapértelmezett"
 #~ msgid "Donate on Liberapay"
 #~ msgstr "Támogasson Liberapay-en"
 
-#~ msgid "Switch icon theme variants"
-#~ msgstr "Ikontéma-változatok átváltása"
-
 #~ msgid "Appearance"
 #~ msgstr "Megjelenés"
-
-#~ msgid "Switch Shell theme variants"
-#~ msgstr "Shell-témaváltozatok átváltása"
 
 #~ msgid ""
 #~ "You can manually set variants if the extension cannot automatically "

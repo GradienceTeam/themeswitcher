@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 13:15+0200\n"
+"POT-Creation-Date: 2022-04-05 12:01+0200\n"
 "PO-Revision-Date: 2022-03-07 10:54+0000\n"
 "Last-Translator: poi <erbaotao@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -27,8 +27,11 @@ msgid "The current extension settings version"
 msgstr "当前本扩展程序设置的版本"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
-msgid "Switch GTK variants"
-msgstr "切换 GTK 样式"
+#: src/data/ui/ThemesPage.ui:30
+#, fuzzy
+#| msgid "Switch GTK theme variants"
+msgid "Switch GTK theme"
+msgstr "切换 GTK 的主题的样式"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
@@ -51,8 +54,11 @@ msgid "The GTK theme to use during nighttime"
 msgstr "夜间要使用的 GTK 主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
-msgid "Switch shell variants"
-msgstr "切换 shell 样式"
+#: src/data/ui/ThemesPage.ui:47
+#, fuzzy
+#| msgid "Switch Shell theme variants"
+msgid "Switch Shell theme"
+msgstr "切换 Shell 的主题的样式"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
@@ -75,8 +81,11 @@ msgid "The shell theme to use during nighttime"
 msgstr "夜间要使用的 shell 主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
-msgid "Switch icon variants"
-msgstr "切换图标样式"
+#: src/data/ui/ThemesPage.ui:63
+#, fuzzy
+#| msgid "Switch icon theme variants"
+msgid "Switch icon theme"
+msgstr "切换图标的主题样式"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
@@ -99,8 +108,11 @@ msgid "The icon theme to use during nighttime"
 msgstr "晚上要使用的图标的主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
-msgid "Switch cursor variants"
-msgstr "切换指针样式"
+#: src/data/ui/ThemesPage.ui:79
+#, fuzzy
+#| msgid "Night cursor theme"
+msgid "Switch cursor theme"
+msgstr "夜间指针主题"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
@@ -271,7 +283,7 @@ msgstr "命令"
 msgid "Run commands"
 msgstr "运行命令"
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:82
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:84
 msgid "Sunrise"
 msgstr "日出"
 
@@ -280,7 +292,7 @@ msgstr "日出"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"漱正阳而含朝霞\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:94
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:96
 msgid "Sunset"
 msgstr "日落"
 
@@ -342,29 +354,42 @@ msgstr "渐变地过渡日间模式和夜间模式。"
 msgid "Night Light"
 msgstr "夜灯"
 
-#: src/data/ui/SchedulePage.ui:65
+#: src/data/ui/SchedulePage.ui:63
+msgid "These settings only apply when Night Light is the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "根据<i>今天不用亮了</i>推测"
 
-#: src/data/ui/SchedulePage.ui:66
+#: src/data/ui/SchedulePage.ui:67
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr "如果夜灯暂时关上，就换到日间模式。"
 
-#: src/data/ui/SchedulePage.ui:79 src/preferences/SchedulePage.js:56
+#: src/data/ui/SchedulePage.ui:80 src/preferences/SchedulePage.js:56
 msgid "Manual schedule"
 msgstr "手动安排"
 
-#: src/data/ui/SchedulePage.ui:108 src/preferences/SchedulePage.js:57
+#: src/data/ui/SchedulePage.ui:81
+msgid ""
+"These settings only apply when using the manual schedule as the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
 msgstr "自定"
 
 #: src/data/ui/SchedulePage.ui:111
+msgid "These settings only apply when using the on-demand time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
 msgstr "键盘快捷键"
 
-#: src/data/ui/SchedulePage.ui:122
+#: src/data/ui/SchedulePage.ui:125
 msgid "Button location"
 msgstr "按钮位置"
 
@@ -392,11 +417,7 @@ msgstr ""
 "GNOME 有自带的、兼容本扩展程序的深色模式。最好只在旧版不兼容时再手动切换主"
 "题，其他情况下最好不要手动切换。"
 
-#: src/data/ui/ThemesPage.ui:28
-msgid "GTK theme"
-msgstr "GTK 主题"
-
-#: src/data/ui/ThemesPage.ui:29
+#: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
@@ -404,58 +425,46 @@ msgstr ""
 "对于设计时没有考虑深色主题的软件，非要使用深色主题可能会有“不良反应”，比如"
 "说，文字可能没法读、图标可能看不见。"
 
-#: src/data/ui/ThemesPage.ui:37 src/data/ui/ThemesPage.ui:57
-#: src/data/ui/ThemesPage.ui:77 src/data/ui/ThemesPage.ui:97
+#: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
+#: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
 msgstr "日间样式"
 
-#: src/data/ui/ThemesPage.ui:42 src/data/ui/ThemesPage.ui:62
-#: src/data/ui/ThemesPage.ui:82 src/data/ui/ThemesPage.ui:102
+#: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
+#: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
 msgstr "夜间模式"
-
-#: src/data/ui/ThemesPage.ui:49
-msgid "Shell theme"
-msgstr "Shell 主题"
-
-#: src/data/ui/ThemesPage.ui:69
-msgid "Icon theme"
-msgstr "图标主题"
-
-#: src/data/ui/ThemesPage.ui:89
-msgid "Cursor theme"
-msgstr "指针主题"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
 msgstr ":"
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode Off"
 msgstr "关闭夜间模式"
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode On"
 msgstr "打开夜间模式"
 
-#: src/modules/TimerOndemand.js:228
+#: src/modules/TimerOndemand.js:227
 msgid "Extension Settings"
 msgstr "扩展程序设置"
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode Off"
 msgstr "夜间模式关闭"
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode On"
 msgstr "夜间模式开启"
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn Off"
 msgstr "关闭"
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn On"
 msgstr "开启"
 
@@ -482,6 +491,30 @@ msgstr "放在系统菜单里"
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "默认"
+
+#~ msgid "Switch GTK variants"
+#~ msgstr "切换 GTK 样式"
+
+#~ msgid "Switch shell variants"
+#~ msgstr "切换 shell 样式"
+
+#~ msgid "Switch icon variants"
+#~ msgstr "切换图标样式"
+
+#~ msgid "Switch cursor variants"
+#~ msgstr "切换指针样式"
+
+#~ msgid "GTK theme"
+#~ msgstr "GTK 主题"
+
+#~ msgid "Shell theme"
+#~ msgstr "Shell 主题"
+
+#~ msgid "Icon theme"
+#~ msgstr "图标主题"
+
+#~ msgid "Cursor theme"
+#~ msgstr "指针主题"
 
 #~ msgid "Manual schedule times"
 #~ msgstr "手动安排时间"
@@ -533,9 +566,6 @@ msgstr "默认"
 #~ msgid "Switch cursor theme variants"
 #~ msgstr "切换指针的主题样式"
 
-#~ msgid "Switch GTK theme variants"
-#~ msgstr "切换 GTK 的主题的样式"
-
 #~ msgid "Manual variants"
 #~ msgstr "手动设置样式"
 
@@ -562,14 +592,8 @@ msgstr "默认"
 #~ msgid "Donate on Liberapay"
 #~ msgstr "用 Liberapay 向我们捐款"
 
-#~ msgid "Switch icon theme variants"
-#~ msgstr "切换图标的主题样式"
-
 #~ msgid "Appearance"
 #~ msgstr "外观"
-
-#~ msgid "Switch Shell theme variants"
-#~ msgstr "切换 Shell 的主题的样式"
 
 #~ msgid ""
 #~ "You can manually set variants if the extension cannot automatically "

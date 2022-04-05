@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 13:15+0200\n"
+"POT-Creation-Date: 2022-04-05 12:01+0200\n"
 "PO-Revision-Date: 2021-09-20 00:46+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/night-theme-"
@@ -27,8 +27,11 @@ msgid "The current extension settings version"
 msgstr "Hedapenaren konfigurazioaren egungo bertsioa"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
-msgid "Switch GTK variants"
-msgstr "GTKren aldaerak aldatu"
+#: src/data/ui/ThemesPage.ui:30
+#, fuzzy
+#| msgid "Switch GTK theme variants"
+msgid "Switch GTK theme"
+msgstr "GTK gaiaren aldaerak aldatu"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
@@ -51,8 +54,11 @@ msgid "The GTK theme to use during nighttime"
 msgstr "GTK gaia gauez erabiltzeko"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
-msgid "Switch shell variants"
-msgstr "Aldatu shell aldaerak"
+#: src/data/ui/ThemesPage.ui:47
+#, fuzzy
+#| msgid "Switch Shell theme variants"
+msgid "Switch Shell theme"
+msgstr "Shell gaiaren aldaerak aldatu"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
@@ -75,8 +81,11 @@ msgid "The shell theme to use during nighttime"
 msgstr "Gauean erabiltzeko shell gaia"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
-msgid "Switch icon variants"
-msgstr "Ikonoen aldaerak aldatu"
+#: src/data/ui/ThemesPage.ui:63
+#, fuzzy
+#| msgid "Switch icon theme variants"
+msgid "Switch icon theme"
+msgstr "Ikonoen gaiaren aldaerak aldatu"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
@@ -99,8 +108,11 @@ msgid "The icon theme to use during nighttime"
 msgstr "Gauean erabiltzeko ikonoen gaia"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
-msgid "Switch cursor variants"
-msgstr "Kurtsorearen aldaerak aldatu"
+#: src/data/ui/ThemesPage.ui:79
+#, fuzzy
+#| msgid "Night cursor theme"
+msgid "Switch cursor theme"
+msgstr "Gaueko kurtsorearen gaia"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
@@ -276,7 +288,7 @@ msgstr "Komandoak"
 msgid "Run commands"
 msgstr "Komandoak exekutatu"
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:82
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:84
 msgid "Sunrise"
 msgstr "Egunsentia"
 
@@ -285,7 +297,7 @@ msgstr "Egunsentia"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"egunon!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:94
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:96
 msgid "Sunset"
 msgstr "Ilunabarra"
 
@@ -351,11 +363,15 @@ msgstr ""
 msgid "Night Light"
 msgstr "Gaueko argia"
 
-#: src/data/ui/SchedulePage.ui:65
+#: src/data/ui/SchedulePage.ui:63
+msgid "These settings only apply when Night Light is the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
 msgstr "Jarraitu <i>Desaktibatu bihar arte</i>"
 
-#: src/data/ui/SchedulePage.ui:66
+#: src/data/ui/SchedulePage.ui:67
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
@@ -363,19 +379,28 @@ msgstr ""
 "Gaueko argia aldi baterako desaktibatuta dagoenean, luzapena eguneko "
 "aldaeretara aldatuko da."
 
-#: src/data/ui/SchedulePage.ui:79 src/preferences/SchedulePage.js:56
+#: src/data/ui/SchedulePage.ui:80 src/preferences/SchedulePage.js:56
 msgid "Manual schedule"
 msgstr "Eskuzko ordutegia"
 
-#: src/data/ui/SchedulePage.ui:108 src/preferences/SchedulePage.js:57
+#: src/data/ui/SchedulePage.ui:81
+msgid ""
+"These settings only apply when using the manual schedule as the time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
 msgstr "Nahieran"
 
 #: src/data/ui/SchedulePage.ui:111
+msgid "These settings only apply when using the on-demand time source."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
 msgstr "Teklatuaren lasterbidea"
 
-#: src/data/ui/SchedulePage.ui:122
+#: src/data/ui/SchedulePage.ui:125
 msgid "Button location"
 msgstr "Botoiaren kokapena"
 
@@ -401,76 +426,52 @@ msgid ""
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:28
-#, fuzzy
-#| msgid "Day GTK theme"
-msgid "GTK theme"
-msgstr "Eguneko GTK gaia"
-
-#: src/data/ui/ThemesPage.ui:29
+#: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:37 src/data/ui/ThemesPage.ui:57
-#: src/data/ui/ThemesPage.ui:77 src/data/ui/ThemesPage.ui:97
+#: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
+#: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
 msgstr "Eguneko aldaera"
 
-#: src/data/ui/ThemesPage.ui:42 src/data/ui/ThemesPage.ui:62
-#: src/data/ui/ThemesPage.ui:82 src/data/ui/ThemesPage.ui:102
+#: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
+#: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
 msgstr "Gaueko aldaera"
-
-#: src/data/ui/ThemesPage.ui:49
-#, fuzzy
-#| msgid "Day shell theme"
-msgid "Shell theme"
-msgstr "Eguneko shell gaia"
-
-#: src/data/ui/ThemesPage.ui:69
-#, fuzzy
-#| msgid "Day icon theme"
-msgid "Icon theme"
-msgstr "Eguneko ikonoen gaia"
-
-#: src/data/ui/ThemesPage.ui:89
-#, fuzzy
-#| msgid "Day cursor theme"
-msgid "Cursor theme"
-msgstr "Eguneko kurtsorearen gaia"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
 msgstr ":"
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:213
+#: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:228
+#: src/modules/TimerOndemand.js:227
 msgid "Extension Settings"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:237
+#: src/modules/TimerOndemand.js:235
 msgid "Night Mode On"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn Off"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:238
+#: src/modules/TimerOndemand.js:236
 msgid "Turn On"
 msgstr ""
 
@@ -497,6 +498,38 @@ msgstr "Sistemaren menua"
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "Lehenetsita"
+
+#~ msgid "Switch GTK variants"
+#~ msgstr "GTKren aldaerak aldatu"
+
+#~ msgid "Switch shell variants"
+#~ msgstr "Aldatu shell aldaerak"
+
+#~ msgid "Switch icon variants"
+#~ msgstr "Ikonoen aldaerak aldatu"
+
+#~ msgid "Switch cursor variants"
+#~ msgstr "Kurtsorearen aldaerak aldatu"
+
+#, fuzzy
+#~| msgid "Day GTK theme"
+#~ msgid "GTK theme"
+#~ msgstr "Eguneko GTK gaia"
+
+#, fuzzy
+#~| msgid "Day shell theme"
+#~ msgid "Shell theme"
+#~ msgstr "Eguneko shell gaia"
+
+#, fuzzy
+#~| msgid "Day icon theme"
+#~ msgid "Icon theme"
+#~ msgstr "Eguneko ikonoen gaia"
+
+#, fuzzy
+#~| msgid "Day cursor theme"
+#~ msgid "Cursor theme"
+#~ msgstr "Eguneko kurtsorearen gaia"
 
 #~ msgid "Manual schedule times"
 #~ msgstr "Eskuzko programazioaren ordutegiak"
@@ -548,9 +581,6 @@ msgstr "Lehenetsita"
 #~ msgid "Switch cursor theme variants"
 #~ msgstr "Kurtsorearen gaiaren aldaerak aldatu"
 
-#~ msgid "Switch GTK theme variants"
-#~ msgstr "GTK gaiaren aldaerak aldatu"
-
 #~ msgid "Manual variants"
 #~ msgstr "Eskuzko aldaerak"
 
@@ -578,14 +608,8 @@ msgstr "Lehenetsita"
 #~ msgid "Donate on Liberapay"
 #~ msgstr "Dohaintza egin Liberapayen"
 
-#~ msgid "Switch icon theme variants"
-#~ msgstr "Ikonoen gaiaren aldaerak aldatu"
-
 #~ msgid "Appearance"
 #~ msgstr "Itxura"
-
-#~ msgid "Switch Shell theme variants"
-#~ msgstr "Shell gaiaren aldaerak aldatu"
 
 #~ msgid ""
 #~ "You can manually set variants if the extension cannot automatically "
