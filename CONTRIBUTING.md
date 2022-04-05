@@ -42,17 +42,17 @@ We follow the [GNOME Shell coding style](https://gitlab.gnome.org/GNOME/gnome-sh
 To make sure your code follows it:
 
 ```bash
-npm run test-lint
+meson test -C builddir --suite=code
 ```
 
 ### Copyright notice
 
 If you make changes to a file, please put your copyright notice to the top of the file, or in a separate file (named `original-file.ext.license`), following the [SPDX specification](https://spdx.dev/).
 
-Run [`reuse`](https://reuse.software/) to check that all the needed information is present:
+We use [`reuse`](https://reuse.software/) to check that all the needed information is present:
 
 ```bash
-reuse lint
+meson test -C builddir --suite=licensing
 ```
 
 ### Creating new files
