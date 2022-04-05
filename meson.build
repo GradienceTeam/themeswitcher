@@ -33,7 +33,11 @@ if reuse_exe.found()
 	)
 endif
 
-eslint_exe = find_program('eslint', required: false)
+eslint_exe = find_program(
+	'eslint', 'eslint.js',
+	required: false,
+	dirs: [ meson.project_source_root() / 'node_modules' / 'eslint' / 'bin' ]
+)
 if eslint_exe.found()
 	test(
 		'Check JavaScript format',
