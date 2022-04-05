@@ -73,7 +73,7 @@ function getInstalledResources(type) {
  * @returns {Set<string>} A set containing all the installed GTK themes names.
  */
 function getInstalledGtkThemes() {
-    const themes = new Set(['Adwaita', 'HighContrast', 'HighContrastInverse']);
+    const themes = new Set();
     getInstalledResources('themes').forEach(theme => {
         const version = [0, Gtk.MINOR_VERSION].find(gtkVersion => {
             if (gtkVersion % 2)
