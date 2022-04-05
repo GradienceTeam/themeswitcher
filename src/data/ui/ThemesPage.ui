@@ -25,81 +25,69 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </child>
     <child>
       <object class="AdwPreferencesGroup">
-        <property name="title" translatable="yes">GTK theme</property>
-        <property name="description" translatable="yes">Forcing a dark theme on applications not designed to support it can have undesirable side-effects such as unreadable text or invisible icons.</property>
-        <property name="header-suffix">
-          <object class="GtkSwitch" id="gtk_enabled_switch">
-            <property name="valign">center</property>
-          </object>
-        </property>
         <child>
-          <object class="AdwComboRow" id="gtk_day_variant_combo_row">
-            <property name="title" translatable="yes">Day variant</property>
+          <object class="AdwExpanderRow" id="gtk_row">
+            <property name="title" translatable="yes">Switch GTK theme</property>
+            <property name="subtitle" translatable="yes">Forcing a dark theme on applications not designed to support it can have undesirable side-effects such as unreadable text or invisible icons.</property>
+            <property name="show-enable-switch">True</property>
+            <child>
+              <object class="AdwComboRow" id="gtk_day_variant_combo_row">
+                <property name="title" translatable="yes">Day variant</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwComboRow" id="gtk_night_variant_combo_row">
+                <property name="title" translatable="yes">Night variant</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>
-          <object class="AdwComboRow" id="gtk_night_variant_combo_row">
-            <property name="title" translatable="yes">Night variant</property>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="AdwPreferencesGroup">
-        <property name="title" translatable="yes">Shell theme</property>
-        <property name="header-suffix">
-          <object class="GtkSwitch" id="shell_enabled_switch">
-            <property name="valign">center</property>
-          </object>
-        </property>
-        <child>
-          <object class="AdwComboRow" id="shell_day_variant_combo_row">
-            <property name="title" translatable="yes">Day variant</property>
+          <object class="AdwExpanderRow" id="shell_row">
+            <property name="title" translatable="yes">Switch Shell theme</property>
+            <property name="show-enable-switch">True</property>
+            <child>
+              <object class="AdwComboRow" id="shell_day_variant_combo_row">
+                <property name="title" translatable="yes">Day variant</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwComboRow" id="shell_night_variant_combo_row">
+                <property name="title" translatable="yes">Night variant</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>
-          <object class="AdwComboRow" id="shell_night_variant_combo_row">
-            <property name="title" translatable="yes">Night variant</property>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="AdwPreferencesGroup">
-        <property name="title" translatable="yes">Icon theme</property>
-        <property name="header-suffix">
-          <object class="GtkSwitch" id="icon_enabled_switch">
-            <property name="valign">center</property>
-          </object>
-        </property>
-        <child>
-          <object class="AdwComboRow" id="icon_day_variant_combo_row">
-            <property name="title" translatable="yes">Day variant</property>
+          <object class="AdwExpanderRow" id="icon_row">
+            <property name="title" translatable="yes">Switch icon theme</property>
+            <property name="show-enable-switch">True</property>
+            <child>
+              <object class="AdwComboRow" id="icon_day_variant_combo_row">
+                <property name="title" translatable="yes">Day variant</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwComboRow" id="icon_night_variant_combo_row">
+                <property name="title" translatable="yes">Night variant</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>
-          <object class="AdwComboRow" id="icon_night_variant_combo_row">
-            <property name="title" translatable="yes">Night variant</property>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="AdwPreferencesGroup">
-        <property name="title" translatable="yes">Cursor theme</property>
-        <property name="header-suffix">
-          <object class="GtkSwitch" id="cursor_enabled_switch">
-            <property name="valign">center</property>
-          </object>
-        </property>
-        <child>
-          <object class="AdwComboRow" id="cursor_day_variant_combo_row">
-            <property name="title" translatable="yes">Day variant</property>
-          </object>
-        </child>
-        <child>
-          <object class="AdwComboRow" id="cursor_night_variant_combo_row">
-            <property name="title" translatable="yes">Night variant</property>
+          <object class="AdwExpanderRow" id="cursor_row">
+            <property name="title" translatable="yes">Switch cursor theme</property>
+            <property name="show-enable-switch">True</property>
+            <child>
+              <object class="AdwComboRow" id="cursor_day_variant_combo_row">
+                <property name="title" translatable="yes">Day variant</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwComboRow" id="cursor_night_variant_combo_row">
+                <property name="title" translatable="yes">Night variant</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>

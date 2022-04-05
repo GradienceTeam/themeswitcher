@@ -16,16 +16,16 @@ var ThemesPage = GObject.registerClass({
     GTypeName: 'ThemesPage',
     Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/ThemesPage.ui',
     InternalChildren: [
-        'gtk_enabled_switch',
+        'gtk_row',
         'gtk_day_variant_combo_row',
         'gtk_night_variant_combo_row',
-        'shell_enabled_switch',
+        'shell_row',
         'shell_day_variant_combo_row',
         'shell_night_variant_combo_row',
-        'icon_enabled_switch',
+        'icon_row',
         'icon_day_variant_combo_row',
         'icon_night_variant_combo_row',
-        'cursor_enabled_switch',
+        'cursor_row',
         'cursor_day_variant_combo_row',
         'cursor_night_variant_combo_row',
     ],
@@ -37,28 +37,28 @@ var ThemesPage = GObject.registerClass({
         const iconSettings = extensionUtils.getSettings(utils.getSettingsSchema('icon-variants'));
         const cursorSettings = extensionUtils.getSettings(utils.getSettingsSchema('cursor-variants'));
 
-        gtkSettings.bind('enabled', this._gtk_enabled_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
+        gtkSettings.bind('enabled', this._gtk_row, 'enable-expansion', Gio.SettingsBindFlags.DEFAULT);
 
         const gtkThemesStore = Gio.ListStore.new(DropDownChoice);
         gtkThemesStore.splice(0, 0, Array.from(utils.getInstalledGtkThemes()).sort().map(theme => new DropDownChoice({ id: theme, title: theme })));
         _setupComboRow(this._gtk_day_variant_combo_row, gtkThemesStore, gtkSettings, 'day');
         _setupComboRow(this._gtk_night_variant_combo_row, gtkThemesStore, gtkSettings, 'night');
 
-        shellSettings.bind('enabled', this._shell_enabled_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
+        shellSettings.bind('enabled', this._shell_row, 'enable-expansion', Gio.SettingsBindFlags.DEFAULT);
 
         const shellThemesStore = Gio.ListStore.new(DropDownChoice);
         shellThemesStore.splice(0, 0, Array.from(utils.getInstalledShellThemes()).sort().map(theme => new DropDownChoice({ id: theme, title: theme || _('Default') })));
         _setupComboRow(this._shell_day_variant_combo_row, shellThemesStore, shellSettings, 'day');
         _setupComboRow(this._shell_night_variant_combo_row, shellThemesStore, shellSettings, 'night');
 
-        iconSettings.bind('enabled', this._icon_enabled_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
+        iconSettings.bind('enabled', this._icon_row, 'enable-expansion', Gio.SettingsBindFlags.DEFAULT);
 
         const iconThemesStore = Gio.ListStore.new(DropDownChoice);
         iconThemesStore.splice(0, 0, Array.from(utils.getInstalledIconThemes()).sort().map(theme => new DropDownChoice({ id: theme, title: theme })));
         _setupComboRow(this._icon_day_variant_combo_row, iconThemesStore, iconSettings, 'day');
         _setupComboRow(this._icon_night_variant_combo_row, iconThemesStore, iconSettings, 'night');
 
-        cursorSettings.bind('enabled', this._cursor_enabled_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
+        cursorSettings.bind('enabled', this._cursor_row, 'enable-expansion', Gio.SettingsBindFlags.DEFAULT);
 
         const cursorThemesStore = Gio.ListStore.new(DropDownChoice);
         cursorThemesStore.splice(0, 0, Array.from(utils.getInstalledCursorThemes()).sort().map(theme => new DropDownChoice({ id: theme, title: theme })));

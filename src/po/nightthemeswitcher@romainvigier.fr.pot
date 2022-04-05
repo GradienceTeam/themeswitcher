@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 11:41+0200\n"
+"POT-Creation-Date: 2022-04-05 12:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,8 @@ msgid "The current extension settings version"
 msgstr ""
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
-msgid "Switch GTK variants"
+#: src/data/ui/ThemesPage.ui:30
+msgid "Switch GTK theme"
 msgstr ""
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
@@ -50,7 +51,8 @@ msgid "The GTK theme to use during nighttime"
 msgstr ""
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
-msgid "Switch shell variants"
+#: src/data/ui/ThemesPage.ui:47
+msgid "Switch Shell theme"
 msgstr ""
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
@@ -74,7 +76,8 @@ msgid "The shell theme to use during nighttime"
 msgstr ""
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
-msgid "Switch icon variants"
+#: src/data/ui/ThemesPage.ui:63
+msgid "Switch icon theme"
 msgstr ""
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
@@ -98,7 +101,8 @@ msgid "The icon theme to use during nighttime"
 msgstr ""
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
-msgid "Switch cursor variants"
+#: src/data/ui/ThemesPage.ui:79
+msgid "Switch cursor theme"
 msgstr ""
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
@@ -400,36 +404,20 @@ msgid ""
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:28
-msgid "GTK theme"
-msgstr ""
-
-#: src/data/ui/ThemesPage.ui:29
+#: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:37 src/data/ui/ThemesPage.ui:57
-#: src/data/ui/ThemesPage.ui:77 src/data/ui/ThemesPage.ui:97
+#: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
+#: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
 msgstr ""
 
-#: src/data/ui/ThemesPage.ui:42 src/data/ui/ThemesPage.ui:62
-#: src/data/ui/ThemesPage.ui:82 src/data/ui/ThemesPage.ui:102
+#: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
+#: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
-msgstr ""
-
-#: src/data/ui/ThemesPage.ui:49
-msgid "Shell theme"
-msgstr ""
-
-#: src/data/ui/ThemesPage.ui:69
-msgid "Icon theme"
-msgstr ""
-
-#: src/data/ui/ThemesPage.ui:89
-msgid "Cursor theme"
 msgstr ""
 
 #. Time separator (eg. 08:27)

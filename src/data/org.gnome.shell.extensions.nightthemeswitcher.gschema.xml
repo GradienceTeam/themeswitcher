@@ -14,7 +14,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.gtk-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/gtk-variants/">
 		<key name="enabled" type="b">
 			<default>false</default>
-			<summary>Switch GTK variants</summary>
+			<summary>Switch GTK theme</summary>
 			<description>Enable GTK variants switching</description>
 		</key>
 		<key name="day" type="s">
@@ -31,7 +31,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.shell-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/shell-variants/">
 		<key name="enabled" type="b">
 			<default>false</default>
-			<summary>Switch shell variants</summary>
+			<summary>Switch Shell theme</summary>
 			<description>Enable shell variants switching</description>
 		</key>
 		<key name="day" type="s">
@@ -48,7 +48,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.icon-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/icon-variants/">
 		<key name="enabled" type="b">
 			<default>false</default>
-			<summary>Switch icon variants</summary>
+			<summary>Switch icon theme</summary>
 			<description>Enable icon variants switching</description>
 		</key>
 		<key name="day" type="s">
@@ -65,7 +65,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.cursor-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/cursor-variants/">
 		<key name="enabled" type="b">
 			<default>false</default>
-			<summary>Switch cursor variants</summary>
+			<summary>Switch cursor theme</summary>
 			<description>Enable cursor variants switching</description>
 		</key>
 		<key name="day" type="s">
