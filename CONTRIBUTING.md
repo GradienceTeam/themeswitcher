@@ -24,7 +24,7 @@ You're welcome to contribute to the [code](#contributing-to-the-code) or to the 
 You'll need [NPM](https://www.npmjs.com/) to install the development dependencies:
 
 ```bash
-npm install --save-dev
+meson compile -C builddir dev
 ```
 
 When you're done, commit all your changes. Make one commit per change. The commit message must include which part of the code you worked on. Example:

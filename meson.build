@@ -16,5 +16,10 @@ INSTALL_DIR = get_option('datadir') / 'gnome-shell' / 'extensions' / UUID
 gnome = import('gnome')
 i18n = import('i18n')
 
+npm_exe = find_program('npm')
+if npm_exe.found()
+	run_target('dev', command: [ npm_exe, 'install', '--save-dev' ])
+endif
+
 subdir('src')
 subdir('tests')
