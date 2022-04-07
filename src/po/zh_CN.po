@@ -8,11 +8,11 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 12:01+0200\n"
-"PO-Revision-Date: 2022-04-06 14:41+0000\n"
+"PO-Revision-Date: 2022-04-08 11:44+0000\n"
 "Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/zh_Hans/>\n"
-"Language: zh_Hans\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -439,7 +439,7 @@ msgstr "关闭夜间模式"
 
 #: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode On"
-msgstr "打开夜间模式"
+msgstr "开启夜间模式"
 
 #: src/modules/TimerOndemand.js:227
 msgid "Extension Settings"
@@ -447,11 +447,11 @@ msgstr "扩展程序设置"
 
 #: src/modules/TimerOndemand.js:235
 msgid "Night Mode Off"
-msgstr "夜间模式关闭"
+msgstr "夜间模式已关闭"
 
 #: src/modules/TimerOndemand.js:235
 msgid "Night Mode On"
-msgstr "夜间模式开启"
+msgstr "夜间模式已开启"
 
 #: src/modules/TimerOndemand.js:236
 msgid "Turn Off"
