@@ -6,6 +6,21 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [62] - 2022-04-08
+
+### Changed
+- Updated Chinese (Simplified) translation by @wsxy162
+- Updated Dutch translation by @Vistaus
+- Updated French translation
+- Updated Norwegian Bokmål translation by @kingu
+- Updated Turkish translation by @ersen
+
+### Fixed
+- On-demand icon not loaded after extension installation
+- Adwaita, Adwaita-dark, HighContrast and HighContrastInverse were added to the list of GTK themes even if they were not present on the system
+- Chinese (Simplified) translation was not loaded
+
+
 ## [61] - 2022-04-04
 
 ### Changed
