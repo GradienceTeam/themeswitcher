@@ -3,7 +3,7 @@
 
 'use strict';
 
-const { Gio, GLib } = imports.gi;
+const { Gio } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
@@ -16,7 +16,6 @@ const { Timer } = Me.imports.modules.Timer;
 
 
 class NightThemeSwitcher {
-    #resource = null;
     #timer = null;
     #switcherThemeGtk = null;
     #switcherThemeShell = null;
@@ -33,10 +32,6 @@ class NightThemeSwitcher {
 
     enable() {
         console.debug('Enabling extension...');
-
-        this.#resource = Gio.Resource.load(GLib.build_filenamev([Me.path, 'resources', 'extension.gresource']));
-        Gio.resources_register(this.#resource);
-
         this.#timer = new Timer();
         this.#switcherThemeGtk = new SwitcherThemeGtk({ timer: this.#timer });
         this.#switcherThemeIcon = new SwitcherThemeIcon({ timer: this.#timer });
@@ -84,9 +79,6 @@ class NightThemeSwitcher {
             this.#timer.disable();
             this.#timer = null;
         }
-
-        if (this.#resource)
-            Gio.resources_unregister(this.#resource);
 
         console.debug('Extension disabled.');
     }

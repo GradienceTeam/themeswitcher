@@ -209,6 +209,7 @@ var NtsPanelMenuButton = GObject.registerClass(
 
         update() {
             this.icon.icon_name = _getIconNameForTime(this.#timer.time);
+            this.icon.fallback_gicon = _getGiconForTime(this.#timer.time);
             this.accessible_name = this.#timer.time === Time.DAY ? _('Turn Night Mode On') : _('Turn Night Mode Off');
         }
     }
@@ -232,6 +233,7 @@ var NtsPopupSubMenuMenuItem = GObject.registerClass(
 
         update() {
             this.icon.icon_name = _getIconNameForTime(this.#timer.time);
+            this.icon.fallback_gicon = _getGiconForTime(this.#timer.time);
             this.label.text = this.#timer.time === Time.DAY ? _('Night Mode Off') : _('Night Mode On');
             this._toggleItem.label.text = this.#timer.time === Time.DAY ? _('Turn On') : _('Turn Off');
         }
@@ -240,4 +242,8 @@ var NtsPopupSubMenuMenuItem = GObject.registerClass(
 
 var _getIconNameForTime = time => {
     return time === Time.DAY ? 'nightthemeswitcher-ondemand-off-symbolic' : 'nightthemeswitcher-ondemand-on-symbolic';
+};
+
+var _getGiconForTime = time => {
+    return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, 'icons', 'hicolor', 'scalable', 'status', `${this._getIconNameForTime(time)}.svg`]));
 };
