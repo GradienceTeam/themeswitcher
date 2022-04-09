@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 12:01+0200\n"
-"PO-Revision-Date: 2022-03-20 18:57+0000\n"
+"PO-Revision-Date: 2022-04-10 17:11+0000\n"
 "Last-Translator: Przemek Juszczyk <apexv4@protonmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/pl/>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,10 +30,8 @@ msgstr "Obecna wersja ustawień rozszerzenia"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 #: src/data/ui/ThemesPage.ui:30
-#, fuzzy
-#| msgid "Night GTK theme"
 msgid "Switch GTK theme"
-msgstr "Nocny motyw GTK"
+msgstr "Zmiana motywu GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
@@ -57,10 +55,8 @@ msgstr "Motyw GTK używany podczas nocy"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
 #: src/data/ui/ThemesPage.ui:47
-#, fuzzy
-#| msgid "Shell theme"
 msgid "Switch Shell theme"
-msgstr "Motyw powłoki"
+msgstr "Zmiana motywu powłoki"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
@@ -84,10 +80,8 @@ msgstr "Motyw powłoki używany podczas nocy"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 #: src/data/ui/ThemesPage.ui:63
-#, fuzzy
-#| msgid "Night icon theme"
 msgid "Switch icon theme"
-msgstr "Nocny motyw ikon"
+msgstr "Zmiana motywu ikon"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
@@ -111,10 +105,8 @@ msgstr "Motyw ikon używany podczas nocy"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
 #: src/data/ui/ThemesPage.ui:79
-#, fuzzy
-#| msgid "Night cursor theme"
 msgid "Switch cursor theme"
-msgstr "Nocny motyw kursora"
+msgstr "Zmiana motywu kursora"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
@@ -181,11 +173,11 @@ msgstr "Ścieżka do nocnego tła"
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:120
 #: src/data/ui/SchedulePage.ui:27
 msgid "Time source"
-msgstr "Źródło czasu"
+msgstr "Pora dnia"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:121
 msgid "The source used to check current time"
-msgstr "Źródło używane do sprawdzenia aktualnego czasu"
+msgstr "Źródło używane do sprawdzenia pory dnia"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:125
 msgid "Follow Night Light \"Disable until tomorrow\""
@@ -231,11 +223,11 @@ msgstr "Gdzie zostanie położony przycisk zmiany ręcznej"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
 msgid "Use manual time source"
-msgstr "Użyj manualnego źródła czasu"
+msgstr "Użyj manualnego wyznaczania pory dnia"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:160
 msgid "Disable automatic time source detection"
-msgstr "Wyłącz automatyczne wykrywanie źródła czasu"
+msgstr "Wyłącz automatyczne wykrywanie pory dnia"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:164
 msgid "Sunrise time"
@@ -268,7 +260,7 @@ msgstr "Zmień tło"
 
 #: src/data/ui/BackgroundButton.ui:31
 msgid "Select your background image"
-msgstr "Wybierz swój obraz tła"
+msgstr "Wybierz swoje tło"
 
 #: src/data/ui/BackgroundsPage.ui:9
 msgid "Backgrounds"
@@ -327,7 +319,7 @@ msgstr "Harmonogram"
 
 #: src/data/ui/SchedulePage.ui:15
 msgid "Manual time source"
-msgstr "Manualne źródło czasu"
+msgstr "Manualne wyznaczanie pory dnia"
 
 #: src/data/ui/SchedulePage.ui:16
 msgid ""
@@ -337,7 +329,7 @@ msgid ""
 msgstr ""
 "Rozszerzenie spróbuje użyć podświetlenia nocnego lub usług lokalizacji do "
 "automatycznego ustawienia godzin wschodu i zachodu słońca. Jeśli wolisz, "
-"możesz manualnie wybrać źródło czasu."
+"możesz manualnie wybrać źródło pory dnia."
 
 #: src/data/ui/SchedulePage.ui:33
 msgid "Always show on-demand controls"
@@ -362,6 +354,7 @@ msgstr "Podświetlenie nocne"
 #: src/data/ui/SchedulePage.ui:63
 msgid "These settings only apply when Night Light is the time source."
 msgstr ""
+"Te ustawienia będą stosowane gdy podświetlenie nocne wyznacza porę dnia."
 
 #: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
@@ -383,6 +376,7 @@ msgstr "Manualny harmonogram"
 msgid ""
 "These settings only apply when using the manual schedule as the time source."
 msgstr ""
+"Te ustawienia będą stosowane gdy manualny harmonogram wyznacza porę dnia."
 
 #: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
@@ -390,7 +384,7 @@ msgstr "Ręcznie"
 
 #: src/data/ui/SchedulePage.ui:111
 msgid "These settings only apply when using the on-demand time source."
-msgstr ""
+msgstr "Te ustawienia będą stosowane gdy tryb ręczny wyznacza porę dnia."
 
 #: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
