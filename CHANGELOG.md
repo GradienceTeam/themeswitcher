@@ -6,6 +6,15 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [63] - 2022-04-13
+
+### Changed
+- Updated Polish translation by Przemek Juszczyk
+
+### Fixed
+- Empty background buttons in the preferences when the monitor size is unavailable
+
+
 ## [62] - 2022-04-08
 
 ### Changed
