@@ -47,6 +47,8 @@ var BackgroundButton = GObject.registerClass({
     #setupSize() {
         const display = Gdk.Display.get_default();
         const monitor = display.get_monitors().get_item(0);
+        if (monitor.width_mm === 0 || monitor.height_mm === 0)
+            return;
         if (monitor.width_mm > monitor.height_mm)
             this.thumb_height *= monitor.height_mm / monitor.width_mm;
         else
