@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 12:01+0200\n"
-"PO-Revision-Date: 2022-04-08 11:44+0000\n"
+"PO-Revision-Date: 2022-04-16 02:11+0000\n"
 "Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/zh_Hans/>\n"
@@ -180,7 +180,7 @@ msgstr "确定现在什么时候了的根据"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:125
 msgid "Follow Night Light \"Disable until tomorrow\""
-msgstr "根据夜灯“今天不用亮了”推测"
+msgstr "跟随夜灯的“明天前禁用”状态"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
 msgid "Switch back to day time when Night Light is temporarily disabled"
@@ -353,7 +353,7 @@ msgstr "这些设置仅在夜灯作为时间源时应用。"
 
 #: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
-msgstr "根据<i>今天不用亮了</i>推测"
+msgstr "跟随<i>明天前禁用</i>"
 
 #: src/data/ui/SchedulePage.ui:67
 msgid ""
