@@ -80,6 +80,10 @@ var BackgroundButton = GObject.registerClass({
         this.add_controller(dropTarget);
     }
 
+    vfunc_mnemonic_activate() {
+        this.openFileChooser();
+    }
+
     openFileChooser() {
         this._filechooser.transient_for = this.get_root();
         this._filechooser.show();
