@@ -4,22 +4,23 @@
 # Omar TS <omats@vivaldi.net>, 2021.
 # Omar TS <omats@criptext.com>, 2021.
 # Romain Vigier <romain@romainvigier.fr>, 2022.
+# Omar TS <ots@duck.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 12:01+0200\n"
-"PO-Revision-Date: 2022-04-04 21:16+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/ar/>\n"
+"PO-Revision-Date: 2022-04-23 13:14+0000\n"
+"Last-Translator: Omar TS <ots@duck.com>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.12.1-dev\n"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
@@ -31,10 +32,8 @@ msgstr "إصدار إعدادات الامتداد الحالي"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 #: src/data/ui/ThemesPage.ui:30
-#, fuzzy
-#| msgid "Switch GTK theme variants"
 msgid "Switch GTK theme"
-msgstr "تبديل متغيرات سمة GTK"
+msgstr "تبديل سمة GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
@@ -58,10 +57,8 @@ msgstr "سمة GTK للاستخدام أثناء الليل"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
 #: src/data/ui/ThemesPage.ui:47
-#, fuzzy
-#| msgid "Switch Shell theme variants"
 msgid "Switch Shell theme"
-msgstr "تبديل متغيرات سمة الصَّدَفة"
+msgstr "تبديل سمة الصَّدَفة"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
@@ -85,10 +82,8 @@ msgstr "سمة الصّدَفة التي سيتم استخدامها أثناء 
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 #: src/data/ui/ThemesPage.ui:63
-#, fuzzy
-#| msgid "Switch icon theme variants"
 msgid "Switch icon theme"
-msgstr "تبديل متغيرات أيقونة السمة"
+msgstr "تبديل أيقونة السمة"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
@@ -112,10 +107,8 @@ msgstr "أيقونات السمة المستخدمة أثناء الليل"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
 #: src/data/ui/ThemesPage.ui:79
-#, fuzzy
-#| msgid "Night cursor theme"
 msgid "Switch cursor theme"
-msgstr "مؤشر السمة الليلية"
+msgstr "تبديل مؤشر السمة"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
@@ -256,11 +249,11 @@ msgstr "عندما ينتهي النهار"
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
 #: src/data/ui/SchedulePage.ui:50
 msgid "Transition"
-msgstr ""
+msgstr "انتقال"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
 msgid "Use a transition when changing the color scheme"
-msgstr ""
+msgstr "استخدم انتقالًا عند تغيير نظام الألوان"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -271,10 +264,8 @@ msgid "Select your background image"
 msgstr "حدد صورة الخلفية الخاصة بك"
 
 #: src/data/ui/BackgroundsPage.ui:9
-#, fuzzy
-#| msgid "Day background"
 msgid "Backgrounds"
-msgstr "خلفية النهار"
+msgstr "خلفيات"
 
 #: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
 #: src/data/ui/ShortcutButton.ui:45
@@ -309,19 +300,19 @@ msgstr "أخطر وأرسل \"أهلا بطلوع القمر!\""
 
 #: src/data/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "مساهمة"
 
 #: src/data/ui/ContributePage.ui:42
 msgid "View the code and report issues"
-msgstr ""
+msgstr "عرض الكود البرمجي والإبلاغ عن الأخطاء"
 
 #: src/data/ui/ContributePage.ui:55
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "ساهم في الترجمة"
 
 #: src/data/ui/ContributePage.ui:68
 msgid "Support me with a donation"
-msgstr ""
+msgstr "ادعمني بالتبرع"
 
 #: src/data/ui/SchedulePage.ui:9
 msgid "Schedule"
@@ -351,11 +342,11 @@ msgstr "يتيح لك تجاوز الوقت الحالي عند استخدام �
 
 #: src/data/ui/SchedulePage.ui:47
 msgid "Advanced"
-msgstr ""
+msgstr "متقدم"
 
 #: src/data/ui/SchedulePage.ui:51
 msgid "Smooth transition between day and night appearance."
-msgstr ""
+msgstr "الانتقال السلس بين المظهر النهاري والليلي."
 
 #: src/data/ui/SchedulePage.ui:62 src/preferences/SchedulePage.js:43
 msgid "Night Light"
@@ -363,7 +354,7 @@ msgstr "الإضاءة الليلية"
 
 #: src/data/ui/SchedulePage.ui:63
 msgid "These settings only apply when Night Light is the time source."
-msgstr ""
+msgstr "تنطبق هذه الإعدادات فقط عندما يكون Night Light هو مصدر الوقت."
 
 #: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
@@ -383,7 +374,7 @@ msgstr "الجدولة اليدوية"
 #: src/data/ui/SchedulePage.ui:81
 msgid ""
 "These settings only apply when using the manual schedule as the time source."
-msgstr ""
+msgstr "تنطبق هذه الإعدادات فقط عند استخدام الجدول اليدوي كمصدر للوقت."
 
 #: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
@@ -391,7 +382,7 @@ msgstr "عند الطلب"
 
 #: src/data/ui/SchedulePage.ui:111
 msgid "These settings only apply when using the on-demand time source."
-msgstr ""
+msgstr "تنطبق هذه الإعدادات فقط عند استخدام مصدر الوقت عند الطلب."
 
 #: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
@@ -415,19 +406,23 @@ msgstr "اضغط على اختصار لوحة المفاتيح …"
 
 #: src/data/ui/ThemesPage.ui:9
 msgid "Themes"
-msgstr ""
+msgstr "سمات"
 
 #: src/data/ui/ThemesPage.ui:15
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
+"يحتوي جنوم على وضع مظلم مدمج يستخدمه الامتداد. لا يُنصح بتبديل السمات يدويًا "
+"وهو موجود هنا فقط لأسباب قديمة."
 
 #: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
+"قد يؤدي فرض سمة داكنة على التطبيقات غير المصممة لدعمها إلى آثار جانبية غير "
+"مرغوب فيها مثل النص غير المقروء أو الرموز غير المرئية."
 
 #: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
 #: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
@@ -446,23 +441,23 @@ msgstr ":"
 
 #: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode Off"
-msgstr ""
+msgstr "قم بإيقاف تشغيل الوضع الليلي"
 
 #: src/modules/TimerOndemand.js:212
 msgid "Turn Night Mode On"
-msgstr ""
+msgstr "قم بتشغيل الوضع الليلي"
 
 #: src/modules/TimerOndemand.js:227
 msgid "Extension Settings"
-msgstr ""
+msgstr "إعدادات الامتداد"
 
 #: src/modules/TimerOndemand.js:235
 msgid "Night Mode Off"
-msgstr ""
+msgstr "الوضع الليلي معطل"
 
 #: src/modules/TimerOndemand.js:235
 msgid "Night Mode On"
-msgstr ""
+msgstr "الوضع الليلي مفعّل"
 
 #: src/modules/TimerOndemand.js:236
 msgid "Turn Off"
@@ -474,7 +469,7 @@ msgstr "شغل"
 
 #: src/preferences/BackgroundButton.js:71
 msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
-msgstr ""
+msgstr "يمكن فقط تعيين ملفات JPEG و PNG و TIFF و XML كصورة خلفية."
 
 #: src/preferences/SchedulePage.js:48
 msgid "Location Services"
