@@ -62,6 +62,7 @@ var BackgroundButton = GObject.registerClass({
             if (
                 Gio.content_type_equals(contentType, 'image/jpeg') ||
                 Gio.content_type_equals(contentType, 'image/png') ||
+                Gio.content_type_equals(contentType, 'image/svg+xml') ||
                 Gio.content_type_equals(contentType, 'image/tiff') ||
                 Gio.content_type_equals(contentType, 'application/xml')
             ) {
@@ -70,7 +71,7 @@ var BackgroundButton = GObject.registerClass({
             } else {
                 if (this.root instanceof Adw.PreferencesWindow) {
                     this.root.add_toast(new Adw.Toast({
-                        title: _('Only JPEG, PNG, TIFF and XML files can be set as background image.'),
+                        title: _('Only JPEG, PNG, TIFF, SVG and XML files can be set as background image.'),
                         timeout: 10,
                     }));
                 }
@@ -109,6 +110,7 @@ var BackgroundButton = GObject.registerClass({
         if (
             Gio.content_type_equals(contentType, 'image/jpeg') ||
             Gio.content_type_equals(contentType, 'image/png') ||
+            Gio.content_type_equals(contentType, 'image/svg+xml') ||
             Gio.content_type_equals(contentType, 'image/tiff')
         ) {
             path = file.get_path();
