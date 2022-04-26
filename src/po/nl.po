@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 12:01+0200\n"
+"POT-Creation-Date: 2022-04-26 22:37+0200\n"
 "PO-Revision-Date: 2022-04-06 14:41+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/"
-"night-theme-switcher/extension/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/night-theme-"
+"switcher/extension/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -449,36 +449,38 @@ msgstr "Nachtvariant"
 msgid ":"
 msgstr ":"
 
-#: src/modules/TimerOndemand.js:212
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode Off"
 msgstr "Donker thema inschakelen"
 
-#: src/modules/TimerOndemand.js:212
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
 msgstr "Donker thema gebruiken"
 
-#: src/modules/TimerOndemand.js:227
+#: src/modules/TimerOndemand.js:228
 msgid "Extension Settings"
 msgstr "Uitbreidingsvoorkeuren"
 
-#: src/modules/TimerOndemand.js:235
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode Off"
 msgstr "Donker thema uit"
 
-#: src/modules/TimerOndemand.js:235
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode On"
 msgstr "Donker thema aan"
 
-#: src/modules/TimerOndemand.js:236
+#: src/modules/TimerOndemand.js:238
 msgid "Turn Off"
 msgstr "Uitschakelen"
 
-#: src/modules/TimerOndemand.js:236
+#: src/modules/TimerOndemand.js:238
 msgid "Turn On"
 msgstr "Inschakelen"
 
-#: src/preferences/BackgroundButton.js:71
-msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
+#: src/preferences/BackgroundButton.js:74
+#, fuzzy
+#| msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
+msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
 msgstr ""
 "Er is alleen ondersteuning voor jpeg-, png-, tiff- en xml-"
 "achtergrondafbeeldingen."

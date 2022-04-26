@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 12:01+0200\n"
+"POT-Creation-Date: 2022-04-26 22:37+0200\n"
 "PO-Revision-Date: 2022-04-04 21:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -445,36 +445,38 @@ msgstr "Variante noturna"
 msgid ":"
 msgstr ":"
 
-#: src/modules/TimerOndemand.js:212
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode Off"
 msgstr "Desativar Modo Noturno"
 
-#: src/modules/TimerOndemand.js:212
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
 msgstr "Ativar Modo Noturno"
 
-#: src/modules/TimerOndemand.js:227
+#: src/modules/TimerOndemand.js:228
 msgid "Extension Settings"
 msgstr "Configurações da Extensão"
 
-#: src/modules/TimerOndemand.js:235
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode Off"
 msgstr "Modo Noturno Desativado"
 
-#: src/modules/TimerOndemand.js:235
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode On"
 msgstr "Modo Noturno Ativado"
 
-#: src/modules/TimerOndemand.js:236
+#: src/modules/TimerOndemand.js:238
 msgid "Turn Off"
 msgstr "Desativar"
 
-#: src/modules/TimerOndemand.js:236
+#: src/modules/TimerOndemand.js:238
 msgid "Turn On"
 msgstr "Ativar"
 
-#: src/preferences/BackgroundButton.js:71
-msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
+#: src/preferences/BackgroundButton.js:74
+#, fuzzy
+#| msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
+msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
 msgstr ""
 "Apenas arquivos JPEG, PNG, TIFF e XML podem ser definidos como imagem de "
 "fundo."

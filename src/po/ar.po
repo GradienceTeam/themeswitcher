@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 12:01+0200\n"
+"POT-Creation-Date: 2022-04-26 22:37+0200\n"
 "PO-Revision-Date: 2022-04-23 13:14+0000\n"
 "Last-Translator: Omar TS <ots@duck.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/"
-"night-theme-switcher/extension/ar/>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/night-theme-"
+"switcher/extension/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -439,36 +439,38 @@ msgstr "متغير الليل"
 msgid ":"
 msgstr ":"
 
-#: src/modules/TimerOndemand.js:212
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode Off"
 msgstr "قم بإيقاف تشغيل الوضع الليلي"
 
-#: src/modules/TimerOndemand.js:212
+#: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
 msgstr "قم بتشغيل الوضع الليلي"
 
-#: src/modules/TimerOndemand.js:227
+#: src/modules/TimerOndemand.js:228
 msgid "Extension Settings"
 msgstr "إعدادات الامتداد"
 
-#: src/modules/TimerOndemand.js:235
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode Off"
 msgstr "الوضع الليلي معطل"
 
-#: src/modules/TimerOndemand.js:235
+#: src/modules/TimerOndemand.js:237
 msgid "Night Mode On"
 msgstr "الوضع الليلي مفعّل"
 
-#: src/modules/TimerOndemand.js:236
+#: src/modules/TimerOndemand.js:238
 msgid "Turn Off"
 msgstr "الايقاف"
 
-#: src/modules/TimerOndemand.js:236
+#: src/modules/TimerOndemand.js:238
 msgid "Turn On"
 msgstr "شغل"
 
-#: src/preferences/BackgroundButton.js:71
-msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
+#: src/preferences/BackgroundButton.js:74
+#, fuzzy
+#| msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
+msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
 msgstr "يمكن فقط تعيين ملفات JPEG و PNG و TIFF و XML كصورة خلفية."
 
 #: src/preferences/SchedulePage.js:48
