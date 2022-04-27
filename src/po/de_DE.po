@@ -4,7 +4,7 @@
 # Romain Vigier <>, 2019, 2020.
 # Automatically generated <>, 2021.
 #
-# Romain Vigier <romain@romainvigier.fr>, 2021.
+# Romain Vigier <romain@romainvigier.fr>, 2021, 2022.
 # Kepler 69c <schmittfranz20@gmail.com>, 2021.
 # eladyn <eladyn@protonmail.com>, 2022.
 # sal0max <msal.coding@gmail.com>, 2022.
@@ -13,16 +13,16 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 45\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 22:37+0200\n"
-"PO-Revision-Date: 2022-04-19 22:12+0000\n"
-"Last-Translator: sal0max <msal.coding@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/de/>\n"
+"PO-Revision-Date: 2022-04-27 09:16+0000\n"
+"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/de/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.12.1-dev\n"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
@@ -481,12 +481,10 @@ msgid "Turn On"
 msgstr "Einschalten"
 
 #: src/preferences/BackgroundButton.js:74
-#, fuzzy
-#| msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
 msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
 msgstr ""
-"Nur JPEG-, PNG-, TIFF- und XML-Dateien können als Hintergrund festgelegt "
-"werden."
+"Nur JPEG-, PNG-, TIFF-, SVG- und XML-Dateien können als Hintergrund "
+"festgelegt werden."
 
 #: src/preferences/SchedulePage.js:48
 msgid "Location Services"
