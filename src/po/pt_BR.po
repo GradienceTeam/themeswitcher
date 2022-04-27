@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 22:37+0200\n"
-"PO-Revision-Date: 2022-04-04 21:16+0000\n"
+"PO-Revision-Date: 2022-04-27 09:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/pt_BR/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.12.1-dev\n"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
@@ -29,10 +29,8 @@ msgstr "A versão atual das configurações de extensão"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 #: src/data/ui/ThemesPage.ui:30
-#, fuzzy
-#| msgid "Switch GTK theme variants"
 msgid "Switch GTK theme"
-msgstr "Mudar variantes do tema GTK"
+msgstr "Mudar tema GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
@@ -56,10 +54,8 @@ msgstr "Tema GTK para usar durante a noite"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
 #: src/data/ui/ThemesPage.ui:47
-#, fuzzy
-#| msgid "Switch Shell theme variants"
 msgid "Switch Shell theme"
-msgstr "Alternar variantes do tema Shell"
+msgstr "Alternar tema do Shell"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
@@ -83,10 +79,8 @@ msgstr "Tema do shell para usar durante a noite"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 #: src/data/ui/ThemesPage.ui:63
-#, fuzzy
-#| msgid "Switch icon theme variants"
 msgid "Switch icon theme"
-msgstr "Alternar variantes de tema de ícone"
+msgstr "Alternar tema de ícone"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
@@ -110,10 +104,8 @@ msgstr "Tema de ícone para usar durante a noite"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
 #: src/data/ui/ThemesPage.ui:79
-#, fuzzy
-#| msgid "Night cursor theme"
 msgid "Switch cursor theme"
-msgstr "Tema noturno do cursor"
+msgstr "Mudar tema do cursor"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
@@ -359,6 +351,8 @@ msgstr "Luz noturna"
 #: src/data/ui/SchedulePage.ui:63
 msgid "These settings only apply when Night Light is the time source."
 msgstr ""
+"Essas configurações só se aplicam quando a Luz Noturna é usada como fonte do "
+"horário."
 
 #: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
@@ -380,6 +374,8 @@ msgstr "Cronograma manual"
 msgid ""
 "These settings only apply when using the manual schedule as the time source."
 msgstr ""
+"Essas configurações só se aplicam quando o agendamento manual é usado como "
+"fonte do horário."
 
 #: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
@@ -388,6 +384,7 @@ msgstr "Sob demanda"
 #: src/data/ui/SchedulePage.ui:111
 msgid "These settings only apply when using the on-demand time source."
 msgstr ""
+"Essas configurações só se aplicam quando a fonte do horário for sob-demanda."
 
 #: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
@@ -474,12 +471,10 @@ msgid "Turn On"
 msgstr "Ativar"
 
 #: src/preferences/BackgroundButton.js:74
-#, fuzzy
-#| msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
 msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
 msgstr ""
-"Apenas arquivos JPEG, PNG, TIFF e XML podem ser definidos como imagem de "
-"fundo."
+"Apenas arquivos JPEG, PNG, TIFF, SVG e XML podem ser definidos como imagem "
+"de fundo."
 
 #: src/preferences/SchedulePage.js:48
 msgid "Location Services"
