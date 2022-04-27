@@ -5,6 +5,27 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Changelog
 
+## [64] - 2022-04-27
+
+### Added
+- Italian translation by @phaerrax
+
+### Changed
+- Updated Arabic translation by Omar TS
+- Updated Chinese (Simplified) translation by @wsxy162
+- Updated Dutch translation
+- Updated French translation
+- Updated German translation by @sal0max
+- Updated Polish translation
+- Updated Portuguese (Brazil) translation
+- Updated Russian translation by @daudix-UFO
+- Updated Spanish translation by @oscfdezdz
+- Updated Turkish translation by @ersen
+
+### Fixed
+- Background button was not activated when activating a row
+- Background button did not support SVG images
+
 
 ## [63] - 2022-04-13
 
