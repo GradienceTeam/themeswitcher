@@ -48,7 +48,7 @@ function getInstalledResources(type) {
         const resourcesDir = Gio.File.new_for_path(resourcesDirPath);
         if (resourcesDir.query_file_type(Gio.FileQueryInfoFlags.NONE, null) !== Gio.FileType.DIRECTORY)
             return;
-        const resourcesDirsEnumerator = resourcesDir.enumerate_children('', Gio.FileQueryInfoFlags.NONE, null);
+        const resourcesDirsEnumerator = resourcesDir.enumerate_children('standard::', Gio.FileQueryInfoFlags.NONE, null);
         while (true) {
             let resourceDirInfo = resourcesDirsEnumerator.next_file(null);
             if (resourceDirInfo === null)
