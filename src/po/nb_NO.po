@@ -4,22 +4,22 @@
 # Romain Vigier <>, 2019, 2020.
 #
 # Allan Nordhøy <epost@anotheragency.no>, 2021, 2022.
-# Romain Vigier <romain@romainvigier.fr>, 2021.
+# Romain Vigier <romain@romainvigier.fr>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 22:37+0200\n"
-"PO-Revision-Date: 2022-04-06 14:41+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/night-"
-"theme-switcher/extension/nb_NO/>\n"
+"PO-Revision-Date: 2022-05-25 22:16+0000\n"
+"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
@@ -197,7 +197,6 @@ msgid "Switch back to day time when Night Light is temporarily disabled"
 msgstr "Bytt tilbake til dagtid når nattlys skrus av midlertidig"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:130
-#, fuzzy
 msgid "Always enable the on-demand timer"
 msgstr "Alltid skru på behovsprøvd tidsur"
 
