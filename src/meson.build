@@ -2,45 +2,45 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 configure_file(
-	input: 'metadata.json.in',
-	output: 'metadata.json',
-	configuration: {
-		'DNS': DNS,
-		'UUID': UUID,
-		'VERSION': meson.project_version()
-	},
-	install_dir: INSTALL_DIR
+  input: 'metadata.json.in',
+  output: 'metadata.json',
+  configuration: {
+    'DNS': DNS,
+    'UUID': UUID,
+    'VERSION': meson.project_version()
+  },
+  install_dir: INSTALL_DIR
 )
 
 main = [
-	'extension.js',
-	'prefs.js',
-	'utils.js',
+  'extension.js',
+  'prefs.js',
+  'utils.js',
 ]
 enums = [
-	'enums/Time.js',
+  'enums/Time.js',
 ]
 modules = [
-	'modules/Switcher.js',
-	'modules/SwitcherCommands.js',
-	'modules/SwitcherTheme.js',
-	'modules/Timer.js',
-	'modules/TimerLocation.js',
-	'modules/TimerNightlight.js',
-	'modules/TimerOndemand.js',
-	'modules/TimerSchedule.js',
+  'modules/Switcher.js',
+  'modules/SwitcherCommands.js',
+  'modules/SwitcherTheme.js',
+  'modules/Timer.js',
+  'modules/TimerLocation.js',
+  'modules/TimerNightlight.js',
+  'modules/TimerOndemand.js',
+  'modules/TimerSchedule.js',
 ]
 preferences = [
-	'preferences/BackgroundButton.js',
-	'preferences/BackgroundsPage.js',
-	'preferences/ClearableEntry.js',
-	'preferences/CommandsPage.js',
-	'preferences/ContributePage.js',
-	'preferences/DropDownChoice.js',
-	'preferences/SchedulePage.js',
-	'preferences/ShortcutButton.js',
-	'preferences/ThemesPage.js',
-	'preferences/TimeChooser.js',
+  'preferences/BackgroundButton.js',
+  'preferences/BackgroundsPage.js',
+  'preferences/ClearableEntry.js',
+  'preferences/CommandsPage.js',
+  'preferences/ContributePage.js',
+  'preferences/DropDownChoice.js',
+  'preferences/SchedulePage.js',
+  'preferences/ShortcutButton.js',
+  'preferences/ThemesPage.js',
+  'preferences/TimeChooser.js',
 ]
 
 install_data(main, install_dir: INSTALL_DIR)

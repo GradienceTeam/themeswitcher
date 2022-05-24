@@ -18,7 +18,7 @@ i18n = import('i18n')
 
 npm_exe = find_program('npm', required: false)
 if npm_exe.found()
-	run_target('dev', command: [ npm_exe, 'install', '--save-dev' ])
+  run_target('dev', command: [ npm_exe, 'install', '--save-dev' ])
 endif
 
 subdir('src')

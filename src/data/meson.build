@@ -11,20 +11,20 @@ gnome.compile_resources(
 
 glib_compile_schemas_exe = find_program('glib-compile-schemas')
 custom_target(
-	'gschemas',
-	build_by_default: true,
-	output: 'gschemas.compiled',
-	command: [
-		glib_compile_schemas_exe,
-		'--targetdir=@OUTDIR@',
-		'@CURRENT_SOURCE_DIR@'
-	],
-	install: true,
-	install_dir: INSTALL_DIR / 'schemas'
+  'gschemas',
+  build_by_default: true,
+  output: 'gschemas.compiled',
+  command: [
+    glib_compile_schemas_exe,
+    '--targetdir=@OUTDIR@',
+    '@CURRENT_SOURCE_DIR@'
+  ],
+  install: true,
+  install_dir: INSTALL_DIR / 'schemas'
 )
 
 icons = [
-	'icons/nightthemeswitcher-ondemand-off-symbolic.svg',
-	'icons/nightthemeswitcher-ondemand-on-symbolic.svg'
+  'icons/nightthemeswitcher-ondemand-off-symbolic.svg',
+  'icons/nightthemeswitcher-ondemand-on-symbolic.svg'
 ]
 install_data(icons, install_dir: INSTALL_DIR / 'icons' / 'hicolor' / 'scalable' / 'status')
