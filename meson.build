@@ -13,6 +13,10 @@ DNS = 'org.gnome.shell.extensions.nightthemeswitcher'
 
 INSTALL_DIR = get_option('datadir') / 'gnome-shell' / 'extensions' / UUID
 
+if (get_option('pack'))
+  INSTALL_DIR = meson.project_build_root() / UUID
+endif
+
 gnome = import('gnome')
 i18n = import('i18n')
 

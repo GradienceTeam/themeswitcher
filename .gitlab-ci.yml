@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+# SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 variables:
@@ -69,11 +69,8 @@ extension:
     - reuse
   image: registry.gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension:latest
   script:
-    - meson builddir
-    - DESTDIR=${CI_PROJECT_DIR}/buildroot meson install -C builddir
-    - cd buildroot/usr/local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr
-    - zip -r nightthemeswitcher@romainvigier.fr.zip *
-    - mv nightthemeswitcher@romainvigier.fr.zip $CI_PROJECT_DIR
+    - meson builddir -Dpack=true -Dpackdir=.
+    - meson install -C builddir
   artifacts:
     name: $CI_COMMIT_REF_NAME
     expose_as: Extension

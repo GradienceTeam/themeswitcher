@@ -1,0 +1,5 @@
+# SPDX-FileCopyrightText: 2022 Romain Vigier <contact AT romainvigier.fr>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+option('pack', type: 'boolean', value: false, description: 'Create a distributable archive instead of installing')
+option('packdir', type: 'string', value: 'dist', description: 'Directory to put the distributable archive')

@@ -50,3 +50,13 @@ install_data(preferences, install_dir: INSTALL_DIR / 'preferences')
 
 subdir('data')
 subdir('po')
+
+if (get_option('pack'))
+  zip_exe = find_program('zip')
+  meson.add_install_script(
+    meson.project_source_root() / 'build-aux' / 'pack.sh',
+    zip_exe.full_path(),
+    UUID,
+    meson.project_source_root() / get_option('packdir')
+  )
+endif
