@@ -7,180 +7,183 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 22:37+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-05-27 12:18+0000\n"
+"Last-Translator: OliverTzeng <olivertzengolivertzeng@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
-msgstr ""
+msgstr "版本"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
 msgid "The current extension settings version"
-msgstr ""
+msgstr "目前擴充功能的版本"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 #: src/data/ui/ThemesPage.ui:30
 msgid "Switch GTK theme"
-msgstr ""
+msgstr "更改GTK主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
-msgstr ""
+msgstr "啟用更改GTK主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
 msgid "Day GTK theme"
-msgstr ""
+msgstr "白天GTK主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
 msgid "The GTK theme to use during daytime"
-msgstr ""
+msgstr "在白天使用的GTK主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Night GTK theme"
-msgstr ""
+msgstr "夜晚GTK主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:28
 msgid "The GTK theme to use during nighttime"
-msgstr ""
+msgstr "在夜晚使用的GTK主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
 #: src/data/ui/ThemesPage.ui:47
 msgid "Switch Shell theme"
-msgstr ""
+msgstr "更換Shell主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
-msgstr ""
+msgstr "啟用更改Shell主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:39
 msgid "Day shell theme"
-msgstr ""
+msgstr "白天Shell主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:40
 msgid "The shell theme to use during daytime"
-msgstr ""
+msgstr "在白天使用的Shell主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
 msgid "Night shell theme"
-msgstr ""
+msgstr "夜晚Shell主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
 msgid "The shell theme to use during nighttime"
-msgstr ""
+msgstr "在夜晚使用的Shell主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 #: src/data/ui/ThemesPage.ui:63
 msgid "Switch icon theme"
-msgstr ""
+msgstr "圖示主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
-msgstr ""
+msgstr "更改圖示主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:56
 msgid "Day icon theme"
-msgstr ""
+msgstr "白天圖示主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:57
 msgid "The icon theme to use during daytime"
-msgstr ""
+msgstr "夜晚圖示主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
 msgid "Night icon theme"
-msgstr ""
+msgstr "夜晚圖示主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:62
 msgid "The icon theme to use during nighttime"
-msgstr ""
+msgstr "在夜晚使用的圖示主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
 #: src/data/ui/ThemesPage.ui:79
 msgid "Switch cursor theme"
-msgstr ""
+msgstr "更換游標"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
-msgstr ""
+msgstr "啟用更改游標"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:73
 msgid "Day cursor theme"
-msgstr ""
+msgstr "白天游標"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:74
 msgid "The cursor theme to use during daytime"
-msgstr ""
+msgstr "在白天使用的游標"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:78
 msgid "Night cursor theme"
-msgstr ""
+msgstr "夜晚游標"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:79
 msgid "The cursor theme to use during nighttime"
-msgstr ""
+msgstr "在夜晚使用的游標"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:85
 msgid "Enable commands"
-msgstr ""
+msgstr "啟用指令"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:86
 msgid "Commands will be spawned on time change"
-msgstr ""
+msgstr "在日出貨日落時自動執行指令"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:90
 msgid "Sunrise command"
-msgstr ""
+msgstr "日出指令"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:91
 msgid "The command to spawn at sunrise"
-msgstr ""
+msgstr "在日出時自動執行的指令"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:95
 msgid "Sunset command"
-msgstr ""
+msgstr "日落指令"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:96
 msgid "The command to spawn at sunset"
-msgstr ""
+msgstr "在日落實自動執行指令"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
 #: src/data/ui/BackgroundsPage.ui:15
 msgid "Day background"
-msgstr ""
+msgstr "白天背景"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:103
 msgid "Path to the day background"
-msgstr ""
+msgstr "白天背景位置"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:107
 #: src/data/ui/BackgroundsPage.ui:28
 msgid "Night background"
-msgstr ""
+msgstr "夜晚背景"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:108
 msgid "Path to the night background"
-msgstr ""
+msgstr "夜晚背景位置"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:120
 #: src/data/ui/SchedulePage.ui:27
 msgid "Time source"
-msgstr ""
+msgstr "時間來源"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:121
 msgid "The source used to check current time"
-msgstr ""
+msgstr "這個來源是用來查看現在時間"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:125
 msgid "Follow Night Light \"Disable until tomorrow\""
-msgstr ""
+msgstr "隨夜光設定切換"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
 msgid "Switch back to day time when Night Light is temporarily disabled"
-msgstr ""
+msgstr "當夜光停用時，開啟白天主題"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:130
 msgid "Always enable the on-demand timer"
