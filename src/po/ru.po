@@ -4,13 +4,14 @@
 # Sixella <sixella@gmail.com>, 2021.
 # Daudix UFO <ddaudix@gmail.com>, 2022.
 # Romain Vigier <romain@romainvigier.fr>, 2022.
+# AHOHNMYC <lqwh2h2cwa@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 22:37+0200\n"
-"PO-Revision-Date: 2022-06-04 20:26+0000\n"
-"Last-Translator: Daudix UFO <ddaudix@gmail.com>\n"
+"PO-Revision-Date: 2022-06-09 16:14+0000\n"
+"Last-Translator: AHOHNMYC <lqwh2h2cwa@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/ru/>\n"
 "Language: ru\n"
@@ -44,7 +45,7 @@ msgstr "Дневная тема GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
 msgid "The GTK theme to use during daytime"
-msgstr "Тема GTK используемая днём"
+msgstr "Тема GTK, используемая днём"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Night GTK theme"
@@ -52,7 +53,7 @@ msgstr "Ночная тема GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:28
 msgid "The GTK theme to use during nighttime"
-msgstr "Тема GTK используемая ночью"
+msgstr "Тема GTK, используемая ночью"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
 #: src/data/ui/ThemesPage.ui:47
@@ -61,7 +62,7 @@ msgstr "Переключить тему оболочки"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
-msgstr "Включить переключениe варианта оболочки"
+msgstr "Включить переключениe вариантов оболочки"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:39
 msgid "Day shell theme"
@@ -187,7 +188,7 @@ msgstr "Следите за ночной подсветкой \"Отключит
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
 msgid "Switch back to day time when Night Light is temporarily disabled"
 msgstr ""
-"Переключючить обратно на дневную, когда ночная подсветка временно отключена"
+"Переключить обратно на дневную, когда ночная подсветка временно отключена"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:130
 msgid "Always enable the on-demand timer"
@@ -223,7 +224,7 @@ msgstr "Где будет размещена кнопка включения п�
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
 msgid "Use manual time source"
-msgstr "Используйте ручной режим времени"
+msgstr "Установить время вручную"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:160
 msgid "Disable automatic time source detection"
@@ -235,7 +236,7 @@ msgstr "Время восхода солнца"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:165
 msgid "When the day starts"
-msgstr "Когда начинается день"
+msgstr "Начало дня"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:169
 msgid "Sunset time"
@@ -243,7 +244,7 @@ msgstr "Время захода солнца"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:170
 msgid "When the day ends"
-msgstr "Когда день заканчивается"
+msgstr "Конец дня"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
 #: src/data/ui/SchedulePage.ui:50
@@ -303,7 +304,7 @@ msgstr "Внести вклад"
 
 #: src/data/ui/ContributePage.ui:42
 msgid "View the code and report issues"
-msgstr "Показать код и сообщить о проблемах"
+msgstr "Посмотреть код или сообщить о проблемах"
 
 #: src/data/ui/ContributePage.ui:55
 msgid "Contribute to the translation"
@@ -311,7 +312,7 @@ msgstr "Внести вклад в перевод"
 
 #: src/data/ui/ContributePage.ui:68
 msgid "Support me with a donation"
-msgstr "Поддержать меня пожертвованием"
+msgstr "Поддержать пожертвованием"
 
 #: src/data/ui/SchedulePage.ui:9
 msgid "Schedule"
