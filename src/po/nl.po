@@ -5,13 +5,14 @@
 #
 # Romain Vigier <romain@romainvigier.fr>, 2021, 2022.
 # Heimen Stoffels <vistausss@fastmail.com>, 2021, 2022.
+# Philip Goto <philip.goto@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 22:37+0200\n"
-"PO-Revision-Date: 2022-04-27 09:16+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"PO-Revision-Date: 2022-06-16 11:19+0000\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/nl/>\n"
 "Language: nl\n"
@@ -19,15 +20,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.1-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
-msgstr "Voorkeurenversie"
+msgstr "Instellingen-versie"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
 msgid "The current extension settings version"
-msgstr "De huidige versie van de uitbreidingsvoorkeuren"
+msgstr "De huidige versie van de instellingen"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 #: src/data/ui/ThemesPage.ui:30
@@ -61,7 +62,7 @@ msgstr "Shell-thema's afwisselen"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
-msgstr "Schakel wisselen van Shell-themavariant in"
+msgstr "Schakel wisselen van shell-themavariant in"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:39
 msgid "Day shell theme"
@@ -73,11 +74,11 @@ msgstr "Het overdag toe te passen Shell-thema"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
 msgid "Night shell theme"
-msgstr "GTK-thema ('s avonds/'s nachts)"
+msgstr "Shell-thema ('s avonds/'s nachts)"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
 msgid "The shell theme to use during nighttime"
-msgstr "Het 's avonds/'s nachts toe te passen Shell-thema"
+msgstr "Het 's avonds/'s nachts toe te passen shell-thema"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 #: src/data/ui/ThemesPage.ui:63
