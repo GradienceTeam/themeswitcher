@@ -2,9 +2,19 @@
 
 # My system
 
-- Distribution (name and version):
-- GNOME Shell version:
-- I installed the extension: <!-- Manually? From extensions.gnome.org? From my distribution? -->
+Distribution (name and version):
+
+GNOME Shell version:
+
+```
+# Output of `gnome-shell --version`:
+```
+
+Extension info:
+
+```
+# Output of `gnome-extensions info nightthemeswitcher@romainvigier.fr`:
+```
 
 # My problem
 
