@@ -31,16 +31,5 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="title" translatable="yes">Select your background image</property>
     <property name="select-multiple">False</property>
     <signal name="response" handler="onFileChooserResponse" swapped="no"/>
-    <property name="filter">
-      <object class="GtkFileFilter">
-        <mime-types>
-          <mime-type>image/jpeg</mime-type>
-          <mime-type>image/png</mime-type>
-          <mime-type>image/svg+xml</mime-type>
-          <mime-type>image/tiff</mime-type>
-          <mime-type>application/xml</mime-type>
-        </mime-types>
-      </object>
-    </property>
   </object>
 </interface>

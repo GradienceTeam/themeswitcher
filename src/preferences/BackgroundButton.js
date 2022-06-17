@@ -42,6 +42,7 @@ var BackgroundButton = GObject.registerClass({
         super(props);
         this.#setupSize();
         this.#setupDropTarget();
+        this.#setupFileChooserFilter();
     }
 
     #setupSize() {
@@ -59,13 +60,7 @@ var BackgroundButton = GObject.registerClass({
         const dropTarget = Gtk.DropTarget.new(Gio.File.$gtype, Gdk.DragAction.COPY);
         dropTarget.connect('drop', (_target, file, _x, _y) => {
             const contentType = Gio.content_type_guess(file.get_basename(), null)[0];
-            if (
-                Gio.content_type_equals(contentType, 'image/jpeg') ||
-                Gio.content_type_equals(contentType, 'image/png') ||
-                Gio.content_type_equals(contentType, 'image/svg+xml') ||
-                Gio.content_type_equals(contentType, 'image/tiff') ||
-                Gio.content_type_equals(contentType, 'application/xml')
-            ) {
+            if (this.#isContentTypeSupported(contentType)) {
                 this.uri = file.get_uri();
                 return true;
             } else {
@@ -79,6 +74,24 @@ var BackgroundButton = GObject.registerClass({
             }
         });
         this.add_controller(dropTarget);
+    }
+
+    #setupFileChooserFilter() {
+        this._filechooser.filter = new Gtk.FileFilter();
+        this._filechooser.filter.add_pixbuf_formats();
+        this._filechooser.filter.add_mime_type('application/xml');
+    }
+
+    #getSupportedContentTypes() {
+        return GdkPixbuf.Pixbuf.get_formats().flatMap(format => format.get_mime_types()).concat('application/xml');
+    }
+
+    #isContentTypeSupported(contentType) {
+        for (const supportedContentType of this.#getSupportedContentTypes()) {
+            if (Gio.content_type_equals(contentType, supportedContentType))
+                return true;
+        }
+        return false;
     }
 
     vfunc_mnemonic_activate() {
@@ -104,26 +117,25 @@ var BackgroundButton = GObject.registerClass({
         if (!uri)
             return null;
 
-        let path;
         const file = Gio.File.new_for_uri(uri);
         const contentType = Gio.content_type_guess(file.get_basename(), null)[0];
-        if (
-            Gio.content_type_equals(contentType, 'image/jpeg') ||
-            Gio.content_type_equals(contentType, 'image/png') ||
-            Gio.content_type_equals(contentType, 'image/svg+xml') ||
-            Gio.content_type_equals(contentType, 'image/tiff')
-        ) {
-            path = file.get_path();
-        } else if (Gio.content_type_equals(contentType, 'application/xml')) {
+
+        if (!this.#isContentTypeSupported(contentType))
+            return null;
+
+        let path;
+        if (Gio.content_type_equals(contentType, 'application/xml')) {
             const decoder = new TextDecoder('utf-8');
             const contents = decoder.decode(file.load_contents(null)[1]);
             try {
                 path = contents.match(/<file>(.+)<\/file>/m)[1];
-            } catch (_e) {}
+            } catch (e) {
+                console.error(e);
+                return null;
+            }
+        } else {
+            path = file.get_path();
         }
-
-        if (!path)
-            return null;
 
         const pixbuf = GdkPixbuf.Pixbuf.new_from_file(path);
         const scale = pixbuf.width / pixbuf.height > width / height ? height / pixbuf.height : width / pixbuf.width;
