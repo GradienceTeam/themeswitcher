@@ -5,6 +5,26 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Changelog
 
+## [65] - 2022-06-17
+
+### Added
+
+- Build option to pack the extension instead of installing it when running `meson install`
+- Chinese (Traditional) translation by @olivertzeng
+
+### Changed
+
+- Updated Dutch translation by @philip.goto
+- Updated Hungarian translation by @BathoryPeter
+- Updated Russian translation by @AHOHNMYC and @daudix-UFO
+
+### Fixed
+
+- Themes under symbolic links were not displayed in the preferences
+- Background button did not accept all supported image formats
+- Background button did not interpolate thumbnail
+
+
 ## [64] - 2022-04-27
 
 ### Added
