@@ -139,7 +139,7 @@ var BackgroundButton = GObject.registerClass({
 
         const pixbuf = GdkPixbuf.Pixbuf.new_from_file(path);
         const scale = pixbuf.width / pixbuf.height > width / height ? height / pixbuf.height : width / pixbuf.width;
-        const thumbPixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.GDK_COLORSPACE_RGB, pixbuf.has_alpha, pixbuf.bits_per_sample, width, height);
+        const thumbPixbuf = GdkPixbuf.Pixbuf.new(pixbuf.colorspace, pixbuf.has_alpha, pixbuf.bits_per_sample, width, height);
         pixbuf.scale(
             thumbPixbuf,
             0, 0,
