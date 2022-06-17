@@ -146,7 +146,7 @@ var BackgroundButton = GObject.registerClass({
             width, height,
             -(pixbuf.width * scale - width) / 2, -(pixbuf.height * scale - height) / 2,
             scale, scale,
-            GdkPixbuf.InterpType.GDK_INTERP_BILINEAR
+            GdkPixbuf.InterpType.TILES
         );
 
         return Gdk.Texture.new_for_pixbuf(thumbPixbuf);
