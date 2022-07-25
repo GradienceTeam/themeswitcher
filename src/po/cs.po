@@ -7,312 +7,315 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 22:37+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-07-26 07:09+0000\n"
+"Last-Translator: vikdevelop <super-vik1@protonmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
-msgstr ""
+msgstr "Verze nastavení"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
 msgid "The current extension settings version"
-msgstr ""
+msgstr "Aktuální verze nastavení rozšíření"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 #: src/data/ui/ThemesPage.ui:30
 msgid "Switch GTK theme"
-msgstr ""
+msgstr "Přepnout motiv GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
-msgstr ""
+msgstr "Povolit přepínání variant GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
 msgid "Day GTK theme"
-msgstr ""
+msgstr "Denní motiv GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
 msgid "The GTK theme to use during daytime"
-msgstr ""
+msgstr "Motiv GTK, který se použije během dne"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Night GTK theme"
-msgstr ""
+msgstr "Noční motiv GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:28
 msgid "The GTK theme to use during nighttime"
-msgstr ""
+msgstr "Motiv GTK, který se má používat v noci"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
 #: src/data/ui/ThemesPage.ui:47
 msgid "Switch Shell theme"
-msgstr ""
+msgstr "Přepnout motiv Shellu"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
-msgstr ""
+msgstr "Povolit přepínání variant shellu"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:39
 msgid "Day shell theme"
-msgstr ""
+msgstr "Denní motiv shellu"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:40
 msgid "The shell theme to use during daytime"
-msgstr ""
+msgstr "Motiv shellu pro použití během dne"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
 msgid "Night shell theme"
-msgstr ""
+msgstr "Noční motiv shellu"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
 msgid "The shell theme to use during nighttime"
-msgstr ""
+msgstr "Motiv shellu pro použití v noci"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 #: src/data/ui/ThemesPage.ui:63
 msgid "Switch icon theme"
-msgstr ""
+msgstr "Přepnout motiv ikony"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
-msgstr ""
+msgstr "Povolit přepínání variant ikon"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:56
 msgid "Day icon theme"
-msgstr ""
+msgstr "Denní motiv ikony"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:57
 msgid "The icon theme to use during daytime"
-msgstr ""
+msgstr "Motiv ikony, který se má používat během dne"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
 msgid "Night icon theme"
-msgstr ""
+msgstr "Noční motiv ikony"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:62
 msgid "The icon theme to use during nighttime"
-msgstr ""
+msgstr "Motiv ikony pro použití v noci"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
 #: src/data/ui/ThemesPage.ui:79
 msgid "Switch cursor theme"
-msgstr ""
+msgstr "Přepnout motiv kurzoru"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
-msgstr ""
+msgstr "Povolit přepínání variant kurzoru"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:73
 msgid "Day cursor theme"
-msgstr ""
+msgstr "Denní motiv kurzoru"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:74
 msgid "The cursor theme to use during daytime"
-msgstr ""
+msgstr "Motiv kurzoru pro použití během dne"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:78
 msgid "Night cursor theme"
-msgstr ""
+msgstr "Noční motiv kurzoru"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:79
 msgid "The cursor theme to use during nighttime"
-msgstr ""
+msgstr "Motiv kurzoru, který se má použít během noci"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:85
 msgid "Enable commands"
-msgstr ""
+msgstr "Povolit příkazy"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:86
 msgid "Commands will be spawned on time change"
-msgstr ""
+msgstr "Příkazy se budou spouštět při změně času"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:90
 msgid "Sunrise command"
-msgstr ""
+msgstr "Příkaz k východu slunce"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:91
 msgid "The command to spawn at sunrise"
-msgstr ""
+msgstr "Příkaz ke spuštění při východu slunce"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:95
 msgid "Sunset command"
-msgstr ""
+msgstr "Příkaz západu slunce"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:96
 msgid "The command to spawn at sunset"
-msgstr ""
+msgstr "Příkaz ke spuštění při západu slunce"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
 #: src/data/ui/BackgroundsPage.ui:15
 msgid "Day background"
-msgstr ""
+msgstr "Denní pozadí"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:103
 msgid "Path to the day background"
-msgstr ""
+msgstr "Umíštění denního pozadí"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:107
 #: src/data/ui/BackgroundsPage.ui:28
 msgid "Night background"
-msgstr ""
+msgstr "Noční pozadí"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:108
 msgid "Path to the night background"
-msgstr ""
+msgstr "Umíštění nočního pozadí"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:120
 #: src/data/ui/SchedulePage.ui:27
 msgid "Time source"
-msgstr ""
+msgstr "Zdroj času"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:121
 msgid "The source used to check current time"
-msgstr ""
+msgstr "Zdroj používaný ke kontrole aktuálního času"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:125
 msgid "Follow Night Light \"Disable until tomorrow\""
-msgstr ""
+msgstr "Následovat Noční světlo \"Zakázat do zítřka\""
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
 msgid "Switch back to day time when Night Light is temporarily disabled"
-msgstr ""
+msgstr "Přepnout zpět na denní dobu, když je noční světlo dočasně vypnuté"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:130
 msgid "Always enable the on-demand timer"
-msgstr ""
+msgstr "Vždy povolit časovač na vyžádání"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
 msgid "The on-demand timer will always be enabled alongside other timers"
-msgstr ""
+msgstr "Časovač na vyžádání bude vždy povolen spolu s ostatními časovači"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:139
 msgid "On-demand time"
-msgstr ""
+msgstr "Čas na vyžádání"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:140
 msgid "The current time used in on-demand mode"
-msgstr ""
+msgstr "Aktuální čas používaný v režimu na vyžádání"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:144
 msgid "Key combination to toggle time"
-msgstr ""
+msgstr "Kombinace kláves pro přepínání času"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:145
 msgid "The key combination that will toggle time in on-demand mode"
-msgstr ""
+msgstr "Kombinace kláves, která přepíná čas v režimu na vyžádání"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:154
 msgid "On-demand button placement"
-msgstr ""
+msgstr "Umístění tlačítek na vyžádání"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:155
 msgid "Where the on-demand button will be placed"
-msgstr ""
+msgstr "Kde bude tlačítko na vyžádání umístěno"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
 msgid "Use manual time source"
-msgstr ""
+msgstr "Použít ruční zdroj času"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:160
 msgid "Disable automatic time source detection"
-msgstr ""
+msgstr "Zakázat automatickou detekci zdroje času"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:164
 msgid "Sunrise time"
-msgstr ""
+msgstr "Čas východu slunce"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:165
 msgid "When the day starts"
-msgstr ""
+msgstr "Když začíná den"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:169
 msgid "Sunset time"
-msgstr ""
+msgstr "Čas západu slunce"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:170
 msgid "When the day ends"
-msgstr ""
+msgstr "Když den končí"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
 #: src/data/ui/SchedulePage.ui:50
 msgid "Transition"
-msgstr ""
+msgstr "Přechod"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
 msgid "Use a transition when changing the color scheme"
-msgstr ""
+msgstr "Při změně barevného schématu použijte přechod"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
-msgstr ""
+msgstr "Změnit pozadí"
 
 #: src/data/ui/BackgroundButton.ui:31
 msgid "Select your background image"
-msgstr ""
+msgstr "Vyberte obrázek pro pozadí"
 
 #: src/data/ui/BackgroundsPage.ui:9
 msgid "Backgrounds"
-msgstr ""
+msgstr "Pozadí"
 
 #: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
 #: src/data/ui/ShortcutButton.ui:45
 msgid "Clear"
-msgstr ""
+msgstr "Vyčistit"
 
 #: src/data/ui/CommandsPage.ui:9
 msgid "Commands"
-msgstr ""
+msgstr "Příkazy"
 
 #: src/data/ui/CommandsPage.ui:13
 msgid "Run commands"
-msgstr ""
+msgstr "Spustit příkazy"
 
 #: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:84
 msgid "Sunrise"
-msgstr ""
+msgstr "Východ slunce"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:25
 msgid "notify-send \"Hello sunshine!\""
-msgstr ""
+msgstr "notify-send \"Ahoj sluničko!\""
 
 #: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:96
 msgid "Sunset"
-msgstr ""
+msgstr "Západ slunce"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:39
 msgid "notify-send \"Hello moonshine!\""
-msgstr ""
+msgstr "notify-send \"Hello moonshine!\""
 
 #: src/data/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "Přispět"
 
 #: src/data/ui/ContributePage.ui:42
 msgid "View the code and report issues"
-msgstr ""
+msgstr "Zobrazit kód a nahlásit problémy"
 
 #: src/data/ui/ContributePage.ui:55
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "Přispět k překladu"
 
 #: src/data/ui/ContributePage.ui:68
 msgid "Support me with a donation"
-msgstr ""
+msgstr "Podpořte mě darem"
 
 #: src/data/ui/SchedulePage.ui:9
 msgid "Schedule"
-msgstr ""
+msgstr "Naplánovat"
 
 #: src/data/ui/SchedulePage.ui:15
 msgid "Manual time source"
-msgstr ""
+msgstr "Ruční zdroj času"
 
 #: src/data/ui/SchedulePage.ui:16
 msgid ""
@@ -320,157 +323,170 @@ msgid ""
 "automatically set your current sunrise and sunset times if they are enabled. "
 "If you prefer, you can manually choose a time source."
 msgstr ""
+"Rozšíření se pokusí použít noční světlo nebo polohové služby k automatickému "
+"nastavení aktuálního času východu a západu slunce, pokud jsou povoleny. "
+"Pokud dáváte přednost, můžete zdroj času zvolit ručně."
 
 #: src/data/ui/SchedulePage.ui:33
 msgid "Always show on-demand controls"
-msgstr ""
+msgstr "Vždy zobrazit ovládací prvky na vyžádání"
 
 #: src/data/ui/SchedulePage.ui:34
 msgid "Allows you to override the current time when using a schedule."
-msgstr ""
+msgstr "Umožňuje přepsat aktuální čas při použití plánu."
 
 #: src/data/ui/SchedulePage.ui:47
 msgid "Advanced"
-msgstr ""
+msgstr "Pokročilé"
 
 #: src/data/ui/SchedulePage.ui:51
 msgid "Smooth transition between day and night appearance."
-msgstr ""
+msgstr "Plynulý přechod mezi denním a nočním vzhledem."
 
 #: src/data/ui/SchedulePage.ui:62 src/preferences/SchedulePage.js:43
 msgid "Night Light"
-msgstr ""
+msgstr "Noční světlo"
 
 #: src/data/ui/SchedulePage.ui:63
 msgid "These settings only apply when Night Light is the time source."
-msgstr ""
+msgstr "Tato nastavení platí pouze v případě, že je zdrojem času noční světlo."
 
 #: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
-msgstr ""
+msgstr "Sledovat <i>Zakázat do zítřka</i>"
 
 #: src/data/ui/SchedulePage.ui:67
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
 msgstr ""
+"Pokud je funkce Noční světlo dočasně vypnutá, přepne se rozšíření na denní "
+"varianty."
 
 #: src/data/ui/SchedulePage.ui:80 src/preferences/SchedulePage.js:56
 msgid "Manual schedule"
-msgstr ""
+msgstr "Ruční rozvrh"
 
 #: src/data/ui/SchedulePage.ui:81
 msgid ""
 "These settings only apply when using the manual schedule as the time source."
 msgstr ""
+"Tato nastavení platí pouze v případě, že jako zdroj času používáte ruční "
+"rozvrh."
 
 #: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
-msgstr ""
+msgstr "Na vyžádání"
 
 #: src/data/ui/SchedulePage.ui:111
 msgid "These settings only apply when using the on-demand time source."
-msgstr ""
+msgstr "Tato nastavení platí pouze při použití zdroje času na vyžádání."
 
 #: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
-msgstr ""
+msgstr "Klávesová zkratka"
 
 #: src/data/ui/SchedulePage.ui:125
 msgid "Button location"
-msgstr ""
+msgstr "Umístění tlačítka"
 
 #: src/data/ui/ShortcutButton.ui:15
 msgid "Choose…"
-msgstr ""
+msgstr "Vybrat…"
 
 #: src/data/ui/ShortcutButton.ui:32
 msgid "Change keyboard shortcut"
-msgstr ""
+msgstr "Změnit klávesovou zkratku"
 
 #: src/data/ui/ShortcutButton.ui:80
 msgid "Press your keyboard shortcut…"
-msgstr ""
+msgstr "Stiskněte klávesovou zkratku…"
 
 #: src/data/ui/ThemesPage.ui:9
 msgid "Themes"
-msgstr ""
+msgstr "Motivy"
 
 #: src/data/ui/ThemesPage.ui:15
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
+"Prostředí GNOME má vestavěný tmavý režim, který rozšíření používá. Ruční "
+"přepínání motivů se nedoporučuje a je zde pouze z důvodů staršího vývoje."
 
 #: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
+"Vnucování tmavého motivu aplikacím, které nejsou navrženy tak, aby jej "
+"podporovaly, může mít nežádoucí vedlejší účinky, například nečitelný text "
+"nebo neviditelné ikony."
 
 #: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
 #: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
-msgstr ""
+msgstr "Denní varianta"
 
 #: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
 #: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
-msgstr ""
+msgstr "Noční varianta"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode Off"
-msgstr ""
+msgstr "Vypnout noční režim"
 
 #: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
-msgstr ""
+msgstr "Zapnout tmavý režim"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Extension Settings"
-msgstr ""
+msgstr "Nastavení rozšíření"
 
 #: src/modules/TimerOndemand.js:237
 msgid "Night Mode Off"
-msgstr ""
+msgstr "Noční režim Vypnuto"
 
 #: src/modules/TimerOndemand.js:237
 msgid "Night Mode On"
-msgstr ""
+msgstr "Noční režim Zapnuto"
 
 #: src/modules/TimerOndemand.js:238
 msgid "Turn Off"
-msgstr ""
+msgstr "Vypnout"
 
 #: src/modules/TimerOndemand.js:238
 msgid "Turn On"
-msgstr ""
+msgstr "Zapnout"
 
 #: src/preferences/BackgroundButton.js:74
 msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
 msgstr ""
+"Jako obrázek na pozadí lze nastavit pouze soubory JPEG, PNG, TIFF, SVG a XML."
 
 #: src/preferences/SchedulePage.js:48
 msgid "Location Services"
-msgstr ""
+msgstr "Lokalizační služby"
 
 #: src/preferences/SchedulePage.js:90
 msgid "None"
-msgstr ""
+msgstr "Žádné"
 
 #: src/preferences/SchedulePage.js:91
 msgid "Top bar"
-msgstr ""
+msgstr "Horní lišta"
 
 #: src/preferences/SchedulePage.js:92
 msgid "System menu"
-msgstr ""
+msgstr "Systémová nabídka"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
-msgstr ""
+msgstr "Výchozí"
