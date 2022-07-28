@@ -96,18 +96,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<description>The command to spawn at sunset</description>
 		</key>
 	</schema>
-	<schema id="org.gnome.shell.extensions.nightthemeswitcher.backgrounds" path="/org/gnome/shell/extensions/nightthemeswitcher/backgrounds/">
-		<key name="day" type="s">
-			<default>""</default>
-			<summary>Day background</summary>
-			<description>Path to the day background</description>
-		</key>
-		<key name="night" type="s">
-			<default>""</default>
-			<summary>Night background</summary>
-			<description>Path to the night background</description>
-		</key>
-	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.time" path="/org/gnome/shell/extensions/nightthemeswitcher/time/">
 		<key name="time-source" type="s">
 			<choices>

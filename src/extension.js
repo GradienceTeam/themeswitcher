@@ -26,7 +26,6 @@ class NightThemeSwitcher {
     constructor() {
         console.debug('Initializing extension...');
         extensionUtils.initTranslations();
-        this.#migrateBackgroundSettings();
         console.debug('Extension initialized.');
     }
 
@@ -81,25 +80,6 @@ class NightThemeSwitcher {
         }
 
         console.debug('Extension disabled.');
-    }
-
-    #migrateBackgroundSettings() {
-        // GNOME 42 has its own background switching mechanism. Move the day
-        // and night backgrounds settings from the extension to the shell.
-        // Only run once when the extension is initialized.
-        const systemSettings = new Gio.Settings({ schema: 'org.gnome.desktop.background' });
-        const extensionSettings = extensionUtils.getSettings(utils.getSettingsSchema('backgrounds'));
-
-        if (extensionSettings.get_string('day')) {
-            systemSettings.set_string('picture-uri', extensionSettings.get_string('day'));
-            systemSettings.set_string('picture-uri-dark', extensionSettings.get_string('day'));
-            extensionSettings.set_string('day', '');
-        }
-
-        if (extensionSettings.get_string('night')) {
-            systemSettings.set_string('picture-uri-dark', extensionSettings.get_string('night'));
-            extensionSettings.set_string('night', '');
-        }
     }
 }
 
