@@ -9,6 +9,7 @@ const { main } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const debug = Me.imports.debug;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
@@ -53,20 +54,20 @@ var Timer = class {
     }
 
     enable() {
-        console.debug('Enabling Timer...');
+        debug.message('Enabling Timer...');
         this.#connectSettings();
         this.#createSources();
         this.#connectSources();
         this.#enableSources();
-        console.debug('Timer enabled.');
+        debug.message('Timer enabled.');
     }
 
     disable() {
-        console.debug('Disabling Timer...');
+        debug.message('Disabling Timer...');
         this.#disconnectSources();
         this.#disableSources();
         this.#disconnectSettings();
-        console.debug('Timer disabled.');
+        debug.message('Timer disabled.');
     }
 
 
@@ -77,7 +78,7 @@ var Timer = class {
     set time(time) {
         if (time === this.#time)
             return;
-        console.debug(`Time has changed to ${time}.`);
+        debug.message(`Time has changed to ${time}.`);
         this.#time = time;
         if (this.#settings.get_boolean('transition'))
             main.layoutManager.screenTransition.run();
@@ -87,7 +88,7 @@ var Timer = class {
 
 
     #connectSettings() {
-        console.debug('Connecting Timer to settings...');
+        debug.message('Connecting Timer to settings...');
         this.#settingsConnections.push({
             settings: this.#colorSettings,
             id: this.#colorSettings.connect('changed::night-light-enabled', this.#onSourceChanged.bind(this)),
@@ -117,7 +118,7 @@ var Timer = class {
     #disconnectSettings() {
         this.#settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
         this.#settingsConnections = [];
-        console.debug('Disconnected Timer from settings.');
+        debug.message('Disconnected Timer from settings.');
     }
 
     #createSources() {
@@ -151,7 +152,7 @@ var Timer = class {
     }
 
     #connectSources() {
-        console.debug('Connecting to time sources...');
+        debug.message('Connecting to time sources...');
         this.#sources.forEach(source => this.#timeConnections.push({
             source,
             id: source.connect('time-changed', this.#onTimeChanged.bind(this)),
@@ -161,7 +162,7 @@ var Timer = class {
     #disconnectSources() {
         this.#timeConnections.forEach(connection => connection.source.disconnect(connection.id));
         this.#timeConnections = [];
-        console.debug('Disconnected from time sources.');
+        debug.message('Disconnected from time sources.');
     }
 
 
@@ -185,17 +186,17 @@ var Timer = class {
 
 
     #getSource() {
-        console.debug('Getting time source...');
+        debug.message('Getting time source...');
 
         let source;
         if (this.#settings.get_boolean('manual-time-source')) {
             source = this.#settings.get_string('time-source');
-            console.debug(`Time source is forced to ${source}.`);
+            debug.message(`Time source is forced to ${source}.`);
             if (
                 (source === 'nightlight' && !this.#colorSettings.get_boolean('night-light-enabled')) ||
                 (source === 'location' && !this.#locationSettings.get_boolean('enabled'))
             ) {
-                console.debug(`Unable to choose ${source} time source, falling back to manual schedule.`);
+                debug.message(`Unable to choose ${source} time source, falling back to manual schedule.`);
                 source = 'schedule';
                 this.#settings.set_string('time-source', source);
             }
@@ -206,7 +207,7 @@ var Timer = class {
                 source = 'location';
             else
                 source = 'schedule';
-            console.debug(`Time source is ${source}.`);
+            debug.message(`Time source is ${source}.`);
             this.#settings.set_string('time-source', source);
         }
         return source;

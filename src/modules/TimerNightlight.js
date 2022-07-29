@@ -7,6 +7,7 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const debug = Me.imports.debug;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
@@ -41,23 +42,23 @@ var TimerNightlight = class {
     }
 
     async enable() {
-        console.debug('Enabling Night Light Timer...');
+        debug.message('Enabling Night Light Timer...');
         this.#cancellable = new Gio.Cancellable();
         this.#colorDbusProxy = await this.#createColorDbusProxy();
         this.#connectSettings();
         this.#listenToNightlightState();
         this.emit('time-changed', this.time);
-        console.debug('Night Light Timer enabled.');
+        debug.message('Night Light Timer enabled.');
     }
 
     disable() {
-        console.debug('Disabling Night Light Timer...');
+        debug.message('Disabling Night Light Timer...');
         this.#stopListeningToNightlightState();
         this.#disconnectSettings();
         this.#colorDbusProxy = null;
         this.#cancellable.cancel();
         this.#cancellable = null;
-        console.debug('Night Light Timer disabled.');
+        debug.message('Night Light Timer disabled.');
     }
 
 
@@ -67,7 +68,7 @@ var TimerNightlight = class {
 
 
     #createColorDbusProxy() {
-        console.debug('Creating the Color DBus proxy...');
+        debug.message('Creating the Color DBus proxy...');
         const ColorProxy = Gio.DBusProxy.makeProxyWrapper(COLOR_INTERFACE);
         return new Promise((resolve, reject) => {
             ColorProxy(
@@ -76,7 +77,7 @@ var TimerNightlight = class {
                 '/org/gnome/SettingsDaemon/Color',
                 (proxy, error) => {
                     if (error === null) {
-                        console.debug('Created the Color DBus proxy.');
+                        debug.message('Created the Color DBus proxy.');
                         resolve(proxy);
                     } else {
                         reject(error);
@@ -89,7 +90,7 @@ var TimerNightlight = class {
     }
 
     #connectSettings() {
-        console.debug('Connecting Night Light Timer to settings...');
+        debug.message('Connecting Night Light Timer to settings...');
         this.#settingsConnections.push({
             settings: this.#settings,
             id: this.#settings.connect('changed::nightlight-follow-disable', this.#onNightlightFollowDisableChanged.bind(this)),
@@ -97,13 +98,13 @@ var TimerNightlight = class {
     }
 
     #disconnectSettings() {
-        console.debug('Disconnecting Night Light Timer from settings...');
+        debug.message('Disconnecting Night Light Timer from settings...');
         this.#settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
         this.#settingsConnections = [];
     }
 
     #listenToNightlightState() {
-        console.debug('Listening to Night Light state...');
+        debug.message('Listening to Night Light state...');
         this.#nightlightStateConnection = this.#colorDbusProxy.connect(
             'g-properties-changed',
             this.#onNightlightStateChanged.bind(this)
@@ -115,7 +116,7 @@ var TimerNightlight = class {
             this.#colorDbusProxy.disconnect(this.#nightlightStateConnection);
             this.#nightlightStateConnection = null;
         }
-        console.debug('Stopped listening to Night Light state.');
+        debug.message('Stopped listening to Night Light state.');
     }
 
 
@@ -126,7 +127,7 @@ var TimerNightlight = class {
     #onNightlightStateChanged(_sender, _dbusProperties) {
         const newState = this.#isNightlightActive();
         if (newState !== this.#previousNightlightState) {
-            console.debug(`Night Light has become ${newState ? '' : 'in'}active.`);
+            debug.message(`Night Light has become ${newState ? '' : 'in'}active.`);
             this.#previousNightlightState = newState;
             this.emit('time-changed', newState ? Time.NIGHT : Time.DAY);
         }

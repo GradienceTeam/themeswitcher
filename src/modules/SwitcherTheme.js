@@ -7,6 +7,7 @@ const { extensionManager } = imports.ui.main;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const debug = Me.imports.debug;
 const utils = Me.imports.utils;
 
 const { Switcher } = Me.imports.modules.Switcher;
@@ -77,7 +78,7 @@ var SwitcherTheme = class extends Switcher {
     }
 
     #connectSettings() {
-        console.debug(`Connecting ${this.#name} switcher to settings...`);
+        debug.message(`Connecting ${this.#name} switcher to settings...`);
         this.#settingsConnections.push({
             settings: this.#settings,
             id: this.#settings.connect('changed::day', this.#onDayVariantChanged.bind(this)),
@@ -97,22 +98,22 @@ var SwitcherTheme = class extends Switcher {
     #disconnectSettings() {
         this.#settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
         this.#settingsConnections = [];
-        console.debug(`Disconnected ${this.#name} switcher from settings.`);
+        debug.message(`Disconnected ${this.#name} switcher from settings.`);
     }
 
 
     #onDayVariantChanged() {
-        console.debug(`Day ${this.#name} variant changed to '${this.#settings.get_string('day')}'.`);
+        debug.message(`Day ${this.#name} variant changed to '${this.#settings.get_string('day')}'.`);
         this.#updateSystemTheme();
     }
 
     #onNightVariantChanged() {
-        console.debug(`Night ${this.#name} variant changed to '${this.#settings.get_string('night')}'.`);
+        debug.message(`Night ${this.#name} variant changed to '${this.#settings.get_string('night')}'.`);
         this.#updateSystemTheme();
     }
 
     #onSystemThemeChanged() {
-        console.debug(`System ${this.#name} changed to '${this.#systemSettings.get_string(this.#themeKey)}'.`);
+        debug.message(`System ${this.#name} changed to '${this.#systemSettings.get_string(this.#themeKey)}'.`);
         this.#updateCurrentVariant();
     }
 
@@ -130,7 +131,7 @@ var SwitcherTheme = class extends Switcher {
     #updateSystemTheme() {
         if (this.#timer.time === Time.UNKNOWN)
             return;
-        console.debug(`Setting the ${this.#timer.time} ${this.#name} variant...`);
+        debug.message(`Setting the ${this.#timer.time} ${this.#name} variant...`);
         if (this.#systemSettings)
             this.#systemSettings.set_string(this.#themeKey, this.#settings.get_string(this.#timer.time));
         else if (this.#noSettingsUpdateSystemThemeCallback)

@@ -6,6 +6,7 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const debug = Me.imports.debug;
 const utils = Me.imports.utils;
 
 const { Switcher } = Me.imports.modules.Switcher;
@@ -40,6 +41,6 @@ var SwitcherCommands = class extends Switcher {
         if (!command)
             return;
         GLib.spawn_async(null, ['sh', '-c', command], null, GLib.SpawnFlags.SEARCH_PATH, null);
-        console.debug(`Spawned ${time} command.`);
+        debug.message(`Spawned ${time} command.`);
     }
 };

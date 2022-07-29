@@ -6,6 +6,7 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const debug = Me.imports.debug;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
@@ -45,25 +46,25 @@ var Switcher = class {
     }
 
     enable() {
-        console.debug(`Enabling ${this.#name} switcher...`);
+        debug.message(`Enabling ${this.#name} switcher...`);
         this.#watchStatus();
         if (this.#settings.get_boolean('enabled')) {
             this.#connectTimer();
             this.#onTimeChanged();
         }
-        console.debug(`${this.#name} switcher enabled.`);
+        debug.message(`${this.#name} switcher enabled.`);
     }
 
     disable() {
-        console.debug(`Disabling ${this.#name} switcher...`);
+        debug.message(`Disabling ${this.#name} switcher...`);
         this.#disconnectTimer();
         this.#unwatchStatus();
-        console.debug(`${this.#name} switcher disabled.`);
+        debug.message(`${this.#name} switcher disabled.`);
     }
 
 
     #watchStatus() {
-        console.debug(`Watching ${this.#name} switching status...`);
+        debug.message(`Watching ${this.#name} switching status...`);
         this.#statusConnection = this.#settings.connect('changed::enabled', this.#onStatusChanged.bind(this));
     }
 
@@ -72,11 +73,11 @@ var Switcher = class {
             this.#settings.disconnect(this.#statusConnection);
             this.#statusConnection = null;
         }
-        console.debug(`Stopped watching ${this.#name} switching status.`);
+        debug.message(`Stopped watching ${this.#name} switching status.`);
     }
 
     #connectTimer() {
-        console.debug(`Connecting ${this.#name} switcher to Timer...`);
+        debug.message(`Connecting ${this.#name} switcher to Timer...`);
         this.#timerConnection = this.#timer.connect('time-changed', this.#onTimeChanged.bind(this));
     }
 
@@ -85,12 +86,12 @@ var Switcher = class {
             this.#timer.disconnect(this.#timerConnection);
             this.#timerConnection = null;
         }
-        console.debug(`Disconnected ${this.#name} switcher from Timer.`);
+        debug.message(`Disconnected ${this.#name} switcher from Timer.`);
     }
 
 
     #onStatusChanged() {
-        console.debug(`${this.#name} switching has been ${this.#settings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
+        debug.message(`${this.#name} switching has been ${this.#settings.get_boolean('enabled') ? 'enabled' : 'disabled'}.`);
         this.disable();
         this.enable();
     }

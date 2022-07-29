@@ -12,6 +12,15 @@ configure_file(
   install_dir: INSTALL_DIR
 )
 
+configure_file(
+  input: 'debug.js',
+  output: 'debug.js',
+  configuration: {
+    'BUILD_TYPE': get_option('buildtype')
+  },
+  install_dir: INSTALL_DIR
+)
+
 main = [
   'extension.js',
   'prefs.js',

@@ -8,6 +8,7 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const debug = Me.imports.debug;
 const utils = Me.imports.utils;
 
 const { SwitcherCommands } = Me.imports.modules.SwitcherCommands;
@@ -24,13 +25,13 @@ class NightThemeSwitcher {
     #switcherCommands = null;
 
     constructor() {
-        console.debug('Initializing extension...');
+        debug.message('Initializing extension...');
         extensionUtils.initTranslations();
-        console.debug('Extension initialized.');
+        debug.message('Extension initialized.');
     }
 
     enable() {
-        console.debug('Enabling extension...');
+        debug.message('Enabling extension...');
         this.#timer = new Timer();
         this.#switcherThemeGtk = new SwitcherThemeGtk({ timer: this.#timer });
         this.#switcherThemeIcon = new SwitcherThemeIcon({ timer: this.#timer });
@@ -45,14 +46,14 @@ class NightThemeSwitcher {
         this.#switcherThemeCursor.enable();
         this.#switcherCommands.enable();
 
-        console.debug('Extension enabled.');
+        debug.message('Extension enabled.');
     }
 
     disable() {
         // Extension won't be disabled in `unlock-dialog` session mode. This is
         // to enable the color scheme switch while the lock screen is displayed,
         // as the background image and the shell theme are visible in this mode.
-        console.debug('Disabling extension...');
+        debug.message('Disabling extension...');
 
         if (this.#switcherThemeGtk) {
             this.#switcherThemeGtk.disable();
@@ -79,7 +80,7 @@ class NightThemeSwitcher {
             this.#timer = null;
         }
 
-        console.debug('Extension disabled.');
+        debug.message('Extension disabled.');
     }
 }
 

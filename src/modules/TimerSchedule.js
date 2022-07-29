@@ -7,6 +7,7 @@ const Signals = imports.signals;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const debug = Me.imports.debug;
 const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
@@ -31,16 +32,16 @@ var TimerSchedule = class {
     }
 
     enable() {
-        console.debug('Enabling Schedule Timer...');
+        debug.message('Enabling Schedule Timer...');
         this.#watchForTimeChange();
         this.emit('time-changed', this.time);
-        console.debug('Schedule Timer enabled.');
+        debug.message('Schedule Timer enabled.');
     }
 
     disable() {
-        console.debug('Disabling Schedule Timer...');
+        debug.message('Disabling Schedule Timer...');
         this.#stopWatchingForTimeChange();
-        console.debug('Schedule Timer disabled.');
+        debug.message('Schedule Timer disabled.');
     }
 
 
@@ -56,7 +57,7 @@ var TimerSchedule = class {
     }
 
     #watchForTimeChange() {
-        console.debug('Watching for time change...');
+        debug.message('Watching for time change...');
         this.#timeChangeTimer = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
             if (this.#previouslyDaytime !== this.#isDaytime()) {
                 this.#previouslyDaytime = this.#isDaytime();
@@ -68,7 +69,7 @@ var TimerSchedule = class {
 
     #stopWatchingForTimeChange() {
         GLib.Source.remove(this.#timeChangeTimer);
-        console.debug('Stopped watching for time change.');
+        debug.message('Stopped watching for time change.');
     }
 };
 Signals.addSignalMethods(TimerSchedule.prototype);
