@@ -9,7 +9,6 @@ const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
 const debug = Me.imports.debug;
-const utils = Me.imports.utils;
 
 const { SwitcherCommands } = Me.imports.modules.SwitcherCommands;
 const { SwitcherThemeCursor, SwitcherThemeGtk, SwitcherThemeIcon, SwitcherThemeShell } = Me.imports.modules.SwitcherTheme;
