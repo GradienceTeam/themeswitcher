@@ -30,6 +30,7 @@ const COLOR_INTERFACE = `
 var TimerNightlight = class {
     #settings;
 
+    #cancellable = null;
     #colorDbusProxy = null;
     #settingsConnections = [];
     #nightlightStateConnection = null;
@@ -39,9 +40,10 @@ var TimerNightlight = class {
         this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
     }
 
-    enable() {
+    async enable() {
         console.debug('Enabling Night Light Timer...');
-        this.#connectToColorDbusProxy();
+        this.#cancellable = new Gio.Cancellable();
+        this.#colorDbusProxy = await this.#createColorDbusProxy();
         this.#connectSettings();
         this.#listenToNightlightState();
         this.emit('time-changed', this.time);
@@ -52,7 +54,9 @@ var TimerNightlight = class {
         console.debug('Disabling Night Light Timer...');
         this.#stopListeningToNightlightState();
         this.#disconnectSettings();
-        this.#disconnectFromColorDbusProxy();
+        this.#colorDbusProxy = null;
+        this.#cancellable.cancel();
+        this.#cancellable = null;
         console.debug('Night Light Timer disabled.');
     }
 
@@ -62,21 +66,26 @@ var TimerNightlight = class {
     }
 
 
-    #connectToColorDbusProxy() {
-        console.debug('Connecting to Color DBus proxy...');
+    #createColorDbusProxy() {
+        console.debug('Creating the Color DBus proxy...');
         const ColorProxy = Gio.DBusProxy.makeProxyWrapper(COLOR_INTERFACE);
-        this.#colorDbusProxy = new ColorProxy(
-            Gio.DBus.session,
-            'org.gnome.SettingsDaemon.Color',
-            '/org/gnome/SettingsDaemon/Color'
-        );
-        console.debug('Connected to Color DBus proxy.');
-    }
-
-    #disconnectFromColorDbusProxy() {
-        console.debug('Disconnecting from Color DBus proxy...');
-        this.#colorDbusProxy = null;
-        console.debug('Disconnected from Color DBus proxy.');
+        return new Promise((resolve, reject) => {
+            ColorProxy(
+                Gio.DBus.session,
+                'org.gnome.SettingsDaemon.Color',
+                '/org/gnome/SettingsDaemon/Color',
+                (proxy, error) => {
+                    if (error === null) {
+                        console.debug('Created the Color DBus proxy.');
+                        resolve(proxy);
+                    } else {
+                        reject(error);
+                    }
+                },
+                this.#cancellable,
+                Gio.DBusProxyFlags.NONE
+            );
+        });
     }
 
     #connectSettings() {
@@ -102,7 +111,10 @@ var TimerNightlight = class {
     }
 
     #stopListeningToNightlightState() {
-        this.#colorDbusProxy.disconnect(this.#nightlightStateConnection);
+        if (this.#colorDbusProxy && this.#nightlightStateConnection) {
+            this.#colorDbusProxy.disconnect(this.#nightlightStateConnection);
+            this.#nightlightStateConnection = null;
+        }
         console.debug('Stopped listening to Night Light state.');
     }
 
