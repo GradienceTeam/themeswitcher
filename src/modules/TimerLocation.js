@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const { Geoclue, GLib } = imports.gi;
+const { Geoclue, Gio, GLib } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
@@ -28,6 +28,7 @@ const { Time } = Me.imports.enums.Time;
 var TimerLocation = class {
     #suntimes;
 
+    #cancellable = null;
     #previouslyDaytime = null;
     #geoclue = null;
     #geoclueConnection = null;
@@ -46,6 +47,7 @@ var TimerLocation = class {
 
     enable() {
         console.debug('Enabling Location Timer...');
+        this.#cancellable = new Gio.Cancellable();
         this.#connectToGeoclue();
         this.#watchForTimeChange();
         this.#regularlyUpdateSuntimes();
@@ -57,6 +59,8 @@ var TimerLocation = class {
         this.#stopRegularlyUpdatingSuntimes();
         this.#stopWatchingForTimeChange();
         this.#disconnectFromGeoclue();
+        this.#cancellable.cancel();
+        this.#cancellable = null;
         console.debug('Location Timer disabled.');
     }
 
@@ -71,7 +75,7 @@ var TimerLocation = class {
         Geoclue.Simple.new(
             'org.gnome.Shell',
             Geoclue.AccuracyLevel.CITY,
-            null,
+            this.#cancellable,
             this.#onGeoclueReady.bind(this)
         );
     }
