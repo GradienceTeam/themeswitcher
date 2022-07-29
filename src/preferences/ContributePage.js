@@ -5,9 +5,14 @@ const { Adw, GLib, GObject } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
+const _ = extensionUtils.gettext;
 
 
 var ContributePage = GObject.registerClass({
     GTypeName: 'ContributePage',
     Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/ContributePage.ui',
-}, class ContributePage extends Adw.PreferencesPage {});
+}, class ContributePage extends Adw.PreferencesPage {
+    getVersionString(_page) {
+        return _('Version %d').format(Me.metadata.version);
+    }
+});
