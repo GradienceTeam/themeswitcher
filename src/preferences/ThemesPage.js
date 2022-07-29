@@ -32,10 +32,10 @@ var ThemesPage = GObject.registerClass({
 }, class ThemesPage extends Adw.PreferencesPage {
     constructor(props = {}) {
         super(props);
-        const gtkSettings = extensionUtils.getSettings(utils.getSettingsSchema('gtk-variants'));
-        const shellSettings = extensionUtils.getSettings(utils.getSettingsSchema('shell-variants'));
-        const iconSettings = extensionUtils.getSettings(utils.getSettingsSchema('icon-variants'));
-        const cursorSettings = extensionUtils.getSettings(utils.getSettingsSchema('cursor-variants'));
+        const gtkSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.gtk-variants`);
+        const shellSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.shell-variants`);
+        const iconSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.icon-variants`);
+        const cursorSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.cursor-variants`);
 
         gtkSettings.bind('enabled', this._gtk_row, 'enable-expansion', Gio.SettingsBindFlags.DEFAULT);
 

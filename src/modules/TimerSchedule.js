@@ -8,7 +8,6 @@ const Signals = imports.signals;
 const Me = extensionUtils.getCurrentExtension();
 
 const debug = Me.imports.debug;
-const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
 
@@ -28,7 +27,7 @@ var TimerSchedule = class {
     #timeChangeTimer = null;
 
     constructor() {
-        this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
+        this.#settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
     }
 
     enable() {

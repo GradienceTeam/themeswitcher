@@ -35,7 +35,7 @@ var TimerOndemand = class {
 
     constructor({ timer }) {
         this.#timer = timer;
-        this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
+        this.#settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
     }
 
     enable() {

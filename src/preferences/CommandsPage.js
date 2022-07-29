@@ -6,8 +6,6 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
-const utils = Me.imports.utils;
-
 
 var CommandsPage = GObject.registerClass({
     GTypeName: 'CommandsPage',
@@ -20,7 +18,7 @@ var CommandsPage = GObject.registerClass({
 }, class CommandsPage extends Adw.PreferencesPage {
     constructor(props = {}) {
         super(props);
-        const settings = extensionUtils.getSettings(utils.getSettingsSchema('commands'));
+        const settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.commands`);
 
         settings.bind('enabled', this._enabled_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
         settings.bind('sunrise', this._sunrise_entry, 'text', Gio.SettingsBindFlags.DEFAULT);

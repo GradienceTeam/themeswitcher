@@ -145,7 +145,7 @@ var SwitcherThemeCursor = class extends SwitcherTheme {
         super({
             name: 'Cursor theme',
             timer,
-            settings: extensionUtils.getSettings(utils.getSettingsSchema('cursor-variants')),
+            settings: extensionUtils.getSettings(`${Me.metadata['settings-schema']}.cursor-variants`),
             systemSettings: new Gio.Settings({ schema: 'org.gnome.desktop.interface' }),
             themeKey: 'cursor-theme',
         });
@@ -158,7 +158,7 @@ var SwitcherThemeGtk = class extends SwitcherTheme {
         super({
             name: 'GTK theme',
             timer,
-            settings: extensionUtils.getSettings(utils.getSettingsSchema('gtk-variants')),
+            settings: extensionUtils.getSettings(`${Me.metadata['settings-schema']}.gtk-variants`),
             systemSettings: new Gio.Settings({ schema: 'org.gnome.desktop.interface' }),
             themeKey: 'gtk-theme',
         });
@@ -171,7 +171,7 @@ var SwitcherThemeIcon = class extends SwitcherTheme {
         super({
             name: 'Icon theme',
             timer,
-            settings: extensionUtils.getSettings(utils.getSettingsSchema('icon-variants')),
+            settings: extensionUtils.getSettings(`${Me.metadata['settings-schema']}.icon-variants`),
             systemSettings: new Gio.Settings({ schema: 'org.gnome.desktop.interface' }),
             themeKey: 'icon-theme',
         });
@@ -183,7 +183,7 @@ var SwitcherThemeShell = class extends SwitcherTheme {
     #settings;
 
     constructor({ timer }) {
-        const settings = extensionUtils.getSettings(utils.getSettingsSchema('shell-variants'));
+        const settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.shell-variants`);
         super({
             name: 'Shell theme',
             timer,

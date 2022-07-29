@@ -13,16 +13,6 @@ const { ExtensionState } = extensionUtils;
 
 
 /**
- * Build the full settings schema from a subschema.
- *
- * @param {string} subSchema The subschema to get.
- * @returns {string} The full schema.
- */
-function getSettingsSchema(subSchema) {
-    return subSchema ? `${Me.metadata['settings-schema']}.${subSchema}` : Me.metadata['settings-schema'];
-}
-
-/**
  * Get all the directories of the system for a resource.
  *
  * @param {string} resource The resource to get the directories.

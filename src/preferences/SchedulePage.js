@@ -30,7 +30,7 @@ var SchedulePage = GObject.registerClass({
 }, class SchedulePage extends Adw.PreferencesPage {
     constructor(props = {}) {
         super(props);
-        const settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
+        const settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
         const colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
         const locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
 

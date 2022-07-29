@@ -10,7 +10,6 @@ const { main } = imports.ui;
 const Me = extensionUtils.getCurrentExtension();
 
 const debug = Me.imports.debug;
-const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
 const { TimerNightlight } = Me.imports.modules.TimerNightlight;
@@ -46,7 +45,7 @@ var Timer = class {
     #timeConnections = [];
 
     constructor() {
-        this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
+        this.#settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
         this.#interfaceSettings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
         this.#colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
         this.#locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });

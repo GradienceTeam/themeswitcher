@@ -8,7 +8,6 @@ const Signals = imports.signals;
 const Me = extensionUtils.getCurrentExtension();
 
 const debug = Me.imports.debug;
-const utils = Me.imports.utils;
 
 const { Time } = Me.imports.enums.Time;
 
@@ -39,7 +38,7 @@ var TimerLocation = class {
     constructor() {
         // Before we have the location suntimes, we'll use the manual schedule
         // times
-        const timeSettings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
+        const timeSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
         this.#suntimes = new Map([
             ['sunrise', timeSettings.get_double('schedule-sunrise')],
             ['sunset', timeSettings.get_double('schedule-sunset')],

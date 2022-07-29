@@ -7,7 +7,6 @@ const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
 const debug = Me.imports.debug;
-const utils = Me.imports.utils;
 
 const { Switcher } = Me.imports.modules.Switcher;
 
@@ -24,7 +23,7 @@ var SwitcherCommands = class extends Switcher {
     #settings;
 
     constructor({ timer }) {
-        const settings = extensionUtils.getSettings(utils.getSettingsSchema('commands'));
+        const settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.commands`);
         super({
             name: 'Command',
             timer,
