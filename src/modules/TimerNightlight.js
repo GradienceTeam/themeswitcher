@@ -34,7 +34,7 @@ var TimerNightlight = class {
     #colorDbusProxy = null;
     #settingsConnections = [];
     #nightlightStateConnection = null;
-    #previousNightlightActive = null;
+    #previousNightlightState = null;
 
     constructor() {
         this.#settings = extensionUtils.getSettings(utils.getSettingsSchema('time'));
@@ -124,10 +124,11 @@ var TimerNightlight = class {
     }
 
     #onNightlightStateChanged(_sender, _dbusProperties) {
-        if (this.#isNightlightActive() !== this.#previousNightlightActive) {
-            console.debug(`Night Light has become ${this.#isNightlightActive() ? '' : 'in'}active.`);
-            this.#previousNightlightActive = this.#isNightlightActive();
-            this.emit('time-changed', this.time);
+        const newState = this.#isNightlightActive();
+        if (newState !== this.#previousNightlightState) {
+            console.debug(`Night Light has become ${newState ? '' : 'in'}active.`);
+            this.#previousNightlightState = newState;
+            this.emit('time-changed', newState ? Time.NIGHT : Time.DAY);
         }
     }
 
