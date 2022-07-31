@@ -7,312 +7,315 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 22:37+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-07-31 17:20+0000\n"
+"Last-Translator: citrus flavor <sugar826@outlook.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
-msgstr ""
+msgstr "設定のバージョン"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
 msgid "The current extension settings version"
-msgstr ""
+msgstr "現在の拡張機能の設定のバージョン"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 #: src/data/ui/ThemesPage.ui:30
 msgid "Switch GTK theme"
-msgstr ""
+msgstr "GTKテーマの切り替え"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
-msgstr ""
+msgstr "GTKバリアントの切り替えを有効にする"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
 msgid "Day GTK theme"
-msgstr ""
+msgstr "日中のGTKテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
 msgid "The GTK theme to use during daytime"
-msgstr ""
+msgstr "日中に使用するGTKテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Night GTK theme"
-msgstr ""
+msgstr "夜間のGTKテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:28
 msgid "The GTK theme to use during nighttime"
-msgstr ""
+msgstr "夜間に使用するGTKテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
 #: src/data/ui/ThemesPage.ui:47
 msgid "Switch Shell theme"
-msgstr ""
+msgstr "Shellテーマの切り替え"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
-msgstr ""
+msgstr "Shellバリアントの切り替えを有効にする"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:39
 msgid "Day shell theme"
-msgstr ""
+msgstr "日中のShellテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:40
 msgid "The shell theme to use during daytime"
-msgstr ""
+msgstr "日中に使用するShellテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
 msgid "Night shell theme"
-msgstr ""
+msgstr "夜間のShellテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
 msgid "The shell theme to use during nighttime"
-msgstr ""
+msgstr "夜間に使用するShellテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 #: src/data/ui/ThemesPage.ui:63
 msgid "Switch icon theme"
-msgstr ""
+msgstr "アイコンテーマの切り替え"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
-msgstr ""
+msgstr "アイコンテーマの切り替えを有効にする"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:56
 msgid "Day icon theme"
-msgstr ""
+msgstr "日中のアイコンテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:57
 msgid "The icon theme to use during daytime"
-msgstr ""
+msgstr "日中に使用するアイコンテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
 msgid "Night icon theme"
-msgstr ""
+msgstr "夜間のアイコンテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:62
 msgid "The icon theme to use during nighttime"
-msgstr ""
+msgstr "夜間に使用するアイコンテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
 #: src/data/ui/ThemesPage.ui:79
 msgid "Switch cursor theme"
-msgstr ""
+msgstr "カーソルテーマの切り替え"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
-msgstr ""
+msgstr "カーソルテーマの切り替えを有効にする"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:73
 msgid "Day cursor theme"
-msgstr ""
+msgstr "日中のカーソルテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:74
 msgid "The cursor theme to use during daytime"
-msgstr ""
+msgstr "日中に使用するカーソルテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:78
 msgid "Night cursor theme"
-msgstr ""
+msgstr "夜間のカーソルテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:79
 msgid "The cursor theme to use during nighttime"
-msgstr ""
+msgstr "夜間に使用するカーソルテーマ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:85
 msgid "Enable commands"
-msgstr ""
+msgstr "コマンドを有効にする"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:86
 msgid "Commands will be spawned on time change"
-msgstr ""
+msgstr "コマンドは設定された時間になった時に実行されます"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:90
 msgid "Sunrise command"
-msgstr ""
+msgstr "日の出時のコマンド"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:91
 msgid "The command to spawn at sunrise"
-msgstr ""
+msgstr "日の出時に実行されるコマンド"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:95
 msgid "Sunset command"
-msgstr ""
+msgstr "日没時のコマンド"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:96
 msgid "The command to spawn at sunset"
-msgstr ""
+msgstr "日没時に実行されるコマンド"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
 #: src/data/ui/BackgroundsPage.ui:15
 msgid "Day background"
-msgstr ""
+msgstr "日中のデスクトップ背景"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:103
 msgid "Path to the day background"
-msgstr ""
+msgstr "日中に適用されるデスクトップ背景のパス"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:107
 #: src/data/ui/BackgroundsPage.ui:28
 msgid "Night background"
-msgstr ""
+msgstr "夜間のデスクトップ背景"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:108
 msgid "Path to the night background"
-msgstr ""
+msgstr "夜間に適用されるデスクトップ背景のパス"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:120
 #: src/data/ui/SchedulePage.ui:27
 msgid "Time source"
-msgstr ""
+msgstr "時刻のソース"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:121
 msgid "The source used to check current time"
-msgstr ""
+msgstr "現在時刻を確認するために使用されるソース"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:125
 msgid "Follow Night Light \"Disable until tomorrow\""
-msgstr ""
+msgstr "夜間モードを「明日まで無効」の設定に従うようにする"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
 msgid "Switch back to day time when Night Light is temporarily disabled"
-msgstr ""
+msgstr "夜間モードが一時的に無効になった時に日中のテーマに戻す"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:130
 msgid "Always enable the on-demand timer"
-msgstr ""
+msgstr "常に手動切り替えタイマーを有効にする"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
 msgid "The on-demand timer will always be enabled alongside other timers"
-msgstr ""
+msgstr "手動切り替えタイマーは常に他のタイマーと一緒に有効になります"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:139
 msgid "On-demand time"
-msgstr ""
+msgstr "手動切り替えの時刻"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:140
 msgid "The current time used in on-demand mode"
-msgstr ""
+msgstr "手動切り替えモードで使用される現在時刻"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:144
 msgid "Key combination to toggle time"
-msgstr ""
+msgstr "時間を切り替えるために使用するキーの組み合わせ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:145
 msgid "The key combination that will toggle time in on-demand mode"
-msgstr ""
+msgstr "手動切り替えモードで時間を切り替えるために使用するキーの組み合わせ"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:154
 msgid "On-demand button placement"
-msgstr ""
+msgstr "手動切り替えボタンの配置"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:155
 msgid "Where the on-demand button will be placed"
-msgstr ""
+msgstr "手動切り替えボタンを配置する場所"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
 msgid "Use manual time source"
-msgstr ""
+msgstr "手動設定した時刻をソースとして使用する"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:160
 msgid "Disable automatic time source detection"
-msgstr ""
+msgstr "時刻ソースの自動検出を無効にする"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:164
 msgid "Sunrise time"
-msgstr ""
+msgstr "日の出の時刻"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:165
 msgid "When the day starts"
-msgstr ""
+msgstr "一日が始まる時"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:169
 msgid "Sunset time"
-msgstr ""
+msgstr "日没の時刻"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:170
 msgid "When the day ends"
-msgstr ""
+msgstr "一日が終わる時"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
 #: src/data/ui/SchedulePage.ui:50
 msgid "Transition"
-msgstr ""
+msgstr "切り替え効果"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
 msgid "Use a transition when changing the color scheme"
-msgstr ""
+msgstr "配色を切り替える時に切り替え効果を使用する"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
-msgstr ""
+msgstr "デスクトップ背景の変更"
 
 #: src/data/ui/BackgroundButton.ui:31
 msgid "Select your background image"
-msgstr ""
+msgstr "背景画像を選択してください"
 
 #: src/data/ui/BackgroundsPage.ui:9
 msgid "Backgrounds"
-msgstr ""
+msgstr "デスクトップ背景"
 
 #: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
 #: src/data/ui/ShortcutButton.ui:45
 msgid "Clear"
-msgstr ""
+msgstr "クリア"
 
 #: src/data/ui/CommandsPage.ui:9
 msgid "Commands"
-msgstr ""
+msgstr "コマンド"
 
 #: src/data/ui/CommandsPage.ui:13
 msgid "Run commands"
-msgstr ""
+msgstr "コマンドの実行"
 
 #: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:84
 msgid "Sunrise"
-msgstr ""
+msgstr "日の出"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:25
 msgid "notify-send \"Hello sunshine!\""
-msgstr ""
+msgstr "notify-send \"こんにちは、日光さん!\""
 
 #: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:96
 msgid "Sunset"
-msgstr ""
+msgstr "日没"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:39
 msgid "notify-send \"Hello moonshine!\""
-msgstr ""
+msgstr "notify-send \"こんにちは、月光さん!\""
 
 #: src/data/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "貢献する"
 
 #: src/data/ui/ContributePage.ui:42
 msgid "View the code and report issues"
-msgstr ""
+msgstr "コードの表示と問題の報告"
 
 #: src/data/ui/ContributePage.ui:55
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "翻訳の協力"
 
 #: src/data/ui/ContributePage.ui:68
 msgid "Support me with a donation"
-msgstr ""
+msgstr "寄付で製作者をサポートする"
 
 #: src/data/ui/SchedulePage.ui:9
 msgid "Schedule"
-msgstr ""
+msgstr "スケジュール"
 
 #: src/data/ui/SchedulePage.ui:15
 msgid "Manual time source"
-msgstr ""
+msgstr "時刻を取得するソースの手動設定"
 
 #: src/data/ui/SchedulePage.ui:16
 msgid ""
@@ -320,157 +323,168 @@ msgid ""
 "automatically set your current sunrise and sunset times if they are enabled. "
 "If you prefer, you can manually choose a time source."
 msgstr ""
+"この拡張機能はGNOMEの夜間モードまたは位置情報サービスが有効な場合、それらを使"
+"用して現在の日の出と日没の時刻を自動的に設定します。必要であれば、手動で時刻"
+"を取得するソースを選択することもできます。"
 
 #: src/data/ui/SchedulePage.ui:33
 msgid "Always show on-demand controls"
-msgstr ""
+msgstr "常に手動切り替えボタンを表示する"
 
 #: src/data/ui/SchedulePage.ui:34
 msgid "Allows you to override the current time when using a schedule."
-msgstr ""
+msgstr "スケジュールを使用している時に、現在の時刻を上書きできるようにします。"
 
 #: src/data/ui/SchedulePage.ui:47
 msgid "Advanced"
-msgstr ""
+msgstr "高度な設定"
 
 #: src/data/ui/SchedulePage.ui:51
 msgid "Smooth transition between day and night appearance."
-msgstr ""
+msgstr "日中と夜間の外観の切り替えをスムーズにします。"
 
 #: src/data/ui/SchedulePage.ui:62 src/preferences/SchedulePage.js:43
 msgid "Night Light"
-msgstr ""
+msgstr "夜間モード"
 
 #: src/data/ui/SchedulePage.ui:63
 msgid "These settings only apply when Night Light is the time source."
-msgstr ""
+msgstr "これらの設定は、夜間モードを時刻のソースとして使用している場合にのみ適用され"
+"ます。"
 
 #: src/data/ui/SchedulePage.ui:66
 msgid "Follow <i>Disable until tomorrow</i>"
-msgstr ""
+msgstr "<i>明日まで無効</i> に従う"
 
 #: src/data/ui/SchedulePage.ui:67
 msgid ""
 "When Night Light is temporarily disabled, the extension will switch to day "
 "variants."
-msgstr ""
+msgstr "夜間モードを一時的に無効にすると、拡張機能は日中の外観に切り替えます。"
 
 #: src/data/ui/SchedulePage.ui:80 src/preferences/SchedulePage.js:56
 msgid "Manual schedule"
-msgstr ""
+msgstr "スケジュールの手動設定"
 
 #: src/data/ui/SchedulePage.ui:81
 msgid ""
 "These settings only apply when using the manual schedule as the time source."
-msgstr ""
+msgstr "これらの設定は、手動設定したスケジュールを時刻のソースとして使用している場合"
+"にのみ適用されます。"
 
 #: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
 msgid "On-demand"
-msgstr ""
+msgstr "手動切り替え"
 
 #: src/data/ui/SchedulePage.ui:111
 msgid "These settings only apply when using the on-demand time source."
-msgstr ""
+msgstr "これらの設定は、手動切り替えを時刻のソースとして使用している場合にのみ適用さ"
+"れます。"
 
 #: src/data/ui/SchedulePage.ui:114
 msgid "Keyboard shortcut"
-msgstr ""
+msgstr "キーボードショートカット"
 
 #: src/data/ui/SchedulePage.ui:125
 msgid "Button location"
-msgstr ""
+msgstr "ボタンの位置"
 
 #: src/data/ui/ShortcutButton.ui:15
 msgid "Choose…"
-msgstr ""
+msgstr "選択する…"
 
 #: src/data/ui/ShortcutButton.ui:32
 msgid "Change keyboard shortcut"
-msgstr ""
+msgstr "キーボードショートカットの変更"
 
 #: src/data/ui/ShortcutButton.ui:80
 msgid "Press your keyboard shortcut…"
-msgstr ""
+msgstr "使用したいキーボードショートカットを押下してください…"
 
 #: src/data/ui/ThemesPage.ui:9
 msgid "Themes"
-msgstr ""
+msgstr "テーマ"
 
 #: src/data/ui/ThemesPage.ui:15
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
+"GNOMEには、拡張機能が使用するダークモードが組み込まれています。テーマを手動で"
+"切り替えることは推奨されません。これは従来の理由によるものです。"
 
 #: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
+"ダークテーマをサポートするように設計されていないアプリケーションにダークテー"
+"マを強制的に適用すると、文章が読めなくなったりアイコンが見えなくなったりする"
+"などの望ましくない問題が発生することがあります。"
 
 #: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
 #: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
-msgstr ""
+msgstr "日中のテーマ"
 
 #: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
 #: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
-msgstr ""
+msgstr "夜間のテーマ"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode Off"
-msgstr ""
+msgstr "夜間モードをオフにする"
 
 #: src/modules/TimerOndemand.js:213
 msgid "Turn Night Mode On"
-msgstr ""
+msgstr "夜間モードをオンにする"
 
 #: src/modules/TimerOndemand.js:228
 msgid "Extension Settings"
-msgstr ""
+msgstr "拡張機能の設定"
 
 #: src/modules/TimerOndemand.js:237
 msgid "Night Mode Off"
-msgstr ""
+msgstr "夜間モードはオフです"
 
 #: src/modules/TimerOndemand.js:237
 msgid "Night Mode On"
-msgstr ""
+msgstr "夜間モードはオンです"
 
 #: src/modules/TimerOndemand.js:238
 msgid "Turn Off"
-msgstr ""
+msgstr "オフにする"
 
 #: src/modules/TimerOndemand.js:238
 msgid "Turn On"
-msgstr ""
+msgstr "オンにする"
 
 #: src/preferences/BackgroundButton.js:74
 msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
-msgstr ""
+msgstr "背景画像として使用できるのはJPEG、PNG、TIFF、SVGとXMLのファイルのみです。"
 
 #: src/preferences/SchedulePage.js:48
 msgid "Location Services"
-msgstr ""
+msgstr "位置情報サービス"
 
 #: src/preferences/SchedulePage.js:90
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: src/preferences/SchedulePage.js:91
 msgid "Top bar"
-msgstr ""
+msgstr "トップバー"
 
 #: src/preferences/SchedulePage.js:92
 msgid "System menu"
-msgstr ""
+msgstr "システムメニュー"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
-msgstr ""
+msgstr "デフォルト"
