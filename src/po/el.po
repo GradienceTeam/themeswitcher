@@ -7,113 +7,116 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 22:37+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-08-13 10:20+0000\n"
+"Last-Translator: Nikolas Tsilivis <nikolas.tsilivis@evooq.ch>\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
 msgid "Settings version"
-msgstr ""
+msgstr "Έκδοση επιλογών"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
 msgid "The current extension settings version"
-msgstr ""
+msgstr "Η έκδοση της τρέχουσας επέκτασης"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
 #: src/data/ui/ThemesPage.ui:30
 msgid "Switch GTK theme"
-msgstr ""
+msgstr "Αλλαγή θέματος GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
 msgid "Enable GTK variants switching"
-msgstr ""
+msgstr "Ενεργοποίηση εναλλαγής παραλλαγών GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
 msgid "Day GTK theme"
-msgstr ""
+msgstr "Θέμα GTK ημέρας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
 msgid "The GTK theme to use during daytime"
-msgstr ""
+msgstr "Το θέμα GTK που θα χρησιμοποιείται κατά τη διάρκεια της ημέρας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
 msgid "Night GTK theme"
-msgstr ""
+msgstr "Νυχτερινό θέμα GTK"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:28
 msgid "The GTK theme to use during nighttime"
-msgstr ""
+msgstr "Το θέμα του GTK που θα χρησιμοποιείται κατά τη διάρκεια της νύχτας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
 #: src/data/ui/ThemesPage.ui:47
 msgid "Switch Shell theme"
-msgstr ""
+msgstr "Εναλλαγή θέματος shell"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
 msgid "Enable shell variants switching"
-msgstr ""
+msgstr "Ενεργοποίηση εναλλαγής παραλλαγών shell"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:39
 msgid "Day shell theme"
-msgstr ""
+msgstr "Θέμα shell ημέρας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:40
 msgid "The shell theme to use during daytime"
-msgstr ""
+msgstr "Το θέμα shell που θα χρησιμοποιείται κατά τη διάρκεια της ημέρας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
 msgid "Night shell theme"
-msgstr ""
+msgstr "Νυχτερινό θέμα shell"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
 msgid "The shell theme to use during nighttime"
-msgstr ""
+msgstr "Το θέμα του shell που θα χρησιμοποιείται κατά τη διάρκεια της νύχτας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
 #: src/data/ui/ThemesPage.ui:63
 msgid "Switch icon theme"
-msgstr ""
+msgstr "Αλλαγή θέματος εικονιδίων"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
 msgid "Enable icon variants switching"
-msgstr ""
+msgstr "Ενεργοποίηση εναλλαγής παραλλαγών εικονιδίων"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:56
 msgid "Day icon theme"
-msgstr ""
+msgstr "Θέμα εικονιδίων ημέρας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:57
 msgid "The icon theme to use during daytime"
-msgstr ""
+msgstr "Το θέμα εικονιδίων που θα χρησιμοποιείται κατά τη διάρκεια της ημέρας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
 msgid "Night icon theme"
-msgstr ""
+msgstr "Νυχτερινό θέμα εικονιδίων"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:62
 msgid "The icon theme to use during nighttime"
-msgstr ""
+msgstr "Το θέμα εικονιδίων που θα χρησιμοποιείται κατά τη διάρκεια της νύχτας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
 #: src/data/ui/ThemesPage.ui:79
 msgid "Switch cursor theme"
-msgstr ""
+msgstr "Αλλαγή θέματος κέρσορα"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
 msgid "Enable cursor variants switching"
-msgstr ""
+msgstr "Ενεργοποίηση εναλλαγής παραλλαγών κέρσορα"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:73
 msgid "Day cursor theme"
-msgstr ""
+msgstr "Θέμα κέρσορα ημέρας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:74
 msgid "The cursor theme to use during daytime"
-msgstr ""
+msgstr "Το θέμα κέρσορα που θα χρησιμοποιείται κατά τη διάρκεια της ημέρας"
 
 #: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:78
 msgid "Night cursor theme"
