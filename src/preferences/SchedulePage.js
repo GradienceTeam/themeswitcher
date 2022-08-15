@@ -20,12 +20,10 @@ var SchedulePage = GObject.registerClass({
         'manual_time_source_switch',
         'time_source_combo_row',
         'always_show_ondemand_switch',
-        'nightlight_follow_disable_switch',
         'schedule_sunrise_time_chooser',
         'schedule_sunset_time_chooser',
         'ondemand_shortcut_button',
         'ondemand_button_location_combo_row',
-        'nightlight_expander_row',
     ],
 }, class SchedulePage extends Adw.PreferencesPage {
     constructor(props = {}) {
@@ -42,7 +40,6 @@ var SchedulePage = GObject.registerClass({
 
         const nightlightChoice = new DropDownChoice({ id: 'nightlight', title: _('Night Light') });
         nightlightChoice.connect('notify::enabled', () => choiceFilter.changed(Gtk.FilterChange.DIFFERENT));
-        nightlightChoice.bind_property('enabled', this._nightlight_expander_row, 'visible', GObject.BindingFlags.DEFAULT);
         colorSettings.bind('night-light-enabled', nightlightChoice, 'enabled', Gio.SettingsBindFlags.GET);
 
         const locationChoice = new DropDownChoice({ id: 'location', title: _('Location Services') });
@@ -71,8 +68,6 @@ var SchedulePage = GObject.registerClass({
         updateTimeSourceComboRowState();
 
         settings.bind('always-enable-ondemand', this._always_show_ondemand_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
-
-        settings.bind('nightlight-follow-disable', this._nightlight_follow_disable_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
 
         settings.bind('schedule-sunrise', this._schedule_sunrise_time_chooser, 'time', Gio.SettingsBindFlags.DEFAULT);
         settings.bind('schedule-sunset', this._schedule_sunset_time_chooser, 'time', Gio.SettingsBindFlags.DEFAULT);

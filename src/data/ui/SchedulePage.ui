@@ -58,24 +58,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
           </object>
         </child>
         <child>
-          <object class="AdwExpanderRow" id="nightlight_expander_row">
-            <property name="title" translatable="yes">Night Light</property>
-            <property name="subtitle" translatable="yes">These settings only apply when Night Light is the time source.</property>
-            <child>
-              <object class="AdwActionRow">
-                <property name="title" translatable="yes"><![CDATA[Follow <i>Disable until tomorrow</i>]]></property>
-                <property name="subtitle" translatable="yes">When Night Light is temporarily disabled, the extension will switch to day variants.</property>
-                <property name="activatable-widget">nightlight_follow_disable_switch</property>
-                <child>
-                  <object class="GtkSwitch" id="nightlight_follow_disable_switch">
-                    <property name="valign">center</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
           <object class="AdwExpanderRow">
             <property name="title" translatable="yes">Manual schedule</property>
             <property name="subtitle" translatable="yes">These settings only apply when using the manual schedule as the time source.</property>

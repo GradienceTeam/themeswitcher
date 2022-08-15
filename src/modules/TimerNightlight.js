@@ -28,23 +28,15 @@ const COLOR_INTERFACE = `
  * 'NightLightActive' property and will signal any change.
  */
 var TimerNightlight = class {
-    #settings;
-
     #cancellable = null;
     #colorDbusProxy = null;
-    #settingsConnections = [];
     #nightlightStateConnection = null;
     #previousNightlightState = null;
-
-    constructor() {
-        this.#settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
-    }
 
     async enable() {
         debug.message('Enabling Night Light Timer...');
         this.#cancellable = new Gio.Cancellable();
         this.#colorDbusProxy = await this.#createColorDbusProxy();
-        this.#connectSettings();
         this.#listenToNightlightState();
         this.emit('time-changed', this.time);
         debug.message('Night Light Timer enabled.');
@@ -53,7 +45,6 @@ var TimerNightlight = class {
     disable() {
         debug.message('Disabling Night Light Timer...');
         this.#stopListeningToNightlightState();
-        this.#disconnectSettings();
         this.#colorDbusProxy = null;
         this.#cancellable.cancel();
         this.#cancellable = null;
@@ -88,20 +79,6 @@ var TimerNightlight = class {
         });
     }
 
-    #connectSettings() {
-        debug.message('Connecting Night Light Timer to settings...');
-        this.#settingsConnections.push({
-            settings: this.#settings,
-            id: this.#settings.connect('changed::nightlight-follow-disable', this.#onNightlightFollowDisableChanged.bind(this)),
-        });
-    }
-
-    #disconnectSettings() {
-        debug.message('Disconnecting Night Light Timer from settings...');
-        this.#settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
-        this.#settingsConnections = [];
-    }
-
     #listenToNightlightState() {
         debug.message('Listening to Night Light state...');
         this.#nightlightStateConnection = this.#colorDbusProxy.connect(
@@ -119,10 +96,6 @@ var TimerNightlight = class {
     }
 
 
-    #onNightlightFollowDisableChanged() {
-        this.#onNightlightStateChanged();
-    }
-
     #onNightlightStateChanged(_sender, _dbusProperties) {
         const newState = this.#isNightlightActive();
         if (newState !== this.#previousNightlightState) {
@@ -134,9 +107,7 @@ var TimerNightlight = class {
 
 
     #isNightlightActive() {
-        return this.#settings.get_boolean('nightlight-follow-disable')
-            ? !this.#colorDbusProxy.DisabledUntilTomorrow && this.#colorDbusProxy.NightLightActive
-            : this.#colorDbusProxy.NightLightActive;
+        return this.#colorDbusProxy.NightLightActive;
     }
 };
 Signals.addSignalMethods(TimerNightlight.prototype);
