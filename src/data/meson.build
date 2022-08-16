@@ -23,9 +23,3 @@ custom_target(
   install: true,
   install_dir: INSTALL_DIR / 'schemas'
 )
-
-icons = [
-  'icons/nightthemeswitcher-ondemand-off-symbolic.svg',
-  'icons/nightthemeswitcher-ondemand-on-symbolic.svg'
-]
-install_data(icons, install_dir: INSTALL_DIR / 'icons' / 'hicolor' / 'scalable' / 'status')
