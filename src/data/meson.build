@@ -13,6 +13,7 @@ glib_compile_schemas_exe = find_program('glib-compile-schemas')
 custom_target(
   'gschemas',
   build_by_default: true,
+  build_always_stale: true,
   output: 'gschemas.compiled',
   command: [
     glib_compile_schemas_exe,
