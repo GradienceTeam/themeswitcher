@@ -70,30 +70,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
 				<choice value="nightlight"/>
 				<choice value="location"/>
 				<choice value="schedule"/>
-				<choice value="ondemand"/>
 			</choices>
 			<default>"schedule"</default>
 		</key>
-		<key name="always-enable-ondemand" type="b">
-			<default>false</default>
-		</key>
-		<key name="ondemand-time" type="s">
-			<choices>
-				<choice value="day"/>
-				<choice value="night"/>
-			</choices>
-			<default>"day"</default>
-		</key>
 		<key name="nightthemeswitcher-ondemand-keybinding" type="as">
 			<default><![CDATA[['<Shift><Super>t']]]></default>
-		</key>
-		<key name="ondemand-button-placement" type="s">
-			<choices>
-				<choice value="none"/>
-				<choice value="panel"/>
-				<choice value="menu"/>
-			</choices>
-			<default>"panel"</default>
 		</key>
 		<key name="manual-time-source" type="b">
 			<default>false</default>

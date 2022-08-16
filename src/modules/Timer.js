@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const { Gio } = imports.gi;
+const { Gio, Meta, Shell } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Signals = imports.signals;
 
@@ -15,7 +15,6 @@ const { Time } = Me.imports.enums.Time;
 const { TimerNightlight } = Me.imports.modules.TimerNightlight;
 const { TimerLocation } = Me.imports.modules.TimerLocation;
 const { TimerSchedule } = Me.imports.modules.TimerSchedule;
-const { TimerOndemand } = Me.imports.modules.TimerOndemand;
 
 
 /**
@@ -40,9 +39,10 @@ var Timer = class {
     #locationSettings;
     #time;
 
-    #sources = [];
+    #source = null;
+    #sourceConnectionId = null;
+    #previousKeybinding = null;
     #settingsConnections = [];
-    #timeConnections = [];
 
     constructor() {
         this.#settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
@@ -55,16 +55,18 @@ var Timer = class {
     enable() {
         debug.message('Enabling Timer...');
         this.#connectSettings();
-        this.#createSources();
-        this.#connectSources();
-        this.#enableSources();
+        this.#createSource();
+        this.#connectSource();
+        this.#enableSource();
+        this.#addKeybinding();
         debug.message('Timer enabled.');
     }
 
     disable() {
         debug.message('Disabling Timer...');
+        this.#removeKeybinding();
         this.#disconnectSources();
-        this.#disableSources();
+        this.#disableSource();
         this.#disconnectSettings();
         debug.message('Timer disabled.');
     }
@@ -98,15 +100,11 @@ var Timer = class {
         });
         this.#settingsConnections.push({
             settings: this.#settings,
-            id: this.#settings.connect('changed::manual-time-source', this.#onSourceChanged.bind(this)),
-        });
-        this.#settingsConnections.push({
-            settings: this.#settings,
-            id: this.#settings.connect('changed::always-enable-ondemand', this.#onSourceChanged.bind(this)),
-        });
-        this.#settingsConnections.push({
-            settings: this.#settings,
             id: this.#settings.connect('changed::time-source', this.#onTimeSourceChanged.bind(this)),
+        });
+        this.#settingsConnections.push({
+            settings: this.#settings,
+            id: this.#settings.connect('changed::nightthemeswitcher-ondemand-keybinding', this.#onOndemandKeybindingChanged.bind(this)),
         });
         this.#settingsConnections.push({
             settings: this.#interfaceSettings,
@@ -120,48 +118,41 @@ var Timer = class {
         debug.message('Disconnected Timer from settings.');
     }
 
-    #createSources() {
+    #createSource() {
         const source = this.#getSource();
         switch (source) {
         case 'nightlight':
-            this.#sources.push(new TimerNightlight());
+            this.#source = new TimerNightlight();
             break;
         case 'location':
-            this.#sources.push(new TimerLocation());
+            this.#source = new TimerLocation();
             break;
         case 'schedule':
-            this.#sources.push(new TimerSchedule());
-            break;
-        case 'ondemand':
-            this.#sources.push(new TimerOndemand({ timer: this }));
+            this.#source = new TimerSchedule();
             break;
         }
-
-        if (this.#settings.get_boolean('always-enable-ondemand') && ['nightlight', 'location', 'schedule'].includes(source))
-            this.#sources.unshift(new TimerOndemand({ timer: this }));
     }
 
-    #enableSources() {
-        this.#sources.forEach(source => source.enable());
+    #enableSource() {
+        this.#source.enable();
     }
 
-    #disableSources() {
-        this.#sources.forEach(source => source.disable());
-        this.#sources = [];
+    #disableSource() {
+        if (this.#source)
+            this.#source.disable();
+        this.#source = null;
     }
 
-    #connectSources() {
-        debug.message('Connecting to time sources...');
-        this.#sources.forEach(source => this.#timeConnections.push({
-            source,
-            id: source.connect('time-changed', this.#onTimeChanged.bind(this)),
-        }));
+    #connectSource() {
+        debug.message('Connecting to time source...');
+        this.#sourceConnectionId = this.#source.connect('time-changed', this.#onTimeChanged.bind(this));
     }
 
-    #disconnectSources() {
-        this.#timeConnections.forEach(connection => connection.source.disconnect(connection.id));
-        this.#timeConnections = [];
-        debug.message('Disconnected from time sources.');
+    #disconnectSource() {
+        if (this.#sourceConnectionId && this.#source)
+            this.#source.disconnect(this.#sourceConnectionId);
+        this.#sourceConnectionId = null;
+        debug.message('Disconnected from time source.');
     }
 
 
@@ -173,6 +164,11 @@ var Timer = class {
     #onTimeSourceChanged() {
         if (this.#settings.get_boolean('manual-time-source'))
             this.#onSourceChanged();
+    }
+
+    #onOndemandKeybindingChanged() {
+        this.#removeKeybinding();
+        this.#addKeybinding();
     }
 
     #onTimeChanged(_source, newTime) {
@@ -210,6 +206,32 @@ var Timer = class {
             this.#settings.set_string('time-source', source);
         }
         return source;
+    }
+
+
+    #addKeybinding() {
+        this.#previousKeybinding = this.#settings.get_strv('nightthemeswitcher-ondemand-keybinding')[0];
+        if (!this.#settings.get_strv('nightthemeswitcher-ondemand-keybinding')[0])
+            return;
+        debug.message('Adding keybinding...');
+        main.wm.addKeybinding(
+            'nightthemeswitcher-ondemand-keybinding',
+            this.#settings,
+            Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
+            Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
+            () => {
+                this.time = this.time === Time.NIGHT ? Time.DAY : Time.NIGHT;
+            }
+        );
+        debug.message('Added keybinding.');
+    }
+
+    #removeKeybinding() {
+        if (this.#previousKeybinding) {
+            debug.message('Removing keybinding...');
+            main.wm.removeKeybinding('nightthemeswitcher-ondemand-keybinding');
+            debug.message('Removed keybinding.');
+        }
     }
 };
 Signals.addSignalMethods(Timer.prototype);

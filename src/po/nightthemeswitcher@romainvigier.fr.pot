@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-29 10:53+0200\n"
+"POT-Creation-Date: 2022-08-16 02:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Run commands"
 msgstr ""
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:84
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:65
 msgid "Sunrise"
 msgstr ""
 
@@ -59,7 +59,7 @@ msgstr ""
 msgid "notify-send \"Hello sunshine!\""
 msgstr ""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:96
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:77
 msgid "Sunset"
 msgstr ""
 
@@ -103,67 +103,29 @@ msgstr ""
 msgid "Time source"
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:33
-msgid "Always show on-demand controls"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:34
-msgid "Allows you to override the current time when using a schedule."
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:47
+#: src/data/ui/SchedulePage.ui:35
 msgid "Advanced"
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:50
+#: src/data/ui/SchedulePage.ui:38
 msgid "Transition"
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:51
+#: src/data/ui/SchedulePage.ui:39
 msgid "Smooth transition between day and night appearance."
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:62 src/preferences/SchedulePage.js:43
-msgid "Night Light"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:63
-msgid "These settings only apply when Night Light is the time source."
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:66
-msgid "Follow <i>Disable until tomorrow</i>"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:67
-msgid ""
-"When Night Light is temporarily disabled, the extension will switch to day "
-"variants."
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:80 src/preferences/SchedulePage.js:56
-msgid "Manual schedule"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:81
-msgid ""
-"These settings only apply when using the manual schedule as the time source."
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
-msgid "On-demand"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:111
-msgid "These settings only apply when using the on-demand time source."
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:114
+#: src/data/ui/SchedulePage.ui:50
 msgid "Keyboard shortcut"
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:125
-msgid "Button location"
+#: src/data/ui/SchedulePage.ui:61 src/preferences/SchedulePage.js:51
+msgid "Manual schedule"
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:62
+msgid ""
+"These settings only apply when using the manual schedule as the time source."
 msgstr ""
 
 #: src/data/ui/ShortcutButton.ui:15
@@ -225,34 +187,6 @@ msgstr ""
 msgid ":"
 msgstr ""
 
-#: src/modules/TimerOndemand.js:214
-msgid "Turn Night Mode Off"
-msgstr ""
-
-#: src/modules/TimerOndemand.js:214
-msgid "Turn Night Mode On"
-msgstr ""
-
-#: src/modules/TimerOndemand.js:229
-msgid "Extension Settings"
-msgstr ""
-
-#: src/modules/TimerOndemand.js:238
-msgid "Night Mode Off"
-msgstr ""
-
-#: src/modules/TimerOndemand.js:238
-msgid "Night Mode On"
-msgstr ""
-
-#: src/modules/TimerOndemand.js:239
-msgid "Turn Off"
-msgstr ""
-
-#: src/modules/TimerOndemand.js:239
-msgid "Turn On"
-msgstr ""
-
 #: src/preferences/BackgroundButton.js:69
 msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
 msgstr ""
@@ -262,20 +196,12 @@ msgstr ""
 msgid "Version %d"
 msgstr ""
 
-#: src/preferences/SchedulePage.js:48
+#: src/preferences/SchedulePage.js:39
+msgid "Night Light"
+msgstr ""
+
+#: src/preferences/SchedulePage.js:43
 msgid "Location Services"
-msgstr ""
-
-#: src/preferences/SchedulePage.js:90
-msgid "None"
-msgstr ""
-
-#: src/preferences/SchedulePage.js:91
-msgid "Top bar"
-msgstr ""
-
-#: src/preferences/SchedulePage.js:92
-msgid "System menu"
 msgstr ""
 
 #: src/preferences/ThemesPage.js:50

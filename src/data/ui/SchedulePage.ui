@@ -28,18 +28,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="sensitive" bind-source="manual_time_source_switch" bind-property="active" bind-flags="sync-create"/>
           </object>
         </child>
-        <child>
-          <object class="AdwActionRow">
-            <property name="title" translatable="yes">Always show on-demand controls</property>
-            <property name="subtitle" translatable="yes">Allows you to override the current time when using a schedule.</property>
-            <property name="activatable-widget">always_show_ondemand_switch</property>
-            <child>
-              <object class="GtkSwitch" id="always_show_ondemand_switch">
-                <property name="valign">center</property>
-              </object>
-            </child>
-          </object>
-        </child>
       </object>
     </child>
     <child>
@@ -52,6 +40,17 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="activatable-widget">transition_switch</property>
             <child>
               <object class="GtkSwitch" id="transition_switch">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Keyboard shortcut</property>
+            <property name="activatable-widget">keyboard_shortcut_button</property>
+            <child>
+              <object class="ShortcutButton" id="keyboard_shortcut_button">
                 <property name="valign">center</property>
               </object>
             </child>
@@ -83,28 +82,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
                     <property name="valign">center</property>
                   </object>
                 </child>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="AdwExpanderRow">
-            <property name="title" translatable="yes">On-demand</property>
-            <property name="subtitle" translatable="yes">These settings only apply when using the on-demand time source.</property>
-            <child>
-              <object class="AdwActionRow">
-                <property name="title" translatable="yes">Keyboard shortcut</property>
-                <property name="activatable-widget">ondemand_shortcut_button</property>
-                <child>
-                  <object class="ShortcutButton" id="ondemand_shortcut_button">
-                    <property name="valign">center</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="AdwComboRow" id="ondemand_button_location_combo_row">
-                <property name="title" translatable="yes">Button location</property>
               </object>
             </child>
           </object>
