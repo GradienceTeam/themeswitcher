@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-16 03:46+0200\n"
-"PO-Revision-Date: 2022-04-26 20:40+0000\n"
+"PO-Revision-Date: 2022-08-16 07:46+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.12.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -100,6 +100,9 @@ msgid ""
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
 msgstr ""
+"Votre position sera utilisée pour calculer les heures de lever et de coucher "
+"de soleil actuels. Si vous préférez, vous pouvez définir un horaire manuel. "
+"Il sera également utilisé si votre position est indisponible."
 
 #: src/data/ui/SchedulePage.ui:50
 msgid "Keyboard shortcut"
@@ -178,7 +181,7 @@ msgstr ""
 #: src/preferences/ContributePage.js:16
 #, javascript-format
 msgid "Version %d"
-msgstr ""
+msgstr "Version %d"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
