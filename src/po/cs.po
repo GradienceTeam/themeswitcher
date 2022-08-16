@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 09:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:49+0200\n"
 "PO-Revision-Date: 2022-07-26 07:09+0000\n"
 "Last-Translator: vikdevelop <super-vik1@protonmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/night-theme-"
@@ -175,9 +175,8 @@ msgid ":"
 msgstr ":"
 
 #: src/preferences/BackgroundButton.js:69
-msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+msgid "This image format is not supported."
 msgstr ""
-"Jako obrázek na pozadí lze nastavit pouze soubory JPEG, PNG, TIFF, SVG a XML."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
@@ -187,6 +186,12 @@ msgstr ""
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "Výchozí"
+
+#~ msgid ""
+#~ "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+#~ msgstr ""
+#~ "Jako obrázek na pozadí lze nastavit pouze soubory JPEG, PNG, TIFF, SVG a "
+#~ "XML."
 
 #~ msgid "Settings version"
 #~ msgstr "Verze nastavení"

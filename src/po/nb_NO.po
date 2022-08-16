@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 09:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:49+0200\n"
 "PO-Revision-Date: 2022-05-25 22:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/night-"
@@ -193,10 +193,8 @@ msgid ":"
 msgstr ":"
 
 #: src/preferences/BackgroundButton.js:69
-#, fuzzy
-#| msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
-msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
-msgstr "Kun JPEG, PNG, TIFF og XML-filer kan settes som bakgrunsbilde."
+msgid "This image format is not supported."
+msgstr ""
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
@@ -206,6 +204,12 @@ msgstr ""
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "Forvalg"
+
+#, fuzzy
+#~| msgid "Only JPEG, PNG, TIFF and XML files can be set as background image."
+#~ msgid ""
+#~ "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+#~ msgstr "Kun JPEG, PNG, TIFF og XML-filer kan settes som bakgrunsbilde."
 
 #~ msgid "Settings version"
 #~ msgstr "Innstillingsversjon"

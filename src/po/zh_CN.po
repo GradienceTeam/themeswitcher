@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 09:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:49+0200\n"
 "PO-Revision-Date: 2022-04-27 09:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -176,8 +176,8 @@ msgid ":"
 msgstr ":"
 
 #: src/preferences/BackgroundButton.js:69
-msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
-msgstr "背景图片必须是 JPEG、PNG、TIFF、SVG 或 XML 格式。"
+msgid "This image format is not supported."
+msgstr ""
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
@@ -187,6 +187,10 @@ msgstr ""
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "默认"
+
+#~ msgid ""
+#~ "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+#~ msgstr "背景图片必须是 JPEG、PNG、TIFF、SVG 或 XML 格式。"
 
 #~ msgid "Settings version"
 #~ msgstr "设置的版本"

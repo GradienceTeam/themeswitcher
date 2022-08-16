@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 09:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:49+0200\n"
 "PO-Revision-Date: 2022-06-09 16:14+0000\n"
 "Last-Translator: AHOHNMYC <lqwh2h2cwa@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/night-theme-"
@@ -180,10 +180,8 @@ msgid ":"
 msgstr ":"
 
 #: src/preferences/BackgroundButton.js:69
-msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+msgid "This image format is not supported."
 msgstr ""
-"Только JPEG, PNG, TIFF, SVG и XML файлы могут быть установлены как фоновоге "
-"изображение."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
@@ -193,6 +191,12 @@ msgstr ""
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "По умолчанию"
+
+#~ msgid ""
+#~ "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+#~ msgstr ""
+#~ "Только JPEG, PNG, TIFF, SVG и XML файлы могут быть установлены как "
+#~ "фоновоге изображение."
 
 #~ msgid "Settings version"
 #~ msgstr "Версия настроек"

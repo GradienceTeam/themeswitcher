@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 09:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:49+0200\n"
 "PO-Revision-Date: 2022-05-04 08:11+0000\n"
 "Last-Translator: Péter Báthory <bathory86p@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/night-theme-"
@@ -176,8 +176,8 @@ msgid ":"
 msgstr ":"
 
 #: src/preferences/BackgroundButton.js:69
-msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
-msgstr "Csak JPEG, PNG, TIFF, SVG és XML fájlok állíthatók be háttérképként."
+msgid "This image format is not supported."
+msgstr ""
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
@@ -187,6 +187,11 @@ msgstr ""
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "Alapértelmezett"
+
+#~ msgid ""
+#~ "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+#~ msgstr ""
+#~ "Csak JPEG, PNG, TIFF, SVG és XML fájlok állíthatók be háttérképként."
 
 #~ msgid "Settings version"
 #~ msgstr "Beállítások verziója"

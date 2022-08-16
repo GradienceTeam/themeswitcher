@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 09:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:49+0200\n"
 "PO-Revision-Date: 2022-04-27 07:15+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/night-theme-"
@@ -180,10 +180,8 @@ msgid ":"
 msgstr ":"
 
 #: src/preferences/BackgroundButton.js:69
-msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+msgid "This image format is not supported."
 msgstr ""
-"Yalnızca JPEG, PNG, TIFF, SVG ve XML dosyaları arka plan görüntüsü olarak "
-"ayarlanabilir."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
@@ -193,6 +191,12 @@ msgstr ""
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "Öntanımlı"
+
+#~ msgid ""
+#~ "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+#~ msgstr ""
+#~ "Yalnızca JPEG, PNG, TIFF, SVG ve XML dosyaları arka plan görüntüsü olarak "
+#~ "ayarlanabilir."
 
 #~ msgid "Settings version"
 #~ msgstr "Ayarlar sürümü"

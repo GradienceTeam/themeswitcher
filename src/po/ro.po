@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 09:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:49+0200\n"
 "PO-Revision-Date: 2021-10-31 21:35+0000\n"
 "Last-Translator: Andrei LAZAROV <andrei_lazarov@yahoo.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/night-theme-"
@@ -179,7 +179,7 @@ msgid ":"
 msgstr ""
 
 #: src/preferences/BackgroundButton.js:69
-msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
+msgid "This image format is not supported."
 msgstr ""
 
 #: src/preferences/ContributePage.js:16
