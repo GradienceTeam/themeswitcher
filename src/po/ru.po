@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 22:37+0200\n"
+"POT-Creation-Date: 2022-08-16 03:46+0200\n"
 "PO-Revision-Date: 2022-06-09 16:14+0000\n"
 "Last-Translator: AHOHNMYC <lqwh2h2cwa@protonmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/"
-"night-theme-switcher/extension/ru/>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/night-theme-"
+"switcher/extension/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,239 +21,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.13-dev\n"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:10
-msgid "Settings version"
-msgstr "Версия настроек"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:11
-msgid "The current extension settings version"
-msgstr "Текущая версия настроек расширения"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:17
-#: src/data/ui/ThemesPage.ui:30
-msgid "Switch GTK theme"
-msgstr "Переключить тему GTK"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:18
-msgid "Enable GTK variants switching"
-msgstr "Включить переключение вариантов GTK"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:22
-msgid "Day GTK theme"
-msgstr "Дневная тема GTK"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:23
-msgid "The GTK theme to use during daytime"
-msgstr "Тема GTK, используемая днём"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:27
-msgid "Night GTK theme"
-msgstr "Ночная тема GTK"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:28
-msgid "The GTK theme to use during nighttime"
-msgstr "Тема GTK, используемая ночью"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:34
-#: src/data/ui/ThemesPage.ui:47
-msgid "Switch Shell theme"
-msgstr "Переключить тему оболочки"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:35
-msgid "Enable shell variants switching"
-msgstr "Включить переключениe вариантов оболочки"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:39
-msgid "Day shell theme"
-msgstr "Дневная тема оболочки"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:40
-msgid "The shell theme to use during daytime"
-msgstr "Тема оболочки для использования в дневное время"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:44
-msgid "Night shell theme"
-msgstr "Ночная тема оболочки"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:45
-msgid "The shell theme to use during nighttime"
-msgstr "Тема оболочки для использования в ночное время"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:51
-#: src/data/ui/ThemesPage.ui:63
-msgid "Switch icon theme"
-msgstr "Переключить тему иконок"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:52
-msgid "Enable icon variants switching"
-msgstr "Включить переключение вариантов иконок"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:56
-msgid "Day icon theme"
-msgstr "Дневная тема иконок"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:57
-msgid "The icon theme to use during daytime"
-msgstr "Тема иконок для использования в дневное время"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:61
-msgid "Night icon theme"
-msgstr "Ночная тема иконок"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:62
-msgid "The icon theme to use during nighttime"
-msgstr "Тема иконок для использования в ночное время"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:68
-#: src/data/ui/ThemesPage.ui:79
-msgid "Switch cursor theme"
-msgstr "Переключить тему курсора"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:69
-msgid "Enable cursor variants switching"
-msgstr "Включить переключение вариантов курсора"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:73
-msgid "Day cursor theme"
-msgstr "Дневная тема курсора"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:74
-msgid "The cursor theme to use during daytime"
-msgstr "Тема курсора для использования в дневное время"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:78
-msgid "Night cursor theme"
-msgstr "Ночная тема курсора"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:79
-msgid "The cursor theme to use during nighttime"
-msgstr "Тема курсора для использования в ночное время"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:85
-msgid "Enable commands"
-msgstr "Включить команды"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:86
-msgid "Commands will be spawned on time change"
-msgstr "Команды будут появляться при изменении времени"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:90
-msgid "Sunrise command"
-msgstr "Команда \"Восход солнца\""
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:91
-msgid "The command to spawn at sunrise"
-msgstr "Команда к появлению на восходе"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:95
-msgid "Sunset command"
-msgstr "Команда \"Закат солнца\""
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:96
-msgid "The command to spawn at sunset"
-msgstr "Команда к появлению на закате"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:102
-#: src/data/ui/BackgroundsPage.ui:15
-msgid "Day background"
-msgstr "Дневной фон"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:103
-msgid "Path to the day background"
-msgstr "Путь к дневному фону"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:107
-#: src/data/ui/BackgroundsPage.ui:28
-msgid "Night background"
-msgstr "Ночной фон"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:108
-msgid "Path to the night background"
-msgstr "Путь к ночному фону"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:120
-#: src/data/ui/SchedulePage.ui:27
-msgid "Time source"
-msgstr "Источник времени"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:121
-msgid "The source used to check current time"
-msgstr "Источник, используемый для проверки текущего времени"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:125
-msgid "Follow Night Light \"Disable until tomorrow\""
-msgstr "Следите за ночной подсветкой \"Отключить до завтра\""
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:126
-msgid "Switch back to day time when Night Light is temporarily disabled"
-msgstr ""
-"Переключить обратно на дневную, когда ночная подсветка временно отключена"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:130
-msgid "Always enable the on-demand timer"
-msgstr "Всегда включать таймер по требованию"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:131
-msgid "The on-demand timer will always be enabled alongside other timers"
-msgstr "Таймер по требованию всегда будет включен наряду с другими таймерами"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:139
-msgid "On-demand time"
-msgstr "Время по требованию"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:140
-msgid "The current time used in on-demand mode"
-msgstr "Текущее время, используемое в режиме по требованию"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:144
-msgid "Key combination to toggle time"
-msgstr "Комбинация клавиш для переключения времени"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:145
-msgid "The key combination that will toggle time in on-demand mode"
-msgstr "Комбинация клавиш, которая переключает время в режиме по требованию"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:154
-msgid "On-demand button placement"
-msgstr "Размещение кнопки по запросу"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:155
-msgid "Where the on-demand button will be placed"
-msgstr "Где будет размещена кнопка включения по запросу"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:159
-msgid "Use manual time source"
-msgstr "Установить время вручную"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:160
-msgid "Disable automatic time source detection"
-msgstr "Отключить автоматическое определение источника времени"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:164
-msgid "Sunrise time"
-msgstr "Время восхода солнца"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:165
-msgid "When the day starts"
-msgstr "Начало дня"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:169
-msgid "Sunset time"
-msgstr "Время захода солнца"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:170
-msgid "When the day ends"
-msgstr "Конец дня"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:174
-#: src/data/ui/SchedulePage.ui:50
-msgid "Transition"
-msgstr "Переход"
-
-#: src/data/org.gnome.shell.extensions.nightthemeswitcher.gschema.xml:175
-msgid "Use a transition when changing the color scheme"
-msgstr "Использовать переход при смене цветовой схемы"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -266,6 +33,14 @@ msgstr "Выбрать фоновое изображение"
 #: src/data/ui/BackgroundsPage.ui:9
 msgid "Backgrounds"
 msgstr "Фоны"
+
+#: src/data/ui/BackgroundsPage.ui:15
+msgid "Day background"
+msgstr "Дневной фон"
+
+#: src/data/ui/BackgroundsPage.ui:28
+msgid "Night background"
+msgstr "Ночной фон"
 
 #: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
 #: src/data/ui/ShortcutButton.ui:45
@@ -280,7 +55,7 @@ msgstr "Команды"
 msgid "Run commands"
 msgstr "Выполнять команды"
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:84
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:22
 msgid "Sunrise"
 msgstr "Восход"
 
@@ -289,7 +64,7 @@ msgstr "Восход"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Привет солнечный свет!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:96
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:34
 msgid "Sunset"
 msgstr "Закат"
 
@@ -302,15 +77,15 @@ msgstr "notify-send \"Привет лунный свет!\""
 msgid "Contribute"
 msgstr "Внести вклад"
 
-#: src/data/ui/ContributePage.ui:42
+#: src/data/ui/ContributePage.ui:55
 msgid "View the code and report issues"
 msgstr "Посмотреть код или сообщить о проблемах"
 
-#: src/data/ui/ContributePage.ui:55
+#: src/data/ui/ContributePage.ui:68
 msgid "Contribute to the translation"
 msgstr "Внести вклад в перевод"
 
-#: src/data/ui/ContributePage.ui:68
+#: src/data/ui/ContributePage.ui:81
 msgid "Support me with a donation"
 msgstr "Поддержать пожертвованием"
 
@@ -318,87 +93,20 @@ msgstr "Поддержать пожертвованием"
 msgid "Schedule"
 msgstr "Расписание"
 
-#: src/data/ui/SchedulePage.ui:15
-msgid "Manual time source"
-msgstr "Ручной источник времени"
-
-#: src/data/ui/SchedulePage.ui:16
-msgid ""
-"The extension will try to use Night Light or Location Services to "
-"automatically set your current sunrise and sunset times if they are enabled. "
-"If you prefer, you can manually choose a time source."
-msgstr ""
-"Расширение попытается использовать Ночную Подсветку или Сервисы "
-"Местоположения, чтобы автоматически установить текущее время восхода и "
-"захода солнца, если они включены. При желании вы можете вручную выбрать "
-"источник времени."
-
-#: src/data/ui/SchedulePage.ui:33
-msgid "Always show on-demand controls"
-msgstr "Всегда показывать элементы управления по требованию"
-
-#: src/data/ui/SchedulePage.ui:34
-msgid "Allows you to override the current time when using a schedule."
-msgstr "Позволяет переопределить текущее время когда используется расписание."
-
-#: src/data/ui/SchedulePage.ui:47
-msgid "Advanced"
-msgstr "Продвинутое"
-
-#: src/data/ui/SchedulePage.ui:51
-msgid "Smooth transition between day and night appearance."
-msgstr "Плавный переход между дневным и ночным видом."
-
-#: src/data/ui/SchedulePage.ui:62 src/preferences/SchedulePage.js:43
-msgid "Night Light"
-msgstr "Ночная Подсветка"
-
-#: src/data/ui/SchedulePage.ui:63
-msgid "These settings only apply when Night Light is the time source."
-msgstr ""
-"Эти настройки применяются только если источником времени является Ночная "
-"Подсветка."
-
-#: src/data/ui/SchedulePage.ui:66
-msgid "Follow <i>Disable until tomorrow</i>"
-msgstr "Следить <i>Отключить до завтра</i>"
-
-#: src/data/ui/SchedulePage.ui:67
-msgid ""
-"When Night Light is temporarily disabled, the extension will switch to day "
-"variants."
-msgstr ""
-"Когда Ночная Подсветка временно отключена, расширение переключится на "
-"дневной вариант."
-
-#: src/data/ui/SchedulePage.ui:80 src/preferences/SchedulePage.js:56
+#: src/data/ui/SchedulePage.ui:13
 msgid "Manual schedule"
 msgstr "Ручное расписание"
 
-#: src/data/ui/SchedulePage.ui:81
+#: src/data/ui/SchedulePage.ui:14
 msgid ""
-"These settings only apply when using the manual schedule as the time source."
+"Your location will be used to calculate the current sunrise and sunset "
+"times. If you prefer, you can set a manual schedule. It will also be used "
+"when your location is unavailable."
 msgstr ""
-"Эти настройки применяются только при использовании ручного расписания как "
-"источника времени."
 
-#: src/data/ui/SchedulePage.ui:110 src/preferences/SchedulePage.js:57
-msgid "On-demand"
-msgstr "По запросу"
-
-#: src/data/ui/SchedulePage.ui:111
-msgid "These settings only apply when using the on-demand time source."
-msgstr ""
-"Эти настройки применяются только при использовании источника времени по "
-"требованию."
-
-#: src/data/ui/SchedulePage.ui:114
+#: src/data/ui/SchedulePage.ui:50
 msgid "Keyboard shortcut"
 msgstr "Комбинации клавиш"
-
-#: src/data/ui/SchedulePage.ui:125
-msgid "Button location"
-msgstr "Расположение кнопки"
 
 #: src/data/ui/ShortcutButton.ui:15
 msgid "Choose…"
@@ -425,6 +133,10 @@ msgstr ""
 "переключение тем не рекомендуется и используется только по устаревшим "
 "причинам."
 
+#: src/data/ui/ThemesPage.ui:30
+msgid "Switch GTK theme"
+msgstr "Переключить тему GTK"
+
 #: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
@@ -444,64 +156,284 @@ msgstr "Дневной вариант"
 msgid "Night variant"
 msgstr "Ночной вариант"
 
+#: src/data/ui/ThemesPage.ui:47
+msgid "Switch Shell theme"
+msgstr "Переключить тему оболочки"
+
+#: src/data/ui/ThemesPage.ui:63
+msgid "Switch icon theme"
+msgstr "Переключить тему иконок"
+
+#: src/data/ui/ThemesPage.ui:79
+msgid "Switch cursor theme"
+msgstr "Переключить тему курсора"
+
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
 msgstr ":"
 
-#: src/modules/TimerOndemand.js:213
-msgid "Turn Night Mode Off"
-msgstr "Выключить ночной режим"
-
-#: src/modules/TimerOndemand.js:213
-msgid "Turn Night Mode On"
-msgstr "Включить ночной режим"
-
-#: src/modules/TimerOndemand.js:228
-msgid "Extension Settings"
-msgstr "Настройки расширения"
-
-#: src/modules/TimerOndemand.js:237
-msgid "Night Mode Off"
-msgstr "Ночной режим выкл"
-
-#: src/modules/TimerOndemand.js:237
-msgid "Night Mode On"
-msgstr "Ночной режим вкл"
-
-#: src/modules/TimerOndemand.js:238
-msgid "Turn Off"
-msgstr "Выключить"
-
-#: src/modules/TimerOndemand.js:238
-msgid "Turn On"
-msgstr "Включить"
-
-#: src/preferences/BackgroundButton.js:74
+#: src/preferences/BackgroundButton.js:69
 msgid "Only JPEG, PNG, TIFF, SVG and XML files can be set as background image."
 msgstr ""
 "Только JPEG, PNG, TIFF, SVG и XML файлы могут быть установлены как фоновоге "
 "изображение."
 
-#: src/preferences/SchedulePage.js:48
-msgid "Location Services"
-msgstr "Сервисы местоположения"
-
-#: src/preferences/SchedulePage.js:90
-msgid "None"
-msgstr "Нет"
-
-#: src/preferences/SchedulePage.js:91
-msgid "Top bar"
-msgstr "Верхняя панель"
-
-#: src/preferences/SchedulePage.js:92
-msgid "System menu"
-msgstr "Системное меню"
+#: src/preferences/ContributePage.js:16
+#, javascript-format
+msgid "Version %d"
+msgstr ""
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
 msgstr "По умолчанию"
+
+#~ msgid "Settings version"
+#~ msgstr "Версия настроек"
+
+#~ msgid "The current extension settings version"
+#~ msgstr "Текущая версия настроек расширения"
+
+#~ msgid "Enable GTK variants switching"
+#~ msgstr "Включить переключение вариантов GTK"
+
+#~ msgid "Day GTK theme"
+#~ msgstr "Дневная тема GTK"
+
+#~ msgid "The GTK theme to use during daytime"
+#~ msgstr "Тема GTK, используемая днём"
+
+#~ msgid "Night GTK theme"
+#~ msgstr "Ночная тема GTK"
+
+#~ msgid "The GTK theme to use during nighttime"
+#~ msgstr "Тема GTK, используемая ночью"
+
+#~ msgid "Enable shell variants switching"
+#~ msgstr "Включить переключениe вариантов оболочки"
+
+#~ msgid "Day shell theme"
+#~ msgstr "Дневная тема оболочки"
+
+#~ msgid "The shell theme to use during daytime"
+#~ msgstr "Тема оболочки для использования в дневное время"
+
+#~ msgid "Night shell theme"
+#~ msgstr "Ночная тема оболочки"
+
+#~ msgid "The shell theme to use during nighttime"
+#~ msgstr "Тема оболочки для использования в ночное время"
+
+#~ msgid "Enable icon variants switching"
+#~ msgstr "Включить переключение вариантов иконок"
+
+#~ msgid "Day icon theme"
+#~ msgstr "Дневная тема иконок"
+
+#~ msgid "The icon theme to use during daytime"
+#~ msgstr "Тема иконок для использования в дневное время"
+
+#~ msgid "Night icon theme"
+#~ msgstr "Ночная тема иконок"
+
+#~ msgid "The icon theme to use during nighttime"
+#~ msgstr "Тема иконок для использования в ночное время"
+
+#~ msgid "Enable cursor variants switching"
+#~ msgstr "Включить переключение вариантов курсора"
+
+#~ msgid "Day cursor theme"
+#~ msgstr "Дневная тема курсора"
+
+#~ msgid "The cursor theme to use during daytime"
+#~ msgstr "Тема курсора для использования в дневное время"
+
+#~ msgid "Night cursor theme"
+#~ msgstr "Ночная тема курсора"
+
+#~ msgid "The cursor theme to use during nighttime"
+#~ msgstr "Тема курсора для использования в ночное время"
+
+#~ msgid "Enable commands"
+#~ msgstr "Включить команды"
+
+#~ msgid "Commands will be spawned on time change"
+#~ msgstr "Команды будут появляться при изменении времени"
+
+#~ msgid "Sunrise command"
+#~ msgstr "Команда \"Восход солнца\""
+
+#~ msgid "The command to spawn at sunrise"
+#~ msgstr "Команда к появлению на восходе"
+
+#~ msgid "Sunset command"
+#~ msgstr "Команда \"Закат солнца\""
+
+#~ msgid "The command to spawn at sunset"
+#~ msgstr "Команда к появлению на закате"
+
+#~ msgid "Path to the day background"
+#~ msgstr "Путь к дневному фону"
+
+#~ msgid "Path to the night background"
+#~ msgstr "Путь к ночному фону"
+
+#~ msgid "Time source"
+#~ msgstr "Источник времени"
+
+#~ msgid "The source used to check current time"
+#~ msgstr "Источник, используемый для проверки текущего времени"
+
+#~ msgid "Follow Night Light \"Disable until tomorrow\""
+#~ msgstr "Следите за ночной подсветкой \"Отключить до завтра\""
+
+#~ msgid "Switch back to day time when Night Light is temporarily disabled"
+#~ msgstr ""
+#~ "Переключить обратно на дневную, когда ночная подсветка временно отключена"
+
+#~ msgid "Always enable the on-demand timer"
+#~ msgstr "Всегда включать таймер по требованию"
+
+#~ msgid "The on-demand timer will always be enabled alongside other timers"
+#~ msgstr ""
+#~ "Таймер по требованию всегда будет включен наряду с другими таймерами"
+
+#~ msgid "On-demand time"
+#~ msgstr "Время по требованию"
+
+#~ msgid "The current time used in on-demand mode"
+#~ msgstr "Текущее время, используемое в режиме по требованию"
+
+#~ msgid "Key combination to toggle time"
+#~ msgstr "Комбинация клавиш для переключения времени"
+
+#~ msgid "The key combination that will toggle time in on-demand mode"
+#~ msgstr "Комбинация клавиш, которая переключает время в режиме по требованию"
+
+#~ msgid "On-demand button placement"
+#~ msgstr "Размещение кнопки по запросу"
+
+#~ msgid "Where the on-demand button will be placed"
+#~ msgstr "Где будет размещена кнопка включения по запросу"
+
+#~ msgid "Use manual time source"
+#~ msgstr "Установить время вручную"
+
+#~ msgid "Disable automatic time source detection"
+#~ msgstr "Отключить автоматическое определение источника времени"
+
+#~ msgid "Sunrise time"
+#~ msgstr "Время восхода солнца"
+
+#~ msgid "When the day starts"
+#~ msgstr "Начало дня"
+
+#~ msgid "Sunset time"
+#~ msgstr "Время захода солнца"
+
+#~ msgid "When the day ends"
+#~ msgstr "Конец дня"
+
+#~ msgid "Transition"
+#~ msgstr "Переход"
+
+#~ msgid "Use a transition when changing the color scheme"
+#~ msgstr "Использовать переход при смене цветовой схемы"
+
+#~ msgid "Manual time source"
+#~ msgstr "Ручной источник времени"
+
+#~ msgid ""
+#~ "The extension will try to use Night Light or Location Services to "
+#~ "automatically set your current sunrise and sunset times if they are "
+#~ "enabled. If you prefer, you can manually choose a time source."
+#~ msgstr ""
+#~ "Расширение попытается использовать Ночную Подсветку или Сервисы "
+#~ "Местоположения, чтобы автоматически установить текущее время восхода и "
+#~ "захода солнца, если они включены. При желании вы можете вручную выбрать "
+#~ "источник времени."
+
+#~ msgid "Always show on-demand controls"
+#~ msgstr "Всегда показывать элементы управления по требованию"
+
+#~ msgid "Allows you to override the current time when using a schedule."
+#~ msgstr ""
+#~ "Позволяет переопределить текущее время когда используется расписание."
+
+#~ msgid "Advanced"
+#~ msgstr "Продвинутое"
+
+#~ msgid "Smooth transition between day and night appearance."
+#~ msgstr "Плавный переход между дневным и ночным видом."
+
+#~ msgid "Night Light"
+#~ msgstr "Ночная Подсветка"
+
+#~ msgid "These settings only apply when Night Light is the time source."
+#~ msgstr ""
+#~ "Эти настройки применяются только если источником времени является Ночная "
+#~ "Подсветка."
+
+#~ msgid "Follow <i>Disable until tomorrow</i>"
+#~ msgstr "Следить <i>Отключить до завтра</i>"
+
+#~ msgid ""
+#~ "When Night Light is temporarily disabled, the extension will switch to "
+#~ "day variants."
+#~ msgstr ""
+#~ "Когда Ночная Подсветка временно отключена, расширение переключится на "
+#~ "дневной вариант."
+
+#~ msgid ""
+#~ "These settings only apply when using the manual schedule as the time "
+#~ "source."
+#~ msgstr ""
+#~ "Эти настройки применяются только при использовании ручного расписания как "
+#~ "источника времени."
+
+#~ msgid "On-demand"
+#~ msgstr "По запросу"
+
+#~ msgid "These settings only apply when using the on-demand time source."
+#~ msgstr ""
+#~ "Эти настройки применяются только при использовании источника времени по "
+#~ "требованию."
+
+#~ msgid "Button location"
+#~ msgstr "Расположение кнопки"
+
+#~ msgid "Turn Night Mode Off"
+#~ msgstr "Выключить ночной режим"
+
+#~ msgid "Turn Night Mode On"
+#~ msgstr "Включить ночной режим"
+
+#~ msgid "Extension Settings"
+#~ msgstr "Настройки расширения"
+
+#~ msgid "Night Mode Off"
+#~ msgstr "Ночной режим выкл"
+
+#~ msgid "Night Mode On"
+#~ msgstr "Ночной режим вкл"
+
+#~ msgid "Turn Off"
+#~ msgstr "Выключить"
+
+#~ msgid "Turn On"
+#~ msgstr "Включить"
+
+#~ msgid "Location Services"
+#~ msgstr "Сервисы местоположения"
+
+#~ msgid "None"
+#~ msgstr "Нет"
+
+#~ msgid "Top bar"
+#~ msgstr "Верхняя панель"
+
+#~ msgid "System menu"
+#~ msgstr "Системное меню"
 
 #~ msgid "Switch GTK variants"
 #~ msgstr "Переключение тем GTK"
