@@ -65,18 +65,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
 		</key>
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.time" path="/org/gnome/shell/extensions/nightthemeswitcher/time/">
-		<key name="time-source" type="s">
-			<choices>
-				<choice value="nightlight"/>
-				<choice value="location"/>
-				<choice value="schedule"/>
-			</choices>
-			<default>"schedule"</default>
-		</key>
 		<key name="nightthemeswitcher-ondemand-keybinding" type="as">
 			<default><![CDATA[['<Shift><Super>t']]]></default>
 		</key>
-		<key name="manual-time-source" type="b">
+		<key name="manual-schedule" type="b">
 			<default>false</default>
 		</key>
 		<key name="schedule-sunrise" type="d">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 02:19+0200\n"
+"POT-Creation-Date: 2022-08-16 03:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Run commands"
 msgstr ""
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:53
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:22
 msgid "Sunrise"
 msgstr ""
 
@@ -59,7 +59,7 @@ msgstr ""
 msgid "notify-send \"Hello sunshine!\""
 msgstr ""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:65
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:34
 msgid "Sunset"
 msgstr ""
 
@@ -88,36 +88,19 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:15
-msgid "Manual time source"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:16
-msgid ""
-"The extension will try to use Night Light or Location Services to "
-"automatically set your current sunrise and sunset times if they are enabled. "
-"If you prefer, you can manually choose a time source."
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:27
-msgid "Time source"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:35
-msgid "Advanced"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:38
-msgid "Keyboard shortcut"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:49 src/preferences/SchedulePage.js:48
+#: src/data/ui/SchedulePage.ui:13
 msgid "Manual schedule"
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:50
+#: src/data/ui/SchedulePage.ui:14
 msgid ""
-"These settings only apply when using the manual schedule as the time source."
+"Your location will be used to calculate the current sunrise and sunset "
+"times. If you prefer, you can set a manual schedule. It will also be used "
+"when your location is unavailable."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:50
+msgid "Keyboard shortcut"
 msgstr ""
 
 #: src/data/ui/ShortcutButton.ui:15
@@ -186,14 +169,6 @@ msgstr ""
 #: src/preferences/ContributePage.js:16
 #, javascript-format
 msgid "Version %d"
-msgstr ""
-
-#: src/preferences/SchedulePage.js:36
-msgid "Night Light"
-msgstr ""
-
-#: src/preferences/SchedulePage.js:40
-msgid "Location Services"
 msgstr ""
 
 #: src/preferences/ThemesPage.js:50

@@ -24,7 +24,6 @@ src/modules/SwitcherCommands.js
 src/modules/SwitcherTheme.js
 src/modules/Timer.js
 src/modules/TimerLocation.js
-src/modules/TimerNightlight.js
 src/modules/TimerSchedule.js
 
 src/preferences/BackgroundButton.js

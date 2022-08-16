@@ -35,7 +35,6 @@ modules = [
   'modules/SwitcherTheme.js',
   'modules/Timer.js',
   'modules/TimerLocation.js',
-  'modules/TimerNightlight.js',
   'modules/TimerSchedule.js',
 ]
 preferences = [

@@ -12,7 +12,6 @@ const Me = extensionUtils.getCurrentExtension();
 const debug = Me.imports.debug;
 
 const { Time } = Me.imports.enums.Time;
-const { TimerNightlight } = Me.imports.modules.TimerNightlight;
 const { TimerLocation } = Me.imports.modules.TimerLocation;
 const { TimerSchedule } = Me.imports.modules.TimerSchedule;
 
@@ -23,19 +22,13 @@ const { TimerSchedule } = Me.imports.modules.TimerSchedule;
  * They can connect to its 'time-changed' signal and ask its 'time' property
  * for the current time.
  *
- * It will try to use one of these three different time sources, in this order
- * of preference:
- *   - Night Light
- *   - Location Services
- *   - Manual schedule
- *
- * The user can manually force a specific time source and set the manual
- * schedule in the extensions's preferences.
+ * It will try to use the current location as a time source but will fall back
+ * to a manual schedule if the location services are disabled or if the user
+ * forced the manual schedule in the preferences.
  */
 var Timer = class {
     #settings;
     #interfaceSettings;
-    #colorSettings;
     #locationSettings;
     #time;
 
@@ -47,7 +40,6 @@ var Timer = class {
     constructor() {
         this.#settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
         this.#interfaceSettings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
-        this.#colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
         this.#locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
         this.#time = this.#interfaceSettings.get_string('color-scheme') === 'prefer-dark' ? Time.NIGHT : Time.DAY;
     }
@@ -65,7 +57,7 @@ var Timer = class {
     disable() {
         debug.message('Disabling Timer...');
         this.#removeKeybinding();
-        this.#disconnectSources();
+        this.#disconnectSource();
         this.#disableSource();
         this.#disconnectSettings();
         debug.message('Timer disabled.');
@@ -90,16 +82,12 @@ var Timer = class {
     #connectSettings() {
         debug.message('Connecting Timer to settings...');
         this.#settingsConnections.push({
-            settings: this.#colorSettings,
-            id: this.#colorSettings.connect('changed::night-light-enabled', this.#onSourceChanged.bind(this)),
-        });
-        this.#settingsConnections.push({
             settings: this.#locationSettings,
             id: this.#locationSettings.connect('changed::enabled', this.#onSourceChanged.bind(this)),
         });
         this.#settingsConnections.push({
             settings: this.#settings,
-            id: this.#settings.connect('changed::time-source', this.#onTimeSourceChanged.bind(this)),
+            id: this.#settings.connect('changed::manual-schedule', this.#onSourceChanged.bind(this)),
         });
         this.#settingsConnections.push({
             settings: this.#settings,
@@ -120,9 +108,6 @@ var Timer = class {
     #createSource() {
         const source = this.#getSource();
         switch (source) {
-        case 'nightlight':
-            this.#source = new TimerNightlight();
-            break;
         case 'location':
             this.#source = new TimerLocation();
             break;
@@ -160,11 +145,6 @@ var Timer = class {
         this.enable();
     }
 
-    #onTimeSourceChanged() {
-        if (this.#settings.get_boolean('manual-time-source'))
-            this.#onSourceChanged();
-    }
-
     #onOndemandKeybindingChanged() {
         this.#removeKeybinding();
         this.#addKeybinding();
@@ -181,29 +161,10 @@ var Timer = class {
 
     #getSource() {
         debug.message('Getting time source...');
-
-        let source;
-        if (this.#settings.get_boolean('manual-time-source')) {
-            source = this.#settings.get_string('time-source');
-            debug.message(`Time source is forced to ${source}.`);
-            if (
-                (source === 'nightlight' && !this.#colorSettings.get_boolean('night-light-enabled')) ||
-                (source === 'location' && !this.#locationSettings.get_boolean('enabled'))
-            ) {
-                debug.message(`Unable to choose ${source} time source, falling back to manual schedule.`);
-                source = 'schedule';
-                this.#settings.set_string('time-source', source);
-            }
-        } else {
-            if (this.#colorSettings.get_boolean('night-light-enabled'))
-                source = 'nightlight';
-            else if (this.#locationSettings.get_boolean('enabled'))
-                source = 'location';
-            else
-                source = 'schedule';
-            debug.message(`Time source is ${source}.`);
-            this.#settings.set_string('time-source', source);
-        }
+        let source = 'schedule';
+        if (this.#locationSettings.get_boolean('enabled') && !this.#settings.get_boolean('manual-schedule'))
+            source = 'location';
+        debug.message(`Time source is ${source}.`);
         return source;
     }
 
