@@ -10,6 +10,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="icon-name">nightthemeswitcher-backgrounds-symbolic</property>
     <child>
       <object class="AdwPreferencesGroup">
+        <property name="description" translatable="yes">Background switching is handled by the Shell, these settings allow you to change the images it uses.</property>
         <child>
           <object class="AdwActionRow">
             <property name="title" translatable="yes">Day background</property>
