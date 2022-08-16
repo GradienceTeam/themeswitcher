@@ -9,8 +9,6 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 Automatically toggle your desktop’s color scheme between light and dark, switch backgrounds and run custom commands at sunset and sunrise.
 
-Supports Night Light, Location Services, manual schedule and on-demand switch.
-
 ---
 
 ## Table of contents <!-- omit in toc -->

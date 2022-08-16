@@ -1,6 +1,6 @@
 {
 	"name": "Night Theme Switcher",
-	"description": "Make your desktop easy on the eye, day and night.",
+	"description": "Automatically toggle your desktop’s color scheme between light and dark, switch backgrounds and run custom commands at sunset and sunrise.",
 	"uuid": "@UUID@",
 	"gettext-domain": "@UUID@",
 	"settings-schema": "@DNS@",

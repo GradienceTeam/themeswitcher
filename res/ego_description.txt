@@ -1,5 +1,0 @@
-Make your desktop easy on the eye, day and night.
-
-Automatically toggle the color scheme between light and dark, switch backgrounds and run custom commands at sunset and sunrise.
-
-Supports Night Light, Location Services, manual schedule and on-demand switch modes.
