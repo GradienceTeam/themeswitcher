@@ -7,21 +7,14 @@ configure_file(
   configuration: {
     'DNS': DNS,
     'UUID': UUID,
-    'VERSION': meson.project_version()
-  },
-  install_dir: INSTALL_DIR
-)
-
-configure_file(
-  input: 'debug.js',
-  output: 'debug.js',
-  configuration: {
+    'VERSION': meson.project_version(),
     'BUILD_TYPE': get_option('buildtype')
   },
   install_dir: INSTALL_DIR
 )
 
 main = [
+  'debug.js',
   'extension.js',
   'prefs.js',
   'utils.js',

@@ -11,6 +11,6 @@ const Me = extensionUtils.getCurrentExtension();
  * @param  {string} msg Message to print.
  */
 function message(msg) {
-    if ('@BUILD_TYPE@' === 'debug') // eslint-disable-line no-constant-condition
+    if (Me.metadata['build-type'] === 'debug')
         console.log(`[${Me.metadata.name}] ${msg}`);
 }

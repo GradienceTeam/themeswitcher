@@ -7,5 +7,6 @@
 	"url": "https://nightthemeswitcher.romainvigier.fr",
 	"session-modes": ["unlock-dialog", "user"],
 	"shell-version": ["43"],
-	"version": @VERSION@
+	"version": @VERSION@,
+	"build-type": "@BUILD_TYPE@"
 }
