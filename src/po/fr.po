@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-16 09:49+0200\n"
-"PO-Revision-Date: 2022-08-16 07:46+0000\n"
+"PO-Revision-Date: 2022-08-16 07:55+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,6 +36,8 @@ msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
 msgstr ""
+"Le changement d’arrière-plan est effectué par le Shell, ces options vous "
+"permettent de choisir les images qu’il utilise."
 
 #: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
@@ -180,7 +182,7 @@ msgstr ":"
 
 #: src/preferences/BackgroundButton.js:69
 msgid "This image format is not supported."
-msgstr ""
+msgstr "Ce format d’image n’est pas supporté."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
