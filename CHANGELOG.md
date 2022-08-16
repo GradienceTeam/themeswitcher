@@ -5,6 +5,39 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Changelog
 
+## [66] - 2022-09-08
+
+This version adds support for GNOME 43 and removes support for GNOME 42.
+
+It no longer uses Night Light as a time source, and will instead use the location, if available, to calculate sunrise and sunset times, and will fallback to a fixed schedule if not.
+
+The Shell now having a quick setting to toggle the dark mode made the on-demand time source superfluous, so it has been removed. The keyboard shortcut is now always available.
+
+Note to packagers: Make sure the build type is not `debug` or the extension will print debug logs.
+
+### Added
+
+- Support for GNOME 43
+- Czech translation by @wolf-wolf
+- Greek translation by Nikolas Tsilivis
+- Japanese translation by citrus flavor
+
+### Changed
+
+- Updated Basque translation by @sergitroll9
+- Updated Chinese (Traditional) translation by Sean Wang
+- Updated Dutch translation by @philip.goto and @Vistaus
+- Updated French translation
+- Updated Spanish translation by @oscfdezdz
+
+### Removed
+
+- Support for GNOME 42
+- Night Light time source
+- On-demand time source (replaced by the built-in dark mode quick setting)
+- Transition setting
+
+
 ## [65] - 2022-06-17
 
 ### Added
