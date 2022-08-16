@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 02:16+0200\n"
+"POT-Creation-Date: 2022-08-16 02:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Run commands"
 msgstr ""
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:65
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:53
 msgid "Sunrise"
 msgstr ""
 
@@ -59,7 +59,7 @@ msgstr ""
 msgid "notify-send \"Hello sunshine!\""
 msgstr ""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:77
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:65
 msgid "Sunset"
 msgstr ""
 
@@ -108,22 +108,14 @@ msgid "Advanced"
 msgstr ""
 
 #: src/data/ui/SchedulePage.ui:38
-msgid "Transition"
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:39
-msgid "Smooth transition between day and night appearance."
-msgstr ""
-
-#: src/data/ui/SchedulePage.ui:50
 msgid "Keyboard shortcut"
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:61 src/preferences/SchedulePage.js:51
+#: src/data/ui/SchedulePage.ui:49 src/preferences/SchedulePage.js:48
 msgid "Manual schedule"
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:62
+#: src/data/ui/SchedulePage.ui:50
 msgid ""
 "These settings only apply when using the manual schedule as the time source."
 msgstr ""
@@ -196,11 +188,11 @@ msgstr ""
 msgid "Version %d"
 msgstr ""
 
-#: src/preferences/SchedulePage.js:39
+#: src/preferences/SchedulePage.js:36
 msgid "Night Light"
 msgstr ""
 
-#: src/preferences/SchedulePage.js:43
+#: src/preferences/SchedulePage.js:40
 msgid "Location Services"
 msgstr ""
 

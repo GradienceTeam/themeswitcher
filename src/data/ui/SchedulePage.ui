@@ -35,18 +35,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Advanced</property>
         <child>
           <object class="AdwActionRow">
-            <property name="title" translatable="yes">Transition</property>
-            <property name="subtitle" translatable="yes">Smooth transition between day and night appearance.</property>
-            <property name="activatable-widget">transition_switch</property>
-            <child>
-              <object class="GtkSwitch" id="transition_switch">
-                <property name="valign">center</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="AdwActionRow">
             <property name="title" translatable="yes">Keyboard shortcut</property>
             <property name="activatable-widget">keyboard_shortcut_button</property>
             <child>

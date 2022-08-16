@@ -85,8 +85,5 @@ SPDX-License-Identifier: GPL-3.0-or-later
 		<key name="schedule-sunset" type="d">
 			<default>20</default>
 		</key>
-		<key name="transition" type="b">
-			<default>true</default>
-		</key>
 	</schema>
 </schemalist>

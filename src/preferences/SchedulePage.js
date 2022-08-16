@@ -17,7 +17,6 @@ var SchedulePage = GObject.registerClass({
     Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/SchedulePage.ui',
     InternalChildren: [
         'keyboard_shortcut_button',
-        'transition_switch',
         'manual_time_source_switch',
         'time_source_combo_row',
         'schedule_sunrise_time_chooser',
@@ -29,8 +28,6 @@ var SchedulePage = GObject.registerClass({
         const settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
         const colorSettings = new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.color' });
         const locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
-
-        settings.bind('transition', this._transition_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
 
         settings.bind('manual-time-source', this._manual_time_source_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
 
