@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 03:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:46+0200\n"
 "PO-Revision-Date: 2022-05-27 12:18+0000\n"
 "Last-Translator: OliverTzeng <olivertzengolivertzeng@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -30,11 +30,17 @@ msgstr ""
 msgid "Backgrounds"
 msgstr ""
 
-#: src/data/ui/BackgroundsPage.ui:15
+#: src/data/ui/BackgroundsPage.ui:13
+msgid ""
+"Background switching is handled by the Shell, these settings allow you to "
+"change the images it uses."
+msgstr ""
+
+#: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
 msgstr "白天背景"
 
-#: src/data/ui/BackgroundsPage.ui:28
+#: src/data/ui/BackgroundsPage.ui:29
 msgid "Night background"
 msgstr "夜晚背景"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 03:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:46+0200\n"
 "PO-Revision-Date: 2022-06-09 16:14+0000\n"
 "Last-Translator: AHOHNMYC <lqwh2h2cwa@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/night-theme-"
@@ -34,11 +34,17 @@ msgstr "Выбрать фоновое изображение"
 msgid "Backgrounds"
 msgstr "Фоны"
 
-#: src/data/ui/BackgroundsPage.ui:15
+#: src/data/ui/BackgroundsPage.ui:13
+msgid ""
+"Background switching is handled by the Shell, these settings allow you to "
+"change the images it uses."
+msgstr ""
+
+#: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
 msgstr "Дневной фон"
 
-#: src/data/ui/BackgroundsPage.ui:28
+#: src/data/ui/BackgroundsPage.ui:29
 msgid "Night background"
 msgstr "Ночной фон"
 

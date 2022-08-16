@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 03:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:46+0200\n"
 "PO-Revision-Date: 2022-05-04 08:11+0000\n"
 "Last-Translator: Péter Báthory <bathory86p@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/night-theme-"
@@ -31,11 +31,17 @@ msgstr "Válassza ki a háttérképet"
 msgid "Backgrounds"
 msgstr "Hátterek"
 
-#: src/data/ui/BackgroundsPage.ui:15
+#: src/data/ui/BackgroundsPage.ui:13
+msgid ""
+"Background switching is handled by the Shell, these settings allow you to "
+"change the images it uses."
+msgstr ""
+
+#: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
 msgstr "Nappali háttér"
 
-#: src/data/ui/BackgroundsPage.ui:28
+#: src/data/ui/BackgroundsPage.ui:29
 msgid "Night background"
 msgstr "Éjszakai háttér"
 

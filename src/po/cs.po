@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 03:46+0200\n"
+"POT-Creation-Date: 2022-08-16 09:46+0200\n"
 "PO-Revision-Date: 2022-07-26 07:09+0000\n"
 "Last-Translator: vikdevelop <super-vik1@protonmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/night-theme-"
@@ -30,11 +30,17 @@ msgstr "Vyberte obrázek pro pozadí"
 msgid "Backgrounds"
 msgstr "Pozadí"
 
-#: src/data/ui/BackgroundsPage.ui:15
+#: src/data/ui/BackgroundsPage.ui:13
+msgid ""
+"Background switching is handled by the Shell, these settings allow you to "
+"change the images it uses."
+msgstr ""
+
+#: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
 msgstr "Denní pozadí"
 
-#: src/data/ui/BackgroundsPage.ui:28
+#: src/data/ui/BackgroundsPage.ui:29
 msgid "Night background"
 msgstr "Noční pozadí"
 
