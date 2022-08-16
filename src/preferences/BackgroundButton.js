@@ -66,7 +66,7 @@ var BackgroundButton = GObject.registerClass({
             } else {
                 if (this.root instanceof Adw.PreferencesWindow) {
                     this.root.add_toast(new Adw.Toast({
-                        title: _('Only JPEG, PNG, TIFF, SVG and XML files can be set as background image.'),
+                        title: _('This image format is not supported.'),
                         timeout: 10,
                     }));
                 }
