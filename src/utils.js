@@ -254,18 +254,6 @@ function isAccelValid({ mask, keyval }) {
 }
 
 /**
- * Find the position of a menu item in the Shell aggregate menu.
- *
- * @param {*} menuItem The desired menu item.
- * @returns {number} The position of the menu item, `-1` if not found.
- */
-function findShellAggregateMenuItemPosition(menuItem) {
-    const menu = imports.ui.main.panel.statusArea.aggregateMenu.menu;
-    const items = menu._getMenuItems();
-    return items.indexOf(menuItem);
-}
-
-/**
  * Find an item in a `Gio.ListModel`.
  *
  * @param {Gio.ListModel} model The ListModel to search.
