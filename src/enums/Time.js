@@ -2,7 +2,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /**
- * Time is an enumeration of the possible time values.
+ * Times.
+ *
+ * @readonly
+ * @enum {string}
  */
 var Time = {
     UNKNOWN: 'unknown',
