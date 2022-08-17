@@ -41,8 +41,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <child>
               <object class="GtkButton" id="clear_button">
                 <property name="label" translatable="yes">Clear</property>
-                <property name="icon-name">edit-delete-symbolic</property>
-                <property name="tooltip-text" translatable="yes">Clear</property>
                 <signal name="clicked" handler="onClearButtonClicked" swapped="no"/>
                 <style>
                   <class name="destructive-action"/>
