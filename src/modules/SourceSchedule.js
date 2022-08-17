@@ -9,38 +9,43 @@ const Me = extensionUtils.getCurrentExtension();
 
 const debug = Me.imports.debug;
 
+const { Source } = Me.imports.modules.Source;
+
 const { Time } = Me.imports.enums.Time;
 
 
 /**
- * The Schedule Timer uses a manual schedule to get the current time.
+ * The Schedule source uses a manual schedule to get the current time.
  *
  * Every second, it will check if the time has changed and signal if that's the
  * case.
  *
  * The user can change the schedule in the extension's preferences.
  */
-var TimerSchedule = class {
+var SourceSchedule = class extends Source {
     #settings;
 
     #previouslyDaytime = null;
     #timeChangeTimer = null;
 
     constructor() {
+        super();
         this.#settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
     }
 
     enable() {
-        debug.message('Enabling Schedule Timer...');
+        super.enable();
+        debug.message('Enabling Schedule source...');
         this.#watchForTimeChange();
         this.emit('time-changed', this.time);
-        debug.message('Schedule Timer enabled.');
+        debug.message('Schedule source enabled.');
     }
 
     disable() {
-        debug.message('Disabling Schedule Timer...');
+        debug.message('Disabling Schedule source...');
         this.#stopWatchingForTimeChange();
-        debug.message('Schedule Timer disabled.');
+        debug.message('Schedule source disabled.');
+        super.disable();
     }
 
 
@@ -71,4 +76,4 @@ var TimerSchedule = class {
         debug.message('Stopped watching for time change.');
     }
 };
-Signals.addSignalMethods(TimerSchedule.prototype);
+Signals.addSignalMethods(SourceSchedule.prototype);

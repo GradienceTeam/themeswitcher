@@ -9,23 +9,26 @@ const Me = extensionUtils.getCurrentExtension();
 
 const debug = Me.imports.debug;
 
+const { Source } = Me.imports.modules.Source;
+
+const { SunTime } = Me.imports.enums.SunTime;
 const { Time } = Me.imports.enums.Time;
 
 
 /**
- * The Location Timer uses Location Services to get the current sunrise and
+ * The Location source uses Location Services to get the current sunrise and
  * sunset times.
  *
  * It gets the current user's location with the GeoClue2 DBus proxy and
- * calculate the times.
+ * calculates the times.
  *
- * It will recalculate every hour and when the user's location changed to stay
+ * It will recalculate every hour and when the user's location changes to stay
  * up to date.
  *
  * Every second, it will check if the time has changed and signal if that's the
  * case.
  */
-var TimerLocation = class {
+var SourceLocation = class extends Source {
     #suntimes;
 
     #cancellable = null;
@@ -36,32 +39,35 @@ var TimerLocation = class {
     #regularlyUpdateSuntimesTimer = null;
 
     constructor() {
+        super();
         // Before we have the location suntimes, we'll use the manual schedule
         // times
         const timeSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
         this.#suntimes = new Map([
-            ['sunrise', timeSettings.get_double('schedule-sunrise')],
-            ['sunset', timeSettings.get_double('schedule-sunset')],
+            [SunTime.SUNRISE, timeSettings.get_double('schedule-sunrise')],
+            [SunTime.SUNSET, timeSettings.get_double('schedule-sunset')],
         ]);
     }
 
     enable() {
-        debug.message('Enabling Location Timer...');
+        super.enable();
+        debug.message('Enabling Location source...');
         this.#cancellable = new Gio.Cancellable();
         this.#connectToGeoclue();
         this.#watchForTimeChange();
         this.#regularlyUpdateSuntimes();
-        debug.message('Location Timer enabled.');
+        debug.message('Location source enabled.');
     }
 
     disable() {
-        debug.message('Disabling Location Timer...');
+        debug.message('Disabling Location source...');
         this.#stopRegularlyUpdatingSuntimes();
         this.#stopWatchingForTimeChange();
         this.#disconnectFromGeoclue();
         this.#cancellable.cancel();
         this.#cancellable = null;
-        debug.message('Location Timer disabled.');
+        debug.message('Location source disabled.');
+        super.disable();
     }
 
 
@@ -95,6 +101,7 @@ var TimerLocation = class {
         this.#geoclueConnection = this.#geoclue.connect('notify::location', this.#onLocationUpdated.bind(this));
         debug.message('Connected to GeoClue.');
         this.#onLocationUpdated();
+        this.emit('time-changed', this.time);
     }
 
     #onLocationUpdated(_geoclue, _location) {
@@ -160,8 +167,8 @@ var TimerLocation = class {
         const sunrise = timeSunrise * 24;
         const sunset = timeSunset * 24;
 
-        this.#suntimes.set('sunrise', sunrise);
-        this.#suntimes.set('sunset', sunset);
+        this.#suntimes.set(SunTime.SUNRISE, sunrise);
+        this.#suntimes.set(SunTime.SUNSET, sunset);
         debug.message(`New sun times: (sunrise: ${sunrise}; sunset: ${sunset})`);
     }
 
@@ -182,7 +189,7 @@ var TimerLocation = class {
     #isDaytime() {
         const time = GLib.DateTime.new_now_local();
         const hour = time.get_hour() + time.get_minute() / 60 + time.get_second() / 3600;
-        return hour >= this.#suntimes.get('sunrise') && hour <= this.#suntimes.get('sunset');
+        return hour >= this.#suntimes.get(SunTime.SUNRISE) && hour <= this.#suntimes.get(SunTime.SUNSET);
     }
 
     #watchForTimeChange() {
@@ -201,4 +208,4 @@ var TimerLocation = class {
         debug.message('Stopped watching for time change.');
     }
 };
-Signals.addSignalMethods(TimerLocation.prototype);
+Signals.addSignalMethods(SourceLocation.prototype);

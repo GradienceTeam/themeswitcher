@@ -11,9 +11,10 @@ const Me = extensionUtils.getCurrentExtension();
 
 const debug = Me.imports.debug;
 
+const { SourceType } = Me.imports.enums.SourceType;
 const { Time } = Me.imports.enums.Time;
-const { TimerLocation } = Me.imports.modules.TimerLocation;
-const { TimerSchedule } = Me.imports.modules.TimerSchedule;
+const { SourceLocation } = Me.imports.modules.SourceLocation;
+const { SourceSchedule } = Me.imports.modules.SourceSchedule;
 
 
 /**
@@ -108,11 +109,11 @@ var Timer = class {
     #createSource() {
         const source = this.#getSource();
         switch (source) {
-        case 'location':
-            this.#source = new TimerLocation();
+        case SourceType.LOCATION:
+            this.#source = new SourceLocation();
             break;
-        case 'schedule':
-            this.#source = new TimerSchedule();
+        case SourceType.SCHEDULE:
+            this.#source = new SourceSchedule();
             break;
         }
     }
@@ -161,9 +162,9 @@ var Timer = class {
 
     #getSource() {
         debug.message('Getting time source...');
-        let source = 'schedule';
+        let source = SourceType.SCHEDULE;
         if (this.#locationSettings.get_boolean('enabled') && !this.#settings.get_boolean('manual-schedule'))
-            source = 'location';
+            source = SourceType.LOCATION;
         debug.message(`Time source is ${source}.`);
         return source;
     }

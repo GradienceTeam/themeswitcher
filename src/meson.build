@@ -27,15 +27,18 @@ main = [
   'utils.js',
 ]
 enums = [
+  'enums/SourceType.js',
+  'enums/SunTime.js',
   'enums/Time.js',
 ]
 modules = [
+  'modules/Source.js',
+  'modules/SourceLocation.js',
+  'modules/SourceSchedule.js',
   'modules/Switcher.js',
   'modules/SwitcherCommands.js',
   'modules/SwitcherTheme.js',
   'modules/Timer.js',
-  'modules/TimerLocation.js',
-  'modules/TimerSchedule.js',
 ]
 preferences = [
   'preferences/BackgroundButton.js',
