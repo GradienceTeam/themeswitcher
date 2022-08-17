@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 09:49+0200\n"
+"POT-Creation-Date: 2022-08-17 14:13+0200\n"
 "PO-Revision-Date: 2022-04-27 09:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -47,7 +47,6 @@ msgid "Night background"
 msgstr "夜间背景"
 
 #: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
-#: src/data/ui/ShortcutButton.ui:45
 msgid "Clear"
 msgstr "清空"
 
@@ -59,7 +58,7 @@ msgstr "命令"
 msgid "Run commands"
 msgstr "运行命令"
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:22
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:27
 msgid "Sunrise"
 msgstr "日出"
 
@@ -68,7 +67,7 @@ msgstr "日出"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"漱正阳而含朝霞\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:34
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
 msgid "Sunset"
 msgstr "日落"
 
@@ -98,17 +97,17 @@ msgid "Schedule"
 msgstr "安排"
 
 #: src/data/ui/SchedulePage.ui:13
-msgid "Manual schedule"
-msgstr "手动安排"
-
-#: src/data/ui/SchedulePage.ui:14
 msgid ""
 "Your location will be used to calculate the current sunrise and sunset "
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:50
+#: src/data/ui/SchedulePage.ui:16
+msgid "Manual schedule"
+msgstr "手动安排"
+
+#: src/data/ui/SchedulePage.ui:55
 msgid "Keyboard shortcut"
 msgstr "键盘快捷键"
 
@@ -120,7 +119,7 @@ msgstr "选择……"
 msgid "Change keyboard shortcut"
 msgstr "更改键盘快捷键"
 
-#: src/data/ui/ShortcutButton.ui:80
+#: src/data/ui/ShortcutButton.ui:78
 msgid "Press your keyboard shortcut…"
 msgstr "按下您想设置的键盘快捷键……"
 

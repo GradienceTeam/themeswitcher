@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 09:49+0200\n"
+"POT-Creation-Date: 2022-08-17 14:13+0200\n"
 "PO-Revision-Date: 2022-04-27 09:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/night-theme-"
@@ -48,7 +48,6 @@ msgid "Night background"
 msgstr "Nocne tło"
 
 #: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
-#: src/data/ui/ShortcutButton.ui:45
 msgid "Clear"
 msgstr "Wyczyść"
 
@@ -60,7 +59,7 @@ msgstr "Polecenia"
 msgid "Run commands"
 msgstr "Uruchom polecenia"
 
-#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:22
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:27
 msgid "Sunrise"
 msgstr "Wschód słońca"
 
@@ -69,7 +68,7 @@ msgstr "Wschód słońca"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Witaj słońce!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:34
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
 msgid "Sunset"
 msgstr "Zachód słońca"
 
@@ -99,17 +98,17 @@ msgid "Schedule"
 msgstr "Harmonogram"
 
 #: src/data/ui/SchedulePage.ui:13
-msgid "Manual schedule"
-msgstr "Manualny harmonogram"
-
-#: src/data/ui/SchedulePage.ui:14
 msgid ""
 "Your location will be used to calculate the current sunrise and sunset "
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:50
+#: src/data/ui/SchedulePage.ui:16
+msgid "Manual schedule"
+msgstr "Manualny harmonogram"
+
+#: src/data/ui/SchedulePage.ui:55
 msgid "Keyboard shortcut"
 msgstr "Śkrót klawiaturowy"
 
@@ -121,7 +120,7 @@ msgstr "Wybierz…"
 msgid "Change keyboard shortcut"
 msgstr "Zmień skrót klawiaturowy"
 
-#: src/data/ui/ShortcutButton.ui:80
+#: src/data/ui/ShortcutButton.ui:78
 msgid "Press your keyboard shortcut…"
 msgstr "Naciśnij skrót klawiaturowy…"
 
