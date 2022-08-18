@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-17 14:13+0200\n"
-"PO-Revision-Date: 2022-07-26 07:09+0000\n"
+"PO-Revision-Date: 2022-08-19 14:18+0000\n"
 "Last-Translator: vikdevelop <super-vik1@protonmail.com>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/cs/>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,6 +35,8 @@ msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
 msgstr ""
+"O přepínání pozadí se stará Shell, tato nastavení umožňují změnit obrázky, "
+"které používá."
 
 #: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
@@ -100,6 +102,9 @@ msgid ""
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
 msgstr ""
+"Vaše poloha bude použita pro výpočet aktuálního času východu a západu "
+"slunce. Pokud si přejete, můžete nastavit ruční plán. Ten se použije i v "
+"případě, že vaše poloha není k dispozici."
 
 #: src/data/ui/SchedulePage.ui:16
 msgid "Manual schedule"
@@ -175,12 +180,12 @@ msgstr ":"
 
 #: src/preferences/BackgroundButton.js:69
 msgid "This image format is not supported."
-msgstr ""
+msgstr "Tento formát obrázku není podporován."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
 msgid "Version %d"
-msgstr ""
+msgstr "Verze %d"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
