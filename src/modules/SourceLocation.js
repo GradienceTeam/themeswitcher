@@ -29,7 +29,7 @@ const { Time } = Me.imports.enums.Time;
  * case.
  */
 var SourceLocation = class extends Source {
-    #suntimes;
+    #settings;
 
     #cancellable = null;
     #previouslyDaytime = null;
@@ -40,13 +40,7 @@ var SourceLocation = class extends Source {
 
     constructor() {
         super();
-        // Before we have the location suntimes, we'll use the manual schedule
-        // times
-        const timeSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
-        this.#suntimes = new Map([
-            [SunTime.SUNRISE, timeSettings.get_double('schedule-sunrise')],
-            [SunTime.SUNSET, timeSettings.get_double('schedule-sunset')],
-        ]);
+        this.#settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
     }
 
     enable() {
@@ -98,6 +92,11 @@ var SourceLocation = class extends Source {
 
     #onGeoclueReady(_, result) {
         this.#geoclue = Geoclue.Simple.new_finish(result);
+        if (!this.#geoclue) {
+            console.error(`[${Me.metadata.name}] Unable to retrieve the location, using the manual schedule times instead.`);
+            this.#settings.set_double('location-sunrise', this.#settings.get_double('schedule-sunrise'));
+            this.#settings.set_double('location-sunset', this.#settings.get_double('schedule-sunset'));
+        }
         this.#geoclueConnection = this.#geoclue.connect('notify::location', this.#onLocationUpdated.bind(this));
         debug.message('Connected to GeoClue.');
         this.#onLocationUpdated();
@@ -168,8 +167,9 @@ var SourceLocation = class extends Source {
         const sunrise = timeSunrise * 24 + offset;
         const sunset = timeSunset * 24 - offset;
 
-        this.#suntimes.set(SunTime.SUNRISE, sunrise);
-        this.#suntimes.set(SunTime.SUNSET, sunset);
+        this.#settings.set_double('location-sunrise', sunrise);
+        this.#settings.set_double('location-sunset', sunset);
+
         debug.message(`New sun times: (sunrise: ${sunrise}; sunset: ${sunset})`);
     }
 
@@ -190,7 +190,7 @@ var SourceLocation = class extends Source {
     #isDaytime() {
         const time = GLib.DateTime.new_now_local();
         const hour = time.get_hour() + time.get_minute() / 60 + time.get_second() / 3600;
-        return hour >= this.#suntimes.get(SunTime.SUNRISE) && hour <= this.#suntimes.get(SunTime.SUNSET);
+        return hour >= this.#settings.get_double('location-sunrise') && hour <= this.#settings.get_double('location-sunset');
     }
 
     #watchForTimeChange() {
