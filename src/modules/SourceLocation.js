@@ -164,8 +164,9 @@ var SourceLocation = class extends Source {
         const timeSunrise = solarNoon - haSunrise * 4 / 1440;
         const timeSunset = solarNoon + haSunrise * 4 / 1440;
 
-        const sunrise = timeSunrise * 24;
-        const sunset = timeSunset * 24;
+        const offset = 0.4;
+        const sunrise = timeSunrise * 24 + offset;
+        const sunset = timeSunset * 24 - offset;
 
         this.#suntimes.set(SunTime.SUNRISE, sunrise);
         this.#suntimes.set(SunTime.SUNSET, sunset);
