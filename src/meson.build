@@ -28,7 +28,6 @@ main = [
 ]
 enums = [
   'enums/SourceType.js',
-  'enums/SunTime.js',
   'enums/Time.js',
 ]
 modules = [

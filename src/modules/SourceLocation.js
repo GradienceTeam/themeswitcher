@@ -11,7 +11,6 @@ const debug = Me.imports.debug;
 
 const { Source } = Me.imports.modules.Source;
 
-const { SunTime } = Me.imports.enums.SunTime;
 const { Time } = Me.imports.enums.Time;
 
 
