@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-17 14:13+0200\n"
-"PO-Revision-Date: 2022-07-31 17:20+0000\n"
+"PO-Revision-Date: 2022-08-26 07:24+0000\n"
 "Last-Translator: citrus flavor <sugar826@outlook.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,8 @@ msgstr "デスクトップ背景"
 msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
-msgstr ""
+msgstr "デスクトップ背景の切り替えはシェルによって処理され、これらの設定によりデスク"
+"トップ背景に使用する画像を変更することができます。"
 
 #: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
@@ -100,6 +101,9 @@ msgid ""
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
 msgstr ""
+"あなたの位置情報をもとに、現在の日の出・日の入り時刻が計算されます。必要に応"
+"じてスケジュールを手動で設定することもできます。このスケジュールは位置情報を"
+"取得できない場合にも使用されます。"
 
 #: src/data/ui/SchedulePage.ui:16
 msgid "Manual schedule"
@@ -175,12 +179,12 @@ msgstr ":"
 
 #: src/preferences/BackgroundButton.js:69
 msgid "This image format is not supported."
-msgstr ""
+msgstr "この画像形式は利用できません。"
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
 msgid "Version %d"
-msgstr ""
+msgstr "バージョン %d"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
