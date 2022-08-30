@@ -49,6 +49,7 @@ var SourceLocation = class extends Source {
         this.#connectToGeoclue();
         this.#watchForTimeChange();
         this.#regularlyUpdateSuntimes();
+        this.emit('time-changed', this.time);
         debug.message('Location source enabled.');
     }
 
