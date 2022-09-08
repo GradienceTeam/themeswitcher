@@ -36,6 +36,7 @@ var SourceLocation = class extends Source {
     #geoclueConnection = null;
     #timeChangeTimer = null;
     #regularlyUpdateSuntimesTimer = null;
+    #settingsConnections = [];
 
     constructor() {
         super();
@@ -46,6 +47,7 @@ var SourceLocation = class extends Source {
         super.enable();
         debug.message('Enabling Location source...');
         this.#cancellable = new Gio.Cancellable();
+        this.#connectSettings();
         this.#connectToGeoclue();
         this.#watchForTimeChange();
         this.#regularlyUpdateSuntimes();
@@ -58,6 +60,7 @@ var SourceLocation = class extends Source {
         this.#stopRegularlyUpdatingSuntimes();
         this.#stopWatchingForTimeChange();
         this.#disconnectFromGeoclue();
+        this.#disconnectSettings();
         this.#cancellable.cancel();
         this.#cancellable = null;
         debug.message('Location source disabled.');
@@ -67,6 +70,21 @@ var SourceLocation = class extends Source {
 
     get time() {
         return this.#isDaytime() ? Time.DAY : Time.NIGHT;
+    }
+
+
+    #connectSettings() {
+        debug.message('Connecting Location source to settings...');
+        this.#settingsConnections.push({
+            settings: this.#settings,
+            id: this.#settings.connect('changed::offset', this.#updateSuntimes.bind(this)),
+        });
+    }
+
+    #disconnectSettings() {
+        this.#settingsConnections.forEach(({ settings, id }) => settings.disconnect(id));
+        this.#settingsConnections = [];
+        debug.message('Disconnected Location source from settings.');
     }
 
 
@@ -163,7 +181,7 @@ var SourceLocation = class extends Source {
         const timeSunrise = solarNoon - haSunrise * 4 / 1440;
         const timeSunset = solarNoon + haSunrise * 4 / 1440;
 
-        const offset = 0.4;
+        const offset = this.#settings.get_double('offset');
         const sunrise = timeSunrise * 24 + offset;
         const sunset = timeSunset * 24 - offset;
 
