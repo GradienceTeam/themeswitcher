@@ -16,12 +16,7 @@ const { Timer } = Me.imports.modules.Timer;
 
 
 class NightThemeSwitcher {
-    #timer = null;
-    #switcherThemeGtk = null;
-    #switcherThemeShell = null;
-    #switcherThemeIcon = null;
-    #switcherThemeCursor = null;
-    #switcherCommands = null;
+    #modules = [];
 
     constructor() {
         debug.message('Initializing extension...');
@@ -31,19 +26,19 @@ class NightThemeSwitcher {
 
     enable() {
         debug.message('Enabling extension...');
-        this.#timer = new Timer();
-        this.#switcherThemeGtk = new SwitcherThemeGtk({ timer: this.#timer });
-        this.#switcherThemeIcon = new SwitcherThemeIcon({ timer: this.#timer });
-        this.#switcherThemeShell = new SwitcherThemeShell({ timer: this.#timer });
-        this.#switcherThemeCursor = new SwitcherThemeCursor({ timer: this.#timer });
-        this.#switcherCommands = new SwitcherCommands({ timer: this.#timer });
 
-        this.#timer.enable();
-        this.#switcherThemeGtk.enable();
-        this.#switcherThemeShell.enable();
-        this.#switcherThemeIcon.enable();
-        this.#switcherThemeCursor.enable();
-        this.#switcherCommands.enable();
+        const timer = new Timer();
+        this.#modules.push(timer);
+
+        [
+            SwitcherThemeGtk,
+            SwitcherThemeIcon,
+            SwitcherThemeShell,
+            SwitcherThemeCursor,
+            SwitcherCommands,
+        ].forEach(SwitcherModule => this.#modules.push(new SwitcherModule({ timer })));
+
+        this.#modules.forEach(module => module.enable());
 
         debug.message('Extension enabled.');
     }
@@ -54,30 +49,8 @@ class NightThemeSwitcher {
         // as the background image and the shell theme are visible in this mode.
         debug.message('Disabling extension...');
 
-        if (this.#switcherThemeGtk) {
-            this.#switcherThemeGtk.disable();
-            this.#switcherThemeGtk = null;
-        }
-        if (this.#switcherThemeShell) {
-            this.#switcherThemeShell.disable();
-            this.#switcherThemeShell = null;
-        }
-        if (this.#switcherThemeIcon) {
-            this.#switcherThemeIcon.disable();
-            this.#switcherThemeIcon = null;
-        }
-        if (this.#switcherThemeCursor) {
-            this.#switcherThemeCursor.disable();
-            this.#switcherThemeCursor = null;
-        }
-        if (this.#switcherCommands) {
-            this.#switcherCommands.disable();
-            this.#switcherCommands = null;
-        }
-        if (this.#timer) {
-            this.#timer.disable();
-            this.#timer = null;
-        }
+        this.#modules.forEach(module => module.disable());
+        this.#modules = [];
 
         debug.message('Extension disabled.');
     }
