@@ -96,7 +96,7 @@ var SwitcherTheme = class extends Switcher {
     }
 
     #disconnectSettings() {
-        this.#settingsConnections.forEach(connection => connection.settings.disconnect(connection.id));
+        this.#settingsConnections.forEach(({ settings, id }) => settings.disconnect(id));
         this.#settingsConnections = [];
         debug.message(`Disconnected ${this.#name} switcher from settings.`);
     }
