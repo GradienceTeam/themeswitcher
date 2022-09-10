@@ -7,92 +7,94 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-17 14:13+0200\n"
-"PO-Revision-Date: 2022-02-26 10:43+0000\n"
+"PO-Revision-Date: 2022-09-11 17:15+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
-"Language-Team: Occitan <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/oc/>\n"
+"Language-Team: Occitan <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/oc/>\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
-msgstr ""
+msgstr "Cambiar lo rèireplan"
 
 #: src/data/ui/BackgroundButton.ui:31
 msgid "Select your background image"
-msgstr ""
+msgstr "Seleccionar l’imatge de rèireplan"
 
 #: src/data/ui/BackgroundsPage.ui:9
 msgid "Backgrounds"
-msgstr ""
+msgstr "Rèireplans"
 
 #: src/data/ui/BackgroundsPage.ui:13
 msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
 msgstr ""
+"Lo cambiament de rèireplan es gerit pel Shell, aquestes paramètres vos "
+"permeton de causir los imatges qu’emplega."
 
 #: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
-msgstr ""
+msgstr "Rèireplan diürne"
 
 #: src/data/ui/BackgroundsPage.ui:29
 msgid "Night background"
-msgstr ""
+msgstr "Rèireplan nocturne"
 
 #: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
 msgid "Clear"
-msgstr ""
+msgstr "Escafar"
 
 #: src/data/ui/CommandsPage.ui:9
 msgid "Commands"
-msgstr ""
+msgstr "Comandas"
 
 #: src/data/ui/CommandsPage.ui:13
 msgid "Run commands"
-msgstr ""
+msgstr "Lançar de comandas"
 
 #: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:27
 msgid "Sunrise"
-msgstr ""
+msgstr "Sortida del solelh"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:25
 msgid "notify-send \"Hello sunshine!\""
-msgstr ""
+msgstr "notify-send \"Adieusiatz !\""
 
 #: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
 msgid "Sunset"
-msgstr ""
+msgstr "Solelh colc"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:39
 msgid "notify-send \"Hello moonshine!\""
-msgstr ""
+msgstr "notify-send \"Bona nuèch !\""
 
 #: src/data/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuïr"
 
 #: src/data/ui/ContributePage.ui:55
 msgid "View the code and report issues"
-msgstr ""
+msgstr "Veire lo còdi e senhalar d’avarias"
 
 #: src/data/ui/ContributePage.ui:68
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "Contribuïr a la traduccion"
 
 #: src/data/ui/ContributePage.ui:81
 msgid "Support me with a donation"
-msgstr ""
+msgstr "Me sosténer amb un don"
 
 #: src/data/ui/SchedulePage.ui:9
 msgid "Schedule"
-msgstr ""
+msgstr "Oraris"
 
 #: src/data/ui/SchedulePage.ui:13
 msgid ""
@@ -107,11 +109,11 @@ msgstr "Orari manual"
 
 #: src/data/ui/SchedulePage.ui:55
 msgid "Keyboard shortcut"
-msgstr ""
+msgstr "Acorchi de clavièr"
 
 #: src/data/ui/ShortcutButton.ui:15
 msgid "Choose…"
-msgstr ""
+msgstr "Seleccionar…"
 
 #: src/data/ui/ShortcutButton.ui:32
 msgid "Change keyboard shortcut"
@@ -123,7 +125,7 @@ msgstr ""
 
 #: src/data/ui/ThemesPage.ui:9
 msgid "Themes"
-msgstr ""
+msgstr "Tèmas"
 
 #: src/data/ui/ThemesPage.ui:15
 msgid ""
@@ -144,38 +146,38 @@ msgstr ""
 #: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
 #: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
-msgstr ""
+msgstr "Varianta diürna"
 
 #: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
 #: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
-msgstr ""
+msgstr "Varianta nocturna"
 
 #: src/data/ui/ThemesPage.ui:47
 msgid "Switch Shell theme"
-msgstr ""
+msgstr "Cambiar lo tèma del Shell"
 
 #: src/data/ui/ThemesPage.ui:63
 msgid "Switch icon theme"
-msgstr ""
+msgstr "Cambiar lo tèma d’icònas"
 
 #: src/data/ui/ThemesPage.ui:79
 msgid "Switch cursor theme"
-msgstr ""
+msgstr "Cambiar lo tèma del cursor"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
-msgstr ""
+msgstr "h"
 
 #: src/preferences/BackgroundButton.js:69
 msgid "This image format is not supported."
-msgstr ""
+msgstr "Aqueste format d’imatge es pas pres en carga."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
 msgid "Version %d"
-msgstr ""
+msgstr "Version %d"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
