@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Changelog
 
+## [67] - 2022-09-19
+
+### Changed
+
+- Updated Arabic translation by Omar TS
+- Updated Occitan translation by @quenty_occitania
+
+
 ## [66] - 2022-09-08
 
 This version adds support for GNOME 43 and removes support for GNOME 42.
