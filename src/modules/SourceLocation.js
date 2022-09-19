@@ -160,9 +160,8 @@ var SourceLocation = class extends Source {
 
         const date = timeSpan / 1000 / 1000 / 60 / 60 / 24 + 2;
         const tzOffset = dtNow.get_utc_offset() / 1000 / 1000 / 60 / 60;
-        const timePastLocalMidnight = 0;
 
-        const julianDay = date + 2415018.5 + timePastLocalMidnight - tzOffset / 24;
+        const julianDay = date + 2415018.5 - tzOffset / 24;
         const julianCentury = (julianDay - 2451545) / 36525;
         const geomMeanLongSun = (280.46646 + julianCentury * (36000.76983 + julianCentury * 0.0003032)) % 360;
         const geomMeanAnomSun = 357.52911 + julianCentury * (35999.05029 - 0.0001537 * julianCentury);
