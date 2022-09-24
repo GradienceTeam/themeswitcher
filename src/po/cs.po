@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the nightthemeswitcher@romainvigier.fr package.
 # vikdevelop <super-vik1@protonmail.com>, 2022.
+# Vojtěch Perník <translations@pervoj.cz>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-17 14:13+0200\n"
-"PO-Revision-Date: 2022-08-19 14:18+0000\n"
-"Last-Translator: vikdevelop <super-vik1@protonmail.com>\n"
+"PO-Revision-Date: 2022-09-25 17:15+0000\n"
+"Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/cs/>\n"
 "Language: cs\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -24,7 +25,7 @@ msgstr "Změnit pozadí"
 
 #: src/data/ui/BackgroundButton.ui:31
 msgid "Select your background image"
-msgstr "Vyberte obrázek pro pozadí"
+msgstr "Vyberte obrázek pozadí"
 
 #: src/data/ui/BackgroundsPage.ui:9
 msgid "Backgrounds"
@@ -65,7 +66,7 @@ msgstr "Východ slunce"
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:25
 msgid "notify-send \"Hello sunshine!\""
-msgstr "notify-send \"Ahoj sluničko!\""
+msgstr "notify-send \"Ahoj, sluníčko!\""
 
 #: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
 msgid "Sunset"
@@ -74,7 +75,7 @@ msgstr "Západ slunce"
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:39
 msgid "notify-send \"Hello moonshine!\""
-msgstr "notify-send \"Hello moonshine!\""
+msgstr "notify-send \"Ahoj, měsíčku!\""
 
 #: src/data/ui/ContributePage.ui:9
 msgid "Contribute"
@@ -90,11 +91,11 @@ msgstr "Přispět k překladu"
 
 #: src/data/ui/ContributePage.ui:81
 msgid "Support me with a donation"
-msgstr "Podpořte mě darem"
+msgstr "Podpořit darem"
 
 #: src/data/ui/SchedulePage.ui:9
 msgid "Schedule"
-msgstr "Naplánovat"
+msgstr "Plánování"
 
 #: src/data/ui/SchedulePage.ui:13
 msgid ""
@@ -108,7 +109,7 @@ msgstr ""
 
 #: src/data/ui/SchedulePage.ui:16
 msgid "Manual schedule"
-msgstr "Ruční rozvrh"
+msgstr "Ruční plánování"
 
 #: src/data/ui/SchedulePage.ui:55
 msgid "Keyboard shortcut"
@@ -124,7 +125,7 @@ msgstr "Změnit klávesovou zkratku"
 
 #: src/data/ui/ShortcutButton.ui:78
 msgid "Press your keyboard shortcut…"
-msgstr "Stiskněte klávesovou zkratku…"
+msgstr "Stiskněte vybranou klávesovou zkratku…"
 
 #: src/data/ui/ThemesPage.ui:9
 msgid "Themes"
@@ -167,7 +168,7 @@ msgstr "Přepnout motiv Shellu"
 
 #: src/data/ui/ThemesPage.ui:63
 msgid "Switch icon theme"
-msgstr "Přepnout motiv ikony"
+msgstr "Přepnout motiv ikon"
 
 #: src/data/ui/ThemesPage.ui:79
 msgid "Switch cursor theme"
