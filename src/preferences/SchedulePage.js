@@ -23,8 +23,8 @@ var SchedulePage = GObject.registerClass({
 
         settings.bind('manual-schedule', this._manual_schedule_switch, 'active', Gio.SettingsBindFlags.DEFAULT);
 
-        settings.bind('schedule-sunrise', this._schedule_sunrise_time_chooser, 'time', Gio.SettingsBindFlags.DEFAULT);
-        settings.bind('schedule-sunset', this._schedule_sunset_time_chooser, 'time', Gio.SettingsBindFlags.DEFAULT);
+        settings.bind('sunrise', this._schedule_sunrise_time_chooser, 'time', Gio.SettingsBindFlags.DEFAULT);
+        settings.bind('sunset', this._schedule_sunset_time_chooser, 'time', Gio.SettingsBindFlags.DEFAULT);
 
         settings.connect('changed::nightthemeswitcher-ondemand-keybinding', () => {
             this._keyboard_shortcut_button.keybinding = settings.get_strv('nightthemeswitcher-ondemand-keybinding')[0];

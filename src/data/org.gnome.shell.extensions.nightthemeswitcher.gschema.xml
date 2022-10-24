@@ -71,17 +71,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
 		<key name="manual-schedule" type="b">
 			<default>false</default>
 		</key>
-		<key name="schedule-sunrise" type="d">
+		<key name="sunrise" type="d">
 			<default>6</default>
 		</key>
-		<key name="schedule-sunset" type="d">
+		<key name="sunset" type="d">
 			<default>20</default>
 		</key>
-		<key name="location-sunrise" type="d">
-			<default>6</default>
-		</key>
-		<key name="location-sunset" type="d">
-			<default>20</default>
+		<key name="location" type="(dd)">
+			<default>(91,181)</default>
 		</key>
 		<key name="offset" type="d">
 			<default>0.4</default>

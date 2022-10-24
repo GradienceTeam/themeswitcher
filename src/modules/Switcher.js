@@ -77,7 +77,7 @@ var Switcher = class {
 
     #connectTimer() {
         debug.message(`Connecting ${this.#name} switcher to Timer...`);
-        this.#timerConnection = this.#timer.connect('time-changed', this.#onTimeChanged.bind(this));
+        this.#timerConnection = this.#timer.connect('notify::time', this.#onTimeChanged.bind(this));
     }
 
     #disconnectTimer() {

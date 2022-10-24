@@ -17,13 +17,8 @@ src/data/ui/ShortcutButton.ui
 src/data/ui/ThemesPage.ui
 src/data/ui/TimeChooser.ui
 
-src/enums/SourceType.js
-src/enums/SunTime.js
 src/enums/Time.js
 
-src/modules/Source.js
-src/modules/SourceLocation.js
-src/modules/SourceSchedule.js
 src/modules/Switcher.js
 src/modules/SwitcherCommands.js
 src/modules/SwitcherTheme.js
