@@ -5,6 +5,20 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 # Changelog
 
+
+## [68] - 2022-10-28
+
+### Added
+
+- Hidden setting to manually set the location
+
+### Changed
+
+- Updated Czech translation by Vojtěch Perník
+- Updated Italian translation by @phaerrax
+- Updated Russian translation by @daudix-UFO
+
+
 ## [67] - 2022-09-19
 
 ### Changed
