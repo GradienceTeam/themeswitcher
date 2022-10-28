@@ -17,8 +17,6 @@ Automatically toggle your desktop’s color scheme between light and dark, switc
 - [Command line installation](#command-line-installation)
 - [Contributing](#contributing)
 - [Frequently asked questions](#frequently-asked-questions)
-	- [Something doesn't work on Ubuntu](#something-doesnt-work-on-ubuntu)
-	- [Switching happens too early/too late](#switching-happens-too-earlytoo-late)
 
 ---
 
