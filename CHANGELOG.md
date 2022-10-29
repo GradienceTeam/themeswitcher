@@ -6,6 +6,15 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [69] - 2022-10-29
+
+### Fixed
+
+- Shell theme was sometimes not changing with the User Themes extension enabled
+- Background thumbnail generation was blocking the preferences dialog
+- It was possible to set invalid sunset and sunrise times in the preferences dialog
+
+
 ## [68] - 2022-10-28
 
 ### Added
