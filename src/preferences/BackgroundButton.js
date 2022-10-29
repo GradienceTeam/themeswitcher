@@ -11,7 +11,7 @@ const _ = extensionUtils.gettext;
 var BackgroundButton = GObject.registerClass({
     GTypeName: 'BackgroundButton',
     Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/BackgroundButton.ui',
-    InternalChildren: ['filechooser'],
+    InternalChildren: ['filechooser', 'thumbnail'],
     Properties: {
         uri: GObject.ParamSpec.string(
             'uri',
@@ -20,7 +20,7 @@ var BackgroundButton = GObject.registerClass({
             GObject.ParamFlags.READWRITE,
             null
         ),
-        thumb_width: GObject.ParamSpec.int(
+        thumbWidth: GObject.ParamSpec.int(
             'thumb-width',
             'Thumbnail width',
             'Width of the displayed thumbnail',
@@ -28,7 +28,7 @@ var BackgroundButton = GObject.registerClass({
             0, 600,
             180
         ),
-        thumb_height: GObject.ParamSpec.int(
+        thumbHeight: GObject.ParamSpec.int(
             'thumb-height',
             'Thumbnail height',
             'Height of the displayed thumbnail',
@@ -38,11 +38,28 @@ var BackgroundButton = GObject.registerClass({
         ),
     },
 }, class BackgroundButton extends Gtk.Button {
+    #uri;
+
     constructor(props = {}) {
         super(props);
         this.#setupSize();
         this.#setupDropTarget();
         this.#setupFileChooserFilter();
+    }
+
+    get uri() {
+        return this.#uri || null;
+    }
+
+    set uri(uri) {
+        if (uri === this.#uri)
+            return;
+        this.#uri = uri;
+        this.notify('uri');
+        GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
+            this.#updateThumbnail();
+            return GLib.SOURCE_REMOVE;
+        });
     }
 
     #setupSize() {
@@ -51,9 +68,9 @@ var BackgroundButton = GObject.registerClass({
         if (monitor.width_mm === 0 || monitor.height_mm === 0)
             return;
         if (monitor.width_mm > monitor.height_mm)
-            this.thumb_height *= monitor.height_mm / monitor.width_mm;
+            this.thumbHeight *= monitor.height_mm / monitor.width_mm;
         else
-            this.thumb_width *= monitor.width_mm / monitor.height_mm;
+            this.thumbWidth *= monitor.width_mm / monitor.height_mm;
     }
 
     #setupDropTarget() {
@@ -113,15 +130,17 @@ var BackgroundButton = GObject.registerClass({
         this.openFileChooser();
     }
 
-    getThumbnail(_widget, uri, width, height) {
-        if (!uri)
-            return null;
+    #updateThumbnail() {
+        this._thumbnail.paintable = null;
 
-        const file = Gio.File.new_for_uri(uri);
+        if (!this.uri)
+            return;
+
+        const file = Gio.File.new_for_uri(this.uri);
         const contentType = Gio.content_type_guess(file.get_basename(), null)[0];
 
         if (!this.#isContentTypeSupported(contentType))
-            return null;
+            return;
 
         let path;
         if (Gio.content_type_equals(contentType, 'application/xml')) {
@@ -129,26 +148,28 @@ var BackgroundButton = GObject.registerClass({
             const contents = decoder.decode(file.load_contents(null)[1]);
             try {
                 path = contents.match(/<file>(.+)<\/file>/m)[1];
+                if (!this.#isContentTypeSupported(Gio.content_type_guess(path, null)[0]))
+                    throw new Error();
             } catch (e) {
-                console.error(e);
-                return null;
+                console.error(`[${Me.metadata.name}] No suitable background file found in ${file.get_path()}`);
+                return;
             }
         } else {
             path = file.get_path();
         }
 
         const pixbuf = GdkPixbuf.Pixbuf.new_from_file(path);
-        const scale = pixbuf.width / pixbuf.height > width / height ? height / pixbuf.height : width / pixbuf.width;
-        const thumbPixbuf = GdkPixbuf.Pixbuf.new(pixbuf.colorspace, pixbuf.has_alpha, pixbuf.bits_per_sample, width, height);
+        const scale = pixbuf.width / pixbuf.height > this.thumbWidth / this.thumbHeight ? this.thumbHeight / pixbuf.height : this.thumbWidth / pixbuf.width;
+        const thumbPixbuf = GdkPixbuf.Pixbuf.new(pixbuf.colorspace, pixbuf.has_alpha, pixbuf.bits_per_sample, this.thumbWidth, this.thumbHeight);
         pixbuf.scale(
             thumbPixbuf,
             0, 0,
-            width, height,
-            -(pixbuf.width * scale - width) / 2, -(pixbuf.height * scale - height) / 2,
+            this.thumbWidth, this.thumbHeight,
+            -(pixbuf.width * scale - this.thumbWidth) / 2, -(pixbuf.height * scale - this.thumbHeight) / 2,
             scale, scale,
             GdkPixbuf.InterpType.TILES
         );
 
-        return Gdk.Texture.new_for_pixbuf(thumbPixbuf);
+        this._thumbnail.paintable = Gdk.Texture.new_for_pixbuf(thumbPixbuf);
     }
 });

@@ -11,14 +11,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <class name="image-button"/>
     </style>
     <child>
-      <object class="GtkPicture">
-        <binding name="paintable">
-          <closure function="getThumbnail" type="GdkPaintable">
-            <lookup name="uri">BackgroundButton</lookup>
-            <lookup name="thumb-width">BackgroundButton</lookup>
-            <lookup name="thumb-height">BackgroundButton</lookup>
-          </closure>
-        </binding>
+      <object class="GtkPicture" id="thumbnail">
         <property name="can-shrink">False</property>
         <property name="width-request" bind-source="BackgroundButton" bind-property="thumb-width" bind-flags="sync-create"/>
         <property name="height-request" bind-source="BackgroundButton" bind-property="thumb-height" bind-flags="sync-create"/>
