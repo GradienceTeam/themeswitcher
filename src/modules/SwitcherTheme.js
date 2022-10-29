@@ -75,6 +75,8 @@ var SwitcherTheme = class extends Switcher {
 
     set systemSettings(settings) {
         this.#systemSettings = settings;
+        this.disable();
+        this.enable();
     }
 
     #connectSettings() {
