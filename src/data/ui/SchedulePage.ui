@@ -30,6 +30,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <property name="margin-top">12</property>
                 <property name="margin-bottom">12</property>
                 <property name="valign">center</property>
+                <signal name="notify::time" handler="onSunriseTimeChanged"/>
               </object>
             </child>
           </object>
@@ -42,6 +43,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <property name="margin-top">12</property>
                 <property name="margin-bottom">12</property>
                 <property name="valign">center</property>
+                <signal name="notify::time" handler="onSunsetTimeChanged"/>
               </object>
             </child>
           </object>
