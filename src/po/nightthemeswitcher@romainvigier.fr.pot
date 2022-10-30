@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2022-10-30 14:28+0100\n"
-=======
-"POT-Creation-Date: 2022-10-30 14:03+0100\n"
->>>>>>> d754bee (Timer: Send a notification when falling back to the manual schedule)
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
