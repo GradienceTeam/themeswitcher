@@ -12,16 +12,16 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-04-27 07:15+0000\n"
+"PO-Revision-Date: 2022-10-30 17:21+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=0;\n"
-"X-Generator: Weblate 4.12.1-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -40,6 +40,8 @@ msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
 msgstr ""
+"Arka plan değiştirme işlemi kabuk tarafından gerçekleştirilir, bu ayarlar "
+"kabuğun kullandığı görüntüleri değiştirmenize olanak tanır."
 
 #: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
@@ -105,6 +107,9 @@ msgid ""
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
 msgstr ""
+"Konumunuz geçerli gün doğumu ve gün batımı saatlerini hesaplamak için "
+"kullanılacaktır. İsterseniz elle zamanlama ayarlayabilirsiniz. Konumunuz "
+"kullanılamadığında da kullanılacaktır."
 
 #: src/data/ui/SchedulePage.ui:16
 msgid "Manual schedule"
@@ -179,35 +184,29 @@ msgid ":"
 msgstr ":"
 
 #: src/modules/Timer.js:268
-#, fuzzy
-#| msgid "Button location"
 msgid "Unknown Location"
-msgstr "Tuş konumu"
+msgstr "Bilinmeyen Konum"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
-msgstr ""
+msgstr "Koyu modu değiştirmek için elle zamanlama kullanılacaktır."
 
 #: src/modules/Timer.js:274
-#, fuzzy
-#| msgid "Manual schedule"
 msgid "Edit Manual Schedule"
-msgstr "Elle kur"
+msgstr "Elle Zamanlamayı Düzenle"
 
 #: src/modules/Timer.js:278
-#, fuzzy
-#| msgid "Extension Settings"
 msgid "Open Location Settings"
-msgstr "Eklenti Ayarları"
+msgstr "Konum Ayarlarını Aç"
 
 #: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
-msgstr ""
+msgstr "Bu görüntü biçimi desteklenmiyor."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
 msgid "Version %d"
-msgstr ""
+msgstr "Sürüm %d"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
