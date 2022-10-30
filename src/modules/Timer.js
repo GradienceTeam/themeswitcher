@@ -4,9 +4,11 @@
 const { Geoclue, Gio, GLib, GObject, Meta, Shell } = imports.gi;
 const { extensionUtils } = imports.misc;
 
-const { main } = imports.ui;
+const { main, messageTray } = imports.ui;
 
 const Me = extensionUtils.getCurrentExtension();
+
+const _ = extensionUtils.gettext;
 
 const debug = Me.imports.debug;
 
@@ -244,7 +246,7 @@ var Timer = class extends GObject.Object {
         this.#changeTime(time, true);
     }
 
-    #onGeoclueReady(_, result) {
+    #onGeoclueReady(_geoclue, result) {
         try {
             this.#geoclue = Geoclue.Simple.new_finish(result);
             this.#geoclueLocationConnectionId = this.#geoclue.connect('notify::location', this.#onLocationChanged.bind(this));
@@ -257,6 +259,29 @@ var Timer = class extends GObject.Object {
                 this.#updateSuntimes();
             } else {
                 console.error(`[${Me.metadata.name}] Unable to retrieve the location, using the manual schedule times instead.\n${e}`);
+
+                const source = new messageTray.Source(Me.metadata.name, 'dialog-information-symbolic');
+                main.messageTray.add(source);
+
+                const notification = new messageTray.Notification(
+                    source,
+                    _('Unknown Location'),
+                    _('A manual schedule will be used to switch the dark mode.'),
+                    {
+                        gicon: Gio.icon_new_for_string(GLib.build_filenamev([Me.path, 'icons', 'nightthemeswitcher-symbolic.svg'])),
+                    }
+                );
+                notification.addAction(_('Edit Manual Schedule'), () => extensionUtils.openPrefs());
+
+                const locationSettingsApp = Shell.AppSystem.get_default().lookup_app('gnome-location-panel.desktop');
+                if (locationSettingsApp)
+                    notification.addAction(_('Open Location Settings'), () => locationSettingsApp.activate());
+
+                notification.connect('activated', () => extensionUtils.openPrefs());
+
+                source.showNotification(notification);
+
+                this.#settings.set_boolean('manual-schedule', true);
             }
         }
     }

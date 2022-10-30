@@ -22,6 +22,9 @@ main = [
 enums = [
   'enums/Time.js',
 ]
+icons = [
+  'data/icons/nightthemeswitcher-symbolic.svg',
+]
 modules = [
   'modules/Switcher.js',
   'modules/SwitcherCommands.js',
@@ -43,6 +46,7 @@ preferences = [
 
 install_data(main, install_dir: INSTALL_DIR)
 install_data(enums, install_dir: INSTALL_DIR / 'enums')
+install_data(icons, install_dir: INSTALL_DIR / 'icons')
 install_data(modules, install_dir: INSTALL_DIR / 'modules')
 install_data(preferences, install_dir: INSTALL_DIR / 'preferences')
 
