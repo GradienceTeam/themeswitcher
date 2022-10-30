@@ -151,7 +151,7 @@ var BackgroundButton = GObject.registerClass({
                 if (!this.#isContentTypeSupported(Gio.content_type_guess(path, null)[0]))
                     throw new Error();
             } catch (e) {
-                console.error(`[${Me.metadata.name}] No suitable background file found in ${file.get_path()}`);
+                console.error(`[${Me.metadata.name}] No suitable background file found in ${file.get_path()}.\n${e}`);
                 return;
             }
         } else {

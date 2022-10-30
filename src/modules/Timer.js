@@ -253,10 +253,10 @@ var Timer = class extends GObject.Object {
         } catch (e) {
             const [latitude, longitude] = this.#settings.get_value('location').deepUnpack();
             if (latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180) {
-                console.error(`[${Me.metadata.name}] Unable to retrieve the location, using the last known location instead.`);
+                console.error(`[${Me.metadata.name}] Unable to retrieve the location, using the last known location instead.\n${e}`);
                 this.#updateSuntimes();
             } else {
-                console.error(`[${Me.metadata.name}] Unable to retrieve the location, using the manual schedule times instead.`);
+                console.error(`[${Me.metadata.name}] Unable to retrieve the location, using the manual schedule times instead.\n${e}`);
             }
         }
     }
