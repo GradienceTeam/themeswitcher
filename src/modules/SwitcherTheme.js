@@ -74,6 +74,8 @@ var SwitcherTheme = class extends Switcher {
     }
 
     set systemSettings(settings) {
+        if (settings === this.#systemSettings)
+            return;
         this.#systemSettings = settings;
         this.disable();
         this.enable();
@@ -183,6 +185,7 @@ var SwitcherThemeIcon = class extends SwitcherTheme {
 
 var SwitcherThemeShell = class extends SwitcherTheme {
     #settings;
+    #extensionManagerConnection = null;
 
     constructor({ timer }) {
         const settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.shell-variants`);
@@ -194,8 +197,20 @@ var SwitcherThemeShell = class extends SwitcherTheme {
             themeKey: 'name',
             noSettingsUpdateSystemThemeCallback: time => this.#noSettingsUpdateSystemThemeCallback(time),
         });
-        extensionManager.connect('extension-state-changed', this.#onExtensionStateChanged.bind(this));
         this.#settings = settings;
+    }
+
+    enable() {
+        super.enable();
+        this.#extensionManagerConnection = extensionManager.connect('extension-state-changed', this.#onExtensionStateChanged.bind(this));
+    }
+
+    disable() {
+        super.disable();
+        if (this.#extensionManagerConnection) {
+            extensionManager.disconnect(this.#extensionManagerConnection);
+            this.#extensionManagerConnection = null;
+        }
     }
 
     #noSettingsUpdateSystemThemeCallback(time) {
