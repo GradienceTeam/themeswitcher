@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-05-25 22:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/night-"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Change background"
 msgstr "Dag-bakgrunn"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "Velg ditt bakgrunnsbilde"
 
@@ -70,7 +70,7 @@ msgstr "Soloppgang"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Hei solskinn.\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "Solnedgang"
 
@@ -110,7 +110,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Manuell timeplan"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "Tastatursnarvei"
 
@@ -191,7 +191,28 @@ msgstr "Natt-pekerdrakt"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "Knappeposisjon"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Manuell timeplan"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+msgid "Open Location Settings"
+msgstr "Ingen innstillinger"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr ""
 
@@ -427,18 +448,11 @@ msgstr "Forvalg"
 #~ msgstr ""
 #~ "Disse innstillingene har kun innvirkning når tidskilde er behovsprøvd."
 
-#~ msgid "Button location"
-#~ msgstr "Knappeposisjon"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "Skru av nattmodus"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "Skru på nattmodus"
-
-#, fuzzy
-#~ msgid "Extension Settings"
-#~ msgstr "Ingen innstillinger"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "Nattmodus av"

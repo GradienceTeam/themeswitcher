@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-08-26 07:24+0000\n"
 "Last-Translator: citrus flavor <sugar826@outlook.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/"
-"night-theme-switcher/extension/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/night-theme-"
+"switcher/extension/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Change background"
 msgstr "デスクトップ背景の変更"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "背景画像を選択してください"
 
@@ -34,7 +34,8 @@ msgstr "デスクトップ背景"
 msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
-msgstr "デスクトップ背景の切り替えはシェルによって処理され、これらの設定によりデスク"
+msgstr ""
+"デスクトップ背景の切り替えはシェルによって処理され、これらの設定によりデスク"
 "トップ背景に使用する画像を変更することができます。"
 
 #: src/data/ui/BackgroundsPage.ui:16
@@ -66,7 +67,7 @@ msgstr "日の出"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"こんにちは、日光さん!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "日没"
 
@@ -109,7 +110,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "スケジュールの手動設定"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "キーボードショートカット"
 
@@ -177,7 +178,29 @@ msgstr "カーソルテーマの切り替え"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "ボタンの位置"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "スケジュールの手動設定"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "拡張機能の設定"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr "この画像形式は利用できません。"
 
@@ -402,17 +425,11 @@ msgstr "デフォルト"
 #~ "これらの設定は、手動切り替えを時刻のソースとして使用している場合にのみ適用"
 #~ "されます。"
 
-#~ msgid "Button location"
-#~ msgstr "ボタンの位置"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "夜間モードをオフにする"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "夜間モードをオンにする"
-
-#~ msgid "Extension Settings"
-#~ msgstr "拡張機能の設定"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "夜間モードはオフです"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "Change background"
 msgstr ""
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr ""
 msgid "notify-send \"Hello sunshine!\""
 msgstr ""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr ""
 
@@ -102,7 +102,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr ""
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr ""
 
@@ -165,7 +165,23 @@ msgstr ""
 msgid ":"
 msgstr ""
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+msgid "Unknown Location"
+msgstr ""
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+msgid "Edit Manual Schedule"
+msgstr ""
+
+#: src/modules/Timer.js:278
+msgid "Open Location Settings"
+msgstr ""
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr ""
 

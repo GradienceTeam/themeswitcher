@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-04-27 09:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/night-theme-"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Change background"
 msgstr "Zmień tło"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "Wybierz swoje tło"
 
@@ -68,7 +68,7 @@ msgstr "Wschód słońca"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Witaj słońce!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "Zachód słońca"
 
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Manualny harmonogram"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "Śkrót klawiaturowy"
 
@@ -177,7 +177,29 @@ msgstr "Zmiana motywu kursora"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "Lokalizacja przycisku"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Manualny harmonogram"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "Ustawienia rozszerzenia"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr ""
 
@@ -401,17 +423,11 @@ msgstr "Domyślny"
 #~ msgid "These settings only apply when using the on-demand time source."
 #~ msgstr "Te ustawienia będą stosowane gdy tryb ręczny wyznacza porę dnia."
 
-#~ msgid "Button location"
-#~ msgstr "Lokalizacja przycisku"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "Wyłącz tryb nocny"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "Włącz tryb nocny"
-
-#~ msgid "Extension Settings"
-#~ msgstr "Ustawienia rozszerzenia"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "Tryb nocny wyłączony"

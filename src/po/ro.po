@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2021-10-31 21:35+0000\n"
 "Last-Translator: Andrei LAZAROV <andrei_lazarov@yahoo.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/night-theme-"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Change background"
 msgstr ""
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 msgid "notify-send \"Hello sunshine!\""
 msgstr ""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr ""
 
@@ -106,7 +106,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Programare manuală"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr ""
 
@@ -177,7 +177,27 @@ msgstr "Activează tema de zi"
 msgid ":"
 msgstr ""
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+msgid "Unknown Location"
+msgstr ""
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Programare manuală"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Location Services"
+msgid "Open Location Settings"
+msgstr "Servicii de locație"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr ""
 
@@ -216,9 +236,6 @@ msgstr "Implicit"
 
 #~ msgid "On-demand"
 #~ msgstr "Manual"
-
-#~ msgid "Location Services"
-#~ msgstr "Servicii de locație"
 
 #~ msgid "Switch GTK variants"
 #~ msgstr "Schimbă variantele GTK"

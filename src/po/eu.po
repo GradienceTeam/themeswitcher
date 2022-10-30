@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-07-31 08:31+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/night-theme-"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Change background"
 msgstr "Aldatu fondoa"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "Hautatu hondoko irudia"
 
@@ -65,7 +65,7 @@ msgstr "Egunsentia"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"egunon!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "Ilunabarra"
 
@@ -105,7 +105,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Eskuzko ordutegia"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "Teklatuaren lasterbidea"
 
@@ -173,7 +173,29 @@ msgstr "Aldatu kurtsorearen itxura"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "Botoiaren kokapena"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Eskuzko ordutegia"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "Hedapenaren ezarpenak"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr ""
 
@@ -405,17 +427,11 @@ msgstr "Lehenetsita"
 #~ "Hobespena horiek kartan denbora-iturria erabiltzen denean soilik "
 #~ "aplikatzen dira."
 
-#~ msgid "Button location"
-#~ msgstr "Botoiaren kokapena"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "Gaueko modua desaktibatu"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "Gaueko modua aktibatu"
-
-#~ msgid "Extension Settings"
-#~ msgstr "Hedapenaren ezarpenak"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "Gaueko modua desaktibatuta"

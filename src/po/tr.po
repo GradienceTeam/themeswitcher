@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-04-27 07:15+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/night-theme-"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Change background"
 msgstr "Arka planı değiştir"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "Arka plan görüntünüzü seçin"
 
@@ -70,7 +70,7 @@ msgstr "Gün doğumu"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Merhaba gün ışığı!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "Gün batımı"
 
@@ -110,7 +110,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Elle kur"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "Klavye kısayolu"
 
@@ -178,7 +178,29 @@ msgstr "İmleç temasını değiştir"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "Tuş konumu"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Elle kur"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "Eklenti Ayarları"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr ""
 
@@ -403,17 +425,11 @@ msgstr "Öntanımlı"
 #~ msgstr ""
 #~ "Bu ayarlar yalnızca isteğe bağlı zaman kaynağı kullanıldığında geçerlidir."
 
-#~ msgid "Button location"
-#~ msgstr "Tuş konumu"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "Gece Modunu Kapat"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "Gece Modunu Aç"
-
-#~ msgid "Extension Settings"
-#~ msgstr "Eklenti Ayarları"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "Gece Modu Kapalı"

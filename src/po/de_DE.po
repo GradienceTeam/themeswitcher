@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 45\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-04-27 09:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/night-theme-"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Change background"
 msgstr "Hintergrundbild wechseln"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "Hintergrundbild wählen"
 
@@ -71,7 +71,7 @@ msgstr "Sonnenaufgang"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Hallo Sonnenschein!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "Sonnenuntergang"
 
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Manueller Zeitplan"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "Tastaturkürzel"
 
@@ -180,7 +180,29 @@ msgstr "Mauszeiger-Theme wechseln"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "Schaltflächenposition"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Manueller Zeitplan"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "Erweiterungseinstellungen"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr ""
 
@@ -411,17 +433,11 @@ msgstr "Standard"
 #~ "Diese Einstellungen werden nur aktiv wenn On-Demand als Zeitquelle "
 #~ "gesetzt ist."
 
-#~ msgid "Button location"
-#~ msgstr "Schaltflächenposition"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "Nachtmodus deaktivieren"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "Nachtmodus aktivieren"
-
-#~ msgid "Extension Settings"
-#~ msgstr "Erweiterungseinstellungen"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "Nachtmodus Aus"

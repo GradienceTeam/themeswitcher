@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-08-31 17:20+0000\n"
 "Last-Translator: Sean Wang <s921840129@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Change background"
 msgstr "變更背景"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "選擇您的背景圖片"
 
@@ -66,7 +66,7 @@ msgstr "日出"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"陽光你好\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "日落"
 
@@ -100,14 +100,15 @@ msgid ""
 "Your location will be used to calculate the current sunrise and sunset "
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
-msgstr "您的位置會被用於計算日出和日落時間。您也可以設置手動排程。無法取得您的位置時"
-"，亦會使用手動排程。"
+msgstr ""
+"您的位置會被用於計算日出和日落時間。您也可以設置手動排程。無法取得您的位置"
+"時，亦會使用手動排程。"
 
 #: src/data/ui/SchedulePage.ui:16
 msgid "Manual schedule"
 msgstr "手動排程"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "鍵盤快捷鍵"
 
@@ -131,8 +132,9 @@ msgstr "主題"
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
-msgstr "本擴充套件使用 GNOME "
-"內建的深色模式。除非是為了支援舊版應用程式，不然不建議手動切換主題。"
+msgstr ""
+"本擴充套件使用 GNOME 內建的深色模式。除非是為了支援舊版應用程式，不然不建議手"
+"動切換主題。"
 
 #: src/data/ui/ThemesPage.ui:30
 msgid "Switch GTK theme"
@@ -142,7 +144,8 @@ msgstr "更改 GTK 主題"
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
-msgstr "於不支援的應用程式中強制使用深色主題可能產生不良的後果。例如無法閱讀的文字或"
+msgstr ""
+"於不支援的應用程式中強制使用深色主題可能產生不良的後果。例如無法閱讀的文字或"
 "看不見的圖示。"
 
 #: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
@@ -172,7 +175,25 @@ msgstr "切換游標主題"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+msgid "Unknown Location"
+msgstr ""
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "手動排程"
+
+#: src/modules/Timer.js:278
+msgid "Open Location Settings"
+msgstr ""
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr "不支援此圖像格式。"
 

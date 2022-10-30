@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-09-18 22:21+0000\n"
 "Last-Translator: Omar TS <ots@duck.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/"
-"night-theme-switcher/extension/ar/>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/night-theme-"
+"switcher/extension/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Change background"
 msgstr "غيّر الخلفية"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "حدد صورة الخلفية الخاصة بك"
 
@@ -71,7 +71,7 @@ msgstr "شروق الشمس"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "أخطر وأرسل \"أهلا بشروق الشمس!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "غروب الشمس"
 
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "الجدولة اليدوية"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "اختصار لوحة المفاتيح"
 
@@ -180,7 +180,29 @@ msgstr "تبديل مؤشر السمة"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "زر الموقع"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "الجدولة اليدوية"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "إعدادات الامتداد"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr "تنسيق الصورة هذا غير مدعوم."
 
@@ -398,17 +420,11 @@ msgstr "الافتراضي"
 #~ msgid "These settings only apply when using the on-demand time source."
 #~ msgstr "تنطبق هذه الإعدادات فقط عند استخدام مصدر الوقت عند الطلب."
 
-#~ msgid "Button location"
-#~ msgstr "زر الموقع"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "قم بإيقاف تشغيل الوضع الليلي"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "قم بتشغيل الوضع الليلي"
-
-#~ msgid "Extension Settings"
-#~ msgstr "إعدادات الامتداد"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "الوضع الليلي معطل"

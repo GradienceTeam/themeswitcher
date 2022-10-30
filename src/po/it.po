@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-09-25 17:15+0000\n"
 "Last-Translator: Davide <davide.ferracin@protonmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/"
-"night-theme-switcher/extension/it/>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/night-theme-"
+"switcher/extension/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Change background"
 msgstr "Cambia lo sfondo"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "Scegliere l'immagine di sfondo"
 
@@ -68,7 +68,7 @@ msgstr "Alba"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Buongiorno!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "Tramonto"
 
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Programmazione manuale"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "Scorciatoia da tastiera"
 
@@ -178,7 +178,29 @@ msgstr "Cambia il tema del cursore"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "Posizione del pulsante"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Programmazione manuale"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "Impostazioni dell'estensione"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr "Questo formato d'immagine non è supportato."
 
@@ -408,17 +430,11 @@ msgstr "Predefinita"
 #~ "Queste impostazioni si applicano solo quando la modalità a comando è "
 #~ "attiva."
 
-#~ msgid "Button location"
-#~ msgstr "Posizione del pulsante"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "Disattiva modalità notturna"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "Attiva modalità notturna"
-
-#~ msgid "Extension Settings"
-#~ msgstr "Impostazioni dell'estensione"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "Modalità notturna non attiva"

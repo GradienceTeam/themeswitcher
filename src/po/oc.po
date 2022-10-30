@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-09-15 17:17+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
-"Language-Team: Occitan <https://hosted.weblate.org/projects/"
-"night-theme-switcher/extension/oc/>\n"
+"Language-Team: Occitan <https://hosted.weblate.org/projects/night-theme-"
+"switcher/extension/oc/>\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Change background"
 msgstr "Cambiar lo rèireplan"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "Seleccionar l’imatge de rèireplan"
 
@@ -67,7 +67,7 @@ msgstr "Sortida del solelh"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Adieusiatz !\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "Solelh colc"
 
@@ -110,7 +110,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Orari manual"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "Acorchi de clavièr"
 
@@ -179,7 +179,27 @@ msgstr "Cambiar lo tèma del cursor"
 msgid ":"
 msgstr "h"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+msgid "Unknown Location"
+msgstr ""
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Orari manual"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "Preferéncias de l’extension"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr "Aqueste format d’imatge es pas pres en carga."
 
@@ -206,9 +226,6 @@ msgstr "Per defaut"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "Activar lo mòde nuèch"
-
-#~ msgid "Extension Settings"
-#~ msgstr "Preferéncias de l’extension"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "Mòde nucèh desactivat"

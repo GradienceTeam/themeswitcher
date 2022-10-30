@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-04-27 09:16+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Change background"
 msgstr "更换背景"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "选择您要用的背景图片"
 
@@ -67,7 +67,7 @@ msgstr "日出"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"漱正阳而含朝霞\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "日落"
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "手动安排"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "键盘快捷键"
 
@@ -174,7 +174,29 @@ msgstr "切换指针主题"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "按钮位置"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "手动安排"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "扩展程序设置"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr ""
 
@@ -389,17 +411,11 @@ msgstr "默认"
 #~ msgid "These settings only apply when using the on-demand time source."
 #~ msgstr "这些设置仅在使用自定时间源时应用。"
 
-#~ msgid "Button location"
-#~ msgstr "按钮位置"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "关闭夜间模式"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "开启夜间模式"
-
-#~ msgid "Extension Settings"
-#~ msgstr "扩展程序设置"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "夜间模式已关闭"

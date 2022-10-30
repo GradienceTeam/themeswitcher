@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-09-25 17:15+0000\n"
 "Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/"
-"night-theme-switcher/extension/cs/>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/night-theme-"
+"switcher/extension/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Change background"
 msgstr "Změnit pozadí"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "Vyberte obrázek pozadí"
 
@@ -68,7 +68,7 @@ msgstr "Východ slunce"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Ahoj, sluníčko!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "Západ slunce"
 
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Ruční plánování"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "Klávesová zkratka"
 
@@ -179,7 +179,29 @@ msgstr "Přepnout motiv kurzoru"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "Umístění tlačítka"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Ruční plánování"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "Nastavení rozšíření"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr "Tento formát obrázku není podporován."
 
@@ -402,17 +424,11 @@ msgstr "Výchozí"
 #~ msgid "These settings only apply when using the on-demand time source."
 #~ msgstr "Tato nastavení platí pouze při použití zdroje času na vyžádání."
 
-#~ msgid "Button location"
-#~ msgstr "Umístění tlačítka"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "Vypnout noční režim"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "Zapnout tmavý režim"
-
-#~ msgid "Extension Settings"
-#~ msgstr "Nastavení rozšíření"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "Noční režim Vypnuto"

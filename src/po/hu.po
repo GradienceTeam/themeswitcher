@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 14:13+0200\n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
 "PO-Revision-Date: 2022-05-04 08:11+0000\n"
 "Last-Translator: Péter Báthory <bathory86p@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/night-theme-"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Change background"
 msgstr "Háttér megváltoztatása"
 
-#: src/data/ui/BackgroundButton.ui:31
+#: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
 msgstr "Válassza ki a háttérképet"
 
@@ -66,7 +66,7 @@ msgstr "Napfelkelte"
 msgid "notify-send \"Hello sunshine!\""
 msgstr "notify-send \"Helló, napfény!\""
 
-#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:39
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
 msgstr "Napnyugta"
 
@@ -106,7 +106,7 @@ msgstr ""
 msgid "Manual schedule"
 msgstr "Kézi ütemezés"
 
-#: src/data/ui/SchedulePage.ui:55
+#: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
 msgstr "Gyorsbillentyű"
 
@@ -174,7 +174,29 @@ msgstr "Kurzortéma átváltása"
 msgid ":"
 msgstr ":"
 
-#: src/preferences/BackgroundButton.js:69
+#: src/modules/Timer.js:268
+#, fuzzy
+#| msgid "Button location"
+msgid "Unknown Location"
+msgstr "Gomb helye"
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+#, fuzzy
+#| msgid "Manual schedule"
+msgid "Edit Manual Schedule"
+msgstr "Kézi ütemezés"
+
+#: src/modules/Timer.js:278
+#, fuzzy
+#| msgid "Extension Settings"
+msgid "Open Location Settings"
+msgstr "Kiterjesztés beállításai"
+
+#: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
 msgstr ""
 
@@ -400,17 +422,11 @@ msgstr "Alapértelmezett"
 #~ msgid "These settings only apply when using the on-demand time source."
 #~ msgstr "Ezek a beállítások csak az igény szerinti időforrásnál érvényesek."
 
-#~ msgid "Button location"
-#~ msgstr "Gomb helye"
-
 #~ msgid "Turn Night Mode Off"
 #~ msgstr "Éjszakai mód kikapcsolása"
 
 #~ msgid "Turn Night Mode On"
 #~ msgstr "Éjszakai mód bekapcsolása"
-
-#~ msgid "Extension Settings"
-#~ msgstr "Kiterjesztés beállításai"
 
 #~ msgid "Night Mode Off"
 #~ msgstr "Éjszakai mód ki"
