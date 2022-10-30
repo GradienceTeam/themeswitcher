@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-08-16 07:55+0000\n"
+"PO-Revision-Date: 2022-10-30 13:45+0000\n"
 "Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -180,26 +180,20 @@ msgid ":"
 msgstr ":"
 
 #: src/modules/Timer.js:268
-#, fuzzy
-#| msgid "Button location"
 msgid "Unknown Location"
-msgstr "Emplacement du bouton"
+msgstr "Position inconnue"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
-msgstr ""
+msgstr "Un horaire manuel sera utilisé pour permuter le mode sombre."
 
 #: src/modules/Timer.js:274
-#, fuzzy
-#| msgid "Manual schedule"
 msgid "Edit Manual Schedule"
-msgstr "Horaire manuel"
+msgstr "Modifier l’horaire manuel"
 
 #: src/modules/Timer.js:278
-#, fuzzy
-#| msgid "Extension Settings"
 msgid "Open Location Settings"
-msgstr "Préférences de l’extension"
+msgstr "Ouvrir les paramètres de localisation"
 
 #: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
