@@ -6,6 +6,20 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [70] - 2022-10-31
+
+### Added
+
+- A notification is sent when the location is unavailable and the manual schedule is used as a fallback
+
+### Changed
+
+- Updated Dutch translation by @Vistaus
+- Updated French translation
+- Updated German translation
+- Updated Turkish translation by @ersen
+
+
 ## [69] - 2022-10-29
 
 ### Fixed
