@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-08-26 07:24+0000\n"
+"PO-Revision-Date: 2022-11-02 13:32+0000\n"
 "Last-Translator: citrus flavor <sugar826@outlook.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -69,7 +69,7 @@ msgstr "notify-send \"こんにちは、日光さん!\""
 
 #: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
-msgstr "日没"
+msgstr "日の入り"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:39
@@ -179,26 +179,20 @@ msgid ":"
 msgstr ":"
 
 #: src/modules/Timer.js:268
-#, fuzzy
-#| msgid "Button location"
 msgid "Unknown Location"
-msgstr "ボタンの位置"
+msgstr "現在位置が不明です"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
-msgstr ""
+msgstr "手動設定されたスケジュールを使用してダークモードを切り替えます。"
 
 #: src/modules/Timer.js:274
-#, fuzzy
-#| msgid "Manual schedule"
 msgid "Edit Manual Schedule"
-msgstr "スケジュールの手動設定"
+msgstr "スケジュールの変更"
 
 #: src/modules/Timer.js:278
-#, fuzzy
-#| msgid "Extension Settings"
 msgid "Open Location Settings"
-msgstr "拡張機能の設定"
+msgstr "位置情報の設定を開く"
 
 #: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
