@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the nightthemeswitcher@romainvigier.fr package.
 # Davide <davide.ferracin@protonmail.com>, 2022.
 # Romain Vigier <romain@romainvigier.fr>, 2022.
+# Andrea Brandi <git@andreabrandi.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-09-25 17:15+0000\n"
-"Last-Translator: Davide <davide.ferracin@protonmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/it/>\n"
+"PO-Revision-Date: 2022-11-02 13:32+0000\n"
+"Last-Translator: Andrea Brandi <git@andreabrandi.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -179,30 +180,25 @@ msgid ":"
 msgstr ":"
 
 #: src/modules/Timer.js:268
-#, fuzzy
-#| msgid "Button location"
 msgid "Unknown Location"
-msgstr "Posizione del pulsante"
+msgstr "Posizione sconosciuta"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
 msgstr ""
+"Verrà utilizzata una pianificazione manuale per passare alla modalità scura."
 
 #: src/modules/Timer.js:274
-#, fuzzy
-#| msgid "Manual schedule"
 msgid "Edit Manual Schedule"
-msgstr "Programmazione manuale"
+msgstr "Modifica programmazione"
 
 #: src/modules/Timer.js:278
-#, fuzzy
-#| msgid "Extension Settings"
 msgid "Open Location Settings"
-msgstr "Impostazioni dell'estensione"
+msgstr "Impostazioni posizione"
 
 #: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
-msgstr "Questo formato d'immagine non è supportato."
+msgstr "Questo formato immagine non è supportato."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
