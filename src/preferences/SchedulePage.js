@@ -34,14 +34,4 @@ var SchedulePage = GObject.registerClass({
         });
         this._keyboard_shortcut_button.keybinding = settings.get_strv('nightthemeswitcher-ondemand-keybinding')[0];
     }
-
-    onSunriseTimeChanged(_chooser) {
-        if (this._schedule_sunrise_time_chooser.time >= this._schedule_sunset_time_chooser.time)
-            this._schedule_sunset_time_chooser.time = this._schedule_sunrise_time_chooser.time + 1 / 60;
-    }
-
-    onSunsetTimeChanged(_chooser) {
-        if (this._schedule_sunset_time_chooser.time <= this._schedule_sunrise_time_chooser.time)
-            this._schedule_sunrise_time_chooser.time = this._schedule_sunset_time_chooser.time - 1 / 60;
-    }
 });
