@@ -61,6 +61,12 @@ You're welcome to contribute to the code or the translations! See [CONTRIBUTING.
 
 ## Frequently asked questions
 
+### Some applications don't switch their appearance
+
+Like GNOME's built-in dark mode, the extension switches the standard freedesktop.org color scheme preference. Older applications might not follow this preference.
+
+It is possible to force a GTK theme in the extension preferences, but please note that this can visually break applications. It is better to ask the developers of the applications to support the standard preference.
+
 ### Something doesn't work on Ubuntu
 
 Unfortunately, Ubuntu ships heavily modified GNOME components to implement some features like accent colors. Because they did so in a very hacky way instead of working with upstream and other desktop projects on a proper solution, it results in a broken out of the box experience with the extension, which expects a standard environment. Not much can be done as I don't want to code workarounds on top of hacks.
