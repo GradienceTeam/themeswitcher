@@ -300,7 +300,15 @@ var Timer = class extends GObject.Object {
         const sunset = this.#settings.get_double('sunset');
         const datetime = GLib.DateTime.new_now_local();
         const hour = datetime.get_hour() + datetime.get_minute() / 60 + datetime.get_second() / 3600;
-        return hour >= sunrise && hour <= sunset ? Time.DAY : Time.NIGHT;
+
+        // Regular schedule
+        if (sunrise < sunset)
+            return hour >= sunrise && hour < sunset ? Time.DAY : Time.NIGHT;
+        // Sunset happens on the day after
+        else if (sunrise > sunset)
+            return hour >= sunrise || hour < sunset ? Time.DAY : Time.NIGHT;
+        else
+            return Time.DAY;
     }
 
     #updateSuntimes() {
