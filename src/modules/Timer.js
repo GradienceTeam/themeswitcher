@@ -350,9 +350,11 @@ var Timer = class extends GObject.Object {
         const timeSunrise = solarNoon - haSunrise * 4 / 1440;
         const timeSunset = solarNoon + haSunrise * 4 / 1440;
 
+        const modulo = (n, m) => ((n % m) + m) % m;
+
         const offset = this.#settings.get_double('offset');
-        const sunrise = timeSunrise * 24 + offset;
-        const sunset = timeSunset * 24 - offset;
+        const sunrise = modulo(timeSunrise * 24 + offset, 24);
+        const sunset = modulo(timeSunset * 24 - offset, 24);
 
         this.#settings.set_double('sunrise', sunrise);
         this.#settings.set_double('sunset', sunset);

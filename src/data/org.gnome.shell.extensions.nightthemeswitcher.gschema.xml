@@ -72,15 +72,18 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<default>false</default>
 		</key>
 		<key name="sunrise" type="d">
+			<range min="0" max="24"/>
 			<default>6</default>
 		</key>
 		<key name="sunset" type="d">
+			<range min="0" max="24"/>
 			<default>20</default>
 		</key>
 		<key name="location" type="(dd)">
 			<default>(91,181)</default>
 		</key>
 		<key name="offset" type="d">
+			<range min="0" max="24"/>
 			<default>0.4</default>
 		</key>
 	</schema>
