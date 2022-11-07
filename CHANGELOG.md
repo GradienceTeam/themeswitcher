@@ -6,6 +6,19 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [71] - 2022-11-07
+
+### Changed
+
+- Updated Czech translation by @wolf-wolf
+- Updated Italian translation by @starise
+- Updated Japanese translation by citrus flavor
+
+### Fixed
+
+- Schedules with sunrise or sunset on a different day are now supported
+
+
 ## [70] - 2022-10-31
 
 ### Added
