@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-04-27 09:16+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"PO-Revision-Date: 2022-11-09 14:46+0000\n"
+"Last-Translator: poi <erbaotao@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -36,7 +36,7 @@ msgstr "背景"
 msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
-msgstr ""
+msgstr "背景切换由 Shell 控制，这里选择的图像将由 Shell 进行切换。"
 
 #: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
@@ -101,7 +101,8 @@ msgid ""
 "Your location will be used to calculate the current sunrise and sunset "
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
-msgstr ""
+msgstr "每天日出日落的时间会根据您所在的地理位置进行推算，您也可以转而选择手动安排时"
+"间。地理位置未知时，也会按照手动安排的进行。"
 
 #: src/data/ui/SchedulePage.ui:16
 msgid "Manual schedule"
@@ -175,35 +176,29 @@ msgid ":"
 msgstr ":"
 
 #: src/modules/Timer.js:268
-#, fuzzy
-#| msgid "Button location"
 msgid "Unknown Location"
-msgstr "按钮位置"
+msgstr "地理位置未知"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
-msgstr ""
+msgstr "会依照手动安排切换深色模式。"
 
 #: src/modules/Timer.js:274
-#, fuzzy
-#| msgid "Manual schedule"
 msgid "Edit Manual Schedule"
-msgstr "手动安排"
+msgstr "手动进行安排"
 
 #: src/modules/Timer.js:278
-#, fuzzy
-#| msgid "Extension Settings"
 msgid "Open Location Settings"
-msgstr "扩展程序设置"
+msgstr "打开地理位置设置"
 
 #: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
-msgstr ""
+msgstr "这种图像格式不能使用。"
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
 msgid "Version %d"
-msgstr ""
+msgstr "%d 版"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
