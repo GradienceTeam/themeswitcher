@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-08-31 17:20+0000\n"
+"PO-Revision-Date: 2022-11-23 03:47+0000\n"
 "Last-Translator: Sean Wang <s921840129@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/zh_Hant/>\n"
-"Language: zh_Hant\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -177,21 +177,19 @@ msgstr ":"
 
 #: src/modules/Timer.js:268
 msgid "Unknown Location"
-msgstr ""
+msgstr "未知位置"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
 msgstr ""
 
 #: src/modules/Timer.js:274
-#, fuzzy
-#| msgid "Manual schedule"
 msgid "Edit Manual Schedule"
-msgstr "手動排程"
+msgstr "編輯手動排程"
 
 #: src/modules/Timer.js:278
 msgid "Open Location Settings"
-msgstr ""
+msgstr "開啟位置設定"
 
 #: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
