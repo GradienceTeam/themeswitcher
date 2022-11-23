@@ -69,16 +69,9 @@ It is possible to force a GTK theme in the extension preferences, but please not
 
 ### Something doesn't work on Ubuntu
 
-Unfortunately, Ubuntu ships heavily modified GNOME components to implement some features like accent colors. Because they did so in a very hacky way instead of working with upstream and other desktop projects on a proper solution, it results in a broken out of the box experience with the extension, which expects a standard environment. Not much can be done as I don't want to code workarounds on top of hacks.
+Unfortunately, Ubuntu ships heavily modified GNOME components to implement some of its features, like accent colors. Because it does so in a very hacky way instead of working with upstream and other desktop projects on a proper solution, it conflicts with anything that deals with the color scheme and themes, and results in a broken experience with the extension.
 
-To mitigate that, please:
-
-- Enable GTK theme switching in the extension preferences and choose the themes with your desired accent color
-- Enable Shell theme switching in the extension preferences and choose the themes with your desired accent color
-
-You'll have to do that again whenever you want to change your accent color.
-
-If after following these steps, something still isn't working, please open a new issue.
+As the issue is in Ubuntu, and because I don't have the energy nor the will to work around the consequences of their decisions, unfortunately Ubuntu is not supported until it provides a standard GNOME environment.
 
 ### Switching happens too early/too late
 
