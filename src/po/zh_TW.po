@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-11-23 03:47+0000\n"
+"PO-Revision-Date: 2022-12-06 06:47+0000\n"
 "Last-Translator: Sean Wang <s921840129@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/zh_Hant/>\n"
@@ -181,7 +181,7 @@ msgstr "未知位置"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
-msgstr ""
+msgstr "手動排程將被用於切換深色模式。"
 
 #: src/modules/Timer.js:274
 msgid "Edit Manual Schedule"
