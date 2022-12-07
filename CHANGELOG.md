@@ -6,6 +6,16 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [72] - 2022-12-07
+
+### Changed
+
+- Updated Chinese (Simplified) translation by @poipoipoipoipoipoipoipoipoi
+- Updated Chinese (Traditional) translation by Sean Wang
+- Updated Occitan translation by @quenty_occitania
+- Updated Russian translation by @daudix-UFO
+
+
 ## [71] - 2022-11-07
 
 ### Changed
