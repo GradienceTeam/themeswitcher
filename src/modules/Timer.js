@@ -121,16 +121,19 @@ var Timer = class extends GObject.Object {
         });
         this.#settingsConnections.push({
             settings: this.#settings,
-            id: this.#settings.connect('changed::offset', this.#onOffsetChanged.bind(this)),
-        });
-        this.#settingsConnections.push({
-            settings: this.#settings,
             id: this.#settings.connect('changed::nightthemeswitcher-ondemand-keybinding', this.#onOndemandKeybindingChanged.bind(this)),
         });
         this.#settingsConnections.push({
             settings: this.#interfaceSettings,
             id: this.#interfaceSettings.connect('changed::color-scheme', this.#onColorSchemeChanged.bind(this)),
         });
+        // Only listen to the offset setting when not using a manual schedule
+        if (!this.#settings.get_boolean('manual-schedule')) {
+            this.#settingsConnections.push({
+                settings: this.#settings,
+                id: this.#settings.connect('changed::offset', this.#onOffsetChanged.bind(this)),
+            });
+        }
     }
 
     #disconnectSettings() {
