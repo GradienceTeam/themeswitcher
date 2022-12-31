@@ -2,7 +2,7 @@
 # Copyright (C) 2019, 2020 Romain Vigier
 # This file is distributed under the same license as the Night Theme Switcher package.
 # Romain Vigier <>, 2019, 2020.
-# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2020, 2021, 2022.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2020, 2021, 2022, 2023.
 # Romain Vigier <romain@romainvigier.fr>, 2022.
 # gallegonovato <fran-carro@hotmail.es>, 2022.
 msgid ""
@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Night Theme Switcher 43\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-12-10 19:47+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2023-01-01 15:51+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/es/>\n"
 "Language: es\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -187,11 +187,11 @@ msgstr "Ubicación desconocida"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
-msgstr "Se utilizará un programa manual para cambiar al modo oscuro."
+msgstr "Se usará un horario manual para cambiar al modo oscuro."
 
 #: src/modules/Timer.js:274
 msgid "Edit Manual Schedule"
-msgstr "Editar el horario manualmente"
+msgstr "Editar horario manualmente"
 
 #: src/modules/Timer.js:278
 msgid "Open Location Settings"
