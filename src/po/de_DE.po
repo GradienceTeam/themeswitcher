@@ -8,13 +8,14 @@
 # Kepler 69c <schmittfranz20@gmail.com>, 2021.
 # eladyn <eladyn@protonmail.com>, 2022.
 # sal0max <msal.coding@gmail.com>, 2022.
+# Oleg Lavrovsky <ol@utou.ch>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher 45\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-10-31 08:30+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
+"PO-Revision-Date: 2023-01-06 13:50+0000\n"
+"Last-Translator: Oleg Lavrovsky <ol@utou.ch>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/"
 "night-theme-switcher/extension/de/>\n"
 "Language: de_DE\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -187,26 +188,20 @@ msgid ":"
 msgstr ":"
 
 #: src/modules/Timer.js:268
-#, fuzzy
-#| msgid "Button location"
 msgid "Unknown Location"
-msgstr "Schaltflächenposition"
+msgstr "Unbekannte Position"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
-msgstr ""
+msgstr "Der Dunkelmodus wird nach einem manuellen Zeitplan umgeschaltet."
 
 #: src/modules/Timer.js:274
-#, fuzzy
-#| msgid "Manual schedule"
 msgid "Edit Manual Schedule"
-msgstr "Manueller Zeitplan"
+msgstr "Manueller Zeitplan bearbeiten"
 
 #: src/modules/Timer.js:278
-#, fuzzy
-#| msgid "Extension Settings"
 msgid "Open Location Settings"
-msgstr "Erweiterungseinstellungen"
+msgstr "Ortseinstellungen"
 
 #: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
