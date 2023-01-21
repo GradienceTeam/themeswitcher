@@ -7,89 +7,94 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-01-21 17:42+0000\n"
+"Last-Translator: Stefan Marinov <smarnv@dnl.sk>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15.1\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
-msgstr ""
+msgstr "Промяна на фоново изображение"
 
 #: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
-msgstr ""
+msgstr "Избор на фоново изображение"
 
 #: src/data/ui/BackgroundsPage.ui:9
 msgid "Backgrounds"
-msgstr ""
+msgstr "Фонове"
 
 #: src/data/ui/BackgroundsPage.ui:13
 msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
 msgstr ""
+"Смяната на фона се прави от GNOME средата. Тези настройки променят "
+"използваните за тази цел изображения."
 
 #: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
-msgstr ""
+msgstr "Дневен фон"
 
 #: src/data/ui/BackgroundsPage.ui:29
 msgid "Night background"
-msgstr ""
+msgstr "Нощен фон"
 
 #: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
 msgid "Clear"
-msgstr ""
+msgstr "Изчисти"
 
 #: src/data/ui/CommandsPage.ui:9
 msgid "Commands"
-msgstr ""
+msgstr "Команди"
 
 #: src/data/ui/CommandsPage.ui:13
 msgid "Run commands"
-msgstr ""
+msgstr "Изпълнение на команди"
 
 #: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:27
 msgid "Sunrise"
-msgstr ""
+msgstr "Изгрев"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:25
 msgid "notify-send \"Hello sunshine!\""
-msgstr ""
+msgstr "notify-send \"Добро утро!\""
 
 #: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
-msgstr ""
+msgstr "Залез"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:39
 msgid "notify-send \"Hello moonshine!\""
-msgstr ""
+msgstr "notify-send \"Добър вечер!\""
 
 #: src/data/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "Подкрепа"
 
 #: src/data/ui/ContributePage.ui:55
 msgid "View the code and report issues"
-msgstr ""
+msgstr "Виж изходния код или съобщи за проблеми"
 
 #: src/data/ui/ContributePage.ui:68
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "Помогни с превода"
 
 #: src/data/ui/ContributePage.ui:81
 msgid "Support me with a donation"
-msgstr ""
+msgstr "Помогни с дарение"
 
 #: src/data/ui/SchedulePage.ui:9
 msgid "Schedule"
-msgstr ""
+msgstr "Разписание"
 
 #: src/data/ui/SchedulePage.ui:13
 msgid ""
@@ -97,68 +102,78 @@ msgid ""
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
 msgstr ""
+"Вашето местоположение ще бъде използвано за пресмятане на текущите времена "
+"на изгрев и залез на Слънцето. Ако предпочитате, можете да изберете "
+"разписанието и ръчно. Ще бъде използвано и когато местоположението не е "
+"налично."
 
 #: src/data/ui/SchedulePage.ui:16
 msgid "Manual schedule"
-msgstr ""
+msgstr "Ръчно зададено разписание"
 
 #: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
-msgstr ""
+msgstr "Клавишна комбинация"
 
 #: src/data/ui/ShortcutButton.ui:15
 msgid "Choose…"
-msgstr ""
+msgstr "Избор…"
 
 #: src/data/ui/ShortcutButton.ui:32
 msgid "Change keyboard shortcut"
-msgstr ""
+msgstr "Смяна на клавишна комбинация"
 
 #: src/data/ui/ShortcutButton.ui:78
 msgid "Press your keyboard shortcut…"
-msgstr ""
+msgstr "Въведете новата клавишна комбинация…"
 
 #: src/data/ui/ThemesPage.ui:9
 msgid "Themes"
-msgstr ""
+msgstr "Теми"
 
 #: src/data/ui/ThemesPage.ui:15
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
+"GNOME предоставя вграден тъмен режим, който се използва от това разширение. "
+"Ръчната смяна на теми не се препоръчва и е достъпна тук по исторически "
+"причини."
 
 #: src/data/ui/ThemesPage.ui:30
 msgid "Switch GTK theme"
-msgstr ""
+msgstr "Смяна на GTK тема"
 
 #: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
+"Принудителното използване на тъмна тема в приложения, неразработени да я "
+"поддържат, може да има нежелани странични ефекти като нечетим текст или "
+"невидими икони."
 
 #: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
 #: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
-msgstr ""
+msgstr "Дневен стил"
 
 #: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
 #: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
-msgstr ""
+msgstr "Нощен стил"
 
 #: src/data/ui/ThemesPage.ui:47
 msgid "Switch Shell theme"
-msgstr ""
+msgstr "Смяна на темата за обвивката на GNOME"
 
 #: src/data/ui/ThemesPage.ui:63
 msgid "Switch icon theme"
-msgstr ""
+msgstr "Смяна на темата за иконите"
 
 #: src/data/ui/ThemesPage.ui:79
 msgid "Switch cursor theme"
-msgstr ""
+msgstr "Смяна на темата за курсора"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
