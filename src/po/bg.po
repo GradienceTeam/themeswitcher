@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the nightthemeswitcher@romainvigier.fr package.
+# Stefan Marinov <smarnv@dnl.sk>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-30 14:37+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/data/ui/BackgroundButton.ui:8
+msgid "Change background"
+msgstr ""
+
+#: src/data/ui/BackgroundButton.ui:24
+msgid "Select your background image"
+msgstr ""
+
+#: src/data/ui/BackgroundsPage.ui:9
+msgid "Backgrounds"
+msgstr ""
+
+#: src/data/ui/BackgroundsPage.ui:13
+msgid ""
+"Background switching is handled by the Shell, these settings allow you to "
+"change the images it uses."
+msgstr ""
+
+#: src/data/ui/BackgroundsPage.ui:16
+msgid "Day background"
+msgstr ""
+
+#: src/data/ui/BackgroundsPage.ui:29
+msgid "Night background"
+msgstr ""
+
+#: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
+msgid "Clear"
+msgstr ""
+
+#: src/data/ui/CommandsPage.ui:9
+msgid "Commands"
+msgstr ""
+
+#: src/data/ui/CommandsPage.ui:13
+msgid "Run commands"
+msgstr ""
+
+#: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:27
+msgid "Sunrise"
+msgstr ""
+
+#. Don't translate the `notify-send` command.
+#: src/data/ui/CommandsPage.ui:25
+msgid "notify-send \"Hello sunshine!\""
+msgstr ""
+
+#: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
+msgid "Sunset"
+msgstr ""
+
+#. Don't translate the `notify-send` command.
+#: src/data/ui/CommandsPage.ui:39
+msgid "notify-send \"Hello moonshine!\""
+msgstr ""
+
+#: src/data/ui/ContributePage.ui:9
+msgid "Contribute"
+msgstr ""
+
+#: src/data/ui/ContributePage.ui:55
+msgid "View the code and report issues"
+msgstr ""
+
+#: src/data/ui/ContributePage.ui:68
+msgid "Contribute to the translation"
+msgstr ""
+
+#: src/data/ui/ContributePage.ui:81
+msgid "Support me with a donation"
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:9
+msgid "Schedule"
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:13
+msgid ""
+"Your location will be used to calculate the current sunrise and sunset "
+"times. If you prefer, you can set a manual schedule. It will also be used "
+"when your location is unavailable."
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:16
+msgid "Manual schedule"
+msgstr ""
+
+#: src/data/ui/SchedulePage.ui:57
+msgid "Keyboard shortcut"
+msgstr ""
+
+#: src/data/ui/ShortcutButton.ui:15
+msgid "Choose…"
+msgstr ""
+
+#: src/data/ui/ShortcutButton.ui:32
+msgid "Change keyboard shortcut"
+msgstr ""
+
+#: src/data/ui/ShortcutButton.ui:78
+msgid "Press your keyboard shortcut…"
+msgstr ""
+
+#: src/data/ui/ThemesPage.ui:9
+msgid "Themes"
+msgstr ""
+
+#: src/data/ui/ThemesPage.ui:15
+msgid ""
+"GNOME has a built-in dark mode that the extension uses. Manually switching "
+"themes is discouraged and is only here for legacy reasons."
+msgstr ""
+
+#: src/data/ui/ThemesPage.ui:30
+msgid "Switch GTK theme"
+msgstr ""
+
+#: src/data/ui/ThemesPage.ui:31
+msgid ""
+"Forcing a dark theme on applications not designed to support it can have "
+"undesirable side-effects such as unreadable text or invisible icons."
+msgstr ""
+
+#: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
+#: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
+msgid "Day variant"
+msgstr ""
+
+#: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
+#: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
+msgid "Night variant"
+msgstr ""
+
+#: src/data/ui/ThemesPage.ui:47
+msgid "Switch Shell theme"
+msgstr ""
+
+#: src/data/ui/ThemesPage.ui:63
+msgid "Switch icon theme"
+msgstr ""
+
+#: src/data/ui/ThemesPage.ui:79
+msgid "Switch cursor theme"
+msgstr ""
+
+#. Time separator (eg. 08:27)
+#: src/data/ui/TimeChooser.ui:23
+msgid ":"
+msgstr ""
+
+#: src/modules/Timer.js:268
+msgid "Unknown Location"
+msgstr ""
+
+#: src/modules/Timer.js:269
+msgid "A manual schedule will be used to switch the dark mode."
+msgstr ""
+
+#: src/modules/Timer.js:274
+msgid "Edit Manual Schedule"
+msgstr ""
+
+#: src/modules/Timer.js:278
+msgid "Open Location Settings"
+msgstr ""
+
+#: src/preferences/BackgroundButton.js:86
+msgid "This image format is not supported."
+msgstr ""
+
+#: src/preferences/ContributePage.js:16
+#, javascript-format
+msgid "Version %d"
+msgstr ""
+
+#: src/preferences/ThemesPage.js:50
+msgid "Default"
+msgstr ""
