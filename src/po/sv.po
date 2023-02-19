@@ -7,89 +7,94 @@ msgstr ""
 "Project-Id-Version: nightthemeswitcher@romainvigier.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-02-19 18:10+0000\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
-msgstr ""
+msgstr "Ändra bakgrund"
 
 #: src/data/ui/BackgroundButton.ui:24
 msgid "Select your background image"
-msgstr ""
+msgstr "Välj din bakgrundsbild"
 
 #: src/data/ui/BackgroundsPage.ui:9
 msgid "Backgrounds"
-msgstr ""
+msgstr "Bakgrunder"
 
 #: src/data/ui/BackgroundsPage.ui:13
 msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
 msgstr ""
+"Bakgrundsväxling hanteras av skalet, dessa inställningar låter dig ändra "
+"bilderna som används."
 
 #: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
-msgstr ""
+msgstr "Dag bakgrund"
 
 #: src/data/ui/BackgroundsPage.ui:29
 msgid "Night background"
-msgstr ""
+msgstr "Natt bakgrund"
 
 #: src/data/ui/ClearableEntry.ui:10 src/data/ui/ShortcutButton.ui:43
 msgid "Clear"
-msgstr ""
+msgstr "Rensa"
 
 #: src/data/ui/CommandsPage.ui:9
 msgid "Commands"
-msgstr ""
+msgstr "Kommandon"
 
 #: src/data/ui/CommandsPage.ui:13
 msgid "Run commands"
-msgstr ""
+msgstr "Kör kommandon"
 
 #: src/data/ui/CommandsPage.ui:21 src/data/ui/SchedulePage.ui:27
 msgid "Sunrise"
-msgstr ""
+msgstr "Soluppgång"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:25
 msgid "notify-send \"Hello sunshine!\""
-msgstr ""
+msgstr "notify-send \"Hallå solstråle!\""
 
 #: src/data/ui/CommandsPage.ui:35 src/data/ui/SchedulePage.ui:40
 msgid "Sunset"
-msgstr ""
+msgstr "Solnedgång"
 
 #. Don't translate the `notify-send` command.
 #: src/data/ui/CommandsPage.ui:39
 msgid "notify-send \"Hello moonshine!\""
-msgstr ""
+msgstr "notify-send \"Hallå månstråle!\""
 
 #: src/data/ui/ContributePage.ui:9
 msgid "Contribute"
-msgstr ""
+msgstr "Bidra"
 
 #: src/data/ui/ContributePage.ui:55
 msgid "View the code and report issues"
-msgstr ""
+msgstr "Visa koden och rapportera problem"
 
 #: src/data/ui/ContributePage.ui:68
 msgid "Contribute to the translation"
-msgstr ""
+msgstr "Bidra till översättningen"
 
 #: src/data/ui/ContributePage.ui:81
 msgid "Support me with a donation"
-msgstr ""
+msgstr "Stöd mig med en donation"
 
 #: src/data/ui/SchedulePage.ui:9
 msgid "Schedule"
-msgstr ""
+msgstr "Schema"
 
 #: src/data/ui/SchedulePage.ui:13
 msgid ""
@@ -97,99 +102,106 @@ msgid ""
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
 msgstr ""
+"Din plats kommer att användas för att beräkna aktuella tider för soluppgång "
+"och solnedgång. Om du föredrar det kan du ställa in ett manuellt schema. Den "
+"kommer också att användas när din plats inte är tillgänglig."
 
 #: src/data/ui/SchedulePage.ui:16
 msgid "Manual schedule"
-msgstr ""
+msgstr "Manuellt schema"
 
 #: src/data/ui/SchedulePage.ui:57
 msgid "Keyboard shortcut"
-msgstr ""
+msgstr "Tangentbordsgenväg"
 
 #: src/data/ui/ShortcutButton.ui:15
 msgid "Choose…"
-msgstr ""
+msgstr "Välj…"
 
 #: src/data/ui/ShortcutButton.ui:32
 msgid "Change keyboard shortcut"
-msgstr ""
+msgstr "Ändra tangentbordsgenväg"
 
 #: src/data/ui/ShortcutButton.ui:78
 msgid "Press your keyboard shortcut…"
-msgstr ""
+msgstr "Tryck på din tangentbordsgenväg…"
 
 #: src/data/ui/ThemesPage.ui:9
 msgid "Themes"
-msgstr ""
+msgstr "Teman"
 
 #: src/data/ui/ThemesPage.ui:15
 msgid ""
 "GNOME has a built-in dark mode that the extension uses. Manually switching "
 "themes is discouraged and is only here for legacy reasons."
 msgstr ""
+"GNOME har ett inbyggt mörkt läge som tillägget använder. Att manuellt byta "
+"teman avråds från och är bara här av äldre skäl."
 
 #: src/data/ui/ThemesPage.ui:30
 msgid "Switch GTK theme"
-msgstr ""
+msgstr "Ändra GTK tema"
 
 #: src/data/ui/ThemesPage.ui:31
 msgid ""
 "Forcing a dark theme on applications not designed to support it can have "
 "undesirable side-effects such as unreadable text or invisible icons."
 msgstr ""
+"Att tvinga ett mörkt tema på program som inte är utformade för att stödja "
+"det kan få oönskade bieffekter som oläsbar text eller osynliga ikoner."
 
 #: src/data/ui/ThemesPage.ui:35 src/data/ui/ThemesPage.ui:51
 #: src/data/ui/ThemesPage.ui:67 src/data/ui/ThemesPage.ui:83
 msgid "Day variant"
-msgstr ""
+msgstr "Dag variant"
 
 #: src/data/ui/ThemesPage.ui:40 src/data/ui/ThemesPage.ui:56
 #: src/data/ui/ThemesPage.ui:72 src/data/ui/ThemesPage.ui:88
 msgid "Night variant"
-msgstr ""
+msgstr "Natt variant"
 
 #: src/data/ui/ThemesPage.ui:47
 msgid "Switch Shell theme"
-msgstr ""
+msgstr "Ändra skal tema"
 
 #: src/data/ui/ThemesPage.ui:63
 msgid "Switch icon theme"
-msgstr ""
+msgstr "Ändra ikon tema"
 
 #: src/data/ui/ThemesPage.ui:79
 msgid "Switch cursor theme"
-msgstr ""
+msgstr "Ändra pekar tema"
 
 #. Time separator (eg. 08:27)
 #: src/data/ui/TimeChooser.ui:23
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: src/modules/Timer.js:268
 msgid "Unknown Location"
-msgstr ""
+msgstr "Okänd plats"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
-msgstr ""
+msgstr "Ett manuellt schema kommer att användas för att byta till mörkt läge."
 
 #: src/modules/Timer.js:274
 msgid "Edit Manual Schedule"
-msgstr ""
+msgstr "Redigera manuellt schema"
 
 #: src/modules/Timer.js:278
 msgid "Open Location Settings"
-msgstr ""
+msgstr "Öppna platsinställningar"
 
 #: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
-msgstr ""
+msgstr "Detta bildformat stöds inte."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
 msgid "Version %d"
-msgstr ""
+msgstr "Version %d"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
-msgstr ""
+msgstr "Standard"
