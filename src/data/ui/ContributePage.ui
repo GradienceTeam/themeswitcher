@@ -76,19 +76,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
             </child>
           </object>
         </child>
-        <child>
-          <object class="AdwActionRow">
-            <property name="title" translatable="yes">Support me with a donation</property>
-            <property name="icon-name">nightthemeswitcher-support-symbolic</property>
-            <property name="activatable-widget">liberapay_button</property>
-            <child>
-              <object class="GtkLinkButton" id="liberapay_button">
-                <property name="label">Liberapay</property>
-                <property name="uri">https://liberapay.com/rmnvgr/donate</property>
-              </object>
-            </child>
-          </object>
-        </child>
       </object>
     </child>
   </template>

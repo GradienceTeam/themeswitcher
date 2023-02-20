@@ -6,7 +6,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <gresources>
 	<gresource prefix="/org/gnome/shell/extensions/nightthemeswitcher/preferences">
 		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/actions/nightthemeswitcher-code-symbolic.svg">icons/code-symbolic.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/actions/nightthemeswitcher-support-symbolic.svg">icons/support-symbolic.svg</file>
 		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/actions/nightthemeswitcher-translate-symbolic.svg">icons/translate-symbolic.svg</file>
 		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/apps/nightthemeswitcher-symbolic.svg">icons/nightthemeswitcher-symbolic.svg</file>
 		<file compressed="true" preprocess="xml-stripblanks" alias="icons/scalable/categories/nightthemeswitcher-backgrounds-symbolic.svg">icons/backgrounds-symbolic.svg</file>
