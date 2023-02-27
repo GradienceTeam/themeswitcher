@@ -43,10 +43,10 @@ Build and install using `meson`:
 
 ```bash
 # System-wide installation
-meson builddir && meson install -C builddir
+meson setup builddir && meson install -C builddir
 
 # User installation
-meson builddir --prefix=~/.local && meson install -C builddir
+meson setup builddir --prefix=~/.local && meson install -C builddir
 ```
 
 Restart your GNOME session and enable the extension:
