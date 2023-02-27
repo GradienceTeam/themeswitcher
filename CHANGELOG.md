@@ -6,6 +6,22 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [73] - 2023-02-27
+
+### Added
+
+- Bulgarian translation by @smarnv
+- Estonian translation by @tenseoverflow
+- Swedish translation by @bittin1
+
+### Changed
+
+- Updated Arabic translation by Omar TS
+- Updated Dutch translation by @philip.goto
+- Updated German translation by @seismist
+- Updated Spanish translation by @gallegonovato and @oscfdezdz
+
+
 ## [72] - 2022-12-07
 
 ### Changed
