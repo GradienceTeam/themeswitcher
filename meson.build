@@ -3,7 +3,7 @@
 
 project(
   'nightthemeswitcher',
-  version: '73',
+  version: '74',
   license: ['GPL-3.0-or-later', 'CC-BY-SA-4.0'],
   meson_version: '>= 0.56.0'
 )
