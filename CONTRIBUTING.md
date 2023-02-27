@@ -32,7 +32,7 @@ The recommended way of testing the extension is to use a virtual machine, and to
 To pack the extension as a zip file instead of installing it on your system, you can use the `pack` option when configuring Meson:
 
 ```bash
-meson builddir -Dpack=true
+meson setup builddir -Dpack=true
 ```
 
 When running `meson install -C builddir`, it will create an archive in the `dist` directory. You can then transfer the extension to the VM and install it there using `gnome-extensions install nightthemeswitcher@romainvigier.fr.zip`.
@@ -42,7 +42,7 @@ When running `meson install -C builddir`, it will create an archive in the `dist
 To print debug logs, set the build type to `debug` when configuring Meson:
 
 ```bash
-meson builddir -Dbuildtype=debug
+meson setup builddir -Dbuildtype=debug
 ```
 
 You can then read the logs with `journalctl -f /usr/bin/gnome-shell`.
