@@ -234,6 +234,11 @@ export class Timer extends GObject.Object {
     }
 
 
+    #colorSchemeToTime() {
+        return this.#interfaceSettings.get_string('color-scheme') === 'prefer-dark' ? Time.NIGHT : Time.DAY;
+    }
+
+
     #onLocationStateChanged() {
         this.disable();
         this.enable();
@@ -254,8 +259,7 @@ export class Timer extends GObject.Object {
     }
 
     #onColorSchemeChanged() {
-        const time = this.#interfaceSettings.get_string('color-scheme') === 'prefer-dark' ? Time.NIGHT : Time.DAY;
-        this.#changeTime(time, true);
+        this.#changeTime(this.#colorSchemeToTime(), true);
     }
 
     #onGeoclueReady(_geoclue, result) {
@@ -319,8 +323,9 @@ export class Timer extends GObject.Object {
         // Sunset happens on the day after
         else if (sunrise > sunset)
             return hour >= sunrise || hour < sunset ? Time.DAY : Time.NIGHT;
+        // Sunset and Sunrise times are identical; preserve current theme
         else
-            return Time.DAY;
+            return this.#time || this.#colorSchemeToTime();
     }
 
     #updateSuntimes() {
