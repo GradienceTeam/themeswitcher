@@ -4,22 +4,23 @@
 # Tomasz Dróżdż <apexv4@protonmail.com>, 2022.
 # Przemek Juszczyk <apexv4@protonmail.com>, 2022.
 # Romain Vigier <romain@romainvigier.fr>, 2022.
+# Maciej Błędkowski <mble@tuta.io>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Night Theme Switcher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-30 14:37+0100\n"
-"PO-Revision-Date: 2022-04-27 09:16+0000\n"
-"Last-Translator: Romain Vigier <romain@romainvigier.fr>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/night-theme-"
-"switcher/extension/pl/>\n"
+"PO-Revision-Date: 2023-08-17 17:53+0000\n"
+"Last-Translator: Maciej Błędkowski <mble@tuta.io>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/"
+"night-theme-switcher/extension/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12.1-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: src/data/ui/BackgroundButton.ui:8
 msgid "Change background"
@@ -38,6 +39,8 @@ msgid ""
 "Background switching is handled by the Shell, these settings allow you to "
 "change the images it uses."
 msgstr ""
+"Zmienianie tła jest obsługiwane przez powłokę, te ustawienia pozwalają tobie "
+"zmienić obrazy używane przez nią."
 
 #: src/data/ui/BackgroundsPage.ui:16
 msgid "Day background"
@@ -103,6 +106,10 @@ msgid ""
 "times. If you prefer, you can set a manual schedule. It will also be used "
 "when your location is unavailable."
 msgstr ""
+"Twoja lokalizacja jest używana do obliczenia aktualnych czasów wschodu, jak "
+"i zachodu słońca. Jeśli chcesz, możesz ustawić harmonogram ręcznie. Ręcznie "
+"ustawiony harmonogram, będzie również używany, kiedy lokalizacja nie jest "
+"dostępna."
 
 #: src/data/ui/SchedulePage.ui:16
 msgid "Manual schedule"
@@ -178,35 +185,31 @@ msgid ":"
 msgstr ":"
 
 #: src/modules/Timer.js:268
-#, fuzzy
-#| msgid "Button location"
 msgid "Unknown Location"
-msgstr "Lokalizacja przycisku"
+msgstr "Nieznana lokalizacja"
 
 #: src/modules/Timer.js:269
 msgid "A manual schedule will be used to switch the dark mode."
 msgstr ""
+"Ręcznie ustawiony harmonogram, będzie używany, aby przełączać się między "
+"trybami."
 
 #: src/modules/Timer.js:274
-#, fuzzy
-#| msgid "Manual schedule"
 msgid "Edit Manual Schedule"
-msgstr "Manualny harmonogram"
+msgstr "Edytuj manualny harmonogram"
 
 #: src/modules/Timer.js:278
-#, fuzzy
-#| msgid "Extension Settings"
 msgid "Open Location Settings"
-msgstr "Ustawienia rozszerzenia"
+msgstr "Otwórz ustawienia lokalizacji"
 
 #: src/preferences/BackgroundButton.js:86
 msgid "This image format is not supported."
-msgstr ""
+msgstr "Ten format obrazu nie jest wspierany."
 
 #: src/preferences/ContributePage.js:16
 #, javascript-format
 msgid "Version %d"
-msgstr ""
+msgstr "Wersja %d"
 
 #: src/preferences/ThemesPage.js:50
 msgid "Default"
