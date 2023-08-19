@@ -1,14 +1,7 @@
 // SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const { Gio } = imports.gi;
-const { extensionUtils } = imports.misc;
-
-const Me = extensionUtils.getCurrentExtension();
-
-const debug = Me.imports.debug;
-
-const { Time } = Me.imports.enums.Time;
+import * as debug from '../debug.js';
 
 
 /**
@@ -22,13 +15,8 @@ const { Time } = Me.imports.enums.Time;
 /**
  * The Switcher runs a callback function when the time changes.
  *
- * @param {Object} params Params object.
- * @param {string} params.name Name of the switcher.
- * @param {Timer} params.timer Timer to listen to.
- * @param {Gio.Settings} params.settings Settings with the `enabled` key.
- * @param {TimeChangedCallback} params.callback Callback function.
  */
-var Switcher = class {
+export class Switcher {
     #name;
     #timer;
     #settings;
@@ -37,6 +25,13 @@ var Switcher = class {
     #statusConnection = null;
     #timerConnection = null;
 
+    /**
+     * @param {object} params Params object.
+     * @param {string} params.name Name of the switcher.
+     * @param {Timer} params.timer Timer to listen to.
+     * @param {Gio.Settings} params.settings Settings with the `enabled` key.
+     * @param {TimeChangedCallback} params.callback Callback function.
+     */
     constructor({ name, timer, settings, callback }) {
         this.#name = name;
         this.#timer = timer;
@@ -98,4 +93,4 @@ var Switcher = class {
     #onTimeChanged() {
         this.#callback(this.#timer.time);
     }
-};
+}

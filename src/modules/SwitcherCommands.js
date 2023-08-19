@@ -1,29 +1,27 @@
 // SPDX-FileCopyrightText: 2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const { GLib } = imports.gi;
-const { extensionUtils } = imports.misc;
+import GLib from 'gi://GLib';
 
-const Me = extensionUtils.getCurrentExtension();
+import * as debug from '../debug.js';
 
-const debug = Me.imports.debug;
+import { Time } from '../enums/Time.js';
 
-const { Switcher } = Me.imports.modules.Switcher;
-
-const { Time } = Me.imports.enums.Time;
+import { Switcher } from './Switcher.js';
 
 
 /**
  * The Commands Switcher spawns commands according to the time.
- *
- * @param {Object} params Params object.
- * @param {Timer} params.timer Timer to listen to.
  */
-var SwitcherCommands = class extends Switcher {
+export class SwitcherCommands extends Switcher {
     #settings;
 
-    constructor({ timer }) {
-        const settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.commands`);
+    /**
+     * @param {object} params Params object.
+     * @param {Timer} params.timer Timer to listen to.
+     * @param {Gio.Settings} params.settings Commands settings.
+     */
+    constructor({ timer, settings }) {
         super({
             name: 'Command',
             timer,
@@ -42,4 +40,4 @@ var SwitcherCommands = class extends Switcher {
         GLib.spawn_async(null, ['sh', '-c', command], null, GLib.SpawnFlags.SEARCH_PATH, null);
         debug.message(`Spawned ${time} command.`);
     }
-};
+}

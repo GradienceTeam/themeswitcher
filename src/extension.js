@@ -3,40 +3,33 @@
 
 'use strict';
 
-const { Gio } = imports.gi;
-const { extensionUtils } = imports.misc;
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 
-const Me = extensionUtils.getCurrentExtension();
+import * as debug from './debug.js';
 
-const debug = Me.imports.debug;
-
-const { SwitcherCommands } = Me.imports.modules.SwitcherCommands;
-const { SwitcherThemeCursor, SwitcherThemeGtk, SwitcherThemeIcon, SwitcherThemeShell } = Me.imports.modules.SwitcherTheme;
-const { Timer } = Me.imports.modules.Timer;
+import { SwitcherCommands } from './modules/SwitcherCommands.js';
+import { SwitcherThemeCursor, SwitcherThemeGtk, SwitcherThemeIcon, SwitcherThemeShell } from './modules/SwitcherTheme.js';
+import { Timer } from './modules/Timer.js';
 
 
-class NightThemeSwitcher {
+export default class NightThemeSwitcher extends Extension {
     #modules = [];
 
-    constructor() {
-        debug.message('Initializing extension...');
-        extensionUtils.initTranslations();
-        debug.message('Extension initialized.');
-    }
-
     enable() {
+        globalThis.NTSMetadata = this.metadata;
+
         debug.message('Enabling extension...');
 
-        const timer = new Timer();
+        const timer = new Timer({ settings: this.getSettings(`${this.metadata['settings-schema']}.time`), openPrefs: this.openPrefs });
         this.#modules.push(timer);
 
         [
-            SwitcherThemeGtk,
-            SwitcherThemeIcon,
-            SwitcherThemeShell,
-            SwitcherThemeCursor,
-            SwitcherCommands,
-        ].forEach(SwitcherModule => this.#modules.push(new SwitcherModule({ timer })));
+            new SwitcherThemeGtk({ timer, settings: this.getSettings(`${this.metadata['settings-schema']}.gtk-variants`) }),
+            new SwitcherThemeIcon({ timer, settings: this.getSettings(`${this.metadata['settings-schema']}.icon-variants`) }),
+            new SwitcherThemeShell({ timer, settings: this.getSettings(`${this.metadata['settings-schema']}.shell-variants`) }),
+            new SwitcherThemeCursor({ timer, settings: this.getSettings(`${this.metadata['settings-schema']}.cursor-variants`) }),
+            new SwitcherCommands({ timer, settings: this.getSettings(`${this.metadata['settings-schema']}.commands`) }),
+        ].forEach(module => this.#modules.push(module));
 
         this.#modules.forEach(module => module.enable());
 
@@ -53,12 +46,7 @@ class NightThemeSwitcher {
         this.#modules = [];
 
         debug.message('Extension disabled.');
-    }
-}
 
-/**
- * Extension initialization.
- */
-function init() {
-    return new NightThemeSwitcher();
+        delete globalThis.NTSMetadata;
+    }
 }

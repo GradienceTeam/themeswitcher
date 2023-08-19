@@ -6,7 +6,7 @@
 	"settings-schema": "@DNS@",
 	"url": "https://nightthemeswitcher.romainvigier.fr",
 	"session-modes": ["unlock-dialog", "user"],
-	"shell-version": ["44"],
+	"shell-version": ["45"],
 	"version": @VERSION@,
 	"build-type": "@BUILD_TYPE@"
 }

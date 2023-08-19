@@ -7,3 +7,8 @@ rules:
     - vars: 'local'
       varsIgnorePattern: (^unused|_$)
       argsIgnorePattern: ^(unused|_)
+  object-curly-spacing: off
+globals:
+  NTSMetadata: writable
+parserOptions:
+  sourceType: module

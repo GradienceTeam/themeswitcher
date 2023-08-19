@@ -7,7 +7,7 @@
  * @readonly
  * @enum {string}
  */
-var Time = {
+export const Time = {
     UNKNOWN: 'unknown',
     DAY: 'day',
     NIGHT: 'night',

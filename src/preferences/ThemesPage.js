@@ -1,41 +1,42 @@
 // SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const { Adw, Gio, GLib, GObject, Gtk } = imports.gi;
-const { extensionUtils } = imports.misc;
+import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Me = extensionUtils.getCurrentExtension();
-const _ = extensionUtils.gettext;
+import { gettext as _ } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
-const utils = Me.imports.utils;
+import * as utils from '../utils.js';
 
-const { DropDownChoice } = Me.imports.preferences.DropDownChoice;
+import { DropDownChoice } from './DropDownChoice.js';
 
 
-var ThemesPage = GObject.registerClass({
-    GTypeName: 'ThemesPage',
-    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/ThemesPage.ui',
-    InternalChildren: [
-        'gtk_row',
-        'gtk_day_variant_combo_row',
-        'gtk_night_variant_combo_row',
-        'shell_row',
-        'shell_day_variant_combo_row',
-        'shell_night_variant_combo_row',
-        'icon_row',
-        'icon_day_variant_combo_row',
-        'icon_night_variant_combo_row',
-        'cursor_row',
-        'cursor_day_variant_combo_row',
-        'cursor_night_variant_combo_row',
-    ],
-}, class ThemesPage extends Adw.PreferencesPage {
-    constructor(props = {}) {
-        super(props);
-        const gtkSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.gtk-variants`);
-        const shellSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.shell-variants`);
-        const iconSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.icon-variants`);
-        const cursorSettings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.cursor-variants`);
+export class ThemesPage extends Adw.PreferencesPage {
+    static {
+        GObject.registerClass({
+            GTypeName: 'ThemesPage',
+            Template: 'resource:///org/gnome/Shell/Extensions/nightthemeswitcher/preferences/ui/ThemesPage.ui',
+            InternalChildren: [
+                'gtk_row',
+                'gtk_day_variant_combo_row',
+                'gtk_night_variant_combo_row',
+                'shell_row',
+                'shell_day_variant_combo_row',
+                'shell_night_variant_combo_row',
+                'icon_row',
+                'icon_day_variant_combo_row',
+                'icon_night_variant_combo_row',
+                'cursor_row',
+                'cursor_day_variant_combo_row',
+                'cursor_night_variant_combo_row',
+            ],
+        }, this);
+    }
+
+    constructor({ gtkSettings, shellSettings, iconSettings, cursorSettings, ...params } = {}) {
+        super(params);
 
         gtkSettings.bind('enabled', this._gtk_row, 'enable-expansion', Gio.SettingsBindFlags.DEFAULT);
 
@@ -65,7 +66,8 @@ var ThemesPage = GObject.registerClass({
         _setupComboRow(this._cursor_day_variant_combo_row, cursorThemesStore, cursorSettings, 'day');
         _setupComboRow(this._cursor_night_variant_combo_row, cursorThemesStore, cursorSettings, 'night');
     }
-});
+}
+
 
 /**
  * Set up the model of a combo row.

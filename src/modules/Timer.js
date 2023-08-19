@@ -1,18 +1,20 @@
 // SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const { Geoclue, Gio, GLib, GObject, Meta, Shell } = imports.gi;
-const { extensionUtils } = imports.misc;
+import Geoclue from 'gi://Geoclue';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Meta from 'gi://Meta';
+import Shell from 'gi://Shell';
 
-const { main, messageTray } = imports.ui;
+import { gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+import { layoutManager, messageTray, wm } from 'resource:///org/gnome/shell/ui/main.js';
+import * as MessageTray from 'resource:///org/gnome/shell/ui/messageTray.js';
 
-const Me = extensionUtils.getCurrentExtension();
+import * as debug from '../debug.js';
 
-const _ = extensionUtils.gettext;
-
-const debug = Me.imports.debug;
-
-const { Time } = Me.imports.enums.Time;
+import { Time } from '../enums/Time.js';
 
 
 /**
@@ -24,10 +26,11 @@ const { Time } = Me.imports.enums.Time;
  * to a manual schedule if the location services are disabled or if the user
  * forced the manual schedule in the preferences.
  */
-var Timer = class extends GObject.Object {
+export class Timer extends GObject.Object {
     #settings;
     #interfaceSettings;
     #locationSettings;
+    #openPrefs;
     #time;
 
     #cancellable = null;
@@ -48,11 +51,17 @@ var Timer = class extends GObject.Object {
         }, this);
     }
 
-    constructor() {
+    /**
+     * @param {object} params Params object.
+     * @param {Gio.Settings} params.settings Timer settings.
+     * @param {Function} params.openPrefs Function opening the extension preferences.
+     */
+    constructor({ settings, openPrefs }) {
         super();
-        this.#settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.time`);
+        this.#settings = settings;
         this.#interfaceSettings = new Gio.Settings({ schema: 'org.gnome.desktop.interface' });
         this.#locationSettings = new Gio.Settings({ schema: 'org.gnome.system.location' });
+        this.#openPrefs = openPrefs;
     }
 
     enable() {
@@ -103,7 +112,7 @@ var Timer = class extends GObject.Object {
 
         debug.message(manual ? `Time manually set to ${time}.` : `Time changed to ${time}.`);
 
-        main.layoutManager.screenTransition.run();
+        layoutManager.screenTransition.run();
         this.#interfaceSettings.set_string('color-scheme', time === Time.NIGHT ? 'prefer-dark' : 'default');
         this.notify('time');
     }
@@ -203,7 +212,7 @@ var Timer = class extends GObject.Object {
         if (!this.#settings.get_strv('nightthemeswitcher-ondemand-keybinding')[0])
             return;
         debug.message('Adding keybinding...');
-        main.wm.addKeybinding(
+        wm.addKeybinding(
             'nightthemeswitcher-ondemand-keybinding',
             this.#settings,
             Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
@@ -219,7 +228,7 @@ var Timer = class extends GObject.Object {
     #removeKeybinding() {
         if (this.#previousKeybinding) {
             debug.message('Removing keybinding...');
-            main.wm.removeKeybinding('nightthemeswitcher-ondemand-keybinding');
+            wm.removeKeybinding('nightthemeswitcher-ondemand-keybinding');
             debug.message('Removed keybinding.');
         }
     }
@@ -258,29 +267,29 @@ var Timer = class extends GObject.Object {
         } catch (e) {
             const [latitude, longitude] = this.#settings.get_value('location').deepUnpack();
             if (latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180) {
-                console.error(`[${Me.metadata.name}] Unable to retrieve the location, using the last known location instead.\n${e}`);
+                console.error(`[${NTSMetadata.name}] Unable to retrieve the location, using the last known location instead.\n${e}`);
                 this.#updateSuntimes();
             } else {
-                console.error(`[${Me.metadata.name}] Unable to retrieve the location, using the manual schedule times instead.\n${e}`);
+                console.error(`[${NTSMetadata.name}] Unable to retrieve the location, using the manual schedule times instead.\n${e}`);
 
-                const source = new messageTray.Source(Me.metadata.name, 'dialog-information-symbolic');
-                main.messageTray.add(source);
+                const source = new MessageTray.Source(NTSMetadata.name, 'dialog-information-symbolic');
+                messageTray.add(source);
 
-                const notification = new messageTray.Notification(
+                const notification = new MessageTray.Notification(
                     source,
                     _('Unknown Location'),
                     _('A manual schedule will be used to switch the dark mode.'),
                     {
-                        gicon: Gio.icon_new_for_string(GLib.build_filenamev([Me.path, 'icons', 'nightthemeswitcher-symbolic.svg'])),
+                        gicon: Gio.icon_new_for_string(GLib.build_filenamev([NTSMetadata.path, 'icons', 'nightthemeswitcher-symbolic.svg'])),
                     }
                 );
-                notification.addAction(_('Edit Manual Schedule'), () => extensionUtils.openPrefs());
+                notification.addAction(_('Edit Manual Schedule'), () => this.#openPrefs());
 
                 const locationSettingsApp = Shell.AppSystem.get_default().lookup_app('gnome-location-panel.desktop');
                 if (locationSettingsApp)
                     notification.addAction(_('Open Location Settings'), () => locationSettingsApp.activate());
 
-                notification.connect('activated', () => extensionUtils.openPrefs());
+                notification.connect('activated', () => this.#openPrefs());
 
                 source.showNotification(notification);
 
@@ -364,4 +373,4 @@ var Timer = class extends GObject.Object {
 
         debug.message(`New sun times: (sunrise: ${sunrise}; sunset: ${sunset})`);
     }
-};
+}

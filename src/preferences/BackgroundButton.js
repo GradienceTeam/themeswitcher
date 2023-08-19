@@ -1,47 +1,55 @@
 // SPDX-FileCopyrightText: 2021, 2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const { Adw, Gdk, GdkPixbuf, Gio, GLib, GObject, Gtk } = imports.gi;
-const { extensionUtils } = imports.misc;
+import Adw from 'gi://Adw';
+import Gdk from 'gi://Gdk';
+import GdkPixbuf from 'gi://GdkPixbuf';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Me = extensionUtils.getCurrentExtension();
-const _ = extensionUtils.gettext;
+import { gettext as _ } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 
-var BackgroundButton = GObject.registerClass({
-    GTypeName: 'BackgroundButton',
-    Template: 'resource:///org/gnome/shell/extensions/nightthemeswitcher/preferences/ui/BackgroundButton.ui',
-    InternalChildren: ['filechooser', 'thumbnail'],
-    Properties: {
-        uri: GObject.ParamSpec.string(
-            'uri',
-            'URI',
-            'URI to the background file',
-            GObject.ParamFlags.READWRITE,
-            null
-        ),
-        thumbWidth: GObject.ParamSpec.int(
-            'thumb-width',
-            'Thumbnail width',
-            'Width of the displayed thumbnail',
-            GObject.ParamFlags.READWRITE,
-            0, 600,
-            180
-        ),
-        thumbHeight: GObject.ParamSpec.int(
-            'thumb-height',
-            'Thumbnail height',
-            'Height of the displayed thumbnail',
-            GObject.ParamFlags.READWRITE,
-            0, 600,
-            180
-        ),
-    },
-}, class BackgroundButton extends Gtk.Button {
+export class BackgroundButton extends Gtk.Button {
     #uri;
 
-    constructor(props = {}) {
-        super(props);
+    static {
+        GObject.registerClass({
+            GTypeName: 'BackgroundButton',
+            Template: 'resource:///org/gnome/Shell/Extensions/nightthemeswitcher/preferences/ui/BackgroundButton.ui',
+            InternalChildren: ['filechooser', 'thumbnail'],
+            Properties: {
+                uri: GObject.ParamSpec.string(
+                    'uri',
+                    'URI',
+                    'URI to the background file',
+                    GObject.ParamFlags.READWRITE,
+                    null
+                ),
+                thumbWidth: GObject.ParamSpec.int(
+                    'thumb-width',
+                    'Thumbnail width',
+                    'Width of the displayed thumbnail',
+                    GObject.ParamFlags.READWRITE,
+                    0, 600,
+                    180
+                ),
+                thumbHeight: GObject.ParamSpec.int(
+                    'thumb-height',
+                    'Thumbnail height',
+                    'Height of the displayed thumbnail',
+                    GObject.ParamFlags.READWRITE,
+                    0, 600,
+                    180
+                ),
+            },
+        }, this);
+    }
+
+    constructor({ ...params } = {}) {
+        super(params);
         this.#setupSize();
         this.#setupDropTarget();
         this.#setupFileChooserFilter();
@@ -151,7 +159,7 @@ var BackgroundButton = GObject.registerClass({
                 if (!this.#isContentTypeSupported(Gio.content_type_guess(path, null)[0]))
                     throw new Error();
             } catch (e) {
-                console.error(`[${Me.metadata.name}] No suitable background file found in ${file.get_path()}.\n${e}`);
+                console.error(`No suitable background file found in ${file.get_path()}.\n${e}`);
                 return;
             }
         } else {
@@ -172,4 +180,4 @@ var BackgroundButton = GObject.registerClass({
 
         this._thumbnail.paintable = Gdk.Texture.new_for_pixbuf(thumbPixbuf);
     }
-});
+}

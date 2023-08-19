@@ -1,18 +1,18 @@
 // SPDX-FileCopyrightText: 2020-2022 Romain Vigier <contact AT romainvigier.fr>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const { Gio } = imports.gi;
-const { extensionUtils } = imports.misc;
-const { extensionManager } = imports.ui.main;
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 
-const Me = extensionUtils.getCurrentExtension();
+import { ExtensionState } from 'resource:///org/gnome/shell/misc/extensionUtils.js';
+import { extensionManager, setThemeStylesheet, loadTheme } from 'resource:///org/gnome/shell/ui/main.js';
 
-const debug = Me.imports.debug;
-const utils = Me.imports.utils;
+import * as debug from '../debug.js';
+import * as utils from '../utils.js';
 
-const { Switcher } = Me.imports.modules.Switcher;
+import { Time } from '../enums/Time.js';
 
-const { Time } = Me.imports.enums.Time;
+import { Switcher } from './Switcher.js';
 
 
 /**
@@ -28,16 +28,8 @@ const { Time } = Me.imports.enums.Time;
  * provided settings or by running a callback function.
  *
  * It also listens to system theme changes to update the current variant setting.
- *
- * @param {Object} params Params object.
- * @param {string} params.name Name of the switcher.
- * @param {Timer} params.timer Timer to listen to.
- * @param {Gio.Settings} params.settings Settings with the `enabled`, `day` and `night` keys.
- * @param {Gio.Settings=} params.systemSettings System settings containing the theme name.
- * @param {string} params.themeKey Settings key of the theme name.
- * @param {noSettingsUpdateSystemThemeCallback} Callback function.
  */
-var SwitcherTheme = class extends Switcher {
+export class SwitcherTheme extends Switcher {
     #name;
     #timer;
     #settings;
@@ -47,6 +39,15 @@ var SwitcherTheme = class extends Switcher {
 
     #settingsConnections = [];
 
+    /**
+     * @param {object} params Params object.
+     * @param {string} params.name Name of the switcher.
+     * @param {Timer} params.timer Timer to listen to.
+     * @param {Gio.Settings} params.settings Settings with the `enabled`, `day` and `night` keys.
+     * @param {Gio.Settings} [params.systemSettings] System settings containing the theme name.
+     * @param {string} params.themeKey Settings key of the theme name.
+     * @param {noSettingsUpdateSystemThemeCallback} params.noSettingsUpdateSystemThemeCallback function.
+     */
     constructor({ name, timer, settings, systemSettings = null, themeKey, noSettingsUpdateSystemThemeCallback = null }) {
         super({
             name,
@@ -141,59 +142,78 @@ var SwitcherTheme = class extends Switcher {
         else if (this.#noSettingsUpdateSystemThemeCallback)
             this.#noSettingsUpdateSystemThemeCallback(this.#timer.time);
     }
-};
+}
 
 
-var SwitcherThemeCursor = class extends SwitcherTheme {
-    constructor({ timer }) {
+export class SwitcherThemeCursor extends SwitcherTheme {
+    /**
+     * @param {object} params Params object.
+     * @param {Timer} params.timer Timer to listen to.
+     * @param {Gio.Settings} params.settings Cursor theme settings.
+     */
+    constructor({ timer, settings }) {
         super({
             name: 'Cursor theme',
             timer,
-            settings: extensionUtils.getSettings(`${Me.metadata['settings-schema']}.cursor-variants`),
+            settings,
             systemSettings: new Gio.Settings({ schema: 'org.gnome.desktop.interface' }),
             themeKey: 'cursor-theme',
         });
     }
-};
+}
 
 
-var SwitcherThemeGtk = class extends SwitcherTheme {
-    constructor({ timer }) {
+export class SwitcherThemeGtk extends SwitcherTheme {
+    /**
+     * @param {object} params Params object.
+     * @param {Timer} params.timer Timer to listen to.
+     * @param {Gio.Settings} params.settings GTK theme settings.
+     */
+    constructor({ timer, settings }) {
         super({
             name: 'GTK theme',
             timer,
-            settings: extensionUtils.getSettings(`${Me.metadata['settings-schema']}.gtk-variants`),
+            settings,
             systemSettings: new Gio.Settings({ schema: 'org.gnome.desktop.interface' }),
             themeKey: 'gtk-theme',
         });
     }
-};
+}
 
 
-var SwitcherThemeIcon = class extends SwitcherTheme {
-    constructor({ timer }) {
+export class SwitcherThemeIcon extends SwitcherTheme {
+    /**
+     * @param {object} params Params object.
+     * @param {Timer} params.timer Timer to listen to.
+     * @param {Gio.Settings} params.settings Icon theme settings.
+     */
+    constructor({ timer, settings }) {
         super({
             name: 'Icon theme',
             timer,
-            settings: extensionUtils.getSettings(`${Me.metadata['settings-schema']}.icon-variants`),
+            settings,
             systemSettings: new Gio.Settings({ schema: 'org.gnome.desktop.interface' }),
             themeKey: 'icon-theme',
         });
     }
-};
+}
 
 
-var SwitcherThemeShell = class extends SwitcherTheme {
+export class SwitcherThemeShell extends SwitcherTheme {
     #settings;
     #extensionManagerConnection = null;
 
-    constructor({ timer }) {
-        const settings = extensionUtils.getSettings(`${Me.metadata['settings-schema']}.shell-variants`);
+    /**
+     * @param {object} params Params object.
+     * @param {Timer} params.timer Timer to listen to.
+     * @param {Gio.Settings} params.settings Shell theme settings.
+     */
+    constructor({ timer, settings }) {
         super({
             name: 'Shell theme',
             timer,
             settings,
-            systemSettings: utils.getUserthemesSettings(),
+            systemSettings: getUserthemesSettings(),
             themeKey: 'name',
             noSettingsUpdateSystemThemeCallback: time => this.#noSettingsUpdateSystemThemeCallback(time),
         });
@@ -215,11 +235,79 @@ var SwitcherThemeShell = class extends SwitcherTheme {
 
     #noSettingsUpdateSystemThemeCallback(time) {
         const shellTheme = this.#settings.get_string(time);
-        const stylesheet = utils.getShellThemeStylesheet(shellTheme);
-        utils.applyShellStylesheet(stylesheet);
+        const stylesheet = getShellThemeStylesheet(shellTheme);
+        applyShellStylesheet(stylesheet);
     }
 
     #onExtensionStateChanged() {
-        this.systemSettings = utils.getUserthemesSettings();
+        this.systemSettings = getUserthemesSettings();
     }
-};
+}
+
+
+/**
+ * Get the User Themes extension.
+ *
+ * @returns {object|undefined} The User Themes extension object or undefined if
+ * it isn't installed.
+ */
+function getUserthemesExtension() {
+    try {
+        return extensionManager.lookup('user-theme@gnome-shell-extensions.gcampax.github.com');
+    } catch (_e) {
+        return undefined;
+    }
+}
+
+/**
+ * Get the User Themes extension settings.
+ *
+ * @returns {Gio.Settings|null} The User Themes extension settings or null if
+ * the extension isn't installed.
+ */
+function getUserthemesSettings() {
+    let extension = getUserthemesExtension();
+    if (!extension || extension.state !== ExtensionState.ENABLED)
+        return null;
+    const schemaDir = extension.dir.get_child('schemas');
+    const GioSSS = Gio.SettingsSchemaSource;
+    let schemaSource;
+    if (schemaDir.query_exists(null))
+        schemaSource = GioSSS.new_from_directory(schemaDir.get_path(), GioSSS.get_default(), false);
+    else
+        schemaSource = GioSSS.get_default();
+    const schemaObj = schemaSource.lookup('org.gnome.shell.extensions.user-theme', true);
+    return new Gio.Settings({ settings_schema: schemaObj });
+}
+
+/**
+ * Get the shell theme stylesheet.
+ *
+ * @param {string} theme The shell theme name.
+ * @returns {string|null} Path to the shell theme stylesheet.
+ */
+function getShellThemeStylesheet(theme) {
+    const themeName = theme ? `'${theme}'` : 'default';
+    debug.message(`Getting the ${themeName} theme shell stylesheet...`);
+    let stylesheet = null;
+    if (theme) {
+        const stylesheetPaths = utils.getResourcesDirsPaths('themes').map(path => GLib.build_filenamev([path, theme, 'gnome-shell', 'gnome-shell.css']));
+        stylesheet = stylesheetPaths.find(path => {
+            const file = Gio.file_new_for_path(path);
+            return file.query_exists(null);
+        });
+    }
+    return stylesheet;
+}
+
+/**
+ * Apply a stylesheet to the shell.
+ *
+ * @param {string} stylesheet The shell stylesheet to apply.
+ */
+function applyShellStylesheet(stylesheet) {
+    debug.message('Applying shell stylesheet...');
+    setThemeStylesheet(stylesheet);
+    loadTheme();
+    debug.message('Shell stylesheet applied.');
+}

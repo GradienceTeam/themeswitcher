@@ -23,25 +23,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
               </object>
             </child>
             <child>
-              <object class="GtkBox">
-                <property name="orientation">vertical</property>
-                <property name="spacing">6</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">Night Theme Switcher</property>
-                    <property name="wrap">True</property>
-                    <style>
-                      <class name="title-1"/>
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <binding name="label">
-                      <closure type="gchararray" function="getVersionString"/>
-                    </binding>
-                  </object>
-                </child>
+              <object class="GtkLabel">
+                <property name="label">Night Theme Switcher</property>
+                <property name="wrap">True</property>
+                <style>
+                  <class name="title-1"/>
+                </style>
               </object>
             </child>
           </object>
