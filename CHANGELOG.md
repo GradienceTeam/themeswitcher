@@ -6,6 +6,24 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 # Changelog
 
 
+## [75] - 2023-08-20
+
+This version adds support for GNOME 45 and removes support for GNOME 44.
+
+### Added
+
+- GNOME 45 support
+
+### Removed
+
+- GNOME 44 support
+
+### Changed
+
+- Updated Polish translation by @mbled
+- Updated Russian translation by @AHOHNMYC
+
+
 ## [74] - 2023-02-27
 
 This version adds support for GNOME 44 and removes support for GNOME 43.
