@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
 <!--
-SPDX-FileCopyrightText: 2021 Romain Vigier <contact AT romainvigier.fr>
+SPDX-FileCopyrightText: Night Theme Switcher Contributors
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
   <path d="M4 0C1.784 0 0 1.784 0 4v28h32V4c0-2.216-1.784-4-4-4zm22.951 3A2 2 0 0127 3a2 2 0 012 2 2 2 0 01-2 2 2 2 0 01-2-2 2 2 0 011.951-2zM3 10h26v19H3z"/>

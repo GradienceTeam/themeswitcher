@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2021 Romain Vigier <contact AT romainvigier.fr>
+SPDX-FileCopyrightText: Night Theme Switcher Contributors
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020, 2021 Romain Vigier <contact AT romainvigier.fr>
+// SPDX-FileCopyrightText: Night Theme Switcher Contributors
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 import Gio from 'gi://Gio';

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2021, 2022 Romain Vigier <contact AT romainvigier.fr>
+SPDX-FileCopyrightText: Night Theme Switcher Contributors
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
@@ -75,7 +75,12 @@ meson test -C builddir --suite=code
 
 ### Copyright notice
 
-If you make changes to a file, please put your copyright notice to the top of the file, or in a separate file (named `original-file.ext.license`), following the [SPDX specification](https://spdx.dev/).
+If you make changes to a file, please put a copyright notice at the top of the file, or in a separate file (named `original-file.ext.license`), following the [SPDX specification](https://spdx.dev/). For example:
+
+```
+SPDX-FileCopyrightText: Night Theme Switcher Contributors
+SPDX-License-Identifier: GPL-3.0-or-later
+```
 
 We use [`reuse`](https://reuse.software/) to check that all the needed information is present:
 
