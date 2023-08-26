@@ -34,10 +34,10 @@ export class SwitcherCommands extends Switcher {
     #onTimeChanged(time) {
         if (time === Time.UNKNOWN)
             return;
-        const command = this.#settings.get_string(time === Time.DAY ? 'sunrise' : 'sunset');
-        if (!command)
-            return;
-        GLib.spawn_async(null, ['sh', '-c', command], null, GLib.SpawnFlags.SEARCH_PATH, null);
+
+        // ln -sfr ~/.config/gtk-4.0/gtk-${style}.css ~/.config/gtk-4.0/gtk.css
+        GLib.spawn_async(null, ['sh', '-c', `ln -sfr ~/.config/gtk-4.0/gtk-${time === Time.DAY ? 'sunrise' : 'sunset'}.css ~/.config/gtk-4.0/gtk.css`], null, GLib.SpawnFlags.SEARCH_PATH, null);
+        
         debug.message(`Spawned ${time} command.`);
     }
 }

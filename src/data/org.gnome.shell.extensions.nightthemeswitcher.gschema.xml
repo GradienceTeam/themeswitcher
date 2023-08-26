@@ -11,24 +11,24 @@ SPDX-License-Identifier: GPL-3.0-or-later
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.gtk-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/gtk-variants/">
 		<key name="enabled" type="b">
-			<default>false</default>
+			<default>true</default>
 		</key>
 		<key name="day" type="s">
-			<default>"Adwaita"</default>
+			<default>"adw-gtk3"</default>
 		</key>
 		<key name="night" type="s">
-			<default>"Adwaita-dark"</default>
+			<default>"adw-gtk3-dark"</default>
 		</key>
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.shell-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/shell-variants/">
 		<key name="enabled" type="b">
-			<default>false</default>
+			<default>true</default>
 		</key>
 		<key name="day" type="s">
-			<default>""</default>
+			<default>"gradience-shell"</default>
 		</key>
 		<key name="night" type="s">
-			<default>""</default>
+			<default>"gradience-shell"</default>
 		</key>
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.icon-variants" path="/org/gnome/shell/extensions/nightthemeswitcher/icon-variants/">
@@ -55,13 +55,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.commands" path="/org/gnome/shell/extensions/nightthemeswitcher/commands/">
 		<key name="enabled" type="b">
-			<default>false</default>
-		</key>
-		<key name="sunrise" type="s">
-			<default>""</default>
-		</key>
-		<key name="sunset" type="s">
-			<default>""</default>
+			<default>true</default>
 		</key>
 	</schema>
 	<schema id="org.gnome.shell.extensions.nightthemeswitcher.time" path="/org/gnome/shell/extensions/nightthemeswitcher/time/">
